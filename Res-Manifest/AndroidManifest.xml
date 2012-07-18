@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+DO BEFORE UPDATE TO GOOGLE PLAY:
+-set new version in manifest
+-set map API key
+-set Localytics/Flurry API key
+-add Localytics/Flurry events for new features
+-edit app changelog
+-edit text in about and on Google Play page
+-edit text in dialog for new version
+-remove logs
+-monkey test
+-post message about update to social networks
+
+
+RELEASE INFO:
+-code:1 - name:1.0.0 - date:01.01.2013
+
+
+TODO:
+-fill in some tasks
+
+
+TESTS:
+-test app on all Android versions (handset, tablet)
+-monkey test (fast clicking, changing orientation, offline mode)
+-test migration from older version to newer
+-test offline mode
+-test slow internet connection
+-test empty views
+-test reboot (boot receivers, alarms, services)
+-test Localytics/Flurry tracking
+-->
+
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.example"
+	android:versionCode="1"
+	android:versionName="1.0"
+	android:installLocation="auto">
+	
+	<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="15" />
+	
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+	<application
+		android:name=".activities.ExampleApplication" 
+		android:icon="@drawable/ic_launcher"
+		android:logo="@drawable/ab_logo"
+		android:label="@string/app_name"
+		android:theme="@style/Theme.Example"
+		android:hardwareAccelerated="true">
+		
+		<uses-library android:name="com.google.android.maps" />
+		
+		<activity
+			android:name=".activities.ListingActivity"
+			android:label="@string/app_name"
+			android:launchMode="standard">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+	</application>
+</manifest>
