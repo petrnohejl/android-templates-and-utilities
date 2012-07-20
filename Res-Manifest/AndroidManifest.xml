@@ -62,7 +62,8 @@ TESTS:
 		<activity
 			android:name=".activities.ListingActivity"
 			android:label="@string/app_name"
-			android:launchMode="standard">
+			android:launchMode="standard"
+			android:uiOptions="none">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
