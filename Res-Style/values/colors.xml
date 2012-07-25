@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="global_text">#555</color>
+	<color name="global_bg_back">#fcfaf8</color>
+	<color name="global_bg_front">#fff</color>
+	
+	<color name="widget_textview_text">#555</color>
+	<color name="widget_button_text">#555</color>
+	<color name="widget_edittext_text">#555</color>
+	<color name="widget_checkbox_text">#555</color>
+	<color name="widget_listview_divider">#e2e0de</color>
+	<color name="widget_listview_cache_color_hint">#e2e0de</color>
+	<color name="widget_listview_item_bg_default">#f4f3f1</color>
+	<color name="widget_listview_item_bg_pressed">#e4e1db</color>
+	<color name="widget_listview_item_bg_selected">#e4e1db</color>
+	
+	<color name="ab_title_text">#555</color>
+	<color name="ab_button_text">#555</color>
+	<color name="ab_tab_text">#555</color>
+</resources>
