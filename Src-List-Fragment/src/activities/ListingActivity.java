@@ -20,8 +20,8 @@ public class ListingActivity extends SherlockFragmentActivity
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		setContentView(R.layout.activity_listing);
 		setActionBar();
+		setContentView(R.layout.activity_listing);
 		
 		// restore saved state
 		if(savedInstanceState != null)
