@@ -23,12 +23,12 @@ import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
 import com.example.adapters.ListingAdapter;
 import com.example.client.entities.Message;
-import com.example.listeners.OnListingLoadLazyListener;
-import com.example.listeners.OnListingLoadListener;
+import com.example.listeners.OnLoadLazyListener;
+import com.example.listeners.OnLoadListener;
 import com.example.tasks.ListingLoadLazyTask;
 import com.example.tasks.ListingLoadTask;
 
-public class ListingFragment extends SherlockListFragment implements OnListingLoadListener, OnListingLoadLazyListener
+public class ListingFragment extends SherlockListFragment implements OnLoadListener, OnLoadLazyListener
 {
 	private final int LAZY_LOADING_TAKE = 3;
 	private final int LAZY_LOADING_OFFSET = 1;
@@ -204,14 +204,14 @@ public class ListingFragment extends SherlockListFragment implements OnListingLo
 	
 	
 	@Override
-	public void onListingLoadPreExecute()
+	public void onLoadPreExecute()
 	{
 		showProgress();
 	}
 	
 	
 	@Override
-	public void onListingLoadPostExecute()
+	public void onLoadPostExecute()
 	{
 		// TODO: show data
 		Message m1 = new Message();
@@ -234,7 +234,7 @@ public class ListingFragment extends SherlockListFragment implements OnListingLo
 	
 	
 	@Override
-	public void onListingLoadLazyPreExecute()
+	public void onLoadLazyPreExecute()
 	{
 		// start lazy loading
 		lazyLoadDataStart();
@@ -242,7 +242,7 @@ public class ListingFragment extends SherlockListFragment implements OnListingLo
 	
 	
 	@Override
-	public void onListingLoadLazyPostExecute()
+	public void onLoadLazyPostExecute()
 	{
 		// TODO: refresh data
 		Message m1 = new Message();

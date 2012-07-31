@@ -4,32 +4,32 @@ import java.lang.ref.WeakReference;
 
 import android.os.AsyncTask;
 
-import com.example.listeners.OnListingLoadLazyListener;
+import com.example.listeners.OnLoadLazyListener;
 
 public class ListingLoadLazyTask extends AsyncTask<Void, Void, String>
 {
-	WeakReference<OnListingLoadLazyListener> mOnListingLoadLazyListener;
+	WeakReference<OnLoadLazyListener> mOnLoadLazyListener;
 	
 	
-	public ListingLoadLazyTask(OnListingLoadLazyListener onListingLoadLazyListener)
+	public ListingLoadLazyTask(OnLoadLazyListener onLoadLazyListener)
 	{
-		setListener(onListingLoadLazyListener);
+		setListener(onLoadLazyListener);
 	}
 	
 	
-	public void setListener(OnListingLoadLazyListener onListingLoadLazyListener)
+	public void setListener(OnLoadLazyListener onLoadLazyListener)
 	{
-		mOnListingLoadLazyListener = new WeakReference<OnListingLoadLazyListener>(onListingLoadLazyListener);
+		mOnLoadLazyListener = new WeakReference<OnLoadLazyListener>(onLoadLazyListener);
 	}
 	
 	
 	@Override
 	protected void onPreExecute()
 	{
-		OnListingLoadLazyListener listener = mOnListingLoadLazyListener.get();
+		OnLoadLazyListener listener = mOnLoadLazyListener.get();
 		if(listener != null)
 		{
-			listener.onListingLoadLazyPreExecute();
+			listener.onLoadLazyPreExecute();
 		}
 	}
 	
@@ -55,10 +55,10 @@ public class ListingLoadLazyTask extends AsyncTask<Void, Void, String>
 	{
 		if(isCancelled()) return;
 		
-		OnListingLoadLazyListener listener = mOnListingLoadLazyListener.get();
+		OnLoadLazyListener listener = mOnLoadLazyListener.get();
 		if(listener != null)
 		{
-			listener.onListingLoadLazyPostExecute();
+			listener.onLoadLazyPostExecute();
 		}
 	}
 }
