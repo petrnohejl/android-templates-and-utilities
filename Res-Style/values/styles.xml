@@ -170,6 +170,7 @@
 	<style name="Example.EditText" parent="@android:style/Widget.EditText">
 		<item name="android:textSize">@dimen/widget_edittext_text</item>
 		<item name="android:textColor">@color/widget_edittext_text</item>
+		<item name="android:textColorHint">@color/widget_edittext_hint_text</item>
 	</style>
 	
 	
