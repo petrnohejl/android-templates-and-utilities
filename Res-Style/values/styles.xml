@@ -140,6 +140,7 @@
 		<item name="android:background">@drawable/selector_ab_tab_bg</item>
 		<item name="android:paddingLeft">@dimen/ab_tab_padding</item>
 		<item name="android:paddingRight">@dimen/ab_tab_padding</item>
+		<item name="android:gravity">center</item>
 	</style>
 	
 	

@@ -8,7 +8,7 @@ import com.example.listeners.OnLoadLazyListener;
 
 public class ListingLoadLazyTask extends AsyncTask<Void, Void, String>
 {
-	WeakReference<OnLoadLazyListener> mOnLoadLazyListener;
+	private WeakReference<OnLoadLazyListener> mOnLoadLazyListener;
 	
 	
 	public ListingLoadLazyTask(OnLoadLazyListener onLoadLazyListener)
