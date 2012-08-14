@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.example.R;
@@ -37,7 +38,14 @@ public class ExampleFragment extends SherlockListFragment  implements OnApiCallL
 		super.onResume();
 		
 		// load and show data
-		loadData();
+		if(RequestManager.isOnline(getActivity()))
+		{
+			loadData();
+		}
+		else
+		{
+			Toast.makeText(getActivity(), "You are offline.", Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	
