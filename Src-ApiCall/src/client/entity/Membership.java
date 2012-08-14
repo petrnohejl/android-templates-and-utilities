@@ -18,7 +18,7 @@ public class Membership
 	public Membership(Membership copyModel)
 	{
 		mUserId = copyModel.mUserId;
-		mAccessToken = new String(copyModel.mAccessToken);
+		if(copyModel.mAccessToken!=null) mAccessToken = new String(copyModel.mAccessToken);
 	}
 	
 	

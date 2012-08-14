@@ -111,7 +111,7 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			}
 			catch(Exception e)
 			{
-				
+				e.printStackTrace();
 			}
 			if(response==null) mParseFail = true;
 

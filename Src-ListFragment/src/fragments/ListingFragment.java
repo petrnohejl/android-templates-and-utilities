@@ -371,7 +371,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
 			{
-				if(totalItemCount-(firstVisibleItem+visibleItemCount) <= LAZY_LOADING_OFFSET && mMessages.size() % LAZY_LOADING_TAKE==0)
+				if(totalItemCount-(firstVisibleItem+visibleItemCount) <= LAZY_LOADING_OFFSET && mMessages.size() % LAZY_LOADING_TAKE==0 && !mMessages.isEmpty())
 				{
 					if(!mLazyLoading) lazyLoadData();
 				}
