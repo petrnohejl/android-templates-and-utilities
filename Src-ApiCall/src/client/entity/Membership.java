@@ -17,8 +17,8 @@ public class Membership
 	// copy constructor
 	public Membership(Membership copyModel)
 	{
-		mUserId = copyModel.getUserId();
-		mAccessToken = copyModel.getAccessToken();
+		mUserId = copyModel.mUserId;
+		mAccessToken = new String(copyModel.mAccessToken);
 	}
 	
 	
