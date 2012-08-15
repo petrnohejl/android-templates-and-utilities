@@ -37,8 +37,9 @@ public class RequestManager
 	
 	public void cancelAllRequests()
 	{
-		for(ApiCall call : mQueue)
+		for(int i=mQueue.size()-1;i>=0;i--)
 		{
+			ApiCall call = mQueue.get(i);
 			if(call!=null)
 			{
 				call.cancel(true);
@@ -61,6 +62,7 @@ public class RequestManager
 	
 	public static boolean isOnline(Context context)
 	{
+		// needs android.permission.ACCESS_NETWORK_STATE
 		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo netInfo = cm.getActiveNetworkInfo();
 		return (netInfo != null && netInfo.isConnected());
