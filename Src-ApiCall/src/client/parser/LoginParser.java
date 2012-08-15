@@ -56,7 +56,7 @@ public class LoginParser
 			// response
 			else if(parser.getCurrentName().equals("Membership"))
 			{
-				long userId = 0;
+				long userId = -1l;
 				String accessToken = null;
 
 				if(parser.nextToken() == JsonToken.START_OBJECT)
