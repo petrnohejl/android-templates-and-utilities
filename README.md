@@ -79,7 +79,7 @@ Developed by
 License
 =======
 
-    Copyright (C) 2012 Petr Nohejl, www.petrnohejl.cz
+    Copyright (C) 2012 Petr Nohejl, petrnohejl.cz
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License

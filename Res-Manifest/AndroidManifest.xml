@@ -4,6 +4,9 @@
 DO BEFORE UPDATE TO GOOGLE PLAY:
 -set new version in manifest
 -set map API key
+-set GCM sender ID
+-set Facebook app ID
+-set Android key hash on developers.facebook.com
 -set Localytics/Flurry API key
 -add Localytics/Flurry events for new features
 -edit app changelog
