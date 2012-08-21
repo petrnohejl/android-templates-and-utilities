@@ -60,8 +60,7 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 		}
 		else
 		{
-			// TODO
-			Toast.makeText(getActivity(), "You are offline.", Toast.LENGTH_LONG).show();
+			showOffline();
 		}
 	}
 	
@@ -71,6 +70,9 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 	{
 		// cancel async tasks
 		mRequestManager.cancelAllRequests();
+
+		// stop adapter
+		if(mAdapter!=null) mAdapter.stop();
 		
 		super.onPause();
 	}
@@ -107,9 +109,9 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 					mMessages.add(new Message(message));
 				}
 				
-				// hide progress
-				lazyLoadDataStop();
-				hideProgress();
+				// show list container
+				stopLazyLoadData();
+				showList();
 				
 				// render or refresh view
 				if(mAdapter==null) renderView();
@@ -132,9 +134,9 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 			Log.d("EXAMPLE", "onApiCallFail status message: " + status.getStatusMessage());
 			Log.d("EXAMPLE", "onApiCallFail parse fail: " + parseFail);
 			
-			// hide progress
-			lazyLoadDataStop();
-			hideProgress();
+			// show list container
+			stopLazyLoadData();
+			showList();
 			
 			// render or refresh view
 			if(mAdapter==null) renderView();
@@ -158,7 +160,7 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 	
 	private void lazyLoadData()
 	{
-		lazyLoadDataStart();
+		startLazyLoadData();
 		
 		// example request with paging
 		ExampleRequest request = new ExampleRequest(mMessages.size(), LAZY_LOADING_TAKE);
@@ -166,7 +168,7 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 	}
 	
 	
-	private void lazyLoadDataStart()
+	private void startLazyLoadData()
 	{
 		mLazyLoading = true;
 
@@ -176,7 +178,7 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 	}
 	
 	
-	private void lazyLoadDataStop()
+	private void stopLazyLoadData()
 	{
 		// hide footer
 		ListView listView = getListView();
@@ -186,23 +188,39 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 	}
 
 	
-	private void showProgress()
+	private void showList()
 	{
-		// hide listview and show progress
-		FrameLayout listContainer = (FrameLayout) mRootView.findViewById(R.id.list_container);
-		LinearLayout progressContainer = (LinearLayout) mRootView.findViewById(R.id.progress_container);
-		listContainer.setVisibility(View.GONE);
-		progressContainer.setVisibility(View.VISIBLE);
+		// show list container
+		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
+		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
+		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		containerList.setVisibility(View.VISIBLE);
+		containerProgress.setVisibility(View.GONE);
+		containerOffline.setVisibility(View.GONE);
 	}
 	
 	
-	private void hideProgress()
+	private void showProgress()
 	{
-		// show listview and hide progress
-		FrameLayout listContainer = (FrameLayout) mRootView.findViewById(R.id.list_container);
-		LinearLayout progressContainer = (LinearLayout) mRootView.findViewById(R.id.progress_container);
-		listContainer.setVisibility(View.VISIBLE);
-		progressContainer.setVisibility(View.GONE);
+		// show progress container
+		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
+		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
+		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		containerList.setVisibility(View.GONE);
+		containerProgress.setVisibility(View.VISIBLE);
+		containerOffline.setVisibility(View.GONE);
+	}
+	
+	
+	private void showOffline()
+	{
+		// show offline container
+		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
+		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
+		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		containerList.setVisibility(View.GONE);
+		containerProgress.setVisibility(View.GONE);
+		containerOffline.setVisibility(View.VISIBLE);
 	}
 
 	
