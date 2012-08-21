@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.R;
-import com.example.client.entities.Message;
+import com.example.client.entity.Message;
 
 public class ListingAdapter extends BaseAdapter 
 {
@@ -94,6 +94,12 @@ public class ListingAdapter extends BaseAdapter
 		mContext = context;
 		mMessages = messages;
 		notifyDataSetChanged();
+	}
+	
+	
+	public void stop()
+	{
+		// TODO: stop image loader
 	}
 	
 	

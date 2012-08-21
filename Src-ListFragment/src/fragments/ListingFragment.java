@@ -22,7 +22,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
 import com.example.adapters.ListingAdapter;
-import com.example.client.entities.Message;
+import com.example.client.entity.Message;
 import com.example.listeners.OnLoadLazyListener;
 import com.example.listeners.OnLoadListener;
 import com.example.tasks.ListingLoadLazyTask;
@@ -109,6 +109,9 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 		// cancel async tasks
 		if(mLoadTask!=null) mLoadTask.cancel(true);
 		if(mLoadLazyTask!=null) mLoadLazyTask.cancel(true);
+		
+		// stop adapter
+		if(mAdapter!=null) mAdapter.stop();
 		
 		super.onPause();
 	}
@@ -228,7 +231,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 		mMessages.add(m2);
 		mMessages.add(m3);
 		
-		hideProgress();
+		showList();
 		renderView();
 	}
 	
@@ -237,7 +240,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 	public void onLoadLazyPreExecute()
 	{
 		// start lazy loading
-		lazyLoadDataStart();
+		startLazyLoadData();
 	}
 	
 	
@@ -262,7 +265,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 		if(mAdapter!=null) mAdapter.notifyDataSetChanged();
 		
 		// stop lazy loading
-		lazyLoadDataStop(); 
+		stopLazyLoadData(); 
 	}
 	
 	
@@ -294,7 +297,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 	}
 	
 	
-	private void lazyLoadDataStart()
+	private void startLazyLoadData()
 	{
 		mLazyLoading = true;
 		
@@ -304,7 +307,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 	}
 	
 	
-	private void lazyLoadDataStop()
+	private void stopLazyLoadData()
 	{
 		// hide footer
 		ListView listView = getListView();
@@ -314,23 +317,39 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 	}
 	
 	
-	private void showProgress()
+	private void showList()
 	{
-		// hide listview and show progress
-		FrameLayout listContainer = (FrameLayout) mRootView.findViewById(R.id.list_container);
-		LinearLayout progressContainer = (LinearLayout) mRootView.findViewById(R.id.progress_container);
-		listContainer.setVisibility(View.GONE);
-		progressContainer.setVisibility(View.VISIBLE);
+		// show list container
+		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
+		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
+		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		containerList.setVisibility(View.VISIBLE);
+		containerProgress.setVisibility(View.GONE);
+		containerOffline.setVisibility(View.GONE);
 	}
 	
 	
-	private void hideProgress()
+	private void showProgress()
 	{
-		// show listview and hide progress
-		FrameLayout listContainer = (FrameLayout) mRootView.findViewById(R.id.list_container);
-		LinearLayout progressContainer = (LinearLayout) mRootView.findViewById(R.id.progress_container);
-		listContainer.setVisibility(View.VISIBLE);
-		progressContainer.setVisibility(View.GONE);
+		// show progress container
+		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
+		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
+		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		containerList.setVisibility(View.GONE);
+		containerProgress.setVisibility(View.VISIBLE);
+		containerOffline.setVisibility(View.GONE);
+	}
+	
+	
+	private void showOffline()
+	{
+		// show offline container
+		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
+		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
+		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		containerList.setVisibility(View.GONE);
+		containerProgress.setVisibility(View.GONE);
+		containerOffline.setVisibility(View.VISIBLE);
 	}
 	
 	
