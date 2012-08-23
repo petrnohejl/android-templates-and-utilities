@@ -54,7 +54,7 @@ TESTS:
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 	<application
-		android:name=".activities.ExampleApplication" 
+		android:name=".ExampleApplication" 
 		android:icon="@drawable/ic_launcher"
 		android:logo="@drawable/ab_logo"
 		android:label="@string/app_name"
