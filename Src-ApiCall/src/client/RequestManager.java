@@ -65,6 +65,6 @@ public class RequestManager
 		// needs android.permission.ACCESS_NETWORK_STATE
 		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo netInfo = cm.getActiveNetworkInfo();
-		return (netInfo != null && netInfo.isConnected());
+		return (netInfo != null && netInfo.isAvailable() && netInfo.isConnected());
 	}
 }
