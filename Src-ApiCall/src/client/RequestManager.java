@@ -35,6 +35,20 @@ public class RequestManager
 	}
 	
 	
+	public boolean hasRunningRequest(Class<?> cls)
+	{
+		String className = cls.getSimpleName();
+		
+		for(ApiCall call : mQueue)
+		{
+			String callName = call.getRequest().getClass().getSimpleName();
+			if(className.equals(callName)) return true;
+		}
+		
+		return false;
+	}
+	
+	
 	public void cancelAllRequests()
 	{
 		for(int i=mQueue.size()-1;i>=0;i--)

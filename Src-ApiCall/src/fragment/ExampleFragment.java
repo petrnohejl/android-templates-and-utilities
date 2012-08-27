@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockListFragment;
 import com.example.R;
 import com.example.adapter.ExampleAdapter;
 import com.example.client.ApiCall;
@@ -24,21 +22,33 @@ import com.example.client.entity.Message;
 import com.example.client.request.ExampleRequest;
 import com.example.client.response.ExampleResponse;
 import com.example.client.response.Response;
+import com.example.task.TaskSherlockListFragment;
+import com.example.utility.ViewState;
 
 
-public class ExampleFragment extends SherlockListFragment implements OnApiCallListener
+public class ExampleFragment extends TaskSherlockListFragment implements OnApiCallListener
 {
 	private final int LAZY_LOADING_TAKE = 3;
 	private final int LAZY_LOADING_OFFSET = 1;
 	
 	private View mRootView;
 	private View mFooterView;
+	private ViewState.Visibility mViewState = null;
 	private ExampleAdapter mAdapter;
 	private boolean mLazyLoading = false;
 	private RequestManager mRequestManager = new RequestManager();
 	
 	private ArrayList<Message> mMessages = new ArrayList<Message>();
 
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		
+		setRetainInstance(true);
+	}
+	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -49,112 +59,147 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 	
 	
 	@Override
-	public void onResume()
+	public void onActivityCreated(Bundle savedInstanceState)
 	{
-		super.onResume();
+		super.onActivityCreated(savedInstanceState);
 		
 		// load and show data
-		if(RequestManager.isOnline(getActivity()))
+		if(mViewState==null || mViewState==ViewState.Visibility.OFFLINE)
 		{
-			loadData();
+			if(RequestManager.isOnline(getActivity()))
+			{
+				loadData();
+			}
+			else
+			{
+				showOffline();
+			}
 		}
-		else
+		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			showOffline();
+			renderView();
+			showList();
 		}
+		else if(mViewState==ViewState.Visibility.PROGRESS)
+		{
+			showProgress();
+		}
+		
+		// lazy loading
+		if(mLazyLoading) startLazyLoadData();
 	}
 	
 	
 	@Override
 	public void onPause()
 	{
-		// cancel async tasks
-		mRequestManager.cancelAllRequests();
-
+		super.onPause();
+		
 		// stop adapter
 		if(mAdapter!=null) mAdapter.stop();
+	}
+	
+	
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
 		
-		super.onPause();
+		// cancel async tasks
+		mRequestManager.cancelAllRequests();
 	}
 
 
 	@Override
-	public void onApiCallRespond(ApiCall call, ResponseStatus status, Response response)
+	public void onApiCallRespond(final ApiCall call, final ResponseStatus status, final Response response)
 	{
-		if(response.getClass().getSimpleName().equalsIgnoreCase("ExampleResponse"))
+		runTaskCallback(new Runnable()
 		{
-			ExampleResponse exampleResponse = (ExampleResponse) response;
-			
-			// error
-			if(exampleResponse.isError())
+			public void run()
 			{
-				Log.d("EXAMPLE", "onApiCallRespond: example response error");
-				Log.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
-				Log.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
-				Log.d("EXAMPLE", "onApiCallRespond error: " + exampleResponse.getErrorType() + ": " + exampleResponse.getErrorMessage());
-			}
-			
-			// response
-			else
-			{
-				Log.d("EXAMPLE", "onApiCallRespond: example response ok");
-				Log.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
-				Log.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
-				
-				// data
-				Iterator<Message> iterator = exampleResponse.getMessages().iterator();
-				while(iterator.hasNext())
+				if(response.getClass().getSimpleName().equalsIgnoreCase("ExampleResponse"))
 				{
-					Message message = iterator.next();
-					mMessages.add(new Message(message));
+					ExampleResponse exampleResponse = (ExampleResponse) response;
+					
+					// error
+					if(exampleResponse.isError())
+					{
+						Log.d("EXAMPLE", "onApiCallRespond: example response error");
+						Log.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
+						Log.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
+						Log.d("EXAMPLE", "onApiCallRespond error: " + exampleResponse.getErrorType() + ": " + exampleResponse.getErrorMessage());
+					}
+					
+					// response
+					else
+					{
+						Log.d("EXAMPLE", "onApiCallRespond: example response ok");
+						Log.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
+						Log.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
+						
+						// data
+						Iterator<Message> iterator = exampleResponse.getMessages().iterator();
+						while(iterator.hasNext())
+						{
+							Message message = iterator.next();
+							mMessages.add(new Message(message));
+						}
+						
+						// show list container
+						stopLazyLoadData();
+						showList();
+						
+						// render view
+						renderView();
+					}
 				}
 				
-				// show list container
-				stopLazyLoadData();
-				showList();
-				
-				// render or refresh view
-				if(mAdapter==null) renderView();
-				else mAdapter.notifyDataSetChanged();
+				boolean finished = mRequestManager.finishRequest(call);
+				Log.d("EXAMPLE", "finishRequest: " + finished);
 			}
-		}
-		
-		boolean finished = mRequestManager.finishRequest(call);
-		Log.d("EXAMPLE", "finishRequest: " + finished);
+		});
 	}
 
 
 	@Override
-	public void onApiCallFail(ApiCall call, ResponseStatus status, boolean parseFail)
+	public void onApiCallFail(final ApiCall call, final ResponseStatus status, final boolean parseFail)
 	{
-		if(call.getRequest().getClass().getSimpleName().equalsIgnoreCase("ExampleRequest"))
+		runTaskCallback(new Runnable()
 		{
-			Log.d("EXAMPLE", "onApiCallFail: example request fail");
-			Log.d("EXAMPLE", "onApiCallFail status code: " + status.getStatusCode());
-			Log.d("EXAMPLE", "onApiCallFail status message: " + status.getStatusMessage());
-			Log.d("EXAMPLE", "onApiCallFail parse fail: " + parseFail);
-			
-			// show list container
-			stopLazyLoadData();
-			showList();
-			
-			// render or refresh view
-			if(mAdapter==null) renderView();
-			else mAdapter.notifyDataSetChanged();
-		}
-		
-		boolean finished = mRequestManager.finishRequest(call);
-		Log.d("EXAMPLE", "finishRequest: " + finished);
+			public void run()
+			{
+				if(call.getRequest().getClass().getSimpleName().equalsIgnoreCase("ExampleRequest"))
+				{
+					Log.d("EXAMPLE", "onApiCallFail: example request fail");
+					Log.d("EXAMPLE", "onApiCallFail status code: " + status.getStatusCode());
+					Log.d("EXAMPLE", "onApiCallFail status message: " + status.getStatusMessage());
+					Log.d("EXAMPLE", "onApiCallFail parse fail: " + parseFail);
+					
+					// show list container
+					stopLazyLoadData();
+					showList();
+					
+					// render view
+					renderView();
+				}
+				
+				boolean finished = mRequestManager.finishRequest(call);
+				Log.d("EXAMPLE", "finishRequest: " + finished);
+			}
+		});
 	}
 	
 	
 	private void loadData()
 	{
-		showProgress();
-		
-		// example request with paging
-		ExampleRequest request = new ExampleRequest(0, LAZY_LOADING_TAKE);
-		mRequestManager.executeRequest(request, this);
+		if(!mRequestManager.hasRunningRequest(ExampleRequest.class))
+		{
+			showProgress();
+			
+			// example request with paging
+			ExampleRequest request = new ExampleRequest(0, LAZY_LOADING_TAKE);
+			mRequestManager.executeRequest(request, this);
+		}
 	}
 	
 	
@@ -197,6 +242,7 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 		containerList.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
+		mViewState = ViewState.Visibility.CONTENT;
 	}
 	
 	
@@ -209,6 +255,7 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
+		mViewState = ViewState.Visibility.PROGRESS;
 	}
 	
 	
@@ -221,6 +268,7 @@ public class ExampleFragment extends SherlockListFragment implements OnApiCallLi
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
+		mViewState = ViewState.Visibility.OFFLINE;
 	}
 
 	
