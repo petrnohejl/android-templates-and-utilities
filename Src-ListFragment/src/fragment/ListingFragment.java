@@ -16,7 +16,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
@@ -27,15 +26,18 @@ import com.example.listener.OnLoadLazyListener;
 import com.example.listener.OnLoadListener;
 import com.example.task.ListingLoadLazyTask;
 import com.example.task.ListingLoadTask;
+import com.example.task.TaskSherlockListFragment;
+import com.example.utility.ViewState;
 
 
-public class ListingFragment extends SherlockListFragment implements OnLoadListener, OnLoadLazyListener
+public class ListingFragment extends TaskSherlockListFragment implements OnLoadListener, OnLoadLazyListener
 {
 	private final int LAZY_LOADING_TAKE = 3;
 	private final int LAZY_LOADING_OFFSET = 1;
 	
 	private View mRootView;
 	private View mFooterView;
+	private ViewState.Visibility mViewState = null;
 	private ArrayList<Message> mMessages;
 	private ListingAdapter mAdapter;
 	private ListingLoadTask mLoadTask;
@@ -56,6 +58,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 		super.onCreate(savedInstanceState);
 		
 		setHasOptionsMenu(true);
+		setRetainInstance(true);
 		
 		// restore saved state
 		if(savedInstanceState != null)
@@ -86,7 +89,29 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 		super.onActivityCreated(savedInstanceState);
 		
 		// load and show data
-		loadData();
+		if(mViewState==null || mViewState==ViewState.Visibility.OFFLINE)
+		{
+			if(true) // TODO: isOnline?
+			{
+				loadData();
+			}
+			else
+			{
+				showOffline();
+			}
+		}
+		else if(mViewState==ViewState.Visibility.CONTENT)
+		{
+			renderView();
+			showList();
+		}
+		else if(mViewState==ViewState.Visibility.PROGRESS)
+		{
+			showProgress();
+		}
+		
+		// lazy loading
+		if(mLazyLoading) startLazyLoadData();
 	}
 	
 	
@@ -107,14 +132,10 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 	@Override
 	public void onPause()
 	{
-		// cancel async tasks
-		if(mLoadTask!=null) mLoadTask.cancel(true);
-		if(mLoadLazyTask!=null) mLoadLazyTask.cancel(true);
+		super.onPause();
 		
 		// stop adapter
 		if(mAdapter!=null) mAdapter.stop();
-		
-		super.onPause();
 	}
 	
 	
@@ -136,6 +157,10 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 	public void onDestroy()
 	{
 		super.onDestroy();
+		
+		// cancel async tasks
+		if(mLoadTask!=null) mLoadTask.cancel(true);
+		if(mLoadLazyTask!=null) mLoadLazyTask.cancel(true);
 	}
 	
 	
@@ -210,63 +235,87 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 	@Override
 	public void onLoadPreExecute()
 	{
-		showProgress();
+		runTaskCallback(new Runnable()
+		{
+			public void run()
+			{
+				showProgress();
+			}
+		});
 	}
 	
 	
 	@Override
 	public void onLoadPostExecute()
 	{
-		// TODO: show data
-		Message m1 = new Message();
-		m1.setName("One");
-		
-		Message m2 = new Message();
-		m2.setName("Two");
-		
-		Message m3 = new Message();
-		m3.setName("Three");
-		
-		mMessages = new ArrayList<Message>();
-		mMessages.add(m1);
-		mMessages.add(m2);
-		mMessages.add(m3);
-		
-		showList();
-		renderView();
+		runTaskCallback(new Runnable()
+		{
+			public void run()
+			{
+				// TODO: show data
+				Message m1 = new Message();
+				m1.setName("One");
+				
+				Message m2 = new Message();
+				m2.setName("Two");
+				
+				Message m3 = new Message();
+				m3.setName("Three");
+				
+				mMessages = new ArrayList<Message>();
+				mMessages.add(m1);
+				mMessages.add(m2);
+				mMessages.add(m3);
+				
+				showList();
+				renderView();
+			}
+		});
 	}
 	
 	
 	@Override
 	public void onLoadLazyPreExecute()
 	{
-		// start lazy loading
-		startLazyLoadData();
+		runTaskCallback(new Runnable()
+		{
+			public void run()
+			{
+				// start lazy loading
+				startLazyLoadData();
+			}
+		});
 	}
 	
 	
 	@Override
 	public void onLoadLazyPostExecute()
 	{
-		// TODO: refresh data
-		Message m1 = new Message();
-		m1.setName("Next one");
-		
-		Message m2 = new Message();
-		m2.setName("Next two");
-		
-		Message m3 = new Message();
-		m3.setName("Next three");
-		
-		mMessages.add(m1);
-		mMessages.add(m2);
-		mMessages.add(m3);
-		
-		// notify adapter
-		if(mAdapter!=null) mAdapter.notifyDataSetChanged();
-		
-		// stop lazy loading
-		stopLazyLoadData(); 
+		runTaskCallback(new Runnable()
+		{
+			public void run()
+			{
+				// TODO: refresh data
+				Message m1 = new Message();
+				m1.setName("Next one");
+				
+				Message m2 = new Message();
+				m2.setName("Next two");
+				
+				Message m3 = new Message();
+				m3.setName("Next three");
+				
+				mMessages.add(m1);
+				mMessages.add(m2);
+				mMessages.add(m3);
+				
+				// notify adapter
+				if(mAdapter!=null) mAdapter.notifyDataSetChanged();
+				
+				// stop lazy loading
+				stopLazyLoadData(); 
+			}
+		});
 	}
 	
 	
@@ -327,6 +376,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 		containerList.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
+		mViewState = ViewState.Visibility.CONTENT;
 	}
 	
 	
@@ -339,6 +389,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
+		mViewState = ViewState.Visibility.PROGRESS;
 	}
 	
 	
@@ -351,6 +402,7 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
+		mViewState = ViewState.Visibility.OFFLINE;
 	}
 	
 	
@@ -364,21 +416,22 @@ public class ListingFragment extends SherlockListFragment implements OnLoadListe
 		{
 			// adapter
 			mAdapter = new ListingAdapter(getActivity(), mMessages);
-			
-			// init footer, because addFooterView() must be called at least once before setListAdapter()
-			mFooterView = getActivity().getLayoutInflater().inflate(R.layout.layout_listing_footer, null);
-			listView.addFooterView(mFooterView);
-			
-			// set adapter
-			setListAdapter(mAdapter);
-			
-			// hide footer
-			listView.removeFooterView(mFooterView);
 		}
 		else
 		{
+			// refill adapter
 			mAdapter.refill(getActivity(), mMessages);
 		}
+		
+		// init footer, because addFooterView() must be called at least once before setListAdapter()
+		mFooterView = getActivity().getLayoutInflater().inflate(R.layout.layout_listing_footer, null);
+		listView.addFooterView(mFooterView);
+		
+		// set adapter
+		setListAdapter(mAdapter);
+		
+		// hide footer
+		listView.removeFooterView(mFooterView);
 		
 		// lazy loading
 		listView.setOnScrollListener(new OnScrollListener()
