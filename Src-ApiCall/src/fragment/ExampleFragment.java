@@ -1,4 +1,4 @@
-package com.example.fragments;
+package com.example.fragment;
 
 import java.util.ArrayList;
 import java.util.Iterator;

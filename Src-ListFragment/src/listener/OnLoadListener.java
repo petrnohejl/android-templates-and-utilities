@@ -1,4 +1,4 @@
-package com.example.listeners;
+package com.example.listener;
 
 public interface OnLoadListener
 {

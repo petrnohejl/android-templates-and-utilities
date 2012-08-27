@@ -7,7 +7,7 @@
 	
 	<fragment
 		android:id="@+id/fragment_listing"
-		android:name="com.example.fragments.ListingFragment"
+		android:name="com.example.fragment.ListingFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_weight="1" />

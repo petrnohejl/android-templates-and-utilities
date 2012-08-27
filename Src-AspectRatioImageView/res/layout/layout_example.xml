@@ -3,7 +3,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content">
 		
-	<com.example.views.AspectRatioImageView
+	<com.example.view.AspectRatioImageView
 		android:id="@+id/layout_example_image"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

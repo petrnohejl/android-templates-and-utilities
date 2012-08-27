@@ -1,4 +1,4 @@
-package com.example.tasks;
+package com.example.task;
 
 import java.lang.ref.WeakReference;
 

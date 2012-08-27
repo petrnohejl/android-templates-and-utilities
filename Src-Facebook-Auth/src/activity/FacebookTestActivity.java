@@ -1,4 +1,4 @@
-package com.example.facebooktest.activities;
+package com.example.facebooktest.activity;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
