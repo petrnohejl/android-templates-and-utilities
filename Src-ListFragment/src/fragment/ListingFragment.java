@@ -21,12 +21,13 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
-import com.example.adapters.ListingAdapter;
+import com.example.adapter.ListingAdapter;
 import com.example.client.entity.Message;
-import com.example.listeners.OnLoadLazyListener;
-import com.example.listeners.OnLoadListener;
-import com.example.tasks.ListingLoadLazyTask;
-import com.example.tasks.ListingLoadTask;
+import com.example.listener.OnLoadLazyListener;
+import com.example.listener.OnLoadListener;
+import com.example.task.ListingLoadLazyTask;
+import com.example.task.ListingLoadTask;
+
 
 public class ListingFragment extends SherlockListFragment implements OnLoadListener, OnLoadLazyListener
 {

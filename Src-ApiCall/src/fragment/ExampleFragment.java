@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.example.R;
-import com.example.adapters.ExampleAdapter;
+import com.example.adapter.ExampleAdapter;
 import com.example.client.ApiCall;
 import com.example.client.OnApiCallListener;
 import com.example.client.RequestManager;

@@ -6,7 +6,8 @@ import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 
 import com.example.R;
-import com.example.activities.ExampleApplication;
+import com.example.ExampleApplication;
+
 
 public class Preferences
 {

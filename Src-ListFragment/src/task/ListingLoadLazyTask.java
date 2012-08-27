@@ -4,7 +4,8 @@ import java.lang.ref.WeakReference;
 
 import android.os.AsyncTask;
 
-import com.example.listeners.OnLoadLazyListener;
+import com.example.listener.OnLoadLazyListener;
+
 
 public class ListingLoadLazyTask extends AsyncTask<Void, Void, String>
 {

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.R;
 import com.example.client.entity.Message;
 
+
 public class ListingAdapter extends BaseAdapter 
 {
 	private Context mContext;
