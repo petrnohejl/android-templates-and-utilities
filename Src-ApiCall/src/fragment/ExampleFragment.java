@@ -145,12 +145,19 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 							mMessages.add(new Message(message));
 						}
 						
-						// show list container
-						stopLazyLoadData();
-						showList();
-						
-						// render view
-						renderView();
+						// render or refresh view
+						if(mLazyLoading && mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
+						{
+							stopLazyLoadData();
+							showList();
+							mAdapter.notifyDataSetChanged();
+						}
+						else
+						{
+							stopLazyLoadData();
+							showList();
+							renderView();
+						}
 					}
 				}
 				
@@ -175,12 +182,19 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 					Log.d("EXAMPLE", "onApiCallFail status message: " + status.getStatusMessage());
 					Log.d("EXAMPLE", "onApiCallFail parse fail: " + parseFail);
 					
-					// show list container
-					stopLazyLoadData();
-					showList();
-					
-					// render view
-					renderView();
+					// render or refresh view
+					if(mLazyLoading && mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
+					{
+						stopLazyLoadData();
+						showList();
+						mAdapter.notifyDataSetChanged();
+					}
+					else
+					{
+						stopLazyLoadData();
+						showList();
+						renderView();
+					}
 				}
 				
 				boolean finished = mRequestManager.finishRequest(call);
