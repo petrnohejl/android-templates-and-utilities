@@ -73,12 +73,15 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 				connection.setRequestProperty("Authorization", getBasicAuthToken(mRequest.getBasicAuthUsername(), mRequest.getBasicAuthPassword()));
 			}
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-			//connection.setRequestProperty("Content-Length", String.valueOf(requestData.length));
 			connection.setRequestProperty("Accept-Encoding", "gzip");
+			connection.setRequestProperty("Accept-Charset", "UTF-8");
+			//connection.setRequestProperty("Content-Length", requestData == null ? "0" : String.valueOf(requestData.length));
+			//if(requestData!=null) connection.setChunkedStreamingMode(0);
+			if(requestData!=null) connection.setFixedLengthStreamingMode(requestData.length);
 			connection.setConnectTimeout(30000);
 			//connection.setReadTimeout(30000);
-			connection.setDoOutput(requestData!=null); 
-			connection.setDoInput(true); 
+			connection.setDoOutput(requestData!=null);
+			connection.setDoInput(true);
 			connection.setUseCaches(false);
 			connection.connect();
 
@@ -86,10 +89,9 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			if(isCancelled()) return null;
 			if(requestData!=null)
 			{
-				//connection.setChunkedStreamingMode(0); 
-				connection.setFixedLengthStreamingMode(requestData.length);
 				requestStream = new BufferedOutputStream(connection.getOutputStream());
 				requestStream.write(requestData);
+				requestStream.flush();
 			}
 			
 			// receive response
@@ -200,7 +202,8 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 	
 	private String getBasicAuthToken(String username, String password)
 	{
-		String base64 = Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT);
+		// Base64.NO_WRAP because of Android <4 problem
+		String base64 = Base64.encodeToString((username + ":" + password).getBytes(), Base64.NO_WRAP);
 		return "Basic " + base64;
 	}
 }

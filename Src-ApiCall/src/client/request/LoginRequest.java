@@ -2,6 +2,8 @@ package com.example.client.request;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import org.codehaus.jackson.JsonParseException;
 
@@ -13,6 +15,7 @@ public class LoginRequest extends Request
 {
 	private final String REQUEST_METHOD = "POST";
 	private final String REQUEST_URL = "Login";
+	private final String CHARSET = "UTF-8";
 	
 	private String mFacebookAccessToken;
 	
@@ -34,10 +37,20 @@ public class LoginRequest extends Request
 	public String getAddress()
 	{
 		StringBuilder builder = new StringBuilder();
-		builder.append(BASE_URL);
-		builder.append(REQUEST_URL);
-		builder.append("?accessToken=");
-		builder.append(mFacebookAccessToken);
+
+		try
+		{
+			builder.append(BASE_URL);
+			builder.append(REQUEST_URL);
+			builder.append("?accessToken=");
+			builder.append(URLEncoder.encode(mFacebookAccessToken, CHARSET));
+		}
+		catch(UnsupportedEncodingException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+
 		return builder.toString();
 	}
 
@@ -45,20 +58,18 @@ public class LoginRequest extends Request
 	@Override
 	public byte[] getContent()
 	{
-//		StringBuilder builder = new StringBuilder();
-//		builder.append("content");
-//		
-//		try
-//		{
-//			return builder.toString().getBytes("utf-8");
-//		}
-//		catch (UnsupportedEncodingException e)
-//		{
-//			e.printStackTrace();
-//			return null;
-//		}
+		StringBuilder builder = new StringBuilder();
+		builder.append("content");
 		
-		return null;
+		try
+		{
+			return builder.toString().getBytes(CHARSET);
+		}
+		catch(UnsupportedEncodingException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 
