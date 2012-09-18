@@ -15,7 +15,6 @@ public class LoginRequest extends Request
 {
 	private final String REQUEST_METHOD = "POST";
 	private final String REQUEST_URL = "Login";
-	private final String CHARSET = "UTF-8";
 	
 	private String mFacebookAccessToken;
 	

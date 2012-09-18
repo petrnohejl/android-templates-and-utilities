@@ -11,6 +11,7 @@ import com.example.client.response.Response;
 public abstract class Request
 {	
 	protected final String BASE_URL = "http://example.com/api/";
+	protected final String CHARSET = "UTF-8";
 	
 	public abstract String getRequestMethod();
 	public abstract String getAddress();
