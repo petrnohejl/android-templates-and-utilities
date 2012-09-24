@@ -1,11 +1,11 @@
-Android Utilities and Snippets
-==============================
+Android Templates And Utilities
+===============================
 
-Android Utilities and Snippets is a collection of source codes, utilities, 
+Android Templates And Utilities is a collection of source codes, utilities, 
 templates and snippets for Android development. It helps to build new apps and 
 shows the best way how to implement certain problems on Android platform.
 
-Android Utilities and Snippets are organized into 3 groups:
+Android Templates And Utilities are organized into 3 groups:
 
 * Demo - runnable demo app including src, res, manifest.
 * Src - source code including classes, methods, resources.
