@@ -99,10 +99,10 @@
 		<!-- action bar progress bar style -->
 		<item name="progressBarStyle">@style/Example.ActionBar.ProgressBar</item>
 		<item name="android:progressBarStyle">@style/Example.ActionBar.ProgressBar</item>
-
+		
 		<!-- action bar indeterminate progress bar style -->
-		<item name="indeterminateProgressStyle">@android:style/Widget.ProgressBar.Small.Inverse</item>
-		<item name="android:indeterminateProgressStyle">@android:style/Widget.ProgressBar.Small.Inverse</item>
+		<item name="indeterminateProgressStyle">@style/Example.ActionBar.IndeterminateProgressBar</item>
+		<item name="android:indeterminateProgressStyle">@style/Example.ActionBar.IndeterminateProgressBar</item>
 	</style>
 	
 	
@@ -113,11 +113,20 @@
 		<item name="android:textStyle">normal</item>
 		<item name="android:textAllCaps">false</item>
 	</style>
-
-
+	
+	
 	<!-- action bar progress bar style -->
 	<style name="Example.ActionBar.ProgressBar" parent="@style/Widget.Sherlock.Light.ProgressBar.Horizontal">
 		<item name="android:progressDrawable">@drawable/layer_list_ab_progressbar_horizontal</item>
+	</style>
+	
+	
+	<!-- action bar indeterminate progress bar style -->
+	<style name="Example.ActionBar.IndeterminateProgressBar" parent="@android:style/Widget.ProgressBar.Large.Inverse">
+		<item name="android:minWidth">@dimen/ab_indeterminate_progress_bar_size</item>
+		<item name="android:maxWidth">@dimen/ab_indeterminate_progress_bar_size</item>
+		<item name="android:minHeight">@dimen/ab_indeterminate_progress_bar_size</item>
+		<item name="android:maxHeight">@dimen/ab_indeterminate_progress_bar_size</item>
 	</style>
 	
 	
