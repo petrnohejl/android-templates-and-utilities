@@ -219,11 +219,14 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 	
 	private void lazyLoadData()
 	{
-		startLazyLoadData();
-		
-		// example request with paging
-		ExampleRequest request = new ExampleRequest(mMessages.size(), LAZY_LOADING_TAKE);
-		mRequestManager.executeRequest(request, this);
+		if(RequestManager.isOnline(getActivity()))
+		{
+			startLazyLoadData();
+			
+			// example request with paging
+			ExampleRequest request = new ExampleRequest(mMessages.size(), LAZY_LOADING_TAKE);
+			mRequestManager.executeRequest(request, this);
+		}
 	}
 	
 	
