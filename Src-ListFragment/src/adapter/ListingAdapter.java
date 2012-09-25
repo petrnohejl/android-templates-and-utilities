@@ -79,7 +79,8 @@ public class ListingAdapter extends BaseAdapter
 	@Override
 	public Object getItem(int position)
 	{
-		return mMessages.get(position);
+		if(mMessages!=null) return mMessages.size();
+		else return 0;
 	}
 	
 	

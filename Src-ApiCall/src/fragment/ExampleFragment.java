@@ -77,7 +77,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			renderView();
+			if(mMessages!=null) renderView();
 			showList();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
@@ -145,7 +145,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 							mMessages.add(new Message(message));
 						}
 						
-						// render or refresh view
+						// refresh view
 						if(mLazyLoading && mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
 						{
 							stopLazyLoadData();
@@ -156,7 +156,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 						{
 							stopLazyLoadData();
 							showList();
-							renderView();
+							if(mMessages!=null) renderView();
 						}
 					}
 				}
@@ -182,7 +182,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 					Log.d("EXAMPLE", "onApiCallFail status message: " + status.getStatusMessage());
 					Log.d("EXAMPLE", "onApiCallFail parse fail: " + parseFail);
 					
-					// render or refresh view
+					// refresh view
 					if(mLazyLoading && mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
 					{
 						stopLazyLoadData();
@@ -193,7 +193,6 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 					{
 						stopLazyLoadData();
 						showList();
-						renderView();
 					}
 				}
 				
