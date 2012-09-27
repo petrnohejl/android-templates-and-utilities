@@ -38,11 +38,12 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	private View mRootView;
 	private View mFooterView;
 	private ViewState.Visibility mViewState = null;
-	private ArrayList<Message> mMessages;
 	private ListingAdapter mAdapter;
 	private ListingLoadTask mLoadTask;
 	private ListingLoadLazyTask mLoadLazyTask;
 	private boolean mLazyLoading = false;
+
+	private ArrayList<Message> mMessages = new ArrayList<Message>();
 	
 	
 	@Override
@@ -102,8 +103,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			renderView();
 			showList();
+			if(mMessages!=null) renderView();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
 		{
@@ -262,13 +263,12 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 				Message m3 = new Message();
 				m3.setName("Three");
 				
-				mMessages = new ArrayList<Message>();
 				mMessages.add(m1);
 				mMessages.add(m2);
 				mMessages.add(m3);
 				
 				showList();
-				renderView();
+				if(mMessages!=null) renderView();
 			}
 		});
 	}

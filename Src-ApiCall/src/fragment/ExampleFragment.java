@@ -77,8 +77,8 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			if(mMessages!=null) renderView();
 			showList();
+			if(mMessages!=null) renderView();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
 		{
