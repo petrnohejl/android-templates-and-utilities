@@ -66,19 +66,12 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		// load and show data
 		if(mViewState==null || mViewState==ViewState.Visibility.OFFLINE)
 		{
-			if(RequestManager.isOnline(getActivity()))
-			{
-				loadData();
-			}
-			else
-			{
-				showOffline();
-			}
+			loadData();
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			showList();
 			if(mMessages!=null) renderView();
+			showList();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
 		{
@@ -124,20 +117,26 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 					// error
 					if(exampleResponse.isError())
 					{
-						Log.d("EXAMPLE", "onApiCallRespond: example response error");
+						Log.d("EXAMPLE", "onApiCallRespond: example error " + exampleResponse.getErrorType() + ": " + exampleResponse.getErrorMessage());
 						Log.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
 						Log.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
-						Log.d("EXAMPLE", "onApiCallRespond error: " + exampleResponse.getErrorType() + ": " + exampleResponse.getErrorMessage());
+
+						// hide progress
+						stopLazyLoadData();
+						showList();
+
+						// handle error
+						handleError(exampleResponse.getErrorType(), exampleResponse.getErrorMessage());
 					}
 					
 					// response
 					else
 					{
-						Log.d("EXAMPLE", "onApiCallRespond: example response ok");
+						Log.d("EXAMPLE", "onApiCallRespond: example ok");
 						Log.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
 						Log.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
 						
-						// data
+						// get data
 						Iterator<Message> iterator = exampleResponse.getMessages().iterator();
 						while(iterator.hasNext())
 						{
@@ -145,24 +144,27 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 							mMessages.add(new Message(message));
 						}
 						
-						// refresh view
+						// render view
 						if(mLazyLoading && mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
 						{
-							stopLazyLoadData();
-							showList();
 							mAdapter.notifyDataSetChanged();
 						}
 						else
 						{
-							stopLazyLoadData();
-							showList();
 							if(mMessages!=null) renderView();
 						}
+
+						// hide progress
+						stopLazyLoadData();
+						showList();
 					}
 				}
 				
-				boolean finished = mRequestManager.finishRequest(call);
-				Log.d("EXAMPLE", "finishRequest: " + finished);
+				// finish request
+				mRequestManager.finishRequest(call);
+
+				// hide progress in action bar
+				if(mRequestManager.getRequestsCount()==0) getSherlockActivity().setSupportProgressBarIndeterminateVisibility(false);
 			}
 		});
 	}
@@ -177,41 +179,60 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 			{
 				if(call.getRequest().getClass().getSimpleName().equalsIgnoreCase("ExampleRequest"))
 				{
-					Log.d("EXAMPLE", "onApiCallFail: example request fail");
+					Log.d("EXAMPLE", "onApiCallFail: example " + parseFail);
 					Log.d("EXAMPLE", "onApiCallFail status code: " + status.getStatusCode());
 					Log.d("EXAMPLE", "onApiCallFail status message: " + status.getStatusMessage());
-					Log.d("EXAMPLE", "onApiCallFail parse fail: " + parseFail);
 					
-					// refresh view
-					if(mLazyLoading && mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
-					{
-						stopLazyLoadData();
-						showList();
-						mAdapter.notifyDataSetChanged();
-					}
-					else
-					{
-						stopLazyLoadData();
-						showList();
-					}
+					// hide progress
+					stopLazyLoadData();
+					showList();
+
+					// handle fail
+					handleFail();
 				}
 				
-				boolean finished = mRequestManager.finishRequest(call);
-				Log.d("EXAMPLE", "finishRequest: " + finished);
+				// finish request
+				mRequestManager.finishRequest(call);
+
+				// hide progress in action bar
+				if(mRequestManager.getRequestsCount()==0) getSherlockActivity().setSupportProgressBarIndeterminateVisibility(false);
 			}
 		});
+	}
+
+
+	private void handleError(String errorType, String errorMessage)
+	{
+		// TODO: show dialog
+	}
+
+
+	private void handleFail()
+	{
+		// TODO: show dialog
 	}
 	
 	
 	private void loadData()
 	{
-		if(!mRequestManager.hasRunningRequest(ExampleRequest.class))
+		if(RequestManager.isOnline(getActivity()))
 		{
-			showProgress();
-			
-			// example request with paging
-			ExampleRequest request = new ExampleRequest(0, LAZY_LOADING_TAKE);
-			mRequestManager.executeRequest(request, this);
+			if(!mRequestManager.hasRunningRequest(ExampleRequest.class))
+			{
+				// show progress
+				showProgress();
+
+				// show progress in action bar
+				getSherlockActivity().setSupportProgressBarIndeterminateVisibility(true);
+				
+				// example request with paging
+				ExampleRequest request = new ExampleRequest(0, LAZY_LOADING_TAKE);
+				mRequestManager.executeRequest(request, this);
+			}
+		}
+		else
+		{
+			showOffline();
 		}
 	}
 	
@@ -220,6 +241,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 	{
 		if(RequestManager.isOnline(getActivity()))
 		{
+			// show progress in footer
 			startLazyLoadData();
 			
 			// example request with paging

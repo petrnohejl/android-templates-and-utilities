@@ -92,19 +92,12 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		// load and show data
 		if(mViewState==null || mViewState==ViewState.Visibility.OFFLINE)
 		{
-			if(true) // TODO: isOnline?
-			{
-				loadData();
-			}
-			else
-			{
-				showOffline();
-			}
+			loadData();
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			showList();
 			if(mMessages!=null) renderView();
+			showList();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
 		{
@@ -267,8 +260,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 				mMessages.add(m2);
 				mMessages.add(m3);
 				
-				showList();
 				if(mMessages!=null) renderView();
+				showList();
 			}
 		});
 	}
@@ -333,17 +326,27 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	
 	private void loadData()
 	{
-		// run async task
-		mLoadTask = new ListingLoadTask(this);
-		mLoadTask.execute();
+		if(true) // TODO: isOnline?
+		{
+			// run async task
+			mLoadTask = new ListingLoadTask(this);
+			mLoadTask.execute();
+		}
+		else
+		{
+			showOffline();
+		}
 	}
 	
 	
 	private void lazyLoadData()
 	{
-		// run async task
-		mLoadLazyTask = new ListingLoadLazyTask(this);
-		mLoadLazyTask.execute();
+		if(true) // TODO: isOnline?
+		{
+			// run async task
+			mLoadLazyTask = new ListingLoadLazyTask(this);
+			mLoadLazyTask.execute();
+		}
 	}
 	
 	
@@ -414,7 +417,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		// listview content
 		if(getListAdapter()==null)
 		{
-			// adapter
+			// create adapter
 			mAdapter = new ListingAdapter(getActivity(), mMessages);
 		}
 		else

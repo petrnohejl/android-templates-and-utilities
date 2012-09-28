@@ -33,6 +33,12 @@ public class RequestManager
 	{
 		return mQueue.remove(apiCall);
 	}
+
+
+	public int getRequestsCount()
+	{
+		return mQueue.size();
+	}
 	
 	
 	public boolean hasRunningRequest(Class<?> cls)
