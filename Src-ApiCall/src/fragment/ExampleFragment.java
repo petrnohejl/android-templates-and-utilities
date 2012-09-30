@@ -30,6 +30,8 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 {
 	private final int LAZY_LOADING_TAKE = 3;
 	private final int LAZY_LOADING_OFFSET = 1;
+	private final int LAZY_LOADING_MAX = LAZY_LOADING_TAKE * 10;
+	private final String EXTRA_REFRESH = "refresh";
 	
 	private boolean mLazyLoading = false;
 	private boolean mActionBarProgress = false;
@@ -139,6 +141,13 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 						Log.d("EXAMPLE", "onApiCallRespond: example ok");
 						Log.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
 						Log.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
+
+						// check metda data
+						if(call.getRequest().getMetaData()!=null && call.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
+						{
+							// refresh
+							mMessages.clear();
+						}
 						
 						// get data
 						Iterator<Message> iterator = exampleResponse.getMessages().iterator();
@@ -237,6 +246,33 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		else
 		{
 			showOffline();
+		}
+	}
+
+
+	public void refreshData()
+	{
+		if(RequestManager.isOnline(getActivity()))
+		{
+			if(!mRequestManager.hasRunningRequest(ExampleRequest.class))
+			{
+				// show progress in action bar
+				showActionBarProgress(true);
+				
+				// meta data
+				Bundle bundle = new Bundle();
+				bundle.putBoolean(EXTRA_REFRESH, true);
+				
+				// example request with paging
+				int take = mMessages.size() <= LAZY_LOADING_MAX ? mMessages.size() : LAZY_LOADING_TAKE;
+				ExampleRequest request = new ExampleRequest(0, take);
+				request.setMetaData(bundle);
+				mRequestManager.executeRequest(request, this);
+			}
+		}
+		else
+		{
+			Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
 		}
 	}
 	
