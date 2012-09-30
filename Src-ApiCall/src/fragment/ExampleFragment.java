@@ -31,11 +31,12 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 	private final int LAZY_LOADING_TAKE = 3;
 	private final int LAZY_LOADING_OFFSET = 1;
 	
+	private boolean mLazyLoading = false;
+	private boolean mActionBarProgress = false;
+	private ViewState.Visibility mViewState = null;
 	private View mRootView;
 	private View mFooterView;
-	private ViewState.Visibility mViewState = null;
 	private ExampleAdapter mAdapter;
-	private boolean mLazyLoading = false;
 	private RequestManager mRequestManager = new RequestManager();
 	
 	private ArrayList<Message> mMessages = new ArrayList<Message>();
@@ -77,6 +78,9 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		{
 			showProgress();
 		}
+
+		// progress in action bar
+		showActionBarProgress(mActionBarProgress);
 		
 		// lazy loading
 		if(mLazyLoading) startLazyLoadData();
@@ -164,7 +168,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 				mRequestManager.finishRequest(call);
 
 				// hide progress in action bar
-				if(mRequestManager.getRequestsCount()==0) getSherlockActivity().setSupportProgressBarIndeterminateVisibility(false);
+				if(mRequestManager.getRequestsCount()==0) showActionBarProgress(false);
 			}
 		});
 	}
@@ -195,7 +199,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 				mRequestManager.finishRequest(call);
 
 				// hide progress in action bar
-				if(mRequestManager.getRequestsCount()==0) getSherlockActivity().setSupportProgressBarIndeterminateVisibility(false);
+				if(mRequestManager.getRequestsCount()==0) showActionBarProgress(false);
 			}
 		});
 	}
@@ -223,7 +227,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 				showProgress();
 
 				// show progress in action bar
-				getSherlockActivity().setSupportProgressBarIndeterminateVisibility(true);
+				showActionBarProgress(true);
 				
 				// example request with paging
 				ExampleRequest request = new ExampleRequest(0, LAZY_LOADING_TAKE);
@@ -268,6 +272,14 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		listView.removeFooterView(mFooterView);
 		
 		mLazyLoading = false;
+	}
+
+
+	private void showActionBarProgress(boolean visible)
+	{
+		// show action bar progress
+		getSherlockActivity().setSupportProgressBarIndeterminateVisibility(visible);
+		mActionBarProgress = visible;
 	}
 
 	

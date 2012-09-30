@@ -35,13 +35,14 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	private final int LAZY_LOADING_TAKE = 3;
 	private final int LAZY_LOADING_OFFSET = 1;
 	
+	private boolean mLazyLoading = false;
+	private boolean mActionBarProgress = false;
+	private ViewState.Visibility mViewState = null;
 	private View mRootView;
 	private View mFooterView;
-	private ViewState.Visibility mViewState = null;
 	private ListingAdapter mAdapter;
 	private ListingLoadTask mLoadTask;
 	private ListingLoadLazyTask mLoadLazyTask;
-	private boolean mLazyLoading = false;
 
 	private ArrayList<Message> mMessages = new ArrayList<Message>();
 	
@@ -103,6 +104,9 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		{
 			showProgress();
 		}
+
+		// progress in action bar
+		showActionBarProgress(mActionBarProgress);
 		
 		// lazy loading
 		if(mLazyLoading) startLazyLoadData();
@@ -367,6 +371,14 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		listView.removeFooterView(mFooterView);
 		
 		mLazyLoading = false;
+	}
+	
+	
+	private void showActionBarProgress(boolean visible)
+	{
+		// show action bar progress
+		getSherlockActivity().setSupportProgressBarIndeterminateVisibility(visible);
+		mActionBarProgress = visible;
 	}
 	
 	
