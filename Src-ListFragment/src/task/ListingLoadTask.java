@@ -25,23 +25,12 @@ public class ListingLoadTask extends AsyncTask<Void, Void, String>
 	
 	
 	@Override
-	protected void onPreExecute()
-	{
-		OnLoadListener listener = mOnLoadListener.get();
-		if(listener != null)
-		{
-			listener.onLoadPreExecute();
-		}
-	}
-	
-	
-	@Override
 	protected String doInBackground(Void... params)
 	{
 		try
 		{
 			// TODO: do something
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		}
 		catch (InterruptedException e)
 		{
@@ -59,7 +48,7 @@ public class ListingLoadTask extends AsyncTask<Void, Void, String>
 		OnLoadListener listener = mOnLoadListener.get();
 		if(listener != null)
 		{
-			listener.onLoadPostExecute();
+			listener.onLoad();
 		}
 	}
 }

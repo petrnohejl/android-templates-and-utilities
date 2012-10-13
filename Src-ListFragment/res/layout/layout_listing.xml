@@ -21,45 +21,33 @@
 			android:listSelector="@android:color/transparent"
 			android:background="@color/global_bg_front" />
 		
-		<TextView
+		<FrameLayout
 			android:id="@android:id/empty"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:gravity="center"
-			android:background="@color/global_bg_front"
-			android:text="@string/layout_listing_empty" />
-	
+			android:layout_height="match_parent">
+			
+			<include layout="@layout/placeholder_empty" />
+			
+		</FrameLayout>
 	</FrameLayout>
 	
-	<LinearLayout
+	<FrameLayout
 		android:id="@+id/container_progress"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:orientation="vertical"
-		android:gravity="center"
 		android:visibility="gone">
-		
-		<ProgressBar
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			style="?android:attr/progressBarStyleLarge" />
-	
-	</LinearLayout>
-	
-	<LinearLayout
+
+		<include layout="@layout/placeholder_progress" />
+
+	</FrameLayout>
+
+	<FrameLayout
 		android:id="@+id/container_offline"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:orientation="vertical"
-		android:gravity="center"
-		android:background="@color/global_bg_front"
 		android:visibility="gone">
 		
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:text="@string/layout_listing_offline" />
+		<include layout="@layout/placeholder_offline" />
 	
-	</LinearLayout>
+	</FrameLayout>
 </FrameLayout>

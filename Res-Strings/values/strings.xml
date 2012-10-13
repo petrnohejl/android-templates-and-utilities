@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- LANGUAGE INDEPENDENT -->
+	<string name="app_name">Example</string>
+	<string name="app_uri">market://details?id=com.example</string>
+
+	<!-- LANGUAGE DEPENDENT -->
+	<string name="global_offline_toast">No internet connection is available.</string>
+	<string name="global_server_fail_toast">Wooops! Server failed.</string>
+
+	<string name="ab_title_example">Example title</string>
+
+	<string name="ab_button_example">Example button</string>
+
+	<string name="placeholder_empty">No data</string>
+	<string name="placeholder_offline">No network</string>
+
+	<string name="layout_example_title">Example layout title</string>
+
+	<string name="dialog_example_title">Example dialog title</string>
+
+	<string name="notification_example_title">Example notification title</string>
+</resources>

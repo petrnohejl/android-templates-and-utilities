@@ -53,6 +53,14 @@ public class Preferences
 		String value = mSharedPreferences.getString(key, NULL_STRING);
 		return value;
 	}
+
+
+	public String getVersion()
+	{
+		String key = mContext.getString(R.string.preferences_key_version);
+		String value = mSharedPreferences.getString(key, NULL_STRING);
+		return value;
+	}
 	
 
 	// SETTERS ////////////////////////////////////////////////////////////////////////////////////
@@ -72,6 +80,15 @@ public class Preferences
 		String key = mContext.getString(R.string.preferences_key_password);
 		SharedPreferences.Editor editor = mSharedPreferences.edit();
 		editor.putString(key, password);
+		editor.commit();
+	}
+
+
+	public void setVersion(String version)
+	{
+		String key = mContext.getString(R.string.preferences_key_version);
+		SharedPreferences.Editor editor = mSharedPreferences.edit();
+		editor.putString(key, version);
 		editor.commit();
 	}
 }

@@ -13,7 +13,6 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.actionbarsherlock.view.Menu;
@@ -22,18 +21,16 @@ import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
 import com.example.adapter.ListingAdapter;
 import com.example.client.entity.Message;
-import com.example.listener.OnLoadLazyListener;
 import com.example.listener.OnLoadListener;
-import com.example.task.ListingLoadLazyTask;
 import com.example.task.ListingLoadTask;
 import com.example.task.TaskSherlockListFragment;
 import com.example.utility.ViewState;
 
 
-public class ListingFragment extends TaskSherlockListFragment implements OnLoadListener, OnLoadLazyListener
+public class ListingFragment extends TaskSherlockListFragment implements OnLoadListener
 {
-	private final int LAZY_LOADING_TAKE = 3;
-	private final int LAZY_LOADING_OFFSET = 1;
+	private final int LAZY_LOADING_TAKE = 16;
+	private final int LAZY_LOADING_OFFSET = 4;
 	
 	private boolean mLazyLoading = false;
 	private boolean mActionBarProgress = false;
@@ -42,7 +39,6 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	private View mFooterView;
 	private ListingAdapter mAdapter;
 	private ListingLoadTask mLoadTask;
-	private ListingLoadLazyTask mLoadLazyTask;
 
 	private ArrayList<Message> mMessages = new ArrayList<Message>();
 	
@@ -158,7 +154,6 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		
 		// cancel async tasks
 		if(mLoadTask!=null) mLoadTask.cancel(true);
-		if(mLoadLazyTask!=null) mLoadLazyTask.cancel(true);
 	}
 	
 	
@@ -231,86 +226,34 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	
 	
 	@Override
-	public void onLoadPreExecute()
+	public void onLoad()
 	{
 		runTaskCallback(new Runnable()
 		{
 			public void run()
 			{
-				showProgress();
-			}
-		});
-	}
-	
-	
-	@Override
-	public void onLoadPostExecute()
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				// TODO: show data
-				Message m1 = new Message();
-				m1.setName("One");
+				// get data
+				final int size = mMessages.size();
+				for(int i=0; i<LAZY_LOADING_TAKE; i++)
+				{
+					Message m = new Message();
+					m.setName("Message " + (size + i));
+					mMessages.add(m);
+				}
 				
-				Message m2 = new Message();
-				m2.setName("Two");
-				
-				Message m3 = new Message();
-				m3.setName("Three");
-				
-				mMessages.add(m1);
-				mMessages.add(m2);
-				mMessages.add(m3);
-				
-				if(mMessages!=null) renderView();
+				// render view
+				if(mLazyLoading && mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
+				{
+					mAdapter.notifyDataSetChanged();
+				}
+				else
+				{
+					if(mMessages!=null) renderView();
+				}
+
+				// hide progress
+				stopLazyLoadData();
 				showList();
-			}
-		});
-	}
-	
-	
-	@Override
-	public void onLoadLazyPreExecute()
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				// start lazy loading
-				startLazyLoadData();
-			}
-		});
-	}
-	
-	
-	@Override
-	public void onLoadLazyPostExecute()
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				// TODO: refresh data
-				Message m1 = new Message();
-				m1.setName("Next one");
-				
-				Message m2 = new Message();
-				m2.setName("Next two");
-				
-				Message m3 = new Message();
-				m3.setName("Next three");
-				
-				mMessages.add(m1);
-				mMessages.add(m2);
-				mMessages.add(m3);
-				
-				// notify adapter
-				if(mAdapter!=null) mAdapter.notifyDataSetChanged();
-				
-				// stop lazy loading
-				stopLazyLoadData(); 
 			}
 		});
 	}
@@ -332,6 +275,9 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	{
 		if(true) // TODO: isOnline?
 		{
+			// show progress
+			showProgress();
+			
 			// run async task
 			mLoadTask = new ListingLoadTask(this);
 			mLoadTask.execute();
@@ -347,9 +293,12 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	{
 		if(true) // TODO: isOnline?
 		{
+			// show progress in footer
+			startLazyLoadData();
+			
 			// run async task
-			mLoadLazyTask = new ListingLoadLazyTask(this);
-			mLoadLazyTask.execute();
+			mLoadTask = new ListingLoadTask(this);
+			mLoadTask.execute();
 		}
 	}
 	
@@ -386,8 +335,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	{
 		// show list container
 		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
-		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
+		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
@@ -399,8 +348,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	{
 		// show progress container
 		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
-		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
+		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
@@ -412,8 +361,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	{
 		// show offline container
 		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
-		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
+		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);

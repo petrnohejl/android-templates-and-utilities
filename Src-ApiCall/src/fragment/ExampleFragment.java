@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.R;
 import com.example.adapter.ExampleAdapter;
@@ -28,8 +28,8 @@ import com.example.utility.ViewState;
 
 public class ExampleFragment extends TaskSherlockListFragment implements OnApiCallListener
 {
-	private final int LAZY_LOADING_TAKE = 3;
-	private final int LAZY_LOADING_OFFSET = 1;
+	private final int LAZY_LOADING_TAKE = 16;
+	private final int LAZY_LOADING_OFFSET = 4;
 	private final int LAZY_LOADING_MAX = LAZY_LOADING_TAKE * 10;
 	private final String EXTRA_REFRESH = "refresh";
 	
@@ -222,7 +222,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 
 	private void handleFail()
 	{
-		// TODO: show dialog
+		Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
 	}
 	
 	
@@ -323,8 +323,8 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 	{
 		// show list container
 		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
-		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
+		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
@@ -336,8 +336,8 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 	{
 		// show progress container
 		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
-		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
+		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
@@ -349,8 +349,8 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 	{
 		// show offline container
 		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		LinearLayout containerProgress = (LinearLayout) mRootView.findViewById(R.id.container_progress);
-		LinearLayout containerOffline = (LinearLayout) mRootView.findViewById(R.id.container_offline);
+		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
+		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);

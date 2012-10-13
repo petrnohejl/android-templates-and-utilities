@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!-- LANGUAGE INDEPENDENT -->
-	<string name="app_name">Example</string>
 	<string name="preferences_key_user_id">com_example_user_id</string>
 	<string name="preferences_key_password">com_example_password</string>
+	<string name="preferences_key_version">com_example_version</string>
 </resources>
