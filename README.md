@@ -56,20 +56,21 @@ dependencies in the project should be listed below. For example:
 * [Android Support Library v4][04] revision 9
 * [Android UI Patterns Collection][05] v4.0.2
 * [Facebook Android SDK][06]
-* [Flurry][07]
-* [Google Cloud Messaging][08]
-* [Green droid][09] v0.2
-* [Ignition][10] v0.2
-* [Jackson][11] v2.0.4
-* [Localytics][12] v2.3
-* [Map View Baloons][13] v1.5.1
-* [Nine Old Androids][14] v2.4.0
-* [Number Picker][15] v1.0
-* [RSS Reader][16] v1.0
-* [Tree View List][17]
-* [Universal Image Loader][18] v1.5.4
-* [View Pager Indicator][19] v2.3.1
-* [ZXing][20] v4.11 beta 1
+* [File Picker Activity][07]
+* [Flurry][08]
+* [Google Cloud Messaging][09]
+* [Green droid][10] v0.2
+* [Ignition][11] v0.2
+* [Jackson][12] v2.0.4
+* [Localytics][13] v2.3
+* [Map View Baloons][14] v1.5.1
+* [Nine Old Androids][15] v2.4.0
+* [Number Picker][16] v1.0
+* [RSS Reader][17] v1.0
+* [Tree View List][18]
+* [Universal Image Loader][19] v1.5.4
+* [View Pager Indicator][20] v2.3.1
+* [ZXing][21] v4.11 beta 1
 
 
 Developed by
@@ -108,17 +109,18 @@ License
  [04]: http://developer.android.com/tools/extras/support-library.html
  [05]: https://play.google.com/store/apps/details?id=com.groidify.uipatterns
  [06]: https://github.com/facebook/facebook-android-sdk
- [07]: http://www.flurry.com/
- [08]: http://developer.android.com/sdk/index.html
- [09]: https://github.com/cyrilmottier/GreenDroid
- [10]: https://github.com/kaeppler/ignition
- [11]: http://jackson.codehaus.org/
- [12]: http://www.localytics.com/
- [13]: https://github.com/jgilfelt/android-mapviewballoons
- [14]: https://github.com/JakeWharton/NineOldAndroids
- [15]: https://github.com/novak/numpicker-demo
- [16]: https://github.com/matshofman/Android-RSS-Reader-Library
- [17]: http://code.google.com/p/tree-view-list-android/
- [18]: https://github.com/nostra13/Android-Universal-Image-Loader
- [19]: https://github.com/JakeWharton/Android-ViewPagerIndicator
- [20]: http://code.google.com/p/zxing/
+ [07]: https://github.com/Kaloer/Android-File-Picker-Activity
+ [08]: http://www.flurry.com/
+ [09]: http://developer.android.com/sdk/index.html
+ [10]: https://github.com/cyrilmottier/GreenDroid
+ [11]: https://github.com/kaeppler/ignition
+ [12]: http://jackson.codehaus.org/
+ [13]: http://www.localytics.com/
+ [14]: https://github.com/jgilfelt/android-mapviewballoons
+ [15]: https://github.com/JakeWharton/NineOldAndroids
+ [16]: https://github.com/novak/numpicker-demo
+ [17]: https://github.com/matshofman/Android-RSS-Reader-Library
+ [18]: http://code.google.com/p/tree-view-list-android/
+ [19]: https://github.com/nostra13/Android-Universal-Image-Loader
+ [20]: https://github.com/JakeWharton/Android-ViewPagerIndicator
+ [21]: http://code.google.com/p/zxing/
