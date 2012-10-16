@@ -50,27 +50,28 @@ Dependencies
 Some projects use external libraries for additional functionality. All library
 dependencies in the project should be listed below. For example:
 
-* [ActionBarSherlock][01] v4.1.0
-* [ActionBarSherlock map plugin][02] v4.1.0
-* [AndEngine][03] v1.3.6
-* [Android Support Library v4][04] revision 9
-* [Android UI Patterns Collection][05] v4.0.2
+* [ActionBarSherlock][01]
+* [ActionBarSherlock map plugin][02]
+* [AndEngine][03]
+* [Android Support Library v4][04]
+* [Android UI Patterns Collection][05]
 * [Facebook Android SDK][06]
 * [File Picker Activity][07]
 * [Flurry][08]
 * [Google Cloud Messaging][09]
-* [Green droid][10] v0.2
-* [Ignition][11] v0.2
-* [Jackson][12] v2.0.4
-* [Localytics][13] v2.3
-* [Map View Baloons][14] v1.5.1
-* [Nine Old Androids][15] v2.4.0
-* [Number Picker][16] v1.0
-* [RSS Reader][17] v1.0
-* [Tree View List][18]
-* [Universal Image Loader][19] v1.5.4
-* [View Pager Indicator][20] v2.3.1
-* [ZXing][21] v4.11 beta 1
+* [Green droid][10]
+* [Ignition][11]
+* [Jackson][12]
+* [Localytics][13]
+* [Map View Baloons][14]
+* [Nine Old Androids][15]
+* [Number Picker][16]
+* [Polaris][17]
+* [RSS Reader][18]
+* [Tree View List][19]
+* [Universal Image Loader][20]
+* [View Pager Indicator][21]
+* [ZXing][22]
 
 
 Developed by
@@ -119,8 +120,9 @@ License
  [14]: https://github.com/jgilfelt/android-mapviewballoons
  [15]: https://github.com/JakeWharton/NineOldAndroids
  [16]: https://github.com/novak/numpicker-demo
- [17]: https://github.com/matshofman/Android-RSS-Reader-Library
- [18]: http://code.google.com/p/tree-view-list-android/
- [19]: https://github.com/nostra13/Android-Universal-Image-Loader
- [20]: https://github.com/JakeWharton/Android-ViewPagerIndicator
- [21]: http://code.google.com/p/zxing/
+ [17]: https://github.com/cyrilmottier/Polaris
+ [18]: https://github.com/matshofman/Android-RSS-Reader-Library
+ [19]: http://code.google.com/p/tree-view-list-android/
+ [20]: https://github.com/nostra13/Android-Universal-Image-Loader
+ [21]: https://github.com/JakeWharton/Android-ViewPagerIndicator
+ [22]: http://code.google.com/p/zxing/
