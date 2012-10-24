@@ -11,22 +11,17 @@ import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemor
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.utils.StorageUtils;
 
 
 public class ExampleApplication extends Application
 {
-	private static ExampleApplication instance;
+	private static ExampleApplication mInstance;
 
 
 	public ExampleApplication()
 	{
-		instance = this;
-	}
-
-
-	public static Context getContext()
-	{
-		return instance;
+		mInstance = this;
 	}
 
 
@@ -35,15 +30,8 @@ public class ExampleApplication extends Application
 	{
 		super.onCreate();
 		
-		File cacheDir;
-		if (Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-		{
-			cacheDir = new File(Environment.getExternalStorageDirectory(), "/Android/data/" + this.getPackageName() + "/cache/");
-		}
-		else
-		{
-			cacheDir = getApplicationContext().getCacheDir();
-		}
+		// init image caching
+		File cacheDir = StorageUtils.getCacheDirectory(getApplicationContext());
 		cacheDir.mkdirs(); // needs android.permission.WRITE_EXTERNAL_STORAGE
 		
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
@@ -55,5 +43,11 @@ public class ExampleApplication extends Application
 			.build();
 			
 		ImageLoader.getInstance().init(config);
+	}
+
+
+	public static Context getContext()
+	{
+		return mInstance;
 	}
 }

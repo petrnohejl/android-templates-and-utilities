@@ -10,6 +10,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 
 
 public class ExampleFragment extends SherlockFragment
@@ -30,6 +31,7 @@ public class ExampleFragment extends SherlockFragment
 			.showImageForEmptyUri(R.drawable.placeholder_photo)
 			.cacheInMemory()
 			.cacheOnDisc()
+			.displayer(new SimpleBitmapDisplayer())
 			.build();
 	}
 
