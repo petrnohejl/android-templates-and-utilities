@@ -3,18 +3,19 @@
 <!--
 DO BEFORE UPDATE TO GOOGLE PLAY:
 -set new version in manifest
+-set server release API address
 -set map API key
 -set GCM sender ID
 -set Facebook app ID
 -set Android key hash on developers.facebook.com
--set Localytics/Flurry API key
--add Localytics/Flurry events for new features
+-set Crittercism API key
+-set Flurry API key
+-add Flurry events for new features
 -edit app changelog
 -edit text in about and on Google Play page
 -edit text in dialog for new version
 -remove logs
 -monkey test
--post message about update to social networks
 
 
 RELEASE INFO:
@@ -33,7 +34,7 @@ TESTS:
 -test slow internet connection
 -test empty views
 -test reboot (boot receivers, alarms, services)
--test Localytics/Flurry tracking
+-test Flurry tracking
 -->
 
 
