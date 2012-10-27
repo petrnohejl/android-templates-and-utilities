@@ -50,28 +50,29 @@ Dependencies
 Some projects use external libraries for additional functionality. All library
 dependencies in the project should be listed below. For example:
 
-* [ActionBarSherlock][01]
-* [ActionBarSherlock map plugin][02]
-* [AndEngine][03]
-* [Android Support Library v4][04]
-* [Android UI Patterns Collection][05]
-* [Facebook Android SDK][06]
-* [File Picker Activity][07]
-* [Flurry][08]
-* [Google Cloud Messaging][09]
-* [Green droid][10]
-* [Ignition][11]
-* [Jackson][12]
-* [Localytics][13]
-* [Map View Baloons][14]
-* [Nine Old Androids][15]
-* [Number Picker][16]
-* [Polaris][17]
-* [RSS Reader][18]
-* [Tree View List][19]
-* [Universal Image Loader][20]
-* [View Pager Indicator][21]
-* [ZXing][22]
+* [ActionBarSherlock](http://actionbarsherlock.com/)
+* [ActionBarSherlock map plugin](https://github.com/JakeWharton/ActionBarSherlock-Plugin-Maps)
+* [AndEngine](http://www.andengine.org/)
+* [Android Support Library v4](http://developer.android.com/tools/extras/support-library.html)
+* [Android UI Patterns Collection](https://play.google.com/store/apps/details?id=com.groidify.uipatterns)
+* [Crittercism](http://www.crittercism.com)
+* [Facebook Android SDK](https://github.com/facebook/facebook-android-sdk)
+* [File Picker Activity](https://github.com/Kaloer/Android-File-Picker-Activity)
+* [Flurry](http://www.flurry.com/)
+* [Google Cloud Messaging](http://developer.android.com/sdk/index.html)
+* [Green droid](https://github.com/cyrilmottier/GreenDroid)
+* [Ignition](https://github.com/kaeppler/ignition)
+* [Jackson](http://jackson.codehaus.org/)
+* [Localytics](http://www.localytics.com/)
+* [Map View Baloons](https://github.com/jgilfelt/android-mapviewballoons)
+* [Nine Old Androids](https://github.com/JakeWharton/NineOldAndroids)
+* [Number Picker](https://github.com/novak/numpicker-demo)
+* [Polaris](https://github.com/cyrilmottier/Polaris)
+* [RSS Reader](https://github.com/matshofman/Android-RSS-Reader-Library)
+* [Tree View List](http://code.google.com/p/tree-view-list-android/)
+* [Universal Image Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
+* [View Pager Indicator](https://github.com/JakeWharton/Android-ViewPagerIndicator)
+* [ZXing](http://code.google.com/p/zxing/)
 
 
 Developed by
@@ -100,29 +101,3 @@ License
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
     
     This program comes with ABSOLUTELY NO WARRANTY!
-
-
-
-
- [01]: http://actionbarsherlock.com/
- [02]: https://github.com/JakeWharton/ActionBarSherlock-Plugin-Maps
- [03]: http://www.andengine.org/
- [04]: http://developer.android.com/tools/extras/support-library.html
- [05]: https://play.google.com/store/apps/details?id=com.groidify.uipatterns
- [06]: https://github.com/facebook/facebook-android-sdk
- [07]: https://github.com/Kaloer/Android-File-Picker-Activity
- [08]: http://www.flurry.com/
- [09]: http://developer.android.com/sdk/index.html
- [10]: https://github.com/cyrilmottier/GreenDroid
- [11]: https://github.com/kaeppler/ignition
- [12]: http://jackson.codehaus.org/
- [13]: http://www.localytics.com/
- [14]: https://github.com/jgilfelt/android-mapviewballoons
- [15]: https://github.com/JakeWharton/NineOldAndroids
- [16]: https://github.com/novak/numpicker-demo
- [17]: https://github.com/cyrilmottier/Polaris
- [18]: https://github.com/matshofman/Android-RSS-Reader-Library
- [19]: http://code.google.com/p/tree-view-list-android/
- [20]: https://github.com/nostra13/Android-Universal-Image-Loader
- [21]: https://github.com/JakeWharton/Android-ViewPagerIndicator
- [22]: http://code.google.com/p/zxing/
