@@ -35,6 +35,12 @@
 
 		<!-- action bar menu hardkey panel background drawable -->
 		<item name="android:panelBackground">@drawable/ab_popup_bottom_bg</item>
+
+		<!-- action bar shadow overlay -->
+		<!--
+		<item name="windowContentOverlay">@null</item>
+		<item name="android:windowContentOverlay">@null</item>
+		-->
 		
 		<!-- action bar list choice checkbox and radio -->
 		<!-- 
