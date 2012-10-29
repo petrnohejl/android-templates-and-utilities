@@ -12,6 +12,10 @@
 		<!-- action bar logo -->
 		<item name="logo">@drawable/ab_logo</item>
 		<item name="android:logo">@drawable/ab_logo</item>
+
+		<!-- action bar back icon -->
+		<item name="homeAsUpIndicator">@drawable/ab_ic_back</item>
+		<item name="android:homeAsUpIndicator">@drawable/ab_ic_back</item>
 		
 		<!-- action bar divider -->
 		<item name="actionBarDivider">@drawable/ab_divider</item>
