@@ -61,6 +61,22 @@ public class Preferences
 		String value = mSharedPreferences.getString(key, NULL_STRING);
 		return value;
 	}
+
+
+	public String getFacebookAccessToken()
+	{
+		String key = mContext.getString(R.string.preferences_key_fb_access_token);
+		String value = mSharedPreferences.getString(key, NULL_STRING);
+		return value;
+	}
+	
+	
+	public long getFacebookAccessExpiration()
+	{
+		String key = mContext.getString(R.string.preferences_key_fb_expiration);
+		long value = mSharedPreferences.getLong(key, NULL_LONG);
+		return value;
+	}
 	
 
 	// SETTERS ////////////////////////////////////////////////////////////////////////////////////
@@ -89,6 +105,24 @@ public class Preferences
 		String key = mContext.getString(R.string.preferences_key_version);
 		SharedPreferences.Editor editor = mSharedPreferences.edit();
 		editor.putString(key, version);
+		editor.commit();
+	}
+
+
+	public void setFacebookAccessToken(String facebookAccessToken)
+	{
+		String key = mContext.getString(R.string.preferences_key_fb_access_token);
+		SharedPreferences.Editor editor = mSharedPreferences.edit();
+		editor.putString(key, facebookAccessToken);
+		editor.commit();
+	}
+	
+	
+	public void setFacebookAccessExpiration(long expiration)
+	{
+		String key = mContext.getString(R.string.preferences_key_fb_expiration);
+		SharedPreferences.Editor editor = mSharedPreferences.edit();
+		editor.putLong(key, expiration);
 		editor.commit();
 	}
 }

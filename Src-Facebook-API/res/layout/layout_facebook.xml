@@ -6,24 +6,38 @@
 	android:gravity="center">
 
 	<Button
-		android:id="@+id/login"
+		android:id="@+id/layout_facebook_login"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="20dp"
 		android:text="Login" />
 
 	<Button
-		android:id="@+id/logout"
+		android:id="@+id/layout_facebook_logout"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="20dp"
 		android:text="Logout" />
 
 	<Button
-		android:id="@+id/request"
+		android:id="@+id/layout_facebook_profile"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="20dp"
-		android:text="Request" />
+		android:text="Profile" />
+	
+	<Button
+		android:id="@+id/layout_facebook_friends"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
+		android:text="Friends" />
+	
+	<Button
+		android:id="@+id/layout_facebook_wall_post"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
+		android:text="Wall post" />
 
 </LinearLayout>
