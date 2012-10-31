@@ -5,9 +5,9 @@ import java.util.LinkedList;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 
 import com.example.client.request.Request;
+import com.example.utility.Logcat;
 
 
 public class RequestManager
@@ -73,10 +73,10 @@ public class RequestManager
 	{
 		for(ApiCall call : mQueue)
 		{
-			Log.d("EXAMPLE", "request in queue: " + (call==null ? "null" : (call.getRequest().getClass().getSimpleName() + ": " + call.getStatus().toString())));
+			Logcat.d("EXAMPLE", "request in queue: " + (call==null ? "null" : (call.getRequest().getClass().getSimpleName() + ": " + call.getStatus().toString())));
 		}
 		
-		if(mQueue.isEmpty()) Log.d("EXAMPLE", "request in queue: empty");
+		if(mQueue.isEmpty()) Logcat.d("EXAMPLE", "request in queue: empty");
 	}
 	
 	

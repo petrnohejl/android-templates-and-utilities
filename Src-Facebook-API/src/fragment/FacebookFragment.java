@@ -6,7 +6,6 @@ import java.net.MalformedURLException;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +17,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
 import com.example.client.RequestManager;
 import com.example.utility.FacebookUtility;
+import com.example.utility.Logcat;
 import com.example.utility.Preferences;
 import com.facebook.android.AsyncFacebookRunner;
 import com.facebook.android.AsyncFacebookRunner.RequestListener;
@@ -206,7 +206,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(Bundle values)
 				{
-					Log.d("EXAMPLE", "fb.authorize.onComplete: " + mFacebook.getAccessToken());
+					Logcat.d("EXAMPLE", "fb.authorize.onComplete: " + mFacebook.getAccessToken());
 					
 					// save access token
 					Preferences preferences = new Preferences(getActivity());
@@ -223,7 +223,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onFacebookError(FacebookError e)
 				{
-					Log.d("EXAMPLE", "fb.authorize.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
+					Logcat.d("EXAMPLE", "fb.authorize.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
 					
 					// hide progress in action bar
 					if(mRequestManager.getRequestsCount()==0) showActionBarProgress(false);
@@ -235,7 +235,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onError(DialogError e)
 				{
-					Log.d("EXAMPLE", "fb.authorize.onError: "  + e.getLocalizedMessage() + " / " + e.getMessage());
+					Logcat.d("EXAMPLE", "fb.authorize.onError: "  + e.getLocalizedMessage() + " / " + e.getMessage());
 					
 					// hide progress in action bar
 					if(mRequestManager.getRequestsCount()==0) showActionBarProgress(false);
@@ -247,7 +247,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onCancel()
 				{
-					Log.d("EXAMPLE", "fb.authorize.onCancel");
+					Logcat.d("EXAMPLE", "fb.authorize.onCancel");
 					
 					// hide progress in action bar
 					if(mRequestManager.getRequestsCount()==0) showActionBarProgress(false);
@@ -281,7 +281,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(final String response, Object state)
 				{
-					Log.d("EXAMPLE", "fb.logout.onComplete: " + response);
+					Logcat.d("EXAMPLE", "fb.logout.onComplete: " + response);
 					
 					// clear access token
 					Preferences preferences = new Preferences(getActivity());
@@ -304,7 +304,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onFacebookError(final FacebookError e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.logout.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
+					Logcat.d("EXAMPLE", "fb.logout.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -322,7 +322,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onIOException(IOException e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.logout.onIOException");
+					Logcat.d("EXAMPLE", "fb.logout.onIOException");
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -340,7 +340,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onFileNotFoundException(FileNotFoundException e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.logout.onFileNotFoundException");
+					Logcat.d("EXAMPLE", "fb.logout.onFileNotFoundException");
 					
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -358,7 +358,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onMalformedURLException(MalformedURLException e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.logout.onMalformedURLException");
+					Logcat.d("EXAMPLE", "fb.logout.onMalformedURLException");
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -401,7 +401,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(final String response, Object state)
 				{
-					Log.d("EXAMPLE", "fb.profile.onComplete: " + response);
+					Logcat.d("EXAMPLE", "fb.profile.onComplete: " + response);
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -416,7 +416,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onFacebookError(final FacebookError e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.profile.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
+					Logcat.d("EXAMPLE", "fb.profile.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -434,7 +434,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onIOException(IOException e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.profile.onIOException");
+					Logcat.d("EXAMPLE", "fb.profile.onIOException");
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -452,7 +452,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onFileNotFoundException(FileNotFoundException e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.profile.onFileNotFoundException");
+					Logcat.d("EXAMPLE", "fb.profile.onFileNotFoundException");
 					
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -470,7 +470,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onMalformedURLException(MalformedURLException e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.profile.onMalformedURLException");
+					Logcat.d("EXAMPLE", "fb.profile.onMalformedURLException");
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -517,7 +517,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(final String response, Object state)
 				{
-					Log.d("EXAMPLE", "fb.friends.onComplete: " + response);
+					Logcat.d("EXAMPLE", "fb.friends.onComplete: " + response);
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -532,7 +532,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onFacebookError(final FacebookError e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.friends.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
+					Logcat.d("EXAMPLE", "fb.friends.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -550,7 +550,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onIOException(IOException e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.friends.onIOException");
+					Logcat.d("EXAMPLE", "fb.friends.onIOException");
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -568,7 +568,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onFileNotFoundException(FileNotFoundException e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.friends.onFileNotFoundException");
+					Logcat.d("EXAMPLE", "fb.friends.onFileNotFoundException");
 					
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -586,7 +586,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onMalformedURLException(MalformedURLException e, Object state)
 				{
-					Log.d("EXAMPLE", "fb.friends.onMalformedURLException");
+					Logcat.d("EXAMPLE", "fb.friends.onMalformedURLException");
 
 					getActivity().runOnUiThread(new Runnable()
 					{
@@ -634,13 +634,13 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(Bundle values)
 				{
-					Log.d("EXAMPLE", "fb.feed.onComplete: " + mFacebook.getAccessToken());
+					Logcat.d("EXAMPLE", "fb.feed.onComplete: " + mFacebook.getAccessToken());
 				}
 	
 				@Override
 				public void onFacebookError(FacebookError e)
 				{
-					Log.d("EXAMPLE", "fb.feed.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
+					Logcat.d("EXAMPLE", "fb.feed.onFacebookError: " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
 					
 					// toast
 					if(e.getMessage()!=null) Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -649,7 +649,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onError(DialogError e)
 				{
-					Log.d("EXAMPLE", "fb.feed.onError: "  + e.getLocalizedMessage() + " / " + e.getMessage());
+					Logcat.d("EXAMPLE", "fb.feed.onError: "  + e.getLocalizedMessage() + " / " + e.getMessage());
 					
 					// toast
 					if(e.getMessage()!=null) Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -658,7 +658,7 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onCancel()
 				{
-					Log.d("EXAMPLE", "fb.feed.onCancel");
+					Logcat.d("EXAMPLE", "fb.feed.onCancel");
 				}
 			});
 		}

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +22,7 @@ import com.example.client.request.ExampleRequest;
 import com.example.client.response.ExampleResponse;
 import com.example.client.response.Response;
 import com.example.task.TaskSherlockListFragment;
+import com.example.utility.Logcat;
 import com.example.utility.ViewState;
 
 
@@ -123,9 +123,9 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 					// error
 					if(exampleResponse.isError())
 					{
-						Log.d("EXAMPLE", "onApiCallRespond: example error " + exampleResponse.getErrorType() + ": " + exampleResponse.getErrorMessage());
-						Log.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
-						Log.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
+						Logcat.d("EXAMPLE", "onApiCallRespond: example error " + exampleResponse.getErrorType() + ": " + exampleResponse.getErrorMessage());
+						Logcat.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
+						Logcat.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
 
 						// hide progress
 						stopLazyLoadData();
@@ -138,9 +138,9 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 					// response
 					else
 					{
-						Log.d("EXAMPLE", "onApiCallRespond: example ok");
-						Log.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
-						Log.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
+						Logcat.d("EXAMPLE", "onApiCallRespond: example ok");
+						Logcat.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
+						Logcat.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
 
 						// check metda data
 						if(call.getRequest().getMetaData()!=null && call.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
@@ -192,9 +192,9 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 			{
 				if(call.getRequest().getClass().getSimpleName().equalsIgnoreCase("ExampleRequest"))
 				{
-					Log.d("EXAMPLE", "onApiCallFail: example " + parseFail);
-					Log.d("EXAMPLE", "onApiCallFail status code: " + status.getStatusCode());
-					Log.d("EXAMPLE", "onApiCallFail status message: " + status.getStatusMessage());
+					Logcat.d("EXAMPLE", "onApiCallFail: example " + parseFail);
+					Logcat.d("EXAMPLE", "onApiCallFail status code: " + status.getStatusCode());
+					Logcat.d("EXAMPLE", "onApiCallFail status message: " + status.getStatusMessage());
 					
 					// hide progress
 					stopLazyLoadData();

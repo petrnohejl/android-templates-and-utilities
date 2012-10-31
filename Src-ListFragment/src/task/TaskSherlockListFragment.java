@@ -34,7 +34,7 @@ public class TaskSherlockListFragment extends SherlockListFragment implements Ta
 			while(pendingCallbacks-- > 0)
 			{
 				Runnable runnable = mPendingCallbacks.remove(0);
-				//Log.d("EXAMPLE", "callback run pending " + runnable.getClass().getSimpleName());
+				//Logcat.d("EXAMPLE", "callback run pending " + runnable.getClass().getSimpleName());
 				runNow(runnable);
 			}
 		}
@@ -62,7 +62,7 @@ public class TaskSherlockListFragment extends SherlockListFragment implements Ta
 	
 	private void runNow(Runnable runnable)
 	{
-		//Log.d("EXAMPLE", "callback run now " + runnable.getClass().getSimpleName());
+		//Logcat.d("EXAMPLE", "callback run now " + runnable.getClass().getSimpleName());
 		getActivity().runOnUiThread(runnable);
 	}
 
@@ -71,7 +71,7 @@ public class TaskSherlockListFragment extends SherlockListFragment implements Ta
 	{
 		synchronized(mLock)
 		{
-			//Log.d("EXAMPLE", "callback add pending " + runnable.getClass().getSimpleName());
+			//Logcat.d("EXAMPLE", "callback add pending " + runnable.getClass().getSimpleName());
 			mPendingCallbacks.add(runnable);
 		}
 	}

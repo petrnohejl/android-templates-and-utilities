@@ -16,6 +16,7 @@ import android.util.Base64;
 
 import com.example.client.request.Request;
 import com.example.client.response.Response;
+import com.example.utility.Logcat;
 
 
 public class ApiCall extends AsyncTask<Void, Void, Response>
@@ -100,9 +101,9 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			//errorStream = new BufferedInputStream(connection.getErrorStream());
 			
 			// response info
-			//Log.d("EXAMPLE", "apicall.getContentType: " + connection.getContentType());
-			//Log.d("EXAMPLE", "apicall.getResponseCode: " + connection.getResponseCode());
-			//Log.d("EXAMPLE", "apicall.getResponseMessage: " + connection.getResponseMessage());
+			//Logcat.d("EXAMPLE", "apicall.getContentType: " + connection.getContentType());
+			//Logcat.d("EXAMPLE", "apicall.getResponseCode: " + connection.getResponseCode());
+			//Logcat.d("EXAMPLE", "apicall.getResponseMessage: " + connection.getResponseMessage());
 			
 			// parse response
 			if(isCancelled()) return null;
@@ -196,7 +197,7 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 	@Override
 	protected void onCancelled()
 	{
-		//Log.d("EXAMPLE", "apicall.onCancelled");
+		//Logcat.d("EXAMPLE", "apicall.onCancelled");
 	}
 	
 	
