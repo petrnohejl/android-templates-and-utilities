@@ -69,6 +69,7 @@ dependencies in the project should be listed below. For example:
 * [Number Picker](https://github.com/novak/numpicker-demo)
 * [Polaris](https://github.com/cyrilmottier/Polaris)
 * [RSS Reader](https://github.com/matshofman/Android-RSS-Reader-Library)
+* [Sliding Menu](https://github.com/jfeinstein10/SlidingMenu)
 * [Tree View List](http://code.google.com/p/tree-view-list-android/)
 * [Universal Image Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
 * [View Pager Indicator](https://github.com/JakeWharton/Android-ViewPagerIndicator)
