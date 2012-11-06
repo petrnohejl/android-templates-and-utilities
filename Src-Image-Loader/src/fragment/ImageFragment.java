@@ -13,7 +13,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 
 
-public class ExampleFragment extends SherlockFragment
+public class ImageFragment extends SherlockFragment
 {
 	private View mRootView;
 	private ImageLoader mImageLoader = ImageLoader.getInstance();

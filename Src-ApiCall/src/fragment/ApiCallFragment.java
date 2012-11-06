@@ -26,7 +26,7 @@ import com.example.utility.Logcat;
 import com.example.utility.ViewState;
 
 
-public class ExampleFragment extends TaskSherlockListFragment implements OnApiCallListener
+public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCallListener
 {
 	private final int LAZY_LOADING_TAKE = 16;
 	private final int LAZY_LOADING_OFFSET = 4;
