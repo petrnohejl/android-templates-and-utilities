@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.R;
-import com.example.adapter.ExampleAdapter;
+import com.example.adapter.ApiCallAdapter;
 import com.example.client.ApiCall;
 import com.example.client.OnApiCallListener;
 import com.example.client.RequestManager;
@@ -38,7 +38,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 	private ViewState.Visibility mViewState = null;
 	private View mRootView;
 	private View mFooterView;
-	private ExampleAdapter mAdapter;
+	private ApiCallAdapter mAdapter;
 	private RequestManager mRequestManager = new RequestManager();
 	
 	private ArrayList<Message> mMessages = new ArrayList<Message>();
@@ -56,7 +56,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{	
-		mRootView = inflater.inflate(R.layout.layout_example, container, false);
+		mRootView = inflater.inflate(R.layout.layout_apicall, container, false);
 		return mRootView;
 	}
 	
