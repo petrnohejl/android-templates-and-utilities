@@ -83,7 +83,7 @@ dependencies in the project should be listed below. For example:
 Developed by
 ============
 
-* [Petr Nohejl](http://petrnohejl.cz)
+* [Petr Nohejl](http://petrnohejl.cz), 2012
 
 
 License
