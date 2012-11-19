@@ -2,9 +2,12 @@ package com.example.client.request;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.util.LinkedList;
+import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
 import org.codehaus.jackson.JsonParseException;
 
 import com.example.client.parser.LoginParser;
@@ -36,18 +39,19 @@ public class LoginRequest extends Request
 	public String getAddress()
 	{
 		StringBuilder builder = new StringBuilder();
+		List<NameValuePair> params = new LinkedList<NameValuePair>();
 
-		try
+		// params
+		params.add(new BasicNameValuePair("accessToken", mFacebookAccessToken));
+		String paramsString = URLEncodedUtils.format(params, CHARSET);
+
+		// url
+		builder.append(BASE_URL);
+		builder.append(REQUEST_URL);
+		if(paramsString !=null && !paramsString.equals(""))
 		{
-			builder.append(BASE_URL);
-			builder.append(REQUEST_URL);
-			builder.append("?accessToken=");
-			builder.append(URLEncoder.encode(mFacebookAccessToken, CHARSET));
-		}
-		catch(UnsupportedEncodingException e)
-		{
-			e.printStackTrace();
-			return null;
+			builder.append("?");
+			builder.append(paramsString);
 		}
 
 		return builder.toString();
