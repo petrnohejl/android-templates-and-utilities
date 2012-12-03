@@ -12,6 +12,7 @@ import org.codehaus.jackson.JsonParseException;
 
 import com.example.client.parser.LoginParser;
 import com.example.client.response.Response;
+import com.example.utility.Logcat;
 
 
 public class LoginRequest extends Request
@@ -54,6 +55,7 @@ public class LoginRequest extends Request
 			builder.append(paramsString);
 		}
 
+		Logcat.d("EXAMPLE", builder.toString());
 		return builder.toString();
 	}
 
