@@ -61,6 +61,8 @@ dependencies in the project should be listed below. For example:
 * [Flurry](http://www.flurry.com/)
 * [Google Cloud Messaging](http://developer.android.com/sdk/index.html)
 * [Green Droid](https://github.com/cyrilmottier/GreenDroid)
+* [GreenDAO](http://greendao-orm.com/)
+* [GSON](http://code.google.com/p/google-gson/)
 * [Holo Everywhere](https://github.com/ChristopheVersieux/HoloEverywhere)
 * [Ignition](https://github.com/kaeppler/ignition)
 * [Jackson](http://jackson.codehaus.org/)
