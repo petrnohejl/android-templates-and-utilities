@@ -113,6 +113,12 @@
 		<!-- action bar indeterminate progress bar style -->
 		<item name="indeterminateProgressStyle">@style/Example.ActionBar.IndeterminateProgressBar</item>
 		<item name="android:indeterminateProgressStyle">@style/Example.ActionBar.IndeterminateProgressBar</item>
+
+		<!-- options affecting how the action bar is displayed: http://developer.android.com/reference/android/R.styleable.html#ActionBar_displayOptions -->
+		<!--
+		<item name="displayOptions">showHome|useLogo</item>
+		<item name="android:displayOptions">showHome|useLogo</item>
+		-->
 	</style>
 	
 	
