@@ -1,10 +1,12 @@
 package com.example.client;
 
 import java.util.LinkedList;
+import java.util.concurrent.Executor;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 
 import com.example.client.request.Request;
 import com.example.utility.Logcat;
@@ -19,13 +21,28 @@ public class RequestManager
 	{
 
 	}
-	
+
 
 	public void executeRequest(Request request, OnApiCallListener onApiCallListener)
 	{
+		executeRequest(request, onApiCallListener, null);
+	}
+
+
+	public void executeRequest(Request request, OnApiCallListener onApiCallListener, Executor executor)
+	{
 		ApiCall apiCall = new ApiCall(request, onApiCallListener);
 		mQueue.add(apiCall);
-		apiCall.execute();
+		
+		if(executor!=null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+		{
+			// use AsyncTask.THREAD_POOL_EXECUTOR or AsyncTask.SERIAL_EXECUTOR 
+			apiCall.executeOnExecutor(executor);
+		}
+		else
+		{
+			apiCall.execute();
+		}
 	}
 	
 	
