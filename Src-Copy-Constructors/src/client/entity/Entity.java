@@ -3,13 +3,13 @@ package com.example.client.entity;
 
 public class Entity
 {
-	private boolean mBooleanVar;
-	private int mIntVar;
-	private long mLongVar;
-	private String mStringVar;
-	private Date mDateVar;
-	private MyModel mMyModel;
-	private ArrayList<String> mStrings;
+	private boolean booleanVar;
+	private int intVar;
+	private long longVar;
+	private String stringVar;
+	private Date dateVar;
+	private MyModel myModel;
+	private ArrayList<String> strings;
 
 
 	// empty constructor
@@ -22,20 +22,20 @@ public class Entity
 	// copy constructor
 	public Entity(Entity copyModel)
 	{
-		mBooleanVar = copyModel.mBooleanVar;
-		mIntVar = copyModel.mIntVar;
-		mLongVar = copyModel.mLongVar;
-		if(copyModel.mStringVar!=null) mStringVar = new String(copyModel.mStringVar);
-		if(copyModel.mDateVar!=null) mDateVar = new Date(copyModel.mDateVar.getTime());
-		if(copyModel.mMyModel!=null) mMyModel = new MyModel(copyModel.mMyModel);
-		if(copyModel.mStrings!=null)
+		booleanVar = copyModel.booleanVar;
+		intVar = copyModel.intVar;
+		longVar = copyModel.longVar;
+		if(copyModel.stringVar!=null) stringVar = new String(copyModel.stringVar);
+		if(copyModel.dateVar!=null) dateVar = new Date(copyModel.dateVar.getTime());
+		if(copyModel.myModel!=null) myModel = new MyModel(copyModel.myModel);
+		if(copyModel.strings!=null)
 		{
-			mStrings = new ArrayList<String>();
-			Iterator<String> iterator = copyModel.mStrings.iterator();
+			strings = new ArrayList<String>();
+			Iterator<String> iterator = copyModel.strings.iterator();
 			while(iterator.hasNext())
 			{
 				String s = iterator.next();
-				mStrings.add(new String(s));
+				strings.add(new String(s));
 			}
 		}
 	}
@@ -43,58 +43,58 @@ public class Entity
 	
 	public boolean isBooleanVar()
 	{
-		return mBooleanVar;
+		return booleanVar;
 	}
 	public void setBooleanVar(boolean booleanVar)
 	{
-		mBooleanVar = booleanVar;
+		this.booleanVar = booleanVar;
 	}
 	public int getIntVar()
 	{
-		return mIntVar;
+		return intVar;
 	}
 	public void setIntVar(int intVar)
 	{
-		mIntVar = intVar;
+		this.intVar = intVar;
 	}
 	public long getLongVar()
 	{
-		return mLongVar;
+		return longVar;
 	}
 	public void setLongVar(long longVar)
 	{
-		mLongVar = longVar;
+		this.longVar = longVar;
 	}
 	public String getStringVar()
 	{
-		return mStringVar;
+		return stringVar;
 	}
 	public void setStringVar(String stringVar)
 	{
-		mStringVar = stringVar;
+		this.stringVar = stringVar;
 	}
 	public Date getDateVar()
 	{
-		return mDateVar;
+		return dateVar;
 	}
 	public void setDateVar(Date dateVar)
 	{
-		mDateVar = dateVar;
+		this.dateVar = dateVar;
 	}
 	public MyModel getMyModel()
 	{
-		return mMyModel;
+		return myModel;
 	}
 	public void setMyModel(MyModel myModel)
 	{
-		mMyModel = myModel;
+		this.myModel = myModel;
 	}
 	public ArrayList<String> getStrings()
 	{
-		return mStrings;
+		return strings;
 	}
 	public void setStrings(ArrayList<String> strings)
 	{
-		mStrings = strings;
+		this.strings = strings;
 	}
 }

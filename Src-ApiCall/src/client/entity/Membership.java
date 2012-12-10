@@ -3,8 +3,8 @@ package com.example.client.entity;
 
 public class Membership
 {
-	private long mUserId;
-	private String mAccessToken;
+	private long userId;
+	private String accessToken;
 
 
 	// empty constructor
@@ -17,25 +17,25 @@ public class Membership
 	// copy constructor
 	public Membership(Membership copyModel)
 	{
-		mUserId = copyModel.mUserId;
-		if(copyModel.mAccessToken!=null) mAccessToken = new String(copyModel.mAccessToken);
+		userId = copyModel.userId;
+		if(copyModel.accessToken!=null) accessToken = new String(copyModel.accessToken);
 	}
 	
 	
 	public long getUserId()
 	{
-		return mUserId;
+		return userId;
 	}
 	public void setUserId(long userId)
 	{
-		mUserId = userId;
+		this.userId = userId;
 	}
 	public String getAccessToken()
 	{
-		return mAccessToken;
+		return accessToken;
 	}
 	public void setAccessToken(String accessToken)
 	{
-		mAccessToken = accessToken;
+		this.accessToken = accessToken;
 	}
 }

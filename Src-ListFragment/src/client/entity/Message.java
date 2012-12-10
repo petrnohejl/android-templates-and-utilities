@@ -3,8 +3,8 @@ package com.example.client.entity;
 
 public class Message
 {
-	private long mId;
-	private String mName;
+	private long id;
+	private String name;
 
 
 	// empty constructor
@@ -17,25 +17,25 @@ public class Message
 	// copy constructor
 	public Message(Message copyModel)
 	{
-		mId = copyModel.mId;
-		if(copyModel.mName!=null) mName = new String(copyModel.mName);
+		id = copyModel.id;
+		if(copyModel.name!=null) name = new String(copyModel.name);
 	}
 	
 	
 	public long getId()
 	{
-		return mId;
+		return id;
 	}
 	public void setId(long id)
 	{
-		mId = id;
+		this.id = id;
 	}
 	public String getName()
 	{
-		return mName;
+		return name;
 	}
 	public void setName(String name)
 	{
-		mName = name;
+		this.name = name;
 	}
 }
