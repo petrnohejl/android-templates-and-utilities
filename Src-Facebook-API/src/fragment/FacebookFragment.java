@@ -206,6 +206,8 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(Bundle values)
 				{
+					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+
 					Logcat.d("EXAMPLE", "fb.authorize.onComplete: " + mFacebook.getAccessToken());
 					
 					// save access token
@@ -281,6 +283,8 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(final String response, Object state)
 				{
+					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+
 					Logcat.d("EXAMPLE", "fb.logout.onComplete: " + response);
 					
 					// clear access token
@@ -401,6 +405,8 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(final String response, Object state)
 				{
+					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+
 					Logcat.d("EXAMPLE", "fb.profile.onComplete: " + response);
 
 					getActivity().runOnUiThread(new Runnable()
@@ -517,6 +523,8 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(final String response, Object state)
 				{
+					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+
 					Logcat.d("EXAMPLE", "fb.friends.onComplete: " + response);
 
 					getActivity().runOnUiThread(new Runnable()
@@ -634,6 +642,8 @@ public class FacebookFragment extends SherlockFragment
 				@Override
 				public void onComplete(Bundle values)
 				{
+					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+					
 					Logcat.d("EXAMPLE", "fb.feed.onComplete: " + mFacebook.getAccessToken());
 				}
 	
