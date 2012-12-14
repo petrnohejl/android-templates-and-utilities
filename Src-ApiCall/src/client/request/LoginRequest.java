@@ -55,7 +55,7 @@ public class LoginRequest extends Request
 			builder.append(paramsString);
 		}
 
-		Logcat.d("EXAMPLE", builder.toString());
+		Logcat.d(builder.toString());
 		return builder.toString();
 	}
 

@@ -124,9 +124,9 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 					// error
 					if(exampleResponse.isError())
 					{
-						Logcat.d("EXAMPLE", "onApiCallRespond: example error " + exampleResponse.getErrorType() + ": " + exampleResponse.getErrorMessage());
-						Logcat.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
-						Logcat.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
+						Logcat.d("onApiCallRespond: example error " + exampleResponse.getErrorType() + ": " + exampleResponse.getErrorMessage());
+						Logcat.d("onApiCallRespond status code: " + status.getStatusCode());
+						Logcat.d("onApiCallRespond status message: " + status.getStatusMessage());
 
 						// hide progress
 						stopLazyLoadData();
@@ -139,9 +139,9 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 					// response
 					else
 					{
-						Logcat.d("EXAMPLE", "onApiCallRespond: example ok");
-						Logcat.d("EXAMPLE", "onApiCallRespond status code: " + status.getStatusCode());
-						Logcat.d("EXAMPLE", "onApiCallRespond status message: " + status.getStatusMessage());
+						Logcat.d("onApiCallRespond: example ok");
+						Logcat.d("onApiCallRespond status code: " + status.getStatusCode());
+						Logcat.d("onApiCallRespond status message: " + status.getStatusMessage());
 
 						// check metda data
 						if(call.getRequest().getMetaData()!=null && call.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
@@ -193,9 +193,9 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 			{
 				if(call.getRequest().getClass().getSimpleName().equalsIgnoreCase("ExampleRequest"))
 				{
-					Logcat.d("EXAMPLE", "onApiCallFail: example " + parseFail);
-					Logcat.d("EXAMPLE", "onApiCallFail status code: " + status.getStatusCode());
-					Logcat.d("EXAMPLE", "onApiCallFail status message: " + status.getStatusMessage());
+					Logcat.d("onApiCallFail: example " + parseFail);
+					Logcat.d("onApiCallFail status code: " + status.getStatusCode());
+					Logcat.d("onApiCallFail status message: " + status.getStatusMessage());
 					
 					// hide progress
 					stopLazyLoadData();

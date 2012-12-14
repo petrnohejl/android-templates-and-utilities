@@ -63,7 +63,7 @@ public class GeolocationFragment extends TaskSherlockFragment implements OnGeolo
 		{
 			public void run()
 			{
-				Logcat.d("EXAMPLE", "onGeolocationRespond provider: " + location.getProvider() + " location: " + location.getLatitude() + " " + location.getLongitude() + " time: " + new Date(location.getTime()).toString());
+				Logcat.d("onGeolocationRespond provider: " + location.getProvider() + " location: " + location.getLatitude() + " " + location.getLongitude() + " time: " + new Date(location.getTime()).toString());
 				mLocation = new Location(location);
 				
 				// TODO
@@ -79,7 +79,7 @@ public class GeolocationFragment extends TaskSherlockFragment implements OnGeolo
 		{
 			public void run()
 			{
-				Logcat.d("EXAMPLE", "onGeolocationFail");
+				Logcat.d("onGeolocationFail");
 				
 				// TODO
 			}

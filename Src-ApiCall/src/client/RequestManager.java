@@ -90,10 +90,10 @@ public class RequestManager
 	{
 		for(ApiCall call : mQueue)
 		{
-			Logcat.d("EXAMPLE", "request in queue: " + (call==null ? "null" : (call.getRequest().getClass().getSimpleName() + ": " + call.getStatus().toString())));
+			Logcat.d("request in queue: " + (call==null ? "null" : (call.getRequest().getClass().getSimpleName() + ": " + call.getStatus().toString())));
 		}
 		
-		if(mQueue.isEmpty()) Logcat.d("EXAMPLE", "request in queue: empty");
+		if(mQueue.isEmpty()) Logcat.d("request in queue: empty");
 	}
 	
 	

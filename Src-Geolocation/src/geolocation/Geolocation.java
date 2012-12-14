@@ -54,7 +54,7 @@ public class Geolocation implements LocationListener
 				{
 					if(mCurrentLocation == null)
 					{
-						Logcat.d("EXAMPLE", "geolocation.timeout");
+						Logcat.d("geolocation.timeout");
 						stop();
 						OnGeolocationListener listener = mOnGeolocationListener.get();
 						if(listener != null) listener.onGeolocationFail(Geolocation.this);
@@ -72,7 +72,7 @@ public class Geolocation implements LocationListener
 		
 	public void stop()
 	{
-		Logcat.d("EXAMPLE", "geolocation.stop()");
+		Logcat.d("geolocation.stop");
 		if(mTimer!=null) mTimer.cancel();
 		if(mLocationManager!=null) 
 		{
@@ -85,13 +85,13 @@ public class Geolocation implements LocationListener
 	@Override
 	public void onLocationChanged(Location location)
 	{
-		Logcat.d("EXAMPLE", "geolocation.onLocationChanged() provider: " + location.getProvider() + " location: " + location.getLatitude() + " " + location.getLongitude() + " time: " + new Date(location.getTime()).toString());
+		Logcat.d("geolocation.onLocationChanged provider: " + location.getProvider() + " location: " + location.getLatitude() + " " + location.getLongitude() + " time: " + new Date(location.getTime()).toString());
 		
 		// check location age
 		long timeDelta = System.currentTimeMillis() - location.getTime();
 		if(timeDelta > LOCATION_AGE)
 		{
-			Logcat.d("EXAMPLE", "geolocation.onLocationChanged() location is too old");
+			Logcat.d("geolocation.onLocationChanged location is too old");
 			// location is too old
 			return;
 		}
@@ -107,31 +107,31 @@ public class Geolocation implements LocationListener
 	@Override
 	public void onProviderDisabled(String provider)
 	{
-		Logcat.d("EXAMPLE", "geolocation.onProviderDisabled() provider: " + provider);
+		Logcat.d("geolocation.onProviderDisabled provider: " + provider);
 	}
 
 
 	@Override
 	public void onProviderEnabled(String provider)
 	{
-		Logcat.d("EXAMPLE", "geolocation.onProviderEnabled() provider: " + provider);
+		Logcat.d("geolocation.onProviderEnabled provider: " + provider);
 	}
 
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras)
 	{
-		Logcat.d("EXAMPLE", "geolocation.onStatusChanged() provider: " + provider);
+		Logcat.d("geolocation.onStatusChanged provider: " + provider);
 		switch(status) 
 		{
 			case LocationProvider.OUT_OF_SERVICE:
-				Logcat.d("EXAMPLE", "geolocation.onStatusChanged() status: OUT_OF_SERVICE");
+				Logcat.d("geolocation.onStatusChanged status: OUT_OF_SERVICE");
 				break;
 			case LocationProvider.TEMPORARILY_UNAVAILABLE:
-				Logcat.d("EXAMPLE", "geolocation.onStatusChanged() status: TEMPORARILY_UNAVAILABLE");
+				Logcat.d("geolocation.onStatusChanged status: TEMPORARILY_UNAVAILABLE");
 				break;
 			case LocationProvider.AVAILABLE:
-				Logcat.d("EXAMPLE", "geolocation.onStatusChanged() status: AVAILABLE");
+				Logcat.d("geolocation.onStatusChanged status: AVAILABLE");
 				break;
 		}
 	}
@@ -140,7 +140,7 @@ public class Geolocation implements LocationListener
 	// returns last known freshest location from network or GPS
 	private Location getLastKnownLocation(LocationManager locationManager)
 	{
-		Logcat.d("EXAMPLE", "geolocation.getLastKnownLocation()");
+		Logcat.d("geolocation.getLastKnownLocation");
 
 		Location locationNet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 		Location locationGps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
