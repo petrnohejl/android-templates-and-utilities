@@ -1,46 +1,33 @@
 package com.example.fragment;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.FrameLayout;
-import android.widget.ListView;
+import android.widget.TextView;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
-import com.example.adapter.ListingAdapter;
 import com.example.client.entity.Message;
 import com.example.listener.OnLoadListener;
 import com.example.task.LoadTask;
-import com.example.task.TaskSherlockListFragment;
+import com.example.task.TaskSherlockFragment;
 import com.example.utility.ViewState;
 
 
-public class ListingFragment extends TaskSherlockListFragment implements OnLoadListener
+public class SimpleFragment extends TaskSherlockFragment implements OnLoadListener
 {
-	private final int LAZY_LOADING_TAKE = 16;
-	private final int LAZY_LOADING_OFFSET = 4;
-	
-	private boolean mLazyLoading = false;
 	private boolean mActionBarProgress = false;
 	private ViewState.Visibility mViewState = null;
 	private View mRootView;
-	private View mFooterView;
-	private ListingAdapter mAdapter;
 	private LoadTask mLoadTask;
 
-	private ArrayList<Message> mMessages = new ArrayList<Message>();
+	private Message mMessage;
 	
 	
 	@Override
@@ -75,8 +62,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{	
-		mRootView = inflater.inflate(R.layout.layout_listing, container, false);
+	{
+		mRootView = inflater.inflate(R.layout.layout_simple, container, false);
 		return mRootView;
 	}
 	
@@ -93,19 +80,20 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			if(mMessages!=null) renderView();
-			showList();
+			if(mMessage!=null) renderView();
+			showContent();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
 		{
 			showProgress();
 		}
-
+		else if(mViewState==ViewState.Visibility.EMPTY)
+		{
+			showEmpty();
+		}
+		
 		// progress in action bar
 		showActionBarProgress(mActionBarProgress);
-		
-		// lazy loading
-		if(mLazyLoading) startLazyLoadData();
 	}
 	
 	
@@ -127,9 +115,6 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	public void onPause()
 	{
 		super.onPause();
-		
-		// stop adapter
-		if(mAdapter!=null) mAdapter.stop();
 	}
 	
 	
@@ -216,16 +201,6 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	
 	
 	@Override
-	public void onListItemClick(ListView listView, View clickedView, int position, long id)
-	{
-		// listview item onclick
-		if(mAdapter!=null) mAdapter.setSelectedPosition(position);
-		
-		// TODO
-	}
-	
-	
-	@Override
 	public void onLoad()
 	{
 		runTaskCallback(new Runnable()
@@ -233,27 +208,16 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 			public void run()
 			{
 				// get data
-				final int size = mMessages.size();
-				for(int i=0; i<LAZY_LOADING_TAKE; i++)
-				{
-					Message m = new Message();
-					m.setName("Message " + (size + i));
-					mMessages.add(m);
-				}
+				mMessage = new Message();
+				mMessage.setName("Test Message");
 				
-				// render view
-				if(mLazyLoading && mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
+				// hide progress and render view
+				if(mMessage!=null)
 				{
-					mAdapter.notifyDataSetChanged();
+					renderView();
+					showContent();
 				}
-				else
-				{
-					if(mMessages!=null) renderView();
-				}
-
-				// hide progress
-				stopLazyLoadData();
-				showList();
+				else showEmpty();
 			}
 		});
 	}
@@ -289,40 +253,6 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	}
 	
 	
-	private void lazyLoadData()
-	{
-		if(true) // TODO: isOnline?
-		{
-			// show progress in footer
-			startLazyLoadData();
-			
-			// run async task
-			mLoadTask = new LoadTask(this);
-			mLoadTask.execute();
-		}
-	}
-	
-	
-	private void startLazyLoadData()
-	{
-		mLazyLoading = true;
-		
-		// show footer
-		ListView listView = getListView();
-		listView.addFooterView(mFooterView);
-	}
-	
-	
-	private void stopLazyLoadData()
-	{
-		// hide footer
-		ListView listView = getListView();
-		listView.removeFooterView(mFooterView);
-		
-		mLazyLoading = false;
-	}
-	
-	
 	private void showActionBarProgress(boolean visible)
 	{
 		// show action bar progress
@@ -331,15 +261,17 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	}
 	
 	
-	private void showList()
+	private void showContent()
 	{
-		// show list container
-		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
+		// show content container
+		FrameLayout containerContent = (FrameLayout) mRootView.findViewById(R.id.container_content);
 		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
 		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.VISIBLE);
+		FrameLayout containerEmpty = (FrameLayout) mRootView.findViewById(R.id.container_empty);
+		containerContent.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
+		containerEmpty.setVisibility(View.GONE);
 		mViewState = ViewState.Visibility.CONTENT;
 	}
 	
@@ -347,12 +279,14 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	private void showProgress()
 	{
 		// show progress container
-		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
+		FrameLayout containerContent = (FrameLayout) mRootView.findViewById(R.id.container_content);
 		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
 		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.GONE);
+		FrameLayout containerEmpty = (FrameLayout) mRootView.findViewById(R.id.container_empty);
+		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
+		containerEmpty.setVisibility(View.GONE);
 		mViewState = ViewState.Visibility.PROGRESS;
 	}
 	
@@ -360,69 +294,39 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	private void showOffline()
 	{
 		// show offline container
-		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
+		FrameLayout containerContent = (FrameLayout) mRootView.findViewById(R.id.container_content);
 		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
 		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.GONE);
+		FrameLayout containerEmpty = (FrameLayout) mRootView.findViewById(R.id.container_empty);
+		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
+		containerEmpty.setVisibility(View.GONE);
 		mViewState = ViewState.Visibility.OFFLINE;
+	}
+	
+	
+	private void showEmpty()
+	{
+		// show empty container
+		FrameLayout containerContent = (FrameLayout) mRootView.findViewById(R.id.container_content);
+		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
+		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
+		FrameLayout containerEmpty = (FrameLayout) mRootView.findViewById(R.id.container_empty);
+		containerContent.setVisibility(View.GONE);
+		containerProgress.setVisibility(View.GONE);
+		containerOffline.setVisibility(View.GONE);
+		containerEmpty.setVisibility(View.VISIBLE);
+		mViewState = ViewState.Visibility.EMPTY;
 	}
 	
 	
 	private void renderView()
 	{
 		// reference
-		ListView listView = getListView();
+		TextView textViewName = (TextView) mRootView.findViewById(R.id.layout_simple_content_name);
 		
-		// listview content
-		if(getListAdapter()==null)
-		{
-			// create adapter
-			mAdapter = new ListingAdapter(getActivity(), mMessages);
-		}
-		else
-		{
-			// refill adapter
-			mAdapter.refill(getActivity(), mMessages);
-		}
-		
-		// init footer, because addFooterView() must be called at least once before setListAdapter()
-		mFooterView = getActivity().getLayoutInflater().inflate(R.layout.layout_listing_footer, null);
-		listView.addFooterView(mFooterView);
-		
-		// set adapter
-		setListAdapter(mAdapter);
-		
-		// hide footer
-		listView.removeFooterView(mFooterView);
-		
-		// lazy loading
-		listView.setOnScrollListener(new OnScrollListener()
-		{
-			@Override
-			public void onScrollStateChanged(AbsListView view, int scrollState)
-			{
-			}
-			
-			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
-			{
-				if(totalItemCount-(firstVisibleItem+visibleItemCount) <= LAZY_LOADING_OFFSET && mMessages.size() % LAZY_LOADING_TAKE==0 && !mMessages.isEmpty())
-				{
-					if(!mLazyLoading) lazyLoadData();
-				}
-			}
-		});
-		
-		// listview item long onclick
-		listView.setOnItemLongClickListener(new OnItemLongClickListener()
-		{
-			@Override
-			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
-			{
-				return true;
-			}
-		});
+		// content
+		textViewName.setText(mMessage.getName());
 	}
 }

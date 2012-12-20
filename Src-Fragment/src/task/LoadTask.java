@@ -7,12 +7,12 @@ import android.os.AsyncTask;
 import com.example.listener.OnLoadListener;
 
 
-public class ListingLoadTask extends AsyncTask<Void, Void, String>
+public class LoadTask extends AsyncTask<Void, Void, String>
 {
 	private WeakReference<OnLoadListener> mOnLoadListener;
 	
 	
-	public ListingLoadTask(OnLoadListener onLoadListener)
+	public LoadTask(OnLoadListener onLoadListener)
 	{
 		setListener(onLoadListener);
 	}

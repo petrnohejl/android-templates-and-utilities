@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/global_bg_back">
+	
+	<FrameLayout
+		android:id="@+id/container_content"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		
+		<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:fillViewport="true"
+			android:background="@color/global_bg_front">
+			
+			<include layout="@layout/layout_simple_content" />
+			
+		</ScrollView>
+	</FrameLayout>
+	
+	<FrameLayout
+		android:id="@+id/container_progress"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone">
+
+		<include layout="@layout/placeholder_progress" />
+
+	</FrameLayout>
+
+	<FrameLayout
+		android:id="@+id/container_offline"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone">
+		
+		<include layout="@layout/placeholder_offline" />
+	
+	</FrameLayout>
+	
+	<FrameLayout
+		android:id="@+id/container_empty"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone">
+		
+		<include layout="@layout/placeholder_empty" />
+	
+	</FrameLayout>
+</FrameLayout>
