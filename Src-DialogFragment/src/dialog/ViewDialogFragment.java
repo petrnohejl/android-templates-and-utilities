@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.R;
@@ -93,7 +94,7 @@ public class ViewDialogFragment extends DialogFragment
 	{
 		// save current instance state
 		super.onSaveInstanceState(outState);
-		
+
 		EditText editTextUsername = (EditText) mRootView.findViewById(R.id.dialog_view_username);
 		EditText editTextPassword = (EditText) mRootView.findViewById(R.id.dialog_view_password);
 		
@@ -117,13 +118,7 @@ public class ViewDialogFragment extends DialogFragment
 		{
 			public void onClick(DialogInterface dialog, int id)
 			{
-				EditText editTextUsername = (EditText) mRootView.findViewById(R.id.dialog_view_username);
-				EditText editTextPassword = (EditText) mRootView.findViewById(R.id.dialog_view_password);
-				
-				String username = editTextUsername.getText().toString();
-				String password = editTextPassword.getText().toString();
-				
-				mListener.onDialogPositiveClick(ViewDialogFragment.this, username, password);
+				// overriden below
 			}
 		})
 		.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
@@ -134,7 +129,37 @@ public class ViewDialogFragment extends DialogFragment
 			}
 		});
 		
-		return builder.create();
+		// create dialog from builder
+		final AlertDialog dialog = builder.create();
+		
+		// override positive button
+		dialog.setOnShowListener(new DialogInterface.OnShowListener()
+		{
+			@Override
+			public void onShow(DialogInterface dialogInterface)
+			{
+				Button button = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+				button.setOnClickListener(new View.OnClickListener()
+				{
+					@Override
+					public void onClick(View v)
+					{
+						EditText editTextUsername = (EditText) mRootView.findViewById(R.id.dialog_view_username);
+						EditText editTextPassword = (EditText) mRootView.findViewById(R.id.dialog_view_password);
+						
+						String username = editTextUsername.getText().toString();
+						String password = editTextPassword.getText().toString();
+						
+						// TODO: data validation
+						
+						mListener.onDialogPositiveClick(ViewDialogFragment.this, username, password);
+						dialog.dismiss();
+					}
+				});
+			}
+		});
+		
+		return dialog;
 	}
 	
 	
