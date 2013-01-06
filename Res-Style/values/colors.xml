@@ -3,6 +3,7 @@
 	<color name="global_text">#555</color>
 	<color name="global_bg_back">#eee</color>
 	<color name="global_bg_front">#fff</color>
+	<color name="global_bg_dialog">#f5f5f5</color>
 	
 	<color name="widget_textview_text">#555</color>
 	<color name="widget_button_text">#555</color>
