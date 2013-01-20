@@ -61,6 +61,9 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 			try
 			{
 				String certHash = SHA1Base64Encoded(certificate.getEncoded());
+				//Logcat.d("certificate public key: " + certificate.getPublicKey().toString().substring(0, 100) + " ...");
+				//Logcat.d("certificate hash: " + certHash);
+				//Logcat.d("---------------------------------------");
 				if(certHash.trim().equals(CERT_SHA1))
 				{
 					// manual verification successfull
