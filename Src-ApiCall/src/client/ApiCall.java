@@ -16,7 +16,6 @@ import android.util.Base64;
 
 import com.example.client.request.Request;
 import com.example.client.response.Response;
-import com.example.utility.Logcat;
 
 
 public class ApiCall extends AsyncTask<Void, Void, Response>
@@ -50,6 +49,7 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 	protected Response doInBackground(Void... params)
 	{
 		HttpURLConnection connection = null;
+		//HttpsURLConnection connection = null; // for SSL
 		OutputStream requestStream = null;
 		InputStream responseStream = null;
 		
@@ -58,12 +58,17 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			// disables Keep-Alive for all connections
 			if(isCancelled()) return null;
 			System.setProperty("http.keepAlive", "false");
-
+			
 			// new connection
 			byte[] requestData = mRequest.getContent();
 			URL url = new URL(mRequest.getAddress());	
 			connection = (HttpURLConnection) url.openConnection();
-
+			//connection = (HttpsURLConnection) url.openConnection(); // for SSL
+			
+			// ssl connection properties
+			//SelfSignedSslUtility.setSslConnection(connection, url); // for SSL using self signed certificate
+			//CertificateAuthoritySslUtility.setSslConnection(connection, url); // for SSL using certificate authority
+			
 			// connection properties
 			if(mRequest.getRequestMethod()!=null)
 			{
