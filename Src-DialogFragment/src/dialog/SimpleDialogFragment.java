@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.ContextThemeWrapper;
 
 import com.example.R;
 
@@ -64,6 +65,16 @@ public class SimpleDialogFragment extends DialogFragment
 	
 	
 	@Override
+	public void onActivityCreated(Bundle savedInstanceState)
+	{
+		super.onActivityCreated(savedInstanceState);
+		
+		// cancelable on touch outside
+		if(getDialog()!=null) getDialog().setCanceledOnTouchOutside(true);
+	}
+	
+	
+	@Override
 	public void onDestroyView()
 	{
 		// http://code.google.com/p/android/issues/detail?id=17423
@@ -75,7 +86,8 @@ public class SimpleDialogFragment extends DialogFragment
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), com.actionbarsherlock.R.style.Theme_Sherlock_Light_Dialog);
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		
 		builder
 		.setTitle("title")

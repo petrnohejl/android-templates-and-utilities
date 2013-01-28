@@ -5,6 +5,7 @@ import java.util.Calendar;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.ContextThemeWrapper;
 import android.widget.TimePicker;
 
 
@@ -61,6 +62,16 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 	
 	
 	@Override
+	public void onActivityCreated(Bundle savedInstanceState)
+	{
+		super.onActivityCreated(savedInstanceState);
+		
+		// cancelable on touch outside
+		if(getDialog()!=null) getDialog().setCanceledOnTouchOutside(true);
+	}
+	
+	
+	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
 		Calendar calendar = Calendar.getInstance();
@@ -69,7 +80,8 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 			calendar.setTimeInMillis(mTime);
 		}
 		
-		FixedTimePickerDialog dialog = new FixedTimePickerDialog(calendar, getActivity(), this);
+		ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), com.actionbarsherlock.R.style.Theme_Sherlock_Light_Dialog);
+		FixedTimePickerDialog dialog = new FixedTimePickerDialog(calendar, context, this);
 		return dialog;
 	}
 	

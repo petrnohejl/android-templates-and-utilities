@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.ContextThemeWrapper;
 
 
 public class ProgressDialogFragment extends DialogFragment
@@ -37,7 +38,8 @@ public class ProgressDialogFragment extends DialogFragment
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
-		final ProgressDialog dialog = new ProgressDialog(getActivity());
+		ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), com.actionbarsherlock.R.style.Theme_Sherlock_Light_Dialog);
+		ProgressDialog dialog = new ProgressDialog(context);
 		dialog.setMessage("progress");
 		dialog.setIndeterminate(true);
 		dialog.setCancelable(false);

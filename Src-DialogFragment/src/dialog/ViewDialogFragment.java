@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -74,7 +75,10 @@ public class ViewDialogFragment extends DialogFragment
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-
+		
+		// cancelable on touch outside
+		if(getDialog()!=null) getDialog().setCanceledOnTouchOutside(true);
+		
 		// restore saved state
 		handleSavedInstanceState();
 	}
@@ -106,7 +110,8 @@ public class ViewDialogFragment extends DialogFragment
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), com.actionbarsherlock.R.style.Theme_Sherlock_Light_Dialog);
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		LayoutInflater inflater = getActivity().getLayoutInflater();
 		mRootView = inflater.inflate(R.layout.dialog_view, null);
 		
