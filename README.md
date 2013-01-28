@@ -55,7 +55,6 @@ dependencies in the project should be listed below. For example:
 * [ActiveAndroid](http://www.activeandroid.com/)
 * [AndEngine](http://www.andengine.org/)
 * [Android Support Library v4](http://developer.android.com/tools/extras/support-library.html)
-* [Android UI Patterns Collection](https://play.google.com/store/apps/details?id=com.groidify.uipatterns)
 * [Androrm](http://androrm.the-pixelpla.net/)
 * [Crittercism](http://www.crittercism.com)
 * [Facebook Android SDK](https://github.com/facebook/facebook-android-sdk)
@@ -73,8 +72,10 @@ dependencies in the project should be listed below. For example:
 * [Nine Old Androids](https://github.com/JakeWharton/NineOldAndroids)
 * [Number Picker](https://github.com/novak/numpicker-demo)
 * [OrmLite](http://ormlite.com/)
+* [PhotoView](https://github.com/chrisbanes/PhotoView)
 * [Polaris](https://github.com/cyrilmottier/Polaris)
 * [RSS Reader](https://github.com/matshofman/Android-RSS-Reader-Library)
+* [ShowcaseView](https://github.com/Espiandev/ShowcaseView)
 * [Sliding Menu](https://github.com/jfeinstein10/SlidingMenu)
 * [Sticky List Headers](https://github.com/emilsjolander/StickyListHeaders)
 * [Sugar ORM](http://satyan.github.com/sugar/index.html)
@@ -83,6 +84,12 @@ dependencies in the project should be listed below. For example:
 * [Universal Image Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
 * [View Pager Indicator](https://github.com/JakeWharton/Android-ViewPagerIndicator)
 * [ZXing](http://code.google.com/p/zxing/)
+
+Some galleries of Android libraries:
+
+* [Android UI Patterns Collection](https://play.google.com/store/apps/details?id=com.groidify.uipatterns)
+* [Android Views](http://www.androidviews.net/)
+* [The Ultimate Android Library](http://www.theultimateandroidlibrary.com/)
 
 
 Developed by
