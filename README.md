@@ -95,7 +95,7 @@ Some galleries of Android libraries:
 Developed by
 ============
 
-* [Petr Nohejl](http://petrnohejl.cz), 2012
+* [Petr Nohejl](http://petrnohejl.cz), 2012-2013
 
 
 License

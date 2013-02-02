@@ -18,6 +18,10 @@ import javax.net.ssl.X509TrustManager;
 import android.util.Base64;
 
 
+// useful articles about trusting SSL certificates:
+// http://blog.crazybob.org/2010/02/android-trusting-ssl-certificates.html
+// http://stackoverflow.com/questions/2642777/trusting-all-certificates-using-httpclient-over-https/6378872#6378872
+// http://nelenkov.blogspot.cz/2011/12/using-custom-certificate-trust-store-on.html
 public class SelfSignedTrustManager implements X509TrustManager
 {
 	public static final String CERT_SHA1 = "myhash="; // encoded representation of the trusted certificate

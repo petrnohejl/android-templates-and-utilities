@@ -86,7 +86,13 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			if(requestData!=null) connection.setFixedLengthStreamingMode(requestData.length);
 			connection.setConnectTimeout(30000);
 			//connection.setReadTimeout(30000);
-			connection.setDoOutput(requestData!=null);
+			if(requestData!=null)
+			{
+				// this call automatically sets request method to POST on Android 4
+				// if you don't want your app to POST, you must not call setDoOutput
+				// http://webdiary.com/2011/12/14/ics-get-post/
+				connection.setDoOutput(true);
+			}
 			connection.setDoInput(true);
 			connection.setUseCaches(false);
 			connection.connect();
