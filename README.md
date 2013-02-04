@@ -47,7 +47,7 @@ Changelog
 Dependencies
 ============
 
-Some projects use external libraries for additional functionality. All library
+Some projects uses external libraries for additional functionality. All library
 dependencies in the project should be listed below. For example:
 
 * [ActionBarSherlock](http://actionbarsherlock.com/)
