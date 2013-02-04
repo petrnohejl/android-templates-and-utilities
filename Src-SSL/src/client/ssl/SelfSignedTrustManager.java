@@ -73,12 +73,12 @@ public class SelfSignedTrustManager implements X509TrustManager
 		// check client certificate, first self signed, then default
 		try
 		{
-			//Logcat.d("checkClientTrusted() with local trust manager...");
+			//Logcat.d("TrustManager.localTrustManager.checkClientTrusted()");
 			mLocalTrustManager.checkClientTrusted(certificates, authType);
 		}
 		catch(CertificateException e)
 		{
-			//Logcat.d("checkClientTrusted() with default trust manager...");
+			//Logcat.d("TrustManager.defaultTrustManager.checkClientTrusted()");
 			mDefaultTrustManager.checkClientTrusted(certificates, authType);
 		}
 	}
@@ -95,8 +95,8 @@ public class SelfSignedTrustManager implements X509TrustManager
 			try
 			{
 				String certHash = SHA1Base64Encoded(certificate.getEncoded());
-				//Logcat.d("certificate public key: " + certificate.getPublicKey().toString().substring(0, 100) + " ...");
-				//Logcat.d("certificate hash: " + certHash);
+				//Logcat.d("TrustManager.checkServerTrusted(): certificate public key: " + certificate.getPublicKey().toString().substring(0, 100) + " ...");
+				//Logcat.d("TrustManager.checkServerTrusted(): certificate hash: " + certHash);
 				//Logcat.d("---------------------------------------");
 				if(certHash.trim().equals(CERT_SHA1))
 				{
@@ -120,12 +120,12 @@ public class SelfSignedTrustManager implements X509TrustManager
 		// if manual verification successfull, check server certificate, first self signed, then default
 		try
 		{
-			//Logcat.d("checkServerTrusted() with local trust manager...");
+			//Logcat.d("TrustManager.localTrustManager.checkServerTrusted()");
 			mLocalTrustManager.checkServerTrusted(certificates, authType);
 		}
 		catch(CertificateException e)
 		{
-			//Logcat.d("checkServerTrusted() with default trust manager...");
+			//Logcat.d("TrustManager.defaultTrustManager.checkServerTrusted()");
 			mDefaultTrustManager.checkServerTrusted(certificates, authType);
 		}
 	}

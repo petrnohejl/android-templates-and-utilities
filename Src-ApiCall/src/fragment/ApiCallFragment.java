@@ -124,9 +124,8 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 					// error
 					if(exampleResponse.isError())
 					{
-						Logcat.d("onApiCallRespond: example error " + exampleResponse.getErrorType() + ": " + exampleResponse.getErrorMessage());
-						Logcat.d("onApiCallRespond status code: " + status.getStatusCode());
-						Logcat.d("onApiCallRespond status message: " + status.getStatusMessage());
+						Logcat.d("Fragment.onApiCallRespond(ExampleResponse): " + status.getStatusCode() + " " + status.getStatusMessage() + 
+								" / error / " + exampleResponse.getErrorType() + " / " + exampleResponse.getErrorMessage());
 
 						// hide progress
 						stopLazyLoadData();
@@ -139,9 +138,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 					// response
 					else
 					{
-						Logcat.d("onApiCallRespond: example ok");
-						Logcat.d("onApiCallRespond status code: " + status.getStatusCode());
-						Logcat.d("onApiCallRespond status message: " + status.getStatusMessage());
+						Logcat.d("Fragment.onApiCallRespond(ExampleResponse): " + status.getStatusCode() + " " + status.getStatusMessage());
 
 						// check metda data
 						if(call.getRequest().getMetaData()!=null && call.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
@@ -193,9 +190,8 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 			{
 				if(call.getRequest().getClass().getSimpleName().equalsIgnoreCase("ExampleRequest"))
 				{
-					Logcat.d("onApiCallFail: example " + parseFail);
-					Logcat.d("onApiCallFail status code: " + status.getStatusCode());
-					Logcat.d("onApiCallFail status message: " + status.getStatusMessage());
+					Logcat.d("Fragment.onApiCallFail(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage() +
+							" / " + (parseFail ? "parse fail" : "parse success"));
 					
 					// hide progress
 					stopLazyLoadData();

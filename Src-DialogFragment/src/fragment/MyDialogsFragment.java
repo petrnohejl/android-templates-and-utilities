@@ -80,7 +80,7 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("onDialogPositiveClick");
+				Logcat.d("Fragment.onDialogPositiveClick()");
 			}
 		});
 	}
@@ -94,7 +94,7 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("onDialogPositiveClick " + which);
+				Logcat.d("Fragment.onDialogPositiveClick(): " + which);
 			}
 		});
 	}
@@ -114,7 +114,7 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 					builder.append(checkedItems[i]);
 					builder.append(" ");
 				}
-				Logcat.d("onDialogPositiveClick " + builder.toString());
+				Logcat.d("Fragment.onDialogPositiveClick(): " + builder.toString());
 			}
 		});
 	}
@@ -128,7 +128,7 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("onDialogPositiveClick " + username + "/" + password);
+				Logcat.d("Fragment.onDialogPositiveClick(): " + username + " / " + password);
 			}
 		});
 	}
@@ -142,7 +142,7 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("onDialogPositiveClick " + hour + ":" + minute);
+				Logcat.d("Fragment.onDialogPositiveClick(): " + hour + ":" + minute);
 			}
 		});
 	}
@@ -156,7 +156,7 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("onDialogPositiveClick " + day + "." + (month+1) + "." + year);
+				Logcat.d("Fragment.onDialogPositiveClick(): " + day + "." + (month+1) + "." + year);
 			}
 		});
 	}
@@ -170,7 +170,7 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("onDialogNegativeClick");
+				Logcat.d("Fragment.onDialogNegativeClick()");
 			}
 		});
 	}
@@ -184,7 +184,7 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("onDialogItemClick " + which);
+				Logcat.d("Fragment.onDialogItemClick(): " + which);
 			}
 		});
 	}

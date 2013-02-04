@@ -34,7 +34,6 @@ public class TaskSherlockFragment extends SherlockFragment implements TaskManage
 			while(pendingCallbacks-- > 0)
 			{
 				Runnable runnable = mPendingCallbacks.remove(0);
-				//Logcat.d("callback run pending " + runnable.getClass().getSimpleName());
 				runNow(runnable);
 			}
 		}
@@ -62,7 +61,7 @@ public class TaskSherlockFragment extends SherlockFragment implements TaskManage
 	
 	private void runNow(Runnable runnable)
 	{
-		//Logcat.d("callback run now " + runnable.getClass().getSimpleName());
+		//Logcat.d("TaskSherlockFragment.runNow(): " + runnable.getClass().getEnclosingMethod());
 		getActivity().runOnUiThread(runnable);
 	}
 
@@ -71,7 +70,7 @@ public class TaskSherlockFragment extends SherlockFragment implements TaskManage
 	{
 		synchronized(mLock)
 		{
-			//Logcat.d("callback add pending " + runnable.getClass().getSimpleName());
+			//Logcat.d("TaskSherlockFragment.addPending(): " + runnable.getClass().getEnclosingMethod());
 			mPendingCallbacks.add(runnable);
 		}
 	}

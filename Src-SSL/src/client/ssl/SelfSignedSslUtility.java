@@ -55,7 +55,7 @@ public class SelfSignedSslUtility
 			@Override
 			public boolean verify(String hostname, SSLSession session)
 			{
-				//Logcat.d("apicall.hostnameVerifier: " + hostname + "/" + apiHostname);
+				//Logcat.d("HostnameVerifier.verify(): " + hostname + " / " + apiHostname);
 				return hostname.equals(apiHostname);
 			}
 		};
