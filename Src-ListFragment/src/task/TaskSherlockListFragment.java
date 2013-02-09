@@ -19,7 +19,6 @@ public class TaskSherlockListFragment extends SherlockListFragment implements Ta
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setRetainInstance(true);
 	}
 	
 	

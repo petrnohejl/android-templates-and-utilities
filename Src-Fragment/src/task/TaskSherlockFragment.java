@@ -19,7 +19,6 @@ public class TaskSherlockFragment extends SherlockFragment implements TaskManage
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setRetainInstance(true);
 	}
 	
 	

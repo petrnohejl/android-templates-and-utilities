@@ -3,7 +3,6 @@ package com.example.fragment;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -237,7 +236,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 				
 				// example request with paging
 				ExampleRequest request = new ExampleRequest(0, LAZY_LOADING_TAKE);
-				mRequestManager.executeRequest(request, this, AsyncTask.THREAD_POOL_EXECUTOR);
+				mRequestManager.executeRequest(request, this);
 			}
 		}
 		else
@@ -264,7 +263,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 				int take = mMessages.size() <= LAZY_LOADING_MAX ? mMessages.size() : LAZY_LOADING_TAKE;
 				ExampleRequest request = new ExampleRequest(0, take);
 				request.setMetaData(bundle);
-				mRequestManager.executeRequest(request, this, AsyncTask.THREAD_POOL_EXECUTOR);
+				mRequestManager.executeRequest(request, this);
 			}
 		}
 		else
@@ -283,7 +282,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 			
 			// example request with paging
 			ExampleRequest request = new ExampleRequest(mMessages.size(), LAZY_LOADING_TAKE);
-			mRequestManager.executeRequest(request, this, AsyncTask.THREAD_POOL_EXECUTOR);
+			mRequestManager.executeRequest(request, this);
 		}
 	}
 	
