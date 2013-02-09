@@ -50,6 +50,6 @@ public class ImageFragment extends SherlockFragment
 		ImageView imageViewPhoto = (ImageView) mRootView.findViewById(R.id.layout_image_photo);
 
 		// image caching
-		mImageLoader.displayImage("http://placedog.com/200/200", imageViewPhoto, mDisplayImageOptions);
+		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", imageViewPhoto, mDisplayImageOptions);
 	}
 }
