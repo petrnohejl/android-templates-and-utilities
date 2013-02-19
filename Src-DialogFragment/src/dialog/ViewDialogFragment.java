@@ -144,6 +144,7 @@ public class ViewDialogFragment extends DialogFragment
 			public void onShow(DialogInterface dialogInterface)
 			{
 				Button button = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+				button.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_launcher), null, null, null);
 				button.setOnClickListener(new View.OnClickListener()
 				{
 					@Override
