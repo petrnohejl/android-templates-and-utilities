@@ -3,6 +3,7 @@
 
 	<!-- Example theme -->
 	<!-- Android Action Bar Style Generator: http://jgilfelt.github.com/android-actionbarstylegenerator -->
+	<!-- Android Holo Colors Generator: http://android-holo-colors.com -->
 	
 	<style name="Theme.Example" parent="Theme.Sherlock.Light">
 		<!-- action bar icon -->
