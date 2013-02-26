@@ -14,7 +14,7 @@ DO BEFORE UPDATE TO GOOGLE PLAY:
 -edit app changelog
 -edit text in about and on Google Play page
 -edit text in dialog for new version
--remove logs
+-disable logs
 -monkey test
 
 
@@ -44,7 +44,7 @@ TESTS:
 	android:versionName="1.0.0"
 	android:installLocation="auto">
 	
-	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16" />
+	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17" />
 	
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
