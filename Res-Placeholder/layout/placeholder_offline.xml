@@ -9,8 +9,7 @@
 		android:layout_height="match_parent"
 		android:orientation="vertical"
 		android:gravity="center"
-		android:paddingTop="@dimen/placeholder_padding"
-		android:paddingBottom="@dimen/placeholder_padding"
+		android:padding="@dimen/placeholder_padding"
 		android:background="@color/global_bg_front">
 
 		<TextView

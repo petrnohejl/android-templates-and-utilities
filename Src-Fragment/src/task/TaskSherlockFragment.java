@@ -3,6 +3,8 @@ package com.example.task;
 import java.util.LinkedList;
 import java.util.List;
 
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragment;
@@ -55,6 +57,20 @@ public class TaskSherlockFragment extends SherlockFragment implements TaskManage
 	{
 		if(mReady) runNow(runnable);
 		else addPending(runnable);
+	}
+
+
+	public void executeTask(AsyncTask<Void, ?, ?> task)
+	{
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+		{
+			// use AsyncTask.THREAD_POOL_EXECUTOR or AsyncTask.SERIAL_EXECUTOR
+			task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+		}
+		else
+		{
+			task.execute();
+		}
 	}
 	
 	

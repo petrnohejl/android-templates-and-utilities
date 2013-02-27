@@ -1,21 +1,21 @@
-package com.example.client.entity;
+package com.example.entity;
 
 
-public class Message
+public class Product
 {
 	private long id;
 	private String name;
 
 
 	// empty constructor
-	public Message()
+	public Product()
 	{
 	
 	}
 	
 	
 	// copy constructor
-	public Message(Message copyModel)
+	public Product(Product copyModel)
 	{
 		id = copyModel.id;
 		if(copyModel.name!=null) name = new String(copyModel.name);

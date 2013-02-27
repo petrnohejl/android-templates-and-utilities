@@ -13,21 +13,21 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
-import com.example.client.entity.Message;
-import com.example.listener.OnLoadListener;
-import com.example.task.LoadTask;
+import com.example.entity.Product;
+import com.example.listener.OnLoadDataListener;
+import com.example.task.LoadDataTask;
 import com.example.task.TaskSherlockFragment;
 import com.example.utility.ViewState;
 
 
-public class SimpleFragment extends TaskSherlockFragment implements OnLoadListener
+public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataListener
 {
 	private boolean mActionBarProgress = false;
 	private ViewState.Visibility mViewState = null;
 	private View mRootView;
-	private LoadTask mLoadTask;
+	private LoadDataTask mLoadDataTask;
 
-	private Message mMessage;
+	private Product mProduct;
 	
 	
 	@Override
@@ -80,7 +80,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadListen
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			if(mMessage!=null) renderView();
+			if(mProduct!=null) renderView();
 			showContent();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
@@ -138,7 +138,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadListen
 		super.onDestroy();
 		
 		// cancel async tasks
-		if(mLoadTask!=null) mLoadTask.cancel(true);
+		if(mLoadDataTask!=null) mLoadDataTask.cancel(true);
 	}
 	
 	
@@ -201,18 +201,18 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadListen
 	
 	
 	@Override
-	public void onLoad()
+	public void onLoadData()
 	{
 		runTaskCallback(new Runnable()
 		{
 			public void run()
 			{
 				// get data
-				mMessage = new Message();
-				mMessage.setName("Test Message");
+				mProduct = new Product();
+				mProduct.setName("Test Product");
 				
 				// hide progress and render view
-				if(mMessage!=null)
+				if(mProduct!=null)
 				{
 					renderView();
 					showContent();
@@ -243,8 +243,8 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadListen
 			showProgress();
 			
 			// run async task
-			mLoadTask = new LoadTask(this);
-			mLoadTask.execute();
+			mLoadDataTask = new LoadDataTask(this);
+			executeTask(mLoadDataTask);
 		}
 		else
 		{
@@ -327,6 +327,6 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadListen
 		TextView textViewName = (TextView) mRootView.findViewById(R.id.layout_simple_content_name);
 		
 		// content
-		textViewName.setText(mMessage.getName());
+		textViewName.setText(mProduct.getName());
 	}
 }

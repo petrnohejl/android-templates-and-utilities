@@ -10,20 +10,20 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.R;
-import com.example.client.entity.Message;
+import com.example.entity.Product;
 
 
 public class ListingAdapter extends BaseAdapter 
 {
 	private Context mContext;
-	private ArrayList<Message> mMessages;
+	private ArrayList<Product> mProducts;
 	private int mSelectedPosition = -1;
 	
 	
-	public ListingAdapter(Context context, ArrayList<Message> messages)
+	public ListingAdapter(Context context, ArrayList<Product> products)
 	{
 		mContext = context;
-		mMessages = messages;
+		mProducts = products;
 	}
 	
 	
@@ -44,15 +44,15 @@ public class ListingAdapter extends BaseAdapter
 		}
 		
 		// entity
-		Message message = (Message) mMessages.get(position);
+		Product product = (Product) mProducts.get(position);
 		
-		if(message != null)
+		if(product != null)
 		{
 			// view holder
 			ViewHolder holder = (ViewHolder) view.getTag();
 			
 			// content
-			holder.textViewName.setText(message.getName());
+			holder.textViewName.setText(product.getName());
 			
 			// selected item
 			if(mSelectedPosition == position)
@@ -72,14 +72,14 @@ public class ListingAdapter extends BaseAdapter
 	@Override
 	public int getCount()
 	{
-		return mMessages.size();
+		return mProducts.size();
 	}
 	
 	
 	@Override
 	public Object getItem(int position)
 	{
-		if(mMessages!=null) return mMessages.size();
+		if(mProducts!=null) return mProducts.size();
 		else return 0;
 	}
 	
@@ -91,10 +91,10 @@ public class ListingAdapter extends BaseAdapter
 	}
 	
 	
-	public void refill(Context context, ArrayList<Message> messages)
+	public void refill(Context context, ArrayList<Product> products)
 	{
 		mContext = context;
-		mMessages = messages;
+		mProducts = products;
 		notifyDataSetChanged();
 	}
 	

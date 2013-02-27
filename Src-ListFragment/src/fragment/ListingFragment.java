@@ -20,14 +20,14 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
 import com.example.adapter.ListingAdapter;
-import com.example.client.entity.Message;
-import com.example.listener.OnLoadListener;
-import com.example.task.LoadTask;
+import com.example.entity.Product;
+import com.example.listener.OnLoadDataListener;
+import com.example.task.LoadDataTask;
 import com.example.task.TaskSherlockListFragment;
 import com.example.utility.ViewState;
 
 
-public class ListingFragment extends TaskSherlockListFragment implements OnLoadListener
+public class ListingFragment extends TaskSherlockListFragment implements OnLoadDataListener
 {
 	private final int LAZY_LOADING_TAKE = 16;
 	private final int LAZY_LOADING_OFFSET = 4;
@@ -38,9 +38,9 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	private View mRootView;
 	private View mFooterView;
 	private ListingAdapter mAdapter;
-	private LoadTask mLoadTask;
+	private LoadDataTask mLoadDataTask;
 
-	private ArrayList<Message> mMessages = new ArrayList<Message>();
+	private ArrayList<Product> mProducts = new ArrayList<Product>();
 	
 	
 	@Override
@@ -93,7 +93,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			if(mMessages!=null) renderView();
+			if(mProducts!=null) renderView();
 			showList();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
@@ -153,7 +153,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		super.onDestroy();
 		
 		// cancel async tasks
-		if(mLoadTask!=null) mLoadTask.cancel(true);
+		if(mLoadDataTask!=null) mLoadDataTask.cancel(true);
 	}
 	
 	
@@ -226,19 +226,19 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 	
 	
 	@Override
-	public void onLoad()
+	public void onLoadData()
 	{
 		runTaskCallback(new Runnable()
 		{
 			public void run()
 			{
 				// get data
-				final int size = mMessages.size();
+				final int size = mProducts.size();
 				for(int i=0; i<LAZY_LOADING_TAKE; i++)
 				{
-					Message m = new Message();
-					m.setName("Message " + (size + i));
-					mMessages.add(m);
+					Product p = new Product();
+					p.setName("Product " + (size + i));
+					mProducts.add(p);
 				}
 				
 				// render view
@@ -248,7 +248,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 				}
 				else
 				{
-					if(mMessages!=null) renderView();
+					if(mProducts!=null) renderView();
 				}
 
 				// hide progress
@@ -279,8 +279,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 			showProgress();
 			
 			// run async task
-			mLoadTask = new LoadTask(this);
-			mLoadTask.execute();
+			mLoadDataTask = new LoadDataTask(this);
+			executeTask(mLoadDataTask);
 		}
 		else
 		{
@@ -297,8 +297,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 			startLazyLoadData();
 			
 			// run async task
-			mLoadTask = new LoadTask(this);
-			mLoadTask.execute();
+			mLoadDataTask = new LoadDataTask(this);
+			executeTask(mLoadDataTask);
 		}
 	}
 	
@@ -379,12 +379,12 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 		if(getListAdapter()==null)
 		{
 			// create adapter
-			mAdapter = new ListingAdapter(getActivity(), mMessages);
+			mAdapter = new ListingAdapter(getActivity(), mProducts);
 		}
 		else
 		{
 			// refill adapter
-			mAdapter.refill(getActivity(), mMessages);
+			mAdapter.refill(getActivity(), mProducts);
 		}
 		
 		// init footer, because addFooterView() must be called at least once before setListAdapter()
@@ -408,7 +408,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadL
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
 			{
-				if(totalItemCount-(firstVisibleItem+visibleItemCount) <= LAZY_LOADING_OFFSET && mMessages.size() % LAZY_LOADING_TAKE==0 && !mMessages.isEmpty())
+				if(totalItemCount-(firstVisibleItem+visibleItemCount) <= LAZY_LOADING_OFFSET && mProducts.size() % LAZY_LOADING_TAKE==0 && !mProducts.isEmpty())
 				{
 					if(!mLazyLoading) lazyLoadData();
 				}
