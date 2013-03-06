@@ -17,7 +17,7 @@ import com.example.client.ApiCall;
 import com.example.client.OnApiCallListener;
 import com.example.client.RequestManager;
 import com.example.client.ResponseStatus;
-import com.example.client.entity.Message;
+import com.example.client.entity.Product;
 import com.example.client.request.ExampleRequest;
 import com.example.client.response.ExampleResponse;
 import com.example.client.response.Response;
@@ -41,7 +41,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 	private ApiCallAdapter mAdapter;
 	private RequestManager mRequestManager = new RequestManager();
 	
-	private ArrayList<Message> mMessages = new ArrayList<Message>();
+	private ArrayList<Product> mProducts = new ArrayList<Product>();
 
 	
 	@Override
@@ -73,7 +73,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			if(mMessages!=null) renderView();
+			if(mProducts!=null) renderView();
 			showList();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
@@ -143,15 +143,15 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 						if(call.getRequest().getMetaData()!=null && call.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
 						{
 							// refresh
-							mMessages.clear();
+							mProducts.clear();
 						}
 						
 						// get data
-						Iterator<Message> iterator = exampleResponse.getMessages().iterator();
+						Iterator<Product> iterator = exampleResponse.getProducts().iterator();
 						while(iterator.hasNext())
 						{
-							Message message = iterator.next();
-							mMessages.add(new Message(message));
+							Product product = iterator.next();
+							mProducts.add(new Product(product));
 						}
 						
 						// render view
@@ -161,7 +161,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 						}
 						else
 						{
-							if(mMessages!=null) renderView();
+							if(mProducts!=null) renderView();
 						}
 
 						// hide progress
@@ -260,7 +260,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 				bundle.putBoolean(EXTRA_REFRESH, true);
 				
 				// example request with paging
-				int take = mMessages.size() <= LAZY_LOADING_MAX ? mMessages.size() : LAZY_LOADING_TAKE;
+				int take = mProducts.size() <= LAZY_LOADING_MAX ? mProducts.size() : LAZY_LOADING_TAKE;
 				ExampleRequest request = new ExampleRequest(0, take);
 				request.setMetaData(bundle);
 				mRequestManager.executeRequest(request, this);
@@ -281,7 +281,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 			startLazyLoadData();
 			
 			// example request with paging
-			ExampleRequest request = new ExampleRequest(mMessages.size(), LAZY_LOADING_TAKE);
+			ExampleRequest request = new ExampleRequest(mProducts.size(), LAZY_LOADING_TAKE);
 			mRequestManager.executeRequest(request, this);
 		}
 	}
