@@ -43,10 +43,11 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 		
 		setCancelable(true);
 		
-		// handle intent extras
-		if(getArguments() != null)
+		// handle fragment arguments
+		Bundle arguments = getArguments();
+		if(arguments != null)
 		{
-			handleExtras(getArguments());
+			handleArguments(arguments);
 		}
 		
 		// set callback listener
@@ -93,11 +94,11 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 	}
 	
 	
-	private void handleExtras(Bundle extras)
+	private void handleArguments(Bundle arguments)
 	{
-		if(extras.containsKey(EXTRA_TIME))
+		if(arguments.containsKey(EXTRA_TIME))
 		{
-			mTime = (Long) extras.get(EXTRA_TIME);
+			mTime = (Long) arguments.get(EXTRA_TIME);
 		}
 	}
 }

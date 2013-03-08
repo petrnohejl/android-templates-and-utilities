@@ -47,10 +47,11 @@ public class ItemsDialogFragment extends DialogFragment
 		setCancelable(true);
 		setRetainInstance(true);
 		
-		// handle intent extras
-		if(getArguments() != null)
+		// handle fragment arguments
+		Bundle arguments = getArguments();
+		if(arguments != null)
 		{
-			handleExtras(getArguments());
+			handleArguments(arguments);
 		}
 		
 		// set callback listener
@@ -126,11 +127,11 @@ public class ItemsDialogFragment extends DialogFragment
 	}
 		
 	
-	private void handleExtras(Bundle extras)
+	private void handleArguments(Bundle arguments)
 	{
-		if(extras.containsKey(EXTRA_ARG))
+		if(arguments.containsKey(EXTRA_ARG))
 		{
-			mArg = (String) extras.get(EXTRA_ARG);
+			mArg = (String) arguments.get(EXTRA_ARG);
 		}
 	}
 }

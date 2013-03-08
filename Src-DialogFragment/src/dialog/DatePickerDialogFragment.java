@@ -43,10 +43,11 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 		
 		setCancelable(true);
 		
-		// handle intent extras
-		if(getArguments() != null)
+		// handle fragment arguments
+		Bundle arguments = getArguments();
+		if(arguments != null)
 		{
-			handleExtras(getArguments());
+			handleArguments(arguments);
 		}
 		
 		// set callback listener
@@ -93,11 +94,11 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 	}
 	
 	
-	private void handleExtras(Bundle extras)
+	private void handleArguments(Bundle arguments)
 	{
-		if(extras.containsKey(EXTRA_DATE))
+		if(arguments.containsKey(EXTRA_DATE))
 		{
-			mDate = (Long) extras.get(EXTRA_DATE);
+			mDate = (Long) arguments.get(EXTRA_DATE);
 		}
 	}
 }

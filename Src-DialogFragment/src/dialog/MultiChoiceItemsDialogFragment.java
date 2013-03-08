@@ -47,10 +47,11 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 		setCancelable(true);
 		setRetainInstance(true);
 		
-		// handle intent extras
-		if(getArguments() != null)
+		// handle fragment arguments
+		Bundle arguments = getArguments();
+		if(arguments != null)
 		{
-			handleExtras(getArguments());
+			handleArguments(arguments);
 		}
 		
 		// set callback listener
@@ -126,11 +127,11 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 	}
 	
 	
-	private void handleExtras(Bundle extras)
+	private void handleArguments(Bundle arguments)
 	{
-		if(extras.containsKey(EXTRA_CHECKED_ITEMS))
+		if(arguments.containsKey(EXTRA_CHECKED_ITEMS))
 		{
-			mCheckedItems = (boolean[]) extras.get(EXTRA_CHECKED_ITEMS);
+			mCheckedItems = (boolean[]) arguments.get(EXTRA_CHECKED_ITEMS);
 		}
 	}
 }
