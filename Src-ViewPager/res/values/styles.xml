@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<!-- Example theme -->
+	
+	<style name="Theme.Example" parent="Theme.Sherlock.Light">
+		<!-- tab page indicator -->
+		<item name="vpiTabPageIndicatorStyle">@style/Example.TabPageIndicator</item>
+	</style>
+	
+	
+	<!-- tab page indicator -->
+	<style name="Example.TabPageIndicator" parent="Widget.TabPageIndicator">
+		<item name="android:background">@drawable/selector_ab_tab_bg</item>
+		<item name="android:textAppearance">@style/Example.TabPageIndicator.TextAppearance</item>
+		<item name="android:textColor">@color/ab_tab_text</item>
+		<item name="android:textSize">@dimen/ab_tab_text</item>
+		<item name="android:textAllCaps">false</item>
+		<item name="android:fadingEdge">horizontal</item>
+		<item name="android:fadingEdgeLength">@dimen/ab_tab_padding</item>
+		<item name="android:paddingLeft">@dimen/ab_tab_padding</item>
+		<item name="android:paddingRight">@dimen/ab_tab_padding</item>
+		<item name="android:divider">@drawable/ab_divider</item>
+		<item name="android:dividerPadding">@dimen/ab_tab_padding</item>
+		<item name="android:showDividers">middle</item>
+	</style>
+	
+	
+	<!-- tab page indicator text -->
+	<style name="Example.TabPageIndicator.TextAppearance" parent="android:TextAppearance.Medium">
+		<item name="android:typeface">normal</item>
+	</style>
+</resources>
