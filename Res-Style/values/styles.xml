@@ -35,8 +35,12 @@
 		<item name="android:itemBackground">@drawable/selector_ab_button_bg</item>
 
 		<!-- action bar action mode background drawable -->
-		<item name="actionModeBackground">@drawable/ab_bg_mode</item>
-		<item name="android:actionModeBackground">@drawable/ab_bg_mode</item>
+		<item name="actionModeBackground">@drawable/ab_bg_mode_top</item>
+		<item name="android:actionModeBackground">@drawable/ab_bg_mode_top</item>
+
+		<!-- action bar action mode split background drawable -->
+		<item name="actionModeSplitBackground">@drawable/ab_bg_mode_bottom</item>
+		<item name="android:actionModeSplitBackground">@drawable/ab_bg_mode_bottom</item>
 
 		<!-- action bar menu hardkey panel background drawable -->
 		<item name="android:panelBackground">@drawable/ab_popup_bottom_bg</item>
@@ -80,6 +84,10 @@
 		<!-- action bar tab text style -->
 		<item name="actionBarTabTextStyle">@style/Example.ActionBar.TabText</item>
 		<item name="android:actionBarTabTextStyle">@style/Example.ActionBar.TabText</item>
+		
+		<!-- action bar action mode close button style -->
+		<item name="actionModeCloseButtonStyle">@style/Example.ActionBar.ActionModeCloseButton</item>
+		<item name="android:actionModeCloseButtonStyle">@style/Example.ActionBar.ActionModeCloseButton</item>
 		
 		<!-- widget styles -->
 		<item name="android:textViewStyle">@style/Example.TextView</item>
@@ -133,7 +141,7 @@
 	
 	
 	<!-- action bar progress bar style -->
-	<style name="Example.ActionBar.ProgressBar" parent="@style/Widget.Sherlock.Light.ProgressBar.Horizontal">
+	<style name="Example.ActionBar.ProgressBar" parent="Widget.Sherlock.Light.ProgressBar.Horizontal">
 		<item name="android:progressDrawable">@drawable/layer_list_ab_progressbar_horizontal</item>
 	</style>
 	
@@ -192,6 +200,12 @@
 		<item name="android:textColor">@color/ab_tab_text</item>
 		<item name="android:textStyle">normal</item>
 		<item name="android:textAllCaps">false</item>
+	</style>
+	
+	
+	<!-- action bar action mode close button style -->
+	<style name="Example.ActionBar.ActionModeCloseButton" parent="Widget.Sherlock.Light.ActionButton.CloseMode">
+		<item name="android:background">@drawable/selector_ab_mode_close_bg</item>
 	</style>
 	
 	
