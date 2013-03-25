@@ -68,6 +68,7 @@ dependencies in the project should be listed below. For example:
 * [Holo Everywhere](https://github.com/ChristopheVersieux/HoloEverywhere)
 * [Ignition](https://github.com/kaeppler/ignition)
 * [Jackson](http://jackson.codehaus.org/)
+* [JazzyViewPager](https://github.com/jfeinstein10/JazzyViewPager)
 * [ListViewAnimations](https://bitbucket.org/nhaarman/listviewanimations)
 * [Localytics](http://www.localytics.com/)
 * [Map View Baloons](https://github.com/jgilfelt/android-mapviewballoons)
