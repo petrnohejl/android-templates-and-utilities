@@ -77,6 +77,7 @@ dependencies in the project should be listed below. For example:
 * [OrmLite](http://ormlite.com/)
 * [PhotoView](https://github.com/chrisbanes/PhotoView)
 * [Polaris](https://github.com/cyrilmottier/Polaris)
+* [RobotoTextView](https://github.com/johnkil/Android-RobotoTextView)
 * [RSS Reader](https://github.com/matshofman/Android-RSS-Reader-Library)
 * [ShowcaseView](https://github.com/Espiandev/ShowcaseView)
 * [Sliding Menu](https://github.com/jfeinstein10/SlidingMenu)

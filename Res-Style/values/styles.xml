@@ -4,6 +4,7 @@
 	<!-- Example theme -->
 	<!-- Android Action Bar Style Generator: http://jgilfelt.github.com/android-actionbarstylegenerator -->
 	<!-- Android Holo Colors Generator: http://android-holo-colors.com -->
+	<!-- Original Android styles: https://github.com/android/platform_frameworks_base/blob/master/core/res/res/values/styles.xml -->
 	
 	<style name="Theme.Example" parent="Theme.Sherlock.Light">
 		<!-- action bar icon -->
