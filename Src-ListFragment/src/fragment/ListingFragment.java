@@ -144,6 +144,9 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	public void onDestroyView()
 	{
 		super.onDestroyView();
+
+		// free adapter
+		setListAdapter(null);
 	}
 	
 	
@@ -218,8 +221,11 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	@Override
 	public void onListItemClick(ListView listView, View clickedView, int position, long id)
 	{
+		// list position
+		int listPosition = getListPosition(position);
+
 		// listview item onclick
-		if(mAdapter!=null) mAdapter.setSelectedPosition(position);
+		if(mAdapter!=null) mAdapter.setSelectedPosition(listPosition);
 		
 		// TODO
 	}
@@ -386,6 +392,14 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 			// refill adapter
 			mAdapter.refill(getActivity(), mProducts);
 		}
+
+		// add header
+		//setListAdapter(null);
+		//if(listView.getHeaderViewsCount()==0)
+		//{
+		//	mHeaderView = getActivity().getLayoutInflater().inflate(R.layout.layout_listing_header, null);
+		//	listView.addHeaderView(mHeaderView);
+		//}
 		
 		// init footer, because addFooterView() must be called at least once before setListAdapter()
 		mFooterView = getActivity().getLayoutInflater().inflate(R.layout.layout_listing_footer, null);
@@ -421,8 +435,22 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
 			{
+				// list position
+				int listPosition = getListPosition(position);
+
+				// TODO
+
 				return true;
 			}
 		});
+	}
+
+
+	private int getListPosition(int globalPosition)
+	{
+		// list position without headers, should be used for getting data entities from collections
+		int listPosition = globalPosition;
+		if(getListView()!=null) listPosition = globalPosition - getListView().getHeaderViewsCount();
+		return listPosition;
 	}
 }
