@@ -8,6 +8,7 @@ public class Entity
 	private long longVar;
 	private String stringVar;
 	private Date dateVar;
+	private Calendar calendarVar;
 	private MyModel myModel;
 	private ArrayList<String> strings;
 
@@ -27,6 +28,11 @@ public class Entity
 		longVar = copyModel.longVar;
 		if(copyModel.stringVar!=null) stringVar = new String(copyModel.stringVar);
 		if(copyModel.dateVar!=null) dateVar = new Date(copyModel.dateVar.getTime());
+		if(copyModel.calendarVar!=null)
+		{
+			calendarVar = Calendar.getInstance();
+			calendarVar.setTime(copyModel.calendarVar.getTime());
+		}
 		if(copyModel.myModel!=null) myModel = new MyModel(copyModel.myModel);
 		if(copyModel.strings!=null)
 		{
@@ -80,6 +86,14 @@ public class Entity
 	public void setDateVar(Date dateVar)
 	{
 		this.dateVar = dateVar;
+	}
+	public Calendar getCalendarVar()
+	{
+		return calendarVar;
+	}
+	public void setCalendarVar(Calendar calendarVar)
+	{
+		this.calendarVar = calendarVar;
 	}
 	public MyModel getMyModel()
 	{
