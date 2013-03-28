@@ -5,13 +5,19 @@ Android Templates And Utilities is a collection of source codes, utilities,
 templates and snippets for Android development. It helps to build new apps and 
 shows the best way how to implement certain problems on Android platform.
 
-Android Templates And Utilities are organized into 3 groups:
+You can find here templates for styling action bar, working with alarm manager,
+communicating with server API, creating dialogs, using Facebook API,
+geolocation, loading and caching images from web, showing notifications,
+working with broadcast receivers, setting SSL connection, working with
+view pager, fragments, list fragments and much more. All templates were tested
+and should be compatible with Android 2, 3, 4.
 
-* Demo - runnable demo app including src, res, manifest.
+Android Templates And Utilities are organized into 2 groups:
+
 * Src - source code including classes, methods, resources.
 * Res - resource code including xml files, images.
 
-**This README file serves mainly like a template for other projects.**
+**The rest of this README file serves mainly as a README template for other projects.**
 
 
 Features
@@ -94,6 +100,7 @@ Some galleries of Android libraries:
 
 * [Android UI Patterns Collection](https://play.google.com/store/apps/details?id=com.groidify.uipatterns)
 * [Android Views](http://www.androidviews.net/)
+* [DevAppsDirect](https://play.google.com/store/apps/details?id=com.inappsquared.devappsdirect)
 * [The Ultimate Android Library](http://www.theultimateandroidlibrary.com/)
 
 
