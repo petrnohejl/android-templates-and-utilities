@@ -104,8 +104,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 		// progress in action bar
 		showActionBarProgress(mActionBarProgress);
 		
-		// lazy loading
-		if(mLazyLoading) startLazyLoadData();
+		// lazy loading progress
+		if(mLazyLoading) showLazyLoadingProgress(true);
 	}
 	
 	
@@ -258,7 +258,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 				}
 
 				// hide progress
-				stopLazyLoadData();
+				showLazyLoadingProgress(false);
 				showList();
 			}
 		});
@@ -299,8 +299,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	{
 		if(true) // TODO: isOnline?
 		{
-			// show progress in footer
-			startLazyLoadData();
+			// show lazy loading progress
+			showLazyLoadingProgress(true);
 			
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
@@ -309,29 +309,30 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	}
 	
 	
-	private void startLazyLoadData()
+	private void showLazyLoadingProgress(boolean visible)
 	{
-		mLazyLoading = true;
+		if(visible)
+		{
+			mLazyLoading = true;
 		
-		// show footer
-		ListView listView = getListView();
-		listView.addFooterView(mFooterView);
-	}
-	
-	
-	private void stopLazyLoadData()
-	{
-		// hide footer
-		ListView listView = getListView();
-		listView.removeFooterView(mFooterView);
-		
-		mLazyLoading = false;
+			// show footer
+			ListView listView = getListView();
+			listView.addFooterView(mFooterView);
+		}
+		else
+		{
+			// hide footer
+			ListView listView = getListView();
+			listView.removeFooterView(mFooterView);
+			
+			mLazyLoading = false;
+		}
 	}
 	
 	
 	private void showActionBarProgress(boolean visible)
 	{
-		// show action bar progress
+		// show progress in action bar
 		getSherlockActivity().setSupportProgressBarIndeterminateVisibility(visible);
 		mActionBarProgress = visible;
 	}
