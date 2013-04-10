@@ -59,6 +59,10 @@ public class IntentActivity extends SherlockFragmentActivity
 			builder.append(",");
 			builder.append("16.123456");
 			builder.append("?z=16"); // zoom value: 2..23
+			builder.append("&q="); // query allows to show pin
+			builder.append(lat);
+			builder.append(",");
+			builder.append(lon);
 			
 			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(builder.toString()));
 			startActivity(intent);
