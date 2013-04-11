@@ -260,7 +260,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 				bundle.putBoolean(EXTRA_REFRESH, true);
 				
 				// example request with paging
-				int take = mProducts.size() <= LAZY_LOADING_MAX ? mProducts.size() : LAZY_LOADING_TAKE;
+				int take = (mProducts.size() <= LAZY_LOADING_MAX && mProducts.size() > 0) ? mProducts.size() : LAZY_LOADING_TAKE;
 				ExampleRequest request = new ExampleRequest(0, take);
 				request.setMetaData(bundle);
 				mRequestManager.executeRequest(request, this);
