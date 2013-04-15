@@ -3,7 +3,7 @@
 	<!-- Czech: one, few, other -->
 	<!-- English: one, other -->
 	
-	<plurals name="layout_example_score">
+	<plurals name="fragment_example_score">
 		<item quantity="one">Máš jeden bod.</item>
 		<item quantity="few">Máš %1$d body.</item>
 		<item quantity="other">Máš %1$d bodů.</item>
