@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-DO BEFORE UPDATE TO GOOGLE PLAY:
--set new version in manifest
--set server release API address
--set map API key
--set GCM sender ID
--set Facebook app ID
--set Android key hash on developers.facebook.com
--set Crittercism API key
--set Flurry API key
--add Flurry events for new features
--edit app changelog
--edit text in about and on Google Play page
--edit text in dialog for new version
--disable logs
--monkey test
+TODO BEFORE UPDATE APP ON GOOGLE PLAY:
+--------------------------------------
+-NEW VERSION:
+--set new version in manifest
+--edit text in changelog
+--edit text in help/about
+--edit text in dialog for new version
+--edit description and changelog on Google Play
+
+-API KEY AND ID:
+--set Google Maps API key
+--set Google Analytics/Flurry/Localytics API key
+--set Crittercism API key
+--set GCM sender ID
+--set Facebook app ID
+--set Android key hash on developers.facebook.com
+
+-OTHER:
+--disable logs
+--set server release API address
+--add Google Analytics/Flurry/Localytics events for new features
+
+
+TESTS:
+------
+-test app on all Android versions (handset, tablet)
+-monkey test (fast clicking, changing orientation)
+-test offline/empty/progress views
+-test migration from old version to new
+-test slow internet connection
+-test reboot (boot receivers, alarms, services)
+-test Google Analytics/Flurry/Localytics tracking
 
 
 RELEASE INFO:
+-------------
 -code:1 - name:1.0.0 - date:01.01.2013
 
 
 TODO:
+-----
 -fill in some tasks
-
-
-TESTS:
--test app on all Android versions (handset, tablet)
--monkey test (fast clicking, changing orientation, offline mode)
--test migration from older version to newer
--test offline mode
--test slow internet connection
--test empty views
--test reboot (boot receivers, alarms, services)
--test Flurry tracking
 -->
 
 
