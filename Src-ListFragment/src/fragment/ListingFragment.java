@@ -76,7 +76,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{	
-		mRootView = inflater.inflate(R.layout.layout_listing, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_listing, container, false);
 		return mRootView;
 	}
 	
@@ -398,12 +398,12 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 		//setListAdapter(null);
 		//if(listView.getHeaderViewsCount()==0)
 		//{
-		//	mHeaderView = getActivity().getLayoutInflater().inflate(R.layout.layout_listing_header, null);
+		//	mHeaderView = getActivity().getLayoutInflater().inflate(R.layout.fragment_listing_header, null);
 		//	listView.addHeaderView(mHeaderView);
 		//}
 		
 		// init footer, because addFooterView() must be called at least once before setListAdapter()
-		mFooterView = getActivity().getLayoutInflater().inflate(R.layout.layout_listing_footer, null);
+		mFooterView = getActivity().getLayoutInflater().inflate(R.layout.fragment_listing_footer, null);
 		listView.addFooterView(mFooterView);
 		
 		// set adapter

@@ -31,7 +31,7 @@ public class WebFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{	
-		mRootView = inflater.inflate(R.layout.layout_web, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_web, container, false);
 		return mRootView;
 	}
 	
@@ -39,7 +39,7 @@ public class WebFragment extends SherlockFragment
 	private void renderView()
 	{
 		// reference
-		final WebView webView = (WebView) mRootView.findViewById(R.id.layout_web_webview);
+		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_web_webview);
 		
 		// webview settings
 		webView.getSettings().setBuiltInZoomControls(true);
@@ -82,28 +82,28 @@ public class WebFragment extends SherlockFragment
 
 	private void controlBack()
 	{
-		final WebView webView = (WebView) mRootView.findViewById(R.id.layout_web_webview);
+		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_web_webview);
 		if(webView.canGoBack()) webView.goBack();
 	}
 	
 	
 	private void controlForward()
 	{
-		final WebView webView = (WebView) mRootView.findViewById(R.id.layout_web_webview);
+		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_web_webview);
 		if(webView.canGoForward()) webView.goForward();
 	}
 	
 	
 	private void controlStop()
 	{
-		final WebView webView = (WebView) mRootView.findViewById(R.id.layout_web_webview);
+		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_web_webview);
 		webView.stopLoading();
 	}
 	
 	
 	private void controlReload()
 	{
-		final WebView webView = (WebView) mRootView.findViewById(R.id.layout_web_webview);
+		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_web_webview);
 		webView.reload();
 	}
 }

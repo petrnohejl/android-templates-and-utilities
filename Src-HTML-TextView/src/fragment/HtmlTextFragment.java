@@ -20,7 +20,7 @@ public class HtmlTextFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.layout_html_text, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_html_text, container, false);
 		return mRootView;
 	}
 	
@@ -28,7 +28,7 @@ public class HtmlTextFragment extends SherlockFragment
 	private void renderView()
 	{
 		// reference
-		TextView textViewExample = (TextView) mRootView.findViewById(R.id.layout_html_text_example);
+		TextView textViewExample = (TextView) mRootView.findViewById(R.id.fragment_html_text_example);
 		
 		// color highlight
 		String colorHighlight = toHtmlColor(R.color.global_text_secondary);

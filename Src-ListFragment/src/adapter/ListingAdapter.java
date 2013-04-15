@@ -35,11 +35,11 @@ public class ListingAdapter extends BaseAdapter
 		if(view == null) 
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.layout_listing_item, null);
+			view = inflater.inflate(R.layout.fragment_listing_item, null);
 			
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.textViewName = (TextView) view.findViewById(R.id.layout_listing_item_name);
+			holder.textViewName = (TextView) view.findViewById(R.id.fragment_listing_item_name);
 			view.setTag(holder);
 		}
 		

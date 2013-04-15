@@ -39,7 +39,7 @@ public class ImageFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{	
-		mRootView = inflater.inflate(R.layout.layout_image, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_image, container, false);
 		return mRootView;
 	}
 	
@@ -47,7 +47,7 @@ public class ImageFragment extends SherlockFragment
 	private void renderView()
 	{
 		// reference
-		ImageView imageViewPhoto = (ImageView) mRootView.findViewById(R.id.layout_image_photo);
+		ImageView imageViewPhoto = (ImageView) mRootView.findViewById(R.id.fragment_image_photo);
 
 		// image caching
 		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", imageViewPhoto, mDisplayImageOptions);

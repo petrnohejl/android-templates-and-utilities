@@ -4,7 +4,7 @@
 	android:layout_height="wrap_content">
 
 	<com.example.view.EllipsizingTextView
-		android:id="@+id/layout_example_text"
+		android:id="@+id/fragment_example_text"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:maxLines="4"

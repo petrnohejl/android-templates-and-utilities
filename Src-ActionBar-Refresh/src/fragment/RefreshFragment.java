@@ -23,7 +23,7 @@ public class RefreshFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.layout_refresh, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_refresh, container, false);
 		return mRootView;
 	}
 	

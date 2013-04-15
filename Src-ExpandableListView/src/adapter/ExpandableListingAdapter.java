@@ -38,11 +38,11 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		if(view == null) 
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.layout_expandable_listing_item, null);
+			view = inflater.inflate(R.layout.fragment_expandable_listing_item, null);
 			
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.textViewName = (TextView) view.findViewById(R.id.layout_expandable_listing_item_name);
+			holder.textViewName = (TextView) view.findViewById(R.id.fragment_expandable_listing_item_name);
 			view.setTag(holder);
 		}
 		
@@ -102,11 +102,11 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		if(view == null) 
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.layout_expandable_listing_group, null);
+			view = inflater.inflate(R.layout.fragment_expandable_listing_group, null);
 
 			// view holder
 			ViewHolderGroup holder = new ViewHolderGroup();
-			holder.textViewName = (TextView) view.findViewById(R.id.layout_expandable_listing_group_name);
+			holder.textViewName = (TextView) view.findViewById(R.id.fragment_expandable_listing_group_name);
 			view.setTag(holder);
 		}
 

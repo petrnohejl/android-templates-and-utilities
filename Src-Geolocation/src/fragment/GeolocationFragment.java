@@ -27,7 +27,7 @@ public class GeolocationFragment extends TaskSherlockFragment implements OnGeolo
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.layout_geolocation, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_geolocation, container, false);
 		return mRootView;
 	}
 

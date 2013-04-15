@@ -63,7 +63,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.layout_simple, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_simple, container, false);
 		return mRootView;
 	}
 	
@@ -324,7 +324,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 	private void renderView()
 	{
 		// reference
-		TextView textViewName = (TextView) mRootView.findViewById(R.id.layout_simple_content_name);
+		TextView textViewName = (TextView) mRootView.findViewById(R.id.fragment_simple_content_name);
 		
 		// content
 		textViewName.setText(mProduct.getName());

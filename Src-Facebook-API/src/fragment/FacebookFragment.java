@@ -53,7 +53,7 @@ public class FacebookFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.layout_facebook, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_facebook, container, false);
 		return mRootView;
 	}
 	
@@ -91,11 +91,11 @@ public class FacebookFragment extends SherlockFragment
 	
 	private void renderView()
 	{
-		Button buttonLogin = (Button) mRootView.findViewById(R.id.layout_facebook_login);
-		Button buttonLogout = (Button) mRootView.findViewById(R.id.layout_facebook_logout);
-		Button buttonProfile = (Button) mRootView.findViewById(R.id.layout_facebook_profile);
-		Button buttonFriends = (Button) mRootView.findViewById(R.id.layout_facebook_friends);
-		Button buttonWallPost = (Button) mRootView.findViewById(R.id.layout_facebook_wall_post);
+		Button buttonLogin = (Button) mRootView.findViewById(R.id.fragment_facebook_login);
+		Button buttonLogout = (Button) mRootView.findViewById(R.id.fragment_facebook_logout);
+		Button buttonProfile = (Button) mRootView.findViewById(R.id.fragment_facebook_profile);
+		Button buttonFriends = (Button) mRootView.findViewById(R.id.fragment_facebook_friends);
+		Button buttonWallPost = (Button) mRootView.findViewById(R.id.fragment_facebook_wall_post);
 		
 		buttonLogin.setOnClickListener(new OnClickListener()
 		{

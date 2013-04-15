@@ -69,7 +69,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.layout_expandable_listing, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_expandable_listing, container, false);
 		return mRootView;
 	}
 	

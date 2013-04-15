@@ -56,7 +56,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{	
-		mRootView = inflater.inflate(R.layout.layout_apicall, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_apicall, container, false);
 		return mRootView;
 	}
 	

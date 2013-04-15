@@ -22,7 +22,7 @@ public class NotificationFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.layout_notification, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_notification, container, false);
 		return mRootView;
 	}
 	
