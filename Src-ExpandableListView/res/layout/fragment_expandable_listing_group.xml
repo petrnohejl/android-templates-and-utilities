@@ -5,7 +5,7 @@
 	android:orientation="horizontal"
 	android:focusable="false"
 	android:focusableInTouchMode="false"
-	android:background="@drawable/selector_widget_listview_group_bg">
+	android:background="@drawable/selector_view_listview_group_bg">
 	
 	<TextView
 		android:id="@+id/fragment_expandable_listing_group_name"

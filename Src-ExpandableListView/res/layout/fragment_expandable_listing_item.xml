@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="horizontal"
-	android:background="@drawable/selector_widget_listview_item_bg">
+	android:background="@drawable/selector_view_listview_item_bg">
 	
 	<TextView
 		android:id="@+id/fragment_expandable_listing_item_name"

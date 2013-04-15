@@ -57,11 +57,11 @@ public class ListingAdapter extends BaseAdapter
 			// selected item
 			if(mSelectedPosition == position)
 			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.color.widget_listview_item_bg_selected));
+				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.color.view_listview_item_bg_selected));
 			}
 			else
 			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.selector_widget_listview_item_bg));
+				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.selector_view_listview_item_bg));
 			}
 		}
 		

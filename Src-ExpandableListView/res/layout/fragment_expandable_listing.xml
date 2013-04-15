@@ -15,10 +15,10 @@
 			android:layout_height="wrap_content"
 			android:drawSelectorOnTop="false"
 			android:fastScrollEnabled="false"
-			android:dividerHeight="@dimen/widget_listview_divider"
-			android:divider="@color/widget_listview_divider"
-			android:childDivider="@color/widget_listview_divider"
-			android:cacheColorHint="@color/widget_listview_cache_color_hint"
+			android:dividerHeight="@dimen/view_listview_divider"
+			android:divider="@color/view_listview_divider"
+			android:childDivider="@color/view_listview_divider"
+			android:cacheColorHint="@color/view_listview_cache_color_hint"
 			android:listSelector="@android:color/transparent"
 			android:background="@color/global_bg_front" />
 		
