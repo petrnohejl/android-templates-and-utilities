@@ -2,30 +2,30 @@
 
 <!--
 TODO BEFORE UPDATE APP ON GOOGLE PLAY:
---------------------------------------
+======================================
 -NEW VERSION:
---set new version in manifest
---edit text in changelog
---edit text in help/about
---edit text in dialog for new version
---edit description and changelog on Google Play
+-set new version in manifest
+-edit text in changelog
+-edit text in help/about
+-edit text in dialog for new version
+-edit description and changelog on Google Play
 
 -API KEY AND ID:
---set Google Maps API key
---set Google Analytics/Flurry/Localytics API key
---set Crittercism API key
---set GCM sender ID
---set Facebook app ID
---set Android key hash on developers.facebook.com
+-set Google Maps API key
+-set Google Analytics/Flurry/Localytics API key
+-set Crittercism API key
+-set GCM sender ID
+-set Facebook app ID
+-set Android key hash on developers.facebook.com
 
 -OTHER:
---disable logs
---set server release API address
---add Google Analytics/Flurry/Localytics events for new features
+-disable logs
+-set server release API address
+-add Google Analytics/Flurry/Localytics events for new features
 
 
 TESTS:
-------
+======
 -test app on all Android versions (handset, tablet)
 -monkey test (fast clicking, changing orientation)
 -test offline/empty/progress views
@@ -36,12 +36,12 @@ TESTS:
 
 
 RELEASE INFO:
--------------
+=============
 -code:1 - name:1.0.0 - date:01.01.2013
 
 
 TODO:
------
+=====
 -fill in some tasks
 -->
 
