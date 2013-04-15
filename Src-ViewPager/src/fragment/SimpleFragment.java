@@ -76,9 +76,9 @@ public class SimpleFragment extends SherlockFragment
 	private void renderView()
 	{
 		// reference
-		TextView textViewName = (TextView) mRootView.findViewById(R.id.fragment_simple_content_name);
+		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_simple_content_name);
 		
 		// content
-		textViewName.setText("Fragment " + mArg);
+		nameTextView.setText("Fragment " + mArg);
 	}
 }

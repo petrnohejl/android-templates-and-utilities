@@ -28,7 +28,7 @@ public class HtmlTextFragment extends SherlockFragment
 	private void renderView()
 	{
 		// reference
-		TextView textViewExample = (TextView) mRootView.findViewById(R.id.fragment_html_text_example);
+		TextView exampleTextView = (TextView) mRootView.findViewById(R.id.fragment_html_text_example);
 		
 		// color highlight
 		String colorHighlight = toHtmlColor(R.color.global_text_secondary);
@@ -46,8 +46,8 @@ public class HtmlTextFragment extends SherlockFragment
 
 		// set html text
 		// beware of this bug: https://code.google.com/p/android/issues/detail?id=35412, https://code.google.com/p/android/issues/detail?id=34913
-		textViewExample.setText(Html.fromHtml(builder.toString()), TextView.BufferType.SPANNABLE);
-		textViewExample.setMovementMethod(LinkMovementMethod.getInstance());
+		exampleTextView.setText(Html.fromHtml(builder.toString()), TextView.BufferType.SPANNABLE);
+		exampleTextView.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 	
 	

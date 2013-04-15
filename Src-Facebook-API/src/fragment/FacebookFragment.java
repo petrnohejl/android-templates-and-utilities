@@ -91,13 +91,13 @@ public class FacebookFragment extends SherlockFragment
 	
 	private void renderView()
 	{
-		Button buttonLogin = (Button) mRootView.findViewById(R.id.fragment_facebook_login);
-		Button buttonLogout = (Button) mRootView.findViewById(R.id.fragment_facebook_logout);
-		Button buttonProfile = (Button) mRootView.findViewById(R.id.fragment_facebook_profile);
-		Button buttonFriends = (Button) mRootView.findViewById(R.id.fragment_facebook_friends);
-		Button buttonWallPost = (Button) mRootView.findViewById(R.id.fragment_facebook_wall_post);
+		Button loginButton = (Button) mRootView.findViewById(R.id.fragment_facebook_login);
+		Button logoutButton = (Button) mRootView.findViewById(R.id.fragment_facebook_logout);
+		Button profileButton = (Button) mRootView.findViewById(R.id.fragment_facebook_profile);
+		Button friendsButton = (Button) mRootView.findViewById(R.id.fragment_facebook_friends);
+		Button wallPostButton = (Button) mRootView.findViewById(R.id.fragment_facebook_wall_post);
 		
-		buttonLogin.setOnClickListener(new OnClickListener()
+		loginButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -113,7 +113,7 @@ public class FacebookFragment extends SherlockFragment
 			}
 		});
 		
-		buttonLogout.setOnClickListener(new OnClickListener()
+		logoutButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -129,7 +129,7 @@ public class FacebookFragment extends SherlockFragment
 			}
 		});
 		
-		buttonProfile.setOnClickListener(new OnClickListener()
+		profileButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -145,7 +145,7 @@ public class FacebookFragment extends SherlockFragment
 			}
 		});
 		
-		buttonFriends.setOnClickListener(new OnClickListener()
+		friendsButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -161,7 +161,7 @@ public class FacebookFragment extends SherlockFragment
 			}
 		});
 		
-		buttonWallPost.setOnClickListener(new OnClickListener()
+		wallPostButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)

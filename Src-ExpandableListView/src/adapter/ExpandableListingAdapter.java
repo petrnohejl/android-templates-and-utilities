@@ -42,7 +42,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 			
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.textViewName = (TextView) view.findViewById(R.id.fragment_expandable_listing_item_name);
+			holder.nameTextView = (TextView) view.findViewById(R.id.fragment_expandable_listing_item_name);
 			view.setTag(holder);
 		}
 		
@@ -55,7 +55,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 			ViewHolder holder = (ViewHolder) view.getTag();
 			
 			// content
-			holder.textViewName.setText(product.getName());
+			holder.nameTextView.setText(product.getName());
 			
 			// selected item
 			if(mSelectedGroupPosition == groupPosition && mSelectedChildPosition == childPosition)
@@ -106,7 +106,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 
 			// view holder
 			ViewHolderGroup holder = new ViewHolderGroup();
-			holder.textViewName = (TextView) view.findViewById(R.id.fragment_expandable_listing_group_name);
+			holder.nameTextView = (TextView) view.findViewById(R.id.fragment_expandable_listing_group_name);
 			view.setTag(holder);
 		}
 
@@ -119,7 +119,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 			ViewHolderGroup holder = (ViewHolderGroup) view.getTag();
 
 			// content
-			holder.textViewName.setText(group);
+			holder.nameTextView.setText(group);
 		}
 
 		return view;
@@ -199,12 +199,12 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	
 	static class ViewHolder
 	{
-		TextView textViewName;
+		TextView nameTextView;
 	}
 	
 	
 	static class ViewHolderGroup
 	{
-		TextView textViewName;
+		TextView nameTextView;
 	}
 }

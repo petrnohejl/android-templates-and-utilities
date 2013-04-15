@@ -39,7 +39,7 @@ public class ListingAdapter extends BaseAdapter
 			
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.textViewName = (TextView) view.findViewById(R.id.fragment_listing_item_name);
+			holder.nameTextView = (TextView) view.findViewById(R.id.fragment_listing_item_name);
 			view.setTag(holder);
 		}
 		
@@ -52,7 +52,7 @@ public class ListingAdapter extends BaseAdapter
 			ViewHolder holder = (ViewHolder) view.getTag();
 			
 			// content
-			holder.textViewName.setText(product.getName());
+			holder.nameTextView.setText(product.getName());
 			
 			// selected item
 			if(mSelectedPosition == position)
@@ -120,6 +120,6 @@ public class ListingAdapter extends BaseAdapter
 	
 	static class ViewHolder
 	{
-		TextView textViewName;
+		TextView nameTextView;
 	}
 }

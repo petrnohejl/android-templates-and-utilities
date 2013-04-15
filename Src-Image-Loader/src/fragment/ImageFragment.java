@@ -47,9 +47,9 @@ public class ImageFragment extends SherlockFragment
 	private void renderView()
 	{
 		// reference
-		ImageView imageViewPhoto = (ImageView) mRootView.findViewById(R.id.fragment_image_photo);
+		ImageView photoImageView = (ImageView) mRootView.findViewById(R.id.fragment_image_photo);
 
 		// image caching
-		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", imageViewPhoto, mDisplayImageOptions);
+		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", photoImageView, mDisplayImageOptions);
 	}
 }

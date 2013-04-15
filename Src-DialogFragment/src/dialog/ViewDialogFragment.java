@@ -100,11 +100,11 @@ public class ViewDialogFragment extends DialogFragment
 		// save current instance state
 		super.onSaveInstanceState(outState);
 
-		EditText editTextUsername = (EditText) mRootView.findViewById(R.id.dialog_view_username);
-		EditText editTextPassword = (EditText) mRootView.findViewById(R.id.dialog_view_password);
+		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_view_username);
+		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_view_password);
 		
-		mUsername = editTextUsername.getText().toString();
-		mPassword = editTextPassword.getText().toString();
+		mUsername = usernameEditText.getText().toString();
+		mPassword = passwordEditText.getText().toString();
 	}
 	
 	
@@ -151,11 +151,11 @@ public class ViewDialogFragment extends DialogFragment
 					@Override
 					public void onClick(View v)
 					{
-						EditText editTextUsername = (EditText) mRootView.findViewById(R.id.dialog_view_username);
-						EditText editTextPassword = (EditText) mRootView.findViewById(R.id.dialog_view_password);
+						EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_view_username);
+						EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_view_password);
 						
-						String username = editTextUsername.getText().toString();
-						String password = editTextPassword.getText().toString();
+						String username = usernameEditText.getText().toString();
+						String password = passwordEditText.getText().toString();
 						
 						// TODO: data validation
 						
@@ -172,11 +172,11 @@ public class ViewDialogFragment extends DialogFragment
 	
 	private void handleSavedInstanceState()
 	{
-		EditText editTextUsername = (EditText) mRootView.findViewById(R.id.dialog_view_username);
-		EditText editTextPassword = (EditText) mRootView.findViewById(R.id.dialog_view_password);
+		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_view_username);
+		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_view_password);
 		
-		editTextUsername.setText(mUsername);
-		editTextPassword.setText(mPassword);
+		usernameEditText.setText(mUsername);
+		passwordEditText.setText(mPassword);
 	}
 	
 	
