@@ -107,7 +107,9 @@ Some galleries of Android libraries:
 Developed by
 ============
 
-* [Petr Nohejl](http://petrnohejl.cz), 2012-2013
+[Petr Nohejl](http://petrnohejl.cz), 2012-2013
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B3JBY3NU6L2XY)
 
 
 License
