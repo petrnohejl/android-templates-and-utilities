@@ -67,11 +67,12 @@ dependencies in the project should be listed below. For example:
 * [Facebook Android SDK](https://github.com/facebook/facebook-android-sdk)
 * [File Picker Activity](https://github.com/Kaloer/Android-File-Picker-Activity)
 * [Flurry](http://www.flurry.com/)
+* [Google Analytics](http://www.google.com/analytics/)
 * [Google Cloud Messaging](http://developer.android.com/sdk/index.html)
 * [Green Droid](https://github.com/cyrilmottier/GreenDroid)
 * [GreenDAO](http://greendao-orm.com/)
 * [GSON](http://code.google.com/p/google-gson/)
-* [Holo Everywhere](https://github.com/ChristopheVersieux/HoloEverywhere)
+* [Holo Everywhere](https://github.com/Prototik/HoloEverywhere)
 * [Ignition](https://github.com/kaeppler/ignition)
 * [Jackson](http://jackson.codehaus.org/)
 * [JazzyViewPager](https://github.com/jfeinstein10/JazzyViewPager)
@@ -98,7 +99,6 @@ dependencies in the project should be listed below. For example:
 
 Some galleries of Android libraries:
 
-* [Android UI Patterns Collection](https://play.google.com/store/apps/details?id=com.groidify.uipatterns)
 * [Android Views](http://www.androidviews.net/)
 * [DevAppsDirect](https://play.google.com/store/apps/details?id=com.inappsquared.devappsdirect)
 * [The Ultimate Android Library](http://www.theultimateandroidlibrary.com/)
