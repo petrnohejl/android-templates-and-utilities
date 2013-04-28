@@ -3,14 +3,14 @@
 	<item 
 		android:id="@+id/ab_button_refresh"
 		android:title="@string/ab_button_refresh"
-		android:icon="@drawable/ic_action_refresh"
+		android:icon="@drawable/ic_menu_refresh"
 		android:showAsAction="ifRoom"
 		android:orderInCategory="1" />
 	
 	<item 
 		android:id="@+id/ab_button_list"
 		android:title="@string/ab_button_list"
-		android:icon="@drawable/ic_action_list"
+		android:icon="@drawable/ic_menu_list"
 		android:showAsAction="ifRoom"
 		android:orderInCategory="2">
 		<menu>
