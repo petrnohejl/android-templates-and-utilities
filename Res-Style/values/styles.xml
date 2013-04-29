@@ -212,21 +212,18 @@
 	
 	<!-- view textview -->
 	<style name="Example.TextView" parent="@android:style/Widget.TextView">
-		<item name="android:textSize">@dimen/view_textview_text</item>
 		<item name="android:textColor">@color/view_textview_text</item>
 	</style>
 	
 	
 	<!-- view button -->
 	<style name="Example.Button" parent="@android:style/Widget.Button">
-		<item name="android:textSize">@dimen/view_button_text</item>
 		<item name="android:textColor">@color/view_button_text</item>
 	</style>
 	
 	
 	<!-- view edittext -->
 	<style name="Example.EditText" parent="@android:style/Widget.EditText">
-		<item name="android:textSize">@dimen/view_edittext_text</item>
 		<item name="android:textColor">@color/view_edittext_text</item>
 		<item name="android:textColorHint">@color/view_edittext_hint_text</item>
 	</style>
@@ -234,7 +231,6 @@
 	
 	<!-- view checkbox -->
 	<style name="Example.CheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
-		<item name="android:textSize">@dimen/view_checkbox_text</item>
 		<item name="android:textColor">@color/view_checkbox_text</item>
 	</style>
 </resources>

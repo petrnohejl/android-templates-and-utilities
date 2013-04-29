@@ -11,10 +11,6 @@
 	<dimen name="global_metric_xlarge">32dp</dimen>
 	<dimen name="global_metric_unity">48dp</dimen>
 	
-	<dimen name="view_textview_text">18sp</dimen>
-	<dimen name="view_button_text">18sp</dimen>
-	<dimen name="view_edittext_text">18sp</dimen>
-	<dimen name="view_checkbox_text">18sp</dimen>
 	<dimen name="view_listview_divider">0.5dp</dimen>
 	
 	<dimen name="ab_title_text">16sp</dimen>
