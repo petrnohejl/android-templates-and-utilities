@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<ListPreference
+		android:key="@string/prefs_key_sync_frequency"
+		android:title="@string/prefs_title_sync_frequency"
+		android:icon="@null"
+		android:defaultValue="@string/prefs_default_sync_frequency"
+		android:entries="@array/prefs_entries_sync_frequency"
+		android:entryValues="@array/prefs_values_sync_frequency"
+		android:persistent="true"
+		android:positiveButtonText="@null"
+		android:negativeButtonText="@null" />
+
+	<Preference 
+		android:title="@string/prefs_title_privacy_policy"
+		android:icon="@null"
+		android:persistent="false">
+
+		<intent android:action="android.intent.action.VIEW" android:data="@string/prefs_data_privacy_policy" />
+
+	</Preference>
+
+</PreferenceScreen>

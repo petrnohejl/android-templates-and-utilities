@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:unified="http://schemas.android.com/apk/res-auto">
+
+	<header
+		unified:fragment="com.example.activity.SettingsActivity$GeneralPreferenceFragment"
+		unified:title="@string/prefs_header_general"
+		unified:preferenceRes="@xml/prefs_general" />
+
+	<header
+		unified:fragment="com.example.activity.SettingsActivity$NotificationPreferenceFragment"
+		unified:title="@string/prefs_header_notifications"
+		unified:preferenceRes="@xml/prefs_notifications" />
+
+	<header
+		unified:fragment="com.example.activity.SettingsActivity$DataSyncPreferenceFragment"
+		unified:title="@string/prefs_header_data_sync"
+		unified:preferenceRes="@xml/prefs_data_sync" />
+
+</preference-headers>
