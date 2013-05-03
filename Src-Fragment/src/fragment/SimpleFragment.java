@@ -324,7 +324,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 	private void renderView()
 	{
 		// reference
-		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_simple_content_name);
+		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_simple_name);
 		
 		// content
 		nameTextView.setText(mProduct.getName());
