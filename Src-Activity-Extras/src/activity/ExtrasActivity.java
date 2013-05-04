@@ -16,6 +16,9 @@ public class ExtrasActivity extends SherlockFragmentActivity
 	public static final String SAVE_FORM_LOGIN = "form_login";
 	public static final String SAVE_FORM_PASSWORD = "form_password";
 	
+	public static final int ACTION_PICK_IMAGE_FROM_CAMERA = 1;
+	public static final int ACTION_PICK_IMAGE_FROM_GALLERY = 2;
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
