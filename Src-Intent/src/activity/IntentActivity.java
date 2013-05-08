@@ -171,7 +171,7 @@ public class IntentActivity extends SherlockFragmentActivity
 			builder.append("tel:");
 			builder.append("+420123456789");
 			
-			Intent intent = new Intent(android.content.Intent.ACTION_CALL, Uri.parse(builder.toString()));
+			Intent intent = new Intent(android.content.Intent.ACTION_DIAL, Uri.parse(builder.toString()));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)

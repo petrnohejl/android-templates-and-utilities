@@ -139,7 +139,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 					{
 						Logcat.d("Fragment.onApiCallRespond(ExampleResponse): " + status.getStatusCode() + " " + status.getStatusMessage());
 
-						// check metda data
+						// check meta data
 						if(call.getRequest().getMetaData()!=null && call.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
 						{
 							// refresh
