@@ -33,7 +33,10 @@ public class AspectRatioImageView extends ImageView
 		
 		try
 		{
-			height = width * getDrawable().getIntrinsicHeight() / getDrawable().getIntrinsicWidth();
+			if(getDrawable()!=null)
+			{
+				height = width * getDrawable().getIntrinsicHeight() / getDrawable().getIntrinsicWidth();
+			}
 		}
 		catch(ArithmeticException e)
 		{
