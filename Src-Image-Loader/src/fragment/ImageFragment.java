@@ -8,8 +8,10 @@ import android.widget.ImageView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
+import com.example.listener.AnimateFirstDisplayListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 
 
@@ -18,6 +20,7 @@ public class ImageFragment extends SherlockFragment
 	private View mRootView;
 	private ImageLoader mImageLoader = ImageLoader.getInstance();
 	private DisplayImageOptions mDisplayImageOptions;
+	private ImageLoadingListener mImageLoadingListener;
 
 	
 	@Override
@@ -27,12 +30,14 @@ public class ImageFragment extends SherlockFragment
 		
 		// image caching options
 		mDisplayImageOptions = new DisplayImageOptions.Builder()
-			.showStubImage(R.drawable.placeholder_photo)
+			.showStubImage(android.R.color.transparent)
 			.showImageForEmptyUri(R.drawable.placeholder_photo)
+			.showImageOnFail(R.drawable.placeholder_photo)
 			.cacheInMemory()
 			.cacheOnDisc()
 			.displayer(new SimpleBitmapDisplayer())
 			.build();
+		mImageLoadingListener = new AnimateFirstDisplayListener();
 	}
 
 	
@@ -50,6 +55,6 @@ public class ImageFragment extends SherlockFragment
 		ImageView photoImageView = (ImageView) mRootView.findViewById(R.id.fragment_image_photo);
 
 		// image caching
-		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", photoImageView, mDisplayImageOptions);
+		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", photoImageView, mDisplayImageOptions, mImageLoadingListener);
 	}
 }
