@@ -49,7 +49,7 @@ public class LoginRequest extends Request
 		// url
 		builder.append(BASE_URL);
 		builder.append(REQUEST_URL);
-		if(paramsString !=null && !paramsString.equals(""))
+		if(paramsString!=null && !paramsString.equals(""))
 		{
 			builder.append("?");
 			builder.append(paramsString);

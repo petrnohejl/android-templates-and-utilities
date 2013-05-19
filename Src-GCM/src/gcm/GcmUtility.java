@@ -1,0 +1,220 @@
+package com.example.gcm;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
+
+import android.content.Context;
+
+import com.example.utility.Logcat;
+import com.google.android.gcm.GCMRegistrar;
+
+
+public class GcmUtility
+{
+	public static final String REGISTER_URL = "http://example.com/register";
+	public static final String UNREGISTER_URL = "http://example.com/unregister";
+	public static final String SENDER_ID = "123456789";
+	
+	private static final int MAX_ATTEMPTS = 5;
+	private static final int BACKOFF_MILLI_SECONDS = 2000;
+	private static final String CHARSET = "UTF-8";
+	private static final Random random = new Random();
+
+
+	// register this account/device pair within the server
+	public static void register(final Context context, final String registrationId)
+	{
+		Logcat.d("ServerUtility.register(): registering device with registration ID " + registrationId);
+		
+		// request url
+		String requestUrl = REGISTER_URL;
+		
+		// request params
+		List<NameValuePair> paramsList = new LinkedList<NameValuePair>();
+		paramsList.add(new BasicNameValuePair("regId", registrationId));
+		String params = URLEncodedUtils.format(paramsList, CHARSET);
+		
+		// initial sleep time before next try
+		long backoff = BACKOFF_MILLI_SECONDS + random.nextInt(1000);
+		
+		// Once GCM returns a registration id, we need to register it on the server.
+		// As the server might be down, we will retry it a couple times.
+		for(int i=1; i<=MAX_ATTEMPTS; i++)
+		{
+			Logcat.d("ServerUtility.register(): attempt #" + i + " to register");
+			
+			try
+			{
+				post(requestUrl, params); // TODO: use post or get
+				GCMRegistrar.setRegisteredOnServer(context, true);
+				Logcat.d("ServerUtility.register(): server successfully registered device");
+				return;
+			}
+			catch(IOException e)
+			{
+				// Here we are simplifying and retrying on any error.
+				// In a real application, it should retry only on unrecoverable errors (like HTTP error code 503).
+				Logcat.d("ServerUtility.register(): server failed to register on attempt #" + i + ": " + e.getMessage());
+				
+				if(i == MAX_ATTEMPTS) break;
+				
+				try
+				{
+					Logcat.d("ServerUtility.register(): sleeping for " + backoff + " ms before retry");
+					Thread.sleep(backoff);
+				}
+				catch(InterruptedException interruptedException)
+				{
+					// activity finished before we complete
+					Logcat.d("ServerUtility.register(): thread interrupted so abort remaining retries");
+					Thread.currentThread().interrupt();
+					return;
+				}
+				
+				// increase backoff exponentially
+				backoff *= 2;
+			}
+		}
+		
+		Logcat.d("ServerUtility.register(): could not register device on server after " + MAX_ATTEMPTS + " attempts");
+	}
+
+
+	// unregister this account/device pair within the server
+	public static void unregister(final Context context, final String registrationId)
+	{
+		Logcat.d("ServerUtility.unregister(): unregistering device with registration ID " + registrationId);
+		
+		// request url
+		String requestUrl = UNREGISTER_URL;
+		
+		// request params
+		List<NameValuePair> paramsList = new LinkedList<NameValuePair>();
+		paramsList.add(new BasicNameValuePair("regId", registrationId));
+		String params = URLEncodedUtils.format(paramsList, CHARSET);
+		
+		try
+		{
+			post(requestUrl, params); // TODO: use post or get
+			GCMRegistrar.setRegisteredOnServer(context, false);
+			Logcat.d("ServerUtility.unregister(): server successfully unregistered device");
+		}
+		catch(IOException e)
+		{
+			// At this point the device is unregistered from GCM, but still registered on the server.
+			// We could try to unregister again, but it is not necessary: if the server tries to send a message to the device,
+			// it will get a "NotRegistered" error message and should unregister the device.
+			Logcat.d("ServerUtility.unregister(): could not unregister device on server: " + e.getMessage());
+		}
+	}
+
+
+	// send a POST request to the server
+	private static void post(String requestUrl, String params) throws IOException
+	{
+		// create new URL
+		URL url;
+		try
+		{
+			url = new URL(requestUrl);
+		}
+		catch(MalformedURLException e)
+		{
+			throw new IllegalArgumentException("Invalid url " + requestUrl);
+		}
+		
+		// data
+		byte[] requestData = params.getBytes();
+		
+		Logcat.d("ServerUtility.post(): sending '" + params + "' to " + url);
+		
+		// URL connection
+		HttpURLConnection connection = null;
+		try
+		{
+			connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("POST");
+			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+			connection.setFixedLengthStreamingMode(requestData.length);
+			connection.setDoOutput(true);
+			connection.setUseCaches(false);
+			connection.connect();
+			
+			// post the request
+			OutputStream outputStream = connection.getOutputStream();
+			outputStream.write(requestData);
+			outputStream.close();
+			
+			// handle the response
+			int status = connection.getResponseCode();
+			if(status != 200)
+			{
+				throw new IOException("POST failed with error code " + status);
+			}
+		}
+		finally
+		{
+			if(connection != null) connection.disconnect();
+		}
+	}
+	
+	
+	// send a GET request to the server
+	private static void get(String baseUrl, String params) throws IOException
+	{
+		// request URL
+		StringBuilder builder = new StringBuilder();
+		builder.append(baseUrl);
+		if(params!=null && !params.equals(""))
+		{
+			builder.append("?");
+			builder.append(params);
+		}
+		String requestUrl = builder.toString();
+		
+		// create new URL
+		URL url;
+		try
+		{
+			url = new URL(requestUrl);
+		}
+		catch(MalformedURLException e)
+		{
+			throw new IllegalArgumentException("Invalid url " + requestUrl);
+		}
+		
+		Logcat.d("ServerUtility.get(): sending " + requestUrl);
+		
+		// URL connection
+		HttpURLConnection connection = null;
+		try
+		{
+			connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("GET");
+			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+			connection.setUseCaches(false);
+			connection.connect();
+			
+			// handle the response
+			int status = connection.getResponseCode();
+			if(status != 200)
+			{
+				throw new IOException("GET failed with error code " + status);
+			}
+		}
+		finally
+		{
+			if(connection != null) connection.disconnect();
+		}
+	}
+}
