@@ -106,7 +106,7 @@ public class ListingActivity extends SherlockFragmentActivity implements OnDualP
 	
 	private void handleSavedInstanceState(Bundle savedInstanceState)
 	{
-		String dualPaneFragmentString = savedInstanceState.getString(SAVE_DUAL_PANE_FRAGMENT, null);
+		String dualPaneFragmentString = savedInstanceState.getString(SAVE_DUAL_PANE_FRAGMENT);
 		try
 		{
 			if(dualPaneFragmentString!=null) mDualPaneFragment = Class.forName(dualPaneFragmentString);
