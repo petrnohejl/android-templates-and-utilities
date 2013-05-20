@@ -32,7 +32,7 @@ public class GcmActivity extends SherlockFragmentActivity
 	public void onDestroy()
 	{
 		if(mRegisterAsyncTask!=null) mRegisterAsyncTask.cancel(true);
-		GCMRegistrar.onDestroy(this);
+		GCMRegistrar.onDestroy(getApplicationContext());
 		
 		super.onDestroy();
 	}
@@ -40,24 +40,26 @@ public class GcmActivity extends SherlockFragmentActivity
 
 	private void handleGcmRegistration()
 	{
+		final Context context = getApplicationContext();
+		
 		// make sure the device has the proper dependencies
-		GCMRegistrar.checkDevice(this);
+		GCMRegistrar.checkDevice(context);
 		
 		// make sure the manifest was properly set
-		GCMRegistrar.checkManifest(this);
+		GCMRegistrar.checkManifest(context);
 		
 		// registration id
-		final String registrationId = GCMRegistrar.getRegistrationId(this);
+		final String registrationId = GCMRegistrar.getRegistrationId(context);
 		
 		if(registrationId.equals(""))
 		{
 			// automatically registers application on startup
-			GCMRegistrar.register(this, GcmUtility.SENDER_ID);
+			GCMRegistrar.register(context, GcmUtility.SENDER_ID);
 		}
 		else
 		{
 			// device is already registered on GCM service, check server
-			if(GCMRegistrar.isRegisteredOnServer(this))
+			if(GCMRegistrar.isRegisteredOnServer(context))
 			{
 				// skips registration
 				Logcat.d("Activity.onCreate(): device is already registered on server");
@@ -67,7 +69,6 @@ public class GcmActivity extends SherlockFragmentActivity
 				// Try to register on server again, but not in the UI thread.
 				// It's also necessary to cancel the thread onDestroy(), hence the use of AsyncTask instead of a raw thread.
 				Logcat.d("Activity.onCreate(): device is not registered on server");
-				final Context context = this;
 				mRegisterAsyncTask = new AsyncTask<Void, Void, Void>()
 				{
 					@Override
