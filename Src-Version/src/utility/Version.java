@@ -1,23 +1,36 @@
 package com.example.utility;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 
 public class Version
 {
-	public static String getApplicationVersion(Context context, Class<?> cls)
+	public static String getVersionName(Context context)
 	{
 		try
 		{
-			ComponentName component = new ComponentName(context, cls);
-			PackageInfo info = context.getPackageManager().getPackageInfo(component.getPackageName(), 0);
+			PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
 			return info.versionName;
 		}
-		catch(android.content.pm.PackageManager.NameNotFoundException e)
+		catch(NameNotFoundException e)
 		{
 			return "";
+		}
+	}
+	
+	
+	public static int getVersionCode(Context context)
+	{
+		try
+		{
+			PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+			return info.versionCode;
+		}
+		catch(NameNotFoundException e)
+		{
+			return -1;
 		}
 	}
 	
