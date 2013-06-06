@@ -6,8 +6,9 @@
 	
 	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17" />
 	
-	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	
 	<application 
 		android:icon="@drawable/ic_launcher"
@@ -16,6 +17,12 @@
 		<receiver android:name=".receiver.BootCompletedReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+		
+		<receiver android:name=".receiver.ConnectivityChangeReceiver">
+			<intent-filter>
+				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
 			</intent-filter>
 		</receiver>
 		
