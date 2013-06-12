@@ -20,7 +20,7 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements Ac
 	private final Context mContext;
 	private final ActionBar mActionBar;
 	private final ViewPager mViewPager;
-	private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
+	private final ArrayList<TabInfo> mTabList = new ArrayList<TabInfo>();
 	
 	
 	public TabsFragmentPagerAdapter(FragmentActivity activity, ActionBar actionBar, ViewPager viewPager)
@@ -37,14 +37,14 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements Ac
 	@Override
 	public int getCount()
 	{
-		return mTabs.size();
+		return mTabList.size();
 	}
 
 
 	@Override
 	public Fragment getItem(int position)
 	{
-		//TabInfo info = mTabs.get(position);
+		//TabInfo info = mTabList.get(position);
 		//return Fragment.instantiate(mContext, info.clss.getName(), info.args);
 		return SimpleFragment.newInstance(Integer.toString(position)); // TODO
 	}
@@ -111,7 +111,7 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements Ac
 	{
 		String tag = (String) tab.getTag();
 		TabInfo info = new TabInfo(tag, clss, args);
-		mTabs.add(info);
+		mTabList.add(info);
 		mActionBar.addTab(tab.setTabListener(this));
 		notifyDataSetChanged();
 	}

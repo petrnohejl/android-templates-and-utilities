@@ -16,17 +16,17 @@ import com.example.entity.Product;
 public class ExpandableListingAdapter extends BaseExpandableListAdapter
 {
 	private Context mContext;
-	private ArrayList<String> mGroups;
-	private ArrayList<ArrayList<Product>> mProducts;
+	private ArrayList<String> mGroupList;
+	private ArrayList<ArrayList<Product>> mProductList;
 	private int mSelectedGroupPosition = -1;
 	private int mSelectedChildPosition = -1;
 	
 	
-	public ExpandableListingAdapter(Context context, ArrayList<String> groups, ArrayList<ArrayList<Product>> products)
+	public ExpandableListingAdapter(Context context, ArrayList<String> groupList, ArrayList<ArrayList<Product>> productList)
 	{
 		mContext = context;
-		mGroups = groups;
-		mProducts = products;
+		mGroupList = groupList;
+		mProductList = productList;
 	}
 	
 	
@@ -75,7 +75,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	@Override
 	public int getChildrenCount(int groupPosition) 
 	{
-		if(mProducts!=null) return mProducts.get(groupPosition).size();
+		if(mProductList!=null) return mProductList.get(groupPosition).size();
 		else return 0;
 	}
 	
@@ -83,7 +83,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	@Override
 	public Object getChild(int groupPosition, int childPosition)
 	{
-		return mProducts.get(groupPosition).get(childPosition);
+		return mProductList.get(groupPosition).get(childPosition);
 	}
 
 
@@ -129,7 +129,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	@Override
 	public int getGroupCount()
 	{
-		if(mGroups!=null) return mGroups.size();
+		if(mGroupList!=null) return mGroupList.size();
 		else return 0;
 	}
 
@@ -137,7 +137,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	@Override
 	public Object getGroup(int groupPosition)
 	{
-		return mGroups.get(groupPosition);
+		return mGroupList.get(groupPosition);
 	}
 
 
@@ -162,11 +162,11 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	}
 	
 	
-	public void refill(Context context, ArrayList<String> groups, ArrayList<ArrayList<Product>> products)
+	public void refill(Context context, ArrayList<String> groupList, ArrayList<ArrayList<Product>> productList)
 	{
 		mContext = context;
-		mGroups = groups;
-		mProducts = products;
+		mGroupList = groupList;
+		mProductList = productList;
 		notifyDataSetChanged();
 	}
 	

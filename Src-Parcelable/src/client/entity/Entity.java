@@ -17,7 +17,7 @@ public class Entity implements Parcelable
 	private Date dateVar;
 	private Calendar calendarVar;
 	private MyModel myModel;
-	private ArrayList<String> strings;
+	private ArrayList<String> stringList;
 
 
 	// empty constructor
@@ -52,7 +52,7 @@ public class Entity implements Parcelable
 		parcel.writeLong(dateVar!=null ? dateVar.getTime() : -1l);
 		parcel.writeLong(calendarVar!=null ? calendarVar.getTimeInMillis() : -1l);
 		parcel.writeParcelable(myModel, flags);
-		parcel.writeStringList(strings);
+		parcel.writeStringList(stringList);
 	}
 
 
@@ -80,7 +80,7 @@ public class Entity implements Parcelable
 		}
 		
 		myModel = parcel.readParcelable(MyModel.class.getClassLoader());
-		parcel.readStringList(strings);
+		parcel.readStringList(stringList);
 	}
 	
 	

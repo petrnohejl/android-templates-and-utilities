@@ -33,8 +33,8 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 	private ExpandableListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
 
-	private ArrayList<String> mGroups = new ArrayList<String>();
-	private ArrayList<ArrayList<Product>> mProducts = new ArrayList<ArrayList<Product>>();
+	private ArrayList<String> mGroupList = new ArrayList<String>();
+	private ArrayList<ArrayList<Product>> mProductList = new ArrayList<ArrayList<Product>>();
 	
 	
 	@Override
@@ -87,7 +87,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			if(mGroups!=null && mProducts!=null) renderView();
+			if(mGroupList!=null && mProductList!=null) renderView();
 			showList();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
@@ -223,8 +223,8 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 						p.setName("Product " + i + "/" + j);
 						group.add(p);
 					}
-					mProducts.add(group);
-					mGroups.add("Group " + i);
+					mProductList.add(group);
+					mGroupList.add("Group " + i);
 				}
 				
 				// render view
@@ -234,7 +234,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 				}
 				else
 				{
-					if(mGroups!=null && mProducts!=null) renderView();
+					if(mGroupList!=null && mProductList!=null) renderView();
 				}
 				
 				// hide progress
@@ -331,7 +331,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 		if(mAdapter==null)
 		{
 			// adapter
-			mAdapter = new ExpandableListingAdapter(getActivity(), mGroups, mProducts);
+			mAdapter = new ExpandableListingAdapter(getActivity(), mGroupList, mProductList);
 			
 			// set adapter
 			listView.setAdapter(mAdapter);
@@ -342,7 +342,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 		else
 		{
 			// refill adapter
-			mAdapter.refill(getActivity(), mGroups, mProducts);
+			mAdapter.refill(getActivity(), mGroupList, mProductList);
 			
 			// set adapter
 			listView.setAdapter(mAdapter);

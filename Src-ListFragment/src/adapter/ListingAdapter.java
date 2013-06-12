@@ -16,14 +16,14 @@ import com.example.entity.Product;
 public class ListingAdapter extends BaseAdapter 
 {
 	private Context mContext;
-	private ArrayList<Product> mProducts;
+	private ArrayList<Product> mProductList;
 	private int mSelectedPosition = -1;
 	
 	
-	public ListingAdapter(Context context, ArrayList<Product> products)
+	public ListingAdapter(Context context, ArrayList<Product> productList)
 	{
 		mContext = context;
-		mProducts = products;
+		mProductList = productList;
 	}
 	
 	
@@ -44,7 +44,7 @@ public class ListingAdapter extends BaseAdapter
 		}
 		
 		// entity
-		Product product = (Product) mProducts.get(position);
+		Product product = (Product) mProductList.get(position);
 		
 		if(product != null)
 		{
@@ -72,14 +72,14 @@ public class ListingAdapter extends BaseAdapter
 	@Override
 	public int getCount()
 	{
-		return mProducts.size();
+		return mProductList.size();
 	}
 	
 	
 	@Override
 	public Object getItem(int position)
 	{
-		if(mProducts!=null) return mProducts.size();
+		if(mProductList!=null) return mProductList.size();
 		else return 0;
 	}
 	
@@ -91,10 +91,10 @@ public class ListingAdapter extends BaseAdapter
 	}
 	
 	
-	public void refill(Context context, ArrayList<Product> products)
+	public void refill(Context context, ArrayList<Product> productList)
 	{
 		mContext = context;
-		mProducts = products;
+		mProductList = productList;
 		notifyDataSetChanged();
 	}
 	

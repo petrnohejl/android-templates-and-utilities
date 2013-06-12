@@ -42,7 +42,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 	private ApiCallAdapter mAdapter;
 	private RequestManager mRequestManager = new RequestManager();
 	
-	private ArrayList<Product> mProducts = new ArrayList<Product>();
+	private ArrayList<Product> mProductList = new ArrayList<Product>();
 
 	
 	@Override
@@ -74,7 +74,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			if(mProducts!=null) renderView();
+			if(mProductList!=null) renderView();
 			showList();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
@@ -144,15 +144,15 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 						if(call.getRequest().getMetaData()!=null && call.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
 						{
 							// refresh
-							mProducts.clear();
+							mProductList.clear();
 						}
 						
 						// get data
-						Iterator<Product> iterator = exampleResponse.getProducts().iterator();
+						Iterator<Product> iterator = exampleResponse.getProductList().iterator();
 						while(iterator.hasNext())
 						{
 							Product product = iterator.next();
-							mProducts.add(new Product(product));
+							mProductList.add(new Product(product));
 						}
 						
 						// render view
@@ -162,7 +162,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 						}
 						else
 						{
-							if(mProducts!=null) renderView();
+							if(mProductList!=null) renderView();
 						}
 
 						// hide progress
@@ -235,7 +235,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 				// show progress in action bar
 				showActionBarProgress(true);
 				
-				// example request with paging
+				// execute request
 				ExampleRequest request = new ExampleRequest(0, LAZY_LOADING_TAKE);
 				mRequestManager.executeRequest(request, this);
 			}
@@ -260,8 +260,8 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 				Bundle bundle = new Bundle();
 				bundle.putBoolean(EXTRA_REFRESH, true);
 				
-				// example request with paging
-				int take = (mProducts.size() <= LAZY_LOADING_MAX && mProducts.size() > 0) ? mProducts.size() : LAZY_LOADING_TAKE;
+				// execute request
+				int take = (mProductList.size() <= LAZY_LOADING_MAX && mProductList.size() > 0) ? mProductList.size() : LAZY_LOADING_TAKE;
 				ExampleRequest request = new ExampleRequest(0, take);
 				request.setMetaData(bundle);
 				mRequestManager.executeRequest(request, this);
@@ -281,8 +281,8 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 			// show lazy loading progress
 			showLazyLoadingProgress(true);
 			
-			// example request with paging
-			ExampleRequest request = new ExampleRequest(mProducts.size(), LAZY_LOADING_TAKE);
+			// execute request
+			ExampleRequest request = new ExampleRequest(mProductList.size(), LAZY_LOADING_TAKE);
 			mRequestManager.executeRequest(request, this);
 		}
 	}

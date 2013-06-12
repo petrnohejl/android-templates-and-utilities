@@ -41,7 +41,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	private ListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
 
-	private ArrayList<Product> mProducts = new ArrayList<Product>();
+	private ArrayList<Product> mProductList = new ArrayList<Product>();
 	
 	
 	@Override
@@ -94,7 +94,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 		}
 		else if(mViewState==ViewState.Visibility.CONTENT)
 		{
-			if(mProducts!=null) renderView();
+			if(mProductList!=null) renderView();
 			showList();
 		}
 		else if(mViewState==ViewState.Visibility.PROGRESS)
@@ -240,12 +240,12 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 			public void run()
 			{
 				// get data
-				final int size = mProducts.size();
+				final int size = mProductList.size();
 				for(int i=0; i<LAZY_LOADING_TAKE; i++)
 				{
 					Product p = new Product();
 					p.setName("Product " + (size + i));
-					mProducts.add(p);
+					mProductList.add(p);
 				}
 				
 				// render view
@@ -255,7 +255,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 				}
 				else
 				{
-					if(mProducts!=null) renderView();
+					if(mProductList!=null) renderView();
 				}
 
 				// hide progress
@@ -387,12 +387,12 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 		if(getListAdapter()==null)
 		{
 			// create adapter
-			mAdapter = new ListingAdapter(getActivity(), mProducts);
+			mAdapter = new ListingAdapter(getActivity(), mProductList);
 		}
 		else
 		{
 			// refill adapter
-			mAdapter.refill(getActivity(), mProducts);
+			mAdapter.refill(getActivity(), mProductList);
 		}
 
 		// add header
@@ -424,7 +424,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
 			{
-				if(totalItemCount-(firstVisibleItem+visibleItemCount) <= LAZY_LOADING_OFFSET && mProducts.size() % LAZY_LOADING_TAKE==0 && !mProducts.isEmpty())
+				if(totalItemCount-(firstVisibleItem+visibleItemCount) <= LAZY_LOADING_OFFSET && mProductList.size() % LAZY_LOADING_TAKE==0 && !mProductList.isEmpty())
 				{
 					if(!mLazyLoading) lazyLoadData();
 				}

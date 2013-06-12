@@ -21,7 +21,7 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	private final Context mContext;
 	private final TabHost mTabHost;
 	private final ViewPager mViewPager;
-	private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
+	private final ArrayList<TabInfo> mTabList = new ArrayList<TabInfo>();
 	
 	
 	public TabHostFragmentPagerAdapter(FragmentActivity activity, TabHost tabHost, ViewPager viewPager)
@@ -39,14 +39,14 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	@Override
 	public int getCount()
 	{
-		return mTabs.size();
+		return mTabList.size();
 	}
 
 
 	@Override
 	public Fragment getItem(int position)
 	{
-		//TabInfo info = mTabs.get(position);
+		//TabInfo info = mTabList.get(position);
 		//return Fragment.instantiate(mContext, info.clss.getName(), info.args);
 		return SimpleFragment.newInstance(Integer.toString(position)); // TODO
 	}
@@ -99,7 +99,7 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		tabSpec.setContent(new DummyTabFactory(mContext));
 		String tag = tabSpec.getTag();
 		TabInfo info = new TabInfo(tag, clss, args);
-		mTabs.add(info);
+		mTabList.add(info);
 		mTabHost.addTab(tabSpec);
 		notifyDataSetChanged();
 	}

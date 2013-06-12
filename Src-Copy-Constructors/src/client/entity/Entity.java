@@ -15,7 +15,7 @@ public class Entity
 	private Date dateVar;
 	private Calendar calendarVar;
 	private MyModel myModel;
-	private ArrayList<String> strings;
+	private ArrayList<String> stringList;
 
 
 	// empty constructor
@@ -39,14 +39,14 @@ public class Entity
 			calendarVar.setTime(copyModel.calendarVar.getTime());
 		}
 		if(copyModel.myModel!=null) myModel = new MyModel(copyModel.myModel);
-		if(copyModel.strings!=null)
+		if(copyModel.stringList!=null)
 		{
-			strings = new ArrayList<String>();
-			Iterator<String> iterator = copyModel.strings.iterator();
+			stringList = new ArrayList<String>();
+			Iterator<String> iterator = copyModel.stringList.iterator();
 			while(iterator.hasNext())
 			{
 				String s = iterator.next();
-				strings.add(new String(s));
+				stringList.add(new String(s));
 			}
 		}
 	}
@@ -108,12 +108,12 @@ public class Entity
 	{
 		this.myModel = myModel;
 	}
-	public ArrayList<String> getStrings()
+	public ArrayList<String> getStringList()
 	{
-		return strings;
+		return stringList;
 	}
-	public void setStrings(ArrayList<String> strings)
+	public void setStringList(ArrayList<String> stringList)
 	{
-		this.strings = strings;
+		this.stringList = stringList;
 	}
 }

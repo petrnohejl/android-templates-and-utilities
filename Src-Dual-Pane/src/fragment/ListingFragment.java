@@ -22,7 +22,7 @@ public class ListingFragment extends TaskSherlockListFragment
 	private ListingAdapter mAdapter;
 	private OnDualPaneShowListener mDualPaneShowListener;
 
-	private ArrayList<Product> mProducts = new ArrayList<Product>();
+	private ArrayList<Product> mProductList = new ArrayList<Product>();
 	
 	
 	@Override
@@ -88,7 +88,7 @@ public class ListingFragment extends TaskSherlockListFragment
 		{
 			Product p = new Product();
 			p.setName("Product " + (i));
-			mProducts.add(p);
+			mProductList.add(p);
 		}
 
 		// activity has dual pane layout
@@ -99,10 +99,10 @@ public class ListingFragment extends TaskSherlockListFragment
 		if(mAdapter==null)
 		{
 			// create adapter
-			mAdapter = new ListingAdapter(getActivity(), dualPane, mProducts);
+			mAdapter = new ListingAdapter(getActivity(), dualPane, mProductList);
 			
 			// initial fragment in second pane
-			if(dualPane && mProducts!=null && mProducts.size()>0)
+			if(dualPane && mProductList!=null && mProductList.size()>0)
 			{
 				mAdapter.setSelectedPosition(0);
 				mDualPaneShowListener.onDualPaneShow(SimpleFragment.class, 0);
@@ -111,7 +111,7 @@ public class ListingFragment extends TaskSherlockListFragment
 		else
 		{
 			// refill adapter
-			mAdapter.refill(getActivity(), dualPane, mProducts);
+			mAdapter.refill(getActivity(), dualPane, mProductList);
 		}
 		
 		// set adapter
