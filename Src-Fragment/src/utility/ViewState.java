@@ -1,7 +1,7 @@
 package com.example.utility;
 
 
-public class ViewState
+public enum ViewState
 {
-	public static enum Visibility { CONTENT, PROGRESS, OFFLINE, EMPTY };
+	CONTENT, PROGRESS, OFFLINE, EMPTY
 }

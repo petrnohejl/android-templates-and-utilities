@@ -36,7 +36,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 	
 	private boolean mLazyLoading = false;
 	private boolean mActionBarProgress = false;
-	private ViewState.Visibility mViewState = null;
+	private ViewState mViewState = null;
 	private View mRootView;
 	private View mFooterView;
 	private ApiCallAdapter mAdapter;
@@ -68,16 +68,16 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 		super.onActivityCreated(savedInstanceState);
 		
 		// load and show data
-		if(mViewState==null || mViewState==ViewState.Visibility.OFFLINE)
+		if(mViewState==null || mViewState==ViewState.OFFLINE)
 		{
 			loadData();
 		}
-		else if(mViewState==ViewState.Visibility.CONTENT)
+		else if(mViewState==ViewState.CONTENT)
 		{
 			if(mProductList!=null) renderView();
 			showList();
 		}
-		else if(mViewState==ViewState.Visibility.PROGRESS)
+		else if(mViewState==ViewState.PROGRESS)
 		{
 			showProgress();
 		}
@@ -156,7 +156,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 						}
 						
 						// render view
-						if(mLazyLoading && mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
+						if(mLazyLoading && mViewState==ViewState.CONTENT && mAdapter!=null)
 						{
 							mAdapter.notifyDataSetChanged();
 						}
@@ -326,7 +326,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 		containerList.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.Visibility.CONTENT;
+		mViewState = ViewState.CONTENT;
 	}
 	
 	
@@ -339,7 +339,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.Visibility.PROGRESS;
+		mViewState = ViewState.PROGRESS;
 	}
 	
 	
@@ -352,7 +352,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
-		mViewState = ViewState.Visibility.OFFLINE;
+		mViewState = ViewState.OFFLINE;
 	}
 
 	

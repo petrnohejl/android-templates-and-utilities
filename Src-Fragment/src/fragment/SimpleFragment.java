@@ -24,7 +24,7 @@ import com.example.utility.ViewState;
 public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataListener
 {
 	private boolean mActionBarProgress = false;
-	private ViewState.Visibility mViewState = null;
+	private ViewState mViewState = null;
 	private View mRootView;
 	private LoadDataTask mLoadDataTask;
 
@@ -75,20 +75,20 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 		super.onActivityCreated(savedInstanceState);
 		
 		// load and show data
-		if(mViewState==null || mViewState==ViewState.Visibility.OFFLINE)
+		if(mViewState==null || mViewState==ViewState.OFFLINE)
 		{
 			loadData();
 		}
-		else if(mViewState==ViewState.Visibility.CONTENT)
+		else if(mViewState==ViewState.CONTENT)
 		{
 			if(mProduct!=null) renderView();
 			showContent();
 		}
-		else if(mViewState==ViewState.Visibility.PROGRESS)
+		else if(mViewState==ViewState.PROGRESS)
 		{
 			showProgress();
 		}
-		else if(mViewState==ViewState.Visibility.EMPTY)
+		else if(mViewState==ViewState.EMPTY)
 		{
 			showEmpty();
 		}
@@ -273,7 +273,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
 		containerEmpty.setVisibility(View.GONE);
-		mViewState = ViewState.Visibility.CONTENT;
+		mViewState = ViewState.CONTENT;
 	}
 	
 	
@@ -288,7 +288,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
 		containerEmpty.setVisibility(View.GONE);
-		mViewState = ViewState.Visibility.PROGRESS;
+		mViewState = ViewState.PROGRESS;
 	}
 	
 	
@@ -303,7 +303,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
 		containerEmpty.setVisibility(View.GONE);
-		mViewState = ViewState.Visibility.OFFLINE;
+		mViewState = ViewState.OFFLINE;
 	}
 	
 	
@@ -318,7 +318,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
 		containerEmpty.setVisibility(View.VISIBLE);
-		mViewState = ViewState.Visibility.EMPTY;
+		mViewState = ViewState.EMPTY;
 	}
 	
 	

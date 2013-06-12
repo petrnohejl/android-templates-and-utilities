@@ -28,7 +28,7 @@ import com.example.utility.ViewState;
 public class ExpandableListingFragment extends TaskSherlockFragment implements OnLoadDataListener
 {
 	private boolean mActionBarProgress = false;
-	private ViewState.Visibility mViewState = null;
+	private ViewState mViewState = null;
 	private View mRootView;
 	private ExpandableListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
@@ -81,16 +81,16 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 		super.onActivityCreated(savedInstanceState);
 		
 		// load and show data
-		if(mViewState==null || mViewState==ViewState.Visibility.OFFLINE)
+		if(mViewState==null || mViewState==ViewState.OFFLINE)
 		{
 			loadData();
 		}
-		else if(mViewState==ViewState.Visibility.CONTENT)
+		else if(mViewState==ViewState.CONTENT)
 		{
 			if(mGroupList!=null && mProductList!=null) renderView();
 			showList();
 		}
-		else if(mViewState==ViewState.Visibility.PROGRESS)
+		else if(mViewState==ViewState.PROGRESS)
 		{
 			showProgress();
 		}
@@ -228,7 +228,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 				}
 				
 				// render view
-				if(mViewState==ViewState.Visibility.CONTENT && mAdapter!=null)
+				if(mViewState==ViewState.CONTENT && mAdapter!=null)
 				{
 					mAdapter.notifyDataSetChanged();
 				}
@@ -291,7 +291,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 		containerList.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.Visibility.CONTENT;
+		mViewState = ViewState.CONTENT;
 	}
 	
 	
@@ -304,7 +304,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.Visibility.PROGRESS;
+		mViewState = ViewState.PROGRESS;
 	}
 	
 	
@@ -317,7 +317,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
-		mViewState = ViewState.Visibility.OFFLINE;
+		mViewState = ViewState.OFFLINE;
 	}
 	
 	
