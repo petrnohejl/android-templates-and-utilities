@@ -40,6 +40,16 @@ public class GCMIntentService extends GCMBaseIntentService
 		// get message
 		String message = intent.getStringExtra("message");
 		
+		// decode message
+		try
+		{
+			if(message!=null) message = URLDecoder.decode(message, "UTF-8");
+		}
+		catch(UnsupportedEncodingException e)
+		{
+			e.printStackTrace();
+		}
+		
 		// TODO
 	}
 
