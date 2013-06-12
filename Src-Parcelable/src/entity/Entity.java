@@ -1,4 +1,4 @@
-package com.example.client.entity;
+package com.example.entity;
 
 import java.util.ArrayList;
 import java.util.Calendar;

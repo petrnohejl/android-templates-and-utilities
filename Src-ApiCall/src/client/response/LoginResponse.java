@@ -1,6 +1,6 @@
 package com.example.client.response;
 
-import com.example.client.entity.Membership;
+import com.example.entity.Membership;
 
 
 public class LoginResponse extends Response

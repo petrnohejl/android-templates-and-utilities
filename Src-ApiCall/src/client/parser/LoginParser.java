@@ -7,8 +7,8 @@ import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.JsonToken;
 
-import com.example.client.entity.Membership;
 import com.example.client.response.LoginResponse;
+import com.example.entity.Membership;
 
 
 public class LoginParser
