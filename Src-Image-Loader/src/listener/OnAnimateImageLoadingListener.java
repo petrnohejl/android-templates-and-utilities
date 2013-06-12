@@ -12,9 +12,9 @@ import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 
-public class AnimateFirstDisplayListener extends SimpleImageLoadingListener
+public class OnAnimateImageLoadingListener extends SimpleImageLoadingListener
 {
-	private final List<String> mDisplayedImages = Collections.synchronizedList(new LinkedList<String>());
+	private final List<String> mDisplayedImageList = Collections.synchronizedList(new LinkedList<String>());
 
 
 	@Override
@@ -23,11 +23,11 @@ public class AnimateFirstDisplayListener extends SimpleImageLoadingListener
 		if(loadedImage!=null)
 		{
 			ImageView imageView = (ImageView) view;
-			boolean firstDisplay = !mDisplayedImages.contains(imageUri);
+			boolean firstDisplay = !mDisplayedImageList.contains(imageUri);
 			if(firstDisplay)
 			{
 				FadeInBitmapDisplayer.animate(imageView, 500);
-				mDisplayedImages.add(imageUri);
+				mDisplayedImageList.add(imageUri);
 			}
 		}
 	}

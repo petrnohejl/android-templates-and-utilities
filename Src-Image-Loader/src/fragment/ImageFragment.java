@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
-import com.example.listener.AnimateFirstDisplayListener;
+import com.example.listener.OnAnimateImageLoadingListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
@@ -37,7 +37,7 @@ public class ImageFragment extends SherlockFragment
 			.cacheOnDisc()
 			.displayer(new SimpleBitmapDisplayer())
 			.build();
-		mImageLoadingListener = new AnimateFirstDisplayListener();
+		mImageLoadingListener = new OnAnimateImageLoadingListener();
 	}
 
 	
