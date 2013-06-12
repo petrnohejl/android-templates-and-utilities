@@ -26,6 +26,14 @@
 			</intent-filter>
 		</receiver>
 		
+		<receiver android:name=".receiver.NewPictureReceiver">
+			<intent-filter>
+				<action android:name="com.android.camera.NEW_PICTURE" />
+				<action android:name="android.hardware.action.NEW_PICTURE" />
+				<data android:mimeType="image/*"/> 
+			</intent-filter>
+		</receiver>
+		
 		<receiver android:name=".receiver.PhoneStateReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.PHONE_STATE" />
