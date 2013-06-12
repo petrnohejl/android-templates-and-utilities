@@ -23,6 +23,7 @@ import com.example.client.response.ExampleResponse;
 import com.example.client.response.Response;
 import com.example.task.TaskSherlockListFragment;
 import com.example.utility.Logcat;
+import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
 
 
@@ -224,7 +225,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 	
 	private void loadData()
 	{
-		if(RequestManager.isOnline(getActivity()))
+		if(NetworkManager.isOnline(getActivity()))
 		{
 			if(!mRequestManager.hasRunningRequest(ExampleRequest.class))
 			{
@@ -248,7 +249,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 
 	public void refreshData()
 	{
-		if(RequestManager.isOnline(getActivity()))
+		if(NetworkManager.isOnline(getActivity()))
 		{
 			if(!mRequestManager.hasRunningRequest(ExampleRequest.class))
 			{
@@ -275,7 +276,7 @@ public class ApiCallFragment extends TaskSherlockListFragment implements OnApiCa
 	
 	private void lazyLoadData()
 	{
-		if(RequestManager.isOnline(getActivity()))
+		if(NetworkManager.isOnline(getActivity()))
 		{
 			// show lazy loading progress
 			showLazyLoadingProgress(true);

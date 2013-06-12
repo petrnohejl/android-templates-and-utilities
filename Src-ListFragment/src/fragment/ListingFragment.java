@@ -24,6 +24,7 @@ import com.example.entity.Product;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.task.TaskSherlockListFragment;
+import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
 
 
@@ -279,7 +280,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	
 	private void loadData()
 	{
-		if(true) // TODO: isOnline?
+		if(NetworkManager.isOnline(getActivity()))
 		{
 			// show progress
 			showProgress();
@@ -297,7 +298,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	
 	private void lazyLoadData()
 	{
-		if(true) // TODO: isOnline?
+		if(NetworkManager.isOnline(getActivity()))
 		{
 			// show lazy loading progress
 			showLazyLoadingProgress(true);

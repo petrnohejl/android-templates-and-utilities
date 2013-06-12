@@ -18,6 +18,7 @@ import com.example.R;
 import com.example.client.RequestManager;
 import com.example.utility.FacebookUtility;
 import com.example.utility.Logcat;
+import com.example.utility.NetworkManager;
 import com.example.utility.Preferences;
 import com.facebook.android.AsyncFacebookRunner;
 import com.facebook.android.AsyncFacebookRunner.RequestListener;
@@ -102,7 +103,7 @@ public class FacebookFragment extends SherlockFragment
 			@Override
 			public void onClick(View v)
 			{
-				if(RequestManager.isOnline(getActivity()))
+				if(NetworkManager.isOnline(getActivity()))
 				{
 					facebookAuthorize();
 				}
@@ -118,7 +119,7 @@ public class FacebookFragment extends SherlockFragment
 			@Override
 			public void onClick(View v)
 			{
-				if(RequestManager.isOnline(getActivity()))
+				if(NetworkManager.isOnline(getActivity()))
 				{
 					facebookLogout();
 				}
@@ -134,7 +135,7 @@ public class FacebookFragment extends SherlockFragment
 			@Override
 			public void onClick(View v)
 			{
-				if(RequestManager.isOnline(getActivity()))
+				if(NetworkManager.isOnline(getActivity()))
 				{
 					facebookProfile();
 				}
@@ -150,7 +151,7 @@ public class FacebookFragment extends SherlockFragment
 			@Override
 			public void onClick(View v)
 			{
-				if(RequestManager.isOnline(getActivity()))
+				if(NetworkManager.isOnline(getActivity()))
 				{
 					facebookFriends();
 				}
@@ -166,7 +167,7 @@ public class FacebookFragment extends SherlockFragment
 			@Override
 			public void onClick(View v)
 			{
-				if(RequestManager.isOnline(getActivity()))
+				if(NetworkManager.isOnline(getActivity()))
 				{
 					facebookWallPost();
 				}

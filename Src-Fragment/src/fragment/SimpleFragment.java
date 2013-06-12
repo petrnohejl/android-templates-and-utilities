@@ -17,6 +17,7 @@ import com.example.entity.Product;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.task.TaskSherlockFragment;
+import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
 
 
@@ -237,7 +238,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 	
 	private void loadData()
 	{
-		if(true) // TODO: isOnline?
+		if(NetworkManager.isOnline(getActivity()))
 		{
 			// show progress
 			showProgress();

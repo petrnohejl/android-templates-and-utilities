@@ -21,6 +21,7 @@ import com.example.entity.Product;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.task.TaskSherlockFragment;
+import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
 
 
@@ -257,7 +258,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 	
 	private void loadData()
 	{
-		if(true) // TODO: isOnline?
+		if(NetworkManager.isOnline(getActivity()))
 		{
 			// show progress
 			showProgress();
