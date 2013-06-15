@@ -69,8 +69,6 @@ TODO
 		android:theme="@style/Theme.Example"
 		android:hardwareAccelerated="true">
 		
-		<uses-library android:name="com.google.android.maps" />
-		
 		<activity
 			android:name=".activity.ListingActivity"
 			android:label="@string/app_name"
