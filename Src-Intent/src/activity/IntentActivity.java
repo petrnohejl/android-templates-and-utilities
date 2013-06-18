@@ -49,20 +49,18 @@ public class IntentActivity extends SherlockFragmentActivity
 	}
 	
 	
-	private void startMapCoordinatesActivity()
+	private void startMapCoordinatesActivity(double lat, double lon, String label)
 	{
 		try
 		{
 			StringBuilder builder = new StringBuilder();
 			builder.append("geo:");
-			builder.append("49.123456");
-			builder.append(",");
-			builder.append("16.123456");
-			builder.append("?z=16"); // zoom value: 2..23
-			builder.append("&q="); // query allows to show pin
 			builder.append(lat);
 			builder.append(",");
 			builder.append(lon);
+			builder.append("?z=16"); // zoom value: 2..23
+			builder.append("&q="); // query allows to show pin
+			builder.append(Uri.encode(lat + "," + lon + "(" + label + ")"));
 			
 			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(builder.toString()));
 			startActivity(intent);
@@ -74,13 +72,13 @@ public class IntentActivity extends SherlockFragmentActivity
 	}
 	
 	
-	private void startMapSearchActivity()
+	private void startMapSearchActivity(String query)
 	{
 		try
 		{
 			StringBuilder builder = new StringBuilder();
 			builder.append("geo:0,0?q=");
-			builder.append("svata+hora");
+			builder.append(Uri.encode(query));
 			
 			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(builder.toString()));
 			startActivity(intent);
