@@ -1,6 +1,8 @@
 package com.example.utility;
 
+import android.app.ActivityManager;
 import android.content.Context;
+import android.content.pm.ConfigurationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 
@@ -32,6 +34,15 @@ public class Version
 		{
 			return -1;
 		}
+	}
+	
+	
+	public static boolean isSupportedOpenGlEs2(Context context)
+	{
+		ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+		ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
+		boolean supportedOpenGlEs2 = configurationInfo.reqGlEsVersion >= 0x20000;
+		return supportedOpenGlEs2;
 	}
 	
 	
