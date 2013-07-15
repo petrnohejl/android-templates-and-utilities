@@ -1,8 +1,10 @@
 package com.example.fragment;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -71,6 +73,30 @@ public class WebFragment extends SherlockFragment
 					Toast.makeText(getActivity(), errorCode + ": " + description, Toast.LENGTH_LONG).show();
 					showEmpty();
 				}
+			}
+		});
+		webView.setOnKeyListener(new OnKeyListener()
+		{
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event)
+			{
+				if(event.getAction() == KeyEvent.ACTION_DOWN)
+				{
+					WebView webView = (WebView) v;
+					
+					switch(keyCode)
+					{
+						case KeyEvent.KEYCODE_BACK:
+							if(webView.canGoBack())
+							{
+								webView.goBack();
+								return true;
+							}
+							break;
+					}
+				}
+				
+				return false;
 			}
 		});
 		
