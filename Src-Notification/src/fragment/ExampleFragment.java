@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
-import com.example.activity.ListingActivity;
+import com.example.activity.ExampleActivity;
 import com.example.notification.NotificationId;
 import com.example.notification.NotificationMessage;
 
 
-public class NotificationFragment extends SherlockFragment
+public class ExampleFragment extends SherlockFragment
 {
 	private View mRootView;
 	NotificationMessage mNotificationMessage;
@@ -22,7 +22,7 @@ public class NotificationFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.fragment_notification, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 	
@@ -31,7 +31,7 @@ public class NotificationFragment extends SherlockFragment
 	{
 		NotificationMessage.Builder builder = new NotificationMessage.Builder(getActivity().getApplicationContext(), NotificationId.TYPE1);
 		
-		builder.setIntent(new Intent(getActivity().getApplicationContext(), ListingActivity.class));
+		builder.setIntent(new Intent(getActivity().getApplicationContext(), ExampleActivity.class));
 		builder.setText("ticker", "title", "text");
 		builder.setExtraText("subText", "contentInfo");
 		builder.setNumber(24);
@@ -41,8 +41,8 @@ public class NotificationFragment extends SherlockFragment
 		builder.setUsesChronometer(false);
 		builder.setOnlyAlertOnce(false);
 		builder.setOngoing(false);
-		builder.setAction1(R.drawable.ic_stat_notify, "action 1", new Intent(getActivity().getApplicationContext(), ListingActivity.class));
-		builder.setAction2(R.drawable.ic_stat_notify, "action 2", new Intent(getActivity().getApplicationContext(), ListingActivity.class));
+		builder.setAction1(R.drawable.ic_stat_notify, "action 1", new Intent(getActivity().getApplicationContext(), ExampleActivity.class));
+		builder.setAction2(R.drawable.ic_stat_notify, "action 2", new Intent(getActivity().getApplicationContext(), ExampleActivity.class));
 		
 		//builder.setBigTextStyle("bigContentTitle", "summaryText", "bigText");
 		//builder.setBigPictureStyle("bigContentTitle", "summaryText", R.drawable.ic_launcher);

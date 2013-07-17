@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.fragment.SimpleFragment;
+import com.example.fragment.ExampleFragment;
 
 
 public class PagerFragmentPagerAdapter extends FragmentPagerAdapter // TODO: use FragmentPagerAdapter or FragmentStatePagerAdapter
@@ -28,7 +28,7 @@ public class PagerFragmentPagerAdapter extends FragmentPagerAdapter // TODO: use
 	@Override
 	public Fragment getItem(int position)
 	{
-		return SimpleFragment.newInstance(Integer.toString(position));
+		return ExampleFragment.newInstance(Integer.toString(position));
 	}
 	
 	

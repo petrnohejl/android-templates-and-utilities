@@ -12,7 +12,7 @@ import android.support.v4.view.ViewPager;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
-import com.example.fragment.SimpleFragment;
+import com.example.fragment.ExampleFragment;
 
 
 public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements ActionBar.TabListener, ViewPager.OnPageChangeListener // TODO: use FragmentPagerAdapter or FragmentStatePagerAdapter
@@ -46,7 +46,7 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements Ac
 	{
 		//TabInfo info = mTabList.get(position);
 		//return Fragment.instantiate(mContext, info.clss.getName(), info.args);
-		return SimpleFragment.newInstance(Integer.toString(position)); // TODO
+		return ExampleFragment.newInstance(Integer.toString(position)); // TODO
 	}
 	
 	

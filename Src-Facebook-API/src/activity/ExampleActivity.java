@@ -6,10 +6,10 @@ import android.os.Bundle;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Window;
 import com.example.R;
-import com.example.fragment.FacebookFragment;
+import com.example.fragment.ExampleFragment;
 
 
-public class FacebookActivity extends SherlockFragmentActivity
+public class ExampleActivity extends SherlockFragmentActivity
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -17,7 +17,7 @@ public class FacebookActivity extends SherlockFragmentActivity
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		setContentView(R.layout.activity_facebook);
+		setContentView(R.layout.activity_example);
 	}
 
 	
@@ -27,7 +27,7 @@ public class FacebookActivity extends SherlockFragmentActivity
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		// facebook activity result
-		FacebookFragment facebookFragment = (FacebookFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_facebook);
-		if(facebookFragment!=null) facebookFragment.facebookActivityResult(requestCode, resultCode, data);
+		ExampleFragment exampleFragment = (ExampleFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_example);
+		if(exampleFragment!=null) exampleFragment.facebookActivityResult(requestCode, resultCode, data);
 	}
 }

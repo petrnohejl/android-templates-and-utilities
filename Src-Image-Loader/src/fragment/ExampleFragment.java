@@ -15,7 +15,7 @@ import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 
 
-public class ImageFragment extends SherlockFragment
+public class ExampleFragment extends SherlockFragment
 {
 	private View mRootView;
 	private ImageLoader mImageLoader = ImageLoader.getInstance();
@@ -44,7 +44,7 @@ public class ImageFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{	
-		mRootView = inflater.inflate(R.layout.fragment_image, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 	
@@ -52,7 +52,7 @@ public class ImageFragment extends SherlockFragment
 	private void renderView()
 	{
 		// reference
-		ImageView photoImageView = (ImageView) mRootView.findViewById(R.id.fragment_image_photo);
+		ImageView photoImageView = (ImageView) mRootView.findViewById(R.id.fragment_example_photo);
 
 		// image caching
 		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", photoImageView, mDisplayImageOptions, mImageLoadingListener);

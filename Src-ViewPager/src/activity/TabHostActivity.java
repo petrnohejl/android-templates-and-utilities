@@ -8,7 +8,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Window;
 import com.example.R;
 import com.example.adapter.TabHostFragmentPagerAdapter;
-import com.example.fragment.SimpleFragment;
+import com.example.fragment.ExampleFragment;
 
 
 public class TabHostActivity extends SherlockFragmentActivity
@@ -42,9 +42,9 @@ public class TabHostActivity extends SherlockFragmentActivity
 		{
 			// create adapter
 			mAdapter = new TabHostFragmentPagerAdapter(this, tabHost, viewPager);
-			mAdapter.addTab(tabHost.newTabSpec("tag0").setIndicator("Title 0"), SimpleFragment.class, null);
-			mAdapter.addTab(tabHost.newTabSpec("tag1").setIndicator("Title 1"), SimpleFragment.class, null);
-			mAdapter.addTab(tabHost.newTabSpec("tag2").setIndicator("Title 2"), SimpleFragment.class, null);
+			mAdapter.addTab(tabHost.newTabSpec("tag0").setIndicator("Title 0"), ExampleFragment.class, null);
+			mAdapter.addTab(tabHost.newTabSpec("tag1").setIndicator("Title 1"), ExampleFragment.class, null);
+			mAdapter.addTab(tabHost.newTabSpec("tag2").setIndicator("Title 2"), ExampleFragment.class, null);
 		}
 		else
 		{

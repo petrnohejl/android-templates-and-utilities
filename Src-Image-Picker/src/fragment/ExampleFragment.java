@@ -16,7 +16,7 @@ import com.example.task.TaskSherlockFragment;
 import com.example.utility.ImagePicker;
 
 
-public class ImagePickerFragment extends TaskSherlockFragment
+public class ExampleFragment extends TaskSherlockFragment
 {
 	private View mRootView;
 	private Bitmap mBitmap;
@@ -37,7 +37,7 @@ public class ImagePickerFragment extends TaskSherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.fragment_image_picker, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 	
@@ -103,9 +103,9 @@ public class ImagePickerFragment extends TaskSherlockFragment
 	private void renderView()
 	{
 		// reference
-		ImageView previewImageView = (ImageView) mRootView.findViewById(R.id.fragment_image_picker_preview);
-		Button cameraButton = (Button) mRootView.findViewById(R.id.fragment_image_picker_camera);
-		Button galleryButton = (Button) mRootView.findViewById(R.id.fragment_image_picker_gallery);
+		ImageView previewImageView = (ImageView) mRootView.findViewById(R.id.fragment_example_preview);
+		Button cameraButton = (Button) mRootView.findViewById(R.id.fragment_example_camera);
+		Button galleryButton = (Button) mRootView.findViewById(R.id.fragment_example_gallery);
 		
 		// content
 		if(mBitmap!=null) previewImageView.setImageBitmap(mBitmap);
@@ -114,7 +114,7 @@ public class ImagePickerFragment extends TaskSherlockFragment
 			@Override
 			public void onClick(View v)
 			{
-				mImagePicker.pickImageFromCamera(ImagePickerFragment.this);
+				mImagePicker.pickImageFromCamera(ExampleFragment.this);
 			}
 		});
 		galleryButton.setOnClickListener(new OnClickListener()
@@ -122,7 +122,7 @@ public class ImagePickerFragment extends TaskSherlockFragment
 			@Override
 			public void onClick(View v)
 			{
-				mImagePicker.pickImageFromGallery(ImagePickerFragment.this);
+				mImagePicker.pickImageFromGallery(ExampleFragment.this);
 			}
 		});
 	}

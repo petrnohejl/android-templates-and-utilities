@@ -11,7 +11,7 @@ import com.example.utility.Logcat;
 import com.google.android.gcm.GCMRegistrar;
 
 
-public class GcmActivity extends SherlockFragmentActivity
+public class ExampleActivity extends SherlockFragmentActivity
 {
 	AsyncTask<Void, Void, Void> mRegisterAsyncTask;
 
@@ -21,7 +21,7 @@ public class GcmActivity extends SherlockFragmentActivity
 	{
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.activity_gcm);
+		setContentView(R.layout.activity_example);
 		
 		// handle GCM registration
 		handleGcmRegistration();

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 
-import com.example.fragment.SimpleFragment;
+import com.example.fragment.ExampleFragment;
 
 
 public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener // TODO: use FragmentPagerAdapter or FragmentStatePagerAdapter
@@ -48,7 +48,7 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	{
 		//TabInfo info = mTabList.get(position);
 		//return Fragment.instantiate(mContext, info.clss.getName(), info.args);
-		return SimpleFragment.newInstance(Integer.toString(position)); // TODO
+		return ExampleFragment.newInstance(Integer.toString(position)); // TODO
 	}
 	
 	

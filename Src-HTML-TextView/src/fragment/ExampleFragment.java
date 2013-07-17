@@ -12,7 +12,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
 
 
-public class HtmlTextFragment extends SherlockFragment
+public class ExampleFragment extends SherlockFragment
 {
 	private View mRootView;
 	
@@ -20,7 +20,7 @@ public class HtmlTextFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.fragment_html_text, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 	
@@ -28,7 +28,7 @@ public class HtmlTextFragment extends SherlockFragment
 	private void renderView()
 	{
 		// reference
-		TextView exampleTextView = (TextView) mRootView.findViewById(R.id.fragment_html_text_example);
+		TextView descriptionTextView = (TextView) mRootView.findViewById(R.id.fragment_example_description);
 		
 		// color highlight
 		String colorHighlight = toHtmlColor(R.color.global_text_secondary);
@@ -46,8 +46,8 @@ public class HtmlTextFragment extends SherlockFragment
 
 		// set html text
 		// beware of this bug: https://code.google.com/p/android/issues/detail?id=35412, https://code.google.com/p/android/issues/detail?id=34913
-		exampleTextView.setText(Html.fromHtml(builder.toString()), TextView.BufferType.SPANNABLE);
-		exampleTextView.setMovementMethod(LinkMovementMethod.getInstance());
+		descriptionTextView.setText(Html.fromHtml(builder.toString()), TextView.BufferType.SPANNABLE);
+		descriptionTextView.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 	
 	

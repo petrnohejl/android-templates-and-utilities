@@ -28,7 +28,7 @@ import com.facebook.android.Facebook.DialogListener;
 import com.facebook.android.FacebookError;
 
 
-public class FacebookFragment extends SherlockFragment
+public class ExampleFragment extends SherlockFragment
 {
 	private boolean mActionBarProgress = false;
 	private View mRootView;
@@ -54,7 +54,7 @@ public class FacebookFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.fragment_facebook, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 	
@@ -92,11 +92,11 @@ public class FacebookFragment extends SherlockFragment
 	
 	private void renderView()
 	{
-		Button loginButton = (Button) mRootView.findViewById(R.id.fragment_facebook_login);
-		Button logoutButton = (Button) mRootView.findViewById(R.id.fragment_facebook_logout);
-		Button profileButton = (Button) mRootView.findViewById(R.id.fragment_facebook_profile);
-		Button friendsButton = (Button) mRootView.findViewById(R.id.fragment_facebook_friends);
-		Button wallPostButton = (Button) mRootView.findViewById(R.id.fragment_facebook_wall_post);
+		Button loginButton = (Button) mRootView.findViewById(R.id.fragment_example_login);
+		Button logoutButton = (Button) mRootView.findViewById(R.id.fragment_example_logout);
+		Button profileButton = (Button) mRootView.findViewById(R.id.fragment_example_profile);
+		Button friendsButton = (Button) mRootView.findViewById(R.id.fragment_example_friends);
+		Button wallPostButton = (Button) mRootView.findViewById(R.id.fragment_example_wall_post);
 		
 		loginButton.setOnClickListener(new OnClickListener()
 		{

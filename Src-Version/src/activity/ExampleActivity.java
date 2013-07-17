@@ -8,14 +8,14 @@ import com.example.utility.Preferences;
 import com.example.utility.Version;
 
 
-public class VersionActivity extends SherlockFragmentActivity
+public class ExampleActivity extends SherlockFragmentActivity
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.activity_version);
+		setContentView(R.layout.activity_example);
 		
 		checkVersion();
 	}

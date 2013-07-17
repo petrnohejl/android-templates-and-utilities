@@ -17,7 +17,7 @@ import com.example.task.TaskSherlockFragment;
 import com.example.utility.Logcat;
 
 
-public class GeolocationFragment extends TaskSherlockFragment implements OnGeolocationListener
+public class ExampleFragment extends TaskSherlockFragment implements OnGeolocationListener
 {
 	private View mRootView;
 	private Geolocation mGeolocation = null;
@@ -27,7 +27,7 @@ public class GeolocationFragment extends TaskSherlockFragment implements OnGeolo
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.fragment_geolocation, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 

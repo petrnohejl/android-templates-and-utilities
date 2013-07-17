@@ -13,7 +13,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
 
 
-public class RefreshFragment extends SherlockFragment
+public class ExampleFragment extends SherlockFragment
 {
 	private boolean mActionBarProgress = false;
 	private View mRootView;
@@ -23,7 +23,7 @@ public class RefreshFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.fragment_refresh, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 	

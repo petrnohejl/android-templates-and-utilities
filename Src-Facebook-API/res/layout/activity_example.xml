@@ -6,8 +6,8 @@
 	android:background="@color/global_bg_back">
 	
 	<fragment
-		android:id="@+id/fragment_facebook"
-		android:name="com.example.fragment.FacebookFragment"
+		android:id="@+id/fragment_example"
+		android:name="com.example.fragment.ExampleFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_weight="1" />

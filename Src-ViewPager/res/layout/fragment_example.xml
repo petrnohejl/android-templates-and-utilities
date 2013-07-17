@@ -15,7 +15,7 @@
 			android:fillViewport="true"
 			android:background="@color/global_bg_front">
 			
-			<include layout="@layout/fragment_simple_content" />
+			<include layout="@layout/fragment_example_content" />
 			
 		</ScrollView>
 	</FrameLayout>

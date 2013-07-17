@@ -7,10 +7,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.receiver.SimpleAlarmReceiver;
+import com.example.receiver.ExampleAlarmReceiver;
 
 
-public class SimpleAlarm
+public class ExampleAlarm
 {
 	private final int ALARM_ID = 0;
 	private final long ALARM_INTERVAL = AlarmManager.INTERVAL_HOUR; // in milliseconds
@@ -18,7 +18,7 @@ public class SimpleAlarm
 	private Context mContext;
 	
 	
-	public SimpleAlarm(Context context)
+	public ExampleAlarm(Context context)
 	{
 		mContext = context;
 	}
@@ -48,7 +48,7 @@ public class SimpleAlarm
 	
 	private PendingIntent getPendingIntent()
 	{
-		Intent alarmIntent = new Intent(mContext, SimpleAlarmReceiver.class);
+		Intent alarmIntent = new Intent(mContext, ExampleAlarmReceiver.class);
 		PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext, ALARM_ID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 		return pendingIntent;
 	}

@@ -9,7 +9,7 @@ import com.actionbarsherlock.view.Window;
 import com.example.R;
 
 
-public class IntentActivity extends SherlockFragmentActivity
+public class ExampleActivity extends SherlockFragmentActivity
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -17,7 +17,7 @@ public class IntentActivity extends SherlockFragmentActivity
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		setContentView(R.layout.activity_intent);
+		setContentView(R.layout.activity_example);
 	}
 	
 	

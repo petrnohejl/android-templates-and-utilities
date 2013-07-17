@@ -10,7 +10,7 @@
 		android:icon="@drawable/ic_launcher"
 		android:label="@string/app_name">
 		
-		<receiver android:name=".receiver.SimpleAlarmReceiver" android:process=":remote" />
+		<receiver android:name=".receiver.ExampleAlarmReceiver" android:process=":remote" />
 		
 	</application>
 </manifest>

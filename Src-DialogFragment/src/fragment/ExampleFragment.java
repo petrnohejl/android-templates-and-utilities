@@ -25,7 +25,7 @@ import com.example.task.TaskSherlockFragment;
 import com.example.utility.Logcat;
 
 
-public class MyDialogsFragment extends TaskSherlockFragment implements
+public class ExampleFragment extends TaskSherlockFragment implements
 		SimpleDialogFragment.SimpleDialogListener,
 		ItemsDialogFragment.ItemsDialogListener,
 		SingleChoiceItemsDialogFragment.SingleChoiceItemsDialogListener,
@@ -58,7 +58,7 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.fragment_my_dialogs, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 	
@@ -193,13 +193,13 @@ public class MyDialogsFragment extends TaskSherlockFragment implements
 	private void renderView()
 	{
 		// reference
-		Button button1 = (Button) mRootView.findViewById(R.id.fragment_my_dialogs_button1);
-		Button button2 = (Button) mRootView.findViewById(R.id.fragment_my_dialogs_button2);
-		Button button3 = (Button) mRootView.findViewById(R.id.fragment_my_dialogs_button3);
-		Button button4 = (Button) mRootView.findViewById(R.id.fragment_my_dialogs_button4);
-		Button button5 = (Button) mRootView.findViewById(R.id.fragment_my_dialogs_button5);
-		Button button6 = (Button) mRootView.findViewById(R.id.fragment_my_dialogs_button6);
-		Button button7 = (Button) mRootView.findViewById(R.id.fragment_my_dialogs_button7);
+		Button button1 = (Button) mRootView.findViewById(R.id.fragment_example_button1);
+		Button button2 = (Button) mRootView.findViewById(R.id.fragment_example_button2);
+		Button button3 = (Button) mRootView.findViewById(R.id.fragment_example_button3);
+		Button button4 = (Button) mRootView.findViewById(R.id.fragment_example_button4);
+		Button button5 = (Button) mRootView.findViewById(R.id.fragment_example_button5);
+		Button button6 = (Button) mRootView.findViewById(R.id.fragment_example_button6);
+		Button button7 = (Button) mRootView.findViewById(R.id.fragment_example_button7);
 		
 		// content
 		button1.setOnClickListener(new OnClickListener()

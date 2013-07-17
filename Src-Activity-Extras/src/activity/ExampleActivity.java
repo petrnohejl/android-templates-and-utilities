@@ -7,7 +7,7 @@ import com.actionbarsherlock.view.Window;
 import com.example.R;
 
 
-public class ExtrasActivity extends SherlockFragmentActivity
+public class ExampleActivity extends SherlockFragmentActivity
 {
 	public static final String EXTRA_PRODUCT_ID = "product_id";
 	public static final String EXTRA_PRODUCT_TITLE = "product_title";
@@ -26,6 +26,6 @@ public class ExtrasActivity extends SherlockFragmentActivity
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		setContentView(R.layout.activity_extras);
+		setContentView(R.layout.activity_example);
 	}
 }

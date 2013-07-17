@@ -10,7 +10,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
 
 
-public class SimpleFragment extends SherlockFragment
+public class ExampleFragment extends SherlockFragment
 {
 	public static final String EXTRA_ARG = "arg";
 	
@@ -18,9 +18,9 @@ public class SimpleFragment extends SherlockFragment
 	private View mRootView;
 	
 	
-	public static SimpleFragment newInstance(String arg)
+	public static ExampleFragment newInstance(String arg)
 	{
-		SimpleFragment fragment = new SimpleFragment();
+		ExampleFragment fragment = new ExampleFragment();
 		
 		// arguments
 		Bundle args = new Bundle();
@@ -51,7 +51,7 @@ public class SimpleFragment extends SherlockFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mRootView = inflater.inflate(R.layout.fragment_simple, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 	
@@ -76,7 +76,7 @@ public class SimpleFragment extends SherlockFragment
 	private void renderView()
 	{
 		// reference
-		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_simple_name);
+		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_example_name);
 		
 		// content
 		nameTextView.setText("Fragment " + mArg);
