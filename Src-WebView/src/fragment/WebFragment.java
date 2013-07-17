@@ -1,5 +1,7 @@
 package com.example.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -72,6 +74,21 @@ public class WebFragment extends SherlockFragment
 					webView.loadUrl("about:blank");
 					Toast.makeText(getActivity(), errorCode + ": " + description, Toast.LENGTH_LONG).show();
 					showEmpty();
+				}
+			}
+			
+			
+			@Override
+			public boolean shouldOverrideUrlLoading(WebView view, String url)
+			{
+				if(url!=null && url.startsWith("http://"))
+				{
+					view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+					return true;
+				}
+				else
+				{
+					return false;
 				}
 			}
 		});
