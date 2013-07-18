@@ -21,11 +21,11 @@ public class ExampleActivity extends SherlockFragmentActivity
 	}
 	
 	
-	private void startWebActivity()
+	private void startWebActivity(String url)
 	{
 		try
 		{
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://petrnohejl.cz"));
+			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -90,14 +90,14 @@ public class ExampleActivity extends SherlockFragmentActivity
 	}
 	
 	
-	private void startSmsActivity()
+	private void startSmsActivity(String phoneNumber, String text)
 	{
 		try
 		{
 			Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
 			intent.setType("vnd.android-dir/mms-sms");
-			intent.putExtra("address", "+420123456789");
-			intent.putExtra("sms_body", "Body");
+			intent.putExtra("address", phoneNumber);
+			intent.putExtra("sms_body", text);
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -107,15 +107,15 @@ public class ExampleActivity extends SherlockFragmentActivity
 	}
 	
 	
-	private void startShareActivity()
+	private void startShareActivity(String chooserTitle, String subject, String text)
 	{
 		try
 		{
 			Intent intent = new Intent(android.content.Intent.ACTION_SEND);
 			intent.setType("text/plain");
-			intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
-			intent.putExtra(android.content.Intent.EXTRA_TEXT, "Text");
-			startActivity(Intent.createChooser(intent, "Share"));
+			intent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+			intent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+			startActivity(Intent.createChooser(intent, chooserTitle));
 		}
 		catch(android.content.ActivityNotFoundException e)
 		{
@@ -124,16 +124,16 @@ public class ExampleActivity extends SherlockFragmentActivity
 	}
 	
 	
-	private void startEmailActivity()
+	private void startEmailActivity(String chooserTitle, String[] emailList, String subject, String text)
 	{
 		try
 		{
 			Intent intent = new Intent(android.content.Intent.ACTION_SEND);
 			intent.setType("plain/text");
-			intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{ "email@email.com" });
-			intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
-			intent.putExtra(android.content.Intent.EXTRA_TEXT, "Text");
-			startActivity(Intent.createChooser(intent, "Feedback"));
+			intent.putExtra(android.content.Intent.EXTRA_EMAIL, emailList);
+			intent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+			intent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+			startActivity(Intent.createChooser(intent, chooserTitle));
 		}
 		catch(android.content.ActivityNotFoundException e)
 		{
@@ -142,16 +142,16 @@ public class ExampleActivity extends SherlockFragmentActivity
 	}
 	
 	
-	private void startCalendarActivity()
+	private void startCalendarActivity(String title, String description, long beginTime, long endTime)
 	{
 		try
 		{
 			Intent intent = new Intent(android.content.Intent.ACTION_EDIT);
 			intent.setType("vnd.android.cursor.item/event");
-			intent.putExtra("title", "Title");
-			intent.putExtra("description", "Description");
-			intent.putExtra("beginTime", 1400000000000l);
-			intent.putExtra("endTime", 1400010000000l);
+			intent.putExtra("title", title);
+			intent.putExtra("description", description);
+			intent.putExtra("beginTime", beginTime); // time in milliseconds
+			intent.putExtra("endTime", endTime);
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -161,13 +161,13 @@ public class ExampleActivity extends SherlockFragmentActivity
 	}
 	
 	
-	private void startCallActivity()
+	private void startCallActivity(String phoneNumber)
 	{
 		try
 		{
 			StringBuilder builder = new StringBuilder();
 			builder.append("tel:");
-			builder.append("+420123456789");
+			builder.append(phoneNumber);
 			
 			Intent intent = new Intent(android.content.Intent.ACTION_DIAL, Uri.parse(builder.toString()));
 			startActivity(intent);
