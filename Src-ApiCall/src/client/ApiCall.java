@@ -109,15 +109,20 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			
 			// receive response
 			if(isCancelled()) return null;
+			String encoding = connection.getHeaderField("Content-Encoding");
+			boolean gzipped = encoding!=null && encoding.toLowerCase().contains("gzip");
 			try
 			{
-				responseStream = new BufferedInputStream(connection.getInputStream());
-				//responseStream = new BufferedInputStream(new GZIPInputStream(connection.getInputStream()));
+				InputStream inputStream = connection.getInputStream();
+				if(gzipped) responseStream = new BufferedInputStream(new GZIPInputStream(inputStream));
+				else responseStream = new BufferedInputStream(inputStream);
 			}
 			catch(FileNotFoundException e)
 			{
 				// error stream
-				responseStream = new BufferedInputStream(connection.getErrorStream());
+				InputStream errorStream = connection.getErrorStream();
+				if(gzipped) responseStream = new BufferedInputStream(new GZIPInputStream(errorStream));
+				else responseStream = new BufferedInputStream(errorStream);
 			}
 			
 			// response info
