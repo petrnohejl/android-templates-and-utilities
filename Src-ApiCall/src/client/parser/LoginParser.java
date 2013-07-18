@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonToken;
 
 import com.example.client.response.LoginResponse;
@@ -20,7 +21,7 @@ public class LoginParser
 		
 		// init parser
 		JsonFactory factory = new JsonFactory();
-		org.codehaus.jackson.JsonParser parser = null;
+		JsonParser parser = null;
 		parser = factory.createJsonParser(stream);
 
 		
@@ -70,6 +71,11 @@ public class LoginParser
 					{
 						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) accessToken=parser.getText();
 					}
+					else
+					{
+						// unknown parameter
+						handleUnknownParameter(parser);
+					}
 				}
 
 				Membership membership = new Membership();
@@ -85,5 +91,21 @@ public class LoginParser
 		// close parser
 		if(parser!=null) parser.close();
 		return response;
+	}
+	
+	
+	private static void handleUnknownParameter(JsonParser parser) throws IOException, JsonParseException
+	{
+		if(parser.getCurrentToken() == JsonToken.START_OBJECT)
+		while(parser.nextToken() != JsonToken.END_OBJECT)
+		{
+			handleUnknownParameter(parser);
+		}
+		
+		if(parser.getCurrentToken() == JsonToken.START_ARRAY)
+		while(parser.nextToken() != JsonToken.END_ARRAY)
+		{
+			handleUnknownParameter(parser);
+		}
 	}
 }
