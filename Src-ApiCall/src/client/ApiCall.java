@@ -2,6 +2,7 @@ package com.example.client;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -108,8 +109,16 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			
 			// receive response
 			if(isCancelled()) return null;
-			responseStream = new BufferedInputStream(connection.getInputStream());
-			//errorStream = new BufferedInputStream(connection.getErrorStream());
+			try
+			{
+				responseStream = new BufferedInputStream(connection.getInputStream());
+				//responseStream = new BufferedInputStream(new GZIPInputStream(connection.getInputStream()));
+			}
+			catch(FileNotFoundException e)
+			{
+				// error stream
+				responseStream = new BufferedInputStream(connection.getErrorStream());
+			}
 			
 			// response info
 			//Logcat.d("ApiCall.doInBackground().connection.getURL(): " + connection.getURL());
