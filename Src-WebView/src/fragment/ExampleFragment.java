@@ -5,8 +5,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -52,6 +54,8 @@ public class ExampleFragment extends SherlockFragment
 		webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setPluginState(WebSettings.PluginState.ON);
+		webView.setBackgroundColor(getResources().getColor(R.color.global_bg_front));
+		webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY); // fixes scrollbar on Froyo
 		webView.setWebChromeClient(new WebChromeClient()); // http://stackoverflow.com/questions/8541443/whats-causing-this-nullpointerexception
 		webView.setWebViewClient(new WebViewClient()
 		{
@@ -81,7 +85,7 @@ public class ExampleFragment extends SherlockFragment
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url)
 			{
-				if(url!=null && url.startsWith("http://"))
+				if(url!=null && (url.startsWith("http://") || url.startsWith("https://")))
 				{
 					view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 					return true;
@@ -111,6 +115,26 @@ public class ExampleFragment extends SherlockFragment
 							}
 							break;
 					}
+				}
+				
+				return false;
+			}
+		});
+		webView.requestFocus(View.FOCUS_DOWN); // http://android24hours.blogspot.cz/2011/12/android-soft-keyboard-not-showing-on.html
+		webView.setOnTouchListener(new OnTouchListener()
+		{
+			@Override
+			public boolean onTouch(View v, MotionEvent event)
+			{
+				switch(event.getAction())
+				{
+					case MotionEvent.ACTION_DOWN:
+					case MotionEvent.ACTION_UP:
+						if(!v.hasFocus())
+						{
+							v.requestFocus();
+						}
+						break;
 				}
 				
 				return false;
