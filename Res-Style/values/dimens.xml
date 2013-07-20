@@ -11,9 +11,9 @@
 	<dimen name="global_metric_xlarge">32dp</dimen>
 	<dimen name="global_metric_unity">48dp</dimen>
 	
-	<dimen name="view_listview_divider">0.5dp</dimen>
+	<dimen name="view_listview_divider">1dp</dimen>
 	
-	<dimen name="ab_title_text">16sp</dimen>
+	<dimen name="ab_title_text">18sp</dimen>
 	<dimen name="ab_button_text">14sp</dimen>
 	<dimen name="ab_tab_text">14sp</dimen>
 	<dimen name="ab_tab_padding">4dp</dimen>
