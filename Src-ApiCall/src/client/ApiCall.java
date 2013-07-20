@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.zip.GZIPInputStream;
 
 import android.os.AsyncTask;
 import android.util.Base64;
