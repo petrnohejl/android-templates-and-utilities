@@ -4,6 +4,8 @@
 	<string name="prefs_key_user_id">user_id</string>
 	<string name="prefs_key_password">password</string>
 	<string name="prefs_key_version">version</string>
+	<string name="prefs_key_launch">launch</string>
+	<string name="prefs_key_rated">rated</string>
 	<string name="prefs_key_fb_access_token">fb_access_token</string>
 	<string name="prefs_key_fb_expiration">fb_expiration</string>
 </resources>

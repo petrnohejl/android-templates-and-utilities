@@ -17,15 +17,16 @@ public class ExampleActivity extends SherlockFragmentActivity
 		
 		setContentView(R.layout.activity_example);
 		
-		checkVersion();
+		checkNewVersion();
+		checkLaunch();
 	}
 
 
-	private void checkVersion()
+	private void checkNewVersion()
 	{
 		Preferences preferences = new Preferences(this);
 		
-		String currentVersion = Version.getApplicationVersion(this, ListingActivity.class);
+		String currentVersion = Version.getVersionName(this);
 		String lastVersion = preferences.getVersion();
 		
 		// new version is available
@@ -36,5 +37,30 @@ public class ExampleActivity extends SherlockFragmentActivity
 			// set new version in preferences
 			preferences.setVersion(currentVersion);
 		}
+	}
+
+
+	private void checkLaunch()
+	{
+		// get current launch
+		Preferences preferences = new Preferences(this);
+		final int launch = preferences.getLaunch();
+
+		// check launch number
+		boolean showDialog = false;
+		if(!preferences.isRated())
+		{
+			if(launch==3) showDialog = true;
+			else if(launch>=10 && launch%10==0) showDialog = true;
+		}
+
+		// show rating dialog
+		if(showDialog)
+		{
+			// TODO: show rating dialog
+		}
+
+		// increment launch
+		preferences.setLaunch(launch + 1);
 	}
 }

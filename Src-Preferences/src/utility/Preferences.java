@@ -27,7 +27,7 @@ public class Preferences
 		mContext = context;
 	}
 	
-
+	
 	public void clearPreferences()
 	{
 		Editor editor = mSharedPreferences.edit();
@@ -63,6 +63,22 @@ public class Preferences
 	}
 
 
+	public int getLaunch()
+	{
+		String key = mContext.getString(R.string.prefs_key_launch);
+		int value = mSharedPreferences.getInt(key, 0);
+		return value;
+	}
+
+
+	public boolean isRated()
+	{
+		String key = mContext.getString(R.string.prefs_key_rated);
+		boolean value = mSharedPreferences.getBoolean(key, false);
+		return value;
+	}
+
+
 	public String getFacebookAccessToken()
 	{
 		String key = mContext.getString(R.string.prefs_key_fb_access_token);
@@ -77,7 +93,7 @@ public class Preferences
 		long value = mSharedPreferences.getLong(key, NULL_LONG);
 		return value;
 	}
-	
+
 
 	// SETTERS ////////////////////////////////////////////////////////////////////////////////////
 	
@@ -105,6 +121,24 @@ public class Preferences
 		String key = mContext.getString(R.string.prefs_key_version);
 		SharedPreferences.Editor editor = mSharedPreferences.edit();
 		editor.putString(key, version);
+		editor.commit();
+	}
+
+
+	public void setLaunch(int launch)
+	{
+		String key = mContext.getString(R.string.prefs_key_launch);
+		SharedPreferences.Editor editor = mSharedPreferences.edit();
+		editor.putInt(key, launch);
+		editor.commit();
+	}
+
+
+	public void setRated(boolean rated)
+	{
+		String key = mContext.getString(R.string.prefs_key_rated);
+		SharedPreferences.Editor editor = mSharedPreferences.edit();
+		editor.putBoolean(key, rated);
 		editor.commit();
 	}
 
