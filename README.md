@@ -86,6 +86,7 @@ dependencies in the project should be listed below. For example:
 * [ShowcaseView](https://github.com/Espiandev/ShowcaseView)
 * [Sliding Menu](https://github.com/jfeinstein10/SlidingMenu)
 * [Sticky List Headers](https://github.com/emilsjolander/StickyListHeaders)
+* [Styled Dialogs](https://github.com/inmite/android-styled-dialogs)
 * [Sugar ORM](http://satyan.github.com/sugar/index.html)
 * [Swipe To Dismiss](https://github.com/JakeWharton/SwipeToDismissNOA)
 * [Tree View List](http://code.google.com/p/tree-view-list-android/)
