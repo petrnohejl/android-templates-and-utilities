@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.assist.LoadedFrom;
 import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
 
 
@@ -27,7 +28,7 @@ public class FadeInBitmapDisplayer implements BitmapDisplayer
 
 
 	@Override
-	public Bitmap display(Bitmap bitmap, ImageView imageView)
+	public Bitmap display(Bitmap bitmap, ImageView imageView, LoadedFrom loadedFrom)
 	{
 		setImageBitmapWithFade(bitmap, imageView);
 		return bitmap;
