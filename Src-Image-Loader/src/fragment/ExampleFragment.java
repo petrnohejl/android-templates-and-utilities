@@ -33,8 +33,8 @@ public class ExampleFragment extends SherlockFragment
 			.showStubImage(android.R.color.transparent)
 			.showImageForEmptyUri(R.drawable.placeholder_photo)
 			.showImageOnFail(R.drawable.placeholder_photo)
-			.cacheInMemory()
-			.cacheOnDisc()
+			.cacheInMemory(true)
+			.cacheOnDisc(true)
 			.displayer(new SimpleBitmapDisplayer())
 			.build();
 		mImageLoadingListener = new OnAnimateImageLoadingListener();
