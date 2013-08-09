@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -181,26 +180,6 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 	{
 		// action bar menu behaviour
 		return super.onOptionsItemSelected(item);
-		
-		// TODO
-	}
-	
-	
-	@Override
-	public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo)
-	{
-		// context menu
-		super.onCreateContextMenu(menu, view, menuInfo);
-		
-		// TODO
-	}
-	
-	
-	@Override
-	public boolean onContextItemSelected(android.view.MenuItem item)
-	{
-		// context menu behaviour
-		return super.onContextItemSelected(item);
 		
 		// TODO
 	}
