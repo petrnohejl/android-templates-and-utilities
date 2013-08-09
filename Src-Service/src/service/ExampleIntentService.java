@@ -50,8 +50,9 @@ public class ExampleIntentService extends IntentService
 					// TODO: do something
 					wait(endTime - System.currentTimeMillis());
 				}
-				catch(Exception e)
+				catch(InterruptedException e)
 				{
+					e.printStackTrace();
 				}
 			}
 		}

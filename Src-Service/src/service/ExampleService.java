@@ -86,8 +86,9 @@ public class ExampleService extends Service
 						// TODO: do something
 						wait(endTime - System.currentTimeMillis());
 					}
-					catch(Exception e)
+					catch(InterruptedException e)
 					{
+						e.printStackTrace();
 					}
 				}
 			}
