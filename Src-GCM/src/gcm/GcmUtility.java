@@ -64,7 +64,7 @@ public class GcmUtility
 			{
 				// Here we are simplifying and retrying on any error.
 				// In a real application, it should retry only on unrecoverable errors (like HTTP error code 503).
-				Logcat.d("GcmUtility.register(): server failed to register on attempt #" + i + ": " + e.getMessage());
+				Logcat.d("GcmUtility.register(): server failed to register on attempt #" + i + " / " + e.getMessage());
 				
 				if(i == MAX_ATTEMPTS) break;
 				
@@ -114,7 +114,7 @@ public class GcmUtility
 			// At this point the device is unregistered from GCM, but still registered on the server.
 			// We could try to unregister again, but it is not necessary: if the server tries to send a message to the device,
 			// it will get a "NotRegistered" error message and should unregister the device.
-			Logcat.d("GcmUtility.unregister(): could not unregister device on server: " + e.getMessage());
+			Logcat.d("GcmUtility.unregister(): could not unregister device on server / " + e.getMessage());
 		}
 	}
 
