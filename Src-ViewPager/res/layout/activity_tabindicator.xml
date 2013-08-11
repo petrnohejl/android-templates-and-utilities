@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical"
-	android:background="@color/global_bg_back">
+	android:orientation="vertical">
 	
 	<com.viewpagerindicator.TabPageIndicator
 		android:id="@+id/activity_tabindicator_indicator"
