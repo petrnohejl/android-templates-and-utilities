@@ -8,9 +8,9 @@
 	
 	<color name="global_bg_back">#eee</color>
 	<color name="global_bg_front">#fff</color>
+	<color name="global_bg_dialog">#f5f5f5</color>
 	<color name="global_bg_back_inverse">#111</color>
 	<color name="global_bg_front_inverse">#222</color>
-	<color name="global_bg_dialog">#f5f5f5</color>
 	<color name="global_bg_dialog_inverse">#282828</color>
 	
 	<color name="view_listview_divider">#ddd</color>
