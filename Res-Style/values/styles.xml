@@ -7,6 +7,9 @@
 	<!-- Original Android styles: https://github.com/android/platform_frameworks_base/blob/master/core/res/res/values/styles.xml -->
 	
 	<style name="Theme.Example" parent="Theme.Sherlock.Light">
+		<!-- window background -->
+		<item name="android:windowBackground">@color/global_bg_back</item>
+		
 		<!-- action bar icon -->
 		<item name="icon">@drawable/ic_launcher</item>
 		<item name="android:icon">@drawable/ic_launcher</item>
