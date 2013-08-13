@@ -2,8 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<!-- Example theme -->
-	<!-- Android Action Bar Style Generator: http://jgilfelt.github.com/android-actionbarstylegenerator -->
-	<!-- Android Holo Colors Generator: http://android-holo-colors.com -->
+	<!-- Android Asset Studio: http://android-ui-utils.googlecode.com/hg/asset-studio/dist/index.html -->
 	<!-- Original Android styles: https://github.com/android/platform_frameworks_base/blob/master/core/res/res/values/styles.xml -->
 	
 	<style name="Theme.Example" parent="Theme.Sherlock.Light">
@@ -94,10 +93,10 @@
 		<item name="android:actionModeCloseButtonStyle">@style/Example.ActionBar.ActionModeCloseButton</item>
 		
 		<!-- view styles -->
-		<item name="android:textViewStyle">@style/Example.TextView</item>
-		<item name="android:buttonStyle">@style/Example.Button</item>
-		<item name="android:editTextStyle">@style/Example.EditText</item>
-		<item name="android:checkboxStyle">@style/Example.CheckBox</item>
+		<item name="android:textViewStyle">@style/Example.TextView.Light</item>
+		<item name="android:buttonStyle">@style/Example.Button.Light</item>
+		<item name="android:editTextStyle">@style/Example.EditText.Light</item>
+		<item name="android:checkboxStyle">@style/Example.CheckBox.Light</item>
 	</style>
 	
 	
@@ -215,12 +214,18 @@
 	
 	<!-- view textview -->
 	<style name="Example.TextView" parent="@android:style/Widget.TextView">
+		<item name="android:textColor">@color/global_text_primary_inverse</item>
+	</style>
+	<style name="Example.TextView.Light" parent="@android:style/Widget.TextView">
 		<item name="android:textColor">@color/global_text_primary</item>
 	</style>
 	
 	
 	<!-- view button -->
 	<style name="Example.Button" parent="@android:style/Widget.Button">
+		<item name="android:textColor">@color/global_text_primary</item>
+	</style>
+	<style name="Example.Button.Light" parent="@android:style/Widget.Button">
 		<item name="android:textColor">@color/global_text_primary</item>
 	</style>
 	
@@ -230,10 +235,17 @@
 		<item name="android:textColor">@color/global_text_primary</item>
 		<item name="android:textColorHint">@color/global_text_secondary</item>
 	</style>
+	<style name="Example.EditText.Light" parent="@android:style/Widget.EditText">
+		<item name="android:textColor">@color/global_text_primary</item>
+		<item name="android:textColorHint">@color/global_text_secondary</item>
+	</style>
 	
 	
 	<!-- view checkbox -->
 	<style name="Example.CheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+		<item name="android:textColor">@color/global_text_primary_inverse</item>
+	</style>
+	<style name="Example.CheckBox.Light" parent="@android:style/Widget.CompoundButton.CheckBox">
 		<item name="android:textColor">@color/global_text_primary</item>
 	</style>
 </resources>

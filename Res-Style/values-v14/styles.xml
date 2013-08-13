@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<!-- view textview -->
+	<style name="Example.TextView" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:textColor">@color/global_text_primary_inverse</item>
+	</style>
+	<style name="Example.TextView.Light" parent="@android:style/Widget.DeviceDefault.Light.TextView">
+		<item name="android:textColor">@color/global_text_primary</item>
+	</style>
+	
+	
+	<!-- view button -->
+	<style name="Example.Button" parent="@android:style/Widget.DeviceDefault.Button">
+		<item name="android:textColor">@color/global_text_primary_inverse</item>
+	</style>
+	<style name="Example.Button.Light" parent="@android:style/Widget.DeviceDefault.Light.Button">
+		<item name="android:textColor">@color/global_text_primary</item>
+	</style>
+	
+	
+	<!-- view edittext -->
+	<style name="Example.EditText" parent="@android:style/Widget.DeviceDefault.EditText">
+		<item name="android:textColor">@color/global_text_primary_inverse</item>
+		<item name="android:textColorHint">@color/global_text_secondary_inverse</item>
+	</style>
+	<style name="Example.EditText.Light" parent="@android:style/Widget.DeviceDefault.Light.EditText">
+		<item name="android:textColor">@color/global_text_primary</item>
+		<item name="android:textColorHint">@color/global_text_secondary</item>
+	</style>
+	
+	
+	<!-- view checkbox -->
+	<style name="Example.CheckBox" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
+		<item name="android:textColor">@color/global_text_primary_inverse</item>
+	</style>
+	<style name="Example.CheckBox.Light" parent="@android:style/Widget.DeviceDefault.Light.CompoundButton.CheckBox">
+		<item name="android:textColor">@color/global_text_primary</item>
+	</style>
+	
+</resources>
