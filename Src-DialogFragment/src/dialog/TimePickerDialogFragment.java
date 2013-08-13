@@ -58,7 +58,7 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(getTargetFragment().toString() + " must implement TimePickerDialogListener");
+			throw new ClassCastException(getTargetFragment().toString() + " must implement " + TimePickerDialogListener.class.getName());
 		}
 	}
 	

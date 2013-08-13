@@ -61,7 +61,7 @@ public class SingleChoiceItemsDialogFragment extends DialogFragment
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(getTargetFragment().toString() + " must implement SingleChoiceItemsDialogListener");
+			throw new ClassCastException(getTargetFragment().toString() + " must implement " + SingleChoiceItemsDialogListener.class.getName());
 		}
 	}
 	

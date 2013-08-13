@@ -61,7 +61,7 @@ public class SimpleDialogFragment extends DialogFragment
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(getTargetFragment().toString() + " must implement SimpleDialogListener");
+			throw new ClassCastException(getTargetFragment().toString() + " must implement " + SimpleDialogListener.class.getName());
 		}
 	}
 	

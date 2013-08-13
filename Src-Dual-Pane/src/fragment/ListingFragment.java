@@ -37,7 +37,7 @@ public class ListingFragment extends TaskSherlockListFragment
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(getTargetFragment().toString() + " must implement OnDualPaneShowListener");
+			throw new ClassCastException(activity.getClass().getName() + " must implement " + OnDualPaneShowListener.class.getName());
 		}
 	}
 	

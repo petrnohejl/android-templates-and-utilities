@@ -58,7 +58,7 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(getTargetFragment().toString() + " must implement DatePickerDialogListener");
+			throw new ClassCastException(getTargetFragment().toString() + " must implement " + DatePickerDialogListener.class.getName());
 		}
 	}
 	

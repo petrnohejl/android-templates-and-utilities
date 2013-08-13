@@ -68,7 +68,7 @@ public class ViewDialogFragment extends DialogFragment
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(getTargetFragment().toString() + " must implement ViewDialogListener");
+			throw new ClassCastException(getTargetFragment().toString() + " must implement " + ViewDialogListener.class.getName());
 		}
 	}
 	

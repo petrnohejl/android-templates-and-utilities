@@ -62,7 +62,7 @@ public class ItemsDialogFragment extends DialogFragment
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(getTargetFragment().toString() + " must implement ItemsDialogListener");
+			throw new ClassCastException(getTargetFragment().toString() + " must implement " + ItemsDialogListener.class.getName());
 		}
 	}
 	

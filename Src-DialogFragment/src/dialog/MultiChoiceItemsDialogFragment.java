@@ -62,7 +62,7 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(getTargetFragment().toString() + " must implement MultiChoiceItemsDialogListener");
+			throw new ClassCastException(getTargetFragment().toString() + " must implement " + MultiChoiceItemsDialogListener.class.getName());
 		}
 	}
 	
