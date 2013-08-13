@@ -378,12 +378,12 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 		//setListAdapter(null);
 		//if(listView.getHeaderViewsCount()==0)
 		//{
-		//	mHeaderView = getActivity().getLayoutInflater().inflate(R.layout.fragment_listing_header, null);
+		//	mHeaderView = getActivity().getLayoutInflater().inflate(R.layout.fragment_listing_header, listView, false);
 		//	listView.addHeaderView(mHeaderView);
 		//}
 		
 		// init footer, because addFooterView() must be called at least once before setListAdapter()
-		mFooterView = getActivity().getLayoutInflater().inflate(R.layout.fragment_listing_footer, null);
+		mFooterView = getActivity().getLayoutInflater().inflate(R.layout.fragment_listing_footer, listView, false);
 		listView.addFooterView(mFooterView);
 		
 		// set adapter

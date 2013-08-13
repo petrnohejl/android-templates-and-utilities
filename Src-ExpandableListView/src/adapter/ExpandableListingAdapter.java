@@ -38,7 +38,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		if(view == null) 
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.fragment_expandable_listing_item, null);
+			view = inflater.inflate(R.layout.fragment_expandable_listing_item, parent, false);
 			
 			// view holder
 			ViewHolder holder = new ViewHolder();
@@ -102,7 +102,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		if(view == null) 
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.fragment_expandable_listing_group, null);
+			view = inflater.inflate(R.layout.fragment_expandable_listing_group, parent, false);
 
 			// view holder
 			ViewHolderGroup holder = new ViewHolderGroup();
