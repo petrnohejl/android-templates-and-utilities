@@ -65,7 +65,6 @@ TODO
 	<application
 		android:name=".ExampleApplication"
 		android:icon="@drawable/ic_launcher"
-		android:logo="@drawable/ab_logo"
 		android:label="@string/app_name"
 		android:theme="@style/Theme.Example"
 		android:hardwareAccelerated="true">

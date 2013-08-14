@@ -144,8 +144,8 @@ public class SimpleActivity extends SherlockFragmentActivity
 	private void setActionBar()
 	{
 		ActionBar bar = getSupportActionBar();
-		bar.setDisplayUseLogoEnabled(true);
-		bar.setDisplayShowTitleEnabled(false);
+		bar.setDisplayUseLogoEnabled(false);
+		bar.setDisplayShowTitleEnabled(true);
 		bar.setDisplayShowHomeEnabled(true);
 		bar.setDisplayHomeAsUpEnabled(false);
 		bar.setHomeButtonEnabled(true);

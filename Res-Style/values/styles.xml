@@ -14,8 +14,10 @@
 		<item name="android:icon">@drawable/ic_launcher</item>
 		
 		<!-- action bar logo -->
+		<!--
 		<item name="logo">@drawable/ab_logo</item>
 		<item name="android:logo">@drawable/ab_logo</item>
+		-->
 
 		<!-- action bar back icon -->
 		<item name="homeAsUpIndicator">@drawable/ab_ic_back</item>

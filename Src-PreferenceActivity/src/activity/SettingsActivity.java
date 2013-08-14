@@ -143,8 +143,8 @@ public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 	private void setActionBar()
 	{
 		ActionBar bar = getSupportActionBar();
-		bar.setDisplayUseLogoEnabled(true);
-		bar.setDisplayShowTitleEnabled(false);
+		bar.setDisplayUseLogoEnabled(false);
+		bar.setDisplayShowTitleEnabled(true);
 		bar.setDisplayShowHomeEnabled(true);
 		bar.setDisplayHomeAsUpEnabled(true);
 		bar.setHomeButtonEnabled(true);
