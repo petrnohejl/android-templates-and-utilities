@@ -117,14 +117,14 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		{
 			public void run()
 			{
-				if(response.getClass().getSimpleName().equalsIgnoreCase("ExampleResponse"))
+				if(call.getRequest().getClass().equals(ExampleRequest.class))
 				{
 					ExampleResponse exampleResponse = (ExampleResponse) response;
 					
 					// error
 					if(exampleResponse.isError())
 					{
-						Logcat.d("Fragment.onApiCallRespond(ExampleResponse): " + status.getStatusCode() + " " + status.getStatusMessage() + 
+						Logcat.d("Fragment.onApiCallRespond(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage() + 
 								" / error / " + exampleResponse.getErrorType() + " / " + exampleResponse.getErrorMessage());
 
 						// hide progress
@@ -138,7 +138,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 					// response
 					else
 					{
-						Logcat.d("Fragment.onApiCallRespond(ExampleResponse): " + status.getStatusCode() + " " + status.getStatusMessage());
+						Logcat.d("Fragment.onApiCallRespond(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage());
 
 						// check meta data
 						if(call.getRequest().getMetaData()!=null && call.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
@@ -188,7 +188,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		{
 			public void run()
 			{
-				if(call.getRequest().getClass().getSimpleName().equalsIgnoreCase("ExampleRequest"))
+				if(call.getRequest().getClass().equals(ExampleRequest.class))
 				{
 					Logcat.d("Fragment.onApiCallFail(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage() +
 							" / " + (parseFail ? "parse fail" : "parse success"));
