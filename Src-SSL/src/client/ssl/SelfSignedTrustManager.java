@@ -17,6 +17,8 @@ import javax.net.ssl.X509TrustManager;
 
 import android.util.Base64;
 
+import com.example.ExampleConfig;
+
 
 // useful articles about trusting SSL certificates:
 // http://blog.crazybob.org/2010/02/android-trusting-ssl-certificates.html
@@ -24,9 +26,6 @@ import android.util.Base64;
 // http://nelenkov.blogspot.cz/2011/12/using-custom-certificate-trust-store-on.html
 public class SelfSignedTrustManager implements X509TrustManager
 {
-	public static final String CERT_SHA1 = "myhash="; // encoded representation of the trusted certificate
-	public static final String KEYSTORE_PASSWORD = "mypassword"; // password of BKS keystore, generated via script: https://github.com/petrnohejl/Android-Scripts/blob/master/certkey.bat
-	
 	private X509TrustManager mDefaultTrustManager = null;
 	private X509TrustManager mLocalTrustManager = null;
 	private X509Certificate[] mAcceptedIssuers;
@@ -98,7 +97,7 @@ public class SelfSignedTrustManager implements X509TrustManager
 				//Logcat.d("TrustManager.checkServerTrusted(): certificate public key: " + certificate.getPublicKey().toString().substring(0, 100) + " ...");
 				//Logcat.d("TrustManager.checkServerTrusted(): certificate hash: " + certHash);
 				//Logcat.d("---------------------------------------");
-				if(certHash.trim().equals(CERT_SHA1))
+				if(certHash.trim().equals(ExampleConfig.SSL_CERTIFICATE_SHA1))
 				{
 					// manual verification successfull
 					expectedCertificateFound = true;

@@ -15,6 +15,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 
 import com.example.ExampleApplication;
+import com.example.ExampleConfig;
 import com.example.R;
 
 
@@ -39,7 +40,7 @@ public class SelfSignedSslUtility
 		
 		KeyManager[] kms = null;
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-		kmf.init(keyStore, SelfSignedTrustManager.KEYSTORE_PASSWORD.toCharArray());
+		kmf.init(keyStore, ExampleConfig.SSL_KEYSTORE_PASSWORD.toCharArray());
 		kms = kmf.getKeyManagers();
 		
 		SSLContext context = SSLContext.getInstance("TLS");
@@ -71,7 +72,7 @@ public class SelfSignedSslUtility
 			InputStream in = ExampleApplication.getContext().getResources().openRawResource(R.raw.cert_keystore);
 			try
 			{
-				keyStore.load(in, SelfSignedTrustManager.KEYSTORE_PASSWORD.toCharArray());
+				keyStore.load(in, ExampleConfig.SSL_KEYSTORE_PASSWORD.toCharArray());
 			}
 			finally
 			{

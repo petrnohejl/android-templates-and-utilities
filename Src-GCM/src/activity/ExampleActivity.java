@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.example.ExampleConfig;
 import com.example.R;
 import com.example.gcm.GcmUtility;
 import com.example.utility.Logcat;
@@ -54,7 +55,7 @@ public class ExampleActivity extends SherlockFragmentActivity
 		if(registrationId.equals(""))
 		{
 			// automatically registers application on startup
-			GCMRegistrar.register(context, GcmUtility.SENDER_ID);
+			GCMRegistrar.register(context, ExampleConfig.GCM_SENDER_ID);
 		}
 		else
 		{

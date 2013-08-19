@@ -14,6 +14,8 @@ import javax.net.ssl.X509TrustManager;
 
 import android.util.Base64;
 
+import com.example.ExampleConfig;
+
 
 // useful articles about trusting SSL certificates:
 // http://blog.crazybob.org/2010/02/android-trusting-ssl-certificates.html
@@ -21,8 +23,6 @@ import android.util.Base64;
 // http://nelenkov.blogspot.cz/2011/12/using-custom-certificate-trust-store-on.html
 public class CertificateAuthorityTrustManager implements X509TrustManager
 {
-	public static final String CERT_SHA1 = "myhash="; // encoded representation of the trusted certificate
-	
 	private X509TrustManager mDefaultTrustManager = null;
 
 
@@ -68,7 +68,7 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 				//Logcat.d("TrustManager.checkServerTrusted(): certificate public key: " + certificate.getPublicKey().toString().substring(0, 100) + " ...");
 				//Logcat.d("TrustManager.checkServerTrusted(): certificate hash: " + certHash);
 				//Logcat.d("---------------------------------------");
-				if(certHash.trim().equals(CERT_SHA1))
+				if(certHash.trim().equals(ExampleConfig.SSL_CERTIFICATE_SHA1))
 				{
 					// manual verification successfull
 					expectedCertificateFound = true;

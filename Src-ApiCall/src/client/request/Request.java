@@ -7,13 +7,13 @@ import org.codehaus.jackson.JsonParseException;
 
 import android.os.Bundle;
 
+import com.example.ExampleConfig;
 import com.example.client.response.Response;
 
 
 public abstract class Request
-{	
-	protected final String API_ENDPOINT = "http://example.com/api/"; // production API
-	//protected final String API_ENDPOINT = "http://dev.example.com/api/"; // development API
+{
+	protected final String API_ENDPOINT = ExampleConfig.DEV_API ? ExampleConfig.API_ENDPOINT_DEVELOPMENT : ExampleConfig.API_ENDPOINT_PRODUCTION;
 	protected final String CHARSET = "UTF-8";
 
 	private Bundle mMetaData = null;

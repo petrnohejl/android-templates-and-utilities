@@ -12,7 +12,7 @@ public class GCMIntentService extends GCMBaseIntentService
 {
 	public GCMIntentService()
 	{
-		super(GcmUtility.SENDER_ID);
+		super(ExampleConfig.GCM_SENDER_ID);
 	}
 
 

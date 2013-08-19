@@ -14,9 +14,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.example.ExampleConfig;
 import com.example.R;
 import com.example.client.RequestManager;
-import com.example.utility.FacebookUtility;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkManager;
 import com.example.utility.Preferences;
@@ -46,7 +46,7 @@ public class ExampleFragment extends SherlockFragment
 		setRetainInstance(true);
 		
 		// facebook init
-		mFacebook = new Facebook(FacebookUtility.FACEBOOK_APP_ID);
+		mFacebook = new Facebook(ExampleConfig.FACEBOOK_APP_ID);
 		mAsyncFacebookRunner = new AsyncFacebookRunner(mFacebook);
 	}
 

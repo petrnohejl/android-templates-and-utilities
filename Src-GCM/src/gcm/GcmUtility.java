@@ -15,16 +15,13 @@ import org.apache.http.message.BasicNameValuePair;
 
 import android.content.Context;
 
+import com.example.ExampleConfig;
 import com.example.utility.Logcat;
 import com.google.android.gcm.GCMRegistrar;
 
 
 public class GcmUtility
 {
-	public static final String REGISTER_URL = "http://example.com/register";
-	public static final String UNREGISTER_URL = "http://example.com/unregister";
-	public static final String SENDER_ID = "123456789";
-	
 	private static final int MAX_ATTEMPTS = 5;
 	private static final int BACKOFF_MILLI_SECONDS = 2000;
 	private static final String CHARSET = "UTF-8";
@@ -37,7 +34,7 @@ public class GcmUtility
 		Logcat.d("GcmUtility.register(): registering device with registration ID " + registrationId);
 		
 		// request url
-		String requestUrl = REGISTER_URL;
+		String requestUrl = ExampleConfig.GCM_REGISTER_URL;
 		
 		// request params
 		List<NameValuePair> paramsList = new LinkedList<NameValuePair>();
@@ -96,7 +93,7 @@ public class GcmUtility
 		Logcat.d("GcmUtility.unregister(): unregistering device with registration ID " + registrationId);
 		
 		// request url
-		String requestUrl = UNREGISTER_URL;
+		String requestUrl = ExampleConfig.GCM_UNREGISTER_URL;
 		
 		// request params
 		List<NameValuePair> paramsList = new LinkedList<NameValuePair>();
