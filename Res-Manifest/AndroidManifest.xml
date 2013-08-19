@@ -20,7 +20,7 @@ TODO BEFORE UPDATE APP ON GOOGLE PLAY
 
 -OTHER:
 -disable logs
--set server release API address
+-set production API endpoint
 -add Google Analytics/Flurry/Localytics events for new features
 
 

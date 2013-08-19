@@ -12,7 +12,8 @@ import com.example.client.response.Response;
 
 public abstract class Request
 {	
-	protected final String BASE_URL = "http://example.com/api/";
+	protected final String API_ENDPOINT = "http://example.com/api/"; // production API
+	//protected final String API_ENDPOINT = "http://dev.example.com/api/"; // development API
 	protected final String CHARSET = "UTF-8";
 
 	private Bundle mMetaData = null;

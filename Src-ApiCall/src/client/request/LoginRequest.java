@@ -47,7 +47,7 @@ public class LoginRequest extends Request
 		String paramsString = URLEncodedUtils.format(params, CHARSET);
 
 		// url
-		builder.append(BASE_URL);
+		builder.append(API_ENDPOINT);
 		builder.append(REQUEST_URL);
 		if(paramsString!=null && !paramsString.equals(""))
 		{
