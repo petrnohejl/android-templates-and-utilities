@@ -81,13 +81,14 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 				connection.setRequestProperty("Authorization", getBasicAuthToken(mRequest.getBasicAuthUsername(), mRequest.getBasicAuthPassword()));
 			}
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			//connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + mRequest.BOUNDARY); // for multipart
 			connection.setRequestProperty("Accept-Encoding", "gzip");
 			connection.setRequestProperty("Accept-Charset", "UTF-8");
 			//connection.setRequestProperty("Content-Length", requestData == null ? "0" : String.valueOf(requestData.length));
 			//if(requestData!=null) connection.setChunkedStreamingMode(0);
 			if(requestData!=null) connection.setFixedLengthStreamingMode(requestData.length);
 			connection.setConnectTimeout(30000);
-			//connection.setReadTimeout(30000);
+			connection.setReadTimeout(30000);
 			if(requestData!=null)
 			{
 				// this call automatically sets request method to POST on Android 4
