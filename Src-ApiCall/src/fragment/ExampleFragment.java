@@ -1,7 +1,11 @@
 package com.example.fragment;
 
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import org.codehaus.jackson.JsonParseException;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -182,7 +186,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 
 
 	@Override
-	public void onApiCallFail(final ApiCall call, final ResponseStatus status, final boolean parseFail)
+	public void onApiCallFail(final ApiCall call, final ResponseStatus status, final Exception exception)
 	{
 		runTaskCallback(new Runnable()
 		{
@@ -191,14 +195,14 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 				if(call.getRequest().getClass().equals(ExampleRequest.class))
 				{
 					Logcat.d("Fragment.onApiCallFail(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage() +
-							" / " + (parseFail ? "parse fail" : "parse success"));
+							" / " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 					
 					// hide progress
 					showLazyLoadingProgress(false);
 					showList();
 
 					// handle fail
-					handleFail();
+					handleFail(exception);
 				}
 				
 				// finish request
@@ -217,9 +221,14 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 	}
 
 
-	private void handleFail()
+	private void handleFail(Exception exception)
 	{
-		Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
+		int messageId;
+		if(exception!=null && exception.getClass().equals(UnknownHostException.class)) messageId = R.string.global_apicall_unknown_host_toast;
+		else if(exception!=null && exception.getClass().equals(SocketTimeoutException.class)) messageId = R.string.global_apicall_timeout_toast;
+		else if(exception!=null && exception.getClass().equals(JsonParseException.class)) messageId = R.string.global_apicall_parse_fail_toast;
+		else messageId = R.string.global_apicall_fail_toast;
+		Toast.makeText(getActivity(), messageId, Toast.LENGTH_LONG).show();
 	}
 	
 	

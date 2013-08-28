@@ -9,9 +9,12 @@ import java.io.OutputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.zip.GZIPInputStream;
+
+import org.codehaus.jackson.JsonParseException;
 
 import android.os.AsyncTask;
 import android.util.Base64;
@@ -25,7 +28,7 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 	private WeakReference<OnApiCallListener> mOnApiCallListener;
 	private Request mRequest;
 	private ResponseStatus mStatus = new ResponseStatus();
-	private boolean mParseFail = false;
+	private Exception mException = null;
 
 	
 	public ApiCall(Request request, OnApiCallListener onApiCallListener)
@@ -136,37 +139,45 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			
 			// parse response
 			if(isCancelled()) return null;
-			Response response = null;
-			try
-			{
-				response = mRequest.parseResponse(responseStream);
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-			if(response==null) mParseFail = true;
+			Response response = mRequest.parseResponse(responseStream);
+			if(response==null) throw new RuntimeException("Parser returned null response");
 
 			if(isCancelled()) return null;
 			return response;
 		}
 		catch(UnknownHostException e)
 		{
+			mException = e;
 			e.printStackTrace();
 			return null;
 		}
 		catch(SocketException e)
 		{
+			mException = e;
+			e.printStackTrace();
+			return null;
+		}
+		catch(SocketTimeoutException e)
+		{
+			mException = e;
+			e.printStackTrace();
+			return null;
+		}
+		catch(JsonParseException e)
+		{
+			mException = e;
 			e.printStackTrace();
 			return null;
 		}
 		catch(IOException e)
 		{
+			mException = e;
 			e.printStackTrace();
 			return null;
 		}
 		catch(Exception e)
 		{
+			mException = e;
 			e.printStackTrace();
 			return null;
 		}
@@ -217,7 +228,7 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			}
 			else
 			{
-				listener.onApiCallFail(this, mStatus, mParseFail);
+				listener.onApiCallFail(this, mStatus, mException);
 			}
 		}
 	}
