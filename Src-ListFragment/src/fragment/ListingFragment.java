@@ -144,6 +144,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	public void onDestroyView()
 	{
 		super.onDestroyView();
+		mRootView = null;
 
 		// free adapter
 		setListAdapter(null);
@@ -218,6 +219,8 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 		{
 			public void run()
 			{
+				if(mRootView==null) return; // view was destroyed
+				
 				// get data
 				final int size = mProductList.size();
 				for(int i=0; i<LAZY_LOADING_TAKE; i++)

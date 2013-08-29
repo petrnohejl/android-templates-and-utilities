@@ -49,6 +49,8 @@ public class ExampleFragment extends TaskSherlockFragment
 		{
 			public void run()
 			{
+				if(mRootView==null) return; // view was destroyed
+				
 				switch(requestCode)
 				{
 					case ImagePicker.ACTION_PICK_IMAGE_FROM_CAMERA:

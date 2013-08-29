@@ -63,6 +63,8 @@ public class ExampleFragment extends TaskSherlockFragment implements OnGeolocati
 		{
 			public void run()
 			{
+				if(mRootView==null) return; // view was destroyed
+				
 				Logcat.d("Fragment.onGeolocationRespond(): " + location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
 				mLocation = new Location(location);
 				
@@ -79,6 +81,8 @@ public class ExampleFragment extends TaskSherlockFragment implements OnGeolocati
 		{
 			public void run()
 			{
+				if(mRootView==null) return; // view was destroyed
+				
 				Logcat.d("Fragment.onGeolocationFail()");
 				
 				// TODO

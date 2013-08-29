@@ -134,6 +134,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 	public void onDestroyView()
 	{
 		super.onDestroyView();
+		mRootView = null;
 	}
 	
 	
@@ -192,6 +193,8 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 		{
 			public void run()
 			{
+				if(mRootView==null) return; // view was destroyed
+				
 				// get data
 				for(int i=0; i<10; i++)
 				{

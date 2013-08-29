@@ -129,6 +129,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 	public void onDestroyView()
 	{
 		super.onDestroyView();
+		mRootView = null;
 	}
 	
 	
@@ -187,6 +188,8 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 		{
 			public void run()
 			{
+				if(mRootView==null) return; // view was destroyed
+				
 				// get data
 				mProduct = new Product();
 				mProduct.setName("Test Product");

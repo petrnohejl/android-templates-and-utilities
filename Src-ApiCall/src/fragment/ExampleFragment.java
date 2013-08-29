@@ -121,6 +121,8 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		{
 			public void run()
 			{
+				if(mRootView==null) return; // view was destroyed
+				
 				if(call.getRequest().getClass().equals(ExampleRequest.class))
 				{
 					ExampleResponse exampleResponse = (ExampleResponse) response;
@@ -192,6 +194,8 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 		{
 			public void run()
 			{
+				if(mRootView==null) return; // view was destroyed
+				
 				if(call.getRequest().getClass().equals(ExampleRequest.class))
 				{
 					Logcat.d("Fragment.onApiCallFail(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage() +
