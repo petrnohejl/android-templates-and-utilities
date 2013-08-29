@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Window;
 import com.example.R;
+import com.example.utility.Logcat;
 
 
 public class ExampleActivity extends SherlockFragmentActivity
@@ -18,6 +19,13 @@ public class ExampleActivity extends SherlockFragmentActivity
 		
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_example);
+		
+		Logcat.d("Activity.getIntent().getAction(): " + getIntent().getAction());
+		Logcat.d("Activity.getIntent().getCategories(): " + (getIntent().getCategories()!=null ? getIntent().getCategories() : "null"));
+		Logcat.d("Activity.getIntent().getDataString(): " + getIntent().getDataString());
+		Logcat.d("Activity.getIntent().getScheme(): " + getIntent().getScheme());
+		Logcat.d("Activity.getIntent().getType(): " + getIntent().getType());
+		Logcat.d("Activity.getIntent().getExtras(): " + (getIntent().getExtras()!=null ? getIntent().getExtras().keySet() : "null"));
 	}
 	
 	
@@ -124,16 +132,18 @@ public class ExampleActivity extends SherlockFragmentActivity
 	}
 	
 	
-	private void startEmailActivity(String chooserTitle, String[] emailList, String subject, String text)
+	private void startEmailActivity(String email, String subject, String text)
 	{
 		try
 		{
-			Intent intent = new Intent(android.content.Intent.ACTION_SEND);
-			intent.setType("plain/text");
-			intent.putExtra(android.content.Intent.EXTRA_EMAIL, emailList);
+			StringBuilder builder = new StringBuilder();
+			builder.append("mailto:");
+			builder.append(email);
+			
+			Intent intent = new Intent(android.content.Intent.ACTION_SENDTO, Uri.parse(builder.toString()));
 			intent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
 			intent.putExtra(android.content.Intent.EXTRA_TEXT, text);
-			startActivity(Intent.createChooser(intent, chooserTitle));
+			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
 		{
