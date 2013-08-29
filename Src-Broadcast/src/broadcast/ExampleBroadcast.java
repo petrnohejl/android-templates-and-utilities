@@ -6,7 +6,7 @@ import android.content.Intent;
 
 public class ExampleBroadcast
 {
-	public static final String ACTION_EXAMPLE = "example";
+	public static final String ACTION_EXAMPLE = "com.example.EXAMPLE";
 	public static final String EXTRA_ARG = "arg";
 
 
