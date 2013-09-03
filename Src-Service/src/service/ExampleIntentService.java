@@ -37,10 +37,12 @@ public class ExampleIntentService extends IntentService
 	@Override
 	protected void onHandleIntent(Intent intent)
 	{
+		// intent may be null if the service is being restarted
+		if(intent==null) return;
+		
 		Logcat.d("IntentService.onHandleIntent(): " + intent.getIntExtra("arg", -1));
 		
 		long endTime = System.currentTimeMillis() + 5 * 1000;
-		
 		while(System.currentTimeMillis() < endTime)
 		{
 			synchronized(this)
