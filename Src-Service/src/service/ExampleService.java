@@ -44,7 +44,7 @@ public class ExampleService extends Service
 			mServiceHandler.sendMessage(msg);
 		}
 		
-		return START_STICKY;
+		return START_STICKY; // TODO: START_STICKY, START_NOT_STICKY, START_REDELIVER_INTENT
 	}
 
 

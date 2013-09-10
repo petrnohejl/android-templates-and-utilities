@@ -11,6 +11,7 @@ public class ExampleIntentService extends IntentService
 	public ExampleIntentService()
 	{
 		super("ExampleIntentService");
+		setIntentRedelivery(false); // TODO: START_NOT_STICKY if false, START_REDELIVER_INTENT if true
 		
 		Logcat.d("IntentService.IntentService()");
 	}
