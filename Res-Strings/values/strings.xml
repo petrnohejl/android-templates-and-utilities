@@ -8,6 +8,7 @@
 	<string name="global_offline_toast">No Internet connection available</string>
 	<string name="global_apicall_fail_toast">Wooops! Communication with server failed</string>
 	<string name="global_apicall_unknown_host_toast">Wooops! Cannot establish a connection to the server</string>
+	<string name="global_apicall_not_found_toast">Wooops! Resource not found</string>
 	<string name="global_apicall_timeout_toast">Wooops! Connection timed out</string>
 	<string name="global_apicall_parse_fail_toast">Wooops! Unable to process response from server</string>
 

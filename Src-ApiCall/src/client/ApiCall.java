@@ -151,6 +151,12 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			e.printStackTrace();
 			return null;
 		}
+		catch(FileNotFoundException e)
+		{
+			mException = e;
+			e.printStackTrace();
+			return null;
+		}
 		catch(SocketException e)
 		{
 			mException = e;
