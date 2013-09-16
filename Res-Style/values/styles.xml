@@ -160,12 +160,13 @@
 	
 	<!-- action bar progress bar style -->
 	<style name="Example.ActionBar.ProgressBar" parent="Widget.Sherlock.Light.ProgressBar.Horizontal">
-		<item name="android:progressDrawable">@drawable/layer_list_ab_progressbar_horizontal</item>
+		<item name="android:progressDrawable">@drawable/layer_list_ab_progress_bar_horizontal</item>
 	</style>
 	
 	
 	<!-- action bar indeterminate progress bar style -->
 	<style name="Example.ActionBar.IndeterminateProgressBar" parent="@android:style/Widget.ProgressBar.Large.Inverse">
+		<item name="android:indeterminateDrawable">@drawable/layer_list_ab_indeterminate_progress_bar</item>
 		<item name="android:minWidth">@dimen/ab_indeterminate_progress_bar_size</item>
 		<item name="android:maxWidth">@dimen/ab_indeterminate_progress_bar_size</item>
 		<item name="android:minHeight">@dimen/ab_indeterminate_progress_bar_size</item>

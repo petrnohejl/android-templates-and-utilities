@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+	<item>
+		<!--
+		/res/drawable-mdpi/ab_indeterminate_progress_bar asset is taken from
+		/sdk/platforms/android-18/data/res/drawable-mdpi/spinner_white_48.png
+		and its content (optical square) is resized to ~0.6 (must be even number)
+		
+		/res/drawable-mdpi-v14/ab_indeterminate_progress_bar asset is taken from
+		/sdk/platforms/android-18/data/res/drawable-mdpi/spinner_48_inner_holo.png
+		and its content (optical square) is resized to 0.75
+		-->
+		<rotate
+			android:drawable="@drawable/ab_indeterminate_progress_bar"
+			android:interpolator="@android:anim/linear_interpolator"
+			android:pivotX="50%"
+			android:pivotY="50%"
+			android:fromDegrees="0"
+			android:toDegrees="360" />
+	</item>
+</layer-list>
