@@ -25,4 +25,5 @@
 	<color name="ab_button_text">#222</color>
 	<color name="ab_tab_text">#222</color>
 	<color name="ab_button_bg_pressed">#cc33b5e5</color>
+	<color name="ab_dropdown_listview_divider">#ddd</color>
 </resources>

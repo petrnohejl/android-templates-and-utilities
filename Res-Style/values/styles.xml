@@ -181,15 +181,17 @@
 	</style>
 	
 	
-	<!-- action bar popup menu background style -->
+	<!-- action bar popup menu style -->
 	<style name="Example.ActionBar.PopupMenu" parent="Widget.Sherlock.Light.PopupMenu"> <!-- Widget.Sherlock.Light.ListPopupWindow -->
 		<item name="android:popupBackground">@drawable/ab_popup_bg</item>
 	</style>
 	
 	
-	<!-- action bar popup menu item background style -->
+	<!-- action bar popup menu item style -->
 	<style name="Example.ActionBar.DropDownListView" parent="Widget.Sherlock.Light.ListView.DropDown">
 		<item name="android:listSelector">@drawable/selector_ab_button_bg</item>
+		<item name="android:divider">@color/ab_dropdown_listview_divider</item>
+		<item name="android:dividerHeight">@dimen/ab_dropdown_listview_divider</item>
 	</style>
 	
 	
