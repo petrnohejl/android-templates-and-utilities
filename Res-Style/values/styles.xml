@@ -120,6 +120,10 @@
 		<item name="titleTextStyle">@style/Example.ActionBar.TitleText</item>
 		<item name="android:titleTextStyle">@style/Example.ActionBar.TitleText</item>
 		
+		<!-- action bar subtitle style -->
+		<item name="subtitleTextStyle">@style/Example.ActionBar.SubtitleText</item>
+		<item name="android:subtitleTextStyle">@style/Example.ActionBar.SubtitleText</item>
+		
 		<!-- action bar progress bar style -->
 		<item name="progressBarStyle">@style/Example.ActionBar.ProgressBar</item>
 		<item name="android:progressBarStyle">@style/Example.ActionBar.ProgressBar</item>
@@ -140,6 +144,15 @@
 	<style name="Example.ActionBar.TitleText" parent="@android:style/TextAppearance">
 		<item name="android:textSize">@dimen/ab_title_text</item>
 		<item name="android:textColor">@color/ab_title_text</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:textAllCaps">false</item>
+	</style>
+	
+	
+	<!-- action bar subtitle style -->
+	<style name="Example.ActionBar.SubtitleText" parent="@android:style/TextAppearance">
+		<item name="android:textSize">@dimen/ab_subtitle_text</item>
+		<item name="android:textColor">@color/ab_subtitle_text</item>
 		<item name="android:textStyle">normal</item>
 		<item name="android:textAllCaps">false</item>
 	</style>

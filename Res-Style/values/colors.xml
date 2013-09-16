@@ -21,6 +21,7 @@
 	<color name="view_listview_item_bg_selected">#ccc</color>
 	
 	<color name="ab_title_text">#222</color>
+	<color name="ab_subtitle_text">#222</color>
 	<color name="ab_button_text">#222</color>
 	<color name="ab_tab_text">#222</color>
 	<color name="ab_button_bg_pressed">#cc33b5e5</color>
