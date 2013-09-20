@@ -11,15 +11,19 @@
 	<dimen name="global_metric_xlarge">32dp</dimen>
 	<dimen name="global_metric_unity">48dp</dimen>
 	
-	<dimen name="view_listview_divider">1dp</dimen>
-	
 	<dimen name="ab_title_text">18sp</dimen>
 	<dimen name="ab_subtitle_text">14sp</dimen>
-	<dimen name="ab_button_text">14sp</dimen>
-	<dimen name="ab_tab_text">14sp</dimen>
-	<dimen name="ab_tab_padding">4dp</dimen>
-	<dimen name="ab_dropdown_listview_divider">1dp</dimen>
+	<dimen name="ab_button_text">12sp</dimen>
+	<dimen name="ab_popup_text">18sp</dimen>
+	<dimen name="ab_popup_divider">1dp</dimen>
+	<dimen name="ab_dropdown_text">16sp</dimen>
+	<dimen name="ab_dropdown_selected_text">16sp</dimen>
+	<dimen name="ab_tab_text">12sp</dimen>
+	<dimen name="ab_tab_padding">16dp</dimen>
+	<dimen name="ab_tab_divider_padding">12dp</dimen>
 	<dimen name="ab_indeterminate_progress_bar_size">48dp</dimen>
+	
+	<dimen name="view_listview_divider">1dp</dimen>
 	
 	<dimen name="placeholder_padding">24dp</dimen>
 </resources>

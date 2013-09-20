@@ -13,17 +13,20 @@
 	<color name="global_bg_front_inverse">#222</color>
 	<color name="global_bg_dialog_inverse">#282828</color>
 	
+	<color name="ab_title_text">#222</color>
+	<color name="ab_subtitle_text">#222</color>
+	<color name="ab_button_text">#222</color>
+	<color name="ab_popup_text">#222</color>
+	<color name="ab_popup_divider">#ddd</color>
+	<color name="ab_dropdown_text">#222</color>
+	<color name="ab_dropdown_selected_text">#222</color>
+	<color name="ab_tab_text">#222</color>
+	<color name="ab_item_bg_pressed">#cc33b5e5</color>
+	
 	<color name="view_listview_divider">#ddd</color>
 	<color name="view_listview_cache_color_hint">#ddd</color>
 	<color name="view_listview_item_bg_default">#fff</color>
 	<color name="view_listview_item_bg_pressed">#ddd</color>
 	<color name="view_listview_item_bg_focused">#ccc</color>
 	<color name="view_listview_item_bg_selected">#ccc</color>
-	
-	<color name="ab_title_text">#222</color>
-	<color name="ab_subtitle_text">#222</color>
-	<color name="ab_button_text">#222</color>
-	<color name="ab_tab_text">#222</color>
-	<color name="ab_button_bg_pressed">#cc33b5e5</color>
-	<color name="ab_dropdown_listview_divider">#ddd</color>
 </resources>
