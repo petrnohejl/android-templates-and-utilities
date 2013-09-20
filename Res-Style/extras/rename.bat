@@ -1,5 +1,4 @@
 :: Rename files created via Android Asset Studio to my own convention
-:: Don't forget to set @color/ab_button_bg_pressed
 
 rename ab_bottom_solid_example.9.png ab_bg_split.9.png
 rename ab_solid_example.9.png ab_bg_default.9.png
@@ -24,4 +23,5 @@ rename tab_selected_pressed_example.9.png ab_tab_bg_selected_pressed.9.png
 rename tab_selected_example.9.png ab_tab_bg_selected.9.png
 rename tab_unselected_focused_example.9.png ab_tab_bg_unselected_focused.9.png
 rename tab_unselected_pressed_example.9.png ab_tab_bg_unselected_pressed.9.png
+rename tab_unselected_example.9.png ab_tab_bg_unselected.9.png
 @pause
