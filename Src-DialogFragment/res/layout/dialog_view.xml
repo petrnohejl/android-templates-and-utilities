@@ -15,10 +15,10 @@
 			android:inputType="textEmailAddress"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="16dp"
-			android:layout_marginLeft="4dp"
-			android:layout_marginRight="4dp"
-			android:layout_marginBottom="4dp"
+			android:layout_marginTop="@dimen/global_metric_medium"
+			android:layout_marginLeft="@dimen/global_metric_micro"
+			android:layout_marginRight="@dimen/global_metric_micro"
+			android:layout_marginBottom="@dimen/global_metric_micro"
 			android:hint="username" />
 
 		<EditText
@@ -26,10 +26,10 @@
 			android:inputType="textPassword"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="4dp"
-			android:layout_marginLeft="4dp"
-			android:layout_marginRight="4dp"
-			android:layout_marginBottom="16dp"
+			android:layout_marginTop="@dimen/global_metric_micro"
+			android:layout_marginLeft="@dimen/global_metric_micro"
+			android:layout_marginRight="@dimen/global_metric_micro"
+			android:layout_marginBottom="@dimen/global_metric_medium"
 			android:fontFamily="sans-serif"
 			android:hint="password" />
 
