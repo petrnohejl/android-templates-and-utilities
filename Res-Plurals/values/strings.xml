@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- Solution using MessageFormat -->
+	<!-- Usage: MessageFormat.format(getString(R.string.fragment_example_basket), quantity) -->
+	<string name="fragment_example_basket">{0,choice,0#Basket is empty|1#{0} item|1&lt;{0} items}</string>
+
+	<!-- Solution using getQuantityString() -->
+	<!-- Usage: getQuantityString(R.plurals.fragment_example_score, quantity, quantity) -->
+	<!-- Czech: one, few, other -->
+	<!-- English: one, other -->
+	<plurals name="fragment_example_score">
+		<item quantity="one">Máš jeden bod</item>
+		<item quantity="few">Máš %1$d body</item>
+		<item quantity="other">Máš %1$d bodů</item>
+	</plurals>
+
+</resources>
