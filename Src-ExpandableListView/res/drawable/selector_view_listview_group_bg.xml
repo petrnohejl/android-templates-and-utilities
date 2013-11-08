@@ -3,5 +3,5 @@
 	<item android:state_focused="true" android:state_pressed="false" android:drawable="@color/view_listview_group_bg_focused" /> <!-- focused -->
 	<item android:state_focused="true" android:state_pressed="true" android:drawable="@color/view_listview_group_bg_pressed" /> <!-- focused pressed -->
 	<item android:state_focused="false" android:state_pressed="true" android:drawable="@color/view_listview_group_bg_pressed" /> <!-- pressed -->
-	<item android:drawable="@color/view_listview_group_bg_default" /> <!-- default -->
+	<item android:drawable="@color/view_listview_group_bg_normal" /> <!-- normal -->
 </selector>

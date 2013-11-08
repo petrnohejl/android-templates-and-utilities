@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="view_listview_group_bg_default">#eee</color>
+	<color name="view_listview_group_bg_normal">#eee</color>
 	<color name="view_listview_group_bg_pressed">#ccc</color>
 	<color name="view_listview_group_bg_focused">#bbb</color>
 </resources>

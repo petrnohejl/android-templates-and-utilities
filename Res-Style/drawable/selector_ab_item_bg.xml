@@ -3,5 +3,5 @@
 	<item android:state_focused="true" android:state_pressed="false" android:drawable="@drawable/ab_item_bg_focused" /> <!-- focused -->
 	<item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/shape_ab_item_bg_pressed" /> <!-- focused pressed -->
 	<item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/shape_ab_item_bg_pressed" /> <!-- pressed -->
-	<item android:drawable="@android:color/transparent" /> <!-- default -->
+	<item android:drawable="@android:color/transparent" /> <!-- normal -->
 </selector>

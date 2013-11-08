@@ -147,8 +147,8 @@
 	<!-- action bar style -->
 	<style name="Example.ActionBar" parent="@style/Widget.Sherlock.Light.ActionBar">
 		<!-- action bar background -->
-		<item name="background">@drawable/ab_bg_default</item>
-		<item name="android:background">@drawable/ab_bg_default</item>
+		<item name="background">@drawable/ab_bg_normal</item>
+		<item name="android:background">@drawable/ab_bg_normal</item>
 		
 		<!-- action bar stacked background -->
 		<item name="backgroundStacked">@drawable/ab_bg_stacked</item>

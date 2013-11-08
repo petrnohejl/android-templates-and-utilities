@@ -25,7 +25,7 @@
 	
 	<color name="view_listview_divider">#ddd</color>
 	<color name="view_listview_cache_color_hint">#ddd</color>
-	<color name="view_listview_item_bg_default">#fff</color>
+	<color name="view_listview_item_bg_normal">#fff</color>
 	<color name="view_listview_item_bg_pressed">#ddd</color>
 	<color name="view_listview_item_bg_focused">#ccc</color>
 	<color name="view_listview_item_bg_selected">#ccc</color>
