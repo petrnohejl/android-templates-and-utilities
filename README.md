@@ -56,11 +56,13 @@ Dependencies
 Some projects uses external libraries for additional functionality. All library
 dependencies in the project should be listed below. For example:
 
+* [ActionBar-PullToRefresh](https://github.com/chrisbanes/ActionBar-PullToRefresh)
 * [ActionBarSherlock](http://actionbarsherlock.com/)
 * [ActiveAndroid](http://www.activeandroid.com/)
 * [AndEngine](http://www.andengine.org/)
 * [Android Support Library v4](http://developer.android.com/tools/extras/support-library.html)
-* [Androrm](http://androrm.the-pixelpla.net/)
+* [Androrm](http://www.androrm.com/)
+* [AppCompat](https://developer.android.com/reference/android/support/v7/appcompat/package-summary.html)
 * [Crittercism](http://www.crittercism.com)
 * [Facebook Android SDK](https://github.com/facebook/facebook-android-sdk)
 * [File Picker Activity](https://github.com/Kaloer/Android-File-Picker-Activity)
@@ -81,6 +83,7 @@ dependencies in the project should be listed below. For example:
 * [OrmLite](http://ormlite.com/)
 * [PhotoView](https://github.com/chrisbanes/PhotoView)
 * [Polaris2](https://github.com/cyrilmottier/Polaris2)
+* [Pubnub](https://github.com/pubnub/java/tree/master/android)
 * [RobotoTextView](https://github.com/johnkil/Android-RobotoTextView)
 * [RSS Reader](https://github.com/matshofman/Android-RSS-Reader-Library)
 * [ShowcaseView](https://github.com/Espiandev/ShowcaseView)
@@ -90,6 +93,8 @@ dependencies in the project should be listed below. For example:
 * [Sugar ORM](http://satyan.github.com/sugar/index.html)
 * [Swipe To Dismiss](https://github.com/JakeWharton/SwipeToDismissNOA)
 * [Tree View List](http://code.google.com/p/tree-view-list-android/)
+* [Twitter4J](http://twitter4j.org/en/)
+* [UndoBar](https://github.com/soarcn/UndoBar)
 * [UnifiedPreference](https://github.com/saik0/UnifiedPreference)
 * [Universal Image Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
 * [View Pager Indicator](https://github.com/JakeWharton/Android-ViewPagerIndicator)
