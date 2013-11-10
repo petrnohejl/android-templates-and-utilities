@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.R;
 import com.example.fragment.SimpleFragment;
 import com.example.listener.OnDualPaneShowListener;
 
 
-public class ListingActivity extends SherlockFragmentActivity implements OnDualPaneShowListener
+public class ListingActivity extends ActionBarActivity implements OnDualPaneShowListener
 {
 	public static final String SAVE_DUAL_PANE_FRAGMENT = "dual_pane_fragment";
 	public static final String SAVE_DUAL_PANE_INDEX = "dual_pane_index";

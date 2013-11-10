@@ -13,10 +13,10 @@ import com.example.R;
 import com.example.adapter.ListingAdapter;
 import com.example.entity.Product;
 import com.example.listener.OnDualPaneShowListener;
-import com.example.task.TaskSherlockListFragment;
+import com.example.task.TaskListFragment;
 
 
-public class ListingFragment extends TaskSherlockListFragment
+public class ListingFragment extends TaskListFragment
 {
 	private View mRootView;
 	private ListingAdapter mAdapter;

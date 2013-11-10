@@ -5,17 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
 import com.example.broadcast.ExampleBroadcast;
 import com.example.utility.Logcat;
 
 
-public class ExampleFragment extends SherlockFragment
+public class ExampleFragment extends Fragment
 {
 	private View mRootView;
 	private IntentFilter mExampleIntentFilter;

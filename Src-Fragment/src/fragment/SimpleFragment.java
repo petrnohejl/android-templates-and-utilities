@@ -2,25 +2,26 @@ package com.example.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
 import com.example.entity.Product;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
-import com.example.task.TaskSherlockFragment;
+import com.example.task.TaskFragment;
 import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
 
 
-public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataListener
+public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 {
 	private boolean mActionBarProgress = false;
 	private ViewState mViewState = null;
@@ -239,7 +240,7 @@ public class SimpleFragment extends TaskSherlockFragment implements OnLoadDataLi
 	private void showActionBarProgress(boolean visible)
 	{
 		// show action bar progress
-		getSherlockActivity().setSupportProgressBarIndeterminateVisibility(visible);
+		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
 		mActionBarProgress = visible;
 	}
 	

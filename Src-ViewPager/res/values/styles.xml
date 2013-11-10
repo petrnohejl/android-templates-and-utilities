@@ -3,7 +3,7 @@
 	
 	<!-- Example theme -->
 	
-	<style name="Theme.Example" parent="Theme.Sherlock.Light">
+	<style name="Theme.Example" parent="Theme.AppCompat.Light">
 		<!-- tab page indicator -->
 		<item name="vpiTabPageIndicatorStyle">@style/Example.TabPageIndicator</item>
 	</style>

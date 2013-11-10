@@ -4,13 +4,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Window;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Window;
 import com.example.R;
 
 
-public class ExampleActivity extends SherlockFragmentActivity implements OnSharedPreferenceChangeListener
+public class ExampleActivity extends ActionBarActivity implements OnSharedPreferenceChangeListener
 {
 	private boolean mPreferencesChanged = false;
 	

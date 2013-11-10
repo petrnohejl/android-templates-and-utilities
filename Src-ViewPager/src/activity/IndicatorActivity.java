@@ -2,15 +2,15 @@ package com.example.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Window;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Window;
 import com.example.R;
 import com.example.adapter.IndicatorFragmentPagerAdapter;
 import com.viewpagerindicator.CirclePageIndicator;
 
 
-public class IndicatorActivity extends SherlockFragmentActivity
+public class IndicatorActivity extends ActionBarActivity
 {
 	private IndicatorFragmentPagerAdapter mAdapter;
 	

@@ -2,14 +2,14 @@ package com.example.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Window;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Window;
 import com.example.R;
 import com.example.adapter.PagerFragmentPagerAdapter;
 
 
-public class PagerActivity extends SherlockFragmentActivity
+public class PagerActivity extends ActionBarActivity
 {
 	private PagerFragmentPagerAdapter mAdapter;
 	

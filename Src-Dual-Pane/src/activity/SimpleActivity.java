@@ -1,12 +1,12 @@
 package com.example.activity;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.R;
 
 
-public class SimpleActivity extends SherlockFragmentActivity
+public class SimpleActivity extends ActionBarActivity
 {
 	public static final String EXTRA_PRODUCT_ID = "product_id";
 	

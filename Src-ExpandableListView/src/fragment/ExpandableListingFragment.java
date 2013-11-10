@@ -4,27 +4,28 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.FrameLayout;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
 import com.example.adapter.ExpandableListingAdapter;
 import com.example.entity.Product;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
-import com.example.task.TaskSherlockFragment;
+import com.example.task.TaskFragment;
 import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
 
 
-public class ExpandableListingFragment extends TaskSherlockFragment implements OnLoadDataListener
+public class ExpandableListingFragment extends TaskFragment implements OnLoadDataListener
 {
 	private boolean mActionBarProgress = false;
 	private ViewState mViewState = null;
@@ -259,7 +260,7 @@ public class ExpandableListingFragment extends TaskSherlockFragment implements O
 	private void showActionBarProgress(boolean visible)
 	{
 		// show action bar progress
-		getSherlockActivity().setSupportProgressBarIndeterminateVisibility(visible);
+		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
 		mActionBarProgress = visible;
 	}
 	

@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -14,20 +18,17 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.example.R;
 import com.example.adapter.ListingAdapter;
 import com.example.entity.Product;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
-import com.example.task.TaskSherlockListFragment;
+import com.example.task.TaskListFragment;
 import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
 
 
-public class ListingFragment extends TaskSherlockListFragment implements OnLoadDataListener
+public class ListingFragment extends TaskListFragment implements OnLoadDataListener
 {
 	private final int LAZY_LOADING_TAKE = 16;
 	private final int LAZY_LOADING_OFFSET = 4;
@@ -316,7 +317,7 @@ public class ListingFragment extends TaskSherlockListFragment implements OnLoadD
 	private void showActionBarProgress(boolean visible)
 	{
 		// show progress in action bar
-		getSherlockActivity().setSupportProgressBarIndeterminateVisibility(visible);
+		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
 		mActionBarProgress = visible;
 	}
 	

@@ -6,11 +6,10 @@ import java.util.List;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
-import com.actionbarsherlock.app.SherlockListFragment;
 
-
-public class TaskSherlockListFragment extends SherlockListFragment implements TaskManager
+public class TaskFragment extends Fragment implements TaskManager
 {
 	private final Object mLock = new Object();
 	private Boolean mReady = false;
@@ -76,7 +75,7 @@ public class TaskSherlockListFragment extends SherlockListFragment implements Ta
 	
 	private void runNow(Runnable runnable)
 	{
-		//Logcat.d("TaskSherlockListFragment.runNow(): " + runnable.getClass().getEnclosingMethod());
+		//Logcat.d("TaskFragment.runNow(): " + runnable.getClass().getEnclosingMethod());
 		getActivity().runOnUiThread(runnable);
 	}
 
@@ -85,7 +84,7 @@ public class TaskSherlockListFragment extends SherlockListFragment implements Ta
 	{
 		synchronized(mLock)
 		{
-			//Logcat.d("TaskSherlockListFragment.addPending(): " + runnable.getClass().getEnclosingMethod());
+			//Logcat.d("TaskFragment.addPending(): " + runnable.getClass().getEnclosingMethod());
 			mPendingCallbacks.add(runnable);
 		}
 	}

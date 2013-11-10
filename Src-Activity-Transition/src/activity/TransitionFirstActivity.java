@@ -2,16 +2,16 @@ package com.example.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.Window;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.Window;
 import com.example.R;
 
 
-public class TransitionFirstActivity extends SherlockFragmentActivity
+public class TransitionFirstActivity extends ActionBarActivity
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)

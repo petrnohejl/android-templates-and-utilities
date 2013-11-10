@@ -2,18 +2,18 @@ package com.example.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
 import com.example.activity.ExampleActivity;
 import com.example.notification.NotificationId;
 import com.example.notification.NotificationMessage;
 
 
-public class ExampleFragment extends SherlockFragment
+public class ExampleFragment extends Fragment
 {
 	private View mRootView;
 	NotificationMessage mNotificationMessage;

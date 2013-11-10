@@ -1,14 +1,14 @@
 package com.example.activity;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.R;
 import com.example.utility.Preferences;
 import com.example.utility.Version;
 
 
-public class ExampleActivity extends SherlockFragmentActivity
+public class ExampleActivity extends ActionBarActivity
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)

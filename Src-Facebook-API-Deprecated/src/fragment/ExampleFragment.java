@@ -6,6 +6,8 @@ import java.net.MalformedURLException;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.example.ExampleConfig;
 import com.example.R;
 import com.example.client.RequestManager;
@@ -28,7 +29,7 @@ import com.facebook.android.Facebook.DialogListener;
 import com.facebook.android.FacebookError;
 
 
-public class ExampleFragment extends SherlockFragment
+public class ExampleFragment extends Fragment
 {
 	private boolean mActionBarProgress = false;
 	private View mRootView;
@@ -85,7 +86,7 @@ public class ExampleFragment extends SherlockFragment
 	private void showActionBarProgress(boolean visible)
 	{
 		// show action bar progress
-		getSherlockActivity().setSupportProgressBarIndeterminateVisibility(visible);
+		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
 		mActionBarProgress = visible;
 	}
 	
@@ -207,7 +208,7 @@ public class ExampleFragment extends SherlockFragment
 				@Override
 				public void onComplete(Bundle values)
 				{
-					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+					// TODO: run callbacks in TaskFragment.runTaskCallback()
 
 					Logcat.d("Fragment.facebookAuthorize().onComplete(): " + mFacebook.getAccessToken());
 					
@@ -284,7 +285,7 @@ public class ExampleFragment extends SherlockFragment
 				@Override
 				public void onComplete(final String response, Object state)
 				{
-					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+					// TODO: run callbacks in TaskFragment.runTaskCallback()
 
 					Logcat.d("Fragment.facebookLogout().onComplete(): " + response);
 					
@@ -406,7 +407,7 @@ public class ExampleFragment extends SherlockFragment
 				@Override
 				public void onComplete(final String response, Object state)
 				{
-					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+					// TODO: run callbacks in TaskFragment.runTaskCallback()
 
 					Logcat.d("Fragment.facebookProfile().onComplete(): " + response);
 
@@ -524,7 +525,7 @@ public class ExampleFragment extends SherlockFragment
 				@Override
 				public void onComplete(final String response, Object state)
 				{
-					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+					// TODO: run callbacks in TaskFragment.runTaskCallback()
 
 					Logcat.d("Fragment.facebookFriends().onComplete(): " + response);
 
@@ -643,7 +644,7 @@ public class ExampleFragment extends SherlockFragment
 				@Override
 				public void onComplete(Bundle values)
 				{
-					// TODO: run callbacks in TaskSherlockFragment.runTaskCallback()
+					// TODO: run callbacks in TaskFragment.runTaskCallback()
 					
 					Logcat.d("Fragment.facebookWallPost().onComplete(): " + mFacebook.getAccessToken());
 				}

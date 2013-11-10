@@ -10,6 +10,7 @@ import java.util.Iterator;
 import org.codehaus.jackson.JsonParseException;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +28,13 @@ import com.example.client.request.ExampleRequest;
 import com.example.client.response.ExampleResponse;
 import com.example.client.response.Response;
 import com.example.entity.Product;
-import com.example.task.TaskSherlockListFragment;
+import com.example.task.TaskListFragment;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
 
 
-public class ExampleFragment extends TaskSherlockListFragment implements OnApiCallListener
+public class ExampleFragment extends TaskListFragment implements OnApiCallListener
 {
 	private final int LAZY_LOADING_TAKE = 16;
 	private final int LAZY_LOADING_OFFSET = 4;
@@ -331,7 +332,7 @@ public class ExampleFragment extends TaskSherlockListFragment implements OnApiCa
 	private void showActionBarProgress(boolean visible)
 	{
 		// show progress in action bar
-		getSherlockActivity().setSupportProgressBarIndeterminateVisibility(visible);
+		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
 		mActionBarProgress = visible;
 	}
 	

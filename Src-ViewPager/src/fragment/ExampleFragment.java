@@ -1,16 +1,16 @@
 package com.example.fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.example.R;
 
 
-public class ExampleFragment extends SherlockFragment
+public class ExampleFragment extends Fragment
 {
 	public static final String EXTRA_ARG = "arg";
 	

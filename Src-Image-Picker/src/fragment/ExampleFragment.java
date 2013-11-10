@@ -12,11 +12,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.R;
-import com.example.task.TaskSherlockFragment;
+import com.example.task.TaskFragment;
 import com.example.utility.ImagePicker;
 
 
-public class ExampleFragment extends TaskSherlockFragment
+public class ExampleFragment extends TaskFragment
 {
 	private View mRootView;
 	private Bitmap mBitmap;

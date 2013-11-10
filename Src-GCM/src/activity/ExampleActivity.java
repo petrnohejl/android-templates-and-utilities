@@ -3,8 +3,8 @@ package com.example.activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.ExampleConfig;
 import com.example.R;
 import com.example.gcm.GcmUtility;
@@ -12,7 +12,7 @@ import com.example.utility.Logcat;
 import com.google.android.gcm.GCMRegistrar;
 
 
-public class ExampleActivity extends SherlockFragmentActivity
+public class ExampleActivity extends ActionBarActivity
 {
 	AsyncTask<Void, Void, Void> mRegisterAsyncTask;
 

@@ -2,16 +2,16 @@ package com.example.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Window;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Window;
 import com.example.R;
 import com.example.adapter.TabsFragmentPagerAdapter;
 import com.example.fragment.ExampleFragment;
 
 
-public class TabsActivity extends SherlockFragmentActivity
+public class TabsActivity extends ActionBarActivity
 {
 	private TabsFragmentPagerAdapter mAdapter;
 	

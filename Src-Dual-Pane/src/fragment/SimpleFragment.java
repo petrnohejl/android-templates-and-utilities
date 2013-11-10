@@ -8,10 +8,10 @@ import android.widget.TextView;
 
 import com.example.R;
 import com.example.activity.SimpleActivity;
-import com.example.task.TaskSherlockFragment;
+import com.example.task.TaskFragment;
 
 
-public class SimpleFragment extends TaskSherlockFragment
+public class SimpleFragment extends TaskFragment
 {
 	private View mRootView;
 	private int mId = -1;

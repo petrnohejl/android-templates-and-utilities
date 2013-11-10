@@ -13,11 +13,11 @@ import android.view.ViewGroup;
 import com.example.R;
 import com.example.geolocation.Geolocation;
 import com.example.geolocation.OnGeolocationListener;
-import com.example.task.TaskSherlockFragment;
+import com.example.task.TaskFragment;
 import com.example.utility.Logcat;
 
 
-public class ExampleFragment extends TaskSherlockFragment implements OnGeolocationListener
+public class ExampleFragment extends TaskFragment implements OnGeolocationListener
 {
 	private View mRootView;
 	private Geolocation mGeolocation = null;
