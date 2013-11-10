@@ -3,6 +3,7 @@ package com.example.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -77,11 +78,11 @@ public class ExampleFragment extends Fragment
 			{
 				LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				View view = inflater.inflate(R.layout.ab_action_refresh, null);
-				mRefreshMenuItem.setActionView(view);
+				MenuItemCompat.setActionView(mRefreshMenuItem, view);
 			}
 			else
 			{
-				mRefreshMenuItem.setActionView(null);
+				MenuItemCompat.setActionView(mRefreshMenuItem, null);
 			}
 		}
 		
