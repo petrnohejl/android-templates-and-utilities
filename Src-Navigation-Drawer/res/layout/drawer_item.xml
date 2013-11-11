@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:minHeight="@dimen/global_metric_unity"
+	android:gravity="center_vertical"
+	android:orientation="horizontal"
+	android:background="@drawable/selector_drawer_item_bg">
+	
+	<ImageView
+		android:id="@+id/drawer_item_icon"
+		android:layout_width="@dimen/global_metric_xlarge"
+		android:layout_height="@dimen/global_metric_xlarge"
+		android:layout_marginLeft="@dimen/global_metric_small"
+		android:layout_marginRight="@dimen/global_metric_small"
+		android:adjustViewBounds="true"
+		android:scaleType="fitCenter" />
+	
+	<TextView
+		android:id="@+id/drawer_item_title"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="@dimen/global_metric_small"
+		android:textSize="@dimen/global_text_medium"
+		android:textColor="@color/global_text_primary" />
+	
+</LinearLayout>

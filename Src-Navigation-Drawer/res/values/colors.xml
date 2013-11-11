@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="drawer_bg">#fff</color>
+	<color name="drawer_item_divider">#ddd</color>
+	<color name="drawer_item_bg_pressed">#cc33b5e5</color>
+	<color name="drawer_item_bg_focused">#ccc</color>
+	<color name="drawer_item_bg_activated">#ccc</color>
+</resources>
