@@ -64,7 +64,8 @@ public class DrawerAdapter extends BaseAdapter
 	@Override
 	public int getCount()
 	{
-		return mTitleList.length;
+		if(mTitleList!=null) return mTitleList.length;
+		else return 0;
 	}
 	
 	
@@ -79,7 +80,7 @@ public class DrawerAdapter extends BaseAdapter
 	@Override
 	public long getItemId(int position)
 	{
-		return 0;
+		return position;
 	}
 	
 	

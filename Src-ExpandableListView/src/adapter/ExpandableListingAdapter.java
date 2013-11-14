@@ -83,7 +83,8 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	@Override
 	public Object getChild(int groupPosition, int childPosition)
 	{
-		return mProductList.get(groupPosition).get(childPosition);
+		if(mProductList!=null) return mProductList.get(groupPosition).get(childPosition);
+		else return null;
 	}
 
 
@@ -137,7 +138,8 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	@Override
 	public Object getGroup(int groupPosition)
 	{
-		return mGroupList.get(groupPosition);
+		if(mGroupList!=null) return mGroupList.get(groupPosition);
+		else return null;
 	}
 
 

@@ -72,22 +72,23 @@ public class ListingAdapter extends BaseAdapter
 	@Override
 	public int getCount()
 	{
-		return mProductList.size();
-	}
-	
-	
-	@Override
-	public Object getItem(int position)
-	{
 		if(mProductList!=null) return mProductList.size();
 		else return 0;
 	}
 	
 	
 	@Override
+	public Object getItem(int position)
+	{
+		if(mProductList!=null) return mProductList.get(position);
+		else return null;
+	}
+	
+	
+	@Override
 	public long getItemId(int position)
 	{
-		return 0;
+		return position;
 	}
 	
 	
