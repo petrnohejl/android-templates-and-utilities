@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<!-- Example theme -->
+	
+	<style name="Theme.Example" parent="@style/Theme.AppCompat.Light">
+		<!-- pull to refresh -->
+		<item name="ptrHeaderStyle">@style/Example.PtrHeader</item>
+	</style>
+	
+	
+	<!-- pull to refresh -->
+	<style name="Example.PtrHeader" parent="@android:style/Widget">
+		<item name="ptrProgressBarColor">@color/global_text_accent</item>
+		<item name="ptrHeaderBackground">@drawable/ab_bg_normal</item>
+		<item name="ptrHeaderTitleTextAppearance">@style/Example.PtrHeader.TextAppearance</item>
+		<item name="ptrPullText">@string/ptr_pull</item>
+		<item name="ptrRefreshingText">@string/ptr_refreshing</item>
+		<item name="ptrReleaseText">@string/ptr_release</item>
+	</style>
+	
+	
+	<!-- pull to refresh text -->
+	<style name="Example.PtrHeader.TextAppearance" parent="@android:style/TextAppearance.Large">
+		<item name="android:textSize">@dimen/ab_title_text</item>
+		<item name="android:textColor">@color/global_text_accent</item>
+	</style>
+</resources>
