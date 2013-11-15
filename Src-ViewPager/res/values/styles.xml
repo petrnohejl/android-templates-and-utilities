@@ -3,14 +3,14 @@
 	
 	<!-- Example theme -->
 	
-	<style name="Theme.Example" parent="Theme.AppCompat.Light">
+	<style name="Theme.Example" parent="@style/Theme.AppCompat.Light">
 		<!-- tab page indicator -->
 		<item name="vpiTabPageIndicatorStyle">@style/Example.TabPageIndicator</item>
 	</style>
 	
 	
 	<!-- tab page indicator -->
-	<style name="Example.TabPageIndicator" parent="Widget.TabPageIndicator">
+	<style name="Example.TabPageIndicator" parent="@style/Widget.TabPageIndicator">
 		<item name="android:background">@drawable/selector_ab_tab_bg</item>
 		<item name="android:textAppearance">@style/Example.TabPageIndicator.TextAppearance</item>
 		<item name="android:textColor">@color/ab_tab_text</item>
@@ -27,7 +27,7 @@
 	
 	
 	<!-- tab page indicator text -->
-	<style name="Example.TabPageIndicator.TextAppearance" parent="android:TextAppearance.Medium">
+	<style name="Example.TabPageIndicator.TextAppearance" parent="@android:style/TextAppearance.Medium">
 		<item name="android:typeface">normal</item>
 	</style>
 </resources>
