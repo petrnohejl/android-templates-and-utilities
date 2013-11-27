@@ -39,6 +39,10 @@
 		<item name="actionBarDivider">@drawable/ab_divider</item>
 		<item name="android:actionBarDivider">@drawable/ab_divider</item>
 		
+		<!-- action bar button text -->
+		<item name="actionMenuTextColor">@color/ab_button_text</item>
+		<item name="android:actionMenuTextColor">@color/ab_button_text</item>
+		
 		<!-- action bar item background -->
 		<item name="actionBarItemBackground">@drawable/selector_ab_item_bg</item>
 		<item name="android:actionBarItemBackground">@drawable/selector_ab_item_bg</item>
@@ -46,10 +50,6 @@
 		<!-- action bar popup menu item background -->
 		<!-- <item name="itemBackground">@drawable/selector_ab_item_bg</item> --><!-- for Theme.Sherlock -->
 		<item name="android:itemBackground">@drawable/selector_ab_item_bg</item>
-		
-		<!-- action bar popup menu text -->
-		<item name="actionMenuTextColor">@color/ab_popup_text</item>
-		<item name="android:actionMenuTextColor">@color/ab_popup_text</item>
 		
 		<!-- action bar action mode background -->
 		<item name="actionModeBackground">@drawable/ab_bg_mode_top</item>
@@ -105,6 +105,9 @@
 		<!-- action bar popup menu text style -->
 		<item name="textAppearanceLargePopupMenu">@style/Example.ActionBar.TextAppearanceLargePopupMenu</item>
 		<item name="android:textAppearanceLargePopupMenu">@style/Example.ActionBar.TextAppearanceLargePopupMenu</item>
+		
+		<!-- action bar popup menu text style -->
+		<item name="android:itemTextAppearance">@style/Example.ActionBar.TextAppearanceLargePopupMenu</item>
 		
 		<!-- action bar navigation dropdown style -->
 		<item name="actionDropDownStyle">@style/Example.ActionBar.ActionDropDown</item>
