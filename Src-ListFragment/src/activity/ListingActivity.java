@@ -100,7 +100,7 @@ public class ListingActivity extends ActionBarActivity
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// action bar menu
-		MenuInflater menuInflater = new MenuInflater(this);
+		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.menu_listing, menu);
 		return super.onCreateOptionsMenu(menu);
 	}

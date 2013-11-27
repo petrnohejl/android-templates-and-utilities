@@ -29,7 +29,7 @@ public class ExampleActivity extends ActionBarActivity
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// action bar menu
-		MenuInflater menuInflater = new MenuInflater(this);
+		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.menu_example, menu);
 		
 		// search view

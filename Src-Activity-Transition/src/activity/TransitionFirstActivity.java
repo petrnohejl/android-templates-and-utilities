@@ -27,7 +27,7 @@ public class TransitionFirstActivity extends ActionBarActivity
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// action bar menu
-		MenuInflater menuInflater = new MenuInflater(this);
+		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.menu_transition_first, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
