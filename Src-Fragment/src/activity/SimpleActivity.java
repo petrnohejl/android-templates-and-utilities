@@ -20,7 +20,7 @@ public class SimpleActivity extends ActionBarActivity
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		setActionBar();
+		setupActionBar();
 		setContentView(R.layout.activity_simple);
 		
 		// restore saved state
@@ -141,7 +141,7 @@ public class SimpleActivity extends ActionBarActivity
 	}
 	
 	
-	private void setActionBar()
+	private void setupActionBar()
 	{
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayUseLogoEnabled(false);

@@ -41,8 +41,8 @@ public class ExampleActivity extends ActionBarActivity
 		
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_example);
-		setActionBar();
-		setDrawer(savedInstanceState);
+		setupActionBar();
+		setupDrawer(savedInstanceState);
 	}
 	
 	
@@ -113,7 +113,7 @@ public class ExampleActivity extends ActionBarActivity
 	}
 	
 	
-	private void setActionBar()
+	private void setupActionBar()
 	{
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayUseLogoEnabled(false);
@@ -126,7 +126,7 @@ public class ExampleActivity extends ActionBarActivity
 	}
 	
 	
-	private void setDrawer(Bundle savedInstanceState)
+	private void setupDrawer(Bundle savedInstanceState)
 	{
 		mTitle = getTitle();
 		mDrawerTitle = getTitle();

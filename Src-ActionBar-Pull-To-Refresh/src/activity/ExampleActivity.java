@@ -20,11 +20,11 @@ public class ExampleActivity extends ActionBarActivity
 		setContentView(R.layout.activity_example);
 		
 		// pull to refresh
-		setPullToRefresh();
+		setupPullToRefresh();
 	}
 	
 	
-	private void setPullToRefresh()
+	private void setupPullToRefresh()
 	{
 		PullToRefreshAttacher.Options options = new PullToRefreshAttacher.Options();
 		options.refreshScrollDistance = 0.5f;

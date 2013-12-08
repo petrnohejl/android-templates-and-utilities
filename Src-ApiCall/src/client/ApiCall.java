@@ -71,8 +71,8 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			//connection = (HttpsURLConnection) url.openConnection(); // for SSL
 			
 			// ssl connection properties
-			//SelfSignedSslUtility.setSslConnection(connection, url); // for SSL using self signed certificate
-			//CertificateAuthoritySslUtility.setSslConnection(connection, url); // for SSL using certificate authority
+			//SelfSignedSslUtility.setupSslConnection(connection, url); // for SSL using self signed certificate
+			//CertificateAuthoritySslUtility.setupSslConnection(connection, url); // for SSL using certificate authority
 			
 			// connection properties
 			if(mRequest.getRequestMethod()!=null)

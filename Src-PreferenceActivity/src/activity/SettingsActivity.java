@@ -26,7 +26,7 @@ public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 		
 		super.onCreate(savedInstanceState);
 		
-		setActionBar();
+		setupActionBar();
 		
 		// restore saved state
 		if(savedInstanceState != null)
@@ -140,7 +140,7 @@ public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 	}
 	
 	
-	private void setActionBar()
+	private void setupActionBar()
 	{
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayUseLogoEnabled(false);

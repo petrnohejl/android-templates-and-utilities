@@ -13,7 +13,7 @@ import javax.net.ssl.X509TrustManager;
 
 public class CertificateAuthoritySslUtility
 {
-	public static void setSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
+	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
 	{
 		SSLContext sslContext = createSslContext();
 		HostnameVerifier sslHostnameVerifier = createSslHostnameVerifier(requestUrl.getHost());

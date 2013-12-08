@@ -21,7 +21,7 @@ import com.example.R;
 
 public class SelfSignedSslUtility
 {
-	public static void setSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
+	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
 	{
 		SSLContext sslContext = createSslContext();
 		HostnameVerifier sslHostnameVerifier = createSslHostnameVerifier(requestUrl.getHost());

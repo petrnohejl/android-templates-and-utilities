@@ -34,7 +34,7 @@ public class ExampleActivity extends ActionBarActivity
 		
 		// search view
 		SearchView searchView = new SearchView(getSupportActionBar().getThemedContext());
-		setSearchView(searchView);
+		setupSearchView(searchView);
 		
 		// search menu item
 		MenuItem searchMenuItem = menu.add(Menu.NONE, Menu.NONE, 1, R.string.ab_button_search);
@@ -46,7 +46,7 @@ public class ExampleActivity extends ActionBarActivity
 	}
 	
 	
-	private void setSearchView(SearchView searchView)
+	private void setupSearchView(SearchView searchView)
 	{
 		// search hint
 		searchView.setQueryHint(getString(R.string.ab_button_search_hint));

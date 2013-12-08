@@ -20,7 +20,7 @@ public class ListingActivity extends ActionBarActivity
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		setActionBar();
+		setupActionBar();
 		setContentView(R.layout.activity_listing);
 		
 		// restore saved state
@@ -141,7 +141,7 @@ public class ListingActivity extends ActionBarActivity
 	}
 	
 	
-	private void setActionBar()
+	private void setupActionBar()
 	{
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayUseLogoEnabled(false);
