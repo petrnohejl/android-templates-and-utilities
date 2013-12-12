@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="ab_custom_donebar_text">12sp</dimen>
+	<dimen name="ab_custom_donebar_divider">1dp</dimen>
+	<dimen name="ab_custom_donebar_divider_padding">12dp</dimen>
+</resources>

@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="horizontal">
+	
+	<include layout="@layout/ab_custom_donebar_cancel" />
+	
+	<View
+		android:layout_width="@dimen/ab_custom_donebar_divider"
+		android:layout_height="match_parent"
+		android:layout_marginTop="@dimen/ab_custom_donebar_divider_padding"
+		android:layout_marginBottom="@dimen/ab_custom_donebar_divider_padding"
+		android:background="@color/ab_custom_donebar_divider" />
+	
+	<include layout="@layout/ab_custom_donebar_done" />
+	
+</LinearLayout>
