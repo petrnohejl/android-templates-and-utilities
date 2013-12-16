@@ -12,7 +12,7 @@ import com.example.client.response.LoginResponse;
 import com.example.entity.Membership;
 
 
-public class LoginParser
+public class LoginParser extends Parser
 {
 	public static LoginResponse parse(InputStream stream) throws IOException, JsonParseException
 	{
@@ -91,21 +91,5 @@ public class LoginParser
 		// close parser
 		if(parser!=null) parser.close();
 		return response;
-	}
-	
-	
-	private static void handleUnknownParameter(JsonParser parser) throws IOException, JsonParseException
-	{
-		if(parser.getCurrentToken() == JsonToken.START_OBJECT)
-		while(parser.nextToken() != JsonToken.END_OBJECT)
-		{
-			handleUnknownParameter(parser);
-		}
-		
-		if(parser.getCurrentToken() == JsonToken.START_ARRAY)
-		while(parser.nextToken() != JsonToken.END_ARRAY)
-		{
-			handleUnknownParameter(parser);
-		}
 	}
 }
