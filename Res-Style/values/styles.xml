@@ -145,6 +145,17 @@
 	</style>
 	
 	
+	<!-- transparent window -->
+	<style name="Theme.Example.Transparent" parent="@style/Theme.Example">
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:windowActionBar">false</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:backgroundDimEnabled">false</item>
+	</style>
+	
+	
 	<!-- action bar style -->
 	<style name="Example.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
 		<!-- action bar background -->
