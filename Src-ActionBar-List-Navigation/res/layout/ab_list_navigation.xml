@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_gravity="center_vertical"
+	android:orientation="vertical"
+	android:paddingRight="@dimen/global_metric_micro">
+	
+	<TextView
+		android:id="@+id/ab_list_navigation_title"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/ab_subtitle_margin"
+		android:maxLines="1"
+		android:ellipsize="end"
+		android:singleLine="true"
+		android:textSize="@dimen/ab_title_text"
+		android:textColor="@color/ab_title_text" />
+	
+	<TextView
+		android:id="@+id/ab_list_navigation_subtitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/ab_subtitle_margin"
+		android:maxLines="1"
+		android:ellipsize="end"
+		android:singleLine="true"
+		android:textSize="@dimen/ab_subtitle_text"
+		android:textColor="@color/ab_subtitle_text" />
+	
+</LinearLayout>

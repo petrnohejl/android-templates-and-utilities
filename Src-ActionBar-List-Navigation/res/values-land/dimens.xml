@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="ab_title_text">16dp</dimen>
+	<dimen name="ab_subtitle_text">12dp</dimen>
+	<dimen name="ab_title_margin">-3dp</dimen>
+	<dimen name="ab_subtitle_margin">-3dp</dimen>
+</resources>
