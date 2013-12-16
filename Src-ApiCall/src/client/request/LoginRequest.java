@@ -18,7 +18,7 @@ import com.example.client.response.Response;
 public class LoginRequest extends Request
 {
 	private final String REQUEST_METHOD = "POST";
-	private final String REQUEST_URL = "Login";
+	private final String REQUEST_PATH = "Login";
 	
 	private String mFacebookAccessToken;
 	
@@ -48,7 +48,7 @@ public class LoginRequest extends Request
 
 		// url
 		builder.append(API_ENDPOINT);
-		builder.append(REQUEST_URL);
+		builder.append(REQUEST_PATH);
 		if(paramsString!=null && !paramsString.equals(""))
 		{
 			builder.append("?");

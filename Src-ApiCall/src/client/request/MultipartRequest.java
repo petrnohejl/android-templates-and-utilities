@@ -15,7 +15,7 @@ import com.example.client.response.Response;
 public class MultipartRequest extends Request
 {
 	private final String REQUEST_METHOD = "POST";
-	private final String REQUEST_URL = "Multipart";
+	private final String REQUEST_PATH = "Multipart";
 
 	private String mTextData1;
 	private String mTextData2;
@@ -46,7 +46,7 @@ public class MultipartRequest extends Request
 
 		// url
 		builder.append(API_ENDPOINT);
-		builder.append(REQUEST_URL);
+		builder.append(REQUEST_PATH);
 
 		return builder.toString();
 	}
