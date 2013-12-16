@@ -40,11 +40,11 @@ public class LoginParser extends Parser
 				{
 					if(parser.getCurrentName().equals("Type"))
 					{
-						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) type=parser.getText();
+						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) type = parser.getText();
 					}
 					else if(parser.getCurrentName().equals("Message"))
 					{
-						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) message=parser.getText();
+						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) message = parser.getText();
 					}
 				}
 				
@@ -65,11 +65,11 @@ public class LoginParser extends Parser
 				{
 					if(parser.getCurrentName().equals("UserId"))
 					{
-						if(parser.getCurrentToken() == JsonToken.VALUE_NUMBER_INT) userId=parser.getLongValue();
+						if(parser.getCurrentToken() == JsonToken.VALUE_NUMBER_INT) userId = parser.getLongValue();
 					}
 					else if(parser.getCurrentName().equals("AccessToken"))
 					{
-						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) accessToken=parser.getText();
+						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) accessToken = parser.getText();
 					}
 					else
 					{

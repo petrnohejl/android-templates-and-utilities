@@ -357,7 +357,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		{
 			ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
 			int count =  mAdapter.getGroupCount();
-			for (int i = 0; i <count ; i++) listView.expandGroup(i);
+			for(int i = 0; i <count ; i++) listView.expandGroup(i);
 			mRootView.invalidate();
 		}
 	}
@@ -369,7 +369,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		{
 			ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
 			int count =  mAdapter.getGroupCount();
-			for (int i = 0; i <count ; i++) listView.collapseGroup(i);
+			for(int i = 0; i <count ; i++) listView.collapseGroup(i);
 			mRootView.invalidate();
 		}
 	}

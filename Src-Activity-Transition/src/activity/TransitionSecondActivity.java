@@ -37,7 +37,7 @@ public class TransitionSecondActivity extends ActionBarActivity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// action bar menu behaviour
-		switch (item.getItemId())
+		switch(item.getItemId())
 		{
 			case R.id.ab_button_transition_first:
 				Intent intent = new Intent(this, TransitionFirstActivity.class);

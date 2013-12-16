@@ -49,7 +49,7 @@ public class ExampleFragment extends Fragment
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{
 		// action bar menu behaviour
-		switch (item.getItemId()) 
+		switch(item.getItemId()) 
 		{
 			// TODO
 

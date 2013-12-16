@@ -70,7 +70,7 @@ public class ExampleActivity extends ActionBarActivity
 		}
 		
 		// action bar menu behaviour
-		switch (item.getItemId())
+		switch(item.getItemId())
 		{
 			case android.R.id.home:
 				// TODO
