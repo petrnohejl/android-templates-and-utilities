@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceScreen android:title="@string/prefs_header_general" android:icon="@null">
+		<CheckBoxPreference
+			android:key="@string/prefs_key_social_recommendations"
+			android:title="@string/prefs_title_social_recommendations"
+			android:summary="@string/prefs_summary_social_recommendations"
+			android:icon="@null"
+			android:defaultValue="@bool/prefs_default_social_recommendations"
+			android:persistent="true" />
+
+		<EditTextPreference
+			android:key="@string/prefs_key_display_name"
+			android:title="@string/prefs_title_display_name"
+			android:icon="@null"
+			android:defaultValue="@string/prefs_default_display_name"
+			android:persistent="true"
+			android:inputType="textCapWords"
+			android:capitalize="words"
+			android:maxLines="1"
+			android:singleLine="true"
+			android:selectAllOnFocus="true" />
+
+		<ListPreference
+			android:key="@string/prefs_key_add_friends_to_messages"
+			android:title="@string/prefs_title_add_friends_to_messages"
+			android:icon="@null"
+			android:defaultValue="@string/prefs_default_add_friends_to_messages"
+			android:entries="@array/prefs_entries_add_friends_to_messages"
+			android:entryValues="@array/prefs_values_add_friends_to_messages"
+			android:persistent="true"
+			android:positiveButtonText="@null"
+			android:negativeButtonText="@null" />
+	</PreferenceScreen>
+	
+	<PreferenceScreen android:title="@string/prefs_header_notifications" android:icon="@null">
+		<CheckBoxPreference
+			android:key="@string/prefs_key_new_message_notifications"
+			android:title="@string/prefs_title_new_message_notifications"
+			android:icon="@null"
+			android:defaultValue="@bool/prefs_default_new_message_notifications"
+			android:persistent="true" />
+
+		<RingtonePreference
+			android:key="@string/prefs_key_ringtone"
+			android:title="@string/prefs_title_ringtone"
+			android:icon="@null"
+			android:defaultValue="@string/prefs_default_ringtone"
+			android:dependency="@string/prefs_key_new_message_notifications"
+			android:persistent="true"
+			android:ringtoneType="notification" />
+
+		<CheckBoxPreference
+			android:key="@string/prefs_key_vibrate"
+			android:title="@string/prefs_title_vibrate"
+			android:icon="@null"
+			android:defaultValue="@bool/prefs_default_vibrate"
+			android:dependency="@string/prefs_key_new_message_notifications"
+			android:persistent="true" />
+	</PreferenceScreen>
+	
+	<PreferenceScreen android:title="@string/prefs_header_data_sync" android:icon="@null">
+		<ListPreference
+			android:key="@string/prefs_key_sync_frequency"
+			android:title="@string/prefs_title_sync_frequency"
+			android:icon="@null"
+			android:defaultValue="@string/prefs_default_sync_frequency"
+			android:entries="@array/prefs_entries_sync_frequency"
+			android:entryValues="@array/prefs_values_sync_frequency"
+			android:persistent="true"
+			android:positiveButtonText="@null"
+			android:negativeButtonText="@null" />
+
+		<Preference 
+			android:title="@string/prefs_title_privacy_policy"
+			android:icon="@null"
+			android:persistent="false">
+
+			<intent android:action="android.intent.action.VIEW" android:data="@string/prefs_data_privacy_policy" />
+
+		</Preference>
+	</PreferenceScreen>
+	
+</PreferenceScreen>
