@@ -20,7 +20,7 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 	
 	public interface DatePickerDialogListener
 	{
-		public void onDialogPositiveClick(DialogFragment dialog, int year, int month, int day);
+		public void onDatePickerDialogPositiveClick(DialogFragment dialog, int year, int month, int day);
 	}
 	
 	
@@ -91,7 +91,7 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 	@Override
 	public void onDateSet(DatePicker view, int year, int month, int day)
 	{
-		mListener.onDialogPositiveClick(DatePickerDialogFragment.this, year, month, day);
+		mListener.onDatePickerDialogPositiveClick(DatePickerDialogFragment.this, year, month, day);
 	}
 	
 	

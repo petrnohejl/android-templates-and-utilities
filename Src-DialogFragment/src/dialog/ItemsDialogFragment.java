@@ -21,9 +21,9 @@ public class ItemsDialogFragment extends DialogFragment
 	
 	public interface ItemsDialogListener
 	{
-		public void onDialogItemClick(DialogFragment dialog, int which);
-		public void onDialogPositiveClick(DialogFragment dialog);
-		public void onDialogNegativeClick(DialogFragment dialog);
+		public void onItemsDialogItemClick(DialogFragment dialog, int which);
+		public void onItemsDialogPositiveClick(DialogFragment dialog);
+		public void onItemsDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	
@@ -106,21 +106,21 @@ public class ItemsDialogFragment extends DialogFragment
 			@Override
 			public void onClick(DialogInterface dialog, int which)
 			{
-				mListener.onDialogItemClick(ItemsDialogFragment.this, which);
+				mListener.onItemsDialogItemClick(ItemsDialogFragment.this, which);
 			}
 		})
 		.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
 		{
 			public void onClick(DialogInterface dialog, int id)
 			{
-				mListener.onDialogPositiveClick(ItemsDialogFragment.this);
+				mListener.onItemsDialogPositiveClick(ItemsDialogFragment.this);
 			}
 		})
 		.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
 		{
 			public void onClick(DialogInterface dialog, int id)
 			{
-				mListener.onDialogNegativeClick(ItemsDialogFragment.this);
+				mListener.onItemsDialogNegativeClick(ItemsDialogFragment.this);
 			}
 		});
 		

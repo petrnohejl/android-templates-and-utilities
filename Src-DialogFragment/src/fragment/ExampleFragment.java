@@ -73,35 +73,105 @@ public class ExampleFragment extends TaskFragment implements
 	
 	
 	@Override
-	public void onDialogPositiveClick(final DialogFragment dialog)
+	public void onSimpleDialogPositiveClick(final DialogFragment dialog)
 	{
 		runTaskCallback(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onDialogPositiveClick()");
+				Logcat.d("Fragment.onSimpleDialogPositiveClick()");
 			}
 		});
 	}
-	
-	
+
+
 	@Override
-	public void onDialogPositiveClick(final DialogFragment dialog, final int which)
+	public void onSimpleDialogNegativeClick(final DialogFragment dialog)
 	{
 		runTaskCallback(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onDialogPositiveClick(): " + which);
+				Logcat.d("Fragment.onSimpleDialogNegativeClick()");
 			}
 		});
 	}
 	
 	
 	@Override
-	public void onDialogPositiveClick(final DialogFragment dialog, final boolean checkedItems[])
+	public void onItemsDialogItemClick(final DialogFragment dialog, final int which)
+	{
+		runTaskCallback(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("Fragment.onItemsDialogItemClick(): " + which);
+			}
+		});
+	}
+
+
+	@Override
+	public void onItemsDialogPositiveClick(final DialogFragment dialog)
+	{
+		runTaskCallback(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("Fragment.onItemsDialogPositiveClick()");
+			}
+		});
+	}
+
+
+	@Override
+	public void onItemsDialogNegativeClick(final DialogFragment dialog)
+	{
+		runTaskCallback(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("Fragment.onItemsDialogNegativeClick()");
+			}
+		});
+	}
+	
+	
+	@Override
+	public void onSingleChoiceItemsDialogPositiveClick(final DialogFragment dialog, final int checkedItem)
+	{
+		runTaskCallback(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("Fragment.onSingleChoiceItemsDialogPositiveClick(): " + checkedItem);
+			}
+		});
+	}
+
+
+	@Override
+	public void onSingleChoiceItemsDialogNegativeClick(final DialogFragment dialog)
+	{
+		runTaskCallback(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("Fragment.onSingleChoiceItemsDialogNegativeClick()");
+			}
+		});
+	}
+	
+	
+	@Override
+	public void onMultiChoiceItemsDialogPositiveClick(final DialogFragment dialog, final boolean[] checkedItems)
 	{
 		runTaskCallback(new Runnable()
 		{
@@ -114,81 +184,81 @@ public class ExampleFragment extends TaskFragment implements
 					builder.append(checkedItems[i]);
 					builder.append(" ");
 				}
-				Logcat.d("Fragment.onDialogPositiveClick(): " + builder.toString());
+				Logcat.d("Fragment.onMultiChoiceItemsDialogPositiveClick(): " + builder.toString());
 			}
 		});
 	}
-	
-	
+
+
 	@Override
-	public void onDialogPositiveClick(final DialogFragment dialog, final String username, final String password)
+	public void onMultiChoiceItemsDialogNegativeClick(final DialogFragment dialog)
 	{
 		runTaskCallback(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onDialogPositiveClick(): " + username + " / " + password);
+				Logcat.d("Fragment.onMultiChoiceItemsDialogNegativeClick()");
 			}
 		});
 	}
 	
 	
 	@Override
-	public void onDialogPositiveClick(final DialogFragment dialog, final int hour, final int minute)
+	public void onViewDialogPositiveClick(final DialogFragment dialog, final String username, final String password)
 	{
 		runTaskCallback(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onDialogPositiveClick(): " + hour + ":" + minute);
+				Logcat.d("Fragment.onViewDialogPositiveClick(): " + username + " / " + password);
+			}
+		});
+	}
+
+
+	@Override
+	public void onViewDialogNegativeClick(final DialogFragment dialog)
+	{
+		runTaskCallback(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("Fragment.onViewDialogNegativeClick()");
+			}
+		});
+	}
+
+
+	@Override
+	public void onTimePickerDialogPositiveClick(final DialogFragment dialog, final int hour, final int minute)
+	{
+		runTaskCallback(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("Fragment.onTimePickerDialogPositiveClick(): " + hour + ":" + minute);
 			}
 		});
 	}
 	
 	
 	@Override
-	public void onDialogPositiveClick(final DialogFragment dialog, final int year, final int month, final int day)
+	public void onDatePickerDialogPositiveClick(final DialogFragment dialog, final int year, final int month, final int day)
 	{
 		runTaskCallback(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onDialogPositiveClick(): " + day + "." + (month+1) + "." + year);
+				Logcat.d("Fragment.onDatePickerDialogPositiveClick(): " + day + "." + (month+1) + "." + year);
 			}
 		});
 	}
-	
-	
-	@Override
-	public void onDialogNegativeClick(final DialogFragment dialog)
-	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("Fragment.onDialogNegativeClick()");
-			}
-		});
-	}
-	
-	
-	@Override
-	public void onDialogItemClick(final DialogFragment dialog, final int which)
-	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("Fragment.onDialogItemClick(): " + which);
-			}
-		});
-	}
-	
+
 	
 	private void renderView()
 	{

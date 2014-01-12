@@ -28,8 +28,8 @@ public class ViewDialogFragment extends DialogFragment
 	
 	public interface ViewDialogListener
 	{
-		public void onDialogPositiveClick(DialogFragment dialog, String username, String password);
-		public void onDialogNegativeClick(DialogFragment dialog);
+		public void onViewDialogPositiveClick(DialogFragment dialog, String username, String password);
+		public void onViewDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	
@@ -132,7 +132,7 @@ public class ViewDialogFragment extends DialogFragment
 		{
 			public void onClick(DialogInterface dialog, int id)
 			{
-				mListener.onDialogNegativeClick(ViewDialogFragment.this);
+				mListener.onViewDialogNegativeClick(ViewDialogFragment.this);
 			}
 		});
 		
@@ -160,7 +160,7 @@ public class ViewDialogFragment extends DialogFragment
 						
 						// TODO: data validation
 						
-						mListener.onDialogPositiveClick(ViewDialogFragment.this, username, password);
+						mListener.onViewDialogPositiveClick(ViewDialogFragment.this, username, password);
 						dialog.dismiss();
 					}
 				});

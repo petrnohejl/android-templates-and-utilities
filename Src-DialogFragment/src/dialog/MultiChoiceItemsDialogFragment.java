@@ -22,8 +22,8 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 	
 	public interface MultiChoiceItemsDialogListener
 	{
-		public void onDialogPositiveClick(DialogFragment dialog, boolean checkedItems[]);
-		public void onDialogNegativeClick(DialogFragment dialog);
+		public void onMultiChoiceItemsDialogPositiveClick(DialogFragment dialog, boolean checkedItems[]);
+		public void onMultiChoiceItemsDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	
@@ -113,14 +113,14 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 		{
 			public void onClick(DialogInterface dialog, int id)
 			{
-				mListener.onDialogPositiveClick(MultiChoiceItemsDialogFragment.this, mCheckedItems);
+				mListener.onMultiChoiceItemsDialogPositiveClick(MultiChoiceItemsDialogFragment.this, mCheckedItems);
 			}
 		})
 		.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
 		{
 			public void onClick(DialogInterface dialog, int id)
 			{
-				mListener.onDialogNegativeClick(MultiChoiceItemsDialogFragment.this);
+				mListener.onMultiChoiceItemsDialogNegativeClick(MultiChoiceItemsDialogFragment.this);
 			}
 		});
 		

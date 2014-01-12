@@ -21,8 +21,8 @@ public class SimpleDialogFragment extends DialogFragment
 	
 	public interface SimpleDialogListener
 	{
-		public void onDialogPositiveClick(DialogFragment dialog);
-		public void onDialogNegativeClick(DialogFragment dialog);
+		public void onSimpleDialogPositiveClick(DialogFragment dialog);
+		public void onSimpleDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	
@@ -99,14 +99,14 @@ public class SimpleDialogFragment extends DialogFragment
 		{
 			public void onClick(DialogInterface dialog, int id)
 			{
-				mListener.onDialogPositiveClick(SimpleDialogFragment.this);
+				mListener.onSimpleDialogPositiveClick(SimpleDialogFragment.this);
 			}
 		})
 		.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
 		{
 			public void onClick(DialogInterface dialog, int id)
 			{
-				mListener.onDialogNegativeClick(SimpleDialogFragment.this);
+				mListener.onSimpleDialogNegativeClick(SimpleDialogFragment.this);
 			}
 		});
 		
