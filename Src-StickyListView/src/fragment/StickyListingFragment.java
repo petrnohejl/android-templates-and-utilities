@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 
 import com.example.R;
 import com.example.adapter.StickyListingAdapter;
@@ -308,9 +307,9 @@ public class StickyListingFragment extends TaskFragment implements
 	private void showList()
 	{
 		// show list container
-		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
@@ -321,9 +320,9 @@ public class StickyListingFragment extends TaskFragment implements
 	private void showProgress()
 	{
 		// show progress container
-		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
@@ -334,9 +333,9 @@ public class StickyListingFragment extends TaskFragment implements
 	private void showOffline()
 	{
 		// show offline container
-		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
@@ -348,7 +347,7 @@ public class StickyListingFragment extends TaskFragment implements
 	{
 		// reference
 		StickyListHeadersListView stickyListView = (StickyListHeadersListView) mRootView.findViewById(android.R.id.list);
-		FrameLayout emptyView = (FrameLayout) mRootView.findViewById(android.R.id.empty);
+		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
 		
 		// listview content
 		if(mAdapter==null)

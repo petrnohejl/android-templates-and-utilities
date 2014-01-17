@@ -15,7 +15,6 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.example.R;
@@ -325,9 +324,9 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	private void showList()
 	{
 		// show list container
-		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
@@ -338,9 +337,9 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	private void showProgress()
 	{
 		// show progress container
-		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
@@ -351,9 +350,9 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	private void showOffline()
 	{
 		// show offline container
-		FrameLayout containerList = (FrameLayout) mRootView.findViewById(R.id.container_list);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
 		containerList.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);

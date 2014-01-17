@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.R;
@@ -248,10 +247,10 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	private void showContent()
 	{
 		// show content container
-		FrameLayout containerContent = (FrameLayout) mRootView.findViewById(R.id.container_content);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
-		FrameLayout containerEmpty = (FrameLayout) mRootView.findViewById(R.id.container_empty);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
 		containerContent.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
@@ -263,10 +262,10 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	private void showProgress()
 	{
 		// show progress container
-		FrameLayout containerContent = (FrameLayout) mRootView.findViewById(R.id.container_content);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
-		FrameLayout containerEmpty = (FrameLayout) mRootView.findViewById(R.id.container_empty);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
 		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
@@ -278,10 +277,10 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	private void showOffline()
 	{
 		// show offline container
-		FrameLayout containerContent = (FrameLayout) mRootView.findViewById(R.id.container_content);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
-		FrameLayout containerEmpty = (FrameLayout) mRootView.findViewById(R.id.container_empty);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
 		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
@@ -293,10 +292,10 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	private void showEmpty()
 	{
 		// show empty container
-		FrameLayout containerContent = (FrameLayout) mRootView.findViewById(R.id.container_content);
-		FrameLayout containerProgress = (FrameLayout) mRootView.findViewById(R.id.container_progress);
-		FrameLayout containerOffline = (FrameLayout) mRootView.findViewById(R.id.container_offline);
-		FrameLayout containerEmpty = (FrameLayout) mRootView.findViewById(R.id.container_empty);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
+		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
+		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
+		ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
 		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
