@@ -5,17 +5,42 @@ Android Templates And Utilities is a collection of source codes, utilities,
 templates and snippets for Android development. It helps to build new apps and 
 shows the best way how to implement certain problems on Android platform.
 
-You can find here templates for styling action bar, working with alarm manager,
-communicating with server API, creating dialogs, using Facebook API,
-geolocation, loading and caching images from web, showing notifications,
-working with broadcast receivers, setting SSL connection, working with
-view pager, fragments, list fragments and much more. All templates were tested
-and should be compatible with Android 2, 3, 4.
+In this repo you can find templates for styling action bar, working with alarm
+manager, communicating with server API, sending and receiving broadcasts,
+working with database, creating dialogs, using dual pane layout, fragments,
+list fragments, GCM, geolocation, loading and caching images,
+working with intents, map, navigation drawer, showing notifications,
+preferences, running service, setting SSL connection, working with view pager,
+webview and much more. All templates were tested and should be compatible
+with Android 2, 3, 4.
 
 Android Templates And Utilities are organized into 2 groups:
 
 * Src - source code including classes, methods, resources.
 * Res - resource code including xml files, images.
+
+How to use these templates? Just copy the template into your project, rename
+package "com.example" to your own package name, rename classes' or resource's
+names if you want and customize the code to your needs. Some templates has
+/src/fragment/ExampleFragment.java class which demonstrates how to use
+the template in Fragment.
+
+Example of creating a basic skelet with 1 Activity and 1 Fragment:
+
+* Create a new Android project with package name "com.example"
+* Add support libraries (com.android.support:support-v4, com.android.support:appcompat-v7)
+* Add ic_launcher.png (Android Studio or Eclipse has generator for that)
+* Copy & paste Res-Manifest
+* Copy & paste Res-Placeholder
+* Copy & paste Res-Strings
+* Copy & paste Res-Style (exclude extras directory)
+* Copy & paste Src-Application-Class
+* Copy & paste Src-Config
+* Copy & paste Src-Fragment
+* Copy & paste Src-NetworkManager
+* Copy & paste Src-Logcat
+* Open SimpleActivity.java and comment out onCreateOptionsMenu(...) and onOptionsItemSelected(...) methods
+* Build the project and voilà, we have a basic skeleton for our future app
 
 **The rest of this README file serves mainly as a README template for other projects.**
 
@@ -88,6 +113,7 @@ dependencies in the project should be listed below. For example:
 * [RobotoTextView](https://github.com/johnkil/Android-RobotoTextView)
 * [RSS Reader](https://github.com/matshofman/Android-RSS-Reader-Library)
 * [ShowcaseView](https://github.com/Espiandev/ShowcaseView)
+* [Simple XML](http://simple.sourceforge.net/)
 * [Sliding Menu](https://github.com/jfeinstein10/SlidingMenu)
 * [Sticky List Headers](https://github.com/emilsjolander/StickyListHeaders)
 * [Styled Dialogs](https://github.com/inmite/android-styled-dialogs)
