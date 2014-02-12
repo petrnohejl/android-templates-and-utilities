@@ -7,16 +7,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.R;
 import com.example.activity.ExampleActivity;
+import com.example.client.RequestManager;
+import com.example.client.request.ExampleRequest;
 import com.example.task.TaskListFragment;
+import com.example.utility.NetworkManager;
 
 
 public class ExampleFragment extends TaskListFragment implements PullToRefreshAttacher.OnRefreshListener
 {
+	private boolean mActionBarProgress = false;
 	private View mRootView;
 	private PullToRefreshAttacher mPullToRefreshAttacher;
+	private RequestManager mRequestManager = new RequestManager();
 	
 	
 	@Override
@@ -25,45 +31,87 @@ public class ExampleFragment extends TaskListFragment implements PullToRefreshAt
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
-
-
-	private void renderView()
+	
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState)
 	{
-		// reference
-		PullToRefreshLayout pullToRefreshLayout = (PullToRefreshLayout) mRootView.findViewById(R.id.container_pull_to_refresh);
+		super.onActivityCreated(savedInstanceState);
 		
 		// pull to refresh
+		PullToRefreshLayout pullToRefreshLayout = (PullToRefreshLayout) mRootView.findViewById(R.id.container_pull_to_refresh);
 		mPullToRefreshAttacher = ((ExampleActivity) getActivity()).getPullToRefreshAttacher();
 		pullToRefreshLayout.setPullToRefreshAttacher(mPullToRefreshAttacher, this);
+		
+		// progress in action bar
+		showActionBarProgress(mActionBarProgress);
 	}
 	
 	
 	@Override
 	public void onRefreshStarted(View view)
 	{
-		new AsyncTask<Void, Void, Void>()
+		runTaskCallback(new Runnable()
 		{
 			@Override
-			protected Void doInBackground(Void... params)
+			public void run()
 			{
-				try
-				{
-					// TODO: do something
-					Thread.sleep(2000);
-				}
-				catch(InterruptedException e)
-				{
-					e.printStackTrace();
-				}
-				return null;
+				refreshData();
 			}
-			
-			@Override
-			protected void onPostExecute(Void result)
+		});
+
+//		// testing task
+//		new AsyncTask<Void, Void, Void>()
+//		{
+//			@Override
+//			protected Void doInBackground(Void... params)
+//			{
+//				try
+//				{
+//					// TODO: do something
+//					Thread.sleep(2000);
+//				}
+//				catch(InterruptedException e)
+//				{
+//					e.printStackTrace();
+//				}
+//				return null;
+//			}
+//			
+//			@Override
+//			protected void onPostExecute(Void result)
+//			{
+//				super.onPostExecute(result);
+//				mPullToRefreshAttacher.setRefreshComplete();
+//			}
+//		}.execute();
+	}
+	
+	
+	public void refreshData()
+	{
+		if(NetworkManager.isOnline(getActivity()))
+		{
+			if(!mRequestManager.hasRunningRequest(ExampleRequest.class))
 			{
-				super.onPostExecute(result);
-				mPullToRefreshAttacher.setRefreshComplete();
+				// show progress in action bar
+				showActionBarProgress(true);
+				
+				// TODO
 			}
-		}.execute();
+		}
+		else
+		{
+			showActionBarProgress(false);
+			Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
+		}
+	}
+	
+	
+	private void showActionBarProgress(boolean visible)
+	{
+		// show pull to refresh progress bar
+		if(mPullToRefreshAttacher!=null) mPullToRefreshAttacher.setRefreshing(visible);
+		mActionBarProgress = visible;
 	}
 }
