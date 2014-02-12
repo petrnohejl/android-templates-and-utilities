@@ -33,7 +33,7 @@ Example of creating a basic skelet with 1 Activity and 1 Fragment:
 * Copy & paste Res-Manifest
 * Copy & paste Res-Placeholder
 * Copy & paste Res-Strings
-* Copy & paste Res-Style (exclude extras directory)
+* Copy & paste Res-Style (exclude _extras directory)
 * Copy & paste Src-Application-Class
 * Copy & paste Src-Config
 * Copy & paste Src-Fragment
