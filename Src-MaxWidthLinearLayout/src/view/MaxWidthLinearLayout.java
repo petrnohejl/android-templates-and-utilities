@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import com.example.R;
 
 
+// code taken from: http://stackoverflow.com/questions/5875877/setting-a-maximum-width-on-a-viewgroup
 public class MaxWidthLinearLayout extends LinearLayout
 {
 	private int mMaxWidth;
