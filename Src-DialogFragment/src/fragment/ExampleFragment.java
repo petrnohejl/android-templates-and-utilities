@@ -4,8 +4,6 @@ import java.util.Calendar;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -338,113 +336,73 @@ public class ExampleFragment extends TaskFragment implements
 	
 	private void showSimpleDialog(String arg)
 	{
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		Fragment prev = getFragmentManager().findFragmentByTag(DIALOG_SIMPLE);
-		if(prev != null) transaction.remove(prev);
-		transaction.addToBackStack(null);
-		
 		// create and show the dialog
 		DialogFragment newFragment = SimpleDialogFragment.newInstance(arg);
 		newFragment.setTargetFragment(this, 0);
-		newFragment.show(transaction, DIALOG_SIMPLE);
+		newFragment.show(getFragmentManager(), DIALOG_SIMPLE);
 	}
 	
 	
 	private void showItemsDialog(String arg)
 	{
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		Fragment prev = getFragmentManager().findFragmentByTag(DIALOG_ITEMS);
-		if(prev != null) transaction.remove(prev);
-		transaction.addToBackStack(null);
-		
 		// create and show the dialog
 		DialogFragment newFragment = ItemsDialogFragment.newInstance(arg);
 		newFragment.setTargetFragment(this, 0);
-		newFragment.show(transaction, DIALOG_ITEMS);
+		newFragment.show(getFragmentManager(), DIALOG_ITEMS);
 	}
 	
 	
 	private void showSingleChoiceItemsDialog(int checkedItem)
 	{
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		Fragment prev = getFragmentManager().findFragmentByTag(DIALOG_SINGLE_CHOICE_ITEMS);
-		if(prev != null) transaction.remove(prev);
-		transaction.addToBackStack(null);
-		
 		// create and show the dialog
 		DialogFragment newFragment = SingleChoiceItemsDialogFragment.newInstance(checkedItem);
 		newFragment.setTargetFragment(this, 0);
-		newFragment.show(transaction, DIALOG_SINGLE_CHOICE_ITEMS);
+		newFragment.show(getFragmentManager(), DIALOG_SINGLE_CHOICE_ITEMS);
 	}
 	
 	
 	private void showMultiChoiceItemsDialog(boolean checkedItems[])
 	{
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		Fragment prev = getFragmentManager().findFragmentByTag(DIALOG_MULTI_CHOICE_ITEMS);
-		if(prev != null) transaction.remove(prev);
-		transaction.addToBackStack(null);
-		
 		// create and show the dialog
 		DialogFragment newFragment = MultiChoiceItemsDialogFragment.newInstance(checkedItems);
 		newFragment.setTargetFragment(this, 0);
-		newFragment.show(transaction, DIALOG_MULTI_CHOICE_ITEMS);
+		newFragment.show(getFragmentManager(), DIALOG_MULTI_CHOICE_ITEMS);
 	}
 	
 	
 	private void showViewDialog(String arg)
 	{
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		Fragment prev = getFragmentManager().findFragmentByTag(DIALOG_VIEW);
-		if(prev != null) transaction.remove(prev);
-		transaction.addToBackStack(null);
-		
 		// create and show the dialog
 		DialogFragment newFragment = ViewDialogFragment.newInstance(arg);
 		newFragment.setTargetFragment(this, 0);
-		newFragment.show(transaction, DIALOG_VIEW);
+		newFragment.show(getFragmentManager(), DIALOG_VIEW);
 	}
 	
 	
 	private void showTimePickerDialog(Calendar time)
 	{
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		Fragment prev = getFragmentManager().findFragmentByTag(DIALOG_TIME_PICKER);
-		if(prev != null) transaction.remove(prev);
-		transaction.addToBackStack(null);
-		
 		// create and show the dialog
 		DialogFragment newFragment = TimePickerDialogFragment.newInstance(time);
 		newFragment.setTargetFragment(this, 0);
-		newFragment.show(transaction, DIALOG_TIME_PICKER);
+		newFragment.show(getFragmentManager(), DIALOG_TIME_PICKER);
 	}
 	
 	
 	private void showDatePickerDialog(Calendar date)
 	{
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		Fragment prev = getFragmentManager().findFragmentByTag(DIALOG_DATE_PICKER);
-		if(prev != null) transaction.remove(prev);
-		transaction.addToBackStack(null);
-		
 		// create and show the dialog
 		DialogFragment newFragment = DatePickerDialogFragment.newInstance(date);
 		newFragment.setTargetFragment(this, 0);
-		newFragment.show(transaction, DIALOG_DATE_PICKER);
+		newFragment.show(getFragmentManager(), DIALOG_DATE_PICKER);
 	}
 	
 	
 	private void showProgressDialog()
 	{
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		Fragment prev = getFragmentManager().findFragmentByTag(DIALOG_PROGRESS);
-		if(prev != null) transaction.remove(prev);
-		transaction.addToBackStack(null);
-		
 		// create dialog
 		DialogFragment newFragment = ProgressDialogFragment.newInstance();
 		newFragment.setTargetFragment(this, 0);
-		newFragment.show(transaction, DIALOG_PROGRESS);
+		newFragment.show(getFragmentManager(), DIALOG_PROGRESS);
 	}
 	
 	
