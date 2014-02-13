@@ -85,6 +85,7 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			}
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			//connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + mRequest.BOUNDARY); // for multipart
+			connection.setRequestProperty("Accept", "application/json");
 			connection.setRequestProperty("Accept-Encoding", "gzip");
 			connection.setRequestProperty("Accept-Charset", "UTF-8");
 			//connection.setRequestProperty("Content-Length", requestData == null ? "0" : String.valueOf(requestData.length));
