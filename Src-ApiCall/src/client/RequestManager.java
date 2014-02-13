@@ -77,6 +77,21 @@ public class RequestManager
 	}
 	
 	
+	public void killAllRequests()
+	{
+		for(int i=mQueue.size()-1;i>=0;i--)
+		{
+			ApiCall call = mQueue.get(i);
+			if(call!=null)
+			{
+				call.kill();
+				call.cancel(true);
+				mQueue.remove(call);
+			}
+		}
+	}
+	
+	
 	public void printQueue()
 	{
 		for(ApiCall call : mQueue)

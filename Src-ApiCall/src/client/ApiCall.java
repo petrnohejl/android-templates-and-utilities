@@ -21,14 +21,20 @@ import android.util.Base64;
 
 import com.example.client.request.Request;
 import com.example.client.response.Response;
+import com.example.utility.Logcat;
 
 
 public class ApiCall extends AsyncTask<Void, Void, Response>
 {
-	private WeakReference<OnApiCallListener> mOnApiCallListener;
 	private Request mRequest;
+	private WeakReference<OnApiCallListener> mOnApiCallListener;
 	private ResponseStatus mStatus = new ResponseStatus();
 	private Exception mException = null;
+	
+	private HttpURLConnection mConnection = null;
+	//private HttpsURLConnection mConnection = null; // for SSL
+	private OutputStream mRequestStream = null;
+	private InputStream mResponseStream = null;
 
 	
 	public ApiCall(Request request, OnApiCallListener onApiCallListener)
@@ -53,11 +59,6 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 	@Override
 	protected Response doInBackground(Void... params)
 	{
-		HttpURLConnection connection = null;
-		//HttpsURLConnection connection = null; // for SSL
-		OutputStream requestStream = null;
-		InputStream responseStream = null;
-		
 		try
 		{
 			// disables Keep-Alive for all connections
@@ -67,80 +68,80 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			// new connection
 			byte[] requestData = mRequest.getContent();
 			URL url = new URL(mRequest.getAddress());	
-			connection = (HttpURLConnection) url.openConnection();
-			//connection = (HttpsURLConnection) url.openConnection(); // for SSL
+			mConnection = (HttpURLConnection) url.openConnection();
+			//mConnection = (HttpsURLConnection) url.openConnection(); // for SSL
 			
 			// ssl connection properties
-			//SelfSignedSslUtility.setupSslConnection(connection, url); // for SSL using self signed certificate
-			//CertificateAuthoritySslUtility.setupSslConnection(connection, url); // for SSL using certificate authority
+			//SelfSignedSslUtility.setupSslConnection(mConnection, url); // for SSL using self signed certificate
+			//CertificateAuthoritySslUtility.setupSslConnection(mConnection, url); // for SSL using certificate authority
 			
 			// connection properties
 			if(mRequest.getRequestMethod()!=null)
 			{
-				connection.setRequestMethod(mRequest.getRequestMethod()); // GET, POST, OPTIONS, HEAD, PUT, DELETE, TRACE
+				mConnection.setRequestMethod(mRequest.getRequestMethod()); // GET, POST, OPTIONS, HEAD, PUT, DELETE, TRACE
 			}
 			if(mRequest.getBasicAuthUsername()!=null && mRequest.getBasicAuthPassword()!=null)
 			{
-				connection.setRequestProperty("Authorization", getBasicAuthToken(mRequest.getBasicAuthUsername(), mRequest.getBasicAuthPassword()));
+				mConnection.setRequestProperty("Authorization", getBasicAuthToken(mRequest.getBasicAuthUsername(), mRequest.getBasicAuthPassword()));
 			}
-			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-			//connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + mRequest.BOUNDARY); // for multipart
-			connection.setRequestProperty("Accept", "application/json");
-			connection.setRequestProperty("Accept-Encoding", "gzip");
-			connection.setRequestProperty("Accept-Charset", "UTF-8");
-			//connection.setRequestProperty("Content-Length", requestData == null ? "0" : String.valueOf(requestData.length));
-			//if(requestData!=null) connection.setChunkedStreamingMode(0);
-			if(requestData!=null) connection.setFixedLengthStreamingMode(requestData.length);
-			connection.setConnectTimeout(30000);
-			connection.setReadTimeout(30000);
+			mConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			//mConnection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + mRequest.BOUNDARY); // for multipart
+			mConnection.setRequestProperty("Accept", "application/json");
+			mConnection.setRequestProperty("Accept-Encoding", "gzip");
+			mConnection.setRequestProperty("Accept-Charset", "UTF-8");
+			//mConnection.setRequestProperty("Content-Length", requestData == null ? "0" : String.valueOf(requestData.length));
+			//if(requestData!=null) mConnection.setChunkedStreamingMode(0);
+			if(requestData!=null) mConnection.setFixedLengthStreamingMode(requestData.length);
+			mConnection.setConnectTimeout(30000);
+			mConnection.setReadTimeout(30000);
 			if(requestData!=null)
 			{
 				// this call automatically sets request method to POST on Android 4
 				// if you don't want your app to POST, you must not call setDoOutput
 				// http://webdiary.com/2011/12/14/ics-get-post/
-				connection.setDoOutput(true);
+				mConnection.setDoOutput(true);
 			}
-			connection.setDoInput(true);
-			connection.setUseCaches(false);
-			connection.connect();
+			mConnection.setDoInput(true);
+			mConnection.setUseCaches(false);
+			mConnection.connect();
 
 			// send request
 			if(isCancelled()) return null;
 			if(requestData!=null)
 			{
-				requestStream = new BufferedOutputStream(connection.getOutputStream());
-				requestStream.write(requestData);
-				requestStream.flush();
+				mRequestStream = new BufferedOutputStream(mConnection.getOutputStream());
+				mRequestStream.write(requestData);
+				mRequestStream.flush();
 			}
 			
 			// receive response
 			if(isCancelled()) return null;
-			String encoding = connection.getHeaderField("Content-Encoding");
+			String encoding = mConnection.getHeaderField("Content-Encoding");
 			boolean gzipped = encoding!=null && encoding.toLowerCase().contains("gzip");
 			try
 			{
-				InputStream inputStream = connection.getInputStream();
-				if(gzipped) responseStream = new BufferedInputStream(new GZIPInputStream(inputStream));
-				else responseStream = new BufferedInputStream(inputStream);
+				InputStream inputStream = mConnection.getInputStream();
+				if(gzipped) mResponseStream = new BufferedInputStream(new GZIPInputStream(inputStream));
+				else mResponseStream = new BufferedInputStream(inputStream);
 			}
 			catch(FileNotFoundException e)
 			{
 				// error stream
-				InputStream errorStream = connection.getErrorStream();
-				if(gzipped) responseStream = new BufferedInputStream(new GZIPInputStream(errorStream));
-				else responseStream = new BufferedInputStream(errorStream);
+				InputStream errorStream = mConnection.getErrorStream();
+				if(gzipped) mResponseStream = new BufferedInputStream(new GZIPInputStream(errorStream));
+				else mResponseStream = new BufferedInputStream(errorStream);
 			}
 			
 			// response info
-			//Logcat.d("ApiCall.doInBackground().connection.getURL(): " + connection.getURL());
-			//Logcat.d("ApiCall.doInBackground().connection.getContentType(): " + connection.getContentType());
-			//Logcat.d("ApiCall.doInBackground().connection.getContentEncoding(): " + connection.getContentEncoding());
-			//Logcat.d("ApiCall.doInBackground().connection.getResponseCode(): " + connection.getResponseCode());
-			//Logcat.d("ApiCall.doInBackground().connection.getResponseMessage(): " + connection.getResponseMessage());
+			//Logcat.d("ApiCall.doInBackground().connection.getURL(): " + mConnection.getURL());
+			//Logcat.d("ApiCall.doInBackground().connection.getContentType(): " + mConnection.getContentType());
+			//Logcat.d("ApiCall.doInBackground().connection.getContentEncoding(): " + mConnection.getContentEncoding());
+			//Logcat.d("ApiCall.doInBackground().connection.getResponseCode(): " + mConnection.getResponseCode());
+			//Logcat.d("ApiCall.doInBackground().connection.getResponseMessage(): " + mConnection.getResponseMessage());
 			
 			// parse response
 			if(isCancelled()) return null;
-			Response response = mRequest.parseResponse(responseStream);
+			Response response = mRequest.parseResponse(mResponseStream);
 			if(response==null) throw new RuntimeException("Parser returned null response");
 
 			if(isCancelled()) return null;
@@ -190,33 +191,7 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 		}
 		finally
 		{
-			try
-			{
-				if(requestStream != null) requestStream.close();
-			}
-			catch(IOException e) {}
-
-			try
-			{
-				if(responseStream != null) responseStream.close();
-			}
-			catch(IOException e) {}
-
-			try
-			{
-				// set status
-				if(connection!=null)
-				{
-					mStatus.setStatusCode(connection.getResponseCode());
-					mStatus.setStatusMessage(connection.getResponseMessage());
-					connection.disconnect();
-				}
-			}
-			catch(Throwable e) {}
-
-			requestStream = null;
-			responseStream = null;
-			connection = null;
+			disconnect();
 		}
 	}
 	
@@ -227,9 +202,9 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 		if(isCancelled()) return;
 		
 		OnApiCallListener listener = mOnApiCallListener.get();
-		if(listener != null)
+		if(listener!=null)
 		{
-			if(response != null)
+			if(response!=null)
 			{
 				listener.onApiCallRespond(this, mStatus, response);
 			}
@@ -244,14 +219,52 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 	@Override
 	protected void onCancelled()
 	{
-		//Logcat.d("ApiCall.onCancelled()");
+		Logcat.d("ApiCall.onCancelled()");
 	}
-	
+
 	
 	private String getBasicAuthToken(String username, String password)
 	{
 		// Base64.NO_WRAP because of Android <4 problem
 		String base64 = Base64.encodeToString((username + ":" + password).getBytes(), Base64.NO_WRAP);
 		return "Basic " + base64;
+	}
+	
+	
+	private void disconnect()
+	{
+		try
+		{
+			if(mRequestStream!=null) mRequestStream.close();
+		}
+		catch(IOException e) {}
+
+		try
+		{
+			if(mResponseStream!=null) mResponseStream.close();
+		}
+		catch(IOException e) {}
+
+		try
+		{
+			// set status
+			if(mConnection!=null)
+			{
+				mStatus.setStatusCode(mConnection.getResponseCode());
+				mStatus.setStatusMessage(mConnection.getResponseMessage());
+				mConnection.disconnect();
+			}
+		}
+		catch(Throwable e) {}
+
+		mRequestStream = null;
+		mResponseStream = null;
+		mConnection = null;
+	}
+	
+	
+	public void kill()
+	{
+		disconnect();
 	}
 }
