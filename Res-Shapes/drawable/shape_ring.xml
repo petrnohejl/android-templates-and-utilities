@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+	android:shape="ring"
+	android:innerRadius="@dimen/global_metric_unity"
+	android:thickness="@dimen/global_metric_small"
+	android:useLevel="false">
+	
+	<!--
+	<solid android:color="#f00" />
+	-->
+	
+	<gradient
+		android:type="sweep"
+		android:startColor="#f00"
+		android:centerColor="#fff"
+		android:endColor="#f0f" />
+	
+	<stroke
+		android:width="@dimen/global_metric_micro"
+		android:dashWidth="@dimen/global_metric_micro"
+		android:dashGap="@dimen/global_metric_micro"
+		android:color="#f00" />
+</shape>
