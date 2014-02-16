@@ -6,25 +6,26 @@ import android.os.AsyncTask;
 
 import com.example.database.data.Data;
 import com.example.database.query.Query;
+import com.example.utility.Logcat;
 
 
-public class DatabaseCall extends AsyncTask<Void, Void, Data>
+public class DatabaseCallTask extends AsyncTask<Void, Void, Data>
 {
-	private WeakReference<OnDatabaseCallListener> mOnDatabaseCallListener;
 	private Query mQuery;
+	private WeakReference<DatabaseCallListener> mListener;
 	private Exception mException = null;
 	
 	
-	public DatabaseCall(Query query, OnDatabaseCallListener onDatabaseCallListener)
+	public DatabaseCallTask(Query query, DatabaseCallListener listener)
 	{
 		mQuery = query;
-		setListener(onDatabaseCallListener);
+		setListener(listener);
 	}
 	
 	
-	public void setListener(OnDatabaseCallListener onDatabaseCallListener)
+	public void setListener(DatabaseCallListener listener)
 	{
-		mOnDatabaseCallListener = new WeakReference<OnDatabaseCallListener>(onDatabaseCallListener);
+		mListener = new WeakReference<DatabaseCallListener>(listener);
 	}
 	
 	
@@ -58,7 +59,7 @@ public class DatabaseCall extends AsyncTask<Void, Void, Data>
 	{
 		if(isCancelled()) return;
 		
-		OnDatabaseCallListener listener = mOnDatabaseCallListener.get();
+		DatabaseCallListener listener = mListener.get();
 		if(listener != null)
 		{
 			if(data != null)
@@ -76,6 +77,6 @@ public class DatabaseCall extends AsyncTask<Void, Void, Data>
 	@Override
 	protected void onCancelled()
 	{
-		//Logcat.d("DatabaseCall.onCancelled()");
+		Logcat.d("DatabaseCallTask.onCancelled()");
 	}
 }

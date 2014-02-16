@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.R;
-import com.example.database.DatabaseCall;
-import com.example.database.OnDatabaseCallListener;
-import com.example.database.QueryManager;
+import com.example.database.DatabaseCallListener;
+import com.example.database.DatabaseCallManager;
+import com.example.database.DatabaseCallTask;
 import com.example.database.data.Data;
 import com.example.database.data.ProductCreateData;
 import com.example.database.data.ProductDeleteAllData;
@@ -25,10 +25,10 @@ import com.example.task.TaskFragment;
 import com.example.utility.Logcat;
 
 
-public class ExampleFragment extends TaskFragment implements OnDatabaseCallListener
+public class ExampleFragment extends TaskFragment implements DatabaseCallListener
 {
 	private View mRootView;
-	private QueryManager mQueryManager = new QueryManager();
+	private DatabaseCallManager mDatabaseCallManager = new DatabaseCallManager();
 	
 	
 	@Override
@@ -45,12 +45,12 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 		super.onDestroy();
 		
 		// cancel async tasks
-		mQueryManager.cancelAllQueries();
+		mDatabaseCallManager.cancelAllTasks();
 	}
 	
 	
 	@Override
-	public void onDatabaseCallRespond(final DatabaseCall call, final Data data)
+	public void onDatabaseCallRespond(final DatabaseCallTask task, final Data data)
 	{
 		runTaskCallback(new Runnable()
 		{
@@ -58,7 +58,7 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 			{
 				if(mRootView==null) return; // view was destroyed
 				
-				if(call.getQuery().getClass().equals(ProductCreateQuery.class))
+				if(task.getQuery().getClass().equals(ProductCreateQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductCreateQuery)");
 					
@@ -68,7 +68,7 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 					
 					// TODO
 				}
-				else if(call.getQuery().getClass().equals(ProductReadAllQuery.class))
+				else if(task.getQuery().getClass().equals(ProductReadAllQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductReadAllQuery)");
 					
@@ -78,7 +78,7 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 					
 					// TODO
 				}
-				else if(call.getQuery().getClass().equals(ProductUpdateQuery.class))
+				else if(task.getQuery().getClass().equals(ProductUpdateQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductUpdateQuery)");
 					
@@ -88,7 +88,7 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 					
 					// TODO
 				}
-				else if(call.getQuery().getClass().equals(ProductDeleteAllQuery.class))
+				else if(task.getQuery().getClass().equals(ProductDeleteAllQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductDeleteAllQuery)");
 					
@@ -99,17 +99,17 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 				}
 				
 				// finish query
-				mQueryManager.finishQuery(call);
+				mDatabaseCallManager.finishTask(task);
 				
 				// hide progress in action bar
-				if(mQueryManager.getQueriesCount()==0) showActionBarProgress(false);
+				if(mDatabaseCallManager.getTasksCount()==0) showActionBarProgress(false);
 			}
 		});
 	}
 
 
 	@Override
-	public void onDatabaseCallFail(final DatabaseCall call, final Exception exception)
+	public void onDatabaseCallFail(final DatabaseCallTask task, final Exception exception)
 	{
 		runTaskCallback(new Runnable()
 		{
@@ -117,28 +117,28 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 			{
 				if(mRootView==null) return; // view was destroyed
 				
-				if(call.getQuery().getClass().equals(ProductCreateQuery.class))
+				if(task.getQuery().getClass().equals(ProductCreateQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallFail(ProductCreateQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
-				else if(call.getQuery().getClass().equals(ProductReadAllQuery.class))
+				else if(task.getQuery().getClass().equals(ProductReadAllQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallFail(ProductReadAllQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
-				else if(call.getQuery().getClass().equals(ProductUpdateQuery.class))
+				else if(task.getQuery().getClass().equals(ProductUpdateQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallFail(ProductUpdateQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
-				else if(call.getQuery().getClass().equals(ProductDeleteAllQuery.class))
+				else if(task.getQuery().getClass().equals(ProductDeleteAllQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallFail(ProductDeleteAllQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
 				
 				// finish query
-				mQueryManager.finishQuery(call);
+				mDatabaseCallManager.finishTask(task);
 				
 				// hide progress in action bar
-				if(mQueryManager.getQueriesCount()==0) showActionBarProgress(false);
+				if(mDatabaseCallManager.getTasksCount()==0) showActionBarProgress(false);
 			}
 		});
 	}
@@ -151,7 +151,7 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 		
 		// run async task
 		ProductCreateQuery query = new ProductCreateQuery(name, quantity, timestamp, price);
-		mQueryManager.executeQuery(query, this);
+		mDatabaseCallManager.executeTask(query, this);
 	}
 	
 	
@@ -162,7 +162,7 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 		
 		// run async task
 		ProductReadAllQuery query = new ProductReadAllQuery();
-		mQueryManager.executeQuery(query, this);
+		mDatabaseCallManager.executeTask(query, this);
 	}
 	
 	
@@ -173,7 +173,7 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 		
 		// run async task
 		ProductUpdateQuery query = new ProductUpdateQuery(id, name, quantity, timestamp, price);
-		mQueryManager.executeQuery(query, this);
+		mDatabaseCallManager.executeTask(query, this);
 	}
 	
 	
@@ -184,6 +184,6 @@ public class ExampleFragment extends TaskFragment implements OnDatabaseCallListe
 		
 		// run async task
 		ProductDeleteAllQuery query = new ProductDeleteAllQuery();
-		mQueryManager.executeQuery(query, this);
+		mDatabaseCallManager.executeTask(query, this);
 	}
 }
