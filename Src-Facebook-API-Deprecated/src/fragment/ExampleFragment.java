@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.ExampleConfig;
 import com.example.R;
-import com.example.client.ApiCallManager;
+import com.example.client.APICallManager;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkManager;
 import com.example.utility.Preferences;
@@ -33,7 +33,7 @@ public class ExampleFragment extends Fragment
 {
 	private boolean mActionBarProgress = false;
 	private View mRootView;
-	private ApiCallManager mApiCallManager = new ApiCallManager();
+	private APICallManager mAPICallManager = new APICallManager();
 	private Facebook mFacebook;
 	private AsyncFacebookRunner mAsyncFacebookRunner;
 
@@ -218,7 +218,7 @@ public class ExampleFragment extends Fragment
 					preferences.setFacebookAccessExpiration(mFacebook.getAccessExpires());
 					
 					// hide progress in action bar
-					if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+					if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 
 					// toast
 					Toast.makeText(getActivity(), "Successfully logged in.", Toast.LENGTH_LONG).show();
@@ -230,7 +230,7 @@ public class ExampleFragment extends Fragment
 					Logcat.d("Fragment.facebookAuthorize().onFacebookError(): " + e.getErrorType() + " / " + e.getLocalizedMessage() + " / " + e.getMessage());
 					
 					// hide progress in action bar
-					if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+					if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 					
 					// toast
 					if(e.getMessage()!=null) Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -242,7 +242,7 @@ public class ExampleFragment extends Fragment
 					Logcat.d("Fragment.facebookAuthorize().onError(): " + e.getLocalizedMessage() + " / " + e.getMessage());
 					
 					// hide progress in action bar
-					if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+					if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 					
 					// toast
 					if(e.getMessage()!=null) Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -254,7 +254,7 @@ public class ExampleFragment extends Fragment
 					Logcat.d("Fragment.facebookAuthorize().onCancel()");
 					
 					// hide progress in action bar
-					if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+					if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 				}
 			});
 		}
@@ -299,7 +299,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), "Successfully logged out.", Toast.LENGTH_LONG).show();
@@ -317,7 +317,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							if(e.getMessage()!=null) Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -335,7 +335,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
@@ -353,7 +353,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
@@ -371,7 +371,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
@@ -416,7 +416,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 						}
 					});
 				}
@@ -431,7 +431,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							if(e.getMessage()!=null) Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -449,7 +449,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
@@ -467,7 +467,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
@@ -485,7 +485,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
@@ -534,7 +534,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 						}
 					});
 				}
@@ -549,7 +549,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							if(e.getMessage()!=null) Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -567,7 +567,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
@@ -585,7 +585,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();
@@ -603,7 +603,7 @@ public class ExampleFragment extends Fragment
 						public void run()
 						{
 							// hide progress in action bar
-							if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
+							if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
 							
 							// toast
 							Toast.makeText(getActivity(), R.string.global_server_fail_toast, Toast.LENGTH_LONG).show();

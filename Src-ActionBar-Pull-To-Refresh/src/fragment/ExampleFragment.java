@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.R;
 import com.example.activity.ExampleActivity;
-import com.example.client.ApiCallManager;
+import com.example.client.APICallManager;
 import com.example.client.request.ExampleRequest;
 import com.example.task.TaskListFragment;
 import com.example.utility.NetworkManager;
@@ -22,7 +22,7 @@ public class ExampleFragment extends TaskListFragment implements PullToRefreshAt
 	private boolean mActionBarProgress = false;
 	private View mRootView;
 	private PullToRefreshAttacher mPullToRefreshAttacher;
-	private ApiCallManager mApiCallManager = new ApiCallManager();
+	private APICallManager mAPICallManager = new APICallManager();
 	
 	
 	@Override
@@ -92,7 +92,7 @@ public class ExampleFragment extends TaskListFragment implements PullToRefreshAt
 	{
 		if(NetworkManager.isOnline(getActivity()))
 		{
-			if(!mApiCallManager.hasRunningTask(ExampleRequest.class))
+			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
 			{
 				// show progress in action bar
 				showActionBarProgress(true);
