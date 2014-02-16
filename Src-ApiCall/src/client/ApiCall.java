@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
@@ -16,37 +15,35 @@ import java.util.zip.GZIPInputStream;
 
 import org.codehaus.jackson.JsonParseException;
 
-import android.os.AsyncTask;
 import android.util.Base64;
 
 import com.example.client.request.Request;
 import com.example.client.response.Response;
-import com.example.utility.Logcat;
 
 
-public class ApiCall extends AsyncTask<Void, Void, Response>
+public class ApiCall
 {
-	private Request mRequest;
-	private WeakReference<OnApiCallListener> mOnApiCallListener;
-	private ResponseStatus mStatus = new ResponseStatus();
+	private Request mRequest = null;
+	private ApiCallTask mApiCallTask = null;
 	private Exception mException = null;
+	private ResponseStatus mResponseStatus = new ResponseStatus();
 	
 	private HttpURLConnection mConnection = null;
 	//private HttpsURLConnection mConnection = null; // for SSL
 	private OutputStream mRequestStream = null;
 	private InputStream mResponseStream = null;
-
 	
-	public ApiCall(Request request, OnApiCallListener onApiCallListener)
+	
+	public ApiCall(Request request)
 	{
 		mRequest = request;
-		setListener(onApiCallListener);
 	}
 	
 	
-	public void setListener(OnApiCallListener onApiCallListener)
+	public ApiCall(Request request, ApiCallTask task)
 	{
-		mOnApiCallListener = new WeakReference<OnApiCallListener>(onApiCallListener);
+		mRequest = request;
+		mApiCallTask = task;
 	}
 
 	
@@ -54,15 +51,32 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 	{
 		return mRequest;
 	}
-
 	
-	@Override
-	protected Response doInBackground(Void... params)
+	
+	public Exception getException()
+	{
+		return mException;
+	}
+	
+	
+	public ResponseStatus getResponseStatus()
+	{
+		return mResponseStatus;
+	}
+	
+	
+	public void kill()
+	{
+		disconnect();
+	}
+	
+	
+	public Response execute()
 	{
 		try
 		{
 			// disables Keep-Alive for all connections
-			if(isCancelled()) return null;
+			if(mApiCallTask!=null && mApiCallTask.isCancelled()) return null;
 			System.setProperty("http.keepAlive", "false");
 			
 			// new connection
@@ -106,7 +120,7 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			mConnection.connect();
 
 			// send request
-			if(isCancelled()) return null;
+			if(mApiCallTask!=null && mApiCallTask.isCancelled()) return null;
 			if(requestData!=null)
 			{
 				mRequestStream = new BufferedOutputStream(mConnection.getOutputStream());
@@ -115,7 +129,7 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			}
 			
 			// receive response
-			if(isCancelled()) return null;
+			if(mApiCallTask!=null && mApiCallTask.isCancelled()) return null;
 			String encoding = mConnection.getHeaderField("Content-Encoding");
 			boolean gzipped = encoding!=null && encoding.toLowerCase().contains("gzip");
 			try
@@ -133,18 +147,18 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			}
 			
 			// response info
-			//Logcat.d("ApiCall.doInBackground().connection.getURL(): " + mConnection.getURL());
-			//Logcat.d("ApiCall.doInBackground().connection.getContentType(): " + mConnection.getContentType());
-			//Logcat.d("ApiCall.doInBackground().connection.getContentEncoding(): " + mConnection.getContentEncoding());
-			//Logcat.d("ApiCall.doInBackground().connection.getResponseCode(): " + mConnection.getResponseCode());
-			//Logcat.d("ApiCall.doInBackground().connection.getResponseMessage(): " + mConnection.getResponseMessage());
+			//Logcat.d("ApiCall.connection.getURL(): " + mConnection.getURL());
+			//Logcat.d("ApiCall.connection.getContentType(): " + mConnection.getContentType());
+			//Logcat.d("ApiCall.connection.getContentEncoding(): " + mConnection.getContentEncoding());
+			//Logcat.d("ApiCall.connection.getResponseCode(): " + mConnection.getResponseCode());
+			//Logcat.d("ApiCall.connection.getResponseMessage(): " + mConnection.getResponseMessage());
 			
 			// parse response
-			if(isCancelled()) return null;
+			if(mApiCallTask!=null && mApiCallTask.isCancelled()) return null;
 			Response response = mRequest.parseResponse(mResponseStream);
 			if(response==null) throw new RuntimeException("Parser returned null response");
 
-			if(isCancelled()) return null;
+			if(mApiCallTask!=null && mApiCallTask.isCancelled()) return null;
 			return response;
 		}
 		catch(UnknownHostException e)
@@ -196,41 +210,6 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 	}
 	
 	
-	@Override
-	protected void onPostExecute(Response response)
-	{
-		if(isCancelled()) return;
-		
-		OnApiCallListener listener = mOnApiCallListener.get();
-		if(listener!=null)
-		{
-			if(response!=null)
-			{
-				listener.onApiCallRespond(this, mStatus, response);
-			}
-			else
-			{
-				listener.onApiCallFail(this, mStatus, mException);
-			}
-		}
-	}
-	
-	
-	@Override
-	protected void onCancelled()
-	{
-		Logcat.d("ApiCall.onCancelled()");
-	}
-
-	
-	private String getBasicAuthToken(String username, String password)
-	{
-		// Base64.NO_WRAP because of Android <4 problem
-		String base64 = Base64.encodeToString((username + ":" + password).getBytes(), Base64.NO_WRAP);
-		return "Basic " + base64;
-	}
-	
-	
 	private void disconnect()
 	{
 		try
@@ -250,8 +229,8 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 			// set status
 			if(mConnection!=null)
 			{
-				mStatus.setStatusCode(mConnection.getResponseCode());
-				mStatus.setStatusMessage(mConnection.getResponseMessage());
+				mResponseStatus.setStatusCode(mConnection.getResponseCode());
+				mResponseStatus.setStatusMessage(mConnection.getResponseMessage());
 				mConnection.disconnect();
 			}
 		}
@@ -263,8 +242,10 @@ public class ApiCall extends AsyncTask<Void, Void, Response>
 	}
 	
 	
-	public void kill()
+	private String getBasicAuthToken(String username, String password)
 	{
-		disconnect();
+		// Base64.NO_WRAP because of Android <4 problem
+		String base64 = Base64.encodeToString((username + ":" + password).getBytes(), Base64.NO_WRAP);
+		return "Basic " + base64;
 	}
 }

@@ -19,9 +19,9 @@ import android.widget.Toast;
 
 import com.example.R;
 import com.example.adapter.ExampleAdapter;
-import com.example.client.ApiCall;
-import com.example.client.OnApiCallListener;
-import com.example.client.RequestManager;
+import com.example.client.ApiCallListener;
+import com.example.client.ApiCallManager;
+import com.example.client.ApiCallTask;
 import com.example.client.ResponseStatus;
 import com.example.client.request.ExampleRequest;
 import com.example.client.response.ExampleResponse;
@@ -33,7 +33,7 @@ import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
 
 
-public class ExampleFragment extends TaskListFragment implements OnApiCallListener
+public class ExampleFragment extends TaskListFragment implements ApiCallListener
 {
 	private final int LAZY_LOADING_TAKE = 16;
 	private final int LAZY_LOADING_OFFSET = 4;
@@ -46,7 +46,7 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 	private View mRootView;
 	private View mFooterView;
 	private ExampleAdapter mAdapter;
-	private RequestManager mRequestManager = new RequestManager();
+	private ApiCallManager mApiCallManager = new ApiCallManager();
 	
 	private ArrayList<Product> mProductList = new ArrayList<Product>();
 
@@ -112,12 +112,12 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 		super.onDestroy();
 		
 		// cancel async tasks
-		mRequestManager.cancelAllRequests();
+		mApiCallManager.cancelAllTasks();
 	}
 
 
 	@Override
-	public void onApiCallRespond(final ApiCall call, final ResponseStatus status, final Response response)
+	public void onApiCallRespond(final ApiCallTask task, final ResponseStatus status, final Response response)
 	{
 		runTaskCallback(new Runnable()
 		{
@@ -125,7 +125,7 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 			{
 				if(mRootView==null) return; // view was destroyed
 				
-				if(call.getRequest().getClass().equals(ExampleRequest.class))
+				if(task.getRequest().getClass().equals(ExampleRequest.class))
 				{
 					ExampleResponse exampleResponse = (ExampleResponse) response;
 					
@@ -149,7 +149,7 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 						Logcat.d("Fragment.onApiCallRespond(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage());
 
 						// check meta data
-						if(call.getRequest().getMetaData()!=null && call.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
+						if(task.getRequest().getMetaData()!=null && task.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
 						{
 							// refresh
 							mProductList.clear();
@@ -180,17 +180,17 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 				}
 				
 				// finish request
-				mRequestManager.finishRequest(call);
+				mApiCallManager.finishTask(task);
 
 				// hide progress in action bar
-				if(mRequestManager.getRequestsCount()==0) showActionBarProgress(false);
+				if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
 			}
 		});
 	}
 
 
 	@Override
-	public void onApiCallFail(final ApiCall call, final ResponseStatus status, final Exception exception)
+	public void onApiCallFail(final ApiCallTask task, final ResponseStatus status, final Exception exception)
 	{
 		runTaskCallback(new Runnable()
 		{
@@ -198,7 +198,7 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 			{
 				if(mRootView==null) return; // view was destroyed
 				
-				if(call.getRequest().getClass().equals(ExampleRequest.class))
+				if(task.getRequest().getClass().equals(ExampleRequest.class))
 				{
 					Logcat.d("Fragment.onApiCallFail(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage() +
 							" / " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
@@ -212,10 +212,10 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 				}
 				
 				// finish request
-				mRequestManager.finishRequest(call);
+				mApiCallManager.finishTask(task);
 
 				// hide progress in action bar
-				if(mRequestManager.getRequestsCount()==0) showActionBarProgress(false);
+				if(mApiCallManager.getTasksCount()==0) showActionBarProgress(false);
 			}
 		});
 	}
@@ -246,7 +246,7 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 	{
 		if(NetworkManager.isOnline(getActivity()))
 		{
-			if(!mRequestManager.hasRunningRequest(ExampleRequest.class))
+			if(!mApiCallManager.hasRunningTask(ExampleRequest.class))
 			{
 				// show progress
 				showProgress();
@@ -256,7 +256,7 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 				
 				// execute request
 				ExampleRequest request = new ExampleRequest(0, LAZY_LOADING_TAKE);
-				mRequestManager.executeRequest(request, this);
+				mApiCallManager.executeTask(request, this);
 			}
 		}
 		else
@@ -270,7 +270,7 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 	{
 		if(NetworkManager.isOnline(getActivity()))
 		{
-			if(!mRequestManager.hasRunningRequest(ExampleRequest.class))
+			if(!mApiCallManager.hasRunningTask(ExampleRequest.class))
 			{
 				// show progress in action bar
 				showActionBarProgress(true);
@@ -283,7 +283,7 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 				int take = (mProductList.size() <= LAZY_LOADING_MAX && mProductList.size() > 0) ? mProductList.size() : LAZY_LOADING_TAKE;
 				ExampleRequest request = new ExampleRequest(0, take);
 				request.setMetaData(bundle);
-				mRequestManager.executeRequest(request, this);
+				mApiCallManager.executeTask(request, this);
 			}
 		}
 		else
@@ -302,7 +302,7 @@ public class ExampleFragment extends TaskListFragment implements OnApiCallListen
 			
 			// execute request
 			ExampleRequest request = new ExampleRequest(mProductList.size(), LAZY_LOADING_TAKE);
-			mRequestManager.executeRequest(request, this);
+			mApiCallManager.executeTask(request, this);
 		}
 	}
 	
