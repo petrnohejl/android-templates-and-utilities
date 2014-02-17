@@ -19,19 +19,19 @@ import com.example.ExampleConfig;
 import com.example.R;
 
 
-public class SelfSignedSslUtility
+public class SelfSignedSSLUtility
 {
-	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
+	public static void setupSSLConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
 	{
-		SSLContext sslContext = createSslContext();
-		HostnameVerifier sslHostnameVerifier = createSslHostnameVerifier(requestUrl.getHost());
+		SSLContext sslContext = createSSLContext();
+		HostnameVerifier sslHostnameVerifier = createSSLHostnameVerifier(requestUrl.getHost());
 		
 		connection.setSSLSocketFactory(sslContext.getSocketFactory());
 		connection.setHostnameVerifier(sslHostnameVerifier);
 	}
 	
 	
-	public static SSLContext createSslContext() throws GeneralSecurityException
+	public static SSLContext createSSLContext() throws GeneralSecurityException
 	{
 		KeyStore keyStore = loadKeyStore();
 		
@@ -49,7 +49,7 @@ public class SelfSignedSslUtility
 	}
 	
 	
-	public static HostnameVerifier createSslHostnameVerifier(final String apiHostname)
+	public static HostnameVerifier createSSLHostnameVerifier(final String apiHostname)
 	{
 		HostnameVerifier hostnameVerifier = new HostnameVerifier()
 		{

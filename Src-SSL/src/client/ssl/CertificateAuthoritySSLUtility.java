@@ -11,12 +11,12 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
 
-public class CertificateAuthoritySslUtility
+public class CertificateAuthoritySSLUtility
 {
-	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
+	public static void setupSSLConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
 	{
-		SSLContext sslContext = createSslContext();
-		HostnameVerifier sslHostnameVerifier = createSslHostnameVerifier(requestUrl.getHost());
+		SSLContext sslContext = createSSLContext();
+		HostnameVerifier sslHostnameVerifier = createSSLHostnameVerifier(requestUrl.getHost());
 		
 		connection.setSSLSocketFactory(sslContext.getSocketFactory());
 		connection.setHostnameVerifier(sslHostnameVerifier);
@@ -24,7 +24,7 @@ public class CertificateAuthoritySslUtility
 	}
 	
 	
-	public static SSLContext createSslContext() throws GeneralSecurityException
+	public static SSLContext createSSLContext() throws GeneralSecurityException
 	{
 		SSLContext context = SSLContext.getInstance("TLS");
 		context.init(null, new X509TrustManager[] { new CertificateAuthorityTrustManager() }, new SecureRandom());
@@ -32,7 +32,7 @@ public class CertificateAuthoritySslUtility
 	}
 	
 	
-	public static HostnameVerifier createSslHostnameVerifier(final String apiHostname)
+	public static HostnameVerifier createSSLHostnameVerifier(final String apiHostname)
 	{
 		HostnameVerifier hostnameVerifier = new HostnameVerifier()
 		{
