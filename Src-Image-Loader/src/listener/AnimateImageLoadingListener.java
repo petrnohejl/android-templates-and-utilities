@@ -12,7 +12,7 @@ import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 
-public class OnAnimateImageLoadingListener extends SimpleImageLoadingListener
+public class AnimateImageLoadingListener extends SimpleImageLoadingListener
 {
 	private final List<String> mDisplayedImageList = Collections.synchronizedList(new LinkedList<String>());
 
