@@ -7,7 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.example.ExampleConfig;
 import com.example.R;
-import com.example.gcm.GcmUtility;
+import com.example.gcm.GCMUtility;
 import com.example.utility.Logcat;
 import com.google.android.gcm.GCMRegistrar;
 
@@ -25,7 +25,7 @@ public class ExampleActivity extends ActionBarActivity
 		setContentView(R.layout.activity_example);
 		
 		// handle GCM registration
-		handleGcmRegistration();
+		handleGCMRegistration();
 	}
 
 
@@ -39,7 +39,7 @@ public class ExampleActivity extends ActionBarActivity
 	}
 
 
-	private void handleGcmRegistration()
+	private void handleGCMRegistration()
 	{
 		final Context context = getApplicationContext();
 		
@@ -75,7 +75,7 @@ public class ExampleActivity extends ActionBarActivity
 					@Override
 					protected Void doInBackground(Void... params)
 					{
-						GcmUtility.register(context, registrationId);
+						GCMUtility.register(context, registrationId);
 						return null;
 					}
 					

@@ -20,7 +20,7 @@ import com.example.utility.Logcat;
 import com.google.android.gcm.GCMRegistrar;
 
 
-public class GcmUtility
+public class GCMUtility
 {
 	private static final int MAX_ATTEMPTS = 5;
 	private static final int BACKOFF_MILLI_SECONDS = 2000;
@@ -31,7 +31,7 @@ public class GcmUtility
 	// register this account/device pair within the server
 	public static void register(final Context context, final String registrationId)
 	{
-		Logcat.d("GcmUtility.register(): registering device with registration ID " + registrationId);
+		Logcat.d("GCMUtility.register(): registering device with registration ID " + registrationId);
 		
 		// request url
 		String requestUrl = ExampleConfig.GCM_REGISTER_URL;
@@ -48,32 +48,32 @@ public class GcmUtility
 		// As the server might be down, we will retry it a couple times.
 		for(int i=1; i<=MAX_ATTEMPTS; i++)
 		{
-			Logcat.d("GcmUtility.register(): attempt #" + i + " to register");
+			Logcat.d("GCMUtility.register(): attempt #" + i + " to register");
 			
 			try
 			{
 				post(requestUrl, params); // TODO: use post or get
 				GCMRegistrar.setRegisteredOnServer(context, true);
-				Logcat.d("GcmUtility.register(): server successfully registered device");
+				Logcat.d("GCMUtility.register(): server successfully registered device");
 				return;
 			}
 			catch(IOException e)
 			{
 				// Here we are simplifying and retrying on any error.
 				// In a real application, it should retry only on unrecoverable errors (like HTTP error code 503).
-				Logcat.d("GcmUtility.register(): server failed to register on attempt #" + i + " / " + e.getMessage());
+				Logcat.d("GCMUtility.register(): server failed to register on attempt #" + i + " / " + e.getMessage());
 				
 				if(i == MAX_ATTEMPTS) break;
 				
 				try
 				{
-					Logcat.d("GcmUtility.register(): sleeping for " + backoff + " ms before retry");
+					Logcat.d("GCMUtility.register(): sleeping for " + backoff + " ms before retry");
 					Thread.sleep(backoff);
 				}
 				catch(InterruptedException interruptedException)
 				{
 					// activity finished before we complete
-					Logcat.d("GcmUtility.register(): thread interrupted so abort remaining retries");
+					Logcat.d("GCMUtility.register(): thread interrupted so abort remaining retries");
 					Thread.currentThread().interrupt();
 					return;
 				}
@@ -83,14 +83,14 @@ public class GcmUtility
 			}
 		}
 		
-		Logcat.d("GcmUtility.register(): could not register device on server after " + MAX_ATTEMPTS + " attempts");
+		Logcat.d("GCMUtility.register(): could not register device on server after " + MAX_ATTEMPTS + " attempts");
 	}
 
 
 	// unregister this account/device pair within the server
 	public static void unregister(final Context context, final String registrationId)
 	{
-		Logcat.d("GcmUtility.unregister(): unregistering device with registration ID " + registrationId);
+		Logcat.d("GCMUtility.unregister(): unregistering device with registration ID " + registrationId);
 		
 		// request url
 		String requestUrl = ExampleConfig.GCM_UNREGISTER_URL;
@@ -104,14 +104,14 @@ public class GcmUtility
 		{
 			post(requestUrl, params); // TODO: use post or get
 			GCMRegistrar.setRegisteredOnServer(context, false);
-			Logcat.d("GcmUtility.unregister(): server successfully unregistered device");
+			Logcat.d("GCMUtility.unregister(): server successfully unregistered device");
 		}
 		catch(IOException e)
 		{
 			// At this point the device is unregistered from GCM, but still registered on the server.
 			// We could try to unregister again, but it is not necessary: if the server tries to send a message to the device,
 			// it will get a "NotRegistered" error message and should unregister the device.
-			Logcat.d("GcmUtility.unregister(): could not unregister device on server / " + e.getMessage());
+			Logcat.d("GCMUtility.unregister(): could not unregister device on server / " + e.getMessage());
 		}
 	}
 
@@ -133,7 +133,7 @@ public class GcmUtility
 		// data
 		byte[] requestData = params.getBytes();
 		
-		Logcat.d("GcmUtility.post(): sending '" + params + "' to " + url);
+		Logcat.d("GCMUtility.post(): sending '" + params + "' to " + url);
 		
 		// URL connection
 		HttpURLConnection connection = null;
@@ -190,7 +190,7 @@ public class GcmUtility
 			throw new IllegalArgumentException("Invalid url " + requestUrl);
 		}
 		
-		Logcat.d("GcmUtility.get(): sending " + requestUrl);
+		Logcat.d("GCMUtility.get(): sending " + requestUrl);
 		
 		// URL connection
 		HttpURLConnection connection = null;

@@ -6,7 +6,7 @@ import java.net.URLDecoder;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.gcm.GcmUtility;
+import com.example.gcm.GCMUtility;
 import com.example.utility.Logcat;
 import com.google.android.gcm.GCMBaseIntentService;
 
@@ -23,7 +23,7 @@ public class GCMIntentService extends GCMBaseIntentService
 	protected void onRegistered(Context context, String registrationId)
 	{
 		Logcat.d("GCMIntentService.onRegistered(): GCM service successfully registered device with registration ID " + registrationId);
-		GcmUtility.register(context, registrationId);
+		GCMUtility.register(context, registrationId);
 	}
 
 
@@ -31,7 +31,7 @@ public class GCMIntentService extends GCMBaseIntentService
 	protected void onUnregistered(Context context, String registrationId)
 	{
 		Logcat.d("GCMIntentService.onUnregistered(): GCM service successfully unregistered device with registration ID " + registrationId);
-		GcmUtility.unregister(context, registrationId);
+		GCMUtility.unregister(context, registrationId);
 	}
 
 
