@@ -11,18 +11,18 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.R;
-import com.example.entity.Group;
-import com.example.entity.Product;
+import com.example.entity.GroupEntity;
+import com.example.entity.ProductEntity;
 
 
 public class StickyListingAdapter extends BaseAdapter implements StickyListHeadersAdapter
 {
 	private Context mContext;
-	private ArrayList<Product> mProductList;
+	private ArrayList<ProductEntity> mProductList;
 	private int mSelectedPosition = -1;
 
 
-	public StickyListingAdapter(Context context, ArrayList<Product> productList)
+	public StickyListingAdapter(Context context, ArrayList<ProductEntity> productList)
 	{
 		mContext = context;
 		mProductList = productList;
@@ -46,7 +46,7 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 		}
 		
 		// entity
-		Product product = (Product) mProductList.get(position);
+		ProductEntity product = (ProductEntity) mProductList.get(position);
 		
 		if(product != null)
 		{
@@ -111,7 +111,7 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 		}
 		
 		// entity
-		Group group = mProductList.get(position).getGroup();
+		GroupEntity group = mProductList.get(position).getGroup();
 		
 		if(group != null)
 		{
@@ -129,12 +129,12 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 	@Override
 	public long getHeaderId(int position)
 	{
-		Group group = mProductList.get(position).getGroup();
+		GroupEntity group = mProductList.get(position).getGroup();
 		return group.getId().hashCode();
 	}
 	
 	
-	public void refill(Context context, ArrayList<Product> productList)
+	public void refill(Context context, ArrayList<ProductEntity> productList)
 	{
 		mContext = context;
 		mProductList = productList;

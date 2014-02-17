@@ -10,17 +10,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.R;
-import com.example.entity.Product;
+import com.example.entity.ProductEntity;
 
 
 public class ListingAdapter extends BaseAdapter 
 {
 	private Context mContext;
-	private ArrayList<Product> mProductList;
+	private ArrayList<ProductEntity> mProductList;
 	private int mSelectedPosition = -1;
 	
 	
-	public ListingAdapter(Context context, ArrayList<Product> productList)
+	public ListingAdapter(Context context, ArrayList<ProductEntity> productList)
 	{
 		mContext = context;
 		mProductList = productList;
@@ -44,7 +44,7 @@ public class ListingAdapter extends BaseAdapter
 		}
 		
 		// entity
-		Product product = (Product) mProductList.get(position);
+		ProductEntity product = (ProductEntity) mProductList.get(position);
 		
 		if(product != null)
 		{
@@ -92,7 +92,7 @@ public class ListingAdapter extends BaseAdapter
 	}
 	
 	
-	public void refill(Context context, ArrayList<Product> productList)
+	public void refill(Context context, ArrayList<ProductEntity> productList)
 	{
 		mContext = context;
 		mProductList = productList;

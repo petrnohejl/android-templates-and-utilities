@@ -10,19 +10,19 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.example.R;
-import com.example.entity.Product;
+import com.example.entity.ProductEntity;
 
 
 public class ExpandableListingAdapter extends BaseExpandableListAdapter
 {
 	private Context mContext;
 	private ArrayList<String> mGroupList;
-	private ArrayList<ArrayList<Product>> mProductList;
+	private ArrayList<ArrayList<ProductEntity>> mProductList;
 	private int mSelectedGroupPosition = -1;
 	private int mSelectedChildPosition = -1;
 	
 	
-	public ExpandableListingAdapter(Context context, ArrayList<String> groupList, ArrayList<ArrayList<Product>> productList)
+	public ExpandableListingAdapter(Context context, ArrayList<String> groupList, ArrayList<ArrayList<ProductEntity>> productList)
 	{
 		mContext = context;
 		mGroupList = groupList;
@@ -47,7 +47,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		}
 		
 		// entity
-		Product product = (Product) getChild(groupPosition, childPosition);
+		ProductEntity product = (ProductEntity) getChild(groupPosition, childPosition);
 		
 		if(product != null)
 		{
@@ -164,7 +164,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	}
 	
 	
-	public void refill(Context context, ArrayList<String> groupList, ArrayList<ArrayList<Product>> productList)
+	public void refill(Context context, ArrayList<String> groupList, ArrayList<ArrayList<ProductEntity>> productList)
 	{
 		mContext = context;
 		mGroupList = groupList;

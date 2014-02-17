@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Iterator;
 
 
-public class Entity
+public class ExampleEntity
 {
 	private boolean booleanVar;
 	private int intVar;
@@ -19,14 +19,14 @@ public class Entity
 
 
 	// empty constructor
-	public Entity()
+	public ExampleEntity()
 	{
 	
 	}
 	
 	
 	// copy constructor
-	public Entity(Entity copyModel)
+	public ExampleEntity(ExampleEntity copyModel)
 	{
 		booleanVar = copyModel.booleanVar;
 		intVar = copyModel.intVar;

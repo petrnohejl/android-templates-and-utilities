@@ -9,7 +9,7 @@ import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonToken;
 
 import com.example.client.response.LoginResponse;
-import com.example.entity.Membership;
+import com.example.entity.MembershipEntity;
 
 
 public class LoginParser extends Parser
@@ -78,7 +78,7 @@ public class LoginParser extends Parser
 					}
 				}
 
-				Membership membership = new Membership();
+				MembershipEntity membership = new MembershipEntity();
 				membership.setUserId(userId);
 				membership.setAccessToken(accessToken);
 				

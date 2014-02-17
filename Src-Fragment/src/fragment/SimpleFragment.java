@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.R;
-import com.example.entity.Product;
+import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.task.TaskFragment;
@@ -27,7 +27,7 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	private View mRootView;
 	private LoadDataTask mLoadDataTask;
 
-	private Product mProduct;
+	private ProductEntity mProduct;
 	
 	
 	@Override
@@ -191,7 +191,7 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 				if(mRootView==null) return; // view was destroyed
 				
 				// get data
-				mProduct = new Product();
+				mProduct = new ProductEntity();
 				mProduct.setName("Test Product");
 				
 				// hide progress and render view

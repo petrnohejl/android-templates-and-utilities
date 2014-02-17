@@ -8,7 +8,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-public class Entity implements Parcelable
+public class ExampleEntity implements Parcelable
 {
 	private boolean booleanVar;
 	private int intVar;
@@ -21,14 +21,14 @@ public class Entity implements Parcelable
 
 
 	// empty constructor
-	public Entity()
+	public ExampleEntity()
 	{
 	
 	}
 	
 	
 	// parcel constructor
-	public Entity(Parcel parcel)
+	public ExampleEntity(Parcel parcel)
 	{
 		readFromParcel(parcel);
 	}
@@ -84,17 +84,17 @@ public class Entity implements Parcelable
 	}
 	
 	
-	public static final Parcelable.Creator<Entity> CREATOR = new Parcelable.Creator<Entity>()
+	public static final Parcelable.Creator<ExampleEntity> CREATOR = new Parcelable.Creator<ExampleEntity>()
 	{
-		public Entity createFromParcel(Parcel parcel)
+		public ExampleEntity createFromParcel(Parcel parcel)
 		{
-			return new Entity(parcel);
+			return new ExampleEntity(parcel);
 		}
 
 
-		public Entity[] newArray(int size)
+		public ExampleEntity[] newArray(int size)
 		{
-			return new Entity[size];
+			return new ExampleEntity[size];
 		}
 	};
 }

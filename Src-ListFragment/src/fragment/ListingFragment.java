@@ -19,7 +19,7 @@ import android.widget.ListView;
 
 import com.example.R;
 import com.example.adapter.ListingAdapter;
-import com.example.entity.Product;
+import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.task.TaskListFragment;
@@ -40,7 +40,7 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	private ListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
 
-	private ArrayList<Product> mProductList = new ArrayList<Product>();
+	private ArrayList<ProductEntity> mProductList = new ArrayList<ProductEntity>();
 	
 	
 	@Override
@@ -225,7 +225,7 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 				final int size = mProductList.size();
 				for(int i=0; i<LAZY_LOADING_TAKE; i++)
 				{
-					Product p = new Product();
+					ProductEntity p = new ProductEntity();
 					p.setName("Product " + (size + i));
 					mProductList.add(p);
 				}

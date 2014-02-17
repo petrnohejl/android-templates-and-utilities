@@ -1,21 +1,21 @@
 package com.example.entity;
 
 
-public class Product
+public class ProductEntity
 {
 	private long id;
 	private String name;
 
 
 	// empty constructor
-	public Product()
+	public ProductEntity()
 	{
 	
 	}
 	
 	
 	// copy constructor
-	public Product(Product copyModel)
+	public ProductEntity(ProductEntity copyModel)
 	{
 		id = copyModel.id;
 		if(copyModel.name!=null) name = new String(copyModel.name);

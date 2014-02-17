@@ -1,21 +1,21 @@
 package com.example.entity;
 
 
-public class Membership
+public class MembershipEntity
 {
 	private long userId;
 	private String accessToken;
 
 
 	// empty constructor
-	public Membership()
+	public MembershipEntity()
 	{
 	
 	}
 	
 	
 	// copy constructor
-	public Membership(Membership copyModel)
+	public MembershipEntity(MembershipEntity copyModel)
 	{
 		userId = copyModel.userId;
 		if(copyModel.accessToken!=null) accessToken = new String(copyModel.accessToken);

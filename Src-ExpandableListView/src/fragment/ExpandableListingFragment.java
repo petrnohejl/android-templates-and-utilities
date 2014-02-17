@@ -16,7 +16,7 @@ import android.widget.ExpandableListView.OnChildClickListener;
 
 import com.example.R;
 import com.example.adapter.ExpandableListingAdapter;
-import com.example.entity.Product;
+import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.task.TaskFragment;
@@ -33,7 +33,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	private LoadDataTask mLoadDataTask;
 
 	private ArrayList<String> mGroupList = new ArrayList<String>();
-	private ArrayList<ArrayList<Product>> mProductList = new ArrayList<ArrayList<Product>>();
+	private ArrayList<ArrayList<ProductEntity>> mProductList = new ArrayList<ArrayList<ProductEntity>>();
 	
 	
 	@Override
@@ -198,10 +198,10 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 				// get data
 				for(int i=0; i<10; i++)
 				{
-					ArrayList<Product> group = new ArrayList<Product>();
+					ArrayList<ProductEntity> group = new ArrayList<ProductEntity>();
 					for(int j=0; j<10; j++)
 					{
-						Product p = new Product();
+						ProductEntity p = new ProductEntity();
 						p.setName("Product " + i + "/" + j);
 						group.add(p);
 					}

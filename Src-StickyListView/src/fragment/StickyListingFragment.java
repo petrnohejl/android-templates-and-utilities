@@ -16,8 +16,8 @@ import android.widget.AdapterView;
 
 import com.example.R;
 import com.example.adapter.StickyListingAdapter;
-import com.example.entity.Group;
-import com.example.entity.Product;
+import com.example.entity.GroupEntity;
+import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.task.TaskFragment;
@@ -38,7 +38,7 @@ public class StickyListingFragment extends TaskFragment implements
 	private LoadDataTask mLoadDataTask;
 	private int mListviewPosition = 0;
 	
-	private ArrayList<Product> mProductList = new ArrayList<Product>();
+	private ArrayList<ProductEntity> mProductList = new ArrayList<ProductEntity>();
 	
 	
 	@Override
@@ -236,13 +236,13 @@ public class StickyListingFragment extends TaskFragment implements
 				// get data
 				for(int i=0; i<8; i++)
 				{
-					Group g = new Group();
+					GroupEntity g = new GroupEntity();
 					g.setId(Integer.toString(i));
 					g.setName("Group " + i);
 					
 					for(int j=0; j<4; j++)
 					{
-						Product p = new Product();
+						ProductEntity p = new ProductEntity();
 						p.setName("Product " + j);
 						p.setGroup(g);
 						mProductList.add(p);

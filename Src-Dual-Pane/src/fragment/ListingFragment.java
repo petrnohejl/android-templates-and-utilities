@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import com.example.R;
 import com.example.adapter.ListingAdapter;
-import com.example.entity.Product;
+import com.example.entity.ProductEntity;
 import com.example.listener.OnDualPaneShowListener;
 import com.example.task.TaskListFragment;
 
@@ -22,7 +22,7 @@ public class ListingFragment extends TaskListFragment
 	private ListingAdapter mAdapter;
 	private OnDualPaneShowListener mDualPaneShowListener;
 
-	private ArrayList<Product> mProductList = new ArrayList<Product>();
+	private ArrayList<ProductEntity> mProductList = new ArrayList<ProductEntity>();
 	
 	
 	@Override
@@ -86,7 +86,7 @@ public class ListingFragment extends TaskListFragment
 		// testing data
 		for(int i=0; i<32; i++)
 		{
-			Product p = new Product();
+			ProductEntity p = new ProductEntity();
 			p.setName("Product " + (i));
 			mProductList.add(p);
 		}

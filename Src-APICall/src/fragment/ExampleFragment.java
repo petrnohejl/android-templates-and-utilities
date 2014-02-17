@@ -26,7 +26,7 @@ import com.example.client.ResponseStatus;
 import com.example.client.request.ExampleRequest;
 import com.example.client.response.ExampleResponse;
 import com.example.client.response.Response;
-import com.example.entity.Product;
+import com.example.entity.ProductEntity;
 import com.example.task.TaskListFragment;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkManager;
@@ -48,7 +48,7 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 	private ExampleAdapter mAdapter;
 	private APICallManager mAPICallManager = new APICallManager();
 	
-	private ArrayList<Product> mProductList = new ArrayList<Product>();
+	private ArrayList<ProductEntity> mProductList = new ArrayList<ProductEntity>();
 
 	
 	@Override
@@ -156,11 +156,11 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 						}
 						
 						// get data
-						Iterator<Product> iterator = exampleResponse.getProductList().iterator();
+						Iterator<ProductEntity> iterator = exampleResponse.getProductList().iterator();
 						while(iterator.hasNext())
 						{
-							Product product = iterator.next();
-							mProductList.add(new Product(product));
+							ProductEntity product = iterator.next();
+							mProductList.add(new ProductEntity(product));
 						}
 						
 						// render view

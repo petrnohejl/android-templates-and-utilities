@@ -1,11 +1,11 @@
 package com.example.client.response;
 
-import com.example.entity.Membership;
+import com.example.entity.MembershipEntity;
 
 
 public class LoginResponse extends Response
 {
-	private Membership mMembership;
+	private MembershipEntity mMembership;
 	
 	
 	public LoginResponse()
@@ -14,11 +14,11 @@ public class LoginResponse extends Response
 	}
 
 
-	public Membership getMembership()
+	public MembershipEntity getMembership()
 	{
 		return mMembership;
 	}
-	public void setMembership(Membership membership)
+	public void setMembership(MembershipEntity membership)
 	{
 		mMembership = membership;
 	}
