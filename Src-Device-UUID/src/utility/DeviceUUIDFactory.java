@@ -10,7 +10,7 @@ import android.telephony.TelephonyManager;
 
 
 // code taken from: http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id
-public class DeviceUuidFactory
+public class DeviceUUIDFactory
 {
 	protected static final String PREFS_FILE = "device_id.xml";
 	protected static final String PREFS_DEVICE_ID = "device_id";
@@ -18,11 +18,11 @@ public class DeviceUuidFactory
 	protected volatile static UUID uuid;
 
 
-	public DeviceUuidFactory(Context context)
+	public DeviceUUIDFactory(Context context)
 	{
 		if(uuid == null)
 		{
-			synchronized(DeviceUuidFactory.class)
+			synchronized(DeviceUUIDFactory.class)
 			{
 				if(uuid == null)
 				{
@@ -92,7 +92,7 @@ public class DeviceUuidFactory
 	 *
 	 * @return a UUID that may be used to uniquely identify your device for most purposes.
 	 */
-	public UUID getDeviceUuid()
+	public UUID getDeviceUUID()
 	{
 		return uuid;
 	}
