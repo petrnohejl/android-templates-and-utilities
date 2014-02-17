@@ -19,16 +19,16 @@ public class Geolocation implements LocationListener
 	private static final int LOCATION_AGE = 60000 * 30; // milliseconds
 	private static final int LOCATION_TIMEOUT = 30000; // milliseconds
 	
-	private WeakReference<OnGeolocationListener> mOnGeolocationListener;
+	private WeakReference<GeolocationListener> mListener;
 	private LocationManager mLocationManager;
 	private Location mCurrentLocation;
 	private Timer mTimer;
 	
 	
-	public Geolocation(LocationManager locationManager, OnGeolocationListener onGeolocationListener)
+	public Geolocation(LocationManager locationManager, GeolocationListener listener)
 	{
 		mLocationManager = locationManager; // (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE); 
-		mOnGeolocationListener = new WeakReference<OnGeolocationListener>(onGeolocationListener);
+		mListener = new WeakReference<GeolocationListener>(listener);
 		mTimer = new Timer();
 		init();
 	}
@@ -56,7 +56,7 @@ public class Geolocation implements LocationListener
 					{
 						Logcat.d("Geolocation.timer: timeout");
 						stop();
-						OnGeolocationListener listener = mOnGeolocationListener.get();
+						GeolocationListener listener = mListener.get();
 						if(listener != null) listener.onGeolocationFail(Geolocation.this);
 					}
 				}
@@ -99,7 +99,7 @@ public class Geolocation implements LocationListener
 		// return location
 		mCurrentLocation = new Location(location);
 		stop();
-		OnGeolocationListener listener = mOnGeolocationListener.get();
+		GeolocationListener listener = mListener.get();
 		if(listener!=null && location!=null) listener.onGeolocationRespond(Geolocation.this, mCurrentLocation);
 	}
 
