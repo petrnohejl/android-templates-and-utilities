@@ -22,7 +22,13 @@ public class APICallManager
 
 	public void executeTask(Request request, APICallListener listener)
 	{
-		APICallTask task = new APICallTask(request, listener);
+		executeTask(request, listener, 1);
+	}
+	
+	
+	public void executeTask(Request request, APICallListener listener, int maxAttempts)
+	{
+		APICallTask task = new APICallTask(request, listener, maxAttempts);
 		mTaskList.add(task);
 		
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
