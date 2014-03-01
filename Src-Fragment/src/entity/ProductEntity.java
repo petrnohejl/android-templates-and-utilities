@@ -15,10 +15,10 @@ public class ProductEntity
 	
 	
 	// copy constructor
-	public ProductEntity(ProductEntity copyModel)
+	public ProductEntity(ProductEntity origin)
 	{
-		id = copyModel.id;
-		if(copyModel.name!=null) name = new String(copyModel.name);
+		id = origin.id;
+		if(origin.name!=null) name = new String(origin.name);
 	}
 	
 	

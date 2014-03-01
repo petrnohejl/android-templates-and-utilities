@@ -33,13 +33,13 @@ public class ProductModel extends Model
 
 
 	// copy constructor
-	public ProductModel(ProductModel copyModel)
+	public ProductModel(ProductModel origin)
 	{
 		super();
-		if(copyModel.name != null) name = new String(copyModel.name);
-		quantity = copyModel.quantity;
-		timestamp = copyModel.timestamp;
-		price = copyModel.price;
+		if(origin.name != null) name = new String(origin.name);
+		quantity = origin.quantity;
+		timestamp = origin.timestamp;
+		price = origin.price;
 	}
 	
 	

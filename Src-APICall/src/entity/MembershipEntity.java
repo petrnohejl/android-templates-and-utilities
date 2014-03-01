@@ -15,10 +15,10 @@ public class MembershipEntity
 	
 	
 	// copy constructor
-	public MembershipEntity(MembershipEntity copyModel)
+	public MembershipEntity(MembershipEntity origin)
 	{
-		userId = copyModel.userId;
-		if(copyModel.accessToken!=null) accessToken = new String(copyModel.accessToken);
+		userId = origin.userId;
+		if(origin.accessToken!=null) accessToken = new String(origin.accessToken);
 	}
 	
 	

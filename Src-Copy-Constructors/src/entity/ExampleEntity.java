@@ -26,23 +26,23 @@ public class ExampleEntity
 	
 	
 	// copy constructor
-	public ExampleEntity(ExampleEntity copyModel)
+	public ExampleEntity(ExampleEntity origin)
 	{
-		booleanVar = copyModel.booleanVar;
-		intVar = copyModel.intVar;
-		longVar = copyModel.longVar;
-		if(copyModel.stringVar!=null) stringVar = new String(copyModel.stringVar);
-		if(copyModel.dateVar!=null) dateVar = new Date(copyModel.dateVar.getTime());
-		if(copyModel.calendarVar!=null)
+		booleanVar = origin.booleanVar;
+		intVar = origin.intVar;
+		longVar = origin.longVar;
+		if(origin.stringVar!=null) stringVar = new String(origin.stringVar);
+		if(origin.dateVar!=null) dateVar = new Date(origin.dateVar.getTime());
+		if(origin.calendarVar!=null)
 		{
 			calendarVar = Calendar.getInstance();
-			calendarVar.setTime(copyModel.calendarVar.getTime());
+			calendarVar.setTime(origin.calendarVar.getTime());
 		}
-		if(copyModel.myModel!=null) myModel = new MyModel(copyModel.myModel);
-		if(copyModel.stringList!=null)
+		if(origin.myModel!=null) myModel = new MyModel(origin.myModel);
+		if(origin.stringList!=null)
 		{
 			stringList = new ArrayList<String>();
-			Iterator<String> iterator = copyModel.stringList.iterator();
+			Iterator<String> iterator = origin.stringList.iterator();
 			while(iterator.hasNext())
 			{
 				String s = iterator.next();
