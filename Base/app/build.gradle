@@ -1,0 +1,107 @@
+// Main build script for Example
+// 
+// Usage: gradlew assembleDebug             Build debug APK
+//        gradlew assembleRelease           Build production APK
+//        gradlew connectedInstrumentTest   Instrument testing
+//        gradle wrapper                    Create Gradle Wrapper
+
+
+final VERSION_MAJOR = 1
+final VERSION_MINOR = 0
+final VERSION_PATCH = 0
+final VERSION_BUILD = 0
+
+
+apply plugin: 'android'
+
+
+dependencies
+{
+	compile 'com.android.support:support-v4:+'
+	compile 'com.android.support:appcompat-v7:+'
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+android
+{
+	compileSdkVersion 19
+	buildToolsVersion "19.0.0"
+
+	defaultConfig
+	{
+		minSdkVersion 14
+		targetSdkVersion 19
+		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
+		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
+	}
+
+	signingConfigs
+	{
+		release
+		{
+			// passwords and alias are obtained via askForPasswords task
+			storeFile file("../${project.property('keystore.file')}")
+			storePassword ""
+			keyAlias ""
+			keyPassword ""
+		}
+	}
+
+	buildTypes
+	{
+		debug
+		{
+			versionNameSuffix "-debug"
+		}
+
+		release
+		{
+			signingConfig signingConfigs.release
+			zipAlign true
+			runProguard false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+		}
+	}
+}
+
+
+task askForPasswords <<
+{
+	def storePass
+	def keyAlias
+	def keyPass
+
+	def keystorePropertiesFile = new File(project.property("keystore.properties"))
+
+	if(project.hasProperty("keystore.properties") && keystorePropertiesFile.exists())
+	{
+		println "Loading keystore passwords from property file..."
+		Properties properties = new Properties()
+		properties.load(new FileInputStream(keystorePropertiesFile))
+		storePass = properties['keystore.store.password']
+		keyAlias  = properties['keystore.key.alias']
+		keyPass  = properties['keystore.key.password']
+	}
+	else
+	{
+		println "Getting keystore passwords from user input..."
+		storePass = new String(System.console().readPassword("\nStore password: "))
+		keyAlias  = new String(System.console().readLine("Key alias: "))
+		keyPass  = new String(System.console().readPassword("Key password: "))
+	}
+
+	android.signingConfigs.release.storePassword = storePass
+	android.signingConfigs.release.keyAlias = keyAlias
+	android.signingConfigs.release.keyPassword = keyPass
+}
+
+
+tasks.whenTaskAdded
+{
+	theTask ->
+	if(theTask.name.equals("packageRelease"))
+	{
+		theTask.dependsOn "askForPasswords"
+	}
+}
