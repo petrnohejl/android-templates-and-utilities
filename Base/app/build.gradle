@@ -1,10 +1,9 @@
 // Main build script for Example
 // 
-// Usage: gradlew assembleDebug             Build debug APK
-//        gradlew assembleRelease           Build production APK
-//        gradlew connectedInstrumentTest   Instrument testing
-//        gradle wrapper                    Create Gradle Wrapper
-
+// Usage: gradlew assembleDebug           Build debug APK
+//        gradlew assembleRelease         Build production APK
+//        gradlew connectedAndroidTest    Unit testing
+//        gradle wrapper                  Create Gradle Wrapper
 
 
 final VERSION_MAJOR = 1 // max two digits

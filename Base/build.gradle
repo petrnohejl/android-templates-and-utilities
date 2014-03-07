@@ -5,7 +5,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:0.8.+'
+		classpath 'com.android.tools.build:gradle:0.9.+'
 	}
 }
 
@@ -16,5 +16,5 @@ allprojects {
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '1.10'
+	gradleVersion = '1.11'
 }
