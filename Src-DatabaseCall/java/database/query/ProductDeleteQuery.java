@@ -4,10 +4,14 @@ import com.example.database.dao.ProductDAO;
 import com.example.database.data.Data;
 
 
-public class ProductDeleteAllQuery extends Query
+public class ProductDeleteQuery extends Query
 {
-	public ProductDeleteAllQuery()
+	private long mId;
+
+
+	public ProductDeleteQuery(long id)
 	{
+		mId = id;
 	}
 
 
@@ -15,7 +19,7 @@ public class ProductDeleteAllQuery extends Query
 	public Data<Object> processData()
 	{
 		ProductDAO dao = new ProductDAO();
-		dao.deleteAll();
+		dao.delete(mId);
 
 		Data<Object> data = new Data<Object>();
 		data.setDataObject(null);

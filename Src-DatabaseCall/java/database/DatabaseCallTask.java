@@ -1,15 +1,15 @@
 package com.example.database;
 
-import java.lang.ref.WeakReference;
-
 import android.os.AsyncTask;
 
 import com.example.database.data.Data;
 import com.example.database.query.Query;
 import com.example.utility.Logcat;
 
+import java.lang.ref.WeakReference;
 
-public class DatabaseCallTask extends AsyncTask<Void, Void, Data>
+
+public class DatabaseCallTask extends AsyncTask<Void, Void, Data<?>>
 {
 	private Query mQuery;
 	private WeakReference<DatabaseCallListener> mListener;
@@ -36,11 +36,11 @@ public class DatabaseCallTask extends AsyncTask<Void, Void, Data>
 	
 	
 	@Override
-	protected Data doInBackground(Void... params)
+	protected Data<?> doInBackground(Void... params)
 	{
 		try
 		{
-			Data data = mQuery.queryData();
+			Data<?> data = mQuery.processData();
 			
 			if(isCancelled()) return null;
 			else return data;
@@ -55,7 +55,7 @@ public class DatabaseCallTask extends AsyncTask<Void, Void, Data>
 	
 	
 	@Override
-	protected void onPostExecute(Data data)
+	protected void onPostExecute(Data<?> data)
 	{
 		if(isCancelled()) return;
 		

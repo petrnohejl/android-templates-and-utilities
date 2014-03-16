@@ -1,7 +1,5 @@
 package com.example.fragment;
 
-import java.util.List;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +10,18 @@ import com.example.database.DatabaseCallListener;
 import com.example.database.DatabaseCallManager;
 import com.example.database.DatabaseCallTask;
 import com.example.database.data.Data;
-import com.example.database.data.ProductCreateData;
-import com.example.database.data.ProductDeleteAllData;
-import com.example.database.data.ProductReadAllData;
-import com.example.database.data.ProductUpdateData;
-import com.example.database.model.ProductModel;
 import com.example.database.query.ProductCreateQuery;
 import com.example.database.query.ProductDeleteAllQuery;
+import com.example.database.query.ProductDeleteQuery;
 import com.example.database.query.ProductReadAllQuery;
+import com.example.database.query.ProductReadFirstQuery;
+import com.example.database.query.ProductReadQuery;
 import com.example.database.query.ProductUpdateQuery;
+import com.example.entity.ProductEntity;
 import com.example.task.TaskFragment;
 import com.example.utility.Logcat;
+
+import java.util.List;
 
 
 public class ExampleFragment extends TaskFragment implements DatabaseCallListener
@@ -50,7 +49,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 	
 	
 	@Override
-	public void onDatabaseCallRespond(final DatabaseCallTask task, final Data data)
+	public void onDatabaseCallRespond(final DatabaseCallTask task, final Data<?> data)
 	{
 		runTaskCallback(new Runnable()
 		{
@@ -63,9 +62,29 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductCreateQuery)");
 					
 					// data
-					ProductCreateData productCreateData = (ProductCreateData) data;
-					ProductModel productModel = productCreateData.getProductModel();
-					
+					Data<Long> productCreateData = (Data<Long>) data;
+					long id = productCreateData.getDataObject();
+
+					// TODO
+				}
+				else if(task.getQuery().getClass().equals(ProductReadQuery.class))
+				{
+					Logcat.d("Fragment.onDatabaseCallRespond(ProductReadQuery)");
+
+					// data
+					Data<ProductEntity> productReadData = (Data<ProductEntity>) data;
+					ProductEntity product = productReadData.getDataObject();
+
+					// TODO
+				}
+				else if(task.getQuery().getClass().equals(ProductReadFirstQuery.class))
+				{
+					Logcat.d("Fragment.onDatabaseCallRespond(ProductReadFirstQuery)");
+
+					// data
+					Data<ProductEntity> productReadFirstData = (Data<ProductEntity>) data;
+					ProductEntity product = productReadFirstData.getDataObject();
+
 					// TODO
 				}
 				else if(task.getQuery().getClass().equals(ProductReadAllQuery.class))
@@ -73,8 +92,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductReadAllQuery)");
 					
 					// data
-					ProductReadAllData productReadAllData = (ProductReadAllData) data;
-					List<ProductModel> productModelList = productReadAllData.getProductModelList();
+					Data<List<ProductEntity>> productReadAllData = (Data<List<ProductEntity>>) data;
+					List<ProductEntity> productList = productReadAllData.getDataObject();
 					
 					// TODO
 				}
@@ -83,9 +102,18 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductUpdateQuery)");
 					
 					// data
-					ProductUpdateData productUpdateData = (ProductUpdateData) data;
-					ProductModel productModel = productUpdateData.getProductModel();
+					Data<Long> productUpdateData = (Data<Long>) data;
+					long id = productUpdateData.getDataObject();
 					
+					// TODO
+				}
+				else if(task.getQuery().getClass().equals(ProductDeleteQuery.class))
+				{
+					Logcat.d("Fragment.onDatabaseCallRespond(ProductDeleteQuery)");
+
+					// data
+					Data<Object> productDeleteData = (Data<Object>) data;
+
 					// TODO
 				}
 				else if(task.getQuery().getClass().equals(ProductDeleteAllQuery.class))
@@ -93,7 +121,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductDeleteAllQuery)");
 					
 					// data
-					ProductDeleteAllData productDeleteAllData = (ProductDeleteAllData) data;
+					Data<Object> productDeleteAllData = (Data<Object>) data;
 					
 					// TODO
 				}
@@ -121,6 +149,14 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				{
 					Logcat.d("Fragment.onDatabaseCallFail(ProductCreateQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
+				else if(task.getQuery().getClass().equals(ProductReadQuery.class))
+				{
+					Logcat.d("Fragment.onDatabaseCallFail(ProductReadQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+				}
+				else if(task.getQuery().getClass().equals(ProductReadFirstQuery.class))
+				{
+					Logcat.d("Fragment.onDatabaseCallFail(ProductReadFirstQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+				}
 				else if(task.getQuery().getClass().equals(ProductReadAllQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallFail(ProductReadAllQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
@@ -128,6 +164,10 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				else if(task.getQuery().getClass().equals(ProductUpdateQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallFail(ProductUpdateQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+				}
+				else if(task.getQuery().getClass().equals(ProductDeleteQuery.class))
+				{
+					Logcat.d("Fragment.onDatabaseCallFail(ProductDeleteQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
 				else if(task.getQuery().getClass().equals(ProductDeleteAllQuery.class))
 				{
@@ -144,13 +184,35 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 	}
 	
 	
-	private void createProduct(String name, int quantity, long timestamp, double price)
+	private void createProduct(ProductEntity product)
 	{
 		// show progress in action bar
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductCreateQuery query = new ProductCreateQuery(name, quantity, timestamp, price);
+		ProductCreateQuery query = new ProductCreateQuery(product);
+		mDatabaseCallManager.executeTask(query, this);
+	}
+
+
+	private void readProduct(long id)
+	{
+		// show progress in action bar
+		showActionBarProgress(true);
+
+		// run async task
+		ProductReadQuery query = new ProductReadQuery(id);
+		mDatabaseCallManager.executeTask(query, this);
+	}
+
+
+	private void readFirstProduct()
+	{
+		// show progress in action bar
+		showActionBarProgress(true);
+
+		// run async task
+		ProductReadFirstQuery query = new ProductReadFirstQuery();
 		mDatabaseCallManager.executeTask(query, this);
 	}
 	
@@ -166,13 +228,24 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 	}
 	
 	
-	private void updateProduct(long id, String name, int quantity, long timestamp, double price)
+	private void updateProduct(ProductEntity product)
 	{
 		// show progress in action bar
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductUpdateQuery query = new ProductUpdateQuery(id, name, quantity, timestamp, price);
+		ProductUpdateQuery query = new ProductUpdateQuery(product);
+		mDatabaseCallManager.executeTask(query, this);
+	}
+
+
+	private void deleteProduct(long id)
+	{
+		// show progress in action bar
+		showActionBarProgress(true);
+
+		// run async task
+		ProductDeleteQuery query = new ProductDeleteQuery(id);
 		mDatabaseCallManager.executeTask(query, this);
 	}
 	

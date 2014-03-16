@@ -1,12 +1,9 @@
 package com.example.database.model;
 
-import java.util.List;
-
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
-import com.activeandroid.query.Select;
+import com.example.entity.ProductEntity;
 
 
 @Table(name = "Products")
@@ -32,73 +29,14 @@ public class ProductModel extends Model
 	}
 
 
-	// copy constructor
-	public ProductModel(ProductModel origin)
+	public ProductEntity toEntity()
 	{
-		super();
-		if(origin.name != null) name = new String(origin.name);
-		quantity = origin.quantity;
-		timestamp = origin.timestamp;
-		price = origin.price;
-	}
-	
-	
-	public static ProductModel create(String name, int quantity, long timestamp, double price)
-	{
-		ProductModel m = new ProductModel();
-		m.name = name;
-		m.quantity = quantity;
-		m.timestamp = timestamp;
-		m.price = price;
-		m.save();
-		return m;
-	}
-	
-	
-	public static ProductModel read(long id)
-	{
-		return new Select().from(ProductModel.class).where("Id=?", id).executeSingle();
-	}
-	
-	
-	public static ProductModel readFirst()
-	{
-		return new Select().from(ProductModel.class).limit(1).executeSingle();
-	}
-	
-	
-	public static List<ProductModel> readAll()
-	{
-		return new Select().from(ProductModel.class).orderBy("Timestamp ASC").execute();
-	}
-	
-	
-	public static List<ProductModel> readAll(int limit, int offset)
-	{
-		return new Select().from(ProductModel.class).limit(limit).offset(offset).orderBy("Timestamp ASC").execute();
-	}
-	
-	
-	public static ProductModel update(long id, String name, int quantity, long timestamp, double price)
-	{
-		ProductModel m = read(id);
-		m.name = name;
-		m.quantity = quantity;
-		m.timestamp = timestamp;
-		m.price = price;
-		m.save();
-		return m;
-	}
-	
-	
-	public static void delete(long id)
-	{
-		new Delete().from(ProductModel.class).where("Id=?", id).executeSingle();
-	}
-	
-	
-	public static void deleteAll()
-	{
-		new Delete().from(ProductModel.class).execute();
+		ProductEntity e = new ProductEntity();
+		e.setId(this.getId());
+		e.setName(this.name);
+		e.setQuantity(this.quantity);
+		e.setTimestamp(this.timestamp);
+		e.setPrice(this.price);
+		return e;
 	}
 }

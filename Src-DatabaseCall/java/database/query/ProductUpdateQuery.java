@@ -1,37 +1,30 @@
 package com.example.database.query;
 
+import com.example.database.dao.ProductDAO;
 import com.example.database.data.Data;
-import com.example.database.data.ProductUpdateData;
-import com.example.database.model.ProductModel;
+import com.example.entity.ProductEntity;
 
 
 public class ProductUpdateQuery extends Query
 {
-	private long mId;
-	private String mName;
-	private int mQuantity;
-	private long mTimestamp;
-	private double mPrice;
-	
-	
-	public ProductUpdateQuery(long id, String name, int quantity, long timestamp, double price)
+	private ProductEntity mProduct;
+
+
+	public ProductUpdateQuery(ProductEntity product)
 	{
-		mId = id;
-		mName = name;
-		mQuantity = quantity;
-		mTimestamp = timestamp;
-		mPrice = price;
+		mProduct = product;
 	}
-	
-	
+
+
 	@Override
-	public Data queryData()
+	public Data<Long> processData()
 	{
-		ProductModel m = ProductModel.update(mId, mName, mQuantity, mTimestamp, mPrice);
-		
-		ProductUpdateData data = new ProductUpdateData();
-		data.setProductModel(m);
-		
+		ProductDAO dao = new ProductDAO();
+		long id = dao.update(mProduct);
+
+		Data<Long> data = new Data<Long>();
+		data.setDataObject(id);
+
 		return data;
 	}
 }
