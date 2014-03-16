@@ -1,14 +1,5 @@
 package com.example.fragment;
 
-import java.io.FileNotFoundException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import org.codehaus.jackson.JsonParseException;
-
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -24,13 +15,22 @@ import com.example.client.APICallManager;
 import com.example.client.APICallTask;
 import com.example.client.ResponseStatus;
 import com.example.client.request.ExampleRequest;
-import com.example.client.response.ExampleResponse;
 import com.example.client.response.Response;
 import com.example.entity.ProductEntity;
 import com.example.task.TaskListFragment;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkManager;
 import com.example.utility.ViewState;
+
+import org.codehaus.jackson.JsonParseException;
+
+import java.io.FileNotFoundException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class ExampleFragment extends TaskListFragment implements APICallListener
@@ -117,7 +117,7 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 
 
 	@Override
-	public void onAPICallRespond(final APICallTask task, final ResponseStatus status, final Response response)
+	public void onAPICallRespond(final APICallTask task, final ResponseStatus status, final Response<?> response)
 	{
 		runTaskCallback(new Runnable()
 		{
@@ -127,7 +127,7 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 				
 				if(task.getRequest().getClass().equals(ExampleRequest.class))
 				{
-					ExampleResponse exampleResponse = (ExampleResponse) response;
+					Response<List<ProductEntity>> exampleResponse = (Response<List<ProductEntity>>) response;
 					
 					// error
 					if(exampleResponse.isError())
@@ -156,7 +156,8 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 						}
 						
 						// get data
-						Iterator<ProductEntity> iterator = exampleResponse.getProductList().iterator();
+						List<ProductEntity> productList = exampleResponse.getResponseObject();
+						Iterator<ProductEntity> iterator = productList.iterator();
 						while(iterator.hasNext())
 						{
 							ProductEntity product = iterator.next();

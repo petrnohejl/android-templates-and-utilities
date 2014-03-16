@@ -1,15 +1,15 @@
 package com.example.client;
 
-import java.lang.ref.WeakReference;
-
 import android.os.AsyncTask;
 
 import com.example.client.request.Request;
 import com.example.client.response.Response;
 import com.example.utility.Logcat;
 
+import java.lang.ref.WeakReference;
 
-public class APICallTask extends AsyncTask<Void, Void, Response>
+
+public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 {
 	private final int RETRY_MAX_ATTEMPTS = 1; // default value for max number of retries
 	private final long RETRY_INIT_BACKOFF = 500; // initial sleep time before retry
@@ -58,10 +58,10 @@ public class APICallTask extends AsyncTask<Void, Void, Response>
 	
 	
 	@Override
-	protected Response doInBackground(Void... params)
+	protected Response<?> doInBackground(Void... params)
 	{
 		// response
-		Response response = null;
+		Response<?> response = null;
 		
 		// sleep time before retry
 		long backoff = RETRY_INIT_BACKOFF;
@@ -105,7 +105,7 @@ public class APICallTask extends AsyncTask<Void, Void, Response>
 	
 	
 	@Override
-	protected void onPostExecute(Response response)
+	protected void onPostExecute(Response<?> response)
 	{
 		if(isCancelled()) return;
 		

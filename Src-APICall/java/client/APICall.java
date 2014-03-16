@@ -1,5 +1,12 @@
 package com.example.client;
 
+import android.util.Base64;
+
+import com.example.client.request.Request;
+import com.example.client.response.Response;
+
+import org.codehaus.jackson.JsonParseException;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
@@ -12,13 +19,6 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.zip.GZIPInputStream;
-
-import org.codehaus.jackson.JsonParseException;
-
-import android.util.Base64;
-
-import com.example.client.request.Request;
-import com.example.client.response.Response;
 
 
 public class APICall
@@ -71,7 +71,7 @@ public class APICall
 	}
 	
 	
-	public Response execute()
+	public Response<?> execute()
 	{
 		try
 		{
@@ -155,7 +155,7 @@ public class APICall
 			
 			// parse response
 			if(mAPICallTask!=null && mAPICallTask.isCancelled()) return null;
-			Response response = mRequest.parseResponse(mResponseStream);
+			Response<?> response = mRequest.parseResponse(mResponseStream);
 			if(response==null) throw new RuntimeException("Parser returned null response");
 
 			if(mAPICallTask!=null && mAPICallTask.isCancelled()) return null;

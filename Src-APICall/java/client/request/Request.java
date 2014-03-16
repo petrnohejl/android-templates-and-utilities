@@ -1,14 +1,14 @@
 package com.example.client.request;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.codehaus.jackson.JsonParseException;
-
 import android.os.Bundle;
 
 import com.example.ExampleConfig;
 import com.example.client.response.Response;
+
+import org.codehaus.jackson.JsonParseException;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public abstract class Request
@@ -19,13 +19,33 @@ public abstract class Request
 
 	private Bundle mMetaData = null;
 
-
 	public abstract String getRequestMethod();
 	public abstract String getAddress();
-	public abstract byte[] getContent();
-	public abstract String getBasicAuthUsername();
-	public abstract String getBasicAuthPassword();
-	public abstract Response parseResponse(InputStream stream) throws IOException, JsonParseException;
+	public abstract Response<?> parseResponse(InputStream stream) throws IOException, JsonParseException;
+
+
+	public byte[] getContent()
+	{
+		return null;
+	}
+
+
+	public String getBasicAuthUsername()
+	{
+		return null;
+	}
+
+
+	public String getBasicAuthPassword()
+	{
+		return null;
+	}
+
+
+	public boolean isMultipart()
+	{
+		return false;
+	}
 
 
 	public Bundle getMetaData()

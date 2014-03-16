@@ -1,21 +1,21 @@
 package com.example.client.request;
 
+import com.example.client.parser.MultipartParser;
+import com.example.client.response.Response;
+import com.example.entity.MultipartEntity;
+
+import org.codehaus.jackson.JsonParseException;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.Locale;
-
-import org.codehaus.jackson.JsonParseException;
-
-import com.example.client.parser.MultipartParser;
-import com.example.client.response.Response;
 
 
 public class MultipartRequest extends Request
 {
 	private final String REQUEST_METHOD = "POST";
-	private final String REQUEST_PATH = "Multipart";
+	private final String REQUEST_PATH = "multipart";
 
 	private String mTextData1;
 	private String mTextData2;
@@ -49,6 +49,13 @@ public class MultipartRequest extends Request
 		builder.append(REQUEST_PATH);
 
 		return builder.toString();
+	}
+
+
+	@Override
+	public Response<MultipartEntity> parseResponse(InputStream stream) throws IOException, JsonParseException
+	{
+		return MultipartParser.parse(stream);
 	}
 
 
@@ -123,31 +130,10 @@ public class MultipartRequest extends Request
 	}
 
 
-	// TODO: implement isMultipart() method in all requests and set proper content type in APICall
+	// TODO: set proper content type in APICall
 	@Override
 	public boolean isMultipart()
 	{
 		return true;
-	}
-
-
-	@Override
-	public String getBasicAuthUsername()
-	{
-		return null;
-	}
-
-
-	@Override
-	public String getBasicAuthPassword()
-	{
-		return null;
-	}
-
-
-	@Override
-	public Response parseResponse(InputStream stream) throws IOException, JsonParseException
-	{
-		return MultipartParser.parse(stream);
 	}
 }

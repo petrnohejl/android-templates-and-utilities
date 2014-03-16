@@ -1,22 +1,24 @@
 package com.example.client.parser;
 
-import java.io.IOException;
-import java.io.InputStream;
+import com.example.client.response.Response;
+import com.example.entity.ProductEntity;
 
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonToken;
 
-import com.example.client.response.LoginResponse;
-import com.example.entity.MembershipEntity;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class LoginParser extends Parser
+public class ExampleParser extends Parser
 {
-	public static LoginResponse parse(InputStream stream) throws IOException, JsonParseException
+	public static Response<List<ProductEntity>> parse(InputStream stream) throws IOException, JsonParseException
 	{
-		LoginResponse response = null;
+		Response<List<ProductEntity>> response = null;
 		
 		
 		// init parser
@@ -30,7 +32,7 @@ public class LoginParser extends Parser
 		while(parser.nextToken() != JsonToken.END_OBJECT)
 		{
 			// error
-			if(parser.getCurrentName().equals("Error"))
+			if(parser.getCurrentName().equals("error"))
 			{
 				String type = null;
 				String message = null;
@@ -38,38 +40,38 @@ public class LoginParser extends Parser
 				if(parser.nextToken() == JsonToken.START_OBJECT)
 				while(parser.nextToken() != JsonToken.END_OBJECT)
 				{
-					if(parser.getCurrentName().equals("Type"))
+					if(parser.getCurrentName().equals("type"))
 					{
 						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) type = parser.getText();
 					}
-					else if(parser.getCurrentName().equals("Message"))
+					else if(parser.getCurrentName().equals("message"))
 					{
 						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) message = parser.getText();
 					}
 				}
 				
-				response = new LoginResponse();
+				response = new Response<List<ProductEntity>>();
 				response.setError(true);
 				response.setErrorType(type);
 				response.setErrorMessage(message);
 			}
 			
 			// response
-			else if(parser.getCurrentName().equals("Membership"))
+			else if(parser.getCurrentName().equals("product"))
 			{
-				long userId = -1l;
-				String accessToken = null;
+				long id = -1l;
+				String name = null;
 
 				if(parser.nextToken() == JsonToken.START_OBJECT)
 				while(parser.nextToken() != JsonToken.END_OBJECT)
 				{
-					if(parser.getCurrentName().equals("UserId"))
+					if(parser.getCurrentName().equals("id"))
 					{
-						if(parser.getCurrentToken() == JsonToken.VALUE_NUMBER_INT) userId = parser.getLongValue();
+						if(parser.getCurrentToken() == JsonToken.VALUE_NUMBER_INT) id = parser.getLongValue();
 					}
-					else if(parser.getCurrentName().equals("AccessToken"))
+					else if(parser.getCurrentName().equals("name"))
 					{
-						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) accessToken = parser.getText();
+						if(parser.getCurrentToken() == JsonToken.VALUE_STRING) name = parser.getText();
 					}
 					else
 					{
@@ -78,12 +80,15 @@ public class LoginParser extends Parser
 					}
 				}
 
-				MembershipEntity membership = new MembershipEntity();
-				membership.setUserId(userId);
-				membership.setAccessToken(accessToken);
-				
-				response = new LoginResponse();
-				response.setMembership(membership);
+				ProductEntity product = new ProductEntity();
+				product.setId(id);
+				product.setName(name);
+
+				List<ProductEntity> productList = new ArrayList<ProductEntity>();
+				productList.add(product);
+
+				response = new Response<List<ProductEntity>>();
+				response.setResponseObject(productList);
 			}
 		}
 		
