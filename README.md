@@ -34,20 +34,19 @@ the template in Fragment.
 Example
 =======
 
-Example of creating a basic app skelet with 1 Activity and 1 Fragment:
+Example of creating a basic app skelet with 1 Activity and 1 Fragment via Android Studio:
 
 * Create a new Android project with package name "com.example"
-* Add support libraries (com.android.support:support-v4, com.android.support:appcompat-v7)
 * Add ic_launcher.png (Android Studio or Eclipse has generator for that)
-* Copy & paste Res-Manifest
+* Copy & paste Base
 * Copy & paste Res-Placeholder
 * Copy & paste Res-Strings
 * Copy & paste Res-Style (exclude _extras directory)
 * Copy & paste Src-Application-Class
 * Copy & paste Src-Config
 * Copy & paste Src-Fragment
-* Copy & paste Src-NetworkManager
 * Copy & paste Src-Logcat
+* Copy & paste Src-NetworkManager
 * Open SimpleActivity.java and comment out onCreateOptionsMenu(...) and onOptionsItemSelected(...) methods
 * Build the project and voilà, we have a basic skeleton for our future app
 
