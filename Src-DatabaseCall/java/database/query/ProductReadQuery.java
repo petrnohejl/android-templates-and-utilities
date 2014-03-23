@@ -1,8 +1,11 @@
 package com.example.database.query;
 
-import com.example.database.dao.ProductDAO;
+import com.example.database.DatabaseHelper;
 import com.example.database.data.Data;
-import com.example.entity.ProductEntity;
+import com.example.database.model.ProductModel;
+import com.j256.ormlite.dao.Dao;
+
+import java.sql.SQLException;
 
 
 public class ProductReadQuery extends Query
@@ -17,14 +20,17 @@ public class ProductReadQuery extends Query
 
 
 	@Override
-	public Data<ProductEntity> processData()
+	public Data<ProductModel> processData() throws SQLException
 	{
-		ProductDAO dao = new ProductDAO();
-		ProductEntity e = dao.read(mId);
+		Data<ProductModel> data = null;
 
-		Data<ProductEntity> data = new Data<ProductEntity>();
-		data.setDataObject(e);
+		DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
+		Dao<ProductModel, Long> dao = databaseHelper.getProductDao();
 
+		ProductModel m = dao.queryForId(mId);
+
+		data = new Data<ProductModel>();
+		data.setDataObject(m);
 		return data;
 	}
 }

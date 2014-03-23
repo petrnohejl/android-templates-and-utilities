@@ -1,31 +1,30 @@
 package com.example.database.model;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
 import com.example.entity.ProductEntity;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 
-@Table(name = "Products")
-public class ProductModel extends Model
+@DatabaseTable
+public class ProductModel
 {
-	@Column(name = "Name") public String name;
-	@Column(name = "Quantity") public int quantity;
-	@Column(name = "Timestamp") public long timestamp;
-	@Column(name = "Price") public double price;
+	@DatabaseField(generatedId = true) private long id;
+	@DatabaseField private String name;
+	@DatabaseField private int quantity;
+	@DatabaseField private long timestamp;
+	@DatabaseField private double price;
 
 
 	// empty constructor
 	public ProductModel()
 	{
-		super();
 	}
 
 
 	public ProductEntity toEntity()
 	{
 		ProductEntity e = new ProductEntity();
-		e.setId(getId());
+		e.setId(id);
 		e.setName(name);
 		e.setQuantity(quantity);
 		e.setTimestamp(timestamp);
@@ -40,5 +39,65 @@ public class ProductModel extends Model
 		quantity = e.getQuantity();
 		timestamp = e.getTimestamp();
 		price = e.getPrice();
+	}
+
+
+	public long getId()
+	{
+		return id;
+	}
+
+
+	public void setId(long id)
+	{
+		this.id = id;
+	}
+
+
+	public String getName()
+	{
+		return name;
+	}
+
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+
+	public int getQuantity()
+	{
+		return quantity;
+	}
+
+
+	public void setQuantity(int quantity)
+	{
+		this.quantity = quantity;
+	}
+
+
+	public long getTimestamp()
+	{
+		return timestamp;
+	}
+
+
+	public void setTimestamp(long timestamp)
+	{
+		this.timestamp = timestamp;
+	}
+
+
+	public double getPrice()
+	{
+		return price;
+	}
+
+
+	public void setPrice(double price)
+	{
+		this.price = price;
 	}
 }

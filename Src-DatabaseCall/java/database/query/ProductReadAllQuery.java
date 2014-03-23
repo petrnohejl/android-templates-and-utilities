@@ -1,16 +1,19 @@
 package com.example.database.query;
 
-import com.example.database.dao.ProductDAO;
+import com.example.database.DatabaseHelper;
 import com.example.database.data.Data;
-import com.example.entity.ProductEntity;
+import com.example.database.model.ProductModel;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.QueryBuilder;
 
+import java.sql.SQLException;
 import java.util.List;
 
 
 public class ProductReadAllQuery extends Query
 {
-	private int mLimit = -1;
-	private int mOffset = -1;
+	private long mSkip = -1l;
+	private long mTake = -1l;
 
 
 	public ProductReadAllQuery()
@@ -18,31 +21,35 @@ public class ProductReadAllQuery extends Query
 	}
 
 
-	public ProductReadAllQuery(int limit, int offset)
+	public ProductReadAllQuery(long skip, long take)
 	{
-		mLimit = limit;
-		mOffset = offset;
+		mSkip = skip;
+		mTake = take;
 	}
 
 
 	@Override
-	public Data<List<ProductEntity>> processData()
+	public Data<List<ProductModel>> processData() throws SQLException
 	{
-		ProductDAO dao = new ProductDAO();
-		List<ProductEntity> list;
+		Data<List<ProductModel>> data = null;
 
-		if(mLimit==-1 && mOffset==-1)
+		DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
+		Dao<ProductModel, Long> dao = databaseHelper.getProductDao();
+
+		List<ProductModel> list;
+		if(mSkip==-1l && mTake==-1l)
 		{
-			list = dao.readAll();
+			list = dao.queryForAll();
 		}
 		else
 		{
-			list = dao.readAll(mLimit, mOffset);
+			QueryBuilder<ProductModel, Long> queryBuilder = dao.queryBuilder();
+			queryBuilder.offset(mSkip).limit(mTake);
+			list = dao.query(queryBuilder.prepare());
 		}
 
-		Data<List<ProductEntity>> data = new Data<List<ProductEntity>>();
+		data = new Data<List<ProductModel>>();
 		data.setDataObject(list);
-
 		return data;
 	}
 }

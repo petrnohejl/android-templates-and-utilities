@@ -1,30 +1,36 @@
 package com.example.database.query;
 
-import com.example.database.dao.ProductDAO;
+import com.example.database.DatabaseHelper;
 import com.example.database.data.Data;
-import com.example.entity.ProductEntity;
+import com.example.database.model.ProductModel;
+import com.j256.ormlite.dao.Dao;
+
+import java.sql.SQLException;
 
 
 public class ProductCreateQuery extends Query
 {
-	private ProductEntity mProduct;
+	private ProductModel mProduct;
 	
 	
-	public ProductCreateQuery(ProductEntity product)
+	public ProductCreateQuery(ProductModel product)
 	{
 		mProduct = product;
 	}
 	
 	
 	@Override
-	public Data<Long> processData()
+	public Data<Integer> processData() throws SQLException
 	{
-		ProductDAO dao = new ProductDAO();
-		long id = dao.create(mProduct);
+		Data<Integer> data = null;
 
-		Data<Long> data = new Data<Long>();
-		data.setDataObject(id);
+		DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
+		Dao<ProductModel, Long> dao = databaseHelper.getProductDao();
 
+		int rows = dao.create(mProduct);
+
+		data = new Data<Integer>();
+		data.setDataObject(rows);
 		return data;
 	}
 }
