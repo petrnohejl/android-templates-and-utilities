@@ -9,17 +9,10 @@ import com.example.entity.ProductEntity;
 @Table(name = "Products")
 public class ProductModel extends Model
 {
-	@Column(name = "Name")
-	public String name;
-	
-	@Column(name = "Quantity")
-	public int quantity;
-	
-	@Column(name = "Timestamp")
-	public long timestamp;
-	
-	@Column(name = "Price")
-	public double price;
+	@Column(name = "Name") public String name;
+	@Column(name = "Quantity") public int quantity;
+	@Column(name = "Timestamp") public long timestamp;
+	@Column(name = "Price") public double price;
 
 
 	// empty constructor
@@ -32,11 +25,20 @@ public class ProductModel extends Model
 	public ProductEntity toEntity()
 	{
 		ProductEntity e = new ProductEntity();
-		e.setId(this.getId());
-		e.setName(this.name);
-		e.setQuantity(this.quantity);
-		e.setTimestamp(this.timestamp);
-		e.setPrice(this.price);
+		e.setId(getId());
+		e.setName(name);
+		e.setQuantity(quantity);
+		e.setTimestamp(timestamp);
+		e.setPrice(price);
 		return e;
+	}
+
+
+	public void set(ProductEntity e)
+	{
+		name = e.getName();
+		quantity = e.getQuantity();
+		timestamp = e.getTimestamp();
+		price = e.getPrice();
 	}
 }

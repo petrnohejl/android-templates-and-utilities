@@ -112,7 +112,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductDeleteQuery)");
 
 					// data
-					Data<Object> productDeleteData = (Data<Object>) data;
+					Data<Void> productDeleteData = (Data<Void>) data;
 
 					// TODO
 				}
@@ -121,7 +121,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductDeleteAllQuery)");
 					
 					// data
-					Data<Object> productDeleteAllData = (Data<Object>) data;
+					Data<Void> productDeleteAllData = (Data<Void>) data;
 					
 					// TODO
 				}

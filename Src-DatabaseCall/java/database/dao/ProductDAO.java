@@ -15,10 +15,7 @@ public class ProductDAO implements DAO<ProductEntity>
 	public long create(ProductEntity product)
 	{
 		ProductModel m = new ProductModel();
-		m.name = product.getName();
-		m.quantity = product.getQuantity();
-		m.timestamp = product.getTimestamp();
-		m.price = product.getPrice();
+		m.set(product);
 		return m.save();
 	}
 
@@ -75,10 +72,7 @@ public class ProductDAO implements DAO<ProductEntity>
 	public long update(ProductEntity product)
 	{
 		ProductModel m = new Select().from(ProductModel.class).where("Id=?", product.getId()).executeSingle();
-		m.name = product.getName();
-		m.quantity = product.getQuantity();
-		m.timestamp = product.getTimestamp();
-		m.price = product.getPrice();
+		m.set(product);
 		return m.save();
 	}
 

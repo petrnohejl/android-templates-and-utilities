@@ -16,12 +16,12 @@ public class ProductDeleteQuery extends Query
 
 
 	@Override
-	public Data<Object> processData()
+	public Data<Void> processData()
 	{
 		ProductDAO dao = new ProductDAO();
 		dao.delete(mId);
 
-		Data<Object> data = new Data<Object>();
+		Data<Void> data = new Data<Void>();
 		data.setDataObject(null);
 
 		return data;
