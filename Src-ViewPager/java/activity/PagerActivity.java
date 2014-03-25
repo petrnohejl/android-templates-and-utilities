@@ -3,7 +3,6 @@ package com.example.activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Window;
 
 import com.example.R;
 import com.example.adapter.PagerFragmentPagerAdapter;
@@ -18,8 +17,6 @@ public class PagerActivity extends ActionBarActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_pager);
 		
 		renderView();
