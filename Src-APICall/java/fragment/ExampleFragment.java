@@ -35,10 +35,11 @@ import java.util.List;
 
 public class ExampleFragment extends TaskListFragment implements APICallListener
 {
+	private final String META_REFRESH = "refresh";
+
 	private final int LAZY_LOADING_TAKE = 16;
 	private final int LAZY_LOADING_OFFSET = 4;
 	private final int LAZY_LOADING_MAX = LAZY_LOADING_TAKE * 10;
-	private final String EXTRA_REFRESH = "refresh";
 	
 	private boolean mLazyLoading = false;
 	private boolean mActionBarProgress = false;
@@ -149,7 +150,7 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 						Logcat.d("Fragment.onAPICallRespond(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage());
 
 						// check meta data
-						if(task.getRequest().getMetaData()!=null && task.getRequest().getMetaData().getBoolean(EXTRA_REFRESH, false))
+						if(task.getRequest().getMetaData()!=null && task.getRequest().getMetaData().getBoolean(META_REFRESH, false))
 						{
 							// refresh
 							mProductList.clear();
@@ -278,7 +279,7 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 				
 				// meta data
 				Bundle bundle = new Bundle();
-				bundle.putBoolean(EXTRA_REFRESH, true);
+				bundle.putBoolean(META_REFRESH, true);
 				
 				// execute request
 				int take = (mProductList.size() <= LAZY_LOADING_MAX && mProductList.size() > 0) ? mProductList.size() : LAZY_LOADING_TAKE;

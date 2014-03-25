@@ -44,19 +44,6 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 		
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
-		
-		// restore saved state
-		if(savedInstanceState != null)
-		{
-			handleSavedInstanceState(savedInstanceState);
-		}
-		
-		// handle intent extras
-		Bundle extras = getActivity().getIntent().getExtras();
-		if(extras != null)
-		{
-			handleExtras(extras);
-		}
 	}
 	
 	
@@ -156,8 +143,6 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
-		
-		// TODO
 	}
 	
 	
@@ -203,18 +188,6 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 				else showEmpty();
 			}
 		});
-	}
-	
-	
-	private void handleSavedInstanceState(Bundle savedInstanceState)
-	{
-		// TODO
-	}
-	
-	
-	private void handleExtras(Bundle extras)
-	{
-		// TODO
 	}
 	
 	

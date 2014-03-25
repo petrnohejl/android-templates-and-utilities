@@ -13,18 +13,20 @@ import com.example.task.TaskFragment;
 
 public class SimpleFragment extends TaskFragment
 {
+	private static final String ARGUMENT_PRODUCT_ID = "product_id";
+
 	private View mRootView;
 	private int mId = -1;
 	
 	
-	public static SimpleFragment newInstance(int arg)
+	public static SimpleFragment newInstance(int productId)
 	{
 		SimpleFragment fragment = new SimpleFragment();
 		
 		// arguments
-		Bundle args = new Bundle();
-		args.putInt(SimpleActivity.EXTRA_PRODUCT_ID, arg);
-		fragment.setArguments(args);
+		Bundle arguments = new Bundle();
+		arguments.putInt(ARGUMENT_PRODUCT_ID, productId);
+		fragment.setArguments(arguments);
 		
 		return fragment;
 	}
@@ -36,21 +38,19 @@ public class SimpleFragment extends TaskFragment
 		super.onCreate(savedInstanceState);
 		
 		setRetainInstance(false); // fragment in second pane shouldn't be retained
-		
+
+		// handle fragment arguments
+		Bundle arguments = getArguments();
+		if(arguments != null)
+		{
+			handleArguments(arguments);
+		}
+
 		// handle intent extras
 		Bundle extras = getActivity().getIntent().getExtras();
 		if(extras != null)
 		{
 			handleExtras(extras);
-		}
-		else
-		{
-			// handle arguments
-			Bundle arguments = getArguments();
-			if(arguments != null)
-			{
-				handleExtras(arguments);
-			}
 		}
 	}
 	
@@ -70,11 +70,23 @@ public class SimpleFragment extends TaskFragment
 		
 		renderView();
 	}
-	
+
+
+	private void handleArguments(Bundle arguments)
+	{
+		if(arguments.containsKey(ARGUMENT_PRODUCT_ID))
+		{
+			mId = arguments.getInt(ARGUMENT_PRODUCT_ID);
+		}
+	}
+
 	
 	private void handleExtras(Bundle extras)
 	{
-		mId = extras.getInt(SimpleActivity.EXTRA_PRODUCT_ID, -1);
+		if(extras.containsKey(SimpleActivity.EXTRA_PRODUCT_ID))
+		{
+			mId = extras.getInt(SimpleActivity.EXTRA_PRODUCT_ID);
+		}
 	}
 	
 	

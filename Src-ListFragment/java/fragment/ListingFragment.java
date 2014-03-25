@@ -57,19 +57,6 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 		
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
-		
-		// restore saved state
-		if(savedInstanceState != null)
-		{
-			handleSavedInstanceState(savedInstanceState);
-		}
-		
-		// handle intent extras
-		Bundle extras = getActivity().getIntent().getExtras();
-		if(extras != null)
-		{
-			handleExtras(extras);
-		}
 	}
 	
 	
@@ -174,8 +161,6 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
-		
-		// TODO
 	}
 	
 	
@@ -245,18 +230,6 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 				showList();
 			}
 		});
-	}
-	
-	
-	private void handleSavedInstanceState(Bundle savedInstanceState)
-	{
-		// TODO
-	}
-	
-	
-	private void handleExtras(Bundle extras)
-	{
-		// TODO
 	}
 	
 	

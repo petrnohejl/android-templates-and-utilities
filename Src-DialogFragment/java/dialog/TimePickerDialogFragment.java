@@ -12,7 +12,7 @@ import android.widget.TimePicker;
 
 public class TimePickerDialogFragment extends DialogFragment implements FixedTimePickerDialog.OnTimeSetListener
 {
-	public static final String EXTRA_TIME = "time";
+	private static final String ARGUMENT_TIME = "time";
 	
 	private long mTime = -1l;
 	private TimePickerDialogListener mListener;
@@ -29,9 +29,9 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 		TimePickerDialogFragment fragment = new TimePickerDialogFragment();
 		
 		// arguments
-		Bundle args = new Bundle();
-		args.putLong(EXTRA_TIME, calendar.getTimeInMillis());
-		fragment.setArguments(args);
+		Bundle arguments = new Bundle();
+		arguments.putLong(ARGUMENT_TIME, calendar.getTimeInMillis());
+		fragment.setArguments(arguments);
 		
 		return fragment;
 	}
@@ -114,9 +114,9 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 	
 	private void handleArguments(Bundle arguments)
 	{
-		if(arguments.containsKey(EXTRA_TIME))
+		if(arguments.containsKey(ARGUMENT_TIME))
 		{
-			mTime = (Long) arguments.get(EXTRA_TIME);
+			mTime = (Long) arguments.get(ARGUMENT_TIME);
 		}
 	}
 }

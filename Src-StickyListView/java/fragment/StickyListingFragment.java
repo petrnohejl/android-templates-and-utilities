@@ -55,19 +55,6 @@ public class StickyListingFragment extends TaskFragment implements
 		
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
-		
-		// restore saved state
-		if(savedInstanceState != null)
-		{
-			handleSavedInstanceState(savedInstanceState);
-		}
-		
-		// handle intent extras
-		Bundle extras = getActivity().getIntent().getExtras();
-		if(extras != null)
-		{
-			handleExtras(extras);
-		}
 	}
 	
 	
@@ -173,8 +160,6 @@ public class StickyListingFragment extends TaskFragment implements
 			StickyListHeadersListView stickyListView = (StickyListHeadersListView) mRootView.findViewById(android.R.id.list);
 			mListviewPosition = stickyListView.getFirstVisiblePosition();
 		}
-		
-		// TODO
 	}
 	
 	
@@ -263,18 +248,6 @@ public class StickyListingFragment extends TaskFragment implements
 				showList();
 			}
 		});
-	}
-	
-	
-	private void handleSavedInstanceState(Bundle savedInstanceState)
-	{
-		// TODO
-	}
-	
-	
-	private void handleExtras(Bundle extras)
-	{
-		// TODO
 	}
 	
 	

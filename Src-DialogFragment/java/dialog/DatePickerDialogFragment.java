@@ -12,7 +12,7 @@ import android.widget.DatePicker;
 
 public class DatePickerDialogFragment extends DialogFragment implements FixedDatePickerDialog.OnDateSetListener
 {
-	public static final String EXTRA_DATE = "date";
+	private static final String ARGUMENT_DATE = "date";
 	
 	private long mDate = -1l;
 	private DatePickerDialogListener mListener;
@@ -29,9 +29,9 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 		DatePickerDialogFragment fragment = new DatePickerDialogFragment();
 		
 		// arguments
-		Bundle args = new Bundle();
-		args.putLong(EXTRA_DATE, calendar.getTimeInMillis());
-		fragment.setArguments(args);
+		Bundle arguments = new Bundle();
+		arguments.putLong(ARGUMENT_DATE, calendar.getTimeInMillis());
+		fragment.setArguments(arguments);
 		
 		return fragment;
 	}
@@ -114,9 +114,9 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 	
 	private void handleArguments(Bundle arguments)
 	{
-		if(arguments.containsKey(EXTRA_DATE))
+		if(arguments.containsKey(ARGUMENT_DATE))
 		{
-			mDate = (Long) arguments.get(EXTRA_DATE);
+			mDate = (Long) arguments.get(ARGUMENT_DATE);
 		}
 	}
 }

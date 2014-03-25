@@ -12,20 +12,20 @@ import com.example.R;
 
 public class ExampleFragment extends Fragment
 {
-	public static final String EXTRA_ARG = "arg";
+	private static final String ARGUMENT_EXAMPLE = "example";
 	
-	private String mArg;
+	private String mExample;
 	private View mRootView;
 	
 	
-	public static ExampleFragment newInstance(String arg)
+	public static ExampleFragment newInstance(String example)
 	{
 		ExampleFragment fragment = new ExampleFragment();
 		
 		// arguments
-		Bundle args = new Bundle();
-		args.putString(EXTRA_ARG, arg);
-		fragment.setArguments(args);
+		Bundle arguments = new Bundle();
+		arguments.putString(ARGUMENT_EXAMPLE, example);
+		fragment.setArguments(arguments);
 		
 		return fragment;
 	}
@@ -66,9 +66,9 @@ public class ExampleFragment extends Fragment
 	
 	private void handleArguments(Bundle arguments)
 	{
-		if(arguments.containsKey(EXTRA_ARG))
+		if(arguments.containsKey(ARGUMENT_EXAMPLE))
 		{
-			mArg = (String) arguments.get(EXTRA_ARG);
+			mExample = (String) arguments.get(ARGUMENT_EXAMPLE);
 		}
 	}
 	
@@ -79,6 +79,6 @@ public class ExampleFragment extends Fragment
 		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_example_name);
 		
 		// content
-		nameTextView.setText("Fragment " + mArg);
+		nameTextView.setText("Fragment " + mExample);
 	}
 }

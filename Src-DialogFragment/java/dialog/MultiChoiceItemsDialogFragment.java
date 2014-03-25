@@ -14,7 +14,7 @@ import com.example.R;
 
 public class MultiChoiceItemsDialogFragment extends DialogFragment
 {
-	public static final String EXTRA_CHECKED_ITEMS = "checked_items";
+	private static final String ARGUMENT_CHECKED_ITEMS = "checked_items";
 	
 	private boolean mCheckedItems[] = null;
 	private MultiChoiceItemsDialogListener mListener;
@@ -32,9 +32,9 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 		MultiChoiceItemsDialogFragment fragment = new MultiChoiceItemsDialogFragment();
 		
 		// arguments
-		Bundle args = new Bundle();
-		args.putBooleanArray(EXTRA_CHECKED_ITEMS, checkedItems);
-		fragment.setArguments(args);
+		Bundle arguments = new Bundle();
+		arguments.putBooleanArray(ARGUMENT_CHECKED_ITEMS, checkedItems);
+		fragment.setArguments(arguments);
 		
 		return fragment;
 	}
@@ -147,9 +147,9 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 	
 	private void handleArguments(Bundle arguments)
 	{
-		if(arguments.containsKey(EXTRA_CHECKED_ITEMS))
+		if(arguments.containsKey(ARGUMENT_CHECKED_ITEMS))
 		{
-			mCheckedItems = (boolean[]) arguments.get(EXTRA_CHECKED_ITEMS);
+			mCheckedItems = (boolean[]) arguments.get(ARGUMENT_CHECKED_ITEMS);
 		}
 	}
 }

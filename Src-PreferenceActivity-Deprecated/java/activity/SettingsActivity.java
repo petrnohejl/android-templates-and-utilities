@@ -27,19 +27,6 @@ public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 		super.onCreate(savedInstanceState);
 		
 		setupActionBar();
-		
-		// restore saved state
-		if(savedInstanceState != null)
-		{
-			handleSavedInstanceState(savedInstanceState);
-		}
-		
-		// handle intent extras
-		Bundle extras = getIntent().getExtras();
-		if(extras != null)
-		{
-			handleExtras(extras);
-		}
 	}
 	
 	
@@ -79,29 +66,6 @@ public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 	
 	
 	@Override
-	public void onSaveInstanceState(Bundle outState) 
-	{
-		// save current instance state
-		super.onSaveInstanceState(outState);
-		
-		// TODO
-	}
-	
-	
-	@Override
-	public void onRestoreInstanceState (Bundle savedInstanceState)
-	{
-		// restore saved state
-		super.onRestoreInstanceState(savedInstanceState);
-		
-		if(savedInstanceState != null)
-		{
-			// TODO
-		}
-	}
-	
-	
-	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// action bar menu
@@ -125,18 +89,6 @@ public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 			default:
 				return super.onOptionsItemSelected(item);
 		}
-	}
-	
-	
-	private void handleSavedInstanceState(Bundle savedInstanceState)
-	{
-		// TODO
-	}
-	
-	
-	private void handleExtras(Bundle extras)
-	{
-		// TODO
 	}
 	
 	

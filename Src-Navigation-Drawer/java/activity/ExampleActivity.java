@@ -185,10 +185,10 @@ public class ExampleActivity extends ActionBarActivity
 	private void selectDrawerItem(int position)
 	{
 		Fragment fragment;
-		if(position==0) fragment = new ExampleFragment();
-		else if(position==2) fragment = new ExampleFragment();
-		else if(position==3) fragment = new ExampleFragment();
-		else fragment = new ExampleFragment();
+		if(position==0) fragment = ExampleFragment.newInstance();
+		else if(position==2) fragment = ExampleFragment.newInstance();
+		else if(position==3) fragment = ExampleFragment.newInstance();
+		else fragment = ExampleFragment.newInstance();
 		
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction().replace(R.id.activity_example_container, fragment).commitAllowingStateLoss();

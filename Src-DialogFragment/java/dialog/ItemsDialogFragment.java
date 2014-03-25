@@ -13,9 +13,9 @@ import com.example.R;
 
 public class ItemsDialogFragment extends DialogFragment
 {
-	public static final String EXTRA_ARG = "arg";
+	private static final String ARGUMENT_EXAMPLE = "example";
 	
-	private String mArg;
+	private String mExample;
 	private ItemsDialogListener mListener;
 	
 	
@@ -27,14 +27,14 @@ public class ItemsDialogFragment extends DialogFragment
 	}
 	
 	
-	public static ItemsDialogFragment newInstance(String arg)
+	public static ItemsDialogFragment newInstance(String example)
 	{
 		ItemsDialogFragment fragment = new ItemsDialogFragment();
 		
 		// arguments
-		Bundle args = new Bundle();
-		args.putString(EXTRA_ARG, arg);
-		fragment.setArguments(args);
+		Bundle arguments = new Bundle();
+		arguments.putString(ARGUMENT_EXAMPLE, example);
+		fragment.setArguments(arguments);
 		
 		return fragment;
 	}
@@ -99,7 +99,7 @@ public class ItemsDialogFragment extends DialogFragment
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		
 		builder
-		.setTitle(mArg)
+		.setTitle(mExample)
 		.setIcon(R.drawable.ic_launcher)
 		.setItems(items, new DialogInterface.OnClickListener()
 		{
@@ -147,9 +147,9 @@ public class ItemsDialogFragment extends DialogFragment
 	
 	private void handleArguments(Bundle arguments)
 	{
-		if(arguments.containsKey(EXTRA_ARG))
+		if(arguments.containsKey(ARGUMENT_EXAMPLE))
 		{
-			mArg = (String) arguments.get(EXTRA_ARG);
+			mExample = (String) arguments.get(ARGUMENT_EXAMPLE);
 		}
 	}
 }

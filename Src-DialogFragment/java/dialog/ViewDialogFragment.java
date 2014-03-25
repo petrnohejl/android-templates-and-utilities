@@ -17,9 +17,9 @@ import com.example.R;
 
 public class ViewDialogFragment extends DialogFragment
 {
-	public static final String EXTRA_ARG = "arg";
+	private static final String ARGUMENT_EXAMPLE = "example";
 	
-	private String mArg;
+	private String mExample;
 	private View mRootView;
 	private String mUsername = "";
 	private String mPassword = "";
@@ -33,14 +33,14 @@ public class ViewDialogFragment extends DialogFragment
 	}
 	
 	
-	public static ViewDialogFragment newInstance(String arg)
+	public static ViewDialogFragment newInstance(String example)
 	{
 		ViewDialogFragment fragment = new ViewDialogFragment();
 		
 		// arguments
-		Bundle args = new Bundle();
-		args.putString(EXTRA_ARG, arg);
-		fragment.setArguments(args);
+		Bundle arguments = new Bundle();
+		arguments.putString(ARGUMENT_EXAMPLE, example);
+		fragment.setArguments(arguments);
 		
 		return fragment;
 	}
@@ -118,7 +118,7 @@ public class ViewDialogFragment extends DialogFragment
 		mRootView = inflater.inflate(R.layout.dialog_view, null);
 		
 		builder
-		.setTitle(mArg)
+		.setTitle(mExample)
 		.setIcon(R.drawable.ic_launcher)
 		.setView(mRootView)
 		.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
@@ -186,6 +186,15 @@ public class ViewDialogFragment extends DialogFragment
 			return android.R.style.Theme_Dialog;
 		}
 	}
+
+
+	private void handleArguments(Bundle arguments)
+	{
+		if(arguments.containsKey(ARGUMENT_EXAMPLE))
+		{
+			mExample = (String) arguments.get(ARGUMENT_EXAMPLE);
+		}
+	}
 	
 	
 	private void handleSavedInstanceState()
@@ -195,14 +204,5 @@ public class ViewDialogFragment extends DialogFragment
 		
 		usernameEditText.setText(mUsername);
 		passwordEditText.setText(mPassword);
-	}
-	
-	
-	private void handleArguments(Bundle arguments)
-	{
-		if(arguments.containsKey(EXTRA_ARG))
-		{
-			mArg = (String) arguments.get(EXTRA_ARG);
-		}
 	}
 }

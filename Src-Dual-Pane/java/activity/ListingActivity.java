@@ -14,8 +14,8 @@ import com.example.listener.OnDualPaneShowListener;
 
 public class ListingActivity extends ActionBarActivity implements OnDualPaneShowListener
 {
-	public static final String SAVE_DUAL_PANE_FRAGMENT = "dual_pane_fragment";
-	public static final String SAVE_DUAL_PANE_INDEX = "dual_pane_index";
+	private static final String SAVED_DUAL_PANE_FRAGMENT = "dual_pane_fragment";
+	private static final String SAVED_DUAL_PANE_INDEX = "dual_pane_index";
 	
 	private boolean mDualPane;
 	private Class<?> mDualPaneFragment = null;
@@ -46,10 +46,8 @@ public class ListingActivity extends ActionBarActivity implements OnDualPaneShow
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		
-		if(mDualPaneFragment!=null) outState.putString(SAVE_DUAL_PANE_FRAGMENT, mDualPaneFragment.getName());
-		if(mDualPaneIndex!=-1) outState.putInt(SAVE_DUAL_PANE_INDEX, mDualPaneIndex);
-		
-		// TODO
+		if(mDualPaneFragment!=null) outState.putString(SAVED_DUAL_PANE_FRAGMENT, mDualPaneFragment.getName());
+		if(mDualPaneIndex!=-1) outState.putInt(SAVED_DUAL_PANE_INDEX, mDualPaneIndex);
 	}
 	
 	
@@ -106,7 +104,7 @@ public class ListingActivity extends ActionBarActivity implements OnDualPaneShow
 	
 	private void handleSavedInstanceState(Bundle savedInstanceState)
 	{
-		String dualPaneFragmentString = savedInstanceState.getString(SAVE_DUAL_PANE_FRAGMENT);
+		String dualPaneFragmentString = savedInstanceState.getString(SAVED_DUAL_PANE_FRAGMENT);
 		try
 		{
 			if(dualPaneFragmentString!=null) mDualPaneFragment = Class.forName(dualPaneFragmentString);
@@ -115,9 +113,7 @@ public class ListingActivity extends ActionBarActivity implements OnDualPaneShow
 		{
 			e.printStackTrace();
 		}
-		mDualPaneIndex = savedInstanceState.getInt(SAVE_DUAL_PANE_INDEX, -1);
-		
-		// TODO
+		mDualPaneIndex = savedInstanceState.getInt(SAVED_DUAL_PANE_INDEX, -1);
 	}
 
 	

@@ -13,7 +13,7 @@ import com.example.R;
 
 public class SingleChoiceItemsDialogFragment extends DialogFragment
 {
-	public static final String EXTRA_CHECKED_ITEM = "checked_item";
+	private static final String ARGUMENT_CHECKED_ITEM = "checked_item";
 	
 	private int mCheckedItem = -1;
 	private SingleChoiceItemsDialogListener mListener;
@@ -31,9 +31,9 @@ public class SingleChoiceItemsDialogFragment extends DialogFragment
 		SingleChoiceItemsDialogFragment fragment = new SingleChoiceItemsDialogFragment();
 		
 		// arguments
-		Bundle args = new Bundle();
-		args.putInt(EXTRA_CHECKED_ITEM, checkedItem);
-		fragment.setArguments(args);
+		Bundle arguments = new Bundle();
+		arguments.putInt(ARGUMENT_CHECKED_ITEM, checkedItem);
+		fragment.setArguments(arguments);
 		
 		return fragment;
 	}
@@ -146,9 +146,9 @@ public class SingleChoiceItemsDialogFragment extends DialogFragment
 	
 	private void handleArguments(Bundle arguments)
 	{
-		if(arguments.containsKey(EXTRA_CHECKED_ITEM))
+		if(arguments.containsKey(ARGUMENT_CHECKED_ITEM))
 		{
-			mCheckedItem = (Integer) arguments.get(EXTRA_CHECKED_ITEM);
+			mCheckedItem = (Integer) arguments.get(ARGUMENT_CHECKED_ITEM);
 		}
 	}
 }

@@ -13,9 +13,9 @@ import com.example.R;
 
 public class SimpleDialogFragment extends DialogFragment
 {
-	public static final String EXTRA_ARG = "arg";
+	private static final String ARGUMENT_EXAMPLE = "example";
 	
-	private String mArg;
+	private String mExample;
 	private SimpleDialogListener mListener;
 	
 	
@@ -26,14 +26,14 @@ public class SimpleDialogFragment extends DialogFragment
 	}
 	
 	
-	public static SimpleDialogFragment newInstance(String arg)
+	public static SimpleDialogFragment newInstance(String example)
 	{
 		SimpleDialogFragment fragment = new SimpleDialogFragment();
 		
 		// arguments
-		Bundle args = new Bundle();
-		args.putString(EXTRA_ARG, arg);
-		fragment.setArguments(args);
+		Bundle arguments = new Bundle();
+		arguments.putString(ARGUMENT_EXAMPLE, example);
+		fragment.setArguments(arguments);
 		
 		return fragment;
 	}
@@ -94,7 +94,7 @@ public class SimpleDialogFragment extends DialogFragment
 		builder
 		.setTitle("title")
 		.setIcon(R.drawable.ic_launcher)
-		.setMessage(mArg)
+		.setMessage(mExample)
 		.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
 		{
 			public void onClick(DialogInterface dialog, int id)
@@ -133,9 +133,9 @@ public class SimpleDialogFragment extends DialogFragment
 	
 	private void handleArguments(Bundle arguments)
 	{
-		if(arguments.containsKey(EXTRA_ARG))
+		if(arguments.containsKey(ARGUMENT_EXAMPLE))
 		{
-			mArg = (String) arguments.get(EXTRA_ARG);
+			mExample = (String) arguments.get(ARGUMENT_EXAMPLE);
 		}
 	}
 }
