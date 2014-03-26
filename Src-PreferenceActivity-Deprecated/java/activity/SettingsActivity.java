@@ -14,6 +14,14 @@ import com.example.R;
 
 public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 {
+	public static Intent newIntent(Context context)
+	{
+		Intent intent = new Intent(context, SettingsActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		return intent;
+	}
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -81,8 +89,7 @@ public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 		{
 			case android.R.id.home:
 				// TODO
-				Intent intent = new Intent(this, SettingsActivity.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				Intent intent = SettingsActivity.newIntent(this);
 				startActivity(intent);
 				return true;
 			

@@ -1,5 +1,6 @@
 package com.example.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -12,6 +13,14 @@ import com.example.R;
 
 public class TransitionFirstActivity extends ActionBarActivity
 {
+	public static Intent newIntent(Context context)
+	{
+		Intent intent = new Intent(context, TransitionFirstActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		return intent;
+	}
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -37,7 +46,7 @@ public class TransitionFirstActivity extends ActionBarActivity
 		switch(item.getItemId())
 		{
 			case R.id.ab_button_transition_second:
-				Intent intent = new Intent(this, TransitionSecondActivity.class);
+				Intent intent = TransitionSecondActivity.newIntent(this);
 				startActivity(intent);
 				overridePendingTransition(R.anim.push_left_enter, R.anim.push_left_exit);
 				return true;

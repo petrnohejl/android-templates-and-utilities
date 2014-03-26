@@ -1,5 +1,6 @@
 package com.example.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -14,6 +15,14 @@ import com.example.R;
 
 public class ListingActivity extends ActionBarActivity
 {
+	public static Intent newIntent(Context context)
+	{
+		Intent intent = new Intent(context, ListingActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		return intent;
+	}
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -78,8 +87,7 @@ public class ListingActivity extends ActionBarActivity
 		{
 			case android.R.id.home:
 				// TODO
-				Intent intent = new Intent(this, ListingActivity.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				Intent intent = ListingActivity.newIntent(this);
 				startActivity(intent);
 				return true;
 				

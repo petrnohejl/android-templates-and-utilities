@@ -80,22 +80,17 @@ public class ListingActivity extends ActionBarActivity implements OnDualPaneShow
 		}
 		else
 		{
-			Class<?> activity = null;
-			Bundle extras = null;
-			
+			Intent intent = null;
+
 			// type of activity to be started
 			if(targetFragment.equals(SimpleFragment.class))
 			{
-				activity = SimpleActivity.class;
-				extras = new Bundle();
-				extras.putInt(SimpleActivity.EXTRA_PRODUCT_ID, index);
+				intent = SimpleActivity.newIntent(this, index);
 			}
-			
+
 			// start activity
-			if(activity!=null)
+			if(intent!=null)
 			{
-				Intent intent = new Intent(this, activity);
-				if(extras!=null) intent.putExtras(extras);
 				startActivity(intent);
 			}
 		}

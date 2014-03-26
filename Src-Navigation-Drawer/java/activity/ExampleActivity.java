@@ -1,6 +1,5 @@
 package com.example.activity;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -72,9 +71,6 @@ public class ExampleActivity extends ActionBarActivity
 		{
 			case android.R.id.home:
 				// TODO
-				Intent intent = new Intent(this, ExampleActivity.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
 				return true;
 				
 			case R.id.ab_button_refresh:
