@@ -32,14 +32,14 @@ public class ExampleFragment extends TaskFragment implements
 		TimePickerDialogFragment.TimePickerDialogListener,
 		DatePickerDialogFragment.DatePickerDialogListener
 {
-	private final String DIALOG_SIMPLE = "simple";
-	private final String DIALOG_ITEMS = "items";
-	private final String DIALOG_SINGLE_CHOICE_ITEMS = "single_choice_items";
-	private final String DIALOG_MULTI_CHOICE_ITEMS = "multi_choice_items";
-	private final String DIALOG_VIEW = "view";
-	private final String DIALOG_TIME_PICKER = "time_picker";
-	private final String DIALOG_DATE_PICKER = "date_picker";
-	private final String DIALOG_PROGRESS = "progress";
+	private static final String DIALOG_SIMPLE = "simple";
+	private static final String DIALOG_ITEMS = "items";
+	private static final String DIALOG_SINGLE_CHOICE_ITEMS = "single_choice_items";
+	private static final String DIALOG_MULTI_CHOICE_ITEMS = "multi_choice_items";
+	private static final String DIALOG_VIEW = "view";
+	private static final String DIALOG_TIME_PICKER = "time_picker";
+	private static final String DIALOG_DATE_PICKER = "date_picker";
+	private static final String DIALOG_PROGRESS = "progress";
 	
 	private View mRootView;
 	

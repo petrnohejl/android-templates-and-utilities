@@ -13,7 +13,7 @@ import com.example.utility.Logcat;
 
 public class ExampleFragment extends Fragment
 {
-	private final long TIMER_DELAY = 5000; // in milliseconds
+	private static final long TIMER_DELAY = 5000; // in milliseconds
 	
 	private View mRootView;
 	private Handler mTimerHandler;

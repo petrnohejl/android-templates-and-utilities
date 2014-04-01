@@ -14,8 +14,8 @@ import java.io.UnsupportedEncodingException;
 
 public class MultipartRequest extends Request
 {
-	private final String REQUEST_METHOD = "POST";
-	private final String REQUEST_PATH = "multipart";
+	private static final String REQUEST_METHOD = "POST";
+	private static final String REQUEST_PATH = "multipart";
 
 	private String mTextData1;
 	private String mTextData2;

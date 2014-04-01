@@ -99,7 +99,7 @@ public class APICall
 				mConnection.setRequestProperty("Authorization", getBasicAuthToken(mRequest.getBasicAuthUsername(), mRequest.getBasicAuthPassword()));
 			}
 			mConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-			//mConnection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + mRequest.BOUNDARY); // for multipart
+			//mConnection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + Request.BOUNDARY); // for multipart
 			mConnection.setRequestProperty("Accept", "application/json");
 			mConnection.setRequestProperty("Accept-Encoding", "gzip");
 			mConnection.setRequestProperty("Accept-Charset", "UTF-8");

@@ -29,8 +29,8 @@ import com.example.utility.ViewState;
 
 public class ListingFragment extends TaskListFragment implements OnLoadDataListener
 {
-	private final int LAZY_LOADING_TAKE = 16;
-	private final int LAZY_LOADING_OFFSET = 4;
+	private static final int LAZY_LOADING_TAKE = 16;
+	private static final int LAZY_LOADING_OFFSET = 4;
 	
 	private boolean mLazyLoading = false;
 	private boolean mActionBarProgress = false;

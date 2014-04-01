@@ -35,11 +35,11 @@ import java.util.List;
 
 public class ExampleFragment extends TaskListFragment implements APICallListener
 {
-	private final String META_REFRESH = "refresh";
+	private static final String META_REFRESH = "refresh";
 
-	private final int LAZY_LOADING_TAKE = 16;
-	private final int LAZY_LOADING_OFFSET = 4;
-	private final int LAZY_LOADING_MAX = LAZY_LOADING_TAKE * 10;
+	private static final int LAZY_LOADING_TAKE = 16;
+	private static final int LAZY_LOADING_OFFSET = 4;
+	private static final int LAZY_LOADING_MAX = LAZY_LOADING_TAKE * 10;
 	
 	private boolean mLazyLoading = false;
 	private boolean mActionBarProgress = false;

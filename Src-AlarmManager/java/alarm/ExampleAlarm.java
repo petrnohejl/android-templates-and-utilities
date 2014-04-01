@@ -12,8 +12,8 @@ import com.example.receiver.ExampleAlarmReceiver;
 
 public class ExampleAlarm
 {
-	private final int ALARM_ID = 0;
-	private final long ALARM_INTERVAL = AlarmManager.INTERVAL_HOUR; // in milliseconds
+	private static final int ALARM_ID = 0;
+	private static final long ALARM_INTERVAL = AlarmManager.INTERVAL_HOUR; // in milliseconds
 	
 	private Context mContext;
 	

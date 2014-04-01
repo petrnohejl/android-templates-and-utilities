@@ -9,7 +9,7 @@ import com.example.fragment.ExampleFragment;
 
 public class PagerFragmentPagerAdapter extends FragmentPagerAdapter // TODO: use FragmentPagerAdapter or FragmentStatePagerAdapter
 {
-	private final int FRAGMENT_COUNT = 8;
+	private static final int FRAGMENT_COUNT = 8;
 	
 	
 	public PagerFragmentPagerAdapter(FragmentManager fragmentManager)

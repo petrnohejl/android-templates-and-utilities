@@ -13,9 +13,9 @@ import java.io.InputStream;
 
 public abstract class Request
 {
-	protected final String API_ENDPOINT = ExampleConfig.DEV_API ? ExampleConfig.API_ENDPOINT_DEVELOPMENT : ExampleConfig.API_ENDPOINT_PRODUCTION;
-	protected final String CHARSET = "UTF-8";
-	public final String BOUNDARY = "0xKhTmLbOuNdArY";
+	public static final String API_ENDPOINT = ExampleConfig.DEV_API ? ExampleConfig.API_ENDPOINT_DEVELOPMENT : ExampleConfig.API_ENDPOINT_PRODUCTION;
+	public static final String CHARSET = "UTF-8";
+	public static final String BOUNDARY = "0xKhTmLbOuNdArY";
 
 	private Bundle mMetaData = null;
 

@@ -18,8 +18,8 @@ import java.util.List;
 
 public class ExampleRequest extends Request
 {
-	private final String REQUEST_METHOD = "POST";
-	private final String REQUEST_PATH = "example";
+	private static final String REQUEST_METHOD = "POST";
+	private static final String REQUEST_PATH = "example";
 	
 	private int mSkip;
 	private int mTake;
