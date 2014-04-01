@@ -7,19 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.cyrilmottier.polaris2.maps.CameraUpdateFactory;
-import com.cyrilmottier.polaris2.maps.GoogleMap;
-import com.cyrilmottier.polaris2.maps.MapView;
-import com.cyrilmottier.polaris2.maps.MapsInitializer;
-import com.cyrilmottier.polaris2.maps.UiSettings;
-import com.cyrilmottier.polaris2.maps.model.BitmapDescriptor;
-import com.cyrilmottier.polaris2.maps.model.BitmapDescriptorFactory;
-import com.cyrilmottier.polaris2.maps.model.CameraPosition;
-import com.cyrilmottier.polaris2.maps.model.LatLng;
-import com.cyrilmottier.polaris2.maps.model.MarkerOptions;
 import com.example.R;
 import com.example.utility.Version;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class ExampleFragment extends Fragment
@@ -42,7 +41,7 @@ public class ExampleFragment extends Fragment
 		{
 			MapsInitializer.initialize(getActivity());
 		}
-		catch(GooglePlayServicesNotAvailableException e)
+		catch(Exception e)
 		{
 		
 		}
@@ -119,7 +118,7 @@ public class ExampleFragment extends Fragment
 	private void renderView()
 	{
 		// reference
-		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getPolarisMap();
+		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMap();
 
 		// content
 		if(map!=null)
@@ -145,7 +144,7 @@ public class ExampleFragment extends Fragment
 	private void setupMap()
 	{
 		// reference
-		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getPolarisMap();
+		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMap();
 		
 		// settings
 		if(map!=null)

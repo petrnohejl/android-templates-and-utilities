@@ -1,13 +1,13 @@
 package com.example.utility;
 
-import java.util.Locale;
-
 import android.location.Location;
 import android.location.LocationManager;
 
-import com.cyrilmottier.polaris2.maps.model.LatLng;
 import com.example.ExampleApplication;
 import com.example.R;
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.Locale;
 
 
 public class LocationUtility
