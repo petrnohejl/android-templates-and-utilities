@@ -28,8 +28,6 @@ public class ExampleFragment extends TaskFragment
 	{
 		super.onCreate(savedInstanceState);
 
-		setRetainInstance(true);
-		
 		mImagePicker = new ImagePicker(getActivity());
 	}
 	

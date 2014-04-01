@@ -50,15 +50,6 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 	private APICallManager mAPICallManager = new APICallManager();
 	
 	private ArrayList<ProductEntity> mProductList = new ArrayList<ProductEntity>();
-
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) 
-	{
-		super.onCreate(savedInstanceState);
-		
-		setRetainInstance(true);
-	}
 	
 	
 	@Override

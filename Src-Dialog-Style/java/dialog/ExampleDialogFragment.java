@@ -13,32 +13,6 @@ import com.example.utility.DialogStyle;
 
 public class ExampleDialogFragment extends DialogFragment
 {
-	public static ExampleDialogFragment newInstance()
-	{
-		ExampleDialogFragment fragment = new ExampleDialogFragment();
-		return fragment;
-	}
-	
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		
-		setCancelable(true);
-		setRetainInstance(true);
-	}
-	
-	
-	@Override
-	public void onDestroyView()
-	{
-		// http://code.google.com/p/android/issues/detail?id=17423
-		if(getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
-		super.onDestroyView();
-	}
-	
-	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{

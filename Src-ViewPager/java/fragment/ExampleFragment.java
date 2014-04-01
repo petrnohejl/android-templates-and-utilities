@@ -36,9 +36,6 @@ public class ExampleFragment extends Fragment
 	{
 		super.onCreate(savedInstanceState);
 		
-		setHasOptionsMenu(true);
-		setRetainInstance(true);
-		
 		// handle fragment arguments
 		Bundle arguments = getArguments();
 		if(arguments != null)

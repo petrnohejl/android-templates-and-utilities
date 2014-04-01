@@ -42,10 +42,7 @@ public class ExampleFragment extends Fragment
 	public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		
-		setHasOptionsMenu(true);
-		setRetainInstance(true);
-		
+
 		// facebook init
 		mFacebook = new Facebook(ExampleConfig.FACEBOOK_APP_ID);
 		mAsyncFacebookRunner = new AsyncFacebookRunner(mFacebook);
