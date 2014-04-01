@@ -8,11 +8,17 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable
 public class ProductModel
 {
-	@DatabaseField(generatedId = true) private long id;
-	@DatabaseField private String name;
-	@DatabaseField private int quantity;
-	@DatabaseField private long timestamp;
-	@DatabaseField private double price;
+	public static final String COLUMN_ID = "id";
+	public static final String COLUMN_NAME = "name";
+	public static final String COLUMN_QUANTITY = "quantity";
+	public static final String COLUMN_TIMESTAMP = "timestamp";
+	public static final String COLUMN_PRICE = "price";
+
+	@DatabaseField(columnName=COLUMN_ID, generatedId=true) private long id;
+	@DatabaseField(columnName=COLUMN_NAME) private String name;
+	@DatabaseField(columnName=COLUMN_QUANTITY) private int quantity;
+	@DatabaseField(columnName=COLUMN_TIMESTAMP) private long timestamp;
+	@DatabaseField(columnName=COLUMN_PRICE) private double price;
 
 
 	// empty constructor
