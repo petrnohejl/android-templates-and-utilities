@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,9 @@ import com.example.R;
 import com.example.adapter.ListingAdapter;
 import com.example.entity.ProductEntity;
 import com.example.listener.OnDualPaneShowListener;
-import com.example.task.TaskListFragment;
 
 
-public class ListingFragment extends TaskListFragment
+public class ListingFragment extends ListFragment
 {
 	private View mRootView;
 	private ListingAdapter mAdapter;
