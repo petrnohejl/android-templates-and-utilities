@@ -45,7 +45,7 @@ You don't need to install Gradle on your system, because there is a [Gradle Wrap
 2. Open configuration file [/app/src/main/java/com/example/ExampleConfig.java](https://github.com/example/Example/blob/master/app/src/main/java/com/example/ExampleConfig.java) and set constants as required (see below for more info)
 3. Open main build script [/app/build.gradle](https://github.com/example/Example/blob/master/app/build.gradle) and set constants as required (see below for more info)
 4. Run `gradlew assemble` in console
-5. APK should be available in /build/apk directory
+5. APK should be available in /app/build/apk directory
 
 **Note:** You will also need a "local.properties" file to set the location of the SDK in the same way that the existing SDK requires, using the "sdk.dir" property. Example of "local.properties" on Windows: `sdk.dir=C:\\adt-bundle-windows\\sdk`. Alternatively, you can set an environment variable called "ANDROID\_HOME".
 
