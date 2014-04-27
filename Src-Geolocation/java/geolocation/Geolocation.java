@@ -145,8 +145,8 @@ public class Geolocation implements LocationListener
 		Location locationNet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 		Location locationGps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-		long timeNet = 0;
-		long timeGps = 0;
+		long timeNet = 0l;
+		long timeGps = 0l;
 		
 		if(locationNet!=null)
 		{
