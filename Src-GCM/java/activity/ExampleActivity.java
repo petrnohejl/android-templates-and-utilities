@@ -14,7 +14,7 @@ import com.google.android.gcm.GCMRegistrar;
 
 public class ExampleActivity extends ActionBarActivity
 {
-	AsyncTask<Void, Void, Void> mRegisterAsyncTask;
+	private AsyncTask<Void, Void, Void> mRegisterAsyncTask;
 
 
 	@Override
