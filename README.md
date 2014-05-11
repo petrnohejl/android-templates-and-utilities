@@ -5,6 +5,10 @@ Android Templates And Utilities is a collection of source codes, utilities,
 templates and snippets for Android development. It helps to build new apps and 
 shows the best way how to implement certain problems on Android platform.
 
+I write these templates for my personal need. I use it almost every day
+for developing apps. It is something like cookbook for me. All my apps are
+based on these templates.
+
 In this repo you can find templates for styling action bar, working with alarm
 manager, communicating with server API, sending and receiving broadcasts,
 working with database, creating dialogs, using dual pane layout, fragments,
