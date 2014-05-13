@@ -182,6 +182,7 @@ public class ExampleActivity extends ActionBarActivity
 	{
 		Fragment fragment;
 		if(position==0) fragment = ExampleFragment.newInstance();
+		else if(position==1) fragment = ExampleFragment.newInstance();
 		else if(position==2) fragment = ExampleFragment.newInstance();
 		else if(position==3) fragment = ExampleFragment.newInstance();
 		else fragment = ExampleFragment.newInstance();
