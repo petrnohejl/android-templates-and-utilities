@@ -42,14 +42,14 @@ This chapter describes how to build APK with Gradle and prepare app for publishi
 You don't need to install Gradle on your system, because there is a [Gradle Wrapper](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html). The wrapper is a batch script on Windows, and a shell script for other operating systems. When you start a Gradle build via the wrapper, Gradle will be automatically downloaded and used to run the build.
 
 1. Clone this repository
-2. Open configuration file [/app/src/main/java/com/example/ExampleConfig.java](https://github.com/example/Example/blob/master/app/src/main/java/com/example/ExampleConfig.java) and set constants as required (see below for more info)
-3. Open main build script [/app/build.gradle](https://github.com/example/Example/blob/master/app/build.gradle) and set constants as required (see below for more info)
+2. Open configuration file _/app/src/main/java/com/example/ExampleConfig.java_ and set constants as required (see below for more info)
+3. Open main build script _/app/build.gradle_ and set constants as required (see below for more info)
 4. Run `gradlew assemble` in console
 5. APK should be available in /app/build/apk directory
 
 **Note:** You will also need a "local.properties" file to set the location of the SDK in the same way that the existing SDK requires, using the "sdk.dir" property. Example of "local.properties" on Windows: `sdk.dir=C:\\adt-bundle-windows\\sdk`. Alternatively, you can set an environment variable called "ANDROID\_HOME".
 
-**Tip:** Command `gradlew assemble` builds both - debug and release APK. You can use `gradlew assembleDebug` to build debug APK. You can use `gradlew assembleRelease` to build release APK. Debug APK is signed by debug keystore. Release APK is signed by own keystore, stored in [/extras/keystore](https://github.com/example/Example/tree/master/extras/keystore) directory.
+**Tip:** Command `gradlew assemble` builds both - debug and release APK. You can use `gradlew assembleDebug` to build debug APK. You can use `gradlew assembleRelease` to build release APK. Debug APK is signed by debug keystore. Release APK is signed by own keystore, stored in _/extras/keystore_ directory.
 
 **Signing process:** Keystore passwords are automatically loaded from property file during building the release APK. Path to this file is defined in "keystore.properties" property in "gradle.properties" file. If this property or the file does not exist, user is asked for passwords explicitly.
 
@@ -97,8 +97,7 @@ Dependencies
 * [Facebook Android SDK](https://github.com/facebook/facebook-android-sdk)
 * [File Picker Activity](https://github.com/Kaloer/Android-File-Picker-Activity)
 * [Flurry](http://www.flurry.com/)
-* [Google Analytics](http://www.google.com/analytics/)
-* [Google Cloud Messaging](http://developer.android.com/sdk/index.html)
+* [Google Play Services](http://developer.android.com/google/play-services/index.html)
 * [GreenDAO](http://greendao-orm.com/)
 * [GSON](http://code.google.com/p/google-gson/)
 * [Holo Everywhere](https://github.com/Prototik/HoloEverywhere)
