@@ -20,7 +20,7 @@ import com.example.entity.ProductEntity;
 import com.example.task.TaskListFragment;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkManager;
-import com.example.utility.ViewState;
+import com.example.view.ViewState;
 
 import org.codehaus.jackson.JsonParseException;
 

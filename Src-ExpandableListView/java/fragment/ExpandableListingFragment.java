@@ -21,7 +21,7 @@ import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.task.TaskFragment;
 import com.example.utility.NetworkManager;
-import com.example.utility.ViewState;
+import com.example.view.ViewState;
 
 
 public class ExpandableListingFragment extends TaskFragment implements OnLoadDataListener

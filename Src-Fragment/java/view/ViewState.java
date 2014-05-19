@@ -1,4 +1,4 @@
-package com.example.utility;
+package com.example.view;
 
 
 public enum ViewState
