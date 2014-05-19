@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:animateLayoutChanges="true">
 	
 	<FrameLayout
 		android:id="@+id/container_list"
@@ -21,33 +22,23 @@
 			android:listSelector="@android:color/transparent"
 			android:background="@color/global_bg_front" />
 		
-		<FrameLayout
+		<include layout="@layout/placeholder_empty"
 			android:id="@android:id/empty"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent">
+			android:layout_height="match_parent" />
 			
-			<include layout="@layout/placeholder_empty" />
-			
-		</FrameLayout>
 	</FrameLayout>
 	
-	<FrameLayout
+	<include layout="@layout/placeholder_progress"
 		android:id="@+id/container_progress"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:visibility="gone">
+		android:visibility="gone" />
 
-		<include layout="@layout/placeholder_progress" />
-
-	</FrameLayout>
-
-	<FrameLayout
+	<include layout="@layout/placeholder_offline"
 		android:id="@+id/container_offline"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:visibility="gone">
-		
-		<include layout="@layout/placeholder_offline" />
-	
-	</FrameLayout>
+		android:visibility="gone" />
+
 </FrameLayout>

@@ -1,51 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-	
-	<FrameLayout
+	android:layout_height="match_parent"
+	android:animateLayoutChanges="true">
+
+	<ScrollView
 		android:id="@+id/container_content"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
-		
-		<ScrollView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:fillViewport="true"
-			android:background="@color/global_bg_front">
-			
-			<include layout="@layout/fragment_example_content" />
-			
-		</ScrollView>
-	</FrameLayout>
-	
-	<FrameLayout
+		android:layout_height="match_parent"
+		android:fillViewport="true"
+		android:background="@color/global_bg_front">
+
+		<include layout="@layout/fragment_example_content" />
+
+	</ScrollView>
+
+	<include layout="@layout/placeholder_progress"
 		android:id="@+id/container_progress"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:visibility="gone">
-		
-		<include layout="@layout/placeholder_progress" />
-		
-	</FrameLayout>
-	
-	<FrameLayout
+		android:visibility="gone" />
+
+	<include layout="@layout/placeholder_offline"
 		android:id="@+id/container_offline"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:visibility="gone">
-		
-		<include layout="@layout/placeholder_offline" />
-	
-	</FrameLayout>
-	
-	<FrameLayout
+		android:visibility="gone" />
+
+	<include layout="@layout/placeholder_empty"
 		android:id="@+id/container_empty"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:visibility="gone">
-		
-		<include layout="@layout/placeholder_empty" />
-	
-	</FrameLayout>
+		android:visibility="gone" />
+
 </FrameLayout>
