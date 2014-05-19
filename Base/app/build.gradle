@@ -63,6 +63,23 @@ android
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
 		}
 	}
+
+	applicationVariants.all
+	{
+		variant ->
+			if(variant.buildType.name.equals("release"))
+			{
+				def file = variant.outputFile
+				def date = new Date()
+				variant.outputFile = new File(
+						(String) file.parent,
+						(String) file.name.replace(
+								"app",
+								"example-" + defaultConfig.versionName + "-" + date.format('yyyyMMdd')
+						)
+				)
+			}
+	}
 }
 
 
