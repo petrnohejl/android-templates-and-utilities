@@ -75,7 +75,7 @@ android
 						(String) file.parent,
 						(String) file.name.replace(
 								"app",
-								"example-" + defaultConfig.versionName + "-" + date.format('yyyyMMdd')
+								"example-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date.format('yyyyMMdd')
 						)
 				)
 			}
