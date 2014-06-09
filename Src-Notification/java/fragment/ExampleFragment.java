@@ -16,7 +16,7 @@ import com.example.notification.NotificationMessage;
 public class ExampleFragment extends Fragment
 {
 	private View mRootView;
-	NotificationMessage mNotificationMessage;
+	private NotificationMessage mNotificationMessage;
 	
 	
 	@Override
