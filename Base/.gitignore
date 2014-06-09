@@ -44,3 +44,7 @@ out/
 
 # Mac
 .DS_Store
+
+# Crashlytics
+crashlytics.properties
+crashlytics-build.properties
