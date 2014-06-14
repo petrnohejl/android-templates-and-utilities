@@ -97,10 +97,6 @@ public class NotificationMessage
 		
 		public void setIntent(Intent notificationIntent)
 		{
-			// add flags
-			notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-			
 			// pending intent
 			mPendingIntent = PendingIntent.getActivity(mContext, mNotificationId, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		}
@@ -186,11 +182,7 @@ public class NotificationMessage
 		{
 			mAction1Icon = icon;
 			mAction1Title = title;
-			
-			// add flags
-			actionIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			actionIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-			
+
 			// pending intent
 			mAction1PendingIntent = PendingIntent.getActivity(mContext, mNotificationId, actionIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		}
@@ -200,11 +192,7 @@ public class NotificationMessage
 		{
 			mAction2Icon = icon;
 			mAction2Title = title;
-			
-			// add flags
-			actionIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			actionIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-			
+
 			// pending intent
 			mAction2PendingIntent = PendingIntent.getActivity(mContext, mNotificationId, actionIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		}

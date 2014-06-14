@@ -31,7 +31,7 @@ public class ExampleFragment extends Fragment
 	{
 		NotificationMessage.Builder builder = new NotificationMessage.Builder(getActivity().getApplicationContext(), NotificationId.TYPE1);
 		
-		builder.setIntent(ExampleActivity.newIntent(getActivity().getApplicationContext()));
+		builder.setIntent(ExampleActivity.newIntent(getActivity().getApplicationContext())); // TODO: it is recommended to set FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TASK flags
 		builder.setText("ticker", "title", "text");
 		builder.setExtraText("subText", "contentInfo");
 		builder.setNumber(24);
@@ -41,8 +41,8 @@ public class ExampleFragment extends Fragment
 		builder.setUsesChronometer(false);
 		builder.setOnlyAlertOnce(false);
 		builder.setOngoing(false);
-		builder.setAction1(R.drawable.ic_stat_notify, "action 1", ExampleActivity.newIntent(getActivity().getApplicationContext()));
-		builder.setAction2(R.drawable.ic_stat_notify, "action 2", ExampleActivity.newIntent(getActivity().getApplicationContext()));
+		builder.setAction1(R.drawable.ic_stat_notify, "action 1", ExampleActivity.newIntent(getActivity().getApplicationContext())); // TODO: it is recommended to set FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TASK flags
+		builder.setAction2(R.drawable.ic_stat_notify, "action 2", ExampleActivity.newIntent(getActivity().getApplicationContext())); // TODO: it is recommended to set FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TASK flags
 		
 		//builder.setBigTextStyle("bigContentTitle", "summaryText", "bigText");
 		//builder.setBigPictureStyle("bigContentTitle", "summaryText", R.drawable.ic_launcher);
