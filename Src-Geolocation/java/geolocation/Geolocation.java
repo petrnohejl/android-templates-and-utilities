@@ -1,10 +1,5 @@
 package com.example.geolocation;
 
-import java.lang.ref.WeakReference;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -12,6 +7,11 @@ import android.location.LocationProvider;
 import android.os.Bundle;
 
 import com.example.utility.Logcat;
+
+import java.lang.ref.WeakReference;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Geolocation implements LocationListener
@@ -64,8 +64,22 @@ public class Geolocation implements LocationListener
 			mTimer.schedule(task, LOCATION_TIMEOUT);
 			
 			// register location updates
-			mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0l, 0.0f, this);
-			mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0l, 0.0f, this);
+			try
+			{
+				mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0l, 0.0f, this);
+			}
+			catch(IllegalArgumentException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0l, 0.0f, this);
+			}
+			catch(IllegalArgumentException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 		
