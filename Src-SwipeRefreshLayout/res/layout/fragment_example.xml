@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:animateLayoutChanges="true">
+
+	<FrameLayout
+		android:id="@+id/container_list"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<android.support.v4.widget.SwipeRefreshLayout
+			android:id="@+id/container_swipe_refresh_list"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<ListView
+				android:id="@android:id/list"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:drawSelectorOnTop="false"
+				android:fastScrollEnabled="false"
+				android:dividerHeight="@dimen/view_listview_divider"
+				android:divider="@color/view_listview_divider"
+				android:cacheColorHint="@color/view_listview_cache_color_hint"
+				android:listSelector="@android:color/transparent"
+				android:background="@color/global_bg_front" />
+
+		</android.support.v4.widget.SwipeRefreshLayout>
+
+		<android.support.v4.widget.SwipeRefreshLayout
+			android:id="@+id/container_swipe_refresh_empty"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<include layout="@layout/placeholder_empty"
+				android:id="@android:id/empty"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" />
+
+		</android.support.v4.widget.SwipeRefreshLayout>
+	</FrameLayout>
+
+	<include layout="@layout/placeholder_progress"
+		android:id="@+id/container_progress"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone" />
+
+	<include layout="@layout/placeholder_offline"
+		android:id="@+id/container_offline"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone" />
+
+</FrameLayout>
