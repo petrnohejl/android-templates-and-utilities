@@ -5,7 +5,6 @@ import uk.co.senab.actionbarpulltorefresh.library.Options;
 import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
 import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.R;
-import com.example.activity.ExampleActivity;
 import com.example.client.APICallManager;
 import com.example.client.request.ExampleRequest;
 import com.example.task.TaskListFragment;
