@@ -8,8 +8,8 @@
 		android:id="@+id/container_list"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
-		
-		<uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout
+
+		<uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout
 			android:id="@+id/container_pull_to_refresh"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
@@ -30,8 +30,8 @@
 				android:id="@android:id/empty"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent" />
-				
-		</uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout>
+
+		</uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout>
 	</FrameLayout>
 	
 	<include layout="@layout/placeholder_progress"

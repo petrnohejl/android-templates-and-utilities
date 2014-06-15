@@ -1,7 +1,10 @@
 package com.example.fragment;
 
-import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher;
+import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
+import uk.co.senab.actionbarpulltorefresh.library.Options;
 import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
+import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,11 +20,10 @@ import com.example.task.TaskListFragment;
 import com.example.utility.NetworkManager;
 
 
-public class ExampleFragment extends TaskListFragment implements PullToRefreshAttacher.OnRefreshListener
+public class ExampleFragment extends TaskListFragment implements OnRefreshListener
 {
 	private boolean mActionBarProgress = false;
 	private View mRootView;
-	private PullToRefreshAttacher mPullToRefreshAttacher;
 	private APICallManager mAPICallManager = new APICallManager();
 	
 	
@@ -37,11 +39,18 @@ public class ExampleFragment extends TaskListFragment implements PullToRefreshAt
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
+
 		// pull to refresh
 		PullToRefreshLayout pullToRefreshLayout = (PullToRefreshLayout) mRootView.findViewById(R.id.container_pull_to_refresh);
-		mPullToRefreshAttacher = ((ExampleActivity) getActivity()).getPullToRefreshAttacher();
-		pullToRefreshLayout.setPullToRefreshAttacher(mPullToRefreshAttacher, this);
+		ActionBarPullToRefresh.from(getActivity())
+				.options(Options.create()
+						.scrollDistance(0.5f)
+						.refreshOnUp(false)
+						.minimize(1 * 1000)
+						.build())
+				.allChildrenArePullable()
+				.listener(this)
+				.setup(pullToRefreshLayout);
 		
 		// progress in action bar
 		showActionBarProgress(mActionBarProgress);
@@ -82,7 +91,7 @@ public class ExampleFragment extends TaskListFragment implements PullToRefreshAt
 //			protected void onPostExecute(Void result)
 //			{
 //				super.onPostExecute(result);
-//				mPullToRefreshAttacher.setRefreshComplete();
+//				showActionBarProgress(false);
 //			}
 //		}.execute();
 	}
@@ -111,7 +120,8 @@ public class ExampleFragment extends TaskListFragment implements PullToRefreshAt
 	private void showActionBarProgress(boolean visible)
 	{
 		// show pull to refresh progress bar
-		if(mPullToRefreshAttacher!=null) mPullToRefreshAttacher.setRefreshing(visible);
+		PullToRefreshLayout pullToRefreshLayout = (PullToRefreshLayout) mRootView.findViewById(R.id.container_pull_to_refresh);
+		pullToRefreshLayout.setRefreshing(visible);
 		mActionBarProgress = visible;
 	}
 }
