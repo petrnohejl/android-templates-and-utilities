@@ -7,6 +7,7 @@ import com.example.ExampleApplication;
 import com.example.R;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 
@@ -65,5 +66,49 @@ public class LocationUtility
 		else if(distance<10000) return 12;
 		else if(distance<50000) return 11;
 		else return 10;
+	}
+
+
+	public static boolean isPointInPolygon(LatLng location, ArrayList<LatLng> vertices)
+	{
+		if(location==null) return false;
+
+		LatLng lastPoint = vertices.get(vertices.size() - 1);
+		boolean isInside = false;
+		double x = location.longitude;
+
+		for(LatLng point : vertices)
+		{
+			double x1 = lastPoint.longitude;
+			double x2 = point.longitude;
+			double dx = x2 - x1;
+
+			if(Math.abs(dx)>180.0)
+			{
+				if(x>0)
+				{
+					while(x1<0) x1 += 360;
+					while(x2<0) x2 += 360;
+				}
+				else
+				{
+					while(x1>0) x1 -= 360;
+					while(x2>0) x2 -= 360;
+				}
+				dx = x2 - x1;
+			}
+
+			if((x1<=x && x2>x) || (x1>=x && x2<x))
+			{
+				double grad = (point.latitude - lastPoint.latitude) / dx;
+				double intersectAtLat = lastPoint.latitude + ((x - x1) * grad);
+
+				if(intersectAtLat>location.latitude) isInside = !isInside;
+			}
+			
+			lastPoint = point;
+		}
+
+		return isInside;
 	}
 }
