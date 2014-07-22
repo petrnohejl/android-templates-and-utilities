@@ -12,7 +12,7 @@ final VERSION_PATCH = 0 // max two digits
 final VERSION_BUILD = 0 // max three digits
 
 
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 
 dependencies
