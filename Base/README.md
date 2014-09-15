@@ -128,7 +128,7 @@ Dependencies
 * [Styled Dialogs](https://github.com/inmite/android-styled-dialogs)
 * [Sugar ORM](http://satyan.github.com/sugar/index.html)
 * [Swipe To Dismiss](https://github.com/JakeWharton/SwipeToDismissNOA)
-* [Tree View List](http://code.google.com/p/tree-view-list-android/)
+* [Tree View List](https://github.com/Polidea/tree-view-list-android)
 * [Twitter4J](http://twitter4j.org/en/)
 * [UndoBar](https://github.com/soarcn/UndoBar)
 * [Universal Image Loader](https://github.com/nostra13/Android-Universal-Image-Loader)

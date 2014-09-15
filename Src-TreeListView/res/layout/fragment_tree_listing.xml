@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:treeview="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:animateLayoutChanges="true">
+	
+	<FrameLayout
+		android:id="@+id/container_list"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<pl.polidea.treeview.TreeViewList
+			android:id="@android:id/list"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:drawSelectorOnTop="false"
+			android:fastScrollEnabled="false"
+			android:divider="@color/view_listview_divider"
+			android:cacheColorHint="@color/view_listview_cache_color_hint"
+			android:listSelector="@android:color/transparent"
+			treeview:indicator_gravity="right|center_vertical" />
+		
+		<include layout="@layout/placeholder_empty"
+			android:id="@android:id/empty"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+			
+	</FrameLayout>
+	
+	<include layout="@layout/placeholder_progress"
+		android:id="@+id/container_progress"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone" />
+
+	<include layout="@layout/placeholder_offline"
+		android:id="@+id/container_offline"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone" />
+
+</FrameLayout>
