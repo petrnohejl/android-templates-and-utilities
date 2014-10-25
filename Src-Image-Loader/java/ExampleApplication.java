@@ -32,7 +32,7 @@ public class ExampleApplication extends Application
 		
 		// init image caching
 		File cacheDir = StorageUtils.getCacheDirectory(getApplicationContext());
-		cacheDir.mkdirs(); // needs android.permission.WRITE_EXTERNAL_STORAGE
+		cacheDir.mkdirs(); // requires android.permission.WRITE_EXTERNAL_STORAGE
 		
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
 			.threadPoolSize(3)

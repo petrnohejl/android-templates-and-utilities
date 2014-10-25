@@ -14,7 +14,7 @@ import android.support.v4.app.NotificationCompat;
 import com.example.R;
 
 
-// needs android.permission.VIBRATE
+// requires android.permission.VIBRATE
 public class NotificationMessage
 {
 	private Context mContext;

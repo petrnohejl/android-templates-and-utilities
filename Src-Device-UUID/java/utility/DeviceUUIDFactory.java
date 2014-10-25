@@ -48,7 +48,7 @@ public class DeviceUUIDFactory
 							}
 							else
 							{
-								// needs android.permission.READ_PHONE_STATE 
+								// requires android.permission.READ_PHONE_STATE 
 								final String deviceId = ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
 								uuid = deviceId != null ? UUID.nameUUIDFromBytes(deviceId.getBytes("utf8")) : UUID.randomUUID();
 							}

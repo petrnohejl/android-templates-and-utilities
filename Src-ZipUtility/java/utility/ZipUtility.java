@@ -10,7 +10,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 
-// needs android.permission.WRITE_EXTERNAL_STORAGE
+// requires android.permission.WRITE_EXTERNAL_STORAGE
 public class ZipUtility
 {
 	public static boolean unpackZip(String path, String zipname)

@@ -14,7 +14,7 @@ import android.content.Context;
 import android.os.Environment;
 
 
-// needs android.permission.READ_EXTERNAL_STORAGE or android.permission.WRITE_EXTERNAL_STORAGE
+// requires android.permission.READ_EXTERNAL_STORAGE or android.permission.WRITE_EXTERNAL_STORAGE
 public class StorageUtility
 {
 	public static boolean isAvailable()

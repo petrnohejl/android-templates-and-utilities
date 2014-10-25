@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Environment;
 
 
+// requires android.permission.WRITE_EXTERNAL_STORAGE
 public class DownloadUtility
 {
 	public static void downloadFile(Context context, String url, String fileName)
