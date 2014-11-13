@@ -5,17 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.assist.LoadedFrom;
 import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 
 
-/**
-* Just displays {@link Bitmap} in {@link ImageView} with fade effect
-*
-* @author Petr Nohejl
-*/
 public class FadeInBitmapDisplayer implements BitmapDisplayer
 {
 	private int mDurationMillis;
@@ -28,18 +25,17 @@ public class FadeInBitmapDisplayer implements BitmapDisplayer
 
 
 	@Override
-	public Bitmap display(Bitmap bitmap, ImageView imageView, LoadedFrom loadedFrom)
+	public void display(Bitmap bitmap, ImageAware imageAware, LoadedFrom loadedFrom)
 	{
-		setImageBitmapWithFade(bitmap, imageView);
-		return bitmap;
+		setImageBitmapWithFade(bitmap, imageAware.getWrappedView());
 	}
 
 
-	private void setImageBitmapWithFade(final Bitmap bitmap, final ImageView imageView)
+	private void setImageBitmapWithFade(final Bitmap bitmap, final View view)
 	{
-		Resources resources = imageView.getResources();
+		Resources resources = view.getResources();
 		BitmapDrawable bitmapDrawable = new BitmapDrawable(resources, bitmap);
-		setImageDrawableWithFade(bitmapDrawable, imageView);
+		setImageDrawableWithFade(bitmapDrawable, (ImageView) view);
 	}
 
 

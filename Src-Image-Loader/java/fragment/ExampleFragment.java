@@ -11,8 +11,8 @@ import com.example.R;
 import com.example.listener.AnimateImageLoadingListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 
 public class ExampleFragment extends Fragment
@@ -24,17 +24,17 @@ public class ExampleFragment extends Fragment
 
 	
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		
 		// image caching options
 		mDisplayImageOptions = new DisplayImageOptions.Builder()
-			.showStubImage(android.R.color.transparent)
+			.showImageOnLoading(android.R.color.transparent)
 			.showImageForEmptyUri(R.drawable.placeholder_photo)
 			.showImageOnFail(R.drawable.placeholder_photo)
 			.cacheInMemory(true)
-			.cacheOnDisc(true)
+			.cacheOnDisk(true)
 			.displayer(new SimpleBitmapDisplayer())
 			.build();
 		mImageLoadingListener = new AnimateImageLoadingListener();
