@@ -17,21 +17,22 @@ apply plugin: 'com.android.application'
 
 dependencies
 {
-	compile 'com.android.support:support-v4:20.+'
-	compile 'com.android.support:appcompat-v7:20.+'
+	compile 'com.google.android.support:wearable:1.0.+'
+	compile 'com.google.android.gms:play-services-wearable:6.1.+'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
+	compile project(':base')
 }
 
 
 android
 {
-	compileSdkVersion 19
-	buildToolsVersion "19.1.0"
+	compileSdkVersion 21
+	buildToolsVersion "21.1.1"
 
 	defaultConfig
 	{
-		minSdkVersion 14
-		targetSdkVersion 19
+		minSdkVersion 20
+		targetSdkVersion 21
 		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
 		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
 	}
@@ -58,8 +59,9 @@ android
 		release
 		{
 			signingConfig signingConfigs.release
-			zipAlign true
-			runProguard false
+			zipAlignEnabled true
+			minifyEnabled true
+			shrinkResources true
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 		}
 	}
@@ -69,15 +71,19 @@ android
 		variant ->
 			if(variant.buildType.name.equals("release"))
 			{
-				def file = variant.outputFile
-				def date = new Date()
-				variant.outputFile = new File(
-						(String) file.parent,
-						(String) file.name.replace(
-								"app",
-								"example-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date.format('yyyyMMdd')
-						)
-				)
+				variant.outputs.each
+				{
+					output ->
+						def outputFile = output.outputFile
+						def date = new Date()
+						if(outputFile!=null && outputFile.name.endsWith('.apk'))
+						{
+							def fileName = outputFile.name.replace(
+									"wear",
+									"example-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date.format('yyyyMMdd'))
+							output.outputFile = new File((String) outputFile.parent, (String) fileName)
+						}
+				}
 			}
 	}
 }

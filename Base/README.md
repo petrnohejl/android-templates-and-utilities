@@ -42,10 +42,10 @@ This chapter describes how to build APK with Gradle and prepare app for publishi
 You don't need to install Gradle on your system, because there is a [Gradle Wrapper](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html). The wrapper is a batch script on Windows, and a shell script for other operating systems. When you start a Gradle build via the wrapper, Gradle will be automatically downloaded and used to run the build.
 
 1. Clone this repository
-2. Open configuration file _/app/src/main/java/com/example/ExampleConfig.java_ and set constants as required (see below for more info)
-3. Open main build script _/app/build.gradle_ and set constants as required (see below for more info)
+2. Open configuration file _/mobile/src/main/java/com/example/ExampleConfig.java_ and set constants as required (see below for more info)
+3. Open main build script _/mobile/build.gradle_ and set constants as required (see below for more info)
 4. Run `gradlew assemble` in console
-5. APK should be available in _/app/build/outputs/apk_ directory
+5. APK should be available in _/mobile/build/outputs/apk_ directory
 
 **Note:** You will also need a "local.properties" file to set the location of the SDK in the same way that the existing SDK requires, using the "sdk.dir" property. Example of "local.properties" on Windows: `sdk.dir=C:\\adt-bundle-windows\\sdk`. Alternatively, you can set an environment variable called "ANDROID\_HOME".
 

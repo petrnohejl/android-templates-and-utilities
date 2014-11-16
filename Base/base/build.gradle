@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+
+dependencies
+{
+	compile 'com.google.android.gms:play-services:6.1.+'
+	//compile 'com.google.android.gms:play-services-wearable:6.1.+'
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+android
+{
+	compileSdkVersion 21
+	buildToolsVersion "21.1.1"
+
+	defaultConfig
+	{
+		minSdkVersion 15
+		targetSdkVersion 21
+	}
+
+	buildTypes
+	{
+		release
+		{
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+}

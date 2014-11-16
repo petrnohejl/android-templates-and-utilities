@@ -1,0 +1,133 @@
+// Main build script for Example
+// 
+// Usage: gradlew assembleDebug           Build debug APK
+//        gradlew assembleRelease         Build production APK
+//        gradlew connectedAndroidTest    Unit testing
+//        gradle wrapper                  Create Gradle Wrapper
+
+
+final VERSION_MAJOR = 1 // max two digits
+final VERSION_MINOR = 0 // max two digits
+final VERSION_PATCH = 0 // max two digits
+final VERSION_BUILD = 0 // max three digits
+
+
+apply plugin: 'com.android.application'
+
+
+dependencies
+{
+	compile 'com.android.support:support-v4:21.0.+'
+	compile 'com.android.support:appcompat-v7:21.0.+'
+	compile 'com.google.android.gms:play-services:6.1.+'
+	//compile 'com.google.android.gms:play-services-wearable:6.1.+'
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+	compile project(':base')
+	wearApp project(':wear')
+}
+
+
+android
+{
+	compileSdkVersion 21
+	buildToolsVersion "21.1.1"
+
+	defaultConfig
+	{
+		minSdkVersion 15
+		targetSdkVersion 21
+		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
+		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
+	}
+
+	signingConfigs
+	{
+		release
+		{
+			// passwords and alias are obtained via askForPasswords task
+			storeFile file("../${project.property('keystore.file')}")
+			storePassword ""
+			keyAlias ""
+			keyPassword ""
+		}
+	}
+
+	buildTypes
+	{
+		debug
+		{
+			versionNameSuffix "-debug"
+		}
+
+		release
+		{
+			signingConfig signingConfigs.release
+			zipAlignEnabled true
+			minifyEnabled true
+			shrinkResources true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+
+	applicationVariants.all
+	{
+		variant ->
+			if(variant.buildType.name.equals("release"))
+			{
+				variant.outputs.each
+				{
+					output ->
+						def outputFile = output.outputFile
+						def date = new Date()
+						if(outputFile!=null && outputFile.name.endsWith('.apk'))
+						{
+							def fileName = outputFile.name.replace(
+									"mobile",
+									"example-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date.format('yyyyMMdd'))
+							output.outputFile = new File((String) outputFile.parent, (String) fileName)
+						}
+				}
+			}
+	}
+}
+
+
+task askForPasswords <<
+{
+	def storePass
+	def keyAlias
+	def keyPass
+
+	def keystorePropertiesFile = new File(project.property("keystore.properties"))
+
+	if(project.hasProperty("keystore.properties") && keystorePropertiesFile.exists())
+	{
+		println "Loading keystore passwords from property file..."
+		Properties properties = new Properties()
+		properties.load(new FileInputStream(keystorePropertiesFile))
+		storePass = properties['keystore.store.password']
+		keyAlias  = properties['keystore.key.alias']
+		keyPass  = properties['keystore.key.password']
+	}
+	else
+	{
+		println "Getting keystore passwords from user input..."
+		storePass = new String(System.console().readPassword("\nStore password: "))
+		keyAlias  = new String(System.console().readLine("Key alias: "))
+		keyPass  = new String(System.console().readPassword("Key password: "))
+	}
+
+	android.signingConfigs.release.storePassword = storePass
+	android.signingConfigs.release.keyAlias = keyAlias
+	android.signingConfigs.release.keyPassword = keyPass
+}
+
+
+tasks.whenTaskAdded
+{
+	theTask ->
+	if(theTask.name.equals("packageRelease"))
+	{
+		theTask.dependsOn "askForPasswords"
+	}
+}
