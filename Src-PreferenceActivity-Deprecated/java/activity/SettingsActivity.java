@@ -107,8 +107,6 @@ public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 		bar.setDisplayShowHomeEnabled(true);
 		bar.setDisplayHomeAsUpEnabled(true);
 		bar.setHomeButtonEnabled(true);
-		
-		setSupportProgressBarIndeterminateVisibility(false);
 	}
 
 

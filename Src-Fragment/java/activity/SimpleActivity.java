@@ -8,7 +8,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
 
 import com.example.R;
 
@@ -27,8 +26,7 @@ public class SimpleActivity extends ActionBarActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+
 		setupActionBar();
 		setContentView(R.layout.activity_simple);
 	}
@@ -109,7 +107,5 @@ public class SimpleActivity extends ActionBarActivity
 		bar.setDisplayShowHomeEnabled(true);
 		bar.setDisplayHomeAsUpEnabled(false);
 		bar.setHomeButtonEnabled(true);
-		
-		setSupportProgressBarIndeterminateVisibility(false);
 	}
 }

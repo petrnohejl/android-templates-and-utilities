@@ -3,7 +3,6 @@ package com.example.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Window;
 
 import com.example.R;
 import com.example.fragment.ExampleFragment;
@@ -15,8 +14,6 @@ public class ExampleActivity extends ActionBarActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_example);
 	}
 

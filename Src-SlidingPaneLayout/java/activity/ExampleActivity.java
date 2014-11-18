@@ -59,8 +59,6 @@ public class ExampleActivity extends ActionBarActivity
 		bar.setDisplayShowHomeEnabled(true);
 		bar.setDisplayHomeAsUpEnabled(false);
 		bar.setHomeButtonEnabled(false);
-		
-		setSupportProgressBarIndeterminateVisibility(false);
 	}
 
 
