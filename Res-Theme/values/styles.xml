@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="Widget.Example.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+		<item name="android:background">?attr/colorPrimary</item>
+		<item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+	</style>
+
+	<style name="TextAppearance.Example.Display4" parent="@style/TextAppearance.AppCompat.Display4">
+		<item name="android:textSize">@dimen/global_text_size_display_4</item>
+		<item name="android:textColor">?android:textColorSecondary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Display3" parent="@style/TextAppearance.AppCompat.Display3">
+		<item name="android:textSize">@dimen/global_text_size_display_3</item>
+		<item name="android:textColor">?android:textColorSecondary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Display2" parent="@style/TextAppearance.AppCompat.Display2">
+		<item name="android:textSize">@dimen/global_text_size_display_2</item>
+		<item name="android:textColor">?android:textColorSecondary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Display1" parent="@style/TextAppearance.AppCompat.Display1">
+		<item name="android:textSize">@dimen/global_text_size_display_1</item>
+		<item name="android:textColor">?android:textColorSecondary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Headline" parent="@style/TextAppearance.AppCompat.Headline">
+		<item name="android:textSize">@dimen/global_text_size_headline</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Title" parent="@style/TextAppearance.AppCompat.Title">
+		<item name="android:textSize">@dimen/global_text_size_title</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Title.Inverse" parent="@style/TextAppearance.Example.Title">
+		<item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Subhead" parent="@style/TextAppearance.AppCompat.Subhead">
+		<item name="android:textSize">@dimen/global_text_size_subhead</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Subhead.Inverse" parent="@style/TextAppearance.Example.Subhead">
+		<item name="android:textColor">?android:attr/textColorSecondaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Body2" parent="@style/TextAppearance.AppCompat.Body2">
+		<item name="android:textSize">@dimen/global_text_size_body_2</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Body1" parent="@style/TextAppearance.AppCompat.Body1">
+		<item name="android:textSize">@dimen/global_text_size_body_1</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Caption" parent="@style/TextAppearance.AppCompat.Caption">
+		<item name="android:textSize">@dimen/global_text_size_caption</item>
+		<item name="android:textColor">?android:textColorSecondary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Button" parent="@style/TextAppearance.AppCompat.Button">
+		<item name="android:textSize">@dimen/global_text_size_button</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+		<item name="textAllCaps">true</item>
+	</style>
+
+	<style name="TextAppearance.Example.Menu" parent="@style/TextAppearance.AppCompat.Menu">
+		<item name="android:textSize">@dimen/global_text_size_menu</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+</resources>

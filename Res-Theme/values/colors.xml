@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="global_color_primary">#ffbdbdbd</color>
+	<color name="global_color_primary_dark">#ff757575</color>
+	<color name="global_color_accent">#ff009688</color>
+	<color name="global_color_control_normal">#8a000000</color>
+	<color name="global_color_control_activated">#ff009688</color>
+	<color name="global_color_control_highlight">#40000000</color>
+	<color name="global_color_switch_thumb_normal">#fff1f1f1</color>
+
+	<color name="global_text_primary">#de000000</color>
+	<color name="global_text_primary_inverse">#ffffff</color>
+	<color name="global_text_primary_disable_only">#000000</color>
+	<color name="global_text_secondary">#8a000000</color>
+	<color name="global_text_secondary_inverse">#b3ffffff</color>
+	<color name="global_text_tertiary">#8a000000</color>
+	<color name="global_text_tertiary_inverse">#b3ffffff</color>
+	<color name="global_text_hint">#80000000</color>
+	<color name="global_text_hint_inverse">#80ffffff</color>
+	<color name="global_text_highlight">#66009688</color>
+	<color name="global_text_link">#009688</color>
+
+	<color name="global_bg_back">#ffeeeeee</color>
+	<color name="global_bg_back_inverse">#ff303030</color>
+	<color name="global_bg_front">#ffffff</color>
+	<color name="global_bg_front_inverse">#000000</color>
+	<color name="global_bg_dialog">#eeeeee</color>
+	<color name="global_bg_dialog_inverse">#424242</color>
+
+	<color name="theme_action_mode_bg">#303030</color>
+	<color name="theme_status_bar">#ff757575</color>
+	<color name="theme_navigation_bar">#000000</color>
+	<color name="theme_button_normal">#ffd6d7d7</color>
+	<color name="theme_edge_effect">#ffbdbdbd</color>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- AppCompat source code: https://github.com/android/platform_frameworks_support/tree/lollipop-release/v7/appcompat/res/values -->
+
+	<style name="Theme.Example.Light" parent="@style/Theme.AppCompat.Light">
+		<item name="windowActionBar">false</item>
+		<item name="windowActionModeOverlay">true</item>
+
+		<item name="android:windowBackground">@color/global_bg_back</item>
+		<item name="actionModeBackground">@color/theme_action_mode_bg</item>
+		<item name="android:statusBarColor">@color/theme_status_bar</item>
+		<item name="android:navigationBarColor">@color/theme_navigation_bar</item>
+		<item name="android:colorButtonNormal">@color/theme_button_normal</item>
+		<item name="android:colorEdgeEffect">@color/theme_edge_effect</item>
+
+		<item name="colorPrimary">@color/global_color_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_primary_dark</item>
+		<item name="colorAccent">@color/global_color_accent</item>
+		<item name="colorControlNormal">@color/global_color_control_normal</item>
+		<item name="colorControlActivated">@color/global_color_control_activated</item>
+		<item name="colorControlHighlight">@color/global_color_control_highlight</item>
+		<item name="colorSwitchThumbNormal">@color/global_color_switch_thumb_normal</item>
+
+		<item name="android:textColorPrimary">@color/global_text_primary</item>
+		<item name="android:textColorPrimaryInverse">@color/global_text_primary_inverse</item>
+		<item name="android:textColorPrimaryDisableOnly">@color/global_text_primary_disable_only</item>
+		<item name="android:textColorSecondary">@color/global_text_secondary</item>
+		<item name="android:textColorSecondaryInverse">@color/global_text_secondary_inverse</item>
+		<item name="android:textColorTertiary">@color/global_text_tertiary</item>
+		<item name="android:textColorTertiaryInverse">@color/global_text_tertiary_inverse</item>
+		<item name="android:textColorHint">@color/global_text_hint</item>
+		<item name="android:textColorHintInverse">@color/global_text_hint_inverse</item>
+		<item name="android:textColorHighlight">@color/global_text_highlight</item>m>
+		<item name="android:textColorLink">@color/global_text_link</item>
+	</style>
+
+	<style name="Theme.Example.Transparent" parent="@style/Theme.Example.Light">
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:windowActionBar">false</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:backgroundDimEnabled">false</item>
+	</style>
+
+</resources>

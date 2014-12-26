@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello TextView" />
+
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Hello Button" />
+
+	<RadioButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello RadioButton" />
+
+	<CheckBox
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello CheckBox" />
+
+	<Switch
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello Switch" />
+
+	<ToggleButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello ToggleButton" />
+
+	<ImageButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:adjustViewBounds="true"
+		android:scaleType="fitCenter"
+		android:src="@drawable/ic_launcher" />
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/ic_launcher" />
+
+	<ProgressBar
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
+	<ProgressBar
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:progress="50"
+		style="?android:attr/progressBarStyleHorizontal" />
+
+	<SeekBar
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:progress="50" />
+
+	<RatingBar
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:progress="50" />
+
+	<Spinner
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:prompt="@string/app_name" />
+
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:inputType="text"
+		android:text="Hello EditText" />
+
+	<SearchView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:queryHint="Hello SearchView" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Display4"
+		android:text="D4" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Display3"
+		android:text="Display3" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Display2"
+		android:text="Display2" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Display1"
+		android:text="Display1" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Headline"
+		android:text="Text Appearance Headline" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Title"
+		android:text="Text Appearance Title" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Title.Inverse"
+		android:text="Text Appearance Title Inverse" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Subhead"
+		android:text="Text Appearance Subhead" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Subhead.Inverse"
+		android:text="Text Appearance Subhead Inverse" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Body2"
+		android:text="Text Appearance Body2" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Body1"
+		android:text="Text Appearance Body1" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Caption"
+		android:text="Text Appearance Caption" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Button"
+		android:text="Text Appearance Button" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.Example.Menu"
+		android:text="Text Appearance Menu" />
+
+</LinearLayout>
