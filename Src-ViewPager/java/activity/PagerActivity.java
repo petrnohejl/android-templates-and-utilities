@@ -18,7 +18,6 @@ public class PagerActivity extends ActionBarActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pager);
-		
 		renderView();
 	}
 	

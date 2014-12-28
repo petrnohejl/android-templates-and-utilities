@@ -2,19 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="horizontal">
-	
-	<fragment
-		android:id="@+id/fragment_listing"
-		android:name="com.example.fragment.ListingFragment"
-		android:layout_width="0dp"
-		android:layout_height="match_parent"
-		android:layout_weight="1" />
-	
-	<FrameLayout
-		android:id="@+id/container_dual_pane"
-		android:layout_width="0dp"
-		android:layout_height="match_parent"
-		android:layout_weight="1" />
+	android:orientation="vertical">
+
+	<include layout="@layout/toolbar" />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:orientation="horizontal">
+
+		<fragment
+			android:id="@+id/fragment_listing"
+			android:name="com.example.fragment.ListingFragment"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1" />
+
+		<FrameLayout
+			android:id="@+id/container_dual_pane"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1" />
+
+	</LinearLayout>
 
 </LinearLayout>

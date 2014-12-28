@@ -19,7 +19,6 @@ public class TabIndicatorActivity extends ActionBarActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabindicator);
-		
 		renderView();
 	}
 	

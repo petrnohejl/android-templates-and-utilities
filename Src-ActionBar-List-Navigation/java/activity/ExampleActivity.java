@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.OnNavigationListener;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.example.R;
 import com.example.adapter.ActionBarListNavigationAdapter;
@@ -16,7 +17,6 @@ public class ExampleActivity extends ActionBarActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
 		setContentView(R.layout.activity_example);
 		
 		// action bar navigation
@@ -28,6 +28,9 @@ public class ExampleActivity extends ActionBarActivity
 	
 	private void setupActionBarNavigation(CharSequence[] items, String subtitle, int selectedItem)
 	{
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
+
 		ActionBar bar = getSupportActionBar();
 		Context context = bar.getThemedContext();
 		

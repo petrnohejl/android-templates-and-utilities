@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/fragment_listing"
-	android:name="com.example.fragment.ListingFragment"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:layout_weight="1" />
+	android:orientation="vertical">
+
+	<include layout="@layout/toolbar" />
+
+	<fragment
+		android:id="@+id/fragment_listing"
+		android:name="com.example.fragment.ListingFragment"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1" />
+
+</LinearLayout>

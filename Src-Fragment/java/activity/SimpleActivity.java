@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,9 +27,8 @@ public class SimpleActivity extends ActionBarActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-
-		setupActionBar();
 		setContentView(R.layout.activity_simple);
+		setupActionBar();
 	}
 	
 	
@@ -101,6 +101,9 @@ public class SimpleActivity extends ActionBarActivity
 	
 	private void setupActionBar()
 	{
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
+
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayUseLogoEnabled(false);
 		bar.setDisplayShowTitleEnabled(true);

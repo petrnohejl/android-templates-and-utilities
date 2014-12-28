@@ -19,7 +19,6 @@ public class IndicatorActivity extends ActionBarActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_indicator);
-		
 		renderView();
 	}
 	

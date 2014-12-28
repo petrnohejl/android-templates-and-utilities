@@ -21,7 +21,6 @@ public class ExampleActivity extends ActionBarActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
 		setContentView(R.layout.activity_example);
 		
 		// handle GCM registration

@@ -20,7 +20,6 @@ public class TabsActivity extends ActionBarActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs);
-		
 		renderView();
 	}
 	

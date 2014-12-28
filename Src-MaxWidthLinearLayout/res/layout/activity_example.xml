@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.view.MaxWidthLinearLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:example="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:layout_gravity="center_horizontal"
-	android:orientation="vertical"
-	example:maxWidth="@dimen/global_max_width">
-	
-	<fragment
-		android:id="@+id/fragment_example"
-		android:name="com.example.fragment.ExampleFragment"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_weight="1" />
+	android:orientation="vertical">
 
-</com.example.view.MaxWidthLinearLayout>
+	<include layout="@layout/toolbar" />
+
+	<com.example.view.MaxWidthLinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:layout_gravity="center_horizontal"
+		android:orientation="vertical"
+		example:maxWidth="@dimen/global_max_width">
+
+		<fragment
+			android:id="@+id/fragment_example"
+			android:name="com.example.fragment.ExampleFragment"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1" />
+
+	</com.example.view.MaxWidthLinearLayout>
+
+</LinearLayout>

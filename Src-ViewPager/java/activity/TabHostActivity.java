@@ -20,7 +20,6 @@ public class TabHostActivity extends ActionBarActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabhost);
-		
 		renderView();
 	}
 	
