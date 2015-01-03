@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/activity_example_layout"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-	
-	<FrameLayout
-		android:id="@+id/activity_example_container"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<include layout="@layout/toolbar" />
+
+	<android.support.v4.widget.DrawerLayout
+		android:id="@+id/activity_example_layout"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent" />
-	
-	<ListView
-		android:id="@+id/activity_example_drawer"
-		android:layout_width="@dimen/drawer_width"
-		android:layout_height="match_parent"
-		android:layout_gravity="start"
-		android:choiceMode="singleChoice"
-		android:drawSelectorOnTop="false"
-		android:fastScrollEnabled="false"
-		android:dividerHeight="@dimen/drawer_item_divider"
-		android:divider="@color/drawer_item_divider"
-		android:cacheColorHint="@android:color/transparent"
-		android:listSelector="@android:color/transparent"
-		android:background="@color/drawer_bg" />
-	
-</android.support.v4.widget.DrawerLayout>
+		android:layout_height="match_parent">
+
+		<FrameLayout
+			android:id="@+id/activity_example_container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+
+		<ListView
+			android:id="@+id/activity_example_drawer"
+			android:layout_width="@dimen/drawer_width"
+			android:layout_height="match_parent"
+			android:layout_gravity="start"
+			android:choiceMode="singleChoice"
+			android:drawSelectorOnTop="true"
+			android:fastScrollEnabled="false"
+			android:dividerHeight="@dimen/drawer_item_divider"
+			android:divider="@color/drawer_item_divider"
+			android:background="@color/drawer_bg" />
+
+	</android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

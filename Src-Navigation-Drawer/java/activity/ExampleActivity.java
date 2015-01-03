@@ -2,13 +2,13 @@ package com.example.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -153,7 +153,7 @@ public class ExampleActivity extends ActionBarActivity
 				selectDrawerItem(position);
 			}
 		});
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.drawer_toggle, R.string.drawer_open, R.string.drawer_close)
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close)
 		{
 			@Override
 			public void onDrawerClosed(View view)

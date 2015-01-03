@@ -2,17 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:minHeight="@dimen/global_metric_unity"
+	android:minHeight="@dimen/global_spacing_l"
 	android:gravity="center_vertical"
 	android:orientation="horizontal"
 	android:background="@drawable/selector_drawer_item_bg">
 	
 	<ImageView
 		android:id="@+id/drawer_item_icon"
-		android:layout_width="@dimen/global_metric_xlarge"
-		android:layout_height="@dimen/global_metric_xlarge"
-		android:layout_marginLeft="@dimen/global_metric_small"
-		android:layout_marginRight="@dimen/global_metric_small"
+		android:layout_width="@dimen/global_spacing_m"
+		android:layout_height="@dimen/global_spacing_m"
+		android:layout_marginLeft="@dimen/global_keyline_s"
+		android:layout_marginRight="@dimen/global_spacing_xs"
 		android:adjustViewBounds="true"
 		android:scaleType="fitCenter" />
 	
@@ -20,8 +20,7 @@
 		android:id="@+id/drawer_item_title"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginRight="@dimen/global_metric_small"
-		android:textSize="@dimen/global_text_medium"
-		android:textColor="@color/global_text_primary" />
+		android:layout_marginRight="@dimen/global_keyline_s"
+		android:textAppearance="@style/TextAppearance.Example.Body1" />
 	
 </LinearLayout>
