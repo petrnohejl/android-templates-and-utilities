@@ -1,7 +1,6 @@
 package com.example.fragment;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,6 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 	private static final int LAZY_LOADING_MAX = LAZY_LOADING_TAKE * 10;
 	
 	private boolean mLazyLoading = false;
-	private boolean mActionBarProgress = false;
 	private ViewState mViewState = null;
 	private View mRootView;
 	private View mFooterView;
@@ -80,9 +78,6 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 			showProgress();
 		}
 
-		// progress in action bar
-		showActionBarProgress(mActionBarProgress);
-		
 		// lazy loading progress
 		if(mLazyLoading) showLazyLoadingProgress(true);
 	}
@@ -318,14 +313,6 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 			
 			mLazyLoading = false;
 		}
-	}
-	
-	
-	private void showActionBarProgress(boolean visible)
-	{
-		// show progress in action bar
-		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
-		mActionBarProgress = visible;
 	}
 	
 	

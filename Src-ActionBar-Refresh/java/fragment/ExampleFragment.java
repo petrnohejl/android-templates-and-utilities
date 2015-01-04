@@ -85,10 +85,7 @@ public class ExampleFragment extends Fragment
 				MenuItemCompat.setActionView(mRefreshMenuItem, null);
 			}
 		}
-		
-		// show action bar progress
-		//((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
-		
+
 		mActionBarProgress = visible;
 	}
 }
