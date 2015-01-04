@@ -2,7 +2,6 @@ package com.example.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +21,6 @@ import com.example.view.ViewState;
 
 public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 {
-	private boolean mActionBarProgress = false;
 	private ViewState mViewState = null;
 	private View mRootView;
 	private LoadDataTask mLoadDataTask;
@@ -78,9 +76,6 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 		{
 			showEmpty();
 		}
-		
-		// progress in action bar
-		showActionBarProgress(mActionBarProgress);
 	}
 	
 	
@@ -206,14 +201,6 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 		{
 			showOffline();
 		}
-	}
-	
-	
-	private void showActionBarProgress(boolean visible)
-	{
-		// show action bar progress
-		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
-		mActionBarProgress = visible;
 	}
 	
 	
