@@ -12,12 +12,12 @@
 		<se.emilsjolander.stickylistheaders.StickyListHeadersListView
 			android:id="@android:id/list"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:drawSelectorOnTop="false"
+			android:layout_height="wrap_content"
+			android:choiceMode="singleChoice"
+			android:drawSelectorOnTop="true"
 			android:fastScrollEnabled="false"
-			android:divider="@color/view_listview_divider"
-			android:cacheColorHint="@color/view_listview_cache_color_hint"
-			android:listSelector="@android:color/transparent" />
+			android:listSelector="@drawable/selector_clickable_item_bg"
+			android:background="@color/global_bg_front" />
 		
 		<include layout="@layout/placeholder_empty"
 			android:id="@android:id/empty"

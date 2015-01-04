@@ -19,7 +19,6 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 {
 	private Context mContext;
 	private ArrayList<ProductEntity> mProductList;
-	private int mSelectedPosition = -1;
 
 
 	public StickyListingAdapter(Context context, ArrayList<ProductEntity> productList)
@@ -55,16 +54,6 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 			
 			// content
 			holder.nameTextView.setText(product.getName());
-			
-			// selected item
-			if(mSelectedPosition == position)
-			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.color.view_listview_item_bg_selected));
-			}
-			else
-			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.selector_view_listview_item_bg));
-			}
 		}
 		
 		return view;
@@ -145,19 +134,6 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 	public void stop()
 	{
 		// TODO: stop image loader
-	}
-	
-	
-	public void setSelectedPosition(int position)
-	{
-		mSelectedPosition = position;
-		notifyDataSetChanged();
-	}
-	
-	
-	public int getSelectedPosition()
-	{
-		return mSelectedPosition;
 	}
 	
 	

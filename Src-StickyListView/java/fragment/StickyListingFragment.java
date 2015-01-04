@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,7 +30,6 @@ public class StickyListingFragment extends TaskFragment implements
 		AdapterView.OnItemLongClickListener,
 		StickyListHeadersListView.OnHeaderClickListener
 {
-	private boolean mActionBarProgress = false;
 	private ViewState mViewState = null;
 	private View mRootView;
 	private StickyListingAdapter mAdapter;
@@ -85,9 +83,6 @@ public class StickyListingFragment extends TaskFragment implements
 		{
 			showProgress();
 		}
-		
-		// progress in action bar
-		showActionBarProgress(mActionBarProgress);
 	}
 	
 	
@@ -187,8 +182,7 @@ public class StickyListingFragment extends TaskFragment implements
 	public void onItemClick(AdapterView<?> parent, View clickedView, int position, long id)
 	{
 		// listview item onclick
-		if(mAdapter!=null) mAdapter.setSelectedPosition(position);
-		
+
 		// TODO
 	}
 	
@@ -266,14 +260,6 @@ public class StickyListingFragment extends TaskFragment implements
 		{
 			showOffline();
 		}
-	}
-	
-	
-	private void showActionBarProgress(boolean visible)
-	{
-		// show action bar progress
-		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
-		mActionBarProgress = visible;
 	}
 	
 	
