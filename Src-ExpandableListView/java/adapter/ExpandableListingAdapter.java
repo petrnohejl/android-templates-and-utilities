@@ -60,11 +60,11 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 			// selected item
 			if(mSelectedGroupPosition == groupPosition && mSelectedChildPosition == childPosition)
 			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.color.view_listview_item_bg_selected));
+				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.color.global_color_control_activated));
 			}
 			else
 			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.selector_view_listview_item_bg));
+				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.selector_selectable_item_bg));
 			}
 		}
 		

@@ -2,16 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
+	android:minHeight="@dimen/global_spacing_l"
+	android:gravity="center_vertical"
 	android:orientation="horizontal"
 	android:focusable="false"
 	android:focusableInTouchMode="false"
-	android:background="@drawable/selector_view_listview_group_bg">
+	android:background="@color/global_bg_back">
 	
 	<TextView
 		android:id="@+id/fragment_expandable_listing_group_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:padding="@dimen/global_metric_small"
-		android:layout_marginLeft="@dimen/global_metric_large" />
+		android:layout_marginLeft="@dimen/global_keyline_m"
+		android:layout_marginRight="@dimen/global_keyline_s"
+		android:textAppearance="@style/TextAppearance.Example.Body1" />
 	
 </LinearLayout>

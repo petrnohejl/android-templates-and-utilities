@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,7 +25,6 @@ import com.example.view.ViewState;
 
 public class ExpandableListingFragment extends TaskFragment implements OnLoadDataListener
 {
-	private boolean mActionBarProgress = false;
 	private ViewState mViewState = null;
 	private View mRootView;
 	private ExpandableListingAdapter mAdapter;
@@ -80,9 +78,6 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		{
 			showProgress();
 		}
-		
-		// progress in action bar
-		showActionBarProgress(mActionBarProgress);
 	}
 	
 	
@@ -226,14 +221,6 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		{
 			showOffline();
 		}
-	}
-	
-	
-	private void showActionBarProgress(boolean visible)
-	{
-		// show action bar progress
-		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
-		mActionBarProgress = visible;
 	}
 	
 	
