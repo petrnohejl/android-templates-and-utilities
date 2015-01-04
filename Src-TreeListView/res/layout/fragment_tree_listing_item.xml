@@ -3,14 +3,16 @@
 	android:id="@+id/fragment_tree_listing_item"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:orientation="horizontal"
-	android:gravity="center_vertical">
+	android:minHeight="@dimen/global_spacing_l"
+	android:gravity="center_vertical"
+	android:orientation="horizontal">
 
 	<TextView
 		android:id="@+id/fragment_tree_listing_item_name"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_weight="1" />
+		android:layout_weight="1"
+		android:textAppearance="@style/TextAppearance.Example.Body1" />
 
 	<CheckBox
 		android:id="@+id/fragment_tree_listing_item_checkbox"

@@ -2,7 +2,6 @@ package com.example.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -39,7 +38,6 @@ public class TreeListingFragment extends TaskFragment implements
 {
 	private static final int TREEVIEW_DEPTH = 4;
 
-	private boolean mActionBarProgress = false;
 	private ViewState mViewState = null;
 	private View mRootView;
 	private TreeListingAdapter mAdapter;
@@ -94,9 +92,6 @@ public class TreeListingFragment extends TaskFragment implements
 		{
 			showProgress();
 		}
-
-		// progress in action bar
-		showActionBarProgress(mActionBarProgress);
 	}
 
 
@@ -258,9 +253,6 @@ public class TreeListingFragment extends TaskFragment implements
 		// list position
 		int listPosition = getListPosition((int) id);
 
-		// treeview item onclick
-		if(mAdapter!=null) mAdapter.setSelectedPosition(listPosition);
-
 		// TODO
 	}
 
@@ -326,14 +318,6 @@ public class TreeListingFragment extends TaskFragment implements
 		{
 			showOffline();
 		}
-	}
-
-
-	private void showActionBarProgress(boolean visible)
-	{
-		// show action bar progress
-		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
-		mActionBarProgress = visible;
 	}
 
 

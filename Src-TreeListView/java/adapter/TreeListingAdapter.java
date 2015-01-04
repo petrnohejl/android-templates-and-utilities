@@ -24,7 +24,6 @@ public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 {
 	private ArrayList<ProductEntity> mProductList;
 	private Set<Long> mSelectedSet;
-	private int mSelectedPosition = -1;
 
 
 	public TreeListingAdapter(Activity activity, ArrayList<ProductEntity> productList, Set<Long> selectedSet, TreeStateManager<Long> treeStateManager, int treeviewDepth)
@@ -88,17 +87,7 @@ public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 	@Override
 	public Drawable getBackgroundDrawable(TreeNodeInfo<Long> treeNodeInfo)
 	{
-		// selected item
-		if(mSelectedPosition == treeNodeInfo.getId().intValue())
-		{
-			Drawable drawable = getActivity().getResources().getDrawable(R.color.view_listview_item_bg_selected);
-			drawable.setAlpha(64*treeNodeInfo.getLevel() + 64);
-			return drawable;
-		}
-		else
-		{
-			return getActivity().getResources().getDrawable(R.drawable.selector_view_listview_item_bg);
-		}
+		return getActivity().getResources().getDrawable(R.drawable.selector_selectable_item_bg);
 	}
 
 
@@ -128,19 +117,5 @@ public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 	public void stop()
 	{
 		// TODO: stop image loader
-	}
-
-
-	public void setSelectedPosition(int position)
-	{
-		mSelectedPosition = position;
-		refresh();
-		notifyDataSetChanged();
-	}
-
-
-	public int getSelectedPosition()
-	{
-		return mSelectedPosition;
 	}
 }

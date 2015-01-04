@@ -15,11 +15,11 @@
 			android:id="@android:id/list"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:drawSelectorOnTop="false"
+			android:choiceMode="singleChoice"
+			android:drawSelectorOnTop="true"
 			android:fastScrollEnabled="false"
-			android:divider="@color/view_listview_divider"
-			android:cacheColorHint="@color/view_listview_cache_color_hint"
-			android:listSelector="@android:color/transparent"
+			android:listSelector="@drawable/selector_clickable_item_bg"
+			android:background="@color/global_bg_front"
 			treeview:indicator_gravity="right|center_vertical" />
 		
 		<include layout="@layout/placeholder_empty"
