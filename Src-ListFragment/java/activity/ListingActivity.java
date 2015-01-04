@@ -78,10 +78,10 @@ public class ListingActivity extends ActionBarActivity
 	
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) 
+	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// action bar menu behaviour
-		switch(item.getItemId()) 
+		switch(item.getItemId())
 		{
 			case android.R.id.home:
 				// TODO
@@ -92,7 +92,7 @@ public class ListingActivity extends ActionBarActivity
 			case R.id.ab_button_refresh:
 				// TODO
 				return true;
-			
+				
 			default:
 				return super.onOptionsItemSelected(item);
 		}

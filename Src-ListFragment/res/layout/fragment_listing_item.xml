@@ -3,13 +3,17 @@
 	android:id="@+id/fragment_listing_item"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
+	android:minHeight="@dimen/global_spacing_l"
+	android:gravity="center_vertical"
 	android:orientation="horizontal"
-	android:background="@drawable/selector_view_listview_item_bg">
+	android:background="@drawable/selector_selectable_item_bg">
 	
 	<TextView
 		android:id="@+id/fragment_listing_item_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:padding="@dimen/global_metric_small" />
+		android:layout_marginLeft="@dimen/global_keyline_s"
+		android:layout_marginRight="@dimen/global_keyline_s"
+		android:textAppearance="@style/TextAppearance.Example.Body1" />
 	
 </LinearLayout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+	<!-- Android source code: https://github.com/android/platform_frameworks_base/tree/lollipop-release/core/res/res/values -->
 	<!-- AppCompat source code: https://github.com/android/platform_frameworks_support/tree/lollipop-release/v7/appcompat/res/values -->
 
 	<style name="Theme.Example.Light" parent="@style/Theme.AppCompat.Light">

@@ -24,9 +24,8 @@
 			android:choiceMode="singleChoice"
 			android:drawSelectorOnTop="true"
 			android:fastScrollEnabled="false"
-			android:dividerHeight="@dimen/drawer_item_divider"
-			android:divider="@color/drawer_item_divider"
-			android:background="@color/drawer_bg" />
+			android:listSelector="@drawable/selector_clickable_item_bg"
+			android:background="@color/global_bg_front" />
 
 	</android.support.v4.widget.DrawerLayout>
 

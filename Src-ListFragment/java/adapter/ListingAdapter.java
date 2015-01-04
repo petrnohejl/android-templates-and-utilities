@@ -17,9 +17,8 @@ public class ListingAdapter extends BaseAdapter
 {
 	private Context mContext;
 	private ArrayList<ProductEntity> mProductList;
-	private int mSelectedPosition = -1;
-	
-	
+
+
 	public ListingAdapter(Context context, ArrayList<ProductEntity> productList)
 	{
 		mContext = context;
@@ -53,16 +52,6 @@ public class ListingAdapter extends BaseAdapter
 			
 			// content
 			holder.nameTextView.setText(product.getName());
-			
-			// selected item
-			if(mSelectedPosition == position)
-			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.color.view_listview_item_bg_selected));
-			}
-			else
-			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.selector_view_listview_item_bg));
-			}
 		}
 		
 		return view;
@@ -103,19 +92,6 @@ public class ListingAdapter extends BaseAdapter
 	public void stop()
 	{
 		// TODO: stop image loader
-	}
-	
-	
-	public void setSelectedPosition(int position)
-	{
-		mSelectedPosition = position;
-		notifyDataSetChanged();
-	}
-	
-	
-	public int getSelectedPosition()
-	{
-		return mSelectedPosition;
 	}
 	
 	

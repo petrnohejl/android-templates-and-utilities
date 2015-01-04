@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,7 +32,6 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	private static final int LAZY_LOADING_OFFSET = 4;
 	
 	private boolean mLazyLoading = false;
-	private boolean mActionBarProgress = false;
 	private ViewState mViewState = null;
 	private View mRootView;
 	private View mFooterView;
@@ -87,9 +85,6 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 		{
 			showProgress();
 		}
-
-		// progress in action bar
-		showActionBarProgress(mActionBarProgress);
 		
 		// lazy loading progress
 		if(mLazyLoading) showLazyLoadingProgress(true);
@@ -190,9 +185,6 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 		// list position
 		int listPosition = getListPosition(position);
 
-		// listview item onclick
-		if(mAdapter!=null) mAdapter.setSelectedPosition(listPosition);
-		
 		// TODO
 	}
 	
@@ -283,14 +275,6 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 			
 			mLazyLoading = false;
 		}
-	}
-	
-	
-	private void showActionBarProgress(boolean visible)
-	{
-		// show progress in action bar
-		((ActionBarActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
-		mActionBarProgress = visible;
 	}
 	
 	

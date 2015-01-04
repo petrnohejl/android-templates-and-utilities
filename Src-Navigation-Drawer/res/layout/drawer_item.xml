@@ -5,7 +5,7 @@
 	android:minHeight="@dimen/global_spacing_l"
 	android:gravity="center_vertical"
 	android:orientation="horizontal"
-	android:background="@drawable/selector_drawer_item_bg">
+	android:background="@drawable/selector_selectable_item_bg">
 	
 	<ImageView
 		android:id="@+id/drawer_item_icon"
