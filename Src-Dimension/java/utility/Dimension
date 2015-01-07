@@ -6,13 +6,13 @@ import android.util.TypedValue;
 
 public class Dimension {
 
-    public static int dp2px(final Context context, final  float dp){
+    public static float dp2px(final Context context, final  float dp){
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, dm);
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, dm);
     }
 
-    public static int sp2px(final Context context, final  float sp){
+    public static float sp2px(final Context context, final  float sp){
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, dm);
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, dm);
     }
 }
