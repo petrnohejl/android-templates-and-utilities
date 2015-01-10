@@ -4,28 +4,26 @@
 	android:layout_height="wrap_content"
 	android:layout_gravity="center_vertical"
 	android:orientation="vertical"
-	android:paddingRight="@dimen/global_metric_micro">
-	
+	android:paddingRight="@dimen/global_spacing_xxs">
+
 	<TextView
 		android:id="@+id/ab_list_navigation_title"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="@dimen/ab_subtitle_margin"
+		android:layout_marginTop="-3dp"
 		android:maxLines="1"
 		android:ellipsize="end"
 		android:singleLine="true"
-		android:textSize="@dimen/ab_title_text"
-		android:textColor="@color/ab_title_text" />
-	
+		android:textAppearance="@style/TextAppearance.Example.Title" />
+
 	<TextView
 		android:id="@+id/ab_list_navigation_subtitle"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="@dimen/ab_subtitle_margin"
+		android:layout_marginTop="-3dp"
 		android:maxLines="1"
 		android:ellipsize="end"
 		android:singleLine="true"
-		android:textSize="@dimen/ab_subtitle_text"
-		android:textColor="@color/ab_subtitle_text" />
-	
+		android:textAppearance="@style/TextAppearance.Example.Caption" />
+
 </LinearLayout>
