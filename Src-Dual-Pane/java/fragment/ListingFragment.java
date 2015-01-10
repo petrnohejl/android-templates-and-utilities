@@ -75,14 +75,14 @@ public class ListingFragment extends ListFragment
 		int listPosition = position; // TODO
 
 		// listview item onclick
-		if(mAdapter!=null) mAdapter.setSelectedPosition(listPosition);
-
 		mDualPaneShowListener.onDualPaneShow(SimpleFragment.class, listPosition);
 	}
 	
 	
 	private void renderView()
 	{
+		boolean init = false;
+
 		// testing data
 		for(int i=0; i<32; i++)
 		{
@@ -104,8 +104,8 @@ public class ListingFragment extends ListFragment
 			// initial fragment in second pane
 			if(dualPane && mProductList!=null && mProductList.size()>0)
 			{
-				mAdapter.setSelectedPosition(0);
 				mDualPaneShowListener.onDualPaneShow(SimpleFragment.class, 0);
+				init = true;
 			}
 		}
 		else
@@ -116,5 +116,8 @@ public class ListingFragment extends ListFragment
 		
 		// set adapter
 		setListAdapter(mAdapter);
+
+		// set first item checked
+		if(init) getListView().setItemChecked(0, true);
 	}
 }
