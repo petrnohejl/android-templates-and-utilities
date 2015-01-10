@@ -14,16 +14,16 @@
 		android:endColor="#f0f" />
 	
 	<stroke
-		android:width="@dimen/global_metric_micro"
-		android:dashWidth="@dimen/global_metric_micro"
-		android:dashGap="@dimen/global_metric_micro"
+		android:width="@dimen/global_spacing_xxs"
+		android:dashWidth="@dimen/global_spacing_xxs"
+		android:dashGap="@dimen/global_spacing_xxs"
 		android:color="#f00" />
 	
 	<corners
-		android:topLeftRadius="@dimen/global_metric_medium"
-		android:topRightRadius="@dimen/global_metric_medium"
-		android:bottomLeftRadius="@dimen/global_metric_medium"
-		android:bottomRightRadius="@dimen/global_metric_medium" />
+		android:topLeftRadius="@dimen/global_spacing_xs"
+		android:topRightRadius="@dimen/global_spacing_xs"
+		android:bottomLeftRadius="@dimen/global_spacing_xs"
+		android:bottomRightRadius="@dimen/global_spacing_xs" />
 	
 	<padding
 		android:bottom="0dp"
