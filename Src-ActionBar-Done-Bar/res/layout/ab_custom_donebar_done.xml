@@ -3,7 +3,7 @@
 	android:layout_width="0dp"
 	android:layout_height="match_parent"
 	android:layout_weight="1"
-	android:background="@drawable/selector_ab_item_bg">
+	android:background="@drawable/selector_clickable_item_bg">
 	
 	<TextView
 		android:layout_width="wrap_content"
@@ -12,10 +12,7 @@
 		android:gravity="center_vertical"
 		android:paddingRight="20dp"
 		android:drawableLeft="@drawable/ab_ic_done"
-		android:drawablePadding="8dp"
-		android:textStyle="bold"
-		android:textAllCaps="true"
-		android:textSize="@dimen/ab_custom_donebar_text"
-		android:textColor="@color/ab_button_text"
+		android:drawablePadding="@dimen/global_spacing_xxs"
+		android:textAppearance="@style/TextAppearance.Example.Button"
 		android:text="@string/global_button_done" />
 </FrameLayout>

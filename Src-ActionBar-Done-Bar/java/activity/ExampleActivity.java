@@ -25,6 +25,7 @@ public class ExampleActivity extends ActionBarActivity
 	private void setupActionBar()
 	{
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		toolbar.setContentInsetsRelative(0, 0);
 		setSupportActionBar(toolbar);
 
 		ActionBar bar = getSupportActionBar();
