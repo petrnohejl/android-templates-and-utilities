@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-	
-	<!-- Example theme -->
-	
-	<style name="Theme.Example" parent="@style/Theme.AppCompat.Light">
-		<!-- tab page indicator -->
-		<item name="vpiTabPageIndicatorStyle">@style/Example.TabPageIndicator</item>
-	</style>
-	
-	
+
 	<!-- tab page indicator -->
 	<style name="Example.TabPageIndicator" parent="@style/Widget.TabPageIndicator">
-		<item name="android:background">@drawable/selector_ab_tab_bg</item>
-		<item name="android:textAppearance">@style/Example.TabPageIndicator.TextAppearance</item>
-		<item name="android:textColor">@color/ab_tab_text</item>
-		<item name="android:textSize">@dimen/ab_tab_text</item>
-		<item name="android:textAllCaps">true</item>
+		<item name="android:height">@dimen/global_spacing_l</item>
+		<item name="android:background">@drawable/selector_tab_bg</item>
+		<item name="android:textAppearance">@style/TextAppearance.Example.Tab</item>
 		<item name="android:fadingEdge">horizontal</item>
-		<item name="android:fadingEdgeLength">@dimen/ab_tab_padding</item>
-		<item name="android:paddingLeft">@dimen/ab_tab_padding</item>
-		<item name="android:paddingRight">@dimen/ab_tab_padding</item>
-		<item name="android:divider">@drawable/ab_divider</item>
-		<item name="android:dividerPadding">@dimen/ab_tab_padding</item>
+		<item name="android:fadingEdgeLength">@dimen/global_spacing_xs</item>
+		<item name="android:paddingLeft">@dimen/global_spacing_xs</item>
+		<item name="android:paddingRight">@dimen/global_spacing_xs</item>
+		<item name="android:divider">@null</item>
+		<item name="android:dividerPadding">@dimen/global_spacing_xs</item>
 		<item name="android:showDividers">middle</item>
 	</style>
-	
-	
+
 	<!-- tab page indicator text -->
-	<style name="Example.TabPageIndicator.TextAppearance" parent="@android:style/TextAppearance.Medium">
+	<style name="TextAppearance.Example.Tab" parent="@style/TextAppearance.Example.Button">
+		<item name="android:textSize">@dimen/global_text_size_button</item>
+		<item name="android:textColor">@color/global_text_primary_inverse</item>
+		<item name="android:textAllCaps">true</item>
 		<item name="android:typeface">normal</item>
 	</style>
+
 </resources>
