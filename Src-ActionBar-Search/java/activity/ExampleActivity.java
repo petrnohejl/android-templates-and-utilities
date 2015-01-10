@@ -13,9 +13,7 @@ import android.support.v7.widget.SearchView.OnSuggestionListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.R;
@@ -64,18 +62,10 @@ public class ExampleActivity extends ActionBarActivity
 		// search hint
 		searchView.setQueryHint(getString(R.string.ab_button_search_hint));
 		
-		// background
-		View searchPlate = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
-		searchPlate.setBackgroundResource(R.drawable.ab_searchview_bg);
-		
-		// clear button
-		ImageView searchClose = (ImageView) searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
-		searchClose.setImageResource(R.drawable.ab_ic_clear_search);
-		
 		// text color
 		AutoCompleteTextView searchText = (AutoCompleteTextView) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-		searchText.setTextColor(getResources().getColor(R.color.global_text_primary));
-		searchText.setHintTextColor(getResources().getColor(R.color.global_text_secondary));
+		searchText.setTextColor(getResources().getColor(R.color.global_text_primary_inverse));
+		searchText.setHintTextColor(getResources().getColor(R.color.global_text_secondary_inverse));
 		
 		// suggestion listeners
 		searchView.setOnQueryTextListener(new OnQueryTextListener()

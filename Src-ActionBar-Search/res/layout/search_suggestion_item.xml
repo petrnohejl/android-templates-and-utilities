@@ -3,22 +3,22 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	android:padding="@dimen/global_metric_small">
+	android:padding="@dimen/global_spacing_xxs">
 	
 	<TextView
 		android:id="@+id/search_suggestion_item_title"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:maxLines="1"
-		android:textSize="@dimen/global_text_medium"
-		android:textColor="@color/global_text_accent" />
+		android:textAppearance="@style/TextAppearance.Example.Body1"
+		android:textColor="@color/global_text_primary_inverse" />
 	
 	<TextView
 		android:id="@+id/search_suggestion_item_subtitle"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:maxLines="1"
-		android:textSize="@dimen/global_text_small"
-		android:textColor="@color/global_text_secondary" />
+		android:textAppearance="@style/TextAppearance.Example.Caption"
+		android:textColor="@color/global_text_secondary_inverse" />
 	
 </LinearLayout>
