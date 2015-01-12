@@ -50,7 +50,7 @@ public class ExampleActivity extends ActionBarActivity
 		if(menu!=null)
 		{
 			boolean drawerOpened = mDrawerLayout.isDrawerOpen(mDrawerListView);
-			MenuItem refresh = menu.findItem(R.id.ab_button_refresh);
+			MenuItem refresh = menu.findItem(R.id.menu_refresh);
 			if(refresh!=null) refresh.setVisible(!drawerOpened);
 		}
 		return super.onPrepareOptionsMenu(menu);
@@ -73,7 +73,7 @@ public class ExampleActivity extends ActionBarActivity
 				// TODO
 				return true;
 				
-			case R.id.ab_button_refresh:
+			case R.id.menu_refresh:
 				// TODO
 				return true;
 			

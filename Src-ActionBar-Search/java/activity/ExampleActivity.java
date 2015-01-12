@@ -48,7 +48,7 @@ public class ExampleActivity extends ActionBarActivity
 		setupSearchView(mSearchView);
 		
 		// search menu item
-		MenuItem searchMenuItem = menu.add(Menu.NONE, Menu.NONE, 1, R.string.ab_button_search);
+		MenuItem searchMenuItem = menu.add(Menu.NONE, Menu.NONE, 1, R.string.menu_search);
 		searchMenuItem.setIcon(R.drawable.ic_menu_search);
 		MenuItemCompat.setActionView(searchMenuItem, mSearchView);
 		MenuItemCompat.setShowAsAction(searchMenuItem, MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
@@ -60,7 +60,7 @@ public class ExampleActivity extends ActionBarActivity
 	private void setupSearchView(SearchView searchView)
 	{
 		// search hint
-		searchView.setQueryHint(getString(R.string.ab_button_search_hint));
+		searchView.setQueryHint(getString(R.string.menu_search_hint));
 		
 		// text color
 		AutoCompleteTextView searchText = (AutoCompleteTextView) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);

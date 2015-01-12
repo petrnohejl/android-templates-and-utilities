@@ -89,7 +89,7 @@ public class ListingActivity extends ActionBarActivity
 				startActivity(intent);
 				return true;
 				
-			case R.id.ab_button_refresh:
+			case R.id.menu_refresh:
 				// TODO
 				return true;
 				

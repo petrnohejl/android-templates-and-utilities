@@ -14,7 +14,7 @@
 
 	<string name="title_example">Example title</string>
 
-	<string name="ab_button_example">Example button</string>
+	<string name="menu_example">Example menu</string>
 
 	<string name="placeholder_empty">No data</string>
 	<string name="placeholder_offline">No network</string>

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:example="http://schemas.android.com/apk/res-auto">
 	<item 
-		android:id="@+id/ab_button_refresh"
-		android:title="@string/ab_button_refresh"
+		android:id="@+id/menu_refresh"
+		android:title="@string/menu_refresh"
 		android:icon="@drawable/ic_menu_refresh"
 		android:orderInCategory="1"
 		example:showAsAction="ifRoom" />
 	
 	<item 
-		android:id="@+id/ab_button_list"
-		android:title="@string/ab_button_list"
+		android:id="@+id/menu_list"
+		android:title="@string/menu_list"
 		android:icon="@drawable/ic_menu_list"
 		android:orderInCategory="2"
 		example:showAsAction="ifRoom">
 		<menu>
 			<item 
-				android:id="@+id/ab_button_list_expand"
-				android:title="@string/ab_button_list_expand"
+				android:id="@+id/menu_list_expand"
+				android:title="@string/menu_list_expand"
 				android:icon="@null"
 				android:orderInCategory="1" />
 			<item 
-				android:id="@+id/ab_button_list_collapse"
-				android:title="@string/ab_button_list_collapse"
+				android:id="@+id/menu_list_collapse"
+				android:title="@string/menu_list_collapse"
 				android:icon="@null"
 				android:orderInCategory="2" />
 		</menu>
