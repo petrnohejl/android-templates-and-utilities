@@ -15,6 +15,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:gravity="center"
+			android:textAppearance="@style/TextAppearance.Example.Subhead"
 			android:text="@string/placeholder_empty" />
 
 	</LinearLayout>
