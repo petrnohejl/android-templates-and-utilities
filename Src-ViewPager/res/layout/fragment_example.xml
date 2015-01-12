@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:animateLayoutChanges="true">
@@ -15,19 +16,22 @@
 
 	</ScrollView>
 
-	<include layout="@layout/placeholder_progress"
+	<include
+		layout="@layout/placeholder_progress"
 		android:id="@+id/container_progress"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:visibility="gone" />
 
-	<include layout="@layout/placeholder_offline"
+	<include
+		layout="@layout/placeholder_offline"
 		android:id="@+id/container_offline"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:visibility="gone" />
 
-	<include layout="@layout/placeholder_empty"
+	<include
+		layout="@layout/placeholder_empty"
 		android:id="@+id/container_empty"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"

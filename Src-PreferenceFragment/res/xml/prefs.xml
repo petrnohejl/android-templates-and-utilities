@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<PreferenceCategory android:title="@string/prefs_header_general" android:icon="@null">
+	<PreferenceCategory
+		android:title="@string/prefs_header_general"
+		android:icon="@null">
+
 		<CheckBoxPreference
 			android:key="@string/prefs_key_social_recommendations"
 			android:title="@string/prefs_title_social_recommendations"
@@ -34,7 +38,10 @@
 			android:negativeButtonText="@null" />
 	</PreferenceCategory>
 	
-	<PreferenceCategory android:title="@string/prefs_header_notifications" android:icon="@null">
+	<PreferenceCategory
+		android:title="@string/prefs_header_notifications"
+		android:icon="@null">
+
 		<CheckBoxPreference
 			android:key="@string/prefs_key_new_message_notifications"
 			android:title="@string/prefs_title_new_message_notifications"
@@ -60,7 +67,10 @@
 			android:persistent="true" />
 	</PreferenceCategory>
 	
-	<PreferenceCategory android:title="@string/prefs_header_data_sync" android:icon="@null">
+	<PreferenceCategory
+		android:title="@string/prefs_header_data_sync"
+		android:icon="@null">
+
 		<ListPreference
 			android:key="@string/prefs_key_sync_frequency"
 			android:title="@string/prefs_title_sync_frequency"
@@ -77,9 +87,11 @@
 			android:icon="@null"
 			android:persistent="false">
 
-			<intent android:action="android.intent.action.VIEW" android:data="@string/prefs_data_privacy_policy" />
+			<intent
+				android:action="android.intent.action.VIEW"
+				android:data="@string/prefs_data_privacy_policy" />
 
 		</Preference>
 	</PreferenceCategory>
-	
+
 </PreferenceScreen>

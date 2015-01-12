@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<ListPreference
 		android:key="@string/prefs_key_sync_frequency"
@@ -17,7 +18,9 @@
 		android:icon="@null"
 		android:persistent="false">
 
-		<intent android:action="android.intent.action.VIEW" android:data="@string/prefs_data_privacy_policy" />
+		<intent
+			android:action="android.intent.action.VIEW"
+			android:data="@string/prefs_data_privacy_policy" />
 
 	</Preference>
 

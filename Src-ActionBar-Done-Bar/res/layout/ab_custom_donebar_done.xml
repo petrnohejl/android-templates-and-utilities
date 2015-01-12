@@ -1,10 +1,12 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/ab_custom_donebar_done"
 	android:layout_width="0dp"
 	android:layout_height="match_parent"
 	android:layout_weight="1"
 	android:background="@drawable/selector_clickable_item_bg">
-	
+
 	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -15,4 +17,5 @@
 		android:drawablePadding="@dimen/global_spacing_xxs"
 		android:textAppearance="@style/TextAppearance.Example.Button"
 		android:text="@string/global_button_done" />
+
 </FrameLayout>

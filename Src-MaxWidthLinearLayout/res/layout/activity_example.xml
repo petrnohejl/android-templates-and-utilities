@@ -24,5 +24,4 @@
 			android:layout_weight="1" />
 
 	</com.example.view.MaxWidthLinearLayout>
-
 </LinearLayout>

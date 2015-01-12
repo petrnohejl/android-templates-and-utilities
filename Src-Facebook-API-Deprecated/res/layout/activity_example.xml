@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<fragment
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/fragment_example"
 	android:name="com.example.fragment.ExampleFragment"
 	android:layout_width="match_parent"
