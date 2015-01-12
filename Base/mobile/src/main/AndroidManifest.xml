@@ -33,7 +33,7 @@
 
 		<activity
 			android:name=".activity.ExampleActivity"
-			android:label="@string/ab_title_example"
+			android:label="@string/title_example"
 			android:launchMode="standard">
 		</activity>
 

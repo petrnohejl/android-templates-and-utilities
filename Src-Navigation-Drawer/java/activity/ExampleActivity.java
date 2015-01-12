@@ -127,10 +127,10 @@ public class ExampleActivity extends ActionBarActivity
 		mDrawerTitle = getTitle();
 		
 		mTitles = new String[4];
-		mTitles[0] = getString(R.string.ab_title_example);
-		mTitles[1] = getString(R.string.ab_title_example);
-		mTitles[2] = getString(R.string.ab_title_example);
-		mTitles[3] = getString(R.string.ab_title_example);
+		mTitles[0] = getString(R.string.title_example);
+		mTitles[1] = getString(R.string.title_example);
+		mTitles[2] = getString(R.string.title_example);
+		mTitles[3] = getString(R.string.title_example);
 		
 		Integer[] icons = new Integer[4];
 		icons[0] = R.drawable.ic_drawer_example;

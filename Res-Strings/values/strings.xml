@@ -12,7 +12,7 @@
 	<string name="global_apicall_timeout_toast">Wooops! Connection timed out</string>
 	<string name="global_apicall_parse_fail_toast">Wooops! Unable to process response from server</string>
 
-	<string name="ab_title_example">Example title</string>
+	<string name="title_example">Example title</string>
 
 	<string name="ab_button_example">Example button</string>
 
