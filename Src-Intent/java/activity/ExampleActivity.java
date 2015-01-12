@@ -44,7 +44,7 @@ public class ExampleActivity extends ActionBarActivity
 	{
 		try
 		{
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(getString(R.string.app_uri)));
+			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(getString(R.string.app_store_uri)));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
