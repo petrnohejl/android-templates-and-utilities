@@ -7,7 +7,7 @@
 	android:animateLayoutChanges="true">
 	
 	<FrameLayout
-		android:id="@+id/container_list"
+		android:id="@+id/container_content"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 

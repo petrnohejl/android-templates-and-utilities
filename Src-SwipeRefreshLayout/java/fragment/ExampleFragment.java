@@ -10,11 +10,11 @@ import android.widget.Toast;
 import com.example.R;
 import com.example.client.APICallManager;
 import com.example.client.request.ExampleRequest;
-import com.example.task.TaskListFragment;
+import com.example.task.TaskFragment;
 import com.example.utility.NetworkManager;
 
 
-public class ExampleFragment extends TaskListFragment implements SwipeRefreshLayout.OnRefreshListener
+public class ExampleFragment extends TaskFragment implements SwipeRefreshLayout.OnRefreshListener
 {
 	private boolean mActionBarProgress = false;
 	private View mRootView;

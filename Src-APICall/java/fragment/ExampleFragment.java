@@ -16,7 +16,7 @@ import com.example.client.ResponseStatus;
 import com.example.client.request.ExampleRequest;
 import com.example.client.response.Response;
 import com.example.entity.ProductEntity;
-import com.example.task.TaskListFragment;
+import com.example.task.TaskFragment;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkManager;
 import com.example.view.ViewState;
@@ -32,7 +32,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class ExampleFragment extends TaskListFragment implements APICallListener
+public class ExampleFragment extends TaskFragment implements APICallListener
 {
 	private static final String META_REFRESH = "refresh";
 
@@ -71,7 +71,7 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 		else if(mViewState==ViewState.CONTENT)
 		{
 			if(mProductList!=null) renderView();
-			showList();
+			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
 		{
@@ -124,7 +124,7 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 
 						// hide progress
 						showLazyLoadingProgress(false);
-						showList();
+						showContent();
 
 						// handle error
 						handleError(exampleResponse.getErrorType(), exampleResponse.getErrorMessage());
@@ -163,7 +163,7 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 
 						// hide progress
 						showLazyLoadingProgress(false);
-						showList();
+						showContent();
 					}
 				}
 				
@@ -193,7 +193,7 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 					
 					// hide progress
 					showLazyLoadingProgress(false);
-					showList();
+					showContent();
 
 					// handle fail
 					handleFail(exception);
@@ -316,13 +316,13 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 	}
 	
 	
-	private void showList()
+	private void showContent()
 	{
 		// show list container
-		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
 		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
 		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.VISIBLE);
+		containerContent.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
 		mViewState = ViewState.CONTENT;
@@ -332,10 +332,10 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 	private void showProgress()
 	{
 		// show progress container
-		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
 		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
 		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.GONE);
+		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
 		mViewState = ViewState.PROGRESS;
@@ -345,10 +345,10 @@ public class ExampleFragment extends TaskListFragment implements APICallListener
 	private void showOffline()
 	{
 		// show offline container
-		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
 		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
 		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.GONE);
+		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
 		mViewState = ViewState.OFFLINE;

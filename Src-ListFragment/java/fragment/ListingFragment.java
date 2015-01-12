@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
@@ -21,12 +22,12 @@ import com.example.adapter.ListingAdapter;
 import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
-import com.example.task.TaskListFragment;
+import com.example.task.TaskFragment;
 import com.example.utility.NetworkManager;
 import com.example.view.ViewState;
 
 
-public class ListingFragment extends TaskListFragment implements OnLoadDataListener
+public class ListingFragment extends TaskFragment implements OnLoadDataListener
 {
 	private static final int LAZY_LOADING_TAKE = 16;
 	private static final int LAZY_LOADING_OFFSET = 4;
@@ -79,7 +80,7 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 		else if(mViewState==ViewState.CONTENT)
 		{
 			if(mProductList!=null) renderView();
-			showList();
+			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
 		{
@@ -127,9 +128,6 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	{
 		super.onDestroyView();
 		mRootView = null;
-
-		// free adapter
-		setListAdapter(null);
 	}
 	
 	
@@ -180,16 +178,6 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	
 	
 	@Override
-	public void onListItemClick(ListView listView, View clickedView, int position, long id)
-	{
-		// list position
-		int listPosition = getListPosition(position);
-
-		// TODO
-	}
-	
-	
-	@Override
 	public void onLoadData()
 	{
 		runTaskCallback(new Runnable()
@@ -219,7 +207,7 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 
 				// hide progress
 				showLazyLoadingProgress(false);
-				showList();
+				showContent();
 			}
 		});
 	}
@@ -278,13 +266,13 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	}
 	
 	
-	private void showList()
+	private void showContent()
 	{
 		// show list container
-		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
 		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
 		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.VISIBLE);
+		containerContent.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
 		mViewState = ViewState.CONTENT;
@@ -294,10 +282,10 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	private void showProgress()
 	{
 		// show progress container
-		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
 		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
 		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.GONE);
+		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
 		mViewState = ViewState.PROGRESS;
@@ -307,10 +295,10 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	private void showOffline()
 	{
 		// show offline container
-		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
 		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
 		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.GONE);
+		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
 		mViewState = ViewState.OFFLINE;
@@ -321,9 +309,10 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 	{
 		// reference
 		ListView listView = getListView();
+		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
 		
 		// listview content
-		if(getListAdapter()==null)
+		if(listView.getAdapter()==null)
 		{
 			// create adapter
 			mAdapter = new ListingAdapter(getActivity(), mProductList);
@@ -347,11 +336,14 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 		listView.addFooterView(mFooterView);
 		
 		// set adapter
-		setListAdapter(mAdapter);
+		listView.setAdapter(mAdapter);
 		
 		// hide footer
 		listView.removeFooterView(mFooterView);
-		
+
+		// listview empty view
+		listView.setEmptyView(emptyView);
+
 		// lazy loading
 		listView.setOnScrollListener(new OnScrollListener()
 		{
@@ -369,7 +361,20 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 				}
 			}
 		});
-		
+
+		// listview item onclick
+		listView.setOnItemClickListener(new OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			{
+				// list position
+				int listPosition = getListPosition(position);
+
+				// TODO
+			}
+		});
+
 		// listview item long onclick
 		listView.setOnItemLongClickListener(new OnItemLongClickListener()
 		{
@@ -384,6 +389,12 @@ public class ListingFragment extends TaskListFragment implements OnLoadDataListe
 				return true;
 			}
 		});
+	}
+
+
+	private ListView getListView()
+	{
+		return mRootView!=null ? (ListView) mRootView.findViewById(android.R.id.list) : null;
 	}
 
 

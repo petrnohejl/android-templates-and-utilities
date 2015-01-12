@@ -86,7 +86,7 @@ public class TreeListingFragment extends TaskFragment implements
 		else if(mViewState==ViewState.CONTENT)
 		{
 			if(mProductList!=null && mTreeStateManager!=null) renderView();
-			showList();
+			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
 		{
@@ -297,7 +297,7 @@ public class TreeListingFragment extends TaskFragment implements
 				}
 
 				// hide progress
-				showList();
+				showContent();
 			}
 		});
 	}
@@ -321,13 +321,13 @@ public class TreeListingFragment extends TaskFragment implements
 	}
 
 
-	private void showList()
+	private void showContent()
 	{
 		// show list container
-		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
 		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
 		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.VISIBLE);
+		containerContent.setVisibility(View.VISIBLE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.GONE);
 		mViewState = ViewState.CONTENT;
@@ -337,10 +337,10 @@ public class TreeListingFragment extends TaskFragment implements
 	private void showProgress()
 	{
 		// show progress container
-		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
 		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
 		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.GONE);
+		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.VISIBLE);
 		containerOffline.setVisibility(View.GONE);
 		mViewState = ViewState.PROGRESS;
@@ -350,10 +350,10 @@ public class TreeListingFragment extends TaskFragment implements
 	private void showOffline()
 	{
 		// show offline container
-		ViewGroup containerList = (ViewGroup) mRootView.findViewById(R.id.container_list);
+		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
 		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
 		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerList.setVisibility(View.GONE);
+		containerContent.setVisibility(View.GONE);
 		containerProgress.setVisibility(View.GONE);
 		containerOffline.setVisibility(View.VISIBLE);
 		mViewState = ViewState.OFFLINE;

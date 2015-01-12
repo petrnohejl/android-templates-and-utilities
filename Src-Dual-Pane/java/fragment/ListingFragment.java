@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.example.R;
@@ -16,7 +18,7 @@ import com.example.entity.ProductEntity;
 import com.example.listener.OnDualPaneShowListener;
 
 
-public class ListingFragment extends ListFragment
+public class ListingFragment extends Fragment
 {
 	private View mRootView;
 	private ListingAdapter mAdapter;
@@ -68,20 +70,13 @@ public class ListingFragment extends ListFragment
 	}
 	
 	
-	@Override
-	public void onListItemClick(ListView listView, View clickedView, int position, long id)
-	{
-		// list position
-		int listPosition = position; // TODO
-
-		// listview item onclick
-		mDualPaneShowListener.onDualPaneShow(SimpleFragment.class, listPosition);
-	}
-	
-	
 	private void renderView()
 	{
 		boolean init = false;
+
+		// reference
+		ListView listView = getListView();
+		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
 
 		// testing data
 		for(int i=0; i<32; i++)
@@ -99,7 +94,7 @@ public class ListingFragment extends ListFragment
 		if(mAdapter==null)
 		{
 			// create adapter
-			mAdapter = new ListingAdapter(getActivity(), dualPane, mProductList);
+			mAdapter = new ListingAdapter(getActivity(), mProductList, dualPane);
 			
 			// initial fragment in second pane
 			if(dualPane && mProductList!=null && mProductList.size()>0)
@@ -111,13 +106,30 @@ public class ListingFragment extends ListFragment
 		else
 		{
 			// refill adapter
-			mAdapter.refill(getActivity(), dualPane, mProductList);
+			mAdapter.refill(getActivity(), mProductList, dualPane);
 		}
-		
+
 		// set adapter
-		setListAdapter(mAdapter);
+		listView.setAdapter(mAdapter);
+
+		// listview empty view
+		listView.setEmptyView(emptyView);
 
 		// set first item checked
-		if(init) getListView().setItemChecked(0, true);
+		if(init) listView.setItemChecked(0, true);
+
+		// listview item onclick
+		listView.setOnItemClickListener(new OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			{
+				// list position
+				int listPosition = getListPosition(position);
+
+				// listview item onclick
+				mDualPaneShowListener.onDualPaneShow(SimpleFragment.class, listPosition);
+			}
+		});
 	}
 }
