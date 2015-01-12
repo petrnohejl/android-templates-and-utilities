@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:example="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 	<item 
 		android:id="@+id/menu_refresh"
 		android:title="@string/menu_refresh"
 		android:icon="@drawable/ic_menu_refresh"
 		android:orderInCategory="1"
-		example:showAsAction="ifRoom" />
+		app:showAsAction="ifRoom" />
 	
 	<item 
 		android:id="@+id/menu_list"
 		android:title="@string/menu_list"
 		android:icon="@drawable/ic_menu_list"
 		android:orderInCategory="2"
-		example:showAsAction="ifRoom">
+		app:showAsAction="ifRoom">
 		<menu>
 			<item 
 				android:id="@+id/menu_list_expand"
