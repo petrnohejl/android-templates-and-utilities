@@ -6,8 +6,6 @@ public class ExampleConfig
 	public static final boolean DEV_API = true;
 	public static final boolean LOGS = true;
 	
-	public static final boolean BUILD_DEBUG = BuildConfig.DEBUG;
-	
 	public static final String API_ENDPOINT_PRODUCTION = "http://example.com/api/";
 	public static final String API_ENDPOINT_DEVELOPMENT = "http://dev.example.com/api/";
 	
