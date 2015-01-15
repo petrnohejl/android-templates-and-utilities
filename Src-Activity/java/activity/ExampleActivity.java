@@ -13,11 +13,11 @@ import android.view.MenuItem;
 import com.example.R;
 
 
-public class SimpleActivity extends ActionBarActivity
+public class ExampleActivity extends ActionBarActivity
 {
 	public static Intent newIntent(Context context)
 	{
-		Intent intent = new Intent(context, SimpleActivity.class);
+		Intent intent = new Intent(context, ExampleActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		return intent;
 	}
@@ -27,7 +27,7 @@ public class SimpleActivity extends ActionBarActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_simple);
+		setContentView(R.layout.activity_example);
 		setupActionBar();
 	}
 	
@@ -72,27 +72,27 @@ public class SimpleActivity extends ActionBarActivity
 	{
 		// action bar menu
 		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.menu_simple, menu);
+		menuInflater.inflate(R.menu.menu_example, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 	
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) 
+	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// action bar menu behaviour
-		switch(item.getItemId()) 
+		switch(item.getItemId())
 		{
 			case android.R.id.home:
 				// TODO
-				Intent intent = SimpleActivity.newIntent(this);
+				Intent intent = ExampleActivity.newIntent(this);
 				startActivity(intent);
 				return true;
 				
 			case R.id.menu_refresh:
 				// TODO
 				return true;
-			
+				
 			default:
 				return super.onOptionsItemSelected(item);
 		}

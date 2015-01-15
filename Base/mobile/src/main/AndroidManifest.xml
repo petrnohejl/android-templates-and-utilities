@@ -23,19 +23,13 @@
 		android:allowBackup="true">
 		
 		<activity
-			android:name=".activity.SimpleActivity"
+			android:name=".activity.ExampleActivity"
 			android:label="@string/app_name"
 			android:launchMode="standard">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-		</activity>
-
-		<activity
-			android:name=".activity.ExampleActivity"
-			android:label="@string/title_example"
-			android:launchMode="standard">
 		</activity>
 
 		<service android:name=".service.ExampleService" android:label="Example Service" />
