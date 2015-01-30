@@ -12,11 +12,11 @@ based on these templates.
 In this repo you can find templates for styling action bar, working with alarm
 manager, communicating with server API, sending and receiving broadcasts,
 working with database, creating dialogs, using dual pane layout, fragments,
-list fragments, GCM, geolocation, loading and caching images,
+GCM, geolocation, loading and caching images,
 working with intents, map, navigation drawer, showing notifications,
 preferences, running service, setting SSL connection, working with view pager,
 webview and much more. All templates were tested and should be compatible
-with Android 2, 3, 4.
+with Android 4+.
 
 Android Templates And Utilities are organized into 3 groups:
 
@@ -30,9 +30,9 @@ Usage
 
 How to use these templates? Just copy the template into your project, rename
 package "com.example" to your own package name, rename classes' or resource's
-names if you want and customize the code to your needs. Some templates has
+names if you want and customize the code to your needs. Some templates have
 /src/fragment/ExampleFragment.java class which demonstrates how to use
-the template in Fragment.
+the template in a Fragment.
 
 
 Example
@@ -41,17 +41,17 @@ Example
 Example of creating a basic app skelet with 1 Activity and 1 Fragment via Android Studio:
 
 * Create a new Android project with package name "com.example"
-* Add ic_launcher.png (Android Studio or Eclipse has generator for that)
 * Copy & paste Base
 * Copy & paste Res-Placeholder
 * Copy & paste Res-Strings
-* Copy & paste Res-Style (exclude _extras directory)
+* Copy & paste Res-Theme
+* Copy & paste Src-Activity
 * Copy & paste Src-Application-Class
 * Copy & paste Src-Config
 * Copy & paste Src-Fragment
 * Copy & paste Src-Logcat
 * Copy & paste Src-NetworkManager
-* Open SimpleActivity.java and comment out onCreateOptionsMenu(...) and onOptionsItemSelected(...) methods
+* Open ExampleActivity.java and comment out onCreateOptionsMenu(...) and onOptionsItemSelected(...) methods
 * Build the project and voilà, we have a basic skeleton for our future app
 
 
