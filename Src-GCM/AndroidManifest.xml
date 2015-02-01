@@ -13,7 +13,7 @@
 	<uses-permission android:name="com.example.permission.C2D_MESSAGE" />
 	
 	<application 
-		android:icon="@drawable/ic_launcher"
+		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name">
 
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
