@@ -1,4 +1,4 @@
-package com.example.utility;
+package com.example.graphics;
 
 import android.graphics.Bitmap;
 

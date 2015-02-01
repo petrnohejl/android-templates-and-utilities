@@ -18,6 +18,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 
 import com.example.R;
+import com.example.graphics.BitmapScaler;
 
 
 public class ImagePicker
