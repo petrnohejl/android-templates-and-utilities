@@ -1,4 +1,4 @@
-package com.example.view;
+package com.example.graphics;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
@@ -16,27 +16,55 @@ public class CircularDrawable extends Drawable
 {
 	private Bitmap mBitmap;
 	private float mDiameter;
-	private Paint mPaint;
+	private float mBorderWidth;
+	private float mBorderGap;
+	private int mBorderColor;
 	private BitmapShader mBitmapShader;
+	private Paint mBitmapPaint;
+	private Paint mBorderPaint;
 
 
 	public CircularDrawable(Bitmap bitmap)
 	{
-		this(bitmap, bitmap.getWidth()<bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight());
+		this(bitmap, bitmap.getWidth()<bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight(), 0f, 0f, 0);
 	}
 
 
 	public CircularDrawable(Bitmap bitmap, float diameter)
 	{
+		this(bitmap, diameter, 0f, 0f, 0);
+	}
+
+
+	public CircularDrawable(Bitmap bitmap, float borderWidth, float borderGap, int borderColor)
+	{
+		this(bitmap, bitmap.getWidth()<bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight(), borderWidth, borderGap, borderColor);
+	}
+
+
+	public CircularDrawable(Bitmap bitmap, float diameter, float borderWidth, float borderGap, int borderColor)
+	{
 		mBitmap = bitmap;
 		mDiameter = diameter;
+		mBorderWidth = borderWidth;
+		mBorderGap = borderGap;
+		mBorderColor = borderColor;
 
 		mBitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
-		mPaint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
-		mPaint.setAntiAlias(true);
-		mPaint.setDither(true);
-		mPaint.setShader(mBitmapShader);
+		mBitmapPaint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
+		mBitmapPaint.setAntiAlias(true);
+		mBitmapPaint.setDither(true);
+		mBitmapPaint.setShader(mBitmapShader);
+
+		if(mBorderWidth>0f)
+		{
+			mBorderPaint = new Paint();
+			mBorderPaint.setStyle(Paint.Style.STROKE);
+			mBorderPaint.setAntiAlias(true);
+			mBorderPaint.setStrokeWidth(mBorderWidth);
+			mBorderPaint.setColor(mBorderColor);
+		}
 	}
 
 
@@ -61,21 +89,29 @@ public class CircularDrawable extends Drawable
 	@Override
 	public void draw(Canvas canvas)
 	{
-		canvas.drawCircle(getIntrinsicWidth()/2, getIntrinsicHeight()/2, mDiameter / 2, mPaint);
+		if(mBorderPaint!=null)
+		{
+			canvas.drawCircle(getIntrinsicWidth() / 2, getIntrinsicHeight() / 2, (mDiameter / 2) - mBorderWidth - mBorderGap, mBitmapPaint);
+			canvas.drawCircle(getIntrinsicWidth() / 2, getIntrinsicHeight() / 2, (mDiameter / 2) - (mBorderWidth / 2), mBorderPaint);
+		}
+		else
+		{
+			canvas.drawCircle(getIntrinsicWidth() / 2, getIntrinsicHeight() / 2, mDiameter / 2, mBitmapPaint);
+		}
 	}
 
 
 	@Override
 	public void setAlpha(int alpha)
 	{
-		mPaint.setAlpha(alpha);
+		mBitmapPaint.setAlpha(alpha);
 	}
 
 
 	@Override
 	public void setColorFilter(ColorFilter colorFilter)
 	{
-		mPaint.setColorFilter(colorFilter);
+		mBitmapPaint.setColorFilter(colorFilter);
 	}
 
 

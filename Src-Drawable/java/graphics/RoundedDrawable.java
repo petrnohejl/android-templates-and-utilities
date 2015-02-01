@@ -1,4 +1,4 @@
-package com.example.view;
+package com.example.graphics;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
