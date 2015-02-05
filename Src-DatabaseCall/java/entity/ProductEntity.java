@@ -5,9 +5,9 @@ public class ProductEntity
 {
 	private long id;
 	private String name;
-	public int quantity;
-	public long timestamp;
-	public double price;
+	private int quantity;
+	private long timestamp;
+	private double price;
 
 
 	// empty constructor
