@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/fragment_recycler_header"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:minHeight="@dimen/global_spacing_l"
+	android:gravity="center"
+	android:orientation="horizontal">
+
+	<TextView
+		android:id="@+id/fragment_recycler_header_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/global_keyline_s"
+		android:layout_marginRight="@dimen/global_keyline_s"
+		android:textAppearance="@style/TextAppearance.Example.Body2" />
+
+</LinearLayout>
