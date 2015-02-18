@@ -17,7 +17,6 @@ import com.example.database.query.ProductDeleteQuery;
 import com.example.database.query.ProductReadAllQuery;
 import com.example.database.query.ProductReadQuery;
 import com.example.database.query.ProductUpdateQuery;
-import com.example.task.TaskFragment;
 import com.example.utility.Logcat;
 
 import java.util.List;

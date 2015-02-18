@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.example.R;
 import com.example.geolocation.Geolocation;
 import com.example.geolocation.GeolocationListener;
-import com.example.task.TaskFragment;
 import com.example.utility.Logcat;
 
 

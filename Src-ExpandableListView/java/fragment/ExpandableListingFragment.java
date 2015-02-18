@@ -18,7 +18,6 @@ import com.example.adapter.ExpandableListingAdapter;
 import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
-import com.example.task.TaskFragment;
 import com.example.utility.NetworkManager;
 import com.example.view.ViewState;
 

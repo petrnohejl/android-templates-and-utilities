@@ -1,4 +1,4 @@
-package com.example.task;
+package com.example.fragment;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,11 +9,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 
-public class TaskFragment extends Fragment implements TaskManager
+public class TaskFragment extends Fragment
 {
 	private final Object mLock = new Object();
 	private Boolean mReady = false;
-	private List<Runnable> mPendingCallbacks = new LinkedList<Runnable>();
+	private List<Runnable> mPendingCallbacks = new LinkedList<>();
 
 
 	@Override
@@ -21,8 +21,8 @@ public class TaskFragment extends Fragment implements TaskManager
 	{
 		super.onCreate(savedInstanceState);
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
@@ -49,17 +49,16 @@ public class TaskFragment extends Fragment implements TaskManager
 			mReady = false;
 		}
 	}
-	
-	
-	@Override
-	public void runTaskCallback(Runnable runnable)
+
+
+	protected void runTaskCallback(Runnable runnable)
 	{
 		if(mReady) runNow(runnable);
 		else addPending(runnable);
 	}
 
 
-	public void executeTask(AsyncTask<Void, ?, ?> task)
+	protected void executeTask(AsyncTask<Void, ?, ?> task)
 	{
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
 		{
@@ -71,8 +70,8 @@ public class TaskFragment extends Fragment implements TaskManager
 			task.execute();
 		}
 	}
-	
-	
+
+
 	private void runNow(Runnable runnable)
 	{
 		//Logcat.d("TaskFragment.runNow(): " + runnable.getClass().getEnclosingMethod());

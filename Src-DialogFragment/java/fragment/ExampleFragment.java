@@ -19,7 +19,6 @@ import com.example.dialog.SimpleDialogFragment;
 import com.example.dialog.SingleChoiceItemsDialogFragment;
 import com.example.dialog.TimePickerDialogFragment;
 import com.example.dialog.ViewDialogFragment;
-import com.example.task.TaskFragment;
 import com.example.utility.Logcat;
 
 

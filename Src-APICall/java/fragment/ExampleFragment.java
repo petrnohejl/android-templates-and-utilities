@@ -16,7 +16,6 @@ import com.example.client.ResponseStatus;
 import com.example.client.request.ExampleRequest;
 import com.example.client.response.Response;
 import com.example.entity.ProductEntity;
-import com.example.task.TaskFragment;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkManager;
 import com.example.view.ViewState;
