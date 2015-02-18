@@ -28,13 +28,12 @@
 		</android.support.v4.widget.SwipeRefreshLayout>
 
 		<android.support.v4.widget.SwipeRefreshLayout
-			android:id="@+id/container_swipe_refresh_empty"
+			android:id="@android:id/empty"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
 
 			<include
 				layout="@layout/placeholder_empty"
-				android:id="@android:id/empty"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent" />
 

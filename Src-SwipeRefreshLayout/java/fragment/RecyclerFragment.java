@@ -14,17 +14,17 @@ import com.example.task.TaskFragment;
 import com.example.utility.NetworkManager;
 
 
-public class ExampleFragment extends TaskFragment implements SwipeRefreshLayout.OnRefreshListener
+public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout.OnRefreshListener
 {
 	private boolean mActionBarProgress = false;
 	private View mRootView;
 	private APICallManager mAPICallManager = new APICallManager();
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
-		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
+	{	
+		mRootView = inflater.inflate(R.layout.fragment_recycler, container, false);
 		return mRootView;
 	}
 	
@@ -35,20 +35,13 @@ public class ExampleFragment extends TaskFragment implements SwipeRefreshLayout.
 		super.onActivityCreated(savedInstanceState);
 
 		// pull to refresh
-		SwipeRefreshLayout listSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_swipe_refresh_list);
-		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_swipe_refresh_empty);
+		setupSwipeRefreshLayout();
 
-		listSwipeRefreshLayout.setColorScheme(R.color.global_blue, R.color.global_green, R.color.global_orange, R.color.global_red);
-		listSwipeRefreshLayout.setOnRefreshListener(this);
-
-		emptySwipeRefreshLayout.setColorScheme(R.color.global_blue, R.color.global_green, R.color.global_orange, R.color.global_red);
-		emptySwipeRefreshLayout.setOnRefreshListener(this);
-		
 		// progress in action bar
 		showActionBarProgress(mActionBarProgress);
 	}
-	
-	
+
+
 	@Override
 	public void onRefresh()
 	{
@@ -79,7 +72,7 @@ public class ExampleFragment extends TaskFragment implements SwipeRefreshLayout.
 //				}
 //				return null;
 //			}
-//			
+//
 //			@Override
 //			protected void onPostExecute(Void result)
 //			{
@@ -88,8 +81,8 @@ public class ExampleFragment extends TaskFragment implements SwipeRefreshLayout.
 //			}
 //		}.execute();
 	}
-	
-	
+
+
 	public void refreshData()
 	{
 		if(NetworkManager.isOnline(getActivity()))
@@ -98,7 +91,7 @@ public class ExampleFragment extends TaskFragment implements SwipeRefreshLayout.
 			{
 				// show progress in action bar
 				showActionBarProgress(true);
-				
+
 				// TODO
 			}
 		}
@@ -113,15 +106,36 @@ public class ExampleFragment extends TaskFragment implements SwipeRefreshLayout.
 	private void showActionBarProgress(boolean visible)
 	{
 		// show pull to refresh progress bar
-		SwipeRefreshLayout listSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_swipe_refresh_list);
-		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_swipe_refresh_empty);
+		SwipeRefreshLayout contentSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_content);
+		SwipeRefreshLayout offlineSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_offline);
+		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_empty);
 
-		listSwipeRefreshLayout.setRefreshing(visible);
-		listSwipeRefreshLayout.setEnabled(!visible);
+		contentSwipeRefreshLayout.setRefreshing(visible);
+		contentSwipeRefreshLayout.setEnabled(!visible);
+
+		offlineSwipeRefreshLayout.setRefreshing(visible);
+		offlineSwipeRefreshLayout.setEnabled(!visible);
 
 		emptySwipeRefreshLayout.setRefreshing(visible);
 		emptySwipeRefreshLayout.setEnabled(!visible);
 
 		mActionBarProgress = visible;
+	}
+
+
+	private void setupSwipeRefreshLayout()
+	{
+		SwipeRefreshLayout contentSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_content);
+		SwipeRefreshLayout offlineSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_offline);
+		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_empty);
+
+		contentSwipeRefreshLayout.setColorSchemeResources(R.color.global_color_primary, R.color.global_color_accent);
+		contentSwipeRefreshLayout.setOnRefreshListener(this);
+
+		offlineSwipeRefreshLayout.setColorSchemeResources(R.color.global_color_primary, R.color.global_color_accent);
+		offlineSwipeRefreshLayout.setOnRefreshListener(this);
+
+		emptySwipeRefreshLayout.setColorSchemeResources(R.color.global_color_primary, R.color.global_color_accent);
+		emptySwipeRefreshLayout.setOnRefreshListener(this);
 	}
 }
