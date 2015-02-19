@@ -83,88 +83,163 @@
 		android:layout_height="wrap_content"
 		android:queryHint="Hello SearchView" />
 
-	<TextView
-		android:layout_width="wrap_content"
+	<LinearLayout
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Display4"
-		android:text="D4" />
+		android:orientation="vertical"
+		android:background="@color/global_bg_front">
 
-	<TextView
-		android:layout_width="wrap_content"
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Display4"
+			android:text="D4" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Display3"
+			android:text="Display3" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Display2"
+			android:text="Display2" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Display1"
+			android:text="Display1" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Headline"
+			android:text="Text Appearance Headline" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Title"
+			android:text="Text Appearance Title" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Subhead"
+			android:text="Text Appearance Subhead" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Body2"
+			android:text="Text Appearance Body2" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Body1"
+			android:text="Text Appearance Body1" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Caption"
+			android:text="Text Appearance Caption" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Button"
+			android:text="Text Appearance Button" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Menu"
+			android:text="Text Appearance Menu" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Display3"
-		android:text="Display3" />
+		android:orientation="vertical"
+		android:background="@color/global_bg_front_inverse">
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Display2"
-		android:text="Display2" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Display4.Inverse"
+			android:text="D4 I" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Display1"
-		android:text="Display1" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Display3.Inverse"
+			android:text="Display3 I" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Headline"
-		android:text="Text Appearance Headline" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Display2.Inverse"
+			android:text="Display2 I" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Title"
-		android:text="Text Appearance Title" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Display1.Inverse"
+			android:text="Display1 I" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Title.Inverse"
-		android:text="Text Appearance Title Inverse" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Headline.Inverse"
+			android:text="Text Appearance Headline I" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Subhead"
-		android:text="Text Appearance Subhead" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Title.Inverse"
+			android:text="Text Appearance Title Inverse" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Subhead.Inverse"
-		android:text="Text Appearance Subhead Inverse" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Subhead.Inverse"
+			android:text="Text Appearance Subhead Inverse" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Body2"
-		android:text="Text Appearance Body2" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Body2.Inverse"
+			android:text="Text Appearance Body2 Inverse" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Body1"
-		android:text="Text Appearance Body1" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Body1.Inverse"
+			android:text="Text Appearance Body1 Inverse" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Caption"
-		android:text="Text Appearance Caption" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Caption.Inverse"
+			android:text="Text Appearance Caption Inverse" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Button"
-		android:text="Text Appearance Button" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Button.Inverse"
+			android:text="Text Appearance Button Inverse" />
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.Example.Menu"
-		android:text="Text Appearance Menu" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Example.Menu.Inverse"
+			android:text="Text Appearance Menu Inverse" />
 
+	</LinearLayout>
 </LinearLayout>

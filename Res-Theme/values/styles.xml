@@ -37,23 +37,9 @@
 		<item name="android:textColor">?android:textColorPrimary</item>
 	</style>
 
-	<style name="TextAppearance.Example.Title.Inverse" parent="@style/TextAppearance.Example.Title">
-		<item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
-		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
-		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
-		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
-	</style>
-
 	<style name="TextAppearance.Example.Subhead" parent="@style/TextAppearance.AppCompat.Subhead">
 		<item name="android:textSize">@dimen/global_text_size_subhead</item>
 		<item name="android:textColor">?android:textColorPrimary</item>
-	</style>
-
-	<style name="TextAppearance.Example.Subhead.Inverse" parent="@style/TextAppearance.Example.Subhead">
-		<item name="android:textColor">?android:attr/textColorSecondaryInverse</item>
-		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
-		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
-		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
 	</style>
 
 	<style name="TextAppearance.Example.Body2" parent="@style/TextAppearance.AppCompat.Body2">
@@ -80,6 +66,90 @@
 	<style name="TextAppearance.Example.Menu" parent="@style/TextAppearance.AppCompat.Menu">
 		<item name="android:textSize">@dimen/global_text_size_menu</item>
 		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextAppearance.Example.Display4.Inverse" parent="@style/TextAppearance.Example.Display4">
+		<item name="android:textColor">?android:attr/textColorSecondaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Display3.Inverse" parent="@style/TextAppearance.Example.Display3">
+		<item name="android:textColor">?android:attr/textColorSecondaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Display2.Inverse" parent="@style/TextAppearance.Example.Display2">
+		<item name="android:textColor">?android:attr/textColorSecondaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Display1.Inverse" parent="@style/TextAppearance.Example.Display1">
+		<item name="android:textColor">?android:attr/textColorSecondaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Headline.Inverse" parent="@style/TextAppearance.Example.Headline">
+		<item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Title.Inverse" parent="@style/TextAppearance.Example.Title">
+		<item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Subhead.Inverse" parent="@style/TextAppearance.Example.Subhead">
+		<item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Body2.Inverse" parent="@style/TextAppearance.Example.Body2">
+		<item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Body1.Inverse" parent="@style/TextAppearance.Example.Body1">
+		<item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Caption.Inverse" parent="@style/TextAppearance.Example.Caption">
+		<item name="android:textColor">?android:attr/textColorSecondaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Button.Inverse" parent="@style/TextAppearance.Example.Button">
+		<item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+	</style>
+
+	<style name="TextAppearance.Example.Menu.Inverse" parent="@style/TextAppearance.Example.Menu">
+		<item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+		<item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+		<item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+		<item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
 	</style>
 
 </resources>
