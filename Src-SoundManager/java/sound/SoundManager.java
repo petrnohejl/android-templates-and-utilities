@@ -25,12 +25,12 @@ public class SoundManager
 		PLAY_SINGLE,			// play 1 sound at the moment, immediately stop all currently playing sounds
 		PLAY_SINGLE_CONTINUE,	// play 1 sound at the moment, if the sound is same as currently playing sound, continue playing
 		PLAY_MULTIPLE_CONTINUE	// play multiple sounds at the moment, if the sound is same as currently playing sound, continue playing
-	};
+	}
 	
 	
 	public SoundManager(Mode mode)
 	{
-		mMediaMap = new HashMap<String, MediaPlayer>();
+		mMediaMap = new HashMap<>();
 		mMode = mode;
 	}
 	

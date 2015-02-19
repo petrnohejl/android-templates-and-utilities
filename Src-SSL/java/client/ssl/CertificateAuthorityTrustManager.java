@@ -81,7 +81,7 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 			}
 		}
 		
-		if(expectedCertificateFound == false)
+		if(!expectedCertificateFound)
 		{
 			// if manual verification failed, throw exception
 			throw new CertificateException("Expected certificate not found.");
@@ -106,7 +106,6 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 		md.reset();
 		md.update(data);
 		byte messageDigest[] = md.digest();
-		String encodedData = Base64.encodeToString(messageDigest, Base64.NO_WRAP);
-		return encodedData;
+		return Base64.encodeToString(messageDigest, Base64.NO_WRAP);
 	}
 }

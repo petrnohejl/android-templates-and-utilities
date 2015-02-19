@@ -1,6 +1,7 @@
 package com.example.utility;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -153,7 +154,7 @@ public class DialogStyle
 		boolean customPanelVisible = customPanelView.getVisibility()==View.VISIBLE;
 		boolean buttonPanelVisible = buttonPanelView.getVisibility()==View.VISIBLE;
 		
-		ArrayList<View> views = new ArrayList<View>();
+		List<View> views = new ArrayList<>();
 		if(topPanelVisible) views.add(topPanelView);
 		if(contentPanelVisible) views.add(contentPanelView);
 		if(customPanelVisible) views.add(customPanelView);

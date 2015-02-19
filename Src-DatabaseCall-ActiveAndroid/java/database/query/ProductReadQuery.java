@@ -22,7 +22,7 @@ public class ProductReadQuery extends Query
 		ProductDAO dao = new ProductDAO();
 		ProductEntity e = dao.read(mId);
 
-		Data<ProductEntity> data = new Data<ProductEntity>();
+		Data<ProductEntity> data = new Data<>();
 		data.setDataObject(e);
 
 		return data;

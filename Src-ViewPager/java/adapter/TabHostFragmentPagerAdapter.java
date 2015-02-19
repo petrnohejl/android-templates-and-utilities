@@ -1,6 +1,7 @@
 package com.example.adapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	private final Context mContext;
 	private final TabHost mTabHost;
 	private final ViewPager mViewPager;
-	private final ArrayList<TabInfo> mTabList = new ArrayList<TabInfo>();
+	private final List<TabInfo> mTabList = new ArrayList<>();
 	
 	
 	public TabHostFragmentPagerAdapter(FragmentActivity activity, TabHost tabHost, ViewPager viewPager)

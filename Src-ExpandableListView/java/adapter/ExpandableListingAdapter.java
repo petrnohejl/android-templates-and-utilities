@@ -1,6 +1,6 @@
 package com.example.adapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,13 +16,13 @@ import com.example.entity.ProductEntity;
 public class ExpandableListingAdapter extends BaseExpandableListAdapter
 {
 	private Context mContext;
-	private ArrayList<String> mGroupList;
-	private ArrayList<ArrayList<ProductEntity>> mProductList;
+	private List<String> mGroupList;
+	private List<List<ProductEntity>> mProductList;
 	private int mSelectedGroupPosition = -1;
 	private int mSelectedChildPosition = -1;
 	
 	
-	public ExpandableListingAdapter(Context context, ArrayList<String> groupList, ArrayList<ArrayList<ProductEntity>> productList)
+	public ExpandableListingAdapter(Context context, List<String> groupList, List<List<ProductEntity>> productList)
 	{
 		mContext = context;
 		mGroupList = groupList;
@@ -164,7 +164,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	}
 	
 	
-	public void refill(Context context, ArrayList<String> groupList, ArrayList<ArrayList<ProductEntity>> productList)
+	public void refill(Context context, List<String> groupList, List<List<ProductEntity>> productList)
 	{
 		mContext = context;
 		mGroupList = groupList;

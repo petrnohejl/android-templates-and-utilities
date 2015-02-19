@@ -40,7 +40,7 @@ public class ProductDAO implements DAO<ProductEntity>
 	public List<ProductEntity> readAll()
 	{
 		List<ProductModel> modelList = new Select().from(ProductModel.class).orderBy("Timestamp ASC").execute();
-		List<ProductEntity> entityList = new ArrayList<ProductEntity>();
+		List<ProductEntity> entityList = new ArrayList<>();
 
 		for(ProductModel m : modelList)
 		{
@@ -56,7 +56,7 @@ public class ProductDAO implements DAO<ProductEntity>
 	public List<ProductEntity> readAll(int limit, int offset)
 	{
 		List<ProductModel> modelList = new Select().from(ProductModel.class).limit(limit).offset(offset).orderBy("Timestamp ASC").execute();
-		List<ProductEntity> entityList = new ArrayList<ProductEntity>();
+		List<ProductEntity> entityList = new ArrayList<>();
 
 		for(ProductModel m : modelList)
 		{

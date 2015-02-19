@@ -1,6 +1,7 @@
 package com.example.database;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import android.os.AsyncTask;
 import android.os.Build;
@@ -11,7 +12,7 @@ import com.example.utility.Logcat;
 
 public class DatabaseCallManager
 {
-	private LinkedList<DatabaseCallTask> mTaskList = new LinkedList<DatabaseCallTask>();
+	private List<DatabaseCallTask> mTaskList = new LinkedList<>();
 	
 	
 	public DatabaseCallManager()

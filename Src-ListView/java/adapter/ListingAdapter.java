@@ -1,6 +1,6 @@
 package com.example.adapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,10 +16,10 @@ import com.example.entity.ProductEntity;
 public class ListingAdapter extends BaseAdapter 
 {
 	private Context mContext;
-	private ArrayList<ProductEntity> mProductList;
+	private List<ProductEntity> mProductList;
 
 
-	public ListingAdapter(Context context, ArrayList<ProductEntity> productList)
+	public ListingAdapter(Context context, List<ProductEntity> productList)
 	{
 		mContext = context;
 		mProductList = productList;
@@ -43,7 +43,7 @@ public class ListingAdapter extends BaseAdapter
 		}
 		
 		// entity
-		ProductEntity product = (ProductEntity) mProductList.get(position);
+		ProductEntity product = mProductList.get(position);
 		
 		if(product != null)
 		{
@@ -81,7 +81,7 @@ public class ListingAdapter extends BaseAdapter
 	}
 	
 	
-	public void refill(Context context, ArrayList<ProductEntity> productList)
+	public void refill(Context context, List<ProductEntity> productList)
 	{
 		mContext = context;
 		mProductList = productList;

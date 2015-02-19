@@ -50,7 +50,7 @@ public class ExampleParser extends Parser
 					}
 				}
 				
-				response = new Response<List<ProductEntity>>();
+				response = new Response<>();
 				response.setError(true);
 				response.setErrorType(type);
 				response.setErrorMessage(message);
@@ -84,10 +84,10 @@ public class ExampleParser extends Parser
 				product.setId(id);
 				product.setName(name);
 
-				List<ProductEntity> productList = new ArrayList<ProductEntity>();
+				List<ProductEntity> productList = new ArrayList<>();
 				productList.add(product);
 
-				response = new Response<List<ProductEntity>>();
+				response = new Response<>();
 				response.setResponseObject(productList);
 			}
 		}

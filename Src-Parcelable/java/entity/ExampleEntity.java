@@ -1,8 +1,8 @@
 package com.example.entity;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -17,7 +17,7 @@ public class ExampleEntity implements Parcelable
 	private Date dateVar;
 	private Calendar calendarVar;
 	private MyModel myModel;
-	private ArrayList<String> stringList;
+	private List<String> stringList;
 
 
 	// empty constructor

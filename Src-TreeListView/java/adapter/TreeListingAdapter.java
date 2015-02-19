@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.R;
 import com.example.entity.ProductEntity;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
 import java.util.Set;
 
@@ -22,11 +22,11 @@ import pl.polidea.treeview.TreeStateManager;
 
 public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 {
-	private ArrayList<ProductEntity> mProductList;
+	private List<ProductEntity> mProductList;
 	private Set<Long> mSelectedSet;
 
 
-	public TreeListingAdapter(Activity activity, ArrayList<ProductEntity> productList, Set<Long> selectedSet, TreeStateManager<Long> treeStateManager, int treeviewDepth)
+	public TreeListingAdapter(Activity activity, List<ProductEntity> productList, Set<Long> selectedSet, TreeStateManager<Long> treeStateManager, int treeviewDepth)
 	{
 		super(activity, treeStateManager, treeviewDepth);
 		mProductList = productList;
@@ -42,7 +42,7 @@ public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 		CheckBox checkBox = (CheckBox) view.findViewById(R.id.fragment_tree_listing_item_checkbox);
 
 		// entity
-		ProductEntity product = (ProductEntity) mProductList.get(treeNodeInfo.getId().intValue());
+		ProductEntity product = mProductList.get(treeNodeInfo.getId().intValue());
 
 		// content
 		String nodeLog = "" + Arrays.asList(getManager().getHierarchyDescription(treeNodeInfo.getId()));

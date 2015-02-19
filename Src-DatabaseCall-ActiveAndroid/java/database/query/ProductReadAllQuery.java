@@ -40,7 +40,7 @@ public class ProductReadAllQuery extends Query
 			list = dao.readAll(mLimit, mOffset);
 		}
 
-		Data<List<ProductEntity>> data = new Data<List<ProductEntity>>();
+		Data<List<ProductEntity>> data = new Data<>();
 		data.setDataObject(list);
 
 		return data;

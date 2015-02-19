@@ -22,7 +22,7 @@ public class ProductUpdateQuery extends Query
 		ProductDAO dao = new ProductDAO();
 		long id = dao.update(mProduct);
 
-		Data<Long> data = new Data<Long>();
+		Data<Long> data = new Data<>();
 		data.setDataObject(id);
 
 		return data;

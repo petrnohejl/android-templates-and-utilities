@@ -43,7 +43,7 @@ public class ExampleRequest extends Request
 	public String getAddress()
 	{
 		StringBuilder builder = new StringBuilder();
-		List<NameValuePair> params = new LinkedList<NameValuePair>();
+		List<NameValuePair> params = new LinkedList<>();
 
 		// params
 		params.add(new BasicNameValuePair("skip", Integer.toString(mSkip)));

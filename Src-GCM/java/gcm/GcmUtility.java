@@ -87,7 +87,7 @@ public class GcmUtility
 		String requestUrl = ExampleConfig.GCM_REGISTER_URL;
 
 		// request params
-		List<NameValuePair> paramsList = new LinkedList<NameValuePair>();
+		List<NameValuePair> paramsList = new LinkedList<>();
 		paramsList.add(new BasicNameValuePair("regId", registrationId));
 		String params = URLEncodedUtils.format(paramsList, CHARSET);
 
@@ -150,7 +150,7 @@ public class GcmUtility
 		String requestUrl = ExampleConfig.GCM_UNREGISTER_URL;
 
 		// request params
-		List<NameValuePair> paramsList = new LinkedList<NameValuePair>();
+		List<NameValuePair> paramsList = new LinkedList<>();
 		paramsList.add(new BasicNameValuePair("regId", registrationId));
 		String params = URLEncodedUtils.format(paramsList, CHARSET);
 

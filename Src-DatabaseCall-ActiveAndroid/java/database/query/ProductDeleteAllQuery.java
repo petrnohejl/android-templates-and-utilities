@@ -17,7 +17,7 @@ public class ProductDeleteAllQuery extends Query
 		ProductDAO dao = new ProductDAO();
 		dao.deleteAll();
 
-		Data<Void> data = new Data<Void>();
+		Data<Void> data = new Data<>();
 		data.setDataObject(null);
 
 		return data;

@@ -7,7 +7,7 @@ import com.example.ExampleApplication;
 import com.example.R;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -23,8 +23,7 @@ public class LocationUtility
 		location2.setLatitude(l2.latitude);
 		location2.setLongitude(l2.longitude);
 
-		int distance = (int) location1.distanceTo(location2);
-		return distance;
+		return (int) location1.distanceTo(location2);
 	}
 	
 	
@@ -69,7 +68,7 @@ public class LocationUtility
 	}
 
 
-	public static boolean isPointInPolygon(LatLng location, ArrayList<LatLng> vertices)
+	public static boolean isPointInPolygon(LatLng location, List<LatLng> vertices)
 	{
 		if(location==null) return false;
 

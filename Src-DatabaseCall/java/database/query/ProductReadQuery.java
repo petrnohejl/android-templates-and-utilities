@@ -21,7 +21,7 @@ public class ProductReadQuery extends Query
 	@Override
 	public Data<ProductModel> processData() throws SQLException
 	{
-		Data<ProductModel> data = new Data<ProductModel>();
+		Data<ProductModel> data = new Data<>();
 		data.setDataObject(ProductDAO.read(mId));
 		return data;
 	}

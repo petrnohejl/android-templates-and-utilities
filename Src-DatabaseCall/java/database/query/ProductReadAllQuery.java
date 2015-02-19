@@ -29,7 +29,7 @@ public class ProductReadAllQuery extends Query
 	@Override
 	public Data<List<ProductModel>> processData() throws SQLException
 	{
-		Data<List<ProductModel>> data = new Data<List<ProductModel>>();
+		Data<List<ProductModel>> data = new Data<>();
 		data.setDataObject(ProductDAO.readAll(mSkip, mTake));
 		return data;
 	}

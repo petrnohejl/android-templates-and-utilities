@@ -1,6 +1,6 @@
 package com.example.adapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import android.content.Context;
@@ -18,10 +18,10 @@ import com.example.entity.ProductEntity;
 public class StickyListingAdapter extends BaseAdapter implements StickyListHeadersAdapter
 {
 	private Context mContext;
-	private ArrayList<ProductEntity> mProductList;
+	private List<ProductEntity> mProductList;
 
 
-	public StickyListingAdapter(Context context, ArrayList<ProductEntity> productList)
+	public StickyListingAdapter(Context context, List<ProductEntity> productList)
 	{
 		mContext = context;
 		mProductList = productList;
@@ -45,7 +45,7 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 		}
 		
 		// entity
-		ProductEntity product = (ProductEntity) mProductList.get(position);
+		ProductEntity product = mProductList.get(position);
 		
 		if(product != null)
 		{
@@ -123,7 +123,7 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 	}
 	
 	
-	public void refill(Context context, ArrayList<ProductEntity> productList)
+	public void refill(Context context, List<ProductEntity> productList)
 	{
 		mContext = context;
 		mProductList = productList;

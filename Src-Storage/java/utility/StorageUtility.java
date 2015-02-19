@@ -6,7 +6,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,37 +22,27 @@ public class StorageUtility
 	public static boolean isAvailable()
 	{
 		String state = Environment.getExternalStorageState();
-		if(state.equals(Environment.MEDIA_MOUNTED) || state.equals(Environment.MEDIA_MOUNTED_READ_ONLY))
-		{
-			return true;
-		}
-		return false;
+		return state.equals(Environment.MEDIA_MOUNTED) || state.equals(Environment.MEDIA_MOUNTED_READ_ONLY);
 	}
 
 
 	public static boolean isWritable()
 	{
 		String state = Environment.getExternalStorageState();
-		if(state.equals(Environment.MEDIA_MOUNTED))
-		{
-			return true;
-		}
-		return false;
+		return state.equals(Environment.MEDIA_MOUNTED);
 	}
 	
 	
 	public static File getStorageDirectory()
 	{
-		File file = Environment.getExternalStorageDirectory();
-		return file;
+		return Environment.getExternalStorageDirectory();
 	}
 	
 	
 	// publicDirectory can be for example Environment.DIRECTORY_PICTURES
 	public static File getStorageDirectory(String publicDirectory)
 	{
-		File file = Environment.getExternalStoragePublicDirectory(publicDirectory);
-		return file;
+		return Environment.getExternalStoragePublicDirectory(publicDirectory);
 	}
 	
 	
@@ -65,12 +57,12 @@ public class StorageUtility
 	{
 		File result = null;
 		File primary = getStorageDirectory();
-		HashSet<String> hashSet = getExternalMounts();
-		Iterator<String> iterator = hashSet.iterator();
+		Set<String> externalMounts = getExternalMounts();
+		Iterator<String> iterator = externalMounts.iterator();
 		
 		while(iterator.hasNext())
 		{
-			String s = (String) iterator.next();
+			String s = iterator.next();
 			if(primary!=null && s!=null && !s.equals(primary.getAbsolutePath()))
 			{
 				File secondary = new File(s);
@@ -108,22 +100,20 @@ public class StorageUtility
 	
 	public static File getApplicationCacheDirectory(Context context)
 	{
-		File file = context.getExternalCacheDir();
-		return file;
+		return context.getExternalCacheDir();
 	}
 	
 	
 	// type can be for example Environment.DIRECTORY_PICTURES
 	public static File getApplicationFilesDirectory(Context context, String type)
 	{
-		File file = context.getExternalFilesDir(type);
-		return file;
+		return context.getExternalFilesDir(type);
 	}
 	
 	
-	public static ArrayList<File> getFiles(File directory, boolean recursive)
+	public static List<File> getFiles(File directory, boolean recursive)
 	{
-		ArrayList<File> fileList = new ArrayList<File>();
+		List<File> fileList = new ArrayList<>();
 		if(directory!=null && directory.exists() && directory.isDirectory())
 		{
 			walkFiles(directory, recursive, null, null, fileList);
@@ -133,9 +123,9 @@ public class StorageUtility
 	
 	
 	// pattern can be for example "(.+(\\.(?i)(jpg|jpeg))$)"
-	public static ArrayList<File> getFiles(File directory, boolean recursive, Pattern fileNameFilter, Pattern directoryNameFilter)
+	public static List<File> getFiles(File directory, boolean recursive, Pattern fileNameFilter, Pattern directoryNameFilter)
 	{
-		ArrayList<File> fileList = new ArrayList<File>();
+		List<File> fileList = new ArrayList<>();
 		if(directory!=null && directory.exists() && directory.isDirectory())
 		{
 			walkFiles(directory, recursive, fileNameFilter, directoryNameFilter, fileList);
@@ -144,7 +134,7 @@ public class StorageUtility
 	}
 
 
-	private static void walkFiles(File directory, boolean recursive, Pattern fileNameFilter, Pattern directoryNameFilter, ArrayList<File> fileList)
+	private static void walkFiles(File directory, boolean recursive, Pattern fileNameFilter, Pattern directoryNameFilter, List<File> fileList)
 	{
 		File[] list = directory.listFiles();
 		for(int i = 0; i < list.length; i++)
@@ -180,9 +170,9 @@ public class StorageUtility
 
 
 	// code taken from: http://stackoverflow.com/questions/11281010/how-can-i-get-external-sd-card-path-for-android-4-0
-	public static HashSet<String> getExternalMounts()
+	public static Set<String> getExternalMounts()
 	{
-		final HashSet<String> externalMounts = new HashSet<String>();
+		final Set<String> externalMounts = new HashSet<>();
 		String regex = "(?i).*vold.*(vfat|ntfs|exfat|fat32|ext3|ext4).*rw.*";
 		String mountOutput = "";
 		

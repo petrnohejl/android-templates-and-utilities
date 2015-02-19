@@ -52,7 +52,7 @@ public class SelfSignedTrustManager implements X509TrustManager
 		mLocalTrustManager = new LocalStoreX509TrustManager(localKeyStore);
 		
 		// create accepted issuers
-		List<X509Certificate> allIssuers = new ArrayList<X509Certificate>();
+		List<X509Certificate> allIssuers = new ArrayList<>();
 //		for(X509Certificate cert:mDefaultTrustManager.getAcceptedIssuers())
 //		{
 //			// warning, this cycle takes a lot of time, maybe more than 1 sec
@@ -110,7 +110,7 @@ public class SelfSignedTrustManager implements X509TrustManager
 			}
 		}
 		
-		if(expectedCertificateFound == false)
+		if(!expectedCertificateFound)
 		{
 			// if manual verification failed, throw exception
 			throw new CertificateException("Expected certificate not found.");
@@ -143,8 +143,7 @@ public class SelfSignedTrustManager implements X509TrustManager
 		md.reset();
 		md.update(data);
 		byte messageDigest[] = md.digest();
-		String encodedData = Base64.encodeToString(messageDigest, Base64.NO_WRAP);
-		return encodedData;
+		return Base64.encodeToString(messageDigest, Base64.NO_WRAP);
 	}
 	
 	

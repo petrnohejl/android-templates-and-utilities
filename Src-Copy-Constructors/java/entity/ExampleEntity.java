@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 
 public class ExampleEntity
@@ -15,7 +16,7 @@ public class ExampleEntity
 	private Date dateVar;
 	private Calendar calendarVar;
 	private MyModel myModel;
-	private ArrayList<String> stringList;
+	private List<String> stringList;
 
 
 	// empty constructor
@@ -41,7 +42,7 @@ public class ExampleEntity
 		if(origin.myModel!=null) myModel = new MyModel(origin.myModel);
 		if(origin.stringList!=null)
 		{
-			stringList = new ArrayList<String>();
+			stringList = new ArrayList<>();
 			Iterator<String> iterator = origin.stringList.iterator();
 			while(iterator.hasNext())
 			{
@@ -108,11 +109,11 @@ public class ExampleEntity
 	{
 		this.myModel = myModel;
 	}
-	public ArrayList<String> getStringList()
+	public List<String> getStringList()
 	{
 		return stringList;
 	}
-	public void setStringList(ArrayList<String> stringList)
+	public void setStringList(List<String> stringList)
 	{
 		this.stringList = stringList;
 	}

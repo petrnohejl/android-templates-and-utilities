@@ -1,6 +1,7 @@
 package com.example.fragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class ListingFragment extends Fragment
 	private ListingAdapter mAdapter;
 	private OnDualPaneShowListener mDualPaneShowListener;
 
-	private ArrayList<ProductEntity> mProductList = new ArrayList<ProductEntity>();
+	private List<ProductEntity> mProductList = new ArrayList<>();
 	
 	
 	@Override

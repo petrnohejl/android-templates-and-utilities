@@ -1,6 +1,6 @@
 package com.example.notification;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -85,7 +85,7 @@ public class NotificationMessage
 		
 		private CharSequence mInboxStyleBigContentTitle = null;
 		private CharSequence mInboxStyleSummaryText = null;
-		private ArrayList<CharSequence> mInboxStyleLines = null;
+		private List<CharSequence> mInboxStyleLines = null;
 		
 		
 		public Builder(Context context, int notificationId)
@@ -218,11 +218,11 @@ public class NotificationMessage
 		{
 			mBigPictureStyleBigContentTitle = bigContentTitle;
 			mBigPictureStyleSummaryText = summaryText;
-			mBigPictureStyleBigPicture = BitmapFactory.decodeResource(mContext.getResources(), bigPicture);;
+			mBigPictureStyleBigPicture = BitmapFactory.decodeResource(mContext.getResources(), bigPicture);
 		}
 		
 		
-		public void setInboxStyle(CharSequence bigContentTitle, CharSequence summaryText, ArrayList<CharSequence> lines)
+		public void setInboxStyle(CharSequence bigContentTitle, CharSequence summaryText, List<CharSequence> lines)
 		{
 			mInboxStyleBigContentTitle = bigContentTitle;
 			mInboxStyleSummaryText = summaryText;

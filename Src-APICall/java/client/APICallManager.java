@@ -1,6 +1,7 @@
 package com.example.client;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import android.os.AsyncTask;
 import android.os.Build;
@@ -11,7 +12,7 @@ import com.example.utility.Logcat;
 
 public class APICallManager
 {
-	private LinkedList<APICallTask> mTaskList = new LinkedList<APICallTask>();
+	private List<APICallTask> mTaskList = new LinkedList<>();
 	
 	
 	public APICallManager()

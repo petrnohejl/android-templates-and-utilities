@@ -22,6 +22,7 @@ import com.example.view.ViewState;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import pl.polidea.treeview.InMemoryTreeStateManager;
@@ -41,10 +42,10 @@ public class TreeListingFragment extends TaskFragment implements
 	private View mRootView;
 	private TreeListingAdapter mAdapter;
 	private TreeStateManager<Long> mTreeStateManager;
-	private Set<Long> mSelectedSet = new HashSet<Long>();
+	private Set<Long> mSelectedSet = new HashSet<>();
 	private LoadDataTask mLoadDataTask;
 
-	private ArrayList<ProductEntity> mProductList = new ArrayList<ProductEntity>();
+	private List<ProductEntity> mProductList = new ArrayList<>();
 
 
 	@Override

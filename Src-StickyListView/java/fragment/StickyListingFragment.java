@@ -1,6 +1,7 @@
 package com.example.fragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 import android.app.Activity;
@@ -35,7 +36,7 @@ public class StickyListingFragment extends TaskFragment implements
 	private LoadDataTask mLoadDataTask;
 	private int mListviewPosition = 0;
 	
-	private ArrayList<ProductEntity> mProductList = new ArrayList<ProductEntity>();
+	private List<ProductEntity> mProductList = new ArrayList<>();
 	
 	
 	@Override

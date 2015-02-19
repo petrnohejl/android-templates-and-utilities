@@ -21,7 +21,7 @@ public class ProductCreateQuery extends Query
 	@Override
 	public Data<Integer> processData() throws SQLException
 	{
-		Data<Integer> data = new Data<Integer>();
+		Data<Integer> data = new Data<>();
 		data.setDataObject(ProductDAO.create(mProduct));
 		return data;
 	}

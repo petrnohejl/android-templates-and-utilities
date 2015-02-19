@@ -46,7 +46,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	private ExampleAdapter mAdapter;
 	private APICallManager mAPICallManager = new APICallManager();
 	
-	private ArrayList<ProductEntity> mProductList = new ArrayList<ProductEntity>();
+	private List<ProductEntity> mProductList = new ArrayList<>();
 	
 	
 	@Override

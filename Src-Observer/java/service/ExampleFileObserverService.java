@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Service;
 import android.content.Intent;
@@ -14,7 +15,7 @@ import com.example.utility.Logcat;
 
 public class ExampleFileObserverService extends Service
 {
-	private ArrayList<ExampleFileObserver> mExampleFileObserverList;
+	private List<ExampleFileObserver> mExampleFileObserverList;
 
 
 	@Override
@@ -55,10 +56,10 @@ public class ExampleFileObserverService extends Service
 		if(ExternalStorageUtility.isAvailable())
 		{
 			// create list
-			mExampleFileObserverList = new ArrayList<ExampleFileObserver>();
+			mExampleFileObserverList = new ArrayList<>();
 						
 			// watch directories
-			ArrayList<File> directoryList = getObservedDirectories();
+			List<File> directoryList = getObservedDirectories();
 			for(int i=0; i<directoryList.size(); i++)
 			{
 				File directory = directoryList.get(i);

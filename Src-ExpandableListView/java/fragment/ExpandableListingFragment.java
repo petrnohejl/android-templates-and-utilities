@@ -1,6 +1,7 @@
 package com.example.fragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -29,8 +30,8 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	private ExpandableListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
 
-	private ArrayList<String> mGroupList = new ArrayList<String>();
-	private ArrayList<ArrayList<ProductEntity>> mProductList = new ArrayList<ArrayList<ProductEntity>>();
+	private List<String> mGroupList = new ArrayList<>();
+	private List<List<ProductEntity>> mProductList = new ArrayList<>();
 	
 	
 	@Override
@@ -177,7 +178,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 				// get data
 				for(int i=0; i<10; i++)
 				{
-					ArrayList<ProductEntity> group = new ArrayList<ProductEntity>();
+					List<ProductEntity> group = new ArrayList<>();
 					for(int j=0; j<10; j++)
 					{
 						ProductEntity p = new ProductEntity();

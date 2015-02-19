@@ -47,7 +47,7 @@ public class ExampleFragment extends Fragment
 		//builder.setBigTextStyle("bigContentTitle", "summaryText", "bigText");
 		//builder.setBigPictureStyle("bigContentTitle", "summaryText", R.drawable.ic_launcher);
 		
-		//ArrayList<CharSequence> lines = new ArrayList<CharSequence>();
+		//List<CharSequence> lines = new ArrayList<>();
 		//lines.add("line 1");
 		//lines.add("line 2");
 		//lines.add("line 3");
