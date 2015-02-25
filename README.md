@@ -58,7 +58,7 @@ Example of creating a basic app skelet with 1 Activity and 1 Fragment via Androi
 Developed by
 ============
 
-* [Petr Nohejl](http://petrnohejl.cz)
+[Petr Nohejl](http://petrnohejl.cz)
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B3JBY3NU6L2XY)
 

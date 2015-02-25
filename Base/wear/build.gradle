@@ -53,11 +53,17 @@ android
 	{
 		debug
 		{
+			buildConfigField "boolean", "LOGS", "true"
+			buildConfigField "boolean", "DEV_API", "true"
+
 			versionNameSuffix "-debug"
 		}
 
 		release
 		{
+			buildConfigField "boolean", "LOGS", "false"
+			buildConfigField "boolean", "DEV_API", "false"
+
 			signingConfig signingConfigs.release
 			zipAlignEnabled true
 			minifyEnabled false

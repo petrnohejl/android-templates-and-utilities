@@ -43,7 +43,7 @@ You don't need to install Gradle on your system, because there is a [Gradle Wrap
 
 1. Clone this repository
 2. Open configuration file _/mobile/src/main/java/com/example/ExampleConfig.java_ and set constants as required (see below for more info)
-3. Open main build script _/mobile/build.gradle_ and set constants as required (see below for more info)
+3. Open main build script _/mobile/build.gradle_ and set constants and config fields as required (see below for more info)
 4. Run `gradlew assemble` in console
 5. APK should be available in _/mobile/build/outputs/apk_ directory
 
@@ -57,17 +57,7 @@ You don't need to install Gradle on your system, because there is a [Gradle Wrap
 ExampleConfig.java
 ------------------
 
-This is the main configuration file and there are some important constants: addresses to API endpoints, API keys to 3rd party services etc. There are also some true/false switches. It is very important to correctly set these switches before building the APK.
-
-* DEV\_API - true for development API endpoint
-* LOGS - true for showing logs
-
-**Important:** Following configuration should be used for release APK, intended for publishing on Google Play:
-
-```java
-public static final boolean DEV_API = false;
-public static final boolean LOGS = false;
-``` 
+This is the main configuration file and there are some important constants: addresses to API endpoints, API keys to 3rd party services etc. Make sure that all constants are set up properly.
 
 
 build.gradle
@@ -81,6 +71,18 @@ This is the main build script and there are 4 important constants for defining v
 * VERSION\_BUILD
 
 See [Versioning Your Applications](http://developer.android.com/tools/publishing/versioning.html#appversioning) in Android documentation for more info.
+
+There are also a build config fields in this script. Check "buildTypes" configuration and make sure that all fields are set up properly for debug and release. It is very important to correctly set these true/false switches before building the APK.
+
+* LOGS - true for showing logs
+* DEV\_API - true for development API endpoint
+
+**Important:** Following configuration should be used for release build type, intended for publishing on Google Play:
+
+```groovy
+buildConfigField "boolean", "LOGS", "false"
+buildConfigField "boolean", "DEV_API", "false"
+``` 
 
 
 Dependencies
@@ -153,8 +155,8 @@ Testing
 Publishing
 ==========
 
-* Check true/false switches in the main configuration file
 * Set proper versions in the main build script
+* Check build config fields in the main build script
 * Update text info in changelog/about/help
 * Add analytics events for new features
 * Set Android key hash on developers.facebook.com
@@ -163,7 +165,7 @@ Publishing
 Developed by
 ============
 
-* [Petr Nohejl](http://petrnohejl.cz)
+[Petr Nohejl](http://petrnohejl.cz)
 
 
 License
