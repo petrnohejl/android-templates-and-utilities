@@ -38,6 +38,13 @@ public class ExampleAlarm
 	}
 	
 	
+	public boolean isRunning()
+	{
+		Intent alarmIntent = new Intent(mContext, ExampleAlarmReceiver.class);
+		return PendingIntent.getBroadcast(mContext, ALARM_ID, alarmIntent, PendingIntent.FLAG_NO_CREATE) != null;
+	}
+	
+	
 	private long getStartTime()
 	{
 		Calendar calendar = Calendar.getInstance();
