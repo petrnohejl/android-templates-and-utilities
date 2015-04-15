@@ -80,7 +80,7 @@ public class ProductDAO implements DAO<ProductEntity>
 	@Override
 	public void delete(long id)
 	{
-		new Delete().from(ProductModel.class).where("Id=?", id).executeSingle();
+		new Delete().from(ProductModel.class).where("Id=?", id).execute();
 	}
 
 
