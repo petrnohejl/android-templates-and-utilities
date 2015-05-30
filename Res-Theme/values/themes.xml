@@ -7,6 +7,7 @@
 	<style name="Theme.Example.Light" parent="@style/Theme.AppCompat.Light">
 		<item name="windowActionBar">false</item>
 		<item name="windowActionModeOverlay">true</item>
+		<item name="windowNoTitle">true</item>
 
 		<item name="android:windowBackground">@color/global_bg_back</item>
 		<item name="actionModeBackground">@color/theme_action_mode_bg</item>

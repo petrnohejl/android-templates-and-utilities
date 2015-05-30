@@ -3,7 +3,7 @@
 
 	<style name="Widget.Example.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
 		<item name="android:background">?attr/colorPrimary</item>
-		<item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+		<item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
 		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
 	</style>
 
