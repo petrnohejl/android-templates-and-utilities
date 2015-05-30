@@ -25,7 +25,7 @@ public class DatabaseCallTask extends AsyncTask<Void, Void, Data<?>>
 	
 	public void setListener(DatabaseCallListener listener)
 	{
-		mListener = new WeakReference<DatabaseCallListener>(listener);
+		mListener = new WeakReference<>(listener);
 	}
 	
 	

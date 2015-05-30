@@ -24,7 +24,7 @@ public class ExampleDialogFragment extends DialogFragment
 		.setMessage("message");
 		
 		// create dialog from builder
-		final AlertDialog dialog = builder.create();
+		final Dialog dialog = builder.create();
 		
 		// override style
 		dialog.setOnShowListener(new DialogInterface.OnShowListener()

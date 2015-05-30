@@ -14,6 +14,7 @@ import com.example.client.APICallManager;
 import com.example.client.APICallTask;
 import com.example.client.ResponseStatus;
 import com.example.client.request.ExampleRequest;
+import com.example.client.request.Request;
 import com.example.client.response.Response;
 import com.example.entity.ProductEntity;
 import com.example.utility.Logcat;
@@ -242,7 +243,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				showActionBarProgress(true);
 				
 				// execute request
-				ExampleRequest request = new ExampleRequest(0, LAZY_LOADING_TAKE);
+				Request request = new ExampleRequest(0, LAZY_LOADING_TAKE);
 				mAPICallManager.executeTask(request, this);
 			}
 		}
@@ -268,7 +269,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				
 				// execute request
 				int take = (mProductList.size() <= LAZY_LOADING_MAX && mProductList.size() > 0) ? mProductList.size() : LAZY_LOADING_TAKE;
-				ExampleRequest request = new ExampleRequest(0, take);
+				Request request = new ExampleRequest(0, take);
 				request.setMetaData(bundle);
 				mAPICallManager.executeTask(request, this);
 			}
@@ -288,7 +289,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 			showLazyLoadingProgress(true);
 			
 			// execute request
-			ExampleRequest request = new ExampleRequest(mProductList.size(), LAZY_LOADING_TAKE);
+			Request request = new ExampleRequest(mProductList.size(), LAZY_LOADING_TAKE);
 			mAPICallManager.executeTask(request, this);
 		}
 	}

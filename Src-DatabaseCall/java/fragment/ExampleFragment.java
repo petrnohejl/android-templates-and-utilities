@@ -17,6 +17,7 @@ import com.example.database.query.ProductDeleteQuery;
 import com.example.database.query.ProductReadAllQuery;
 import com.example.database.query.ProductReadQuery;
 import com.example.database.query.ProductUpdateQuery;
+import com.example.database.query.Query;
 import com.example.utility.Logcat;
 
 import java.util.List;
@@ -176,7 +177,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductCreateQuery query = new ProductCreateQuery(product);
+		Query query = new ProductCreateQuery(product);
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
@@ -187,7 +188,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 
 		// run async task
-		ProductReadQuery query = new ProductReadQuery(id);
+		Query query = new ProductReadQuery(id);
 		mDatabaseCallManager.executeTask(query, this);
 	}
 	
@@ -198,7 +199,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductReadAllQuery query = new ProductReadAllQuery();
+		Query query = new ProductReadAllQuery();
 		mDatabaseCallManager.executeTask(query, this);
 	}
 	
@@ -209,7 +210,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductUpdateQuery query = new ProductUpdateQuery(product);
+		Query query = new ProductUpdateQuery(product);
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
@@ -220,7 +221,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 
 		// run async task
-		ProductDeleteQuery query = new ProductDeleteQuery(id);
+		Query query = new ProductDeleteQuery(id);
 		mDatabaseCallManager.executeTask(query, this);
 	}
 	
@@ -231,7 +232,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductDeleteAllQuery query = new ProductDeleteAllQuery();
+		Query query = new ProductDeleteAllQuery();
 		mDatabaseCallManager.executeTask(query, this);
 	}
 }

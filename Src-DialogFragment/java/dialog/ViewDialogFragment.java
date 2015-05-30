@@ -137,7 +137,7 @@ public class ViewDialogFragment extends DialogFragment
 		});
 		
 		// create dialog from builder
-		final AlertDialog dialog = builder.create();
+		final Dialog dialog = builder.create();
 		
 		// override positive button
 		dialog.setOnShowListener(new DialogInterface.OnShowListener()

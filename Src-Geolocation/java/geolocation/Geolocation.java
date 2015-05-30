@@ -28,7 +28,7 @@ public class Geolocation implements LocationListener
 	public Geolocation(LocationManager locationManager, GeolocationListener listener)
 	{
 		mLocationManager = locationManager; // (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE); 
-		mListener = new WeakReference<GeolocationListener>(listener);
+		mListener = new WeakReference<>(listener);
 		mTimer = new Timer();
 		init();
 	}

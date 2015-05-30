@@ -35,7 +35,7 @@ public class ExampleActivity extends AppCompatActivity
 		Context context = bar.getThemedContext();
 		
 		// adapter
-		ActionBarListNavigationAdapter<CharSequence> adapter = new ActionBarListNavigationAdapter<CharSequence>(context, android.R.layout.simple_spinner_item, items, subtitle);
+		ActionBarListNavigationAdapter<CharSequence> adapter = new ActionBarListNavigationAdapter<>(context, android.R.layout.simple_spinner_item, items, subtitle);
 		adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 		
 		// action bar navigation

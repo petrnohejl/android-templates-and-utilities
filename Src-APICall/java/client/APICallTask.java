@@ -35,7 +35,7 @@ public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 	
 	public void setListener(APICallListener listener)
 	{
-		mListener = new WeakReference<APICallListener>(listener);
+		mListener = new WeakReference<>(listener);
 	}
 	
 	

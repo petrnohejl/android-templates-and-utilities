@@ -17,6 +17,7 @@ import com.example.database.query.ProductReadAllQuery;
 import com.example.database.query.ProductReadFirstQuery;
 import com.example.database.query.ProductReadQuery;
 import com.example.database.query.ProductUpdateQuery;
+import com.example.database.query.Query;
 import com.example.entity.ProductEntity;
 import com.example.utility.Logcat;
 
@@ -54,12 +55,12 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
-				
+				if(mRootView == null) return; // view was destroyed
+
 				if(task.getQuery().getClass().equals(ProductCreateQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductCreateQuery)");
-					
+
 					// data
 					Data<Long> productCreateData = (Data<Long>) data;
 					long id = productCreateData.getDataObject();
@@ -89,21 +90,21 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				else if(task.getQuery().getClass().equals(ProductReadAllQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductReadAllQuery)");
-					
+
 					// data
 					Data<List<ProductEntity>> productReadAllData = (Data<List<ProductEntity>>) data;
 					List<ProductEntity> productList = productReadAllData.getDataObject();
-					
+
 					// TODO
 				}
 				else if(task.getQuery().getClass().equals(ProductUpdateQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductUpdateQuery)");
-					
+
 					// data
 					Data<Long> productUpdateData = (Data<Long>) data;
 					long id = productUpdateData.getDataObject();
-					
+
 					// TODO
 				}
 				else if(task.getQuery().getClass().equals(ProductDeleteQuery.class))
@@ -118,18 +119,18 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				else if(task.getQuery().getClass().equals(ProductDeleteAllQuery.class))
 				{
 					Logcat.d("Fragment.onDatabaseCallRespond(ProductDeleteAllQuery)");
-					
+
 					// data
 					Data<Void> productDeleteAllData = (Data<Void>) data;
-					
+
 					// TODO
 				}
-				
+
 				// finish query
 				mDatabaseCallManager.finishTask(task);
-				
+
 				// hide progress in action bar
-				if(mDatabaseCallManager.getTasksCount()==0) showActionBarProgress(false);
+				if(mDatabaseCallManager.getTasksCount() == 0) showActionBarProgress(false);
 			}
 		});
 	}
@@ -189,7 +190,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductCreateQuery query = new ProductCreateQuery(product);
+		Query query = new ProductCreateQuery(product);
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
@@ -200,7 +201,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 
 		// run async task
-		ProductReadQuery query = new ProductReadQuery(id);
+		Query query = new ProductReadQuery(id);
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
@@ -211,7 +212,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 
 		// run async task
-		ProductReadFirstQuery query = new ProductReadFirstQuery();
+		Query query = new ProductReadFirstQuery();
 		mDatabaseCallManager.executeTask(query, this);
 	}
 	
@@ -222,7 +223,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductReadAllQuery query = new ProductReadAllQuery();
+		Query query = new ProductReadAllQuery();
 		mDatabaseCallManager.executeTask(query, this);
 	}
 	
@@ -233,7 +234,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductUpdateQuery query = new ProductUpdateQuery(product);
+		Query query = new ProductUpdateQuery(product);
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
@@ -244,7 +245,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 
 		// run async task
-		ProductDeleteQuery query = new ProductDeleteQuery(id);
+		Query query = new ProductDeleteQuery(id);
 		mDatabaseCallManager.executeTask(query, this);
 	}
 	
@@ -255,7 +256,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		showActionBarProgress(true);
 		
 		// run async task
-		ProductDeleteAllQuery query = new ProductDeleteAllQuery();
+		Query query = new ProductDeleteAllQuery();
 		mDatabaseCallManager.executeTask(query, this);
 	}
 }

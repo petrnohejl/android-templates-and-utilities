@@ -277,8 +277,8 @@ public class TreeListingFragment extends TaskFragment implements
 				}
 
 				// create tree manager
-				mTreeStateManager = new InMemoryTreeStateManager<Long>();
-				TreeBuilder<Long> treeBuilder = new TreeBuilder<Long>(mTreeStateManager);
+				mTreeStateManager = new InMemoryTreeStateManager<>();
+				TreeBuilder<Long> treeBuilder = new TreeBuilder<>(mTreeStateManager);
 				for(int i=0; i<nodes.length; i++)
 				{
 					treeBuilder.sequentiallyAddNextNode((long) i, nodes[i]);
