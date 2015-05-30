@@ -3,7 +3,7 @@ package com.example.activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.ExampleConfig;
 import com.example.R;
@@ -12,7 +12,7 @@ import com.example.utility.Logcat;
 import com.google.android.gcm.GCMRegistrar;
 
 
-public class ExampleActivity extends ActionBarActivity
+public class ExampleActivity extends AppCompatActivity
 {
 	private AsyncTask<Void, Void, Void> mRegisterAsyncTask;
 

@@ -2,13 +2,13 @@ package com.example.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.R;
 import com.example.fragment.ExampleFragment;
 
 
-public class ExampleActivity extends ActionBarActivity
+public class ExampleActivity extends AppCompatActivity
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)

@@ -3,14 +3,14 @@ package com.example.activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.R;
 import com.example.adapter.TabsFragmentPagerAdapter;
 import com.example.fragment.ExampleFragment;
 
 
-public class TabsActivity extends ActionBarActivity
+public class TabsActivity extends AppCompatActivity
 {
 	private TabsFragmentPagerAdapter mAdapter;
 	

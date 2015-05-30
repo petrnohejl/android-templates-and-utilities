@@ -6,7 +6,7 @@ import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.support.v7.widget.SearchView.OnSuggestionListener;
@@ -20,7 +20,7 @@ import com.example.R;
 import com.example.adapter.SearchSuggestionAdapter;
 
 
-public class ExampleActivity extends ActionBarActivity
+public class ExampleActivity extends AppCompatActivity
 {
 	private final String[] SEARCH_SUGGESTION_CURSOR_COLUMNS = { BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1, SearchManager.SUGGEST_COLUMN_TEXT_2 };
 	

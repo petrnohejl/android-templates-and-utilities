@@ -4,14 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.OnNavigationListener;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.R;
 import com.example.adapter.ActionBarListNavigationAdapter;
 
 
-public class ExampleActivity extends ActionBarActivity
+public class ExampleActivity extends AppCompatActivity
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)

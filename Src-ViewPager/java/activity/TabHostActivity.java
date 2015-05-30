@@ -2,7 +2,7 @@ package com.example.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TabHost;
 
 import com.example.R;
@@ -10,7 +10,7 @@ import com.example.adapter.TabHostFragmentPagerAdapter;
 import com.example.fragment.ExampleFragment;
 
 
-public class TabHostActivity extends ActionBarActivity
+public class TabHostActivity extends AppCompatActivity
 {
 	private TabHostFragmentPagerAdapter mAdapter;
 	

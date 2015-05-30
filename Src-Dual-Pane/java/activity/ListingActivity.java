@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.R;
@@ -12,7 +12,7 @@ import com.example.fragment.SimpleFragment;
 import com.example.listener.OnDualPaneShowListener;
 
 
-public class ListingActivity extends ActionBarActivity implements OnDualPaneShowListener
+public class ListingActivity extends AppCompatActivity implements OnDualPaneShowListener
 {
 	private static final String SAVED_DUAL_PANE_FRAGMENT = "dual_pane_fragment";
 	private static final String SAVED_DUAL_PANE_INDEX = "dual_pane_index";

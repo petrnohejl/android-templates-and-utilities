@@ -3,12 +3,12 @@ package com.example.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.R;
 
 
-public class ExampleActivity extends ActionBarActivity
+public class ExampleActivity extends AppCompatActivity
 {
 	public static final String EXTRA_PRODUCT_ID = "product_id";
 	public static final String EXTRA_PRODUCT_TITLE = "product_title";

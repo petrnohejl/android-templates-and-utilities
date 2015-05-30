@@ -4,12 +4,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.R;
 
 
-public class ExampleActivity extends ActionBarActivity implements OnSharedPreferenceChangeListener
+public class ExampleActivity extends AppCompatActivity implements OnSharedPreferenceChangeListener
 {
 	private boolean mPreferencesChanged = false;
 	

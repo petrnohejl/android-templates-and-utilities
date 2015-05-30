@@ -2,13 +2,13 @@ package com.example.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.R;
 import com.example.adapter.PagerFragmentPagerAdapter;
 
 
-public class PagerActivity extends ActionBarActivity
+public class PagerActivity extends AppCompatActivity
 {
 	private PagerFragmentPagerAdapter mAdapter;
 	

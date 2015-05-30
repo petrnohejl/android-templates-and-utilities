@@ -2,14 +2,14 @@ package com.example.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.R;
 import com.example.adapter.IndicatorFragmentPagerAdapter;
 import com.viewpagerindicator.CirclePageIndicator;
 
 
-public class IndicatorActivity extends ActionBarActivity
+public class IndicatorActivity extends AppCompatActivity
 {
 	private IndicatorFragmentPagerAdapter mAdapter;
 	
