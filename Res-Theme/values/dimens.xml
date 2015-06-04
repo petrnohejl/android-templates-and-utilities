@@ -12,6 +12,14 @@
 	<dimen name="global_spacing_xl">56dp</dimen>
 	<dimen name="global_spacing_xxl">72dp</dimen>
 
+	<dimen name="global_elevation_xxs">2dp</dimen>
+	<dimen name="global_elevation_xs">4dp</dimen>
+	<dimen name="global_elevation_s">6dp</dimen>
+	<dimen name="global_elevation_m">8dp</dimen>
+	<dimen name="global_elevation_l">12dp</dimen>
+	<dimen name="global_elevation_xl">16dp</dimen>
+	<dimen name="global_elevation_xxl">24dp</dimen>
+
 	<dimen name="global_text_size_display_4">112sp</dimen>
 	<dimen name="global_text_size_display_3">56sp</dimen>
 	<dimen name="global_text_size_display_2">45sp</dimen>
