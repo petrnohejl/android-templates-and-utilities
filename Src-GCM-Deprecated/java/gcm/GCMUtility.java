@@ -1,30 +1,24 @@
 package com.example.gcm;
 
+import android.content.Context;
+import android.net.Uri;
+
+import com.example.ExampleConfig;
+import com.example.utility.Logcat;
+import com.google.android.gcm.GCMRegistrar;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
-import org.apache.http.message.BasicNameValuePair;
-
-import android.content.Context;
-
-import com.example.ExampleConfig;
-import com.example.utility.Logcat;
-import com.google.android.gcm.GCMRegistrar;
 
 
 public class GCMUtility
 {
 	private static final int MAX_ATTEMPTS = 5;
 	private static final int BACKOFF_MILLI_SECONDS = 2000;
-	private static final String CHARSET = "UTF-8";
 	private static final Random random = new Random();
 
 
@@ -37,9 +31,9 @@ public class GCMUtility
 		String requestUrl = ExampleConfig.GCM_REGISTER_URL;
 		
 		// request params
-		List<NameValuePair> paramsList = new LinkedList<>();
-		paramsList.add(new BasicNameValuePair("regId", registrationId));
-		String params = URLEncodedUtils.format(paramsList, CHARSET);
+		Uri.Builder builder = new Uri.Builder();
+		builder.appendQueryParameter("regId", registrationId);
+		String params = builder.build().toString().substring(1);
 		
 		// initial sleep time before next try
 		long backoff = BACKOFF_MILLI_SECONDS + random.nextInt(1000);
@@ -96,9 +90,9 @@ public class GCMUtility
 		String requestUrl = ExampleConfig.GCM_UNREGISTER_URL;
 		
 		// request params
-		List<NameValuePair> paramsList = new LinkedList<>();
-		paramsList.add(new BasicNameValuePair("regId", registrationId));
-		String params = URLEncodedUtils.format(paramsList, CHARSET);
+		Uri.Builder builder = new Uri.Builder();
+		builder.appendQueryParameter("regId", registrationId);
+		String params = builder.build().toString().substring(1);
 		
 		try
 		{

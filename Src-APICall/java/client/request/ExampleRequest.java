@@ -1,18 +1,16 @@
 package com.example.client.request;
 
+import android.net.Uri;
+
 import com.example.client.parser.ExampleParser;
 import com.example.client.response.Response;
 import com.example.entity.ProductEntity;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
-import org.apache.http.message.BasicNameValuePair;
 import org.codehaus.jackson.JsonParseException;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -42,24 +40,12 @@ public class ExampleRequest extends Request
 	@Override
 	public String getAddress()
 	{
-		StringBuilder builder = new StringBuilder();
-		List<NameValuePair> params = new LinkedList<>();
-
-		// params
-		params.add(new BasicNameValuePair("skip", Integer.toString(mSkip)));
-		params.add(new BasicNameValuePair("take", Integer.toString(mTake)));
-		String paramsString = URLEncodedUtils.format(params, CHARSET);
-
-		// url
-		builder.append(API_ENDPOINT);
-		builder.append(REQUEST_PATH);
-		if(paramsString!=null && !paramsString.equals(""))
-		{
-			builder.append("?");
-			builder.append(paramsString);
-		}
-
-		return builder.toString();
+		Uri.Builder builder = new Uri.Builder();
+		builder.encodedPath(API_ENDPOINT);
+		builder.appendEncodedPath(REQUEST_PATH);
+		builder.appendQueryParameter("skip", Integer.toString(mSkip));
+		builder.appendQueryParameter("take", Integer.toString(mTake));
+		return builder.build().toString();
 	}
 
 
