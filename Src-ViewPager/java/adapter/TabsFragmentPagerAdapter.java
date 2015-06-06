@@ -22,8 +22,14 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements Ac
 	private final ActionBar mActionBar;
 	private final ViewPager mViewPager;
 	private final List<TabInfo> mTabList = new ArrayList<>();
-	
-	
+
+
+	public static String getFragmentTag(int viewPagerId, int position)
+	{
+		return "android:switcher:" + viewPagerId + ":" + position;
+	}
+
+
 	public TabsFragmentPagerAdapter(FragmentActivity activity, ActionBar actionBar, ViewPager viewPager)
 	{
 		super(activity.getSupportFragmentManager());
@@ -76,14 +82,12 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements Ac
 	@Override
 	public void onPageScrollStateChanged(int state)
 	{
-
 	}
 
 
 	@Override
 	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
 	{
-
 	}
 
 
@@ -97,14 +101,12 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements Ac
 	@Override
 	public void onTabUnselected(Tab tab, FragmentTransaction ft)
 	{
-
 	}
 
 
 	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft)
 	{
-
 	}
 	
 	
@@ -121,12 +123,6 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements Ac
 	public void refill()
 	{
 		notifyDataSetChanged();
-	}
-	
-	
-	public static String getFragmentTag(int viewPagerId, int position)
-	{
-		return "android:switcher:" + viewPagerId + ":" + position;
 	}
 	
 	

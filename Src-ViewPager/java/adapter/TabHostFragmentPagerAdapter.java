@@ -23,8 +23,14 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	private final TabHost mTabHost;
 	private final ViewPager mViewPager;
 	private final List<TabInfo> mTabList = new ArrayList<>();
-	
-	
+
+
+	public static String getFragmentTag(int viewPagerId, int position)
+	{
+		return "android:switcher:" + viewPagerId + ":" + position;
+	}
+
+
 	public TabHostFragmentPagerAdapter(FragmentActivity activity, TabHost tabHost, ViewPager viewPager)
 	{
 		super(activity.getSupportFragmentManager());
@@ -84,14 +90,12 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	@Override
 	public void onPageScrollStateChanged(int state)
 	{
-
 	}
 
 
 	@Override
 	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
 	{
-
 	}
 	
 	
@@ -109,12 +113,6 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	public void refill()
 	{
 		notifyDataSetChanged();
-	}
-	
-	
-	public static String getFragmentTag(int viewPagerId, int position)
-	{
-		return "android:switcher:" + viewPagerId + ":" + position;
 	}
 	
 	

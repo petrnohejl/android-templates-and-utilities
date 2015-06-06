@@ -134,41 +134,6 @@ public class StorageUtility
 	}
 
 
-	private static void walkFiles(File directory, boolean recursive, Pattern fileNameFilter, Pattern directoryNameFilter, List<File> fileList)
-	{
-		File[] list = directory.listFiles();
-		for(int i = 0; i < list.length; i++)
-		{
-			File f = list[i];
-			if(f.isDirectory())
-			{
-				if(recursive)
-				{
-					if(validateName(f.getName(), directoryNameFilter))
-					{
-						walkFiles(f, recursive, fileNameFilter, directoryNameFilter, fileList);
-					}
-				}
-			}
-			else if(validateName(f.getName(), fileNameFilter))
-			{
-				fileList.add(f);
-			}
-		}
-	}
-	
-	
-	private static boolean validateName(String name, Pattern pattern)
-	{
-		if(pattern==null) return true;
-		else
-		{
-			Matcher matcher = pattern.matcher(name);
-			return matcher.matches();
-		}
-	}
-
-
 	// code taken from: http://stackoverflow.com/questions/11281010/how-can-i-get-external-sd-card-path-for-android-4-0
 	public static Set<String> getExternalMounts()
 	{
@@ -213,5 +178,40 @@ public class StorageUtility
 			}
 		}
 		return externalMounts;
+	}
+
+
+	private static void walkFiles(File directory, boolean recursive, Pattern fileNameFilter, Pattern directoryNameFilter, List<File> fileList)
+	{
+		File[] list = directory.listFiles();
+		for(int i = 0; i < list.length; i++)
+		{
+			File f = list[i];
+			if(f.isDirectory())
+			{
+				if(recursive)
+				{
+					if(validateName(f.getName(), directoryNameFilter))
+					{
+						walkFiles(f, recursive, fileNameFilter, directoryNameFilter, fileList);
+					}
+				}
+			}
+			else if(validateName(f.getName(), fileNameFilter))
+			{
+				fileList.add(f);
+			}
+		}
+	}
+	
+	
+	private static boolean validateName(String name, Pattern pattern)
+	{
+		if(pattern==null) return true;
+		else
+		{
+			Matcher matcher = pattern.matcher(name);
+			return matcher.matches();
+		}
 	}
 }

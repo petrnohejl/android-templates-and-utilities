@@ -23,18 +23,6 @@ public class DatabaseCallTask extends AsyncTask<Void, Void, Data<?>>
 	}
 	
 	
-	public void setListener(DatabaseCallListener listener)
-	{
-		mListener = new WeakReference<>(listener);
-	}
-	
-	
-	public Query getQuery()
-	{
-		return mQuery;
-	}
-	
-	
 	@Override
 	protected Data<?> doInBackground(Void... params)
 	{
@@ -78,5 +66,17 @@ public class DatabaseCallTask extends AsyncTask<Void, Void, Data<?>>
 	protected void onCancelled()
 	{
 		Logcat.d("DatabaseCallTask.onCancelled()");
+	}
+	
+	
+	public Query getQuery()
+	{
+		return mQuery;
+	}
+	
+	
+	public void setListener(DatabaseCallListener listener)
+	{
+		mListener = new WeakReference<>(listener);
 	}
 }

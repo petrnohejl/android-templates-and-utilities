@@ -11,6 +11,12 @@ public class ObservableScrollView extends ScrollView
 	private ScrollViewListener scrollViewListener = null;
 
 
+	public interface ScrollViewListener
+	{
+		void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy);
+	}
+
+
 	public ObservableScrollView(Context context)
 	{
 		super(context);
@@ -43,11 +49,5 @@ public class ObservableScrollView extends ScrollView
 		{
 			scrollViewListener.onScrollChanged(this, x, y, oldx, oldy);
 		}
-	}
-	
-	
-	public interface ScrollViewListener
-	{
-		void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy);
 	}
 }

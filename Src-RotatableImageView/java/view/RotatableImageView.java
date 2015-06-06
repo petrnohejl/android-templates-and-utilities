@@ -66,14 +66,6 @@ public class RotatableImageView extends ImageView
 
 		setMeasuredDimension(width, height);
 	}
-	
-	
-	private void loadAttributes(Context context, AttributeSet attrs)
-	{
-		TypedArray arr = context.obtainStyledAttributes(attrs, R.styleable.RotatableImageView);
-		mAngle = arr.getInteger(R.styleable.RotatableImageView_angle, 0);
-		arr.recycle();
-	}
 
 
 	public int getAngle()
@@ -85,5 +77,13 @@ public class RotatableImageView extends ImageView
 	public void setAngle(int angle)
 	{
 		mAngle = angle;
+	}
+	
+	
+	private void loadAttributes(Context context, AttributeSet attrs)
+	{
+		TypedArray arr = context.obtainStyledAttributes(attrs, R.styleable.RotatableImageView);
+		mAngle = arr.getInteger(R.styleable.RotatableImageView_angle, 0);
+		arr.recycle();
 	}
 }

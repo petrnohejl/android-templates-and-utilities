@@ -80,104 +80,6 @@ public class ExampleFragment extends Fragment
 	}
 	
 	
-	private void showActionBarProgress(boolean visible)
-	{
-		// show action bar progress
-		((AppCompatActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
-		mActionBarProgress = visible;
-	}
-	
-	
-	private void renderView()
-	{
-		Button loginButton = (Button) mRootView.findViewById(R.id.fragment_example_login);
-		Button logoutButton = (Button) mRootView.findViewById(R.id.fragment_example_logout);
-		Button profileButton = (Button) mRootView.findViewById(R.id.fragment_example_profile);
-		Button friendsButton = (Button) mRootView.findViewById(R.id.fragment_example_friends);
-		Button wallPostButton = (Button) mRootView.findViewById(R.id.fragment_example_wall_post);
-		
-		loginButton.setOnClickListener(new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				if(NetworkManager.isOnline(getActivity()))
-				{
-					facebookAuthorize();
-				}
-				else
-				{
-					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
-				}
-			}
-		});
-		
-		logoutButton.setOnClickListener(new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				if(NetworkManager.isOnline(getActivity()))
-				{
-					facebookLogout();
-				}
-				else
-				{
-					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
-				}
-			}
-		});
-		
-		profileButton.setOnClickListener(new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				if(NetworkManager.isOnline(getActivity()))
-				{
-					facebookProfile();
-				}
-				else
-				{
-					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
-				}
-			}
-		});
-		
-		friendsButton.setOnClickListener(new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				if(NetworkManager.isOnline(getActivity()))
-				{
-					facebookFriends();
-				}
-				else
-				{
-					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
-				}
-			}
-		});
-		
-		wallPostButton.setOnClickListener(new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				if(NetworkManager.isOnline(getActivity()))
-				{
-					facebookWallPost();
-				}
-				else
-				{
-					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
-				}
-			}
-		});
-	}
-	
-	
 	public void facebookActivityResult(int requestCode, int resultCode, Intent data)
 	{
 		mFacebook.authorizeCallback(requestCode, resultCode, data);
@@ -675,5 +577,103 @@ public class ExampleFragment extends Fragment
 		{
 			Toast.makeText(getActivity(), "You are logged out.", Toast.LENGTH_LONG).show();
 		}
+	}
+	
+	
+	private void showActionBarProgress(boolean visible)
+	{
+		// show action bar progress
+		((AppCompatActivity) getActivity()).setSupportProgressBarIndeterminateVisibility(visible);
+		mActionBarProgress = visible;
+	}
+	
+	
+	private void renderView()
+	{
+		Button loginButton = (Button) mRootView.findViewById(R.id.fragment_example_login);
+		Button logoutButton = (Button) mRootView.findViewById(R.id.fragment_example_logout);
+		Button profileButton = (Button) mRootView.findViewById(R.id.fragment_example_profile);
+		Button friendsButton = (Button) mRootView.findViewById(R.id.fragment_example_friends);
+		Button wallPostButton = (Button) mRootView.findViewById(R.id.fragment_example_wall_post);
+		
+		loginButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if(NetworkManager.isOnline(getActivity()))
+				{
+					facebookAuthorize();
+				}
+				else
+				{
+					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
+				}
+			}
+		});
+		
+		logoutButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if(NetworkManager.isOnline(getActivity()))
+				{
+					facebookLogout();
+				}
+				else
+				{
+					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
+				}
+			}
+		});
+		
+		profileButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if(NetworkManager.isOnline(getActivity()))
+				{
+					facebookProfile();
+				}
+				else
+				{
+					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
+				}
+			}
+		});
+		
+		friendsButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if(NetworkManager.isOnline(getActivity()))
+				{
+					facebookFriends();
+				}
+				else
+				{
+					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
+				}
+			}
+		});
+		
+		wallPostButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if(NetworkManager.isOnline(getActivity()))
+				{
+					facebookWallPost();
+				}
+				else
+				{
+					Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
+				}
+			}
+		});
 	}
 }

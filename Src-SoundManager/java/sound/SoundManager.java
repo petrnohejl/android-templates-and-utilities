@@ -63,6 +63,37 @@ public class SoundManager
 	}
 	
 	
+	// should be called in Activity.onStop()
+	public void stopAll()
+	{
+		Logcat.d("SoundManager.stopAll(): " + mMediaMap.size());
+		
+		Collection<MediaPlayer> collection = mMediaMap.values();
+		Iterator<MediaPlayer> iterator = collection.iterator();
+		
+		while(iterator.hasNext())
+		{
+			MediaPlayer mediaPlayer = iterator.next();
+			if(mediaPlayer!=null)
+			{
+				Logcat.d("SoundManager.stopAll(): release");
+				if(mediaPlayer.isPlaying()) mediaPlayer.stop();
+				mediaPlayer.release();
+				mediaPlayer = null;
+			}
+		}
+		
+		mMediaMap.clear();
+		printMediaList();
+	}
+	
+	
+	public void printMediaList()
+	{
+		Logcat.d("SoundManager.printMediaList(): " + mMediaMap.size());
+	}
+	
+	
 	private void playSound(final String path, AssetFileDescriptor assetFileDescriptor)
 	{
 		// stop all currently playing sounds
@@ -148,36 +179,5 @@ public class SoundManager
 				printMediaList();
 			}
 		});
-	}
-	
-	
-	// should be called in Activity.onStop()
-	public void stopAll()
-	{
-		Logcat.d("SoundManager.stopAll(): " + mMediaMap.size());
-		
-		Collection<MediaPlayer> collection = mMediaMap.values();
-		Iterator<MediaPlayer> iterator = collection.iterator();
-		
-		while(iterator.hasNext())
-		{
-			MediaPlayer mediaPlayer = iterator.next();
-			if(mediaPlayer!=null)
-			{
-				Logcat.d("SoundManager.stopAll(): release");
-				if(mediaPlayer.isPlaying()) mediaPlayer.stop();
-				mediaPlayer.release();
-				mediaPlayer = null;
-			}
-		}
-		
-		mMediaMap.clear();
-		printMediaList();
-	}
-	
-	
-	public void printMediaList()
-	{
-		Logcat.d("SoundManager.printMediaList(): " + mMediaMap.size());
 	}
 }

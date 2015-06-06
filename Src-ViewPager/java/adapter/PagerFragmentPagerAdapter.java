@@ -10,8 +10,14 @@ import com.example.fragment.ExampleFragment;
 public class PagerFragmentPagerAdapter extends FragmentPagerAdapter // TODO: use FragmentPagerAdapter or FragmentStatePagerAdapter
 {
 	private static final int FRAGMENT_COUNT = 8;
-	
-	
+
+
+	public static String getFragmentTag(int viewPagerId, int position)
+	{
+		return "android:switcher:" + viewPagerId + ":" + position;
+	}
+
+
 	public PagerFragmentPagerAdapter(FragmentManager fragmentManager)
 	{
 		super(fragmentManager);
@@ -43,11 +49,5 @@ public class PagerFragmentPagerAdapter extends FragmentPagerAdapter // TODO: use
 	public void refill()
 	{
 		notifyDataSetChanged();
-	}
-	
-	
-	public static String getFragmentTag(int viewPagerId, int position)
-	{
-		return "android:switcher:" + viewPagerId + ":" + position;
 	}
 }

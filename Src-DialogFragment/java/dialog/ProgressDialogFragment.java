@@ -48,6 +48,12 @@ public class ProgressDialogFragment extends DialogFragment
 	}
 	
 	
+	public void dismiss()
+	{
+		getDialog().dismiss();
+	}
+	
+	
 	private int getTheme(boolean light)
 	{
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -62,11 +68,5 @@ public class ProgressDialogFragment extends DialogFragment
 		{
 			return android.R.style.Theme_Dialog;
 		}
-	}
-	
-	
-	public void dismiss()
-	{
-		getDialog().dismiss();
 	}
 }

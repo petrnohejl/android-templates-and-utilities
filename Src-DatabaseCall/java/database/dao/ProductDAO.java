@@ -12,20 +12,6 @@ import java.util.List;
 
 public class ProductDAO extends DAO
 {
-	private static Dao<ProductModel, Long> getDao() throws SQLException
-	{
-		DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
-		return databaseHelper.getProductDao();
-	}
-	
-	
-	public static int refresh(ProductModel product) throws SQLException
-	{
-		Dao<ProductModel, Long> dao = getDao();
-		return dao.refresh(product);
-	}
-	
-	
 	public static int create(ProductModel product) throws SQLException
 	{
 		Dao<ProductModel, Long> dao = getDao();
@@ -77,5 +63,19 @@ public class ProductDAO extends DAO
 		Dao<ProductModel, Long> dao = getDao();
 		DeleteBuilder<ProductModel, Long> deleteBuilder = dao.deleteBuilder();
 		return dao.delete(deleteBuilder.prepare());
+	}
+	
+	
+	public static int refresh(ProductModel product) throws SQLException
+	{
+		Dao<ProductModel, Long> dao = getDao();
+		return dao.refresh(product);
+	}
+	
+	
+	private static Dao<ProductModel, Long> getDao() throws SQLException
+	{
+		DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
+		return databaseHelper.getProductDao();
 	}
 }

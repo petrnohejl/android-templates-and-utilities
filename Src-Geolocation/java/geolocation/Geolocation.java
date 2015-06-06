@@ -34,68 +34,6 @@ public class Geolocation implements LocationListener
 	}
 	
 	
-	private void init()
-	{
-		// get last known location
-		Location lastKnownLocation = getLastKnownLocation(mLocationManager);
-		
-		// try to listen last known location
-		if(lastKnownLocation != null)
-		{
-			onLocationChanged(lastKnownLocation);
-		}
-		
-		if(mCurrentLocation == null)
-		{
-			// start timer to check timeout
-			TimerTask task = new TimerTask()
-			{
-				public void run()
-				{
-					if(mCurrentLocation == null)
-					{
-						Logcat.d("Geolocation.timer: timeout");
-						stop();
-						GeolocationListener listener = mListener.get();
-						if(listener != null) listener.onGeolocationFail(Geolocation.this);
-					}
-				}
-			};
-			mTimer.schedule(task, LOCATION_TIMEOUT);
-			
-			// register location updates
-			try
-			{
-				mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0l, 0.0f, this);
-			}
-			catch(IllegalArgumentException e)
-			{
-				e.printStackTrace();
-			}
-			try
-			{
-				mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0l, 0.0f, this);
-			}
-			catch(IllegalArgumentException e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}
-		
-		
-	public void stop()
-	{
-		Logcat.d("Geolocation.stop()");
-		if(mTimer!=null) mTimer.cancel();
-		if(mLocationManager!=null) 
-		{
-			mLocationManager.removeUpdates(this);
-			mLocationManager = null;
-		}
-	}
-	
-	
 	@Override
 	public void onLocationChanged(Location location)
 	{
@@ -147,6 +85,68 @@ public class Geolocation implements LocationListener
 			case LocationProvider.AVAILABLE:
 				Logcat.d("Geolocation.onStatusChanged(): status AVAILABLE");
 				break;
+		}
+	}
+
+
+	public void stop()
+	{
+		Logcat.d("Geolocation.stop()");
+		if(mTimer!=null) mTimer.cancel();
+		if(mLocationManager!=null) 
+		{
+			mLocationManager.removeUpdates(this);
+			mLocationManager = null;
+		}
+	}
+
+
+	private void init()
+	{
+		// get last known location
+		Location lastKnownLocation = getLastKnownLocation(mLocationManager);
+		
+		// try to listen last known location
+		if(lastKnownLocation != null)
+		{
+			onLocationChanged(lastKnownLocation);
+		}
+		
+		if(mCurrentLocation == null)
+		{
+			// start timer to check timeout
+			TimerTask task = new TimerTask()
+			{
+				public void run()
+				{
+					if(mCurrentLocation == null)
+					{
+						Logcat.d("Geolocation.timer: timeout");
+						stop();
+						GeolocationListener listener = mListener.get();
+						if(listener != null) listener.onGeolocationFail(Geolocation.this);
+					}
+				}
+			};
+			mTimer.schedule(task, LOCATION_TIMEOUT);
+			
+			// register location updates
+			try
+			{
+				mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0l, 0.0f, this);
+			}
+			catch(IllegalArgumentException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0l, 0.0f, this);
+			}
+			catch(IllegalArgumentException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 	

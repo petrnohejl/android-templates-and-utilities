@@ -38,11 +38,6 @@ public class EllipsizingTextView extends TextView
 	private static final String ELLIPSIS = "…";
 	private static final Pattern DEFAULT_END_PUNCTUATION = Pattern.compile("[\\.,…;\\:\\s]*$", Pattern.DOTALL);
 
-	public interface EllipsizeListener
-	{
-		void ellipsizeStateChanged(boolean ellipsized);
-	}
-
 	private final List<EllipsizeListener> ellipsizeListeners = new ArrayList<EllipsizeListener>();
 	private boolean isEllipsized;
 	private boolean isStale;
@@ -56,6 +51,12 @@ public class EllipsizingTextView extends TextView
 	 * The end punctuation which will be removed when appending #ELLIPSIS.
 	 */
 	private Pattern endPunctuationPattern;
+
+
+	public interface EllipsizeListener
+	{
+		void ellipsizeStateChanged(boolean ellipsized);
+	}
 
 
 	public EllipsizingTextView(Context context)
@@ -182,6 +183,13 @@ public class EllipsizingTextView extends TextView
 	}
 
 
+	@Override
+	public void setEllipsize(TruncateAt where)
+	{
+		// Ellipsize settings are not respected
+	}
+
+
 	private void resetText()
 	{
 		String workingText = fullText;
@@ -271,12 +279,5 @@ public class EllipsizingTextView extends TextView
 	{
 		return new StaticLayout(workingText, getPaint(), getWidth() - getPaddingLeft() - getPaddingRight(), Alignment.ALIGN_NORMAL, lineSpacingMultiplier,
 				lineAdditionalVerticalPadding, false /* includepad */);
-	}
-
-
-	@Override
-	public void setEllipsize(TruncateAt where)
-	{
-		// Ellipsize settings are not respected
 	}
 }

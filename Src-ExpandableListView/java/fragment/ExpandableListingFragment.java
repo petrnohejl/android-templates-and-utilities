@@ -310,7 +310,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	}
 	
 	
-	public void expand()
+	private void expand()
 	{
 		if(mAdapter!=null && mRootView!=null)
 		{
@@ -322,7 +322,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	}
 	
 	
-	public void collapse()
+	private void collapse()
 	{
 		if(mAdapter!=null && mRootView!=null)
 		{

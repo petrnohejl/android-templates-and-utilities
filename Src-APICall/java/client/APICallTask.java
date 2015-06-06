@@ -33,30 +33,6 @@ public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 	}
 	
 	
-	public void setListener(APICallListener listener)
-	{
-		mListener = new WeakReference<>(listener);
-	}
-	
-	
-	public void setMaxAttempts(int maxAttempts)
-	{
-		mMaxAttempts = maxAttempts;
-	}
-	
-	
-	public Request getRequest()
-	{
-		return mAPICall.getRequest();
-	}
-	
-	
-	public void kill()
-	{
-		mAPICall.kill();
-	}
-	
-	
 	@Override
 	protected Response<?> doInBackground(Void... params)
 	{
@@ -128,5 +104,29 @@ public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 	protected void onCancelled()
 	{
 		Logcat.d("APICallTask.onCancelled()");
+	}
+	
+	
+	public Request getRequest()
+	{
+		return mAPICall.getRequest();
+	}
+	
+	
+	public void setListener(APICallListener listener)
+	{
+		mListener = new WeakReference<>(listener);
+	}
+	
+	
+	public void setMaxAttempts(int maxAttempts)
+	{
+		mMaxAttempts = maxAttempts;
+	}
+	
+	
+	public void kill()
+	{
+		mAPICall.kill();
 	}
 }

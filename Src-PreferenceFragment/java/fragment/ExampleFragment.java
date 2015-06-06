@@ -76,7 +76,7 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 	}
 
 
-	public static void setupActionBar(PreferenceScreen preferenceScreen)
+	private void setupActionBar(PreferenceScreen preferenceScreen)
 	{
 		final Dialog dialog = preferenceScreen.getDialog();
 		if(dialog!=null)

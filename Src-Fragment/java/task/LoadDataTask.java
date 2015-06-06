@@ -18,12 +18,6 @@ public class LoadDataTask extends AsyncTask<Void, Void, String>
 	}
 	
 	
-	public void setListener(OnLoadDataListener onLoadDataListener)
-	{
-		mOnLoadDataListener = new WeakReference<>(onLoadDataListener);
-	}
-	
-	
 	@Override
 	protected String doInBackground(Void... params)
 	{
@@ -50,5 +44,11 @@ public class LoadDataTask extends AsyncTask<Void, Void, String>
 		{
 			listener.onLoadData();
 		}
+	}
+	
+	
+	public void setListener(OnLoadDataListener onLoadDataListener)
+	{
+		mOnLoadDataListener = new WeakReference<>(onLoadDataListener);
 	}
 }

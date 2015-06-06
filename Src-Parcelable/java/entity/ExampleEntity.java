@@ -20,10 +20,24 @@ public class ExampleEntity implements Parcelable
 	private List<String> stringList;
 
 
+	public static final Parcelable.Creator<ExampleEntity> CREATOR = new Parcelable.Creator<ExampleEntity>()
+	{
+		public ExampleEntity createFromParcel(Parcel parcel)
+		{
+			return new ExampleEntity(parcel);
+		}
+
+
+		public ExampleEntity[] newArray(int size)
+		{
+			return new ExampleEntity[size];
+		}
+	};
+
+
 	// empty constructor
 	public ExampleEntity()
 	{
-	
 	}
 	
 	
@@ -82,19 +96,4 @@ public class ExampleEntity implements Parcelable
 		myModel = parcel.readParcelable(MyModel.class.getClassLoader());
 		parcel.readStringList(stringList);
 	}
-	
-	
-	public static final Parcelable.Creator<ExampleEntity> CREATOR = new Parcelable.Creator<ExampleEntity>()
-	{
-		public ExampleEntity createFromParcel(Parcel parcel)
-		{
-			return new ExampleEntity(parcel);
-		}
-
-
-		public ExampleEntity[] newArray(int size)
-		{
-			return new ExampleEntity[size];
-		}
-	};
 }

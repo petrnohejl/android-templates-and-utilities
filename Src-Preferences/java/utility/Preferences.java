@@ -11,14 +11,14 @@ import com.example.ExampleApplication;
 
 public class Preferences
 {
-	private SharedPreferences mSharedPreferences;
-	private Context mContext;
-	
 	public static final int NULL_INT = -1;
 	public static final long NULL_LONG = -1l;
 	public static final double NULL_DOUBLE = -1.0;
 	public static final String NULL_STRING = null;
-	
+
+	private SharedPreferences mSharedPreferences;
+	private Context mContext;
+
 	
 	public Preferences(Context context)
 	{
@@ -34,11 +34,11 @@ public class Preferences
 		editor.clear();
 		editor.commit();
 	}
-	
-	
-	// GETTERS ////////////////////////////////////////////////////////////////////////////////////
-	
-	
+
+
+	// getters
+
+
 	public long getUserId()
 	{
 		String key = mContext.getString(R.string.prefs_key_user_id);
@@ -95,9 +95,9 @@ public class Preferences
 	}
 
 
-	// SETTERS ////////////////////////////////////////////////////////////////////////////////////
-	
-	
+	// setters
+
+
 	public void setUserId(long userId)
 	{
 		String key = mContext.getString(R.string.prefs_key_user_id);
