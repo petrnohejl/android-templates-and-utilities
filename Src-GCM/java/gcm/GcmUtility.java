@@ -24,7 +24,7 @@ public class GcmUtility
 	private static final int MAX_ATTEMPTS = 5;
 	private static final int BACKOFF_MILLI_SECONDS = 2000;
 	private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-	private static final Random random = new Random();
+	private static final Random sRandom = new Random();
 
 
 	public static boolean checkPlayServices(Activity activity)
@@ -86,7 +86,7 @@ public class GcmUtility
 		String params = builder.build().toString().substring(1);
 
 		// initial sleep time before next try
-		long backoff = BACKOFF_MILLI_SECONDS + random.nextInt(1000);
+		long backoff = BACKOFF_MILLI_SECONDS + sRandom.nextInt(1000);
 
 		// Once GCM returns a registration id, we need to register it on the server.
 		// As the server might be down, we will retry it a couple times.

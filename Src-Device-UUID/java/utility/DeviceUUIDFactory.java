@@ -15,16 +15,16 @@ public class DeviceUUIDFactory
 	protected static final String PREFS_FILE = "device_id.xml";
 	protected static final String PREFS_DEVICE_ID = "device_id";
 	
-	protected volatile static UUID uuid;
+	protected volatile static UUID sUuid;
 
 
 	public DeviceUUIDFactory(Context context)
 	{
-		if(uuid == null)
+		if(sUuid == null)
 		{
 			synchronized(DeviceUUIDFactory.class)
 			{
-				if(uuid == null)
+				if(sUuid == null)
 				{
 					final SharedPreferences prefs = context.getSharedPreferences(PREFS_FILE, 0);
 					final String id = prefs.getString(PREFS_DEVICE_ID, null);
@@ -32,7 +32,7 @@ public class DeviceUUIDFactory
 					if(id != null)
 					{
 						// use the ids previously computed and stored in the prefs file
-						uuid = UUID.fromString(id);
+						sUuid = UUID.fromString(id);
 					}
 					else
 					{
@@ -44,13 +44,13 @@ public class DeviceUUIDFactory
 						{
 							if(!"9774d56d682e549c".equals(androidId))
 							{
-								uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf8"));
+								sUuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf8"));
 							}
 							else
 							{
 								// requires android.permission.READ_PHONE_STATE 
 								final String deviceId = ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
-								uuid = deviceId != null ? UUID.nameUUIDFromBytes(deviceId.getBytes("utf8")) : UUID.randomUUID();
+								sUuid = deviceId != null ? UUID.nameUUIDFromBytes(deviceId.getBytes("utf8")) : UUID.randomUUID();
 							}
 						}
 						catch(UnsupportedEncodingException e)
@@ -59,7 +59,7 @@ public class DeviceUUIDFactory
 						}
 						
 						// write the value out to the prefs file
-						prefs.edit().putString(PREFS_DEVICE_ID, uuid.toString()).commit();
+						prefs.edit().putString(PREFS_DEVICE_ID, sUuid.toString()).commit();
 					}
 				}
 			}
@@ -94,6 +94,6 @@ public class DeviceUUIDFactory
 	 */
 	public UUID getDeviceUUID()
 	{
-		return uuid;
+		return sUuid;
 	}
 }

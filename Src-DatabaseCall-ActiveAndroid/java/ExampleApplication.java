@@ -7,12 +7,18 @@ import com.activeandroid.ActiveAndroid;
 
 public class ExampleApplication extends com.activeandroid.app.Application
 {
-	private static ExampleApplication mInstance;
+	private static ExampleApplication sInstance;
+
+
+	public static Context getContext()
+	{
+		return sInstance;
+	}
 
 
 	public ExampleApplication()
 	{
-		mInstance = this;
+		sInstance = this;
 	}
 
 
@@ -23,11 +29,5 @@ public class ExampleApplication extends com.activeandroid.app.Application
 		
 		// logs in ActiveAndroid
 		ActiveAndroid.setLoggingEnabled(ExampleConfig.LOGS);
-	}
-
-
-	public static Context getContext()
-	{
-		return mInstance;
 	}
 }

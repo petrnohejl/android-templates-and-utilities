@@ -16,15 +16,16 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper
 	private static final String DATABASE_NAME = "example.db";
 	private static final int DATABASE_VERSION = 1;
 
+	private static DatabaseHelper sInstance;
+
 	private Dao<ProductModel, Long> mProductDao = null;
 
 
 	// singleton
-	private static DatabaseHelper instance;
 	public static synchronized DatabaseHelper getInstance()
 	{
-		if(instance==null) instance = new DatabaseHelper();
-		return instance;
+		if(sInstance==null) sInstance = new DatabaseHelper();
+		return sInstance;
 	}
 
 

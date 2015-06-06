@@ -5,19 +5,18 @@ public enum StringEnum
 {
 	GET("GET"), POST("POST"), OPTIONS("OPTIONS"), HEAD("HEAD"), PUT("PUT"), DELETE("DELETE"), TRACE("TRACE");
 
-
-	private final String value;
+	private final String mValue;
 
 
 	private StringEnum(String value)
 	{
-		this.value = value;
+		mValue = value;
 	}
 
 
 	@Override
 	public String toString()
 	{
-		return value;
+		return mValue;
 	}
 }

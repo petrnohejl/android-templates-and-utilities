@@ -17,12 +17,18 @@ import java.io.IOException;
 
 public class ExampleApplication extends Application
 {
-	private static ExampleApplication mInstance;
+	private static ExampleApplication sInstance;
+
+
+	public static Context getContext()
+	{
+		return sInstance;
+	}
 
 
 	public ExampleApplication()
 	{
-		mInstance = this;
+		sInstance = this;
 	}
 
 
@@ -51,11 +57,5 @@ public class ExampleApplication extends Application
 		{
 			e.printStackTrace();
 		}
-	}
-
-
-	public static Context getContext()
-	{
-		return mInstance;
 	}
 }
