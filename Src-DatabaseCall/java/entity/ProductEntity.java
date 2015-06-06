@@ -13,7 +13,6 @@ public class ProductEntity
 	// empty constructor
 	public ProductEntity()
 	{
-	
 	}
 
 

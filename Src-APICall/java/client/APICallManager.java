@@ -17,7 +17,6 @@ public class APICallManager
 	
 	public APICallManager()
 	{
-
 	}
 
 

@@ -22,10 +22,9 @@ public class ExampleEntity
 	// empty constructor
 	public ExampleEntity()
 	{
-	
 	}
-	
-	
+
+
 	// copy constructor
 	public ExampleEntity(ExampleEntity origin)
 	{
@@ -51,68 +50,98 @@ public class ExampleEntity
 			}
 		}
 	}
-	
-	
+
+
 	public boolean isBooleanVar()
 	{
 		return booleanVar;
 	}
+
+
 	public void setBooleanVar(boolean booleanVar)
 	{
 		this.booleanVar = booleanVar;
 	}
+
+
 	public int getIntVar()
 	{
 		return intVar;
 	}
+
+
 	public void setIntVar(int intVar)
 	{
 		this.intVar = intVar;
 	}
+
+
 	public long getLongVar()
 	{
 		return longVar;
 	}
+
+
 	public void setLongVar(long longVar)
 	{
 		this.longVar = longVar;
 	}
+
+
 	public String getStringVar()
 	{
 		return stringVar;
 	}
+
+
 	public void setStringVar(String stringVar)
 	{
 		this.stringVar = stringVar;
 	}
+
+
 	public Date getDateVar()
 	{
 		return dateVar;
 	}
+
+
 	public void setDateVar(Date dateVar)
 	{
 		this.dateVar = dateVar;
 	}
+
+
 	public Calendar getCalendarVar()
 	{
 		return calendarVar;
 	}
+
+
 	public void setCalendarVar(Calendar calendarVar)
 	{
 		this.calendarVar = calendarVar;
 	}
+
+
 	public MyModel getMyModel()
 	{
 		return myModel;
 	}
+
+
 	public void setMyModel(MyModel myModel)
 	{
 		this.myModel = myModel;
 	}
+
+
 	public List<String> getStringList()
 	{
 		return stringList;
 	}
+
+
 	public void setStringList(List<String> stringList)
 	{
 		this.stringList = stringList;

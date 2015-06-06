@@ -17,7 +17,6 @@ public class DatabaseCallManager
 	
 	public DatabaseCallManager()
 	{
-	
 	}
 	
 	
