@@ -11,7 +11,7 @@
 		android:id="@+id/activity_tabindicator_indicator"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="@color/global_color_primary" />
+		android:background="?attr/colorPrimary" />
 
 	<android.support.v4.view.ViewPager
 		android:id="@+id/activity_tabindicator_pager"

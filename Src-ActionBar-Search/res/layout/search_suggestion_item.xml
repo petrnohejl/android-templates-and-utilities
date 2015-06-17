@@ -12,7 +12,7 @@
 		android:layout_height="wrap_content"
 		android:maxLines="1"
 		android:textAppearance="@style/TextAppearance.Example.Body1"
-		android:textColor="@color/global_text_primary_inverse" />
+		android:textColor="?android:attr/textColorPrimaryInverse" />
 	
 	<TextView
 		android:id="@+id/search_suggestion_item_subtitle"
@@ -20,6 +20,6 @@
 		android:layout_height="wrap_content"
 		android:maxLines="1"
 		android:textAppearance="@style/TextAppearance.Example.Caption"
-		android:textColor="@color/global_text_secondary_inverse" />
+		android:textColor="?android:attr/textColorSecondaryInverse" />
 	
 </LinearLayout>
