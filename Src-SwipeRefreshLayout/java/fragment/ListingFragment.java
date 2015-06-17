@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.R;
 import com.example.client.APICallManager;
 import com.example.client.request.ExampleRequest;
-import com.example.utility.NetworkManager;
+import com.example.utility.NetworkUtility;
 
 
 public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.OnRefreshListener
@@ -84,7 +84,7 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 	
 	public void refreshData()
 	{
-		if(NetworkManager.isOnline(getActivity()))
+		if(NetworkUtility.isOnline(getActivity()))
 		{
 			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
 			{

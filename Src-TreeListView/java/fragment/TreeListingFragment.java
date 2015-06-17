@@ -17,7 +17,7 @@ import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.utility.Logcat;
-import com.example.utility.NetworkManager;
+import com.example.utility.NetworkUtility;
 import com.example.view.ViewState;
 
 import java.util.ArrayList;
@@ -305,7 +305,7 @@ public class TreeListingFragment extends TaskFragment implements
 
 	private void loadData()
 	{
-		if(NetworkManager.isOnline(getActivity()))
+		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
 			showProgress();

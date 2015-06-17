@@ -17,7 +17,7 @@ import com.example.adapter.RecyclerAdapter;
 import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
-import com.example.utility.NetworkManager;
+import com.example.utility.NetworkUtility;
 import com.example.view.LinearDividerItemDecoration;
 import com.example.view.ViewState;
 
@@ -246,7 +246,7 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 	
 	private void loadData()
 	{
-		if(NetworkManager.isOnline(getActivity()))
+		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
 			showProgress();
@@ -264,7 +264,7 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 	
 	private void lazyLoadData()
 	{
-		if(NetworkManager.isOnline(getActivity()))
+		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show lazy loading progress
 			showLazyLoadingProgress(true);

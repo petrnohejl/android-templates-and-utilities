@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.utility.Logcat;
-import com.example.utility.NetworkManager;
+import com.example.utility.NetworkUtility;
 
 
 public class ConnectivityChangeReceiver extends BroadcastReceiver
@@ -13,7 +13,7 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
-		Logcat.d("ConnectivityChangeReceiver.onReceive(): " + NetworkManager.getTypeName(context));
+		Logcat.d("ConnectivityChangeReceiver.onReceive(): " + NetworkUtility.getTypeName(context));
 		
 		// TODO: do something
 	}

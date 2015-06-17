@@ -19,7 +19,7 @@ import com.example.ExampleConfig;
 import com.example.R;
 import com.example.client.APICallManager;
 import com.example.utility.Logcat;
-import com.example.utility.NetworkManager;
+import com.example.utility.NetworkUtility;
 import com.example.utility.Preferences;
 import com.facebook.android.AsyncFacebookRunner;
 import com.facebook.android.AsyncFacebookRunner.RequestListener;
@@ -601,7 +601,7 @@ public class ExampleFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				if(NetworkManager.isOnline(getActivity()))
+				if(NetworkUtility.isOnline(getActivity()))
 				{
 					facebookAuthorize();
 				}
@@ -617,7 +617,7 @@ public class ExampleFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				if(NetworkManager.isOnline(getActivity()))
+				if(NetworkUtility.isOnline(getActivity()))
 				{
 					facebookLogout();
 				}
@@ -633,7 +633,7 @@ public class ExampleFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				if(NetworkManager.isOnline(getActivity()))
+				if(NetworkUtility.isOnline(getActivity()))
 				{
 					facebookProfile();
 				}
@@ -649,7 +649,7 @@ public class ExampleFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				if(NetworkManager.isOnline(getActivity()))
+				if(NetworkUtility.isOnline(getActivity()))
 				{
 					facebookFriends();
 				}
@@ -665,7 +665,7 @@ public class ExampleFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				if(NetworkManager.isOnline(getActivity()))
+				if(NetworkUtility.isOnline(getActivity()))
 				{
 					facebookWallPost();
 				}

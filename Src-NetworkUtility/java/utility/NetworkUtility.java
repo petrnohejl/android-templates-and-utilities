@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 
 
 // requires android.permission.ACCESS_NETWORK_STATE
-public class NetworkManager
+public class NetworkUtility
 {
 	public static boolean isOnline(Context context)
 	{

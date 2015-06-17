@@ -19,7 +19,7 @@ import com.example.adapter.ExpandableListingAdapter;
 import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
-import com.example.utility.NetworkManager;
+import com.example.utility.NetworkUtility;
 import com.example.view.ViewState;
 
 
@@ -208,7 +208,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	
 	private void loadData()
 	{
-		if(NetworkManager.isOnline(getActivity()))
+		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
 			showProgress();

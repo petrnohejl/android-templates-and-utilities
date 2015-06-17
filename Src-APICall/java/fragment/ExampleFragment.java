@@ -18,7 +18,7 @@ import com.example.client.request.Request;
 import com.example.client.response.Response;
 import com.example.entity.ProductEntity;
 import com.example.utility.Logcat;
-import com.example.utility.NetworkManager;
+import com.example.utility.NetworkUtility;
 import com.example.view.ViewState;
 
 import org.codehaus.jackson.JsonParseException;
@@ -232,7 +232,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	
 	private void loadData()
 	{
-		if(NetworkManager.isOnline(getActivity()))
+		if(NetworkUtility.isOnline(getActivity()))
 		{
 			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
 			{
@@ -256,7 +256,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 
 	public void refreshData()
 	{
-		if(NetworkManager.isOnline(getActivity()))
+		if(NetworkUtility.isOnline(getActivity()))
 		{
 			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
 			{
@@ -283,7 +283,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	
 	private void lazyLoadData()
 	{
-		if(NetworkManager.isOnline(getActivity()))
+		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show lazy loading progress
 			showLazyLoadingProgress(true);
