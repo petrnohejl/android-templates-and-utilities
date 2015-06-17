@@ -2,17 +2,22 @@ package com.example.fragment;
 
 import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.support.v4.preference.PreferenceFragment;
+import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.example.R;
 import com.example.utility.Preferences;
@@ -24,9 +29,7 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-
 		setRetainInstance(true);
-
 		addPreferencesFromResource(R.xml.prefs);
 	}
 
@@ -79,51 +82,51 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 	private void setupActionBar(PreferenceScreen preferenceScreen)
 	{
 		final Dialog dialog = preferenceScreen.getDialog();
-		if(dialog!=null)
+		Toolbar toolbar;
+
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 		{
-			// initialize the action bar
-			dialog.getActionBar().setDisplayHomeAsUpEnabled(true);
-
-			// apply custom home button area click listener to close the PreferenceScreen because PreferenceScreens are dialogs which swallow
-			// events instead of passing to the activity, related issue: https://code.google.com/p/android/issues/detail?id=4611
-			View homeButton = dialog.findViewById(android.R.id.home);
-			if(homeButton!=null)
-			{
-				View.OnClickListener dismissDialogClickListener = new View.OnClickListener()
-				{
-					@Override
-					public void onClick(View v)
-					{
-						dialog.dismiss();
-					}
-				};
-
-				// prepare yourselves for some hacky programming
-				ViewParent homeButtonContainer = homeButton.getParent();
-
-				// home button is an ImageView inside a FrameLayout
-				if(homeButtonContainer instanceof FrameLayout)
-				{
-					ViewGroup containerParent = (ViewGroup) homeButtonContainer.getParent();
-
-					if(containerParent instanceof LinearLayout)
-					{
-						// this view also contains the title text, set the whole view as clickable
-						((LinearLayout) containerParent).setOnClickListener(dismissDialogClickListener);
-					}
-					else
-					{
-						// just set it on the home button
-						((FrameLayout) homeButtonContainer).setOnClickListener(dismissDialogClickListener);
-					}
-				}
-				else
-				{
-					// the 'if all else fails' default case
-					homeButton.setOnClickListener(dismissDialogClickListener);
-				}
-			}
+			LinearLayout root = (LinearLayout) dialog.findViewById(android.R.id.list).getParent();
+			toolbar = (Toolbar) LayoutInflater.from(getActivity()).inflate(R.layout.toolbar, root, false);
+			root.addView(toolbar, 0);
 		}
+		else
+		{
+			ViewGroup root = (ViewGroup) dialog.findViewById(android.R.id.content);
+			ListView content = (ListView) root.getChildAt(0);
+			root.removeAllViews();
+			toolbar = (Toolbar) LayoutInflater.from(getActivity()).inflate(R.layout.toolbar, root, false);
+
+			int height;
+			TypedValue typedValue = new TypedValue();
+			if(getActivity().getTheme().resolveAttribute(R.attr.actionBarSize, typedValue, true))
+			{
+				height = TypedValue.complexToDimensionPixelSize(typedValue.data, getResources().getDisplayMetrics());
+			}
+			else
+			{
+				height = toolbar.getHeight();
+			}
+
+			content.setPadding(0, height, 0, 0);
+			root.addView(content);
+			root.addView(toolbar);
+		}
+
+		TypedArray typedArray = getActivity().getTheme().obtainStyledAttributes(R.style.Theme_Example_Light, new int[]{R.attr.homeAsUpIndicator});
+		int attributeResourceId = typedArray.getResourceId(0, 0);
+		Drawable drawable = getResources().getDrawable(attributeResourceId);
+
+		toolbar.setTitle(preferenceScreen.getTitle());
+		toolbar.setNavigationIcon(drawable);
+		toolbar.setNavigationOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				dialog.dismiss();
+			}
+		});
 	}
 
 
