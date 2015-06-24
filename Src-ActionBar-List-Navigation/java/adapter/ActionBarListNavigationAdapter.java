@@ -43,7 +43,6 @@ public class ActionBarListNavigationAdapter<T> extends ArrayAdapter<T>
 		
 		// entity
 		T item = getItem(position);
-		
 		if(item != null)
 		{
 			// view holder

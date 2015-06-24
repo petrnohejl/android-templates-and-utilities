@@ -27,7 +27,6 @@ public class APICall
 	private APICallTask mAPICallTask = null;
 	private Exception mException = null;
 	private ResponseStatus mResponseStatus = new ResponseStatus();
-	
 	private HttpURLConnection mConnection = null;
 	//private HttpsURLConnection mConnection = null; // for SSL
 	private OutputStream mRequestStream = null;

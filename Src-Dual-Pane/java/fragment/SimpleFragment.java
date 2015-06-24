@@ -36,7 +36,6 @@ public class SimpleFragment extends Fragment
 	public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		
 		setRetainInstance(false); // fragment in second pane shouldn't be retained
 
 		// handle fragment arguments
@@ -67,7 +66,6 @@ public class SimpleFragment extends Fragment
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
 		renderView();
 	}
 

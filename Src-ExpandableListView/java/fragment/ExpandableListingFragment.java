@@ -29,7 +29,6 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	private View mRootView;
 	private ExpandableListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
-
 	private List<String> mGroupList = new ArrayList<>();
 	private List<List<ProductEntity>> mProductList = new ArrayList<>();
 	
@@ -45,7 +44,6 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}

@@ -41,7 +41,6 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
 		setCancelable(true);
 		
 		// handle fragment arguments

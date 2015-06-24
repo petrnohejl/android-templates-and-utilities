@@ -24,7 +24,6 @@ public class ListingFragment extends Fragment
 	private View mRootView;
 	private ListingAdapter mAdapter;
 	private OnDualPaneShowListener mDualPaneShowListener;
-
 	private List<ProductEntity> mProductList = new ArrayList<>();
 	
 	
@@ -49,7 +48,6 @@ public class ListingFragment extends Fragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
 		setRetainInstance(true);
 	}
 	
@@ -66,7 +64,6 @@ public class ListingFragment extends Fragment
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
 		renderView();
 	}
 	

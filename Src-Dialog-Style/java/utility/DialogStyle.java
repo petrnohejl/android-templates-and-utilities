@@ -37,7 +37,6 @@ public class DialogStyle
 		int resourceShapeDialogDividerHorizontal = light ? R.drawable.shape_dialog_divider_horizontal_light : R.drawable.shape_dialog_divider_horizontal_dark;
 		int resourceShapeDialogDividerVertical = light ? R.drawable.shape_dialog_divider_vertical_light : R.drawable.shape_dialog_divider_vertical_dark;
 		
-		
 		// ids
 		//final int parentPanel = context.getResources().getIdentifier("parentPanel", "id", "android");
 		final int topPanel = context.getResources().getIdentifier("topPanel", "id", "android");
@@ -52,7 +51,6 @@ public class DialogStyle
 		final int button1 = context.getResources().getIdentifier("button1", "id", "android");
 		final int button2 = context.getResources().getIdentifier("button2", "id", "android");
 		final int button3 = context.getResources().getIdentifier("button3", "id", "android");
-		
 		
 		// references
 		//LinearLayout parentPanelView = (LinearLayout) dialog.findViewById(parentPanel);
@@ -70,13 +68,11 @@ public class DialogStyle
 		Button button2View = (Button) dialog.findViewById(button2);
 		Button button3View = (Button) dialog.findViewById(button3);
 		
-		
 		// dialog background
 		if(topPanelView!=null && contentPanelView!=null && customPanelView!=null && buttonPanelView!=null)
 		{
 			setBackground(topPanelView, contentPanelView, customPanelView, buttonPanelView, light);
 		}
-		
 		
 		// dialog style
 		if(alertTitleView!=null) alertTitleView.setTextColor(context.getResources().getColor(resourceDialogTitleText));

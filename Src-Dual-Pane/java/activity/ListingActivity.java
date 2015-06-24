@@ -44,7 +44,6 @@ public class ListingActivity extends AppCompatActivity implements OnDualPaneShow
 	{
 		// save current instance state
 		super.onSaveInstanceState(outState);
-		
 		if(mDualPaneFragment!=null) outState.putString(SAVED_DUAL_PANE_FRAGMENT, mDualPaneFragment.getName());
 		if(mDualPaneIndex!=-1) outState.putInt(SAVED_DUAL_PANE_INDEX, mDualPaneIndex);
 	}

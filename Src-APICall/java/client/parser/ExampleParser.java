@@ -20,12 +20,10 @@ public class ExampleParser extends Parser
 	{
 		Response<List<ProductEntity>> response = null;
 		
-		
 		// init parser
 		JsonFactory factory = new JsonFactory();
 		JsonParser parser = null;
 		parser = factory.createJsonParser(stream);
-
 		
 		// parse JSON
 		if(parser.nextToken() == JsonToken.START_OBJECT)
@@ -91,7 +89,6 @@ public class ExampleParser extends Parser
 				response.setResponseObject(productList);
 			}
 		}
-		
 
 		// close parser
 		if(parser!=null) parser.close();

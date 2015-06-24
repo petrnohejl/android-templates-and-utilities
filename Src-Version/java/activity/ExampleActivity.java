@@ -23,7 +23,6 @@ public class ExampleActivity extends AppCompatActivity
 	private void checkNewVersion()
 	{
 		Preferences preferences = new Preferences(this);
-		
 		String currentVersion = Version.getVersionName(this);
 		String lastVersion = preferences.getVersion();
 		

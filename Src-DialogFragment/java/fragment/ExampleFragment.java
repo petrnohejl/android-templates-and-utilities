@@ -55,7 +55,6 @@ public class ExampleFragment extends TaskFragment implements
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
 		renderView();
 	}
 	

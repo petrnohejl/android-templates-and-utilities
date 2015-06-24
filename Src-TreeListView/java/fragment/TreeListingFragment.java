@@ -44,7 +44,6 @@ public class TreeListingFragment extends TaskFragment implements
 	private TreeStateManager<Long> mTreeStateManager;
 	private Set<Long> mSelectedSet = new HashSet<>();
 	private LoadDataTask mLoadDataTask;
-
 	private List<ProductEntity> mProductList = new ArrayList<>();
 
 
@@ -59,7 +58,6 @@ public class TreeListingFragment extends TaskFragment implements
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}

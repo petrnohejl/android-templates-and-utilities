@@ -23,7 +23,6 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	private ViewState mViewState = null;
 	private View mRootView;
 	private LoadDataTask mLoadDataTask;
-
 	private ProductEntity mProduct;
 	
 	
@@ -38,7 +37,6 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}

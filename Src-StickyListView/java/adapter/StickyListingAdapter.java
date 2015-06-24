@@ -46,7 +46,6 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 		
 		// entity
 		ProductEntity product = mProductList.get(position);
-		
 		if(product != null)
 		{
 			// view holder
@@ -101,7 +100,6 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 		
 		// entity
 		GroupEntity group = mProductList.get(position).getGroup();
-		
 		if(group != null)
 		{
 			// view holder

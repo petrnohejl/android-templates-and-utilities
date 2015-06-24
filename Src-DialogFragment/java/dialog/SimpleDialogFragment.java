@@ -43,7 +43,6 @@ public class SimpleDialogFragment extends DialogFragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
 		setCancelable(true);
 		setRetainInstance(true);
 		

@@ -46,7 +46,6 @@ public class DrawerAdapter extends BaseAdapter
 		// entity
 		String title = (String) mTitleList[position];
 		Integer icon = (Integer) mIconList[position];
-		
 		if(title!=null && icon!=null )
 		{
 			// view holder

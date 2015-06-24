@@ -44,7 +44,6 @@ public class ListingAdapter extends BaseAdapter
 		
 		// entity
 		ProductEntity product = mProductList.get(position);
-		
 		if(product != null)
 		{
 			// view holder

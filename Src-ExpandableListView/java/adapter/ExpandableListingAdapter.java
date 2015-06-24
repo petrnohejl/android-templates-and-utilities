@@ -48,7 +48,6 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		
 		// entity
 		ProductEntity product = (ProductEntity) getChild(groupPosition, childPosition);
-		
 		if(product != null)
 		{
 			// view holder
@@ -113,7 +112,6 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 
 		// entity
 		String group = (String) getGroup(groupPosition);
-
 		if(group != null)
 		{
 			// view holder

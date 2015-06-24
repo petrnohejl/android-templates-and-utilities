@@ -35,7 +35,6 @@ import java.util.List;
 public class ExampleFragment extends TaskFragment implements APICallListener
 {
 	private static final String META_REFRESH = "refresh";
-
 	private static final int LAZY_LOADING_TAKE = 16;
 	private static final int LAZY_LOADING_OFFSET = 4;
 	private static final int LAZY_LOADING_MAX = LAZY_LOADING_TAKE * 10;
@@ -46,7 +45,6 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	private View mFooterView;
 	private ExampleAdapter mAdapter;
 	private APICallManager mAPICallManager = new APICallManager();
-	
 	private List<ProductEntity> mProductList = new ArrayList<>();
 	
 	

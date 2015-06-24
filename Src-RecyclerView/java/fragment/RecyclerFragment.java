@@ -35,7 +35,6 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 	private View mRootView;
 	private RecyclerAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
-
 	private List<String> mHeaderList = new ArrayList<>();
 	private List<ProductEntity> mProductList = new ArrayList<>();
 	private List<Object> mFooterList = new ArrayList<>();
@@ -52,7 +51,6 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 	public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}

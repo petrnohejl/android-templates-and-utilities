@@ -35,7 +35,6 @@ public class StickyListingFragment extends TaskFragment implements
 	private StickyListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
 	private int mListviewPosition = 0;
-	
 	private List<ProductEntity> mProductList = new ArrayList<>();
 	
 	
@@ -50,7 +49,6 @@ public class StickyListingFragment extends TaskFragment implements
 	public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}

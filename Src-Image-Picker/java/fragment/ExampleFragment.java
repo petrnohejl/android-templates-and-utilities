@@ -26,7 +26,6 @@ public class ExampleFragment extends TaskFragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-
 		mImagePicker = new ImagePicker(getActivity());
 	}
 	

@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 public class ExampleFragment extends Fragment
 {
 	private static final String ARGUMENT_PRODUCT_ID = "product_id";
-
 	private static final String SAVED_LIST_POSITION = "list_position";
 
 

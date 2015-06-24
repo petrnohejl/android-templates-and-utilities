@@ -28,7 +28,6 @@ public class ExampleActivity extends AppCompatActivity
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private ListView mDrawerListView;
-	
 	private CharSequence mTitle;
 	private CharSequence mDrawerTitle;
 	private String[] mTitles;

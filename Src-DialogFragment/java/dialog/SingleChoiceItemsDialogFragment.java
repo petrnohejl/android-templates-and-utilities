@@ -43,7 +43,6 @@ public class SingleChoiceItemsDialogFragment extends DialogFragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
 		setCancelable(true);
 		setRetainInstance(true);
 		

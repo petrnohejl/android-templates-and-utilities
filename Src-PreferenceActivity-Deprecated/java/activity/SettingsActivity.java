@@ -33,7 +33,6 @@ public class SettingsActivity extends UnifiedSherlockPreferenceActivity
 		setSharedPreferencesMode(Context.MODE_PRIVATE);
 		
 		super.onCreate(savedInstanceState);
-		
 		setupActionBar();
 	}
 	

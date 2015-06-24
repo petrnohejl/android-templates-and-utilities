@@ -41,7 +41,6 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
 		setCancelable(true);
 		
 		// handle fragment arguments
