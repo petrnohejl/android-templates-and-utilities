@@ -99,7 +99,7 @@ public class ItemsDialogFragment extends DialogFragment
 		
 		builder
 		.setTitle(mExample)
-		.setIcon(R.drawable.ic_launcher)
+		.setIcon(R.mipmap.ic_launcher)
 		.setItems(items, new DialogInterface.OnClickListener()
 		{
 			@Override

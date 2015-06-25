@@ -92,7 +92,7 @@ public class SimpleDialogFragment extends DialogFragment
 		
 		builder
 		.setTitle("title")
-		.setIcon(R.drawable.ic_launcher)
+		.setIcon(R.mipmap.ic_launcher)
 		.setMessage(mExample)
 		.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
 		{

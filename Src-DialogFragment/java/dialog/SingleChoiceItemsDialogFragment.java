@@ -98,7 +98,7 @@ public class SingleChoiceItemsDialogFragment extends DialogFragment
 		
 		builder
 		.setTitle("title")
-		.setIcon(R.drawable.ic_launcher)
+		.setIcon(R.mipmap.ic_launcher)
 		.setSingleChoiceItems(items, mCheckedItem, new  DialogInterface.OnClickListener()
 		{
 			@Override

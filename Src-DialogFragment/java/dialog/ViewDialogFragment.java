@@ -118,7 +118,7 @@ public class ViewDialogFragment extends DialogFragment
 		
 		builder
 		.setTitle(mExample)
-		.setIcon(R.drawable.ic_launcher)
+		.setIcon(R.mipmap.ic_launcher)
 		.setView(mRootView)
 		.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
 		{
@@ -145,7 +145,7 @@ public class ViewDialogFragment extends DialogFragment
 			public void onShow(DialogInterface dialogInterface)
 			{
 				Button button = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
-				button.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_launcher), null, null, null);
+				button.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.mipmap.ic_launcher), null, null, null);
 				button.setOnClickListener(new View.OnClickListener()
 				{
 					@Override

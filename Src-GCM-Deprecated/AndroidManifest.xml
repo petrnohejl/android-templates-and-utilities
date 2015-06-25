@@ -13,7 +13,7 @@
 	<uses-permission android:name="com.example.permission.C2D_MESSAGE" />
 	
 	<application 
-		android:icon="@drawable/ic_launcher"
+		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name">
 		
 		<!-- BroadcastReceiver that will receive intents from GCM services and handle them to the custom IntentService -->

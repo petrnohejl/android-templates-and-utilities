@@ -43,7 +43,7 @@ public class ExampleFragment extends Fragment
 		builder.setAction2(R.drawable.ic_stat_notify, "action 2", ExampleActivity.newIntent(getActivity().getApplicationContext())); // TODO: it is recommended to set FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TASK flags
 		
 		//builder.setBigTextStyle("bigContentTitle", "summaryText", "bigText");
-		//builder.setBigPictureStyle("bigContentTitle", "summaryText", R.drawable.ic_launcher);
+		//builder.setBigPictureStyle("bigContentTitle", "summaryText", R.mipmap.ic_launcher);
 		
 		//List<CharSequence> lines = new ArrayList<>();
 		//lines.add("line 1");

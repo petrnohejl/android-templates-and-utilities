@@ -99,7 +99,7 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 		
 		builder
 		.setTitle("title")
-		.setIcon(R.drawable.ic_launcher)
+		.setIcon(R.mipmap.ic_launcher)
 		.setMultiChoiceItems(items, mCheckedItems, new OnMultiChoiceClickListener()
 		{
 			@Override

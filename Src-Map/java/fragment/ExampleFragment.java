@@ -126,7 +126,7 @@ public class ExampleFragment extends Fragment
 			BitmapDescriptor marker1 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
 			BitmapDescriptor marker2 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
 			BitmapDescriptor marker3 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
-			BitmapDescriptor marker4 = BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
+			BitmapDescriptor marker4 = BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher);
 			BitmapDescriptor[] markers = { marker1, marker2, marker3, marker4 };
 			
 			for(int i=0; i<16; i++)
