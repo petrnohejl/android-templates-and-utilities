@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<string name="ptr_pull">Pull to refresh…</string>
-	<string name="ptr_refreshing">Loading…</string>
-	<string name="ptr_release">Release to refresh…</string>
-</resources>

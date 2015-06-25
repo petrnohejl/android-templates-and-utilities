@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-	<style name="Theme.Example.Light" parent="@style/Theme.AppCompat.Light">
-		<!-- pull to refresh -->
-		<item name="ptrHeaderStyle">@style/Example.PtrHeader</item>
-	</style>
-
-</resources>
