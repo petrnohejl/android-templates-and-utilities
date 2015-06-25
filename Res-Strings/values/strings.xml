@@ -2,7 +2,7 @@
 <resources>
 	<!-- LANGUAGE INDEPENDENT -->
 	<string name="app_name">Example</string>
-	<string name="app_store_uri">https://play.google.com/store/apps/details?id=com.example</string>
+	<string name="app_store_uri">https://play.google.com/store/apps/details?id=%1$s</string>
 
 	<!-- LANGUAGE DEPENDENT -->
 	<string name="global_offline_toast">No Internet connection available</string>

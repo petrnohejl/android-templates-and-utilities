@@ -40,11 +40,12 @@ public class ExampleActivity extends AppCompatActivity
 	}
 	
 	
-	private void startMarketActivity()
+	private void startStoreActivity()
 	{
 		try
 		{
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(getString(R.string.app_store_uri)));
+			String uri = getString(R.string.app_store_uri, getApplicationContext().getPackageName());
+			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
