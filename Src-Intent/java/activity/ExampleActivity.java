@@ -93,6 +93,21 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
+
+
+	private void startNavigateActivity(double lat, double lon)
+	{
+		try
+		{
+			String uri = String.format("http://maps.google.com/maps?daddr=%s,%s", Double.toString(lat), Double.toString(lon));
+			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+			startActivity(intent);
+		}
+		catch(android.content.ActivityNotFoundException e)
+		{
+			// can't start activity
+		}
+	}
 	
 	
 	private void startSmsActivity(String phoneNumber, String text)
