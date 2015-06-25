@@ -1,7 +1,5 @@
 package com.example.notification;
 
-import java.util.List;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,19 +11,23 @@ import android.support.v4.app.NotificationCompat;
 
 import com.example.R;
 
+import java.util.List;
+
 
 // requires android.permission.VIBRATE
 public class NotificationMessage
 {
 	private Context mContext;
-	private int mNotificationId;
+	private Type mType;
 	private Notification mNotification;
+
+	public enum Type { TYPE1, TYPE2, TYPE3 }
 	
 	
-	private NotificationMessage(Context context, int notificationId, Notification notification)
+	private NotificationMessage(Context context, Type type, Notification notification)
 	{
 		mContext = context; // should be an application context
-		mNotificationId = notificationId;
+		mType = type;
 		mNotification = notification;
 	}
 	
@@ -34,7 +36,7 @@ public class NotificationMessage
 	{
 		// show notification
 		NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-		notificationManager.notify(mNotificationId, mNotification);
+		notificationManager.notify(mType.ordinal(), mNotification);
 	}
 	
 	
@@ -42,14 +44,14 @@ public class NotificationMessage
 	{
 		// cancel notification
 		NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-		notificationManager.cancel(mNotificationId);
+		notificationManager.cancel(mType.ordinal());
 	}
 	
 	
 	public static class Builder
 	{
 		private Context mContext;
-		private int mNotificationId;
+		private Type mType;
 		
 		private PendingIntent mPendingIntent = null;
 		private String mTicker = null;
@@ -88,17 +90,17 @@ public class NotificationMessage
 		private List<CharSequence> mInboxStyleLines = null;
 		
 		
-		public Builder(Context context, int notificationId)
+		public Builder(Context context, Type type)
 		{
 			mContext = context; // should be an application context
-			mNotificationId = notificationId;
+			mType = type;
 		}
 		
 		
 		public void setIntent(Intent notificationIntent)
 		{
 			// pending intent
-			mPendingIntent = PendingIntent.getActivity(mContext, mNotificationId, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+			mPendingIntent = PendingIntent.getActivity(mContext, mType.ordinal(), notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		}
 		
 		
@@ -184,7 +186,7 @@ public class NotificationMessage
 			mAction1Title = title;
 
 			// pending intent
-			mAction1PendingIntent = PendingIntent.getActivity(mContext, mNotificationId, actionIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+			mAction1PendingIntent = PendingIntent.getActivity(mContext, mType.ordinal(), actionIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		}
 		
 		
@@ -194,7 +196,7 @@ public class NotificationMessage
 			mAction2Title = title;
 
 			// pending intent
-			mAction2PendingIntent = PendingIntent.getActivity(mContext, mNotificationId, actionIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+			mAction2PendingIntent = PendingIntent.getActivity(mContext, mType.ordinal(), actionIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		}
 		
 		
@@ -302,7 +304,7 @@ public class NotificationMessage
 				notification = builder.build();
 			}
 			
-			return new NotificationMessage(mContext, mNotificationId, notification);
+			return new NotificationMessage(mContext, mType, notification);
 		}
 	}
 }

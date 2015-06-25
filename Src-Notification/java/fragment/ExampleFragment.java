@@ -1,6 +1,5 @@
 package com.example.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.example.R;
 import com.example.activity.ExampleActivity;
-import com.example.notification.NotificationId;
 import com.example.notification.NotificationMessage;
 
 
@@ -29,14 +27,14 @@ public class ExampleFragment extends Fragment
 	
 	private void showNotification()
 	{
-		NotificationMessage.Builder builder = new NotificationMessage.Builder(getActivity().getApplicationContext(), NotificationId.TYPE1);
+		NotificationMessage.Builder builder = new NotificationMessage.Builder(getActivity().getApplicationContext(), NotificationMessage.Type.TYPE1);
 		
 		builder.setIntent(ExampleActivity.newIntent(getActivity().getApplicationContext())); // TODO: it is recommended to set FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TASK flags
 		builder.setText("ticker", "title", "text");
 		builder.setExtraText("subText", "contentInfo");
 		builder.setNumber(24);
 		builder.setTime(1356350400000l);
-		builder.setIcon(R.drawable.ic_stat_notify, R.drawable.ic_launcher);
+		builder.setIcon(R.drawable.ic_stat_notify, R.mipmap.ic_launcher);
 		builder.setProgress(100, 75, false);
 		builder.setUsesChronometer(false);
 		builder.setOnlyAlertOnce(false);
