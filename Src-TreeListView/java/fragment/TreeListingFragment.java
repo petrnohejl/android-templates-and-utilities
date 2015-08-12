@@ -83,7 +83,7 @@ public class TreeListingFragment extends TaskFragment implements
 		}
 		else if(mViewState==ViewState.CONTENT)
 		{
-			if(mProductList!=null && mTreeStateManager!=null) renderView();
+			if(mProductList!=null && mTreeStateManager!=null) bindData();
 			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
@@ -291,7 +291,7 @@ public class TreeListingFragment extends TaskFragment implements
 				}
 				else
 				{
-					if(mProductList!=null && mTreeStateManager!=null) renderView();
+					if(mProductList!=null && mTreeStateManager!=null) bindData();
 				}
 
 				// hide progress
@@ -358,7 +358,7 @@ public class TreeListingFragment extends TaskFragment implements
 	}
 
 
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		TreeViewList treeView = (TreeViewList) mRootView.findViewById(android.R.id.list);

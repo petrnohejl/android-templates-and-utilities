@@ -20,11 +20,11 @@ public class TabsActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs);
-		renderView();
+		bindData();
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_tabs_pager);

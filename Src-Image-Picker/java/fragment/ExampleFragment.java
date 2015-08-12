@@ -57,7 +57,7 @@ public class ExampleFragment extends TaskFragment
 							if(bitmap!=null)
 							{
 								mBitmap = bitmap;
-								renderView();
+								bindData();
 							}
 							else
 							{
@@ -79,7 +79,7 @@ public class ExampleFragment extends TaskFragment
 							if(bitmap!=null)
 							{
 								mBitmap = bitmap;
-								renderView();
+								bindData();
 							}
 							else
 							{
@@ -98,7 +98,7 @@ public class ExampleFragment extends TaskFragment
 	}
 
 
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		ImageView previewImageView = (ImageView) mRootView.findViewById(R.id.fragment_example_preview);

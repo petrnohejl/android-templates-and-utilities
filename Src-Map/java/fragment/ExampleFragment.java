@@ -59,7 +59,7 @@ public class ExampleFragment extends Fragment
 		super.onActivityCreated(savedInstanceState);
 		
 		// render view
-		renderView();
+		bindData();
 	}
 	
 	
@@ -115,7 +115,7 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMap();

@@ -77,7 +77,7 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 		}
 		else if(mViewState==ViewState.CONTENT)
 		{
-			if(mProductList!=null) renderView();
+			if(mProductList!=null) bindData();
 			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
@@ -230,7 +230,7 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 				}
 				else
 				{
-					if(mProductList!=null) renderView();
+					if(mProductList!=null) bindData();
 				}
 
 				// hide progress
@@ -361,7 +361,7 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		RecyclerView recyclerView = getRecyclerView();

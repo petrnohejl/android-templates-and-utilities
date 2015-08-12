@@ -20,11 +20,11 @@ public class TabHostActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabhost);
-		renderView();
+		bindData();
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_tabhost_pager);

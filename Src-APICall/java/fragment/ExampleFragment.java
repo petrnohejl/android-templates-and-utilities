@@ -68,7 +68,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 		}
 		else if(mViewState==ViewState.CONTENT)
 		{
-			if(mProductList!=null) renderView();
+			if(mProductList!=null) bindData();
 			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
@@ -156,7 +156,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 						}
 						else
 						{
-							if(mProductList!=null) renderView();
+							if(mProductList!=null) bindData();
 						}
 
 						// hide progress
@@ -353,7 +353,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	}
 
 	
-	private void renderView()
+	private void bindData()
 	{
 		// TODO
 	}

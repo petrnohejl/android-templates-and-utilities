@@ -69,7 +69,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		}
 		else if(mViewState==ViewState.CONTENT)
 		{
-			if(mGroupList!=null && mProductList!=null) renderView();
+			if(mGroupList!=null && mProductList!=null) bindData();
 			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
@@ -194,7 +194,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 				}
 				else
 				{
-					if(mGroupList!=null && mProductList!=null) renderView();
+					if(mGroupList!=null && mProductList!=null) bindData();
 				}
 				
 				// hide progress
@@ -261,7 +261,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);

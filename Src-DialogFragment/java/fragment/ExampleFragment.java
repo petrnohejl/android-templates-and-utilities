@@ -55,7 +55,7 @@ public class ExampleFragment extends TaskFragment implements
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		renderView();
+		bindData();
 	}
 	
 	
@@ -247,7 +247,7 @@ public class ExampleFragment extends TaskFragment implements
 	}
 
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		Button button1 = (Button) mRootView.findViewById(R.id.fragment_example_button1);

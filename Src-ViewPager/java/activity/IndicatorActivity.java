@@ -19,11 +19,11 @@ public class IndicatorActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_indicator);
-		renderView();
+		bindData();
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_indicator_pager);

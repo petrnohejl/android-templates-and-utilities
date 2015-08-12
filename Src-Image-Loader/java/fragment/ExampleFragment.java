@@ -49,7 +49,7 @@ public class ExampleFragment extends Fragment
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		ImageView photoImageView = (ImageView) mRootView.findViewById(R.id.fragment_example_photo);

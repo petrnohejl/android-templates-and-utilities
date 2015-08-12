@@ -62,7 +62,7 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 		}
 		else if(mViewState==ViewState.CONTENT)
 		{
-			if(mProduct!=null) renderView();
+			if(mProduct!=null) bindData();
 			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
@@ -174,7 +174,7 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 				// hide progress and render view
 				if(mProduct!=null)
 				{
-					renderView();
+					bindData();
 					showContent();
 				}
 				else showEmpty();
@@ -261,7 +261,7 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_simple_name);

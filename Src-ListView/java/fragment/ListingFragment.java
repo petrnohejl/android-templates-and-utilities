@@ -77,7 +77,7 @@ public class ListingFragment extends TaskFragment implements OnLoadDataListener
 		}
 		else if(mViewState==ViewState.CONTENT)
 		{
-			if(mProductList!=null) renderView();
+			if(mProductList!=null) bindData();
 			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
@@ -200,7 +200,7 @@ public class ListingFragment extends TaskFragment implements OnLoadDataListener
 				}
 				else
 				{
-					if(mProductList!=null) renderView();
+					if(mProductList!=null) bindData();
 				}
 
 				// hide progress
@@ -303,7 +303,7 @@ public class ListingFragment extends TaskFragment implements OnLoadDataListener
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		ListView listView = getListView();

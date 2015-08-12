@@ -26,7 +26,7 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		Button exampleButton = (Button) mRootView.findViewById(R.id.fragment_example_button);

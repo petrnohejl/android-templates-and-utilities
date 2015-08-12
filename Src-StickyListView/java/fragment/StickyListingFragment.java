@@ -74,7 +74,7 @@ public class StickyListingFragment extends TaskFragment implements
 		}
 		else if(mViewState==ViewState.CONTENT)
 		{
-			if(mProductList!=null) renderView();
+			if(mProductList!=null) bindData();
 			showContent();
 		}
 		else if(mViewState==ViewState.PROGRESS)
@@ -233,7 +233,7 @@ public class StickyListingFragment extends TaskFragment implements
 				}
 				else
 				{
-					if(mProductList!=null) renderView();
+					if(mProductList!=null) bindData();
 				}
 				
 				// hide progress
@@ -300,7 +300,7 @@ public class StickyListingFragment extends TaskFragment implements
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		// reference
 		StickyListHeadersListView stickyListView = (StickyListHeadersListView) mRootView.findViewById(android.R.id.list);

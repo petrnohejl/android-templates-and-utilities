@@ -64,11 +64,11 @@ public class ListingFragment extends Fragment
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		renderView();
+		bindData();
 	}
 	
 	
-	private void renderView()
+	private void bindData()
 	{
 		boolean init = false;
 
