@@ -25,35 +25,63 @@ public class LocationUtility
 
 		return (int) location1.distanceTo(location2);
 	}
-	
-	
-	public static String getDistanceString(double distance)
+
+
+	public static String getDistanceString(double distance, boolean useMetricSystem)
 	{
 		String result;
-		
-		if(distance<1000.0d)
+
+		if(useMetricSystem)
 		{
-			result = String.format(Locale.US, "%d " + ExampleApplication.getContext().getString(R.string.unit_meter), (int) distance);
-		}
-		else if(distance<5000.0d)
-		{
-			result = String.format(Locale.US, "%.1f " + ExampleApplication.getContext().getString(R.string.unit_kilometer), distance/1000);
+			if(distance<1000.0d)
+			{
+				result = String.format(Locale.US, "%d " + ExampleApplication.getContext().getString(R.string.unit_meter), (int) distance);
+			}
+			else if(distance<5000.0d)
+			{
+				result = String.format(Locale.US, "%.1f " + ExampleApplication.getContext().getString(R.string.unit_kilometer), distance/1000);
+			}
+			else
+			{
+				result = String.format(Locale.US, "%d " + ExampleApplication.getContext().getString(R.string.unit_kilometer), (int) distance/1000);
+			}
 		}
 		else
 		{
-			result = String.format(Locale.US, "%d " + ExampleApplication.getContext().getString(R.string.unit_kilometer), (int) distance/1000);
+			double distanceMiles = distance * 0.000621371192; // distance in miles
+
+			if(distanceMiles<0.1d)
+			{
+				result = String.format(Locale.US, "%.2f " + ExampleApplication.getContext().getString(R.string.unit_mile), distanceMiles);
+			}
+			else if(distanceMiles<10.0d)
+			{
+				result = String.format(Locale.US, "%.1f " + ExampleApplication.getContext().getString(R.string.unit_mile), distanceMiles);
+			}
+			else
+			{
+				result = String.format(Locale.US, "%d " + ExampleApplication.getContext().getString(R.string.unit_mile), (int) distanceMiles);
+			}
 		}
-		
+
 		return result;
 	}
-	
-	
-	public static String getDistanceString(int distance)
+
+
+	public static String getDistanceString(int distance, boolean useMetricSystem)
 	{
-		return getDistanceString((double) distance);
+		return getDistanceString((double) distance, useMetricSystem);
 	}
-	
-	
+
+
+	public static boolean isMetricSystem()
+	{
+		Locale locale = Locale.getDefault();
+		String countryCode = locale.getCountry();
+		return (!"US".equals(countryCode) && !"LR".equals(countryCode) && !"MM".equals(countryCode));
+	}
+
+
 	public static int getZoom(int distance)
 	{
 		if(distance<50) return 18;
