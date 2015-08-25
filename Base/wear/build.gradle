@@ -18,7 +18,7 @@ apply plugin: 'com.android.application'
 dependencies
 {
 	compile 'com.google.android.support:wearable:1.0.0'
-	compile 'com.google.android.gms:play-services-wearable:7.5.0'
+	compile 'com.google.android.gms:play-services-wearable:7.8.0'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 	compile project(':base')
 }
@@ -26,13 +26,13 @@ dependencies
 
 android
 {
-	compileSdkVersion 21
-	buildToolsVersion "21.1.1"
+	compileSdkVersion 23
+	buildToolsVersion "23.0.0"
 
 	defaultConfig
 	{
 		minSdkVersion 20
-		targetSdkVersion 21
+		targetSdkVersion 23
 		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
 		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
 	}
@@ -101,7 +101,7 @@ task askForPasswords <<
 	def keyAlias
 	def keyPass
 
-	def keystorePropertiesFile = new File(project.property("keystore.properties"))
+	def keystorePropertiesFile = new File((String) project.property("keystore.properties"))
 
 	if(project.hasProperty("keystore.properties") && keystorePropertiesFile.exists())
 	{
@@ -109,15 +109,15 @@ task askForPasswords <<
 		Properties properties = new Properties()
 		properties.load(new FileInputStream(keystorePropertiesFile))
 		storePass = properties['keystore.store.password']
-		keyAlias  = properties['keystore.key.alias']
-		keyPass  = properties['keystore.key.password']
+		keyAlias = properties['keystore.key.alias']
+		keyPass = properties['keystore.key.password']
 	}
 	else
 	{
 		println "Getting keystore passwords from user input..."
 		storePass = new String(System.console().readPassword("\nStore password: "))
-		keyAlias  = new String(System.console().readLine("Key alias: "))
-		keyPass  = new String(System.console().readPassword("Key password: "))
+		keyAlias = new String(System.console().readLine("Key alias: "))
+		keyPass = new String(System.console().readPassword("Key password: "))
 	}
 
 	android.signingConfigs.release.storePassword = storePass
