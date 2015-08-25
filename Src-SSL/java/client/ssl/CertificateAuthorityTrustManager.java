@@ -49,7 +49,7 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 	public void checkClientTrusted(X509Certificate[] certificates, String authType) throws CertificateException
 	{
 		// check client certificate
-		//Logcat.d("TrustManager.defaultTrustManager.checkClientTrusted()");
+		//Logcat.d("");
 		mDefaultTrustManager.checkClientTrusted(certificates, authType);
 	}
 	
@@ -65,8 +65,8 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 			try
 			{
 				String certHash = SHA1Base64Encoded(certificate.getEncoded());
-				//Logcat.d("TrustManager.checkServerTrusted(): certificate public key: " + certificate.getPublicKey().toString().substring(0, 100) + " ...");
-				//Logcat.d("TrustManager.checkServerTrusted(): certificate hash: " + certHash);
+				//Logcat.d("certificate public key = " + certificate.getPublicKey().toString().substring(0, 100) + " ...");
+				//Logcat.d("certificate hash = " + certHash);
 				//Logcat.d("---------------------------------------");
 				if(certHash.trim().equals(ExampleConfig.SSL_CERTIFICATE_SHA1))
 				{
@@ -88,7 +88,7 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 		}
 		
 		// if manual verification successfull, check server certificate
-		//Logcat.d("TrustManager.defaultTrustManager.checkServerTrusted()");
+		//Logcat.d("");
 		mDefaultTrustManager.checkServerTrusted(certificates, authType);
 	}
 	

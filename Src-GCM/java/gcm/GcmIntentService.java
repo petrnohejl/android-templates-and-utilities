@@ -22,7 +22,7 @@ public class GcmIntentService extends IntentService
 	@Override
 	protected void onHandleIntent(Intent intent)
 	{
-		Logcat.d("GcmIntentService.onHandleIntent(): received message " + intent.getExtras());
+		Logcat.d("received message " + intent.getExtras());
 
 		// get message type
 		GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(this);
@@ -34,15 +34,15 @@ public class GcmIntentService extends IntentService
 		{
 			if(GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR.equals(messageType))
 			{
-				Logcat.d("GcmIntentService.onHandleIntent(): send error " + extras.toString());
+				Logcat.d("send error " + extras.toString());
 			}
 			else if(GoogleCloudMessaging.MESSAGE_TYPE_DELETED.equals(messageType))
 			{
-				Logcat.d("GcmIntentService.onHandleIntent(): deleted messages on server " + extras.toString());
+				Logcat.d("deleted messages on server " + extras.toString());
 			}
 			else if(GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType))
 			{
-				Logcat.d("GcmIntentService.onHandleIntent(): received " + extras.toString());
+				Logcat.d("received " + extras.toString());
 
 				// get type
 				String type = intent.getStringExtra("type");

@@ -65,7 +65,7 @@ public class DatabaseCallTask extends AsyncTask<Void, Void, Data<?>>
 	@Override
 	protected void onCancelled()
 	{
-		Logcat.d("DatabaseCallTask.onCancelled()");
+		Logcat.d("");
 	}
 	
 	

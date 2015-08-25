@@ -12,7 +12,7 @@ public class NewPictureReceiver extends BroadcastReceiver
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
-		Logcat.d("NewPictureReceiver.onReceive()");
+		Logcat.d("");
 		
 		// TODO: do something
 	}

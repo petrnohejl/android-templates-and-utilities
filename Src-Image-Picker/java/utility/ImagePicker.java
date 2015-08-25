@@ -126,7 +126,7 @@ public class ImagePicker
 				{
 					if(!storageDirectory.exists())
 					{
-						Logcat.d("ImagePicker.getAlbumDirectory(): failed to create album directory");
+						Logcat.e("failed to create album directory");
 						return null;
 					}
 				}
@@ -134,7 +134,7 @@ public class ImagePicker
 		}
 		else
 		{
-			Logcat.d("ImagePicker.getAlbumDirectory(): external storage is not mounted");
+			Logcat.e("external storage is not mounted");
 		}
 		return storageDirectory;
 	}

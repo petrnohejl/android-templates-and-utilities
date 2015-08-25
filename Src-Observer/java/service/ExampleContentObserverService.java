@@ -20,7 +20,7 @@ public class ExampleContentObserverService extends Service
 		// start content observer
 		if(mExampleContentObserver==null)
 		{
-			Logcat.d("Service.onStartCommand(): start content observer");
+			Logcat.d("start content observer");
 			
 			mExampleContentObserver = new ExampleContentObserver(new Handler());
 			getContentResolver().registerContentObserver(
@@ -30,7 +30,7 @@ public class ExampleContentObserverService extends Service
 		}
 		else
 		{
-			Logcat.d("Service.onStartCommand(): content observer already running");
+			Logcat.d("content observer already running");
 		}
 		
 		return START_STICKY;

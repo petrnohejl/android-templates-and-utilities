@@ -74,7 +74,7 @@ public class TaskFragment extends Fragment
 
 	private void runNow(Runnable runnable)
 	{
-		//Logcat.d("TaskFragment.runNow(): " + runnable.getClass().getEnclosingMethod());
+		//Logcat.d("" + runnable.getClass().getEnclosingMethod());
 		getActivity().runOnUiThread(runnable);
 	}
 
@@ -83,7 +83,7 @@ public class TaskFragment extends Fragment
 	{
 		synchronized(mLock)
 		{
-			//Logcat.d("TaskFragment.addPending(): " + runnable.getClass().getEnclosingMethod());
+			//Logcat.d("" + runnable.getClass().getEnclosingMethod());
 			mPendingCallbacks.add(runnable);
 		}
 	}

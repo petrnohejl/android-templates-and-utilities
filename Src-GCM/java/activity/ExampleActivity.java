@@ -99,12 +99,12 @@ public class ExampleActivity extends AppCompatActivity
 			}
 			else
 			{
-				Logcat.d("Activity.handleGcmRegistration(): device is already registered on server / " + mGcmRegistrationId);
+				Logcat.d("device is already registered on server with id = %s", mGcmRegistrationId);
 			}
 		}
 		else
 		{
-			Logcat.d("Activity.handleGcmRegistration(): no valid Google Play Services APK found");
+			Logcat.d("no valid Google Play Services APK found");
 		}
 	}
 }

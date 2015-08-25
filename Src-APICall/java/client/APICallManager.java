@@ -102,9 +102,9 @@ public class APICallManager
 	{
 		for(APICallTask task : mTaskList)
 		{
-			Logcat.d("APICallManager.printRunningTasks(): " + (task==null ? "null" : (task.getRequest().getClass().getSimpleName() + " / " + task.getStatus().toString())));
+			Logcat.d(task==null ? "null" : (task.getRequest().getClass().getSimpleName() + " " + task.getStatus().toString()));
 		}
 		
-		if(mTaskList.isEmpty()) Logcat.d("APICallManager.printRunningTasks(): empty");
+		if(mTaskList.isEmpty()) Logcat.d("empty");
 	}
 }

@@ -66,7 +66,7 @@ public class SoundManager
 	// should be called in Activity.onStop()
 	public void stopAll()
 	{
-		Logcat.d("SoundManager.stopAll(): " + mMediaMap.size());
+		Logcat.d("%d", mMediaMap.size());
 		
 		Collection<MediaPlayer> collection = mMediaMap.values();
 		Iterator<MediaPlayer> iterator = collection.iterator();
@@ -76,7 +76,7 @@ public class SoundManager
 			MediaPlayer mediaPlayer = iterator.next();
 			if(mediaPlayer!=null)
 			{
-				Logcat.d("SoundManager.stopAll(): release");
+				Logcat.d("release");
 				if(mediaPlayer.isPlaying()) mediaPlayer.stop();
 				mediaPlayer.release();
 				mediaPlayer = null;
@@ -90,7 +90,7 @@ public class SoundManager
 	
 	public void printMediaList()
 	{
-		Logcat.d("SoundManager.printMediaList(): " + mMediaMap.size());
+		Logcat.d("%d", mMediaMap.size());
 	}
 	
 	
@@ -105,7 +105,7 @@ public class SoundManager
 		// sound already playing
 		if(mMediaMap.containsKey(path))
 		{
-			Logcat.d("SoundManager.play(): sound is already playing");
+			Logcat.d("sound is already playing");
 			printMediaList();
 			return;
 		}
@@ -120,7 +120,7 @@ public class SoundManager
 		MediaPlayer mediaPlayer;
 		try
 		{
-			Logcat.d("SoundManager.prepareAsync(): " + mMediaMap.size());
+			Logcat.d("prepareAsync() = " + mMediaMap.size());
 			mediaPlayer = new MediaPlayer();
 			mMediaMap.put(path, mediaPlayer);
 			
@@ -158,7 +158,7 @@ public class SoundManager
 			@Override
 			public void onPrepared(MediaPlayer mediaPlayer)
 			{
-				Logcat.d("SoundManager.onPrepared(): " + mMediaMap.size());
+				Logcat.d("%d", mMediaMap.size());
 				mediaPlayer.start();
 			}
 		});
@@ -169,7 +169,7 @@ public class SoundManager
 			@Override
 			public void onCompletion(MediaPlayer mediaPlayer)
 			{
-				Logcat.d("SoundManager.onCompletion(): " + mMediaMap.size());
+				Logcat.d("%d", mMediaMap.size());
 				mMediaMap.remove(path);
 				if(mediaPlayer!=null)
 				{

@@ -81,9 +81,9 @@ public class DatabaseCallManager
 	{
 		for(DatabaseCallTask task : mTaskList)
 		{
-			Logcat.d("DatabaseCallManager.printRunningTasks(): " + (task==null ? "null" : (task.getQuery().getClass().getSimpleName() + " / " + task.getStatus().toString())));
+			Logcat.d(task==null ? "null" : (task.getQuery().getClass().getSimpleName() + " " + task.getStatus().toString()));
 		}
 		
-		if(mTaskList.isEmpty()) Logcat.d("DatabaseCallManager.printRunningTasks(): empty");
+		if(mTaskList.isEmpty()) Logcat.d("empty");
 	}
 }

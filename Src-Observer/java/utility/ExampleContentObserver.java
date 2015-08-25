@@ -23,6 +23,6 @@ public class ExampleContentObserver extends ContentObserver
 	@Override
 	public void onChange(boolean selfChange, Uri uri)
 	{
-		Logcat.d("ContentObserver.onChange(): " + uri);
+		Logcat.d("" + uri);
 	}
 }

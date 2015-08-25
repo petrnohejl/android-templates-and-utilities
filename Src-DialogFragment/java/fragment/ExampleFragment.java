@@ -67,7 +67,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onSimpleDialogPositiveClick()");
+				Logcat.d("onSimpleDialogPositiveClick()");
 			}
 		});
 	}
@@ -81,7 +81,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onSimpleDialogNegativeClick()");
+				Logcat.d("onSimpleDialogNegativeClick()");
 			}
 		});
 	}
@@ -95,7 +95,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onItemsDialogItemClick(): " + which);
+				Logcat.d("onItemsDialogItemClick() = " + which);
 			}
 		});
 	}
@@ -109,7 +109,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onItemsDialogPositiveClick()");
+				Logcat.d("onItemsDialogPositiveClick()");
 			}
 		});
 	}
@@ -123,7 +123,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onItemsDialogNegativeClick()");
+				Logcat.d("onItemsDialogNegativeClick()");
 			}
 		});
 	}
@@ -137,7 +137,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onSingleChoiceItemsDialogPositiveClick(): " + checkedItem);
+				Logcat.d("onSingleChoiceItemsDialogPositiveClick() = " + checkedItem);
 			}
 		});
 	}
@@ -151,7 +151,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onSingleChoiceItemsDialogNegativeClick()");
+				Logcat.d("onSingleChoiceItemsDialogNegativeClick()");
 			}
 		});
 	}
@@ -171,7 +171,7 @@ public class ExampleFragment extends TaskFragment implements
 					builder.append(checkedItems[i]);
 					builder.append(" ");
 				}
-				Logcat.d("Fragment.onMultiChoiceItemsDialogPositiveClick(): " + builder.toString());
+				Logcat.d("onMultiChoiceItemsDialogPositiveClick() = " + builder.toString());
 			}
 		});
 	}
@@ -185,7 +185,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onMultiChoiceItemsDialogNegativeClick()");
+				Logcat.d("onMultiChoiceItemsDialogNegativeClick()");
 			}
 		});
 	}
@@ -199,7 +199,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onViewDialogPositiveClick(): " + username + " / " + password);
+				Logcat.d("onViewDialogPositiveClick() = " + username + " / " + password);
 			}
 		});
 	}
@@ -213,7 +213,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onViewDialogNegativeClick()");
+				Logcat.d("onViewDialogNegativeClick()");
 			}
 		});
 	}
@@ -227,7 +227,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onTimePickerDialogPositiveClick(): " + hour + ":" + minute);
+				Logcat.d("onTimePickerDialogPositiveClick() = " + hour + ":" + minute);
 			}
 		});
 	}
@@ -241,7 +241,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.onDatePickerDialogPositiveClick(): " + day + "." + (month+1) + "." + year);
+				Logcat.d("onDatePickerDialogPositiveClick() = " + day + "." + (month+1) + "." + year);
 			}
 		});
 	}

@@ -37,13 +37,13 @@ public class Geolocation implements LocationListener
 	@Override
 	public void onLocationChanged(Location location)
 	{
-		Logcat.d("Geolocation.onLocationChanged(): " + location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
+		Logcat.d(location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
 		
 		// check location age
 		long timeDelta = System.currentTimeMillis() - location.getTime();
 		if(timeDelta > LOCATION_AGE)
 		{
-			Logcat.d("Geolocation.onLocationChanged(): gotten location is too old");
+			Logcat.d("gotten location is too old");
 			// gotten location is too old
 			return;
 		}
@@ -59,31 +59,31 @@ public class Geolocation implements LocationListener
 	@Override
 	public void onProviderDisabled(String provider)
 	{
-		Logcat.d("Geolocation.onProviderDisabled(): " + provider);
+		Logcat.d(provider);
 	}
 
 
 	@Override
 	public void onProviderEnabled(String provider)
 	{
-		Logcat.d("Geolocation.onProviderEnabled(): " + provider);
+		Logcat.d(provider);
 	}
 
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras)
 	{
-		Logcat.d("Geolocation.onStatusChanged(): " + provider);
+		Logcat.d(provider);
 		switch(status) 
 		{
 			case LocationProvider.OUT_OF_SERVICE:
-				Logcat.d("Geolocation.onStatusChanged(): status OUT_OF_SERVICE");
+				Logcat.d("status OUT_OF_SERVICE");
 				break;
 			case LocationProvider.TEMPORARILY_UNAVAILABLE:
-				Logcat.d("Geolocation.onStatusChanged(): status TEMPORARILY_UNAVAILABLE");
+				Logcat.d("status TEMPORARILY_UNAVAILABLE");
 				break;
 			case LocationProvider.AVAILABLE:
-				Logcat.d("Geolocation.onStatusChanged(): status AVAILABLE");
+				Logcat.d("status AVAILABLE");
 				break;
 		}
 	}
@@ -91,7 +91,7 @@ public class Geolocation implements LocationListener
 
 	public void stop()
 	{
-		Logcat.d("Geolocation.stop()");
+		Logcat.d("");
 		if(mTimer!=null) mTimer.cancel();
 		if(mLocationManager!=null) 
 		{
@@ -121,7 +121,7 @@ public class Geolocation implements LocationListener
 				{
 					if(mCurrentLocation == null)
 					{
-						Logcat.d("Geolocation.timer: timeout");
+						Logcat.d("timeout");
 						stop();
 						GeolocationListener listener = mListener.get();
 						if(listener != null) listener.onGeolocationFail(Geolocation.this);
@@ -154,7 +154,7 @@ public class Geolocation implements LocationListener
 	// returns last known freshest location from network or GPS
 	private Location getLastKnownLocation(LocationManager locationManager)
 	{
-		Logcat.d("Geolocation.getLastKnownLocation()");
+		Logcat.d("");
 
 		Location locationNet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 		Location locationGps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);

@@ -60,13 +60,13 @@ public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 				
 				try
 				{
-					Logcat.d("APICallTask.doInBackground(): sleeping for " + backoff + " ms before retry");
+					Logcat.d("sleeping for %d ms before retry", backoff);
 					Thread.sleep(backoff);
 				}
 				catch(InterruptedException e)
 				{
 					// activity finished before we complete
-					Logcat.d("APICallTask.doInBackground(): thread interrupted so abort remaining retries");
+					Logcat.d("thread interrupted so abort remaining retries");
 					Thread.currentThread().interrupt();
 					break;
 				}
@@ -103,7 +103,7 @@ public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 	@Override
 	protected void onCancelled()
 	{
-		Logcat.d("APICallTask.onCancelled()");
+		Logcat.d("");
 	}
 	
 	

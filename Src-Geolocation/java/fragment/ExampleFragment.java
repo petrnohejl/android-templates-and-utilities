@@ -64,7 +64,7 @@ public class ExampleFragment extends TaskFragment implements GeolocationListener
 			{
 				if(mRootView==null) return; // view was destroyed
 				
-				Logcat.d("Fragment.onGeolocationRespond(): " + location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
+				Logcat.d("onGeolocationRespond() = " + location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
 				mLocation = new Location(location);
 				
 				// TODO
@@ -82,7 +82,7 @@ public class ExampleFragment extends TaskFragment implements GeolocationListener
 			{
 				if(mRootView==null) return; // view was destroyed
 				
-				Logcat.d("Fragment.onGeolocationFail()");
+				Logcat.d("onGeolocationFail()");
 				
 				// TODO
 			}

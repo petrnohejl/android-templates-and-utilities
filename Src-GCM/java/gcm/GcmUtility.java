@@ -38,7 +38,7 @@ public class GcmUtility
 			}
 			else
 			{
-				Logcat.d("GcmUtility.checkPlayServices(): this device is not supported");
+				Logcat.e("this device is not supported");
 				activity.finish();
 			}
 			return false;
@@ -55,7 +55,7 @@ public class GcmUtility
 		String registrationId = preferences.getGcmRegistrationId();
 		if(registrationId.isEmpty())
 		{
-			Logcat.d("GcmUtility.getRegistrationId(): registration id not found");
+			Logcat.d("registration id not found");
 			return "";
 		}
 
@@ -64,7 +64,7 @@ public class GcmUtility
 		int currentVersion = Version.getVersionCode(context);
 		if(registeredVersion!=currentVersion)
 		{
-			Logcat.d("GcmUtility.getRegistrationId(): app version has changed");
+			Logcat.d("app version has changed");
 			return "";
 		}
 
@@ -75,7 +75,7 @@ public class GcmUtility
 	// register this account/device pair within the server
 	public static void register(final Context context, final String registrationId)
 	{
-		Logcat.d("GcmUtility.register(): registering device with registration id " + registrationId);
+		Logcat.d("registering device with registration id = %s", registrationId);
 
 		// request url
 		String requestUrl = ExampleConfig.GCM_REGISTER_URL;
@@ -92,7 +92,7 @@ public class GcmUtility
 		// As the server might be down, we will retry it a couple times.
 		for(int i=1; i<=MAX_ATTEMPTS; i++)
 		{
-			Logcat.d("GcmUtility.register(): attempt #" + i + " to register");
+			Logcat.d("attempt #%d to register", i);
 
 			try
 			{
@@ -102,26 +102,26 @@ public class GcmUtility
 				preferences.setGcmRegistrationId(registrationId);
 				preferences.setGcmVersionCode(Version.getVersionCode(context));
 
-				Logcat.d("GcmUtility.register(): server successfully registered device");
+				Logcat.d("server successfully registered device");
 				return;
 			}
 			catch(IOException e)
 			{
 				// Here we are simplifying and retrying on any error.
 				// In a real application, it should retry only on unrecoverable errors (like HTTP error code 503).
-				Logcat.d("GcmUtility.register(): server failed to register on attempt #" + i + " / " + e.getMessage());
+				Logcat.e("server failed to register on attempt #%d / exception " + e.getMessage(), i);
 
 				if(i == MAX_ATTEMPTS) break;
 
 				try
 				{
-					Logcat.d("GcmUtility.register(): sleeping for " + backoff + " ms before retry");
+					Logcat.d("sleeping for %d ms before retry", backoff);
 					Thread.sleep(backoff);
 				}
 				catch(InterruptedException interruptedException)
 				{
 					// activity finished before we complete
-					Logcat.d("GcmUtility.register(): thread interrupted so abort remaining retries");
+					Logcat.d("thread interrupted so abort remaining retries");
 					Thread.currentThread().interrupt();
 					return;
 				}
@@ -131,14 +131,14 @@ public class GcmUtility
 			}
 		}
 
-		Logcat.d("GcmUtility.register(): could not register device on server after " + MAX_ATTEMPTS + " attempts");
+		Logcat.d("could not register device on server after %d attempts", MAX_ATTEMPTS);
 	}
 
 
 	// unregister this account/device pair within the server
 	public static void unregister(final Context context, final String registrationId)
 	{
-		Logcat.d("GcmUtility.unregister(): unregistering device with registration id " + registrationId);
+		Logcat.d("unregistering device with registration id = %s", registrationId);
 
 		// request url
 		String requestUrl = ExampleConfig.GCM_UNREGISTER_URL;
@@ -156,14 +156,14 @@ public class GcmUtility
 			preferences.setGcmRegistrationId("");
 			preferences.setGcmVersionCode(-1);
 
-			Logcat.d("GcmUtility.unregister(): server successfully unregistered device");
+			Logcat.d("server successfully unregistered device");
 		}
 		catch(IOException e)
 		{
 			// At this point the device is unregistered from GCM, but still registered on the server.
 			// We could try to unregister again, but it is not necessary: if the server tries to send a message to the device,
 			// it will get a "NotRegistered" error message and should unregister the device.
-			Logcat.d("GcmUtility.unregister(): could not unregister device on server / " + e.getMessage());
+			Logcat.e("could not unregister device on server / exception " + e.getMessage());
 		}
 	}
 
@@ -185,7 +185,7 @@ public class GcmUtility
 		// data
 		byte[] requestData = params.getBytes();
 
-		Logcat.d("GcmUtility.post(): sending '" + params + "' to " + url);
+		Logcat.d("sending '" + params + "' to " + url);
 
 		// URL connection
 		HttpURLConnection connection = null;
@@ -242,7 +242,7 @@ public class GcmUtility
 			throw new IllegalArgumentException("Invalid url " + requestUrl);
 		}
 
-		Logcat.d("GcmUtility.get(): sending " + requestUrl);
+		Logcat.d("sending " + requestUrl);
 
 		// URL connection
 		HttpURLConnection connection = null;

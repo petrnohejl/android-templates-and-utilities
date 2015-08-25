@@ -20,7 +20,7 @@ public class ExampleService extends Service
 	@Override
 	public void onCreate()
 	{
-		Logcat.d("Service.onCreate()");
+		Logcat.d("");
 		
 		HandlerThread thread = new HandlerThread("ServiceStartArguments", Thread.NORM_PRIORITY);
 		thread.start();
@@ -33,7 +33,7 @@ public class ExampleService extends Service
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId)
 	{
-		Logcat.d("Service.onStartCommand()");
+		Logcat.d("");
 
 		// intent may be null if the service is being restarted
 		if(intent!=null)
@@ -58,7 +58,7 @@ public class ExampleService extends Service
 	@Override
 	public void onDestroy()
 	{
-		Logcat.d("Service.onDestroy()");
+		Logcat.d("");
 	}
 
 
@@ -73,7 +73,7 @@ public class ExampleService extends Service
 		@Override
 		public void handleMessage(Message msg)
 		{
-			Logcat.d("Service.handleMessage(): " + msg.arg2);
+			Logcat.d("%d", msg.arg2);
 			
 			long endTime = System.currentTimeMillis() + 5l * 1000l;
 			

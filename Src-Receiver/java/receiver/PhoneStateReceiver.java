@@ -14,7 +14,7 @@ public class PhoneStateReceiver extends BroadcastReceiver
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
-		Logcat.d("PhoneStateReceiver.onReceive()");
+		Logcat.d("");
 
 		String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
 		String msg = "Phone state changed to " + state;

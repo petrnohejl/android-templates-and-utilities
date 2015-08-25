@@ -24,12 +24,12 @@ public class ExampleFileObserverService extends Service
 		// start file observers
 		if(mExampleFileObserverList==null)
 		{
-			Logcat.d("Service.onStartCommand(): start file observers");
+			Logcat.d("start file observers");
 			startFileObservers();
 		}
 		else
 		{
-			Logcat.d("Service.onStartCommand(): file observers already running");
+			Logcat.d("file observers already running");
 		}
 		
 		return START_STICKY;

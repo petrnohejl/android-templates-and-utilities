@@ -58,7 +58,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				
 				if(task.getQuery().getClass().equals(ProductCreateQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallRespond(ProductCreateQuery)");
+					Logcat.d("ProductCreateQuery");
 					
 					// data
 					Data<Integer> productCreateData = (Data<Integer>) data;
@@ -68,7 +68,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				}
 				else if(task.getQuery().getClass().equals(ProductReadQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallRespond(ProductReadQuery)");
+					Logcat.d("ProductReadQuery");
 
 					// data
 					Data<ProductModel> productReadData = (Data<ProductModel>) data;
@@ -78,7 +78,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				}
 				else if(task.getQuery().getClass().equals(ProductReadAllQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallRespond(ProductReadAllQuery)");
+					Logcat.d("ProductReadAllQuery");
 					
 					// data
 					Data<List<ProductModel>> productReadAllData = (Data<List<ProductModel>>) data;
@@ -88,7 +88,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				}
 				else if(task.getQuery().getClass().equals(ProductUpdateQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallRespond(ProductUpdateQuery)");
+					Logcat.d("ProductUpdateQuery");
 					
 					// data
 					Data<Integer> productUpdateData = (Data<Integer>) data;
@@ -98,7 +98,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				}
 				else if(task.getQuery().getClass().equals(ProductDeleteQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallRespond(ProductDeleteQuery)");
+					Logcat.d("ProductDeleteQuery");
 
 					// data
 					Data<Integer> productDeleteData = (Data<Integer>) data;
@@ -108,7 +108,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				}
 				else if(task.getQuery().getClass().equals(ProductDeleteAllQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallRespond(ProductDeleteAllQuery)");
+					Logcat.d("ProductDeleteAllQuery");
 					
 					// data
 					Data<Integer> productDeleteAllData = (Data<Integer>) data;
@@ -138,27 +138,27 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				
 				if(task.getQuery().getClass().equals(ProductCreateQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallFail(ProductCreateQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+					Logcat.d("ProductCreateQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
 				else if(task.getQuery().getClass().equals(ProductReadQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallFail(ProductReadQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+					Logcat.d("ProductReadQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
 				else if(task.getQuery().getClass().equals(ProductReadAllQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallFail(ProductReadAllQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+					Logcat.d("ProductReadAllQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
 				else if(task.getQuery().getClass().equals(ProductUpdateQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallFail(ProductUpdateQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+					Logcat.d("ProductUpdateQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
 				else if(task.getQuery().getClass().equals(ProductDeleteQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallFail(ProductDeleteQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+					Logcat.d("ProductDeleteQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
 				else if(task.getQuery().getClass().equals(ProductDeleteAllQuery.class))
 				{
-					Logcat.d("Fragment.onDatabaseCallFail(ProductDeleteAllQuery): " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+					Logcat.d("ProductDeleteAllQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
 				
 				// finish query

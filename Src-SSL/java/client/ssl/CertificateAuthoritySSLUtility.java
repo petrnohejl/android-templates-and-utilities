@@ -39,7 +39,7 @@ public class CertificateAuthoritySSLUtility
 			@Override
 			public boolean verify(String hostname, SSLSession session)
 			{
-				//Logcat.d("HostnameVerifier.verify(): " + hostname + " / " + apiHostname);
+				//Logcat.d(hostname + " / " + apiHostname);
 				return hostname.equals(apiHostname);
 			}
 		};

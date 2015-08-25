@@ -23,7 +23,7 @@ public class ExampleFileObserver extends FileObserver
 		super(absolutePath, MASK); // or use FileObserver.ALL_EVENTS
 		mAbsolutePath = absolutePath;
 		
-		Logcat.d("FileObserver.FileObserver(): " + absolutePath);
+		Logcat.d(absolutePath);
 	}
 
 
@@ -35,37 +35,37 @@ public class ExampleFileObserver extends FileObserver
 		// a new file or subdirectory was created under the monitored directory
 		if((FileObserver.CREATE & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + mAbsolutePath + "/" + path + " is created");
+			Logcat.d(mAbsolutePath + "/" + path + " is created");
 		}
 		
 		// a file or directory was opened
 		if((FileObserver.OPEN & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + path + " is opened");
+			Logcat.d(path + " is opened");
 		}
 		
 		// data was read from a file
 		if((FileObserver.ACCESS & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + mAbsolutePath + "/" + path + " is accessed/read");
+			Logcat.d(mAbsolutePath + "/" + path + " is accessed/read");
 		}
 		
 		// data was written to a file
 		if((FileObserver.MODIFY & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + mAbsolutePath + "/" + path + " is modified");
+			Logcat.d(mAbsolutePath + "/" + path + " is modified");
 		}
 		
 		// someone has a file or directory open read-only, and closed it
 		if((FileObserver.CLOSE_NOWRITE & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + path + " is closed");
+			Logcat.d(path + " is closed");
 		}
 		
 		// someone has a file or directory open for writing, and closed it
 		if((FileObserver.CLOSE_WRITE & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + mAbsolutePath + "/" + path + " is written and closed");
+			Logcat.d(mAbsolutePath + "/" + path + " is written and closed");
 		}
 		
 		// a file was deleted from the monitored directory
@@ -73,37 +73,37 @@ public class ExampleFileObserver extends FileObserver
 		{
 			// for testing copy file
 			// FileUtils.copyFile(mAbsolutePath + "/" + path);
-			Logcat.d("FileObserver.onEvent(): " + mAbsolutePath + "/" + path + " is deleted");
+			Logcat.d(mAbsolutePath + "/" + path + " is deleted");
 		}
 		
 		// the monitored file or directory was deleted, monitoring effectively stops
 		if((FileObserver.DELETE_SELF & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + mAbsolutePath + "/" + " is deleted");
+			Logcat.d(mAbsolutePath + "/" + " is deleted");
 		}
 		
 		// a file or subdirectory was moved from the monitored directory
 		if((FileObserver.MOVED_FROM & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + mAbsolutePath + "/" + path + " is moved to somewhere " + "");
+			Logcat.d(mAbsolutePath + "/" + path + " is moved to somewhere " + "");
 		}
 		
 		// a file or subdirectory was moved to the monitored directory
 		if((FileObserver.MOVED_TO & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): file is moved to " + mAbsolutePath + "/" + path);
+			Logcat.d("file is moved to " + mAbsolutePath + "/" + path);
 		}
 		
 		// the monitored file or directory was moved; monitoring continues
 		if((FileObserver.MOVE_SELF & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + path + " is moved");
+			Logcat.d(path + " is moved");
 		}
 		
 		// metadata (permissions, owner, timestamp) was changed explicitly
 		if((FileObserver.ATTRIB & event) != 0)
 		{
-			Logcat.d("FileObserver.onEvent(): " + mAbsolutePath + "/" + path + " is changed (permissions, owner, timestamp)");
+			Logcat.d(mAbsolutePath + "/" + path + " is changed (permissions, owner, timestamp)");
 		}
 	}
 }

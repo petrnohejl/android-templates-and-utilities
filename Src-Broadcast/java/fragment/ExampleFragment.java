@@ -76,7 +76,7 @@ public class ExampleFragment extends Fragment
 				{
 					String arg = intent.getExtras().getString(ExampleBroadcast.EXTRA_ARG);
 					
-					Logcat.d("Fragment.onReceive(): " + arg);
+					Logcat.d(arg);
 				}
 			}
 		};

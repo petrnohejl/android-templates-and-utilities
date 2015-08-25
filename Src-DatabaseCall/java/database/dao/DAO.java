@@ -13,7 +13,7 @@ public class DAO
 		DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
 		try
 		{
-			Logcat.d("DAO.printDatabaseInfo(): products " + databaseHelper.getProductDao().countOf());
+			Logcat.d("%d products", databaseHelper.getProductDao().countOf());
 		}
 		catch(SQLException e)
 		{

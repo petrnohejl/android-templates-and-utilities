@@ -117,8 +117,8 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 					// error
 					if(exampleResponse.isError())
 					{
-						Logcat.d("Fragment.onAPICallRespond(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage() + 
-								" / error / " + exampleResponse.getErrorType() + " / " + exampleResponse.getErrorMessage());
+						Logcat.d("ExampleRequest / " + status.getStatusCode() + " " + status.getStatusMessage() + 
+								" / error " + exampleResponse.getErrorType() + " / " + exampleResponse.getErrorMessage());
 
 						// hide progress
 						showLazyLoadingProgress(false);
@@ -131,7 +131,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 					// response
 					else
 					{
-						Logcat.d("Fragment.onAPICallRespond(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage());
+						Logcat.d("ExampleRequest / " + status.getStatusCode() + " " + status.getStatusMessage());
 
 						// check meta data
 						if(task.getRequest().getMetaData()!=null && task.getRequest().getMetaData().getBoolean(META_REFRESH, false))
@@ -186,8 +186,8 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				
 				if(task.getRequest().getClass().equals(ExampleRequest.class))
 				{
-					Logcat.d("Fragment.onAPICallFail(ExampleRequest): " + status.getStatusCode() + " " + status.getStatusMessage() +
-							" / " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
+					Logcat.d("ExampleRequest / " + status.getStatusCode() + " " + status.getStatusMessage() +
+							" / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 					
 					// hide progress
 					showLazyLoadingProgress(false);

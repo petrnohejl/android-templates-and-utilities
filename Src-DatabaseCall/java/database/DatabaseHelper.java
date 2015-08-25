@@ -40,17 +40,17 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper
 	{
 		try
 		{
-			Logcat.d("DatabaseHelper.onCreate()");
+			Logcat.d("");
 			TableUtils.createTable(connectionSource, ProductModel.class);
 		}
 		catch(android.database.SQLException e)
 		{
-			Logcat.e("DatabaseHelper.onCreate(): can't create database", e);
+			Logcat.e(e, "can't create database");
 			e.printStackTrace();
 		}
 		catch(java.sql.SQLException e)
 		{
-			Logcat.e("DatabaseHelper.onCreate(): can't create database", e);
+			Logcat.e(e, "can't create database");
 			e.printStackTrace();
 		}
 	}
@@ -61,13 +61,13 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper
 	{
 		try
 		{
-			Logcat.d("DatabaseHelper.onUpgrade()");
+			Logcat.d("");
 
 			// TODO: database migration
 		}
 		catch(android.database.SQLException e)
 		{
-			Logcat.e("DatabaseHelper.onUpgrade(): can't upgrade database", e);
+			Logcat.e(e, "can't upgrade database");
 			e.printStackTrace();
 		}
 	}
@@ -85,20 +85,18 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper
 	{
 		try
 		{
-			Logcat.d("DatabaseHelper.clearDatabase()");
-
+			Logcat.d("");
 			TableUtils.dropTable(getConnectionSource(), ProductModel.class, true);
-
 			TableUtils.createTable(getConnectionSource(), ProductModel.class);
 		}
 		catch(android.database.SQLException e)
 		{
-			Logcat.e("DatabaseHelper.clearDatabase(): can't clear database", e);
+			Logcat.e(e, "can't clear database");
 			e.printStackTrace();
 		}
 		catch(java.sql.SQLException e)
 		{
-			Logcat.e("DatabaseHelper.clearDatabase(): can't clear database", e);
+			Logcat.e(e, "can't clear database");
 			e.printStackTrace();
 		}
 	}

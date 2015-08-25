@@ -13,14 +13,14 @@ public class ExampleIntentService extends IntentService
 		super("ExampleIntentService");
 		setIntentRedelivery(false); // TODO: START_NOT_STICKY if false, START_REDELIVER_INTENT if true
 		
-		Logcat.d("IntentService.IntentService()");
+		Logcat.d("");
 	}
 	
 	
 	@Override
 	public void onCreate()
 	{
-		Logcat.d("IntentService.onCreate()");
+		Logcat.d("");
 		
 		super.onCreate();
 	}
@@ -29,7 +29,7 @@ public class ExampleIntentService extends IntentService
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId)
 	{
-		Logcat.d("IntentService.onStartCommand()");
+		Logcat.d("");
 
 		return super.onStartCommand(intent, flags, startId);
 	}
@@ -41,7 +41,7 @@ public class ExampleIntentService extends IntentService
 		// intent may be null if the service is being restarted
 		if(intent==null) return;
 		
-		Logcat.d("IntentService.onHandleIntent(): " + intent.getIntExtra("arg", -1));
+		Logcat.d("%d", intent.getIntExtra("arg", -1));
 		
 		long endTime = System.currentTimeMillis() + 5l * 1000l;
 		while(System.currentTimeMillis() < endTime)
@@ -65,7 +65,7 @@ public class ExampleIntentService extends IntentService
 	@Override
 	public void onDestroy()
 	{
-		Logcat.d("IntentService.onDestroy()");
+		Logcat.d("");
 		
 		super.onDestroy();
 	}

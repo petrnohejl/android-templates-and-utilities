@@ -146,11 +146,11 @@ public class APICall
 			}
 			
 			// response info
-			//Logcat.d("APICall.connection.getURL(): " + mConnection.getURL());
-			//Logcat.d("APICall.connection.getContentType(): " + mConnection.getContentType());
-			//Logcat.d("APICall.connection.getContentEncoding(): " + mConnection.getContentEncoding());
-			//Logcat.d("APICall.connection.getResponseCode(): " + mConnection.getResponseCode());
-			//Logcat.d("APICall.connection.getResponseMessage(): " + mConnection.getResponseMessage());
+			//Logcat.d("connection.getURL() = " + mConnection.getURL());
+			//Logcat.d("connection.getContentType() = " + mConnection.getContentType());
+			//Logcat.d("connection.getContentEncoding() = " + mConnection.getContentEncoding());
+			//Logcat.d("connection.getResponseCode() = " + mConnection.getResponseCode());
+			//Logcat.d("connection.getResponseMessage() = " + mConnection.getResponseMessage());
 			
 			// parse response
 			if(mAPICallTask!=null && mAPICallTask.isCancelled()) return null;

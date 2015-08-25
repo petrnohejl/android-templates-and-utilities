@@ -13,7 +13,7 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
-		Logcat.d("ConnectivityChangeReceiver.onReceive(): " + NetworkUtility.getTypeName(context));
+		Logcat.d(NetworkUtility.getTypeName(context));
 		
 		// TODO: do something
 	}

@@ -54,25 +54,25 @@ public class ExampleFragment extends Fragment
 				@Override
 				public void onAnimationStart(Animator animator)
 				{
-					Logcat.d("Animator.onAnimationStart()");
+					Logcat.d("");
 				}
 
 				@Override
 				public void onAnimationRepeat(Animator animator)
 				{
-					Logcat.d("Animator.onAnimationRepeat()");
+					Logcat.d("");
 				}
 
 				@Override
 				public void onAnimationCancel(Animator animator)
 				{
-					Logcat.d("Animator.onAnimationCancel()");
+					Logcat.d("");
 				}
 
 				@Override
 				public void onAnimationEnd(Animator animator)
 				{
-					Logcat.d("Animator.onAnimationEnd()");
+					Logcat.d("");
 				}
 			});
 

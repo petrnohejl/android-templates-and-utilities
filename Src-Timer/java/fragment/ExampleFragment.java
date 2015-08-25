@@ -32,7 +32,7 @@ public class ExampleFragment extends Fragment
 			@Override
 			public void run()
 			{
-				Logcat.d("Fragment.timerRunnable()");
+				Logcat.d("timer");
 				
 				mTimerHandler.postDelayed(this, TIMER_DELAY);
 			}

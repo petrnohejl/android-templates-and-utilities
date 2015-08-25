@@ -12,7 +12,7 @@ public class BootCompletedReceiver extends BroadcastReceiver
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
-		Logcat.d("BootCompletedReceiver.onReceive()");
+		Logcat.d("");
 		
 		// TODO: do something
 	}

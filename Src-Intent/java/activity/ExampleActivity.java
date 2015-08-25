@@ -17,12 +17,12 @@ public class ExampleActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 		
-		Logcat.d("Activity.getIntent().getAction(): " + getIntent().getAction());
-		Logcat.d("Activity.getIntent().getCategories(): " + (getIntent().getCategories()!=null ? getIntent().getCategories() : "null"));
-		Logcat.d("Activity.getIntent().getDataString(): " + getIntent().getDataString());
-		Logcat.d("Activity.getIntent().getScheme(): " + getIntent().getScheme());
-		Logcat.d("Activity.getIntent().getType(): " + getIntent().getType());
-		Logcat.d("Activity.getIntent().getExtras(): " + (getIntent().getExtras()!=null ? getIntent().getExtras().keySet() : "null"));
+		Logcat.d("getIntent().getAction() = " + getIntent().getAction());
+		Logcat.d("getIntent().getCategories() = " + (getIntent().getCategories()!=null ? getIntent().getCategories() : "null"));
+		Logcat.d("getIntent().getDataString() = " + getIntent().getDataString());
+		Logcat.d("getIntent().getScheme() = " + getIntent().getScheme());
+		Logcat.d("getIntent().getType() = " + getIntent().getType());
+		Logcat.d("getIntent().getExtras() = " + (getIntent().getExtras()!=null ? getIntent().getExtras().keySet() : "null"));
 	}
 	
 	

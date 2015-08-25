@@ -12,7 +12,7 @@ public class ExampleAlarmReceiver extends BroadcastReceiver
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
-		Logcat.d("ExampleAlarmReceiver.onReceive()");
+		Logcat.d("");
 		
 		// TODO: do something
 	}
