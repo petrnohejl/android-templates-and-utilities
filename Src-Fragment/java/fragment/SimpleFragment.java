@@ -1,6 +1,6 @@
 package com.example.fragment;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,9 +27,9 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	
 	
 	@Override
-	public void onAttach(Activity activity) 
+	public void onAttach(Context context)
 	{
-		super.onAttach(activity);
+		super.onAttach(context);
 	}
 	
 	

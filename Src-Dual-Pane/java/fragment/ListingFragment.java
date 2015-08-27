@@ -1,9 +1,6 @@
 package com.example.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,6 +15,9 @@ import com.example.adapter.ListingAdapter;
 import com.example.entity.ProductEntity;
 import com.example.listener.OnDualPaneShowListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ListingFragment extends Fragment
 {
@@ -28,18 +28,18 @@ public class ListingFragment extends Fragment
 	
 	
 	@Override
-	public void onAttach(Activity activity)
+	public void onAttach(Context context)
 	{
-		super.onAttach(activity);
+		super.onAttach(context);
 		
 		// set dual pane listener
 		try
 		{
-			mDualPaneShowListener = (OnDualPaneShowListener) activity;
+			mDualPaneShowListener = (OnDualPaneShowListener) getActivity();
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(activity.getClass().getName() + " must implement " + OnDualPaneShowListener.class.getName());
+			throw new ClassCastException(getActivity().getClass().getName() + " must implement " + OnDualPaneShowListener.class.getName());
 		}
 	}
 	
