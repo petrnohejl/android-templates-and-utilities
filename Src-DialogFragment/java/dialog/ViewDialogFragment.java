@@ -1,12 +1,11 @@
 package com.example.dialog;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.view.ContextThemeWrapper;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -111,8 +110,7 @@ public class ViewDialogFragment extends DialogFragment
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
-		ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), getTheme(true));
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		LayoutInflater inflater = getActivity().getLayoutInflater();
 		mRootView = inflater.inflate(R.layout.dialog_view, null);
 		
@@ -136,7 +134,7 @@ public class ViewDialogFragment extends DialogFragment
 		});
 		
 		// create dialog from builder
-		final Dialog dialog = builder.create();
+		final AppCompatDialog dialog = builder.create();
 		
 		// override positive button
 		dialog.setOnShowListener(new DialogInterface.OnShowListener()
@@ -144,7 +142,7 @@ public class ViewDialogFragment extends DialogFragment
 			@Override
 			public void onShow(DialogInterface dialogInterface)
 			{
-				Button button = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+				Button button = ((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE);
 				button.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.mipmap.ic_launcher), null, null, null);
 				button.setOnClickListener(new View.OnClickListener()
 				{
@@ -153,12 +151,12 @@ public class ViewDialogFragment extends DialogFragment
 					{
 						EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_view_username);
 						EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_view_password);
-						
+
 						String username = usernameEditText.getText().toString();
 						String password = passwordEditText.getText().toString();
-						
+
 						// TODO: data validation
-						
+
 						mListener.onViewDialogPositiveClick(ViewDialogFragment.this, username, password);
 						dialog.dismiss();
 					}
@@ -167,23 +165,6 @@ public class ViewDialogFragment extends DialogFragment
 		});
 		
 		return dialog;
-	}
-	
-	
-	private int getTheme(boolean light)
-	{
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-		{
-			return light ? android.R.style.Theme_DeviceDefault_Light_Dialog : android.R.style.Theme_DeviceDefault_Dialog;
-		}
-		else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-		{
-			return light ? android.R.style.Theme_Holo_Light_Dialog : android.R.style.Theme_Holo_Dialog;
-		}
-		else
-		{
-			return android.R.style.Theme_Dialog;
-		}
 	}
 
 

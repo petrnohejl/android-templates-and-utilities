@@ -1,7 +1,5 @@
 package com.example.fragment;
 
-import java.util.Calendar;
-
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -20,6 +18,8 @@ import com.example.dialog.SingleChoiceItemsDialogFragment;
 import com.example.dialog.TimePickerDialogFragment;
 import com.example.dialog.ViewDialogFragment;
 import com.example.utility.Logcat;
+
+import java.util.Calendar;
 
 
 public class ExampleFragment extends TaskFragment implements
@@ -257,6 +257,7 @@ public class ExampleFragment extends TaskFragment implements
 		Button button5 = (Button) mRootView.findViewById(R.id.fragment_example_button5);
 		Button button6 = (Button) mRootView.findViewById(R.id.fragment_example_button6);
 		Button button7 = (Button) mRootView.findViewById(R.id.fragment_example_button7);
+		Button button8 = (Button) mRootView.findViewById(R.id.fragment_example_button8);
 		
 		// content
 		button1.setOnClickListener(new OnClickListener()
@@ -318,6 +319,14 @@ public class ExampleFragment extends TaskFragment implements
 			public void onClick(View v)
 			{
 				showDatePickerDialog(Calendar.getInstance());
+			}
+		});
+		button8.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				showProgressDialog();
 			}
 		});
 	}

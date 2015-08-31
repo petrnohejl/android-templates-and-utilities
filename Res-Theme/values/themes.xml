@@ -35,6 +35,8 @@
 		<item name="android:textColorHintInverse">@color/global_text_hint_inverse</item>
 		<item name="android:textColorHighlight">@color/global_text_highlight</item>m>
 		<item name="android:textColorLink">@color/global_text_link</item>
+
+		<item name="alertDialogTheme">@style/Theme.Example.Light.Dialog.Alert</item>
 	</style>
 
 	<style name="Theme.Example.Transparent" parent="@style/Theme.Example.Light">
@@ -44,6 +46,10 @@
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowIsTranslucent">true</item>
 		<item name="android:backgroundDimEnabled">false</item>
+	</style>
+
+	<style name="Theme.Example.Light.Dialog.Alert" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+		<item name="colorAccent">@color/global_color_accent</item>
 	</style>
 
 </resources>
