@@ -19,7 +19,7 @@ import com.example.client.response.Response;
 import com.example.entity.ProductEntity;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
-import com.example.view.ViewState;
+import com.example.view.StatefulLayout;
 
 import org.codehaus.jackson.JsonParseException;
 
@@ -40,8 +40,8 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	private static final int LAZY_LOADING_MAX = LAZY_LOADING_TAKE * 10;
 	
 	private boolean mLazyLoading = false;
-	private ViewState mViewState = null;
 	private View mRootView;
+	private StatefulLayout mStatefulLayout;
 	private View mFooterView;
 	private ExampleAdapter mAdapter;
 	private APICallManager mAPICallManager = new APICallManager();
@@ -60,21 +60,12 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
-		// load and show data
-		if(mViewState==null || mViewState==ViewState.OFFLINE)
-		{
-			loadData();
-		}
-		else if(mViewState==ViewState.CONTENT)
-		{
-			if(mProductList!=null) bindData();
-			showContent();
-		}
-		else if(mViewState==ViewState.PROGRESS)
-		{
-			showProgress();
-		}
+
+		// setup stateful layout
+		setupStatefulLayout(savedInstanceState);
+
+		// load data
+		if(mStatefulLayout.getState()==null) loadData();
 
 		// lazy loading progress
 		if(mLazyLoading) showLazyLoadingProgress(true);
@@ -102,6 +93,18 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 
 
 	@Override
+	public void onSaveInstanceState(Bundle outState)
+	{
+		// save current instance state
+		super.onSaveInstanceState(outState);
+		setUserVisibleHint(true);
+
+		// stateful layout state
+		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
+	}
+
+
+	@Override
 	public void onAPICallRespond(final APICallTask task, final ResponseStatus status, final Response<?> response)
 	{
 		runTaskCallback(new Runnable()
@@ -119,10 +122,6 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 					{
 						Logcat.d("ExampleRequest / " + status.getStatusCode() + " " + status.getStatusMessage() + 
 								" / error " + exampleResponse.getErrorType() + " / " + exampleResponse.getErrorMessage());
-
-						// hide progress
-						showLazyLoadingProgress(false);
-						showContent();
 
 						// handle error
 						handleError(exampleResponse.getErrorType(), exampleResponse.getErrorMessage());
@@ -146,23 +145,13 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 						while(iterator.hasNext())
 						{
 							ProductEntity product = iterator.next();
-							mProductList.add(new ProductEntity(product));
+							mProductList.add(product);
 						}
-						
-						// render view
-						if(mLazyLoading && mViewState==ViewState.CONTENT && mAdapter!=null)
-						{
-							mAdapter.notifyDataSetChanged();
-						}
-						else
-						{
-							if(mProductList!=null) bindData();
-						}
-
-						// hide progress
-						showLazyLoadingProgress(false);
-						showContent();
 					}
+
+					// show content
+					mStatefulLayout.showContent();
+					showLazyLoadingProgress(false);
 				}
 				
 				// finish request
@@ -188,13 +177,13 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				{
 					Logcat.d("ExampleRequest / " + status.getStatusCode() + " " + status.getStatusMessage() +
 							" / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
-					
-					// hide progress
-					showLazyLoadingProgress(false);
-					showContent();
 
 					// handle fail
 					handleFail(exception);
+
+					// show content
+					mStatefulLayout.showContent();
+					showLazyLoadingProgress(false);
 				}
 				
 				// finish request
@@ -235,7 +224,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
 			{
 				// show progress
-				showProgress();
+				mStatefulLayout.showProgress();
 
 				// show progress in action bar
 				showActionBarProgress(true);
@@ -247,7 +236,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 		}
 		else
 		{
-			showOffline();
+			mStatefulLayout.showOffline();
 		}
 	}
 
@@ -311,45 +300,6 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 			
 			mLazyLoading = false;
 		}
-	}
-	
-	
-	private void showContent()
-	{
-		// show list container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.VISIBLE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.CONTENT;
-	}
-	
-	
-	private void showProgress()
-	{
-		// show progress container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.VISIBLE);
-		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.PROGRESS;
-	}
-	
-	
-	private void showOffline()
-	{
-		// show offline container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.VISIBLE);
-		mViewState = ViewState.OFFLINE;
 	}
 
 	

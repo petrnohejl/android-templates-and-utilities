@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<com.example.view.StatefulLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/fragment_expandable_listing_stateful_layout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:animateLayoutChanges="true">
-	
+	android:animateLayoutChanges="true"
+	app:progressLayout="@layout/placeholder_progress"
+	app:offlineLayout="@layout/placeholder_offline"
+	app:emptyLayout="@layout/placeholder_empty">
+
 	<FrameLayout
 		android:id="@+id/container_content"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
-		
+
 		<ExpandableListView
 			android:id="@android:id/list"
 			android:layout_width="match_parent"
@@ -19,27 +24,12 @@
 			android:fastScrollEnabled="false"
 			android:listSelector="@drawable/selector_clickable_item_bg"
 			android:background="@color/global_bg_front" />
-		
+
 		<include
 			layout="@layout/placeholder_empty"
 			android:id="@android:id/empty"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent" />
-			
+
 	</FrameLayout>
-	
-	<include
-		layout="@layout/placeholder_progress"
-		android:id="@+id/container_progress"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:visibility="gone" />
-
-	<include
-		layout="@layout/placeholder_offline"
-		android:id="@+id/container_offline"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:visibility="gone" />
-
-</FrameLayout>
+</com.example.view.StatefulLayout>

@@ -1,8 +1,5 @@
 package com.example.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,14 +16,18 @@ import com.example.adapter.ExpandableListingAdapter;
 import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
+import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
-import com.example.view.ViewState;
+import com.example.view.StatefulLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ExpandableListingFragment extends TaskFragment implements OnLoadDataListener
 {
-	private ViewState mViewState = null;
 	private View mRootView;
+	private StatefulLayout mStatefulLayout;
 	private ExpandableListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
 	private List<String> mGroupList = new ArrayList<>();
@@ -61,21 +62,12 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
-		// load and show data
-		if(mViewState==null || mViewState==ViewState.OFFLINE)
-		{
-			loadData();
-		}
-		else if(mViewState==ViewState.CONTENT)
-		{
-			if(mGroupList!=null && mProductList!=null) bindData();
-			showContent();
-		}
-		else if(mViewState==ViewState.PROGRESS)
-		{
-			showProgress();
-		}
+
+		// setup stateful layout
+		setupStatefulLayout(savedInstanceState);
+
+		// load data
+		if(mStatefulLayout.getState()==null) loadData();
 	}
 	
 	
@@ -141,6 +133,9 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
+
+		// stateful layout state
+		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
 	}
 	
 	
@@ -186,19 +181,9 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 					mProductList.add(group);
 					mGroupList.add("Group " + i);
 				}
-				
-				// render view
-				if(mViewState==ViewState.CONTENT && mAdapter!=null)
-				{
-					mAdapter.notifyDataSetChanged();
-				}
-				else
-				{
-					if(mGroupList!=null && mProductList!=null) bindData();
-				}
-				
-				// hide progress
-				showContent();
+
+				// show content
+				mStatefulLayout.showContent();
 			}
 		});
 	}
@@ -209,7 +194,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
-			showProgress();
+			mStatefulLayout.showProgress();
 			
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
@@ -217,47 +202,8 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		}
 		else
 		{
-			showOffline();
+			mStatefulLayout.showOffline();
 		}
-	}
-	
-	
-	private void showContent()
-	{
-		// show list container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.VISIBLE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.CONTENT;
-	}
-	
-	
-	private void showProgress()
-	{
-		// show progress container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.VISIBLE);
-		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.PROGRESS;
-	}
-	
-	
-	private void showOffline()
-	{
-		// show offline container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.VISIBLE);
-		mViewState = ViewState.OFFLINE;
 	}
 	
 	
@@ -305,6 +251,39 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		
 		// listview empty view
 		listView.setEmptyView(emptyView);
+	}
+
+
+	private void setupStatefulLayout(Bundle savedInstanceState)
+	{
+		// reference
+		mStatefulLayout = (StatefulLayout) mRootView;
+
+		// state change listener
+		mStatefulLayout.setOnStateChangeListener(new StatefulLayout.OnStateChangeListener()
+		{
+			@Override
+			public void onStateChange(View v, StatefulLayout.State state)
+			{
+				Logcat.d("" + (state==null ? "null" : state.toString()));
+
+				if(state==StatefulLayout.State.CONTENT)
+				{
+					ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
+					if(listView.getAdapter()!=null)
+					{
+						mAdapter.notifyDataSetChanged();
+					}
+					else
+					{
+						if(mGroupList!=null && mProductList!=null) bindData();
+					}
+				}
+			}
+		});
+
+		// restore state
+		mStatefulLayout.restoreInstanceState(savedInstanceState);
 	}
 	
 	

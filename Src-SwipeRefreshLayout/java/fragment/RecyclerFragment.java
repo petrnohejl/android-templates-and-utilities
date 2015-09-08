@@ -105,9 +105,9 @@ public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout
 	private void showActionBarProgress(boolean visible)
 	{
 		// show pull to refresh progress bar
-		SwipeRefreshLayout contentSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_content);
-		SwipeRefreshLayout offlineSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_offline);
-		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_empty);
+		SwipeRefreshLayout contentSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_content_swipeable);
+		SwipeRefreshLayout offlineSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_offline_swipeable);
+		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_empty_swipeable);
 
 		contentSwipeRefreshLayout.setRefreshing(visible);
 		contentSwipeRefreshLayout.setEnabled(!visible);
@@ -124,9 +124,9 @@ public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout
 
 	private void setupSwipeRefreshLayout()
 	{
-		SwipeRefreshLayout contentSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_content);
-		SwipeRefreshLayout offlineSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_offline);
-		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_empty);
+		SwipeRefreshLayout contentSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_content_swipeable);
+		SwipeRefreshLayout offlineSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_offline_swipeable);
+		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_empty_swipeable);
 
 		contentSwipeRefreshLayout.setColorSchemeResources(R.color.global_color_primary, R.color.global_color_accent);
 		contentSwipeRefreshLayout.setOnRefreshListener(this);

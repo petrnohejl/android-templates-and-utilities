@@ -1,9 +1,5 @@
 package com.example.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,8 +16,14 @@ import com.example.entity.GroupEntity;
 import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
+import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
-import com.example.view.ViewState;
+import com.example.view.StatefulLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 
 public class StickyListingFragment extends TaskFragment implements
@@ -30,8 +32,8 @@ public class StickyListingFragment extends TaskFragment implements
 		AdapterView.OnItemLongClickListener,
 		StickyListHeadersListView.OnHeaderClickListener
 {
-	private ViewState mViewState = null;
 	private View mRootView;
+	private StatefulLayout mStatefulLayout;
 	private StickyListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
 	private int mListviewPosition = 0;
@@ -66,21 +68,12 @@ public class StickyListingFragment extends TaskFragment implements
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
-		// load and show data
-		if(mViewState==null || mViewState==ViewState.OFFLINE)
-		{
-			loadData();
-		}
-		else if(mViewState==ViewState.CONTENT)
-		{
-			if(mProductList!=null) bindData();
-			showContent();
-		}
-		else if(mViewState==ViewState.PROGRESS)
-		{
-			showProgress();
-		}
+
+		// setup stateful layout
+		setupStatefulLayout(savedInstanceState);
+
+		// load data
+		if(mStatefulLayout.getState()==null) loadData();
 	}
 	
 	
@@ -146,6 +139,9 @@ public class StickyListingFragment extends TaskFragment implements
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
+
+		// stateful layout state
+		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
 		
 		// listview position
 		if(mRootView!=null && mAdapter!=null)
@@ -225,19 +221,9 @@ public class StickyListingFragment extends TaskFragment implements
 						mProductList.add(p);
 					}
 				}
-				
-				// render view
-				if(mViewState==ViewState.CONTENT && mAdapter!=null)
-				{
-					mAdapter.notifyDataSetChanged();
-				}
-				else
-				{
-					if(mProductList!=null) bindData();
-				}
-				
-				// hide progress
-				showContent();
+
+				// show content
+				mStatefulLayout.showContent();
 			}
 		});
 	}
@@ -248,7 +234,7 @@ public class StickyListingFragment extends TaskFragment implements
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
-			showProgress();
+			mStatefulLayout.showProgress();
 			
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
@@ -256,47 +242,8 @@ public class StickyListingFragment extends TaskFragment implements
 		}
 		else
 		{
-			showOffline();
+			mStatefulLayout.showOffline();
 		}
-	}
-	
-	
-	private void showContent()
-	{
-		// show list container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.VISIBLE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.CONTENT;
-	}
-	
-	
-	private void showProgress()
-	{
-		// show progress container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.VISIBLE);
-		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.PROGRESS;
-	}
-	
-	
-	private void showOffline()
-	{
-		// show offline container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.VISIBLE);
-		mViewState = ViewState.OFFLINE;
 	}
 	
 	
@@ -331,5 +278,38 @@ public class StickyListingFragment extends TaskFragment implements
 		
 		// listview position
 		stickyListView.setSelectionFromTop(mListviewPosition, 0);
+	}
+
+
+	private void setupStatefulLayout(Bundle savedInstanceState)
+	{
+		// reference
+		mStatefulLayout = (StatefulLayout) mRootView;
+
+		// state change listener
+		mStatefulLayout.setOnStateChangeListener(new StatefulLayout.OnStateChangeListener()
+		{
+			@Override
+			public void onStateChange(View v, StatefulLayout.State state)
+			{
+				Logcat.d("" + (state==null ? "null" : state.toString()));
+
+				if(state==StatefulLayout.State.CONTENT)
+				{
+					StickyListHeadersListView stickyListView = (StickyListHeadersListView) mRootView.findViewById(android.R.id.list);
+					if(stickyListView.getAdapter()!=null)
+					{
+						mAdapter.notifyDataSetChanged();
+					}
+					else
+					{
+						if(mProductList!=null) bindData();
+					}
+				}
+			}
+		});
+
+		// restore state
+		mStatefulLayout.restoreInstanceState(savedInstanceState);
 	}
 }

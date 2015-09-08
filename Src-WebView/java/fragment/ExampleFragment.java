@@ -19,11 +19,13 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.example.R;
+import com.example.view.StatefulLayout;
 
 
 public class ExampleFragment extends Fragment
 {
 	private View mRootView;
+	private StatefulLayout mStatefulLayout;
 	private String mUrl = "about:blank";
 	
 	
@@ -65,7 +67,7 @@ public class ExampleFragment extends Fragment
 				if(getActivity()!=null)
 				{
 					Toast.makeText(getActivity(), mUrl, Toast.LENGTH_LONG).show();
-					showContent();
+					mStatefulLayout.showContent();
 				}
 			}
 			
@@ -77,7 +79,7 @@ public class ExampleFragment extends Fragment
 				{
 					webView.loadUrl("about:blank");
 					Toast.makeText(getActivity(), errorCode + ": " + description, Toast.LENGTH_LONG).show();
-					showEmpty();
+					mStatefulLayout.showEmpty();
 				}
 			}
 			
@@ -142,7 +144,7 @@ public class ExampleFragment extends Fragment
 		});
 		
 		// load web url
-		showProgress();
+		mStatefulLayout.showProgress();
 		webView.loadUrl(mUrl);
 	}
 

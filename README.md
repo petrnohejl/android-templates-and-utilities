@@ -42,7 +42,6 @@ Example of creating a basic app skelet with 1 Activity and 1 Fragment via Androi
 
 * Create a new Android project with package name "com.example"
 * Copy & paste Base
-* Copy & paste Res-Placeholder
 * Copy & paste Res-Strings
 * Copy & paste Res-Theme
 * Copy & paste Src-Activity
@@ -51,6 +50,7 @@ Example of creating a basic app skelet with 1 Activity and 1 Fragment via Androi
 * Copy & paste Src-Fragment
 * Copy & paste Src-Logcat
 * Copy & paste Src-NetworkUtility
+* Copy & paste Src-StatefulLayout
 * Open ExampleActivity.java and comment out onCreateOptionsMenu(...) and onOptionsItemSelected(...) methods
 * Build the project and voilà, we have a basic skeleton for our future app
 

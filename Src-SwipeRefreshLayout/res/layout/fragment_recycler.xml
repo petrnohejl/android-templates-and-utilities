@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<com.example.view.StatefulLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/fragment_recycler_stateful_layout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:animateLayoutChanges="true">
+	android:animateLayoutChanges="true"
+	app:state="content"
+	app:progressLayout="@layout/placeholder_progress"
+	app:offlineLayout="@layout/placeholder_offline_swipeable"
+	app:emptyLayout="@layout/placeholder_empty_swipeable">
 
 	<android.support.v4.widget.SwipeRefreshLayout
-		android:id="@+id/container_content"
+		android:id="@+id/container_content_swipeable"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
@@ -18,37 +24,4 @@
 			android:background="@color/global_bg_front" />
 
 	</android.support.v4.widget.SwipeRefreshLayout>
-
-	<include
-		layout="@layout/placeholder_progress"
-		android:id="@+id/container_progress"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:visibility="gone" />
-
-	<android.support.v4.widget.SwipeRefreshLayout
-		android:id="@+id/container_offline"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:visibility="gone">
-
-		<include
-			layout="@layout/placeholder_offline"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
-
-	</android.support.v4.widget.SwipeRefreshLayout>
-
-	<android.support.v4.widget.SwipeRefreshLayout
-		android:id="@+id/container_empty"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:visibility="gone">
-
-		<include
-			layout="@layout/placeholder_empty"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
-
-	</android.support.v4.widget.SwipeRefreshLayout>
-</FrameLayout>
+</com.example.view.StatefulLayout>

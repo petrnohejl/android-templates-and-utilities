@@ -17,9 +17,10 @@ import com.example.adapter.RecyclerAdapter;
 import com.example.entity.ProductEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
+import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
 import com.example.view.LinearDividerItemDecoration;
-import com.example.view.ViewState;
+import com.example.view.StatefulLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,8 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 	private static final int LAZY_LOADING_OFFSET = 4;
 	
 	private boolean mLazyLoading = false;
-	private ViewState mViewState = null;
 	private View mRootView;
+	private StatefulLayout mStatefulLayout;
 	private RecyclerAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
 	private List<String> mHeaderList = new ArrayList<>();
@@ -69,25 +70,12 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
-		// load and show data
-		if(mViewState==null || mViewState==ViewState.OFFLINE)
-		{
-			loadData();
-		}
-		else if(mViewState==ViewState.CONTENT)
-		{
-			if(mProductList!=null) bindData();
-			showContent();
-		}
-		else if(mViewState==ViewState.PROGRESS)
-		{
-			showProgress();
-		}
-		else if(mViewState==ViewState.EMPTY)
-		{
-			showEmpty();
-		}
+
+		// setup stateful layout
+		setupStatefulLayout(savedInstanceState);
+
+		// load data
+		if(mStatefulLayout.getState()==null) loadData();
 
 		// lazy loading progress
 		if(mLazyLoading) showLazyLoadingProgress(true);
@@ -156,6 +144,9 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
+
+		// stateful layout state
+		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
 	}
 	
 	
@@ -222,21 +213,11 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 					mHeaderList.add("Two");
 					mHeaderList.add("Three");
 				}
-				
-				// render view
-				if(mLazyLoading && mViewState==ViewState.CONTENT && mAdapter!=null)
-				{
-					mAdapter.notifyDataSetChanged();
-				}
-				else
-				{
-					if(mProductList!=null) bindData();
-				}
 
-				// hide progress
+				// show content
+				if(mProductList!=null && mProductList.size()>0) mStatefulLayout.showContent();
+				else mStatefulLayout.showEmpty();
 				showLazyLoadingProgress(false);
-				if(mProductList!=null && mProductList.size()>0) showContent();
-				else showEmpty();
 			}
 		});
 	}
@@ -247,7 +228,7 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
-			showProgress();
+			mStatefulLayout.showProgress();
 			
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
@@ -255,7 +236,7 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 		}
 		else
 		{
-			showOffline();
+			mStatefulLayout.showOffline();
 		}
 	}
 	
@@ -298,66 +279,6 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 
 			mLazyLoading = false;
 		}
-	}
-
-
-	private void showContent()
-	{
-		// show content container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
-		containerContent.setVisibility(View.VISIBLE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.GONE);
-		containerEmpty.setVisibility(View.GONE);
-		mViewState = ViewState.CONTENT;
-	}
-
-
-	private void showProgress()
-	{
-		// show progress container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.VISIBLE);
-		containerOffline.setVisibility(View.GONE);
-		containerEmpty.setVisibility(View.GONE);
-		mViewState = ViewState.PROGRESS;
-	}
-
-
-	private void showOffline()
-	{
-		// show offline container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.VISIBLE);
-		containerEmpty.setVisibility(View.GONE);
-		mViewState = ViewState.OFFLINE;
-	}
-
-
-	private void showEmpty()
-	{
-		// show empty container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		ViewGroup containerEmpty = (ViewGroup) mRootView.findViewById(R.id.container_empty);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.GONE);
-		containerEmpty.setVisibility(View.VISIBLE);
-		mViewState = ViewState.EMPTY;
 	}
 	
 	
@@ -418,6 +339,39 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 				}
 			}
 		});
+	}
+
+
+	private void setupStatefulLayout(Bundle savedInstanceState)
+	{
+		// reference
+		mStatefulLayout = (StatefulLayout) mRootView;
+
+		// state change listener
+		mStatefulLayout.setOnStateChangeListener(new StatefulLayout.OnStateChangeListener()
+		{
+			@Override
+			public void onStateChange(View v, StatefulLayout.State state)
+			{
+				Logcat.d("" + (state==null ? "null" : state.toString()));
+
+				if(state==StatefulLayout.State.CONTENT)
+				{
+					RecyclerView recyclerView = getRecyclerView();
+					if(mLazyLoading && recyclerView.getAdapter()!=null)
+					{
+						mAdapter.notifyDataSetChanged();
+					}
+					else
+					{
+						if(mProductList!=null) bindData();
+					}
+				}
+			}
+		});
+
+		// restore state
+		mStatefulLayout.restoreInstanceState(savedInstanceState);
 	}
 
 

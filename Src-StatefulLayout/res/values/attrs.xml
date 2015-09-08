@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="StatefulLayout">
+		<attr name="state" format="enum">
+			<enum name="content" value="0" />
+			<enum name="progress" value="1" />
+			<enum name="offline" value="2" />
+			<enum name="empty" value="3" />
+		</attr>
+		<attr name="progressLayout" format="reference" />
+		<attr name="offlineLayout" format="reference" />
+		<attr name="emptyLayout" format="reference" />
+	</declare-styleable>
+</resources>

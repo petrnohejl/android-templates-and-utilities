@@ -1,7 +1,5 @@
 package com.example.adapter;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.R;
 import com.example.entity.ProductEntity;
+
+import java.util.List;
 
 
 public class ExpandableListingAdapter extends BaseExpandableListAdapter
@@ -59,11 +59,11 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 			// selected item
 			if(mSelectedGroupPosition == groupPosition && mSelectedChildPosition == childPosition)
 			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.color.global_color_control_activated));
+				view.setBackgroundResource(R.color.global_color_control_activated);
 			}
 			else
 			{
-				view.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.selector_selectable_item_bg));
+				view.setBackgroundResource(R.drawable.selector_selectable_item_bg);
 			}
 		}
 		

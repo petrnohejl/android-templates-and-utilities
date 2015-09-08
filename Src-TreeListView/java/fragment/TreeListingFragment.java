@@ -18,7 +18,7 @@ import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
-import com.example.view.ViewState;
+import com.example.view.StatefulLayout;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -38,8 +38,8 @@ public class TreeListingFragment extends TaskFragment implements
 {
 	private static final int TREEVIEW_DEPTH = 4;
 
-	private ViewState mViewState = null;
 	private View mRootView;
+	private StatefulLayout mStatefulLayout;
 	private TreeListingAdapter mAdapter;
 	private TreeStateManager<Long> mTreeStateManager;
 	private Set<Long> mSelectedSet = new HashSet<>();
@@ -76,20 +76,11 @@ public class TreeListingFragment extends TaskFragment implements
 	{
 		super.onActivityCreated(savedInstanceState);
 
-		// load and show data
-		if(mViewState==null || mViewState==ViewState.OFFLINE)
-		{
-			loadData();
-		}
-		else if(mViewState==ViewState.CONTENT)
-		{
-			if(mProductList!=null && mTreeStateManager!=null) bindData();
-			showContent();
-		}
-		else if(mViewState==ViewState.PROGRESS)
-		{
-			showProgress();
-		}
+		// setup stateful layout
+		setupStatefulLayout(savedInstanceState);
+
+		// load data
+		if(mStatefulLayout.getState()==null) loadData();
 	}
 
 
@@ -155,6 +146,9 @@ public class TreeListingFragment extends TaskFragment implements
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
+
+		// stateful layout state
+		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
 	}
 
 
@@ -283,19 +277,8 @@ public class TreeListingFragment extends TaskFragment implements
 				}
 				Logcat.d(mTreeStateManager.toString());
 
-				// render view
-				if(mViewState==ViewState.CONTENT && mAdapter!=null)
-				{
-					mAdapter.refresh();
-					mAdapter.notifyDataSetChanged();
-				}
-				else
-				{
-					if(mProductList!=null && mTreeStateManager!=null) bindData();
-				}
-
-				// hide progress
-				showContent();
+				// show content
+				mStatefulLayout.showContent();
 			}
 		});
 	}
@@ -306,7 +289,7 @@ public class TreeListingFragment extends TaskFragment implements
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
-			showProgress();
+			mStatefulLayout.showProgress();
 
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
@@ -314,47 +297,8 @@ public class TreeListingFragment extends TaskFragment implements
 		}
 		else
 		{
-			showOffline();
+			mStatefulLayout.showOffline();
 		}
-	}
-
-
-	private void showContent()
-	{
-		// show list container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.VISIBLE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.CONTENT;
-	}
-
-
-	private void showProgress()
-	{
-		// show progress container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.VISIBLE);
-		containerOffline.setVisibility(View.GONE);
-		mViewState = ViewState.PROGRESS;
-	}
-
-
-	private void showOffline()
-	{
-		// show offline container
-		ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
-		ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
-		ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
-		containerContent.setVisibility(View.GONE);
-		containerProgress.setVisibility(View.GONE);
-		containerOffline.setVisibility(View.VISIBLE);
-		mViewState = ViewState.OFFLINE;
 	}
 
 
@@ -387,6 +331,40 @@ public class TreeListingFragment extends TaskFragment implements
 
 		// context menu
 		registerForContextMenu(treeView);
+	}
+
+
+	private void setupStatefulLayout(Bundle savedInstanceState)
+	{
+		// reference
+		mStatefulLayout = (StatefulLayout) mRootView;
+
+		// state change listener
+		mStatefulLayout.setOnStateChangeListener(new StatefulLayout.OnStateChangeListener()
+		{
+			@Override
+			public void onStateChange(View v, StatefulLayout.State state)
+			{
+				Logcat.d("" + (state==null ? "null" : state.toString()));
+
+				if(state==StatefulLayout.State.CONTENT)
+				{
+					TreeViewList treeView = (TreeViewList) mRootView.findViewById(android.R.id.list);
+					if(treeView.getAdapter()!=null)
+					{
+						mAdapter.refresh();
+						mAdapter.notifyDataSetChanged();
+					}
+					else
+					{
+						if(mProductList!=null && mTreeStateManager!=null) bindData();
+					}
+				}
+			}
+		});
+
+		// restore state
+		mStatefulLayout.restoreInstanceState(savedInstanceState);
 	}
 
 
