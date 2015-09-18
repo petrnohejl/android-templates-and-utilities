@@ -42,56 +42,49 @@ public class Preferences
 	public long getUserId()
 	{
 		String key = mContext.getString(R.string.prefs_key_user_id);
-		long value = mSharedPreferences.getLong(key, NULL_LONG);
-		return value;
+		return mSharedPreferences.getLong(key, NULL_LONG);
 	}
 	
 	
 	public String getPassword()
 	{
 		String key = mContext.getString(R.string.prefs_key_password);
-		String value = mSharedPreferences.getString(key, NULL_STRING);
-		return value;
+		return mSharedPreferences.getString(key, NULL_STRING);
 	}
 
 
 	public String getVersion()
 	{
 		String key = mContext.getString(R.string.prefs_key_version);
-		String value = mSharedPreferences.getString(key, NULL_STRING);
-		return value;
+		return mSharedPreferences.getString(key, NULL_STRING);
 	}
 
 
 	public int getLaunch()
 	{
 		String key = mContext.getString(R.string.prefs_key_launch);
-		int value = mSharedPreferences.getInt(key, 0);
-		return value;
+		return mSharedPreferences.getInt(key, 0);
 	}
 
 
 	public boolean isRated()
 	{
 		String key = mContext.getString(R.string.prefs_key_rated);
-		boolean value = mSharedPreferences.getBoolean(key, false);
-		return value;
+		return mSharedPreferences.getBoolean(key, false);
 	}
 
 
 	public String getFacebookAccessToken()
 	{
 		String key = mContext.getString(R.string.prefs_key_fb_access_token);
-		String value = mSharedPreferences.getString(key, NULL_STRING);
-		return value;
+		return mSharedPreferences.getString(key, NULL_STRING);
 	}
 	
 	
 	public long getFacebookAccessExpiration()
 	{
 		String key = mContext.getString(R.string.prefs_key_fb_expiration);
-		long value = mSharedPreferences.getLong(key, NULL_LONG);
-		return value;
+		return mSharedPreferences.getLong(key, NULL_LONG);
 	}
 
 
