@@ -34,9 +34,9 @@ public class SelectorRelativeLayout extends RelativeLayout
 	{
 		super(context, attrs, defStyleAttr);
 
-		TypedArray a = context.obtainStyledAttributes(attrs, ATTR_LIST_SELECTOR, 0, 0);
-		mSelector = a.getDrawable(0);
-		a.recycle();
+		TypedArray typedArray = context.obtainStyledAttributes(attrs, ATTR_LIST_SELECTOR, 0, 0);
+		mSelector = typedArray.getDrawable(0);
+		typedArray.recycle();
 
 		if(mSelector!=null)
 		{

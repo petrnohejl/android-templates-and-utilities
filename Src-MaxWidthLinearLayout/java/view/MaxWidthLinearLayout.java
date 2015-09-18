@@ -24,8 +24,9 @@ public class MaxWidthLinearLayout extends LinearLayout
 	public MaxWidthLinearLayout(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
-		TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.MaxWidthLinearLayout);
+		TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MaxWidthLinearLayout);
 		mMaxWidth = typedArray.getDimensionPixelSize(R.styleable.MaxWidthLinearLayout_maxWidth, Integer.MAX_VALUE);
+		typedArray.recycle();
 	}
 
 
