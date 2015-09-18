@@ -152,7 +152,7 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{
-		// action bar menu behaviour
+		// action bar menu behavior
 		return super.onOptionsItemSelected(item);
 		
 		// TODO

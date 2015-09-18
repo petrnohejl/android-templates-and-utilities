@@ -48,7 +48,7 @@ public class ExampleFragment extends Fragment
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{
-		// action bar menu behaviour
+		// action bar menu behavior
 		switch(item.getItemId()) 
 		{
 			// TODO

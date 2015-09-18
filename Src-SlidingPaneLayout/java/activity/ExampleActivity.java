@@ -35,7 +35,7 @@ public class ExampleActivity extends AppCompatActivity
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		// action bar menu behaviour
+		// action bar menu behavior
 		switch(item.getItemId())
 		{
 			case android.R.id.home:

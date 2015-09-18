@@ -165,7 +165,7 @@ public class StickyListingFragment extends TaskFragment implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{
-		// action bar menu behaviour
+		// action bar menu behavior
 		return super.onOptionsItemSelected(item);
 		
 		// TODO

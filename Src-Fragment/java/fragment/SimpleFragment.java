@@ -142,7 +142,7 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{
-		// action bar menu behaviour
+		// action bar menu behavior
 		return super.onOptionsItemSelected(item);
 		
 		// TODO

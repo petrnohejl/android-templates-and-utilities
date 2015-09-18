@@ -42,7 +42,7 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 		// register listener
 		PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(this);
 
-		// render view
+		// bind data
 		bindData();
 	}
 

@@ -66,7 +66,7 @@ public class ExampleActivity extends AppCompatActivity
 			return true;
 		}
 		
-		// action bar menu behaviour
+		// action bar menu behavior
 		switch(item.getItemId())
 		{
 			case android.R.id.home:

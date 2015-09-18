@@ -58,7 +58,7 @@ public class ExampleFragment extends Fragment
 	{
 		super.onActivityCreated(savedInstanceState);
 		
-		// render view
+		// bind data
 		bindData();
 	}
 	

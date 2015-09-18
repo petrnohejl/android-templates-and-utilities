@@ -42,7 +42,7 @@ public class TransitionFirstActivity extends AppCompatActivity
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		// action bar menu behaviour
+		// action bar menu behavior
 		switch(item.getItemId())
 		{
 			case R.id.menu_transition_second:

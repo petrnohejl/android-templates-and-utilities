@@ -69,7 +69,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 			// entity
 			String string = mHeaderList.get(getHeaderPosition(position));
 
-			// render view
+			// bind data
 			if(string != null)
 			{
 				((HeaderViewHolder) viewHolder).bindData(string);
@@ -80,7 +80,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 			// entity
 			ProductEntity product = mProductList.get(getProductPosition(position));
 
-			// render view
+			// bind data
 			if(product != null)
 			{
 				((ProductViewHolder) viewHolder).bindData(product);
@@ -91,7 +91,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 			// entity
 			Object object = mFooterList.get(getFooterPosition(position));
 
-			// render view
+			// bind data
 			if(object != null)
 			{
 				((FooterViewHolder) viewHolder).bindData(object);
