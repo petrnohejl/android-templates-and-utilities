@@ -2,6 +2,7 @@ package com.example.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -53,7 +54,7 @@ public class ExampleFragment extends Fragment
 	
 	private String toHtmlColor(int colorResource)
 	{
-		return "#" + Integer.toHexString(getResources().getColor(colorResource)).substring(2);
+		return "#" + Integer.toHexString(ContextCompat.getColor(getActivity(), colorResource)).substring(2);
 	}
 	
 	

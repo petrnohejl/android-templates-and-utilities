@@ -1,5 +1,6 @@
 package com.example.adapter;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -37,7 +38,7 @@ public class MultiSelectorRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 			mMultiSelector = multiSelector;
 
 			// set background
-			setSelectionModeBackgroundDrawable(ExampleApplication.getContext().getResources().getDrawable(R.drawable.selector_selectable_item_bg));
+			setSelectionModeBackgroundDrawable(ContextCompat.getDrawable(ExampleApplication.getContext(), R.drawable.selector_selectable_item_bg));
 
 			// set listener
 			itemView.setOnClickListener(this);

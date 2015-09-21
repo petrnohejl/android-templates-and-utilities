@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -64,8 +65,8 @@ public class ExampleActivity extends AppCompatActivity
 		
 		// text color
 		AutoCompleteTextView searchText = (AutoCompleteTextView) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-		searchText.setTextColor(getResources().getColor(R.color.global_text_primary_inverse));
-		searchText.setHintTextColor(getResources().getColor(R.color.global_text_secondary_inverse));
+		searchText.setTextColor(ContextCompat.getColor(this, R.color.global_text_primary_inverse));
+		searchText.setHintTextColor(ContextCompat.getColor(this, R.color.global_text_secondary_inverse));
 		
 		// suggestion listeners
 		searchView.setOnQueryTextListener(new OnQueryTextListener()

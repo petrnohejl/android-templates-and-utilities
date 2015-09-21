@@ -2,6 +2,7 @@ package com.example.adapter;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -87,7 +88,7 @@ public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 	@Override
 	public Drawable getBackgroundDrawable(TreeNodeInfo<Long> treeNodeInfo)
 	{
-		return getActivity().getResources().getDrawable(R.drawable.selector_selectable_item_bg);
+		return ContextCompat.getDrawable(getActivity(), R.drawable.selector_selectable_item_bg);
 	}
 
 

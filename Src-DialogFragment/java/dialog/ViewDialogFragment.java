@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialog;
 import android.view.LayoutInflater;
@@ -143,7 +144,7 @@ public class ViewDialogFragment extends DialogFragment
 			public void onShow(DialogInterface dialogInterface)
 			{
 				Button button = ((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE);
-				button.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.mipmap.ic_launcher), null, null, null);
+				button.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(getActivity(), R.mipmap.ic_launcher), null, null, null);
 				button.setOnClickListener(new View.OnClickListener()
 				{
 					@Override

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -56,7 +57,7 @@ public class ExampleFragment extends Fragment
 		webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setPluginState(WebSettings.PluginState.ON);
-		webView.setBackgroundColor(getResources().getColor(R.color.global_bg_front));
+		webView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.global_bg_front));
 		webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY); // fixes scrollbar on Froyo
 		webView.setWebChromeClient(new WebChromeClient()); // http://stackoverflow.com/questions/8541443/whats-causing-this-nullpointerexception
 		webView.setWebViewClient(new WebViewClient()

@@ -11,6 +11,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -115,7 +116,7 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 
 		TypedArray typedArray = getActivity().getTheme().obtainStyledAttributes(R.style.Theme_Example_Light, new int[]{R.attr.homeAsUpIndicator});
 		int attributeResourceId = typedArray.getResourceId(0, 0);
-		Drawable drawable = getResources().getDrawable(attributeResourceId);
+		Drawable drawable = ContextCompat.getDrawable(getActivity(), attributeResourceId);
 
 		toolbar.setTitle(preferenceScreen.getTitle());
 		toolbar.setNavigationIcon(drawable);

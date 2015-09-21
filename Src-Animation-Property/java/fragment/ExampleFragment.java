@@ -11,6 +11,7 @@ import android.animation.ValueAnimator;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,8 +95,8 @@ public class ExampleFragment extends Fragment
 	{
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 		{
-			Integer colorFrom = getResources().getColor(android.R.color.holo_orange_light);
-			Integer colorTo = getResources().getColor(android.R.color.holo_green_light);
+			Integer colorFrom = ContextCompat.getColor(getActivity(), android.R.color.holo_orange_light);
+			Integer colorTo = ContextCompat.getColor(getActivity(), android.R.color.holo_green_light);
 			ValueAnimator animator = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo, colorFrom);
 			animator.setDuration(2000);
 			animator.setRepeatCount(ValueAnimator.INFINITE);
