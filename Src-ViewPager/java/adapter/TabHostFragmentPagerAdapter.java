@@ -118,16 +118,16 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	
 	public static final class TabInfo
 	{
-		private final String tag;
-		private final Class<?> clss;
-		private final Bundle args;
+		private final String mTag;
+		private final Class<?> mClss;
+		private final Bundle mArgs;
 		
 		
 		TabInfo(String tag, Class<?> clss, Bundle args)
 		{
-			this.tag = tag;
-			this.clss = clss;
-			this.args = args;
+			mTag = tag;
+			mClss = clss;
+			mArgs = args;
 		}
 	}
 	

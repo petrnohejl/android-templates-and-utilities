@@ -200,7 +200,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 	public static final class HeaderViewHolder extends RecyclerView.ViewHolder
 	{
-		private TextView nameTextView;
+		private TextView mNameTextView;
 
 
 		public HeaderViewHolder(View itemView)
@@ -208,20 +208,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 			super(itemView);
 
 			// find views
-			nameTextView = (TextView) itemView.findViewById(R.id.fragment_recycler_header_name);
+			mNameTextView = (TextView) itemView.findViewById(R.id.fragment_recycler_header_name);
 		}
 
 
 		public void bindData(String string)
 		{
-			nameTextView.setText(string);
+			mNameTextView.setText(string);
 		}
 	}
 
 
 	public static final class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener
 	{
-		private TextView nameTextView;
+		private TextView mNameTextView;
 		private OnItemClickListener mListener;
 
 
@@ -242,7 +242,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 			itemView.setOnLongClickListener(this);
 
 			// find views
-			nameTextView = (TextView) itemView.findViewById(R.id.fragment_recycler_item_name);
+			mNameTextView = (TextView) itemView.findViewById(R.id.fragment_recycler_item_name);
 		}
 
 
@@ -271,7 +271,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 		public void bindData(ProductEntity product)
 		{
-			nameTextView.setText(product.getName());
+			mNameTextView.setText(product.getName());
 		}
 	}
 

@@ -149,7 +149,7 @@ public class SelfSignedTrustManager implements X509TrustManager
 	
 	static class LocalStoreX509TrustManager implements X509TrustManager
 	{
-		private X509TrustManager trustManager;
+		private X509TrustManager mTrustManager;
 		
 		
 		public LocalStoreX509TrustManager(KeyStore localTrustStore)
@@ -158,8 +158,8 @@ public class SelfSignedTrustManager implements X509TrustManager
 			{
 				TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 				tmf.init(localTrustStore);
-				trustManager = findX509TrustManager(tmf);
-				if(trustManager == null)
+				mTrustManager = findX509TrustManager(tmf);
+				if(mTrustManager == null)
 				{
 					throw new IllegalStateException("Couldn't find X509TrustManager.");
 				}
@@ -174,21 +174,21 @@ public class SelfSignedTrustManager implements X509TrustManager
 		@Override
 		public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException
 		{
-			trustManager.checkClientTrusted(chain, authType);
+			mTrustManager.checkClientTrusted(chain, authType);
 		}
 		
 		
 		@Override
 		public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException
 		{
-			trustManager.checkServerTrusted(chain, authType);
+			mTrustManager.checkServerTrusted(chain, authType);
 		}
 		
 		
 		@Override
 		public X509Certificate[] getAcceptedIssuers()
 		{
-			return trustManager.getAcceptedIssuers();
+			return mTrustManager.getAcceptedIssuers();
 		}
 	}
 	

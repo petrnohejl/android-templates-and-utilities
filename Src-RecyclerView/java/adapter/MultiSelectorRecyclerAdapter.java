@@ -18,7 +18,7 @@ public class MultiSelectorRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
 	public static final class ProductViewHolder extends SwappingHolder implements View.OnClickListener, View.OnLongClickListener
 	{
-		private TextView nameTextView;
+		private TextView mNameTextView;
 		private OnItemClickListener mListener;
 		private MultiSelector mMultiSelector;
 
@@ -44,7 +44,7 @@ public class MultiSelectorRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 			itemView.setOnLongClickListener(this);
 
 			// find views
-			nameTextView = (TextView) itemView.findViewById(R.id.fragment_recycler_item_name);
+			mNameTextView = (TextView) itemView.findViewById(R.id.fragment_recycler_item_name);
 		}
 
 
@@ -84,7 +84,7 @@ public class MultiSelectorRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
 		public void bindData(ProductEntity product)
 		{
-			nameTextView.setText(product.getName());
+			mNameTextView.setText(product.getName());
 		}
 	}
 }
