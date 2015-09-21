@@ -59,7 +59,7 @@ public class LinearDividerItemDecoration extends RecyclerView.ItemDecoration
 			return;
 		}
 
-		if(recyclerView.getChildPosition(view)<1)
+		if(recyclerView.getChildLayoutPosition(view)<1)
 		{
 			return;
 		}

@@ -53,7 +53,11 @@ public class MultiSelectorRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 		{
 			if(!mMultiSelector.tapSelection(this))
 			{
-				mListener.onItemClick(view, getPosition(), getItemId(), getItemViewType());
+				int position = getAdapterPosition();
+				if(position != RecyclerView.NO_POSITION)
+				{
+					mListener.onItemClick(view, position, getItemId(), getItemViewType());
+				}
 			}
 		}
 
@@ -68,7 +72,11 @@ public class MultiSelectorRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 			}
 			else
 			{
-				mListener.onItemLongClick(view, getPosition(), getItemId(), getItemViewType());
+				int position = getAdapterPosition();
+				if(position != RecyclerView.NO_POSITION)
+				{
+					mListener.onItemLongClick(view, position, getItemId(), getItemViewType());
+				}
 			}
 			return true;
 		}

@@ -313,7 +313,7 @@ public class RecyclerFragment extends TaskFragment implements OnLoadDataListener
 		recyclerView.setAdapter(mAdapter);
 
 		// lazy loading
-		recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener()
+		recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
 		{
 			@Override
 			public void onScrollStateChanged(RecyclerView recyclerView, int newState)

@@ -249,14 +249,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 		@Override
 		public void onClick(View view)
 		{
-			mListener.onItemClick(view, getPosition(), getItemId(), getItemViewType());
+			int position = getAdapterPosition();
+			if(position != RecyclerView.NO_POSITION)
+			{
+				mListener.onItemClick(view, position, getItemId(), getItemViewType());
+			}
 		}
 
 
 		@Override
 		public boolean onLongClick(View view)
 		{
-			mListener.onItemLongClick(view, getPosition(), getItemId(), getItemViewType());
+			int position = getAdapterPosition();
+			if(position != RecyclerView.NO_POSITION)
+			{
+				mListener.onItemLongClick(view, position, getItemId(), getItemViewType());
+			}
 			return true;
 		}
 

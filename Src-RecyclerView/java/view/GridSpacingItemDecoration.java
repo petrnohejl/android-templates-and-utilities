@@ -22,7 +22,7 @@ public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration
 	{
 		super.getItemOffsets(outRect, view, recyclerView, state);
 		
-		int position = recyclerView.getChildPosition(view);
+		int position = recyclerView.getChildLayoutPosition(view);
 		int spanCount = getSpanCount(recyclerView);
 		int itemCount = recyclerView.getAdapter().getItemCount();
 
