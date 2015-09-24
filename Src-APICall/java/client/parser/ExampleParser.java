@@ -57,7 +57,7 @@ public class ExampleParser extends Parser
 			// response
 			else if(parser.getCurrentName().equals("product"))
 			{
-				long id = -1l;
+				long id = -1L;
 				String name = null;
 
 				if(parser.nextToken() == JsonToken.START_OBJECT)

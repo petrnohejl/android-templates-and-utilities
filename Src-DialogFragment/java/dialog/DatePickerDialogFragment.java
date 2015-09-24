@@ -14,7 +14,7 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 {
 	private static final String ARGUMENT_DATE = "date";
 	
-	private long mDate = -1l;
+	private long mDate = -1L;
 	private DatePickerDialogListener mListener;
 	
 	
@@ -76,7 +76,7 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
 		Calendar calendar = Calendar.getInstance();
-		if(mDate!=-1l)
+		if(mDate!=-1L)
 		{
 			calendar.setTimeInMillis(mDate);
 		}

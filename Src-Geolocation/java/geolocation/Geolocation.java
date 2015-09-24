@@ -133,7 +133,7 @@ public class Geolocation implements LocationListener
 			// register location updates
 			try
 			{
-				mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0l, 0.0f, this);
+				mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0.0f, this);
 			}
 			catch(IllegalArgumentException e)
 			{
@@ -141,7 +141,7 @@ public class Geolocation implements LocationListener
 			}
 			try
 			{
-				mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0l, 0.0f, this);
+				mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0.0f, this);
 			}
 			catch(IllegalArgumentException e)
 			{
@@ -159,8 +159,8 @@ public class Geolocation implements LocationListener
 		Location locationNet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 		Location locationGps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-		long timeNet = 0l;
-		long timeGps = 0l;
+		long timeNet = 0L;
+		long timeGps = 0L;
 		
 		if(locationNet!=null)
 		{

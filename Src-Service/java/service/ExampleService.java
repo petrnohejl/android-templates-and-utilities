@@ -75,7 +75,7 @@ public class ExampleService extends Service
 		{
 			Logcat.d("%d", msg.arg2);
 			
-			long endTime = System.currentTimeMillis() + 5l * 1000l;
+			long endTime = System.currentTimeMillis() + 5L * 1000L;
 			
 			while(System.currentTimeMillis() < endTime)
 			{

@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference;
 public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 {
 	private static final int RETRY_MAX_ATTEMPTS = 1; // default value for max number of retries
-	private static final long RETRY_INIT_BACKOFF = 500l; // initial sleep time before retry
+	private static final long RETRY_INIT_BACKOFF = 500L; // initial sleep time before retry
 	
 	private APICall mAPICall;
 	private WeakReference<APICallListener> mListener;

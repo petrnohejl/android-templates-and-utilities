@@ -30,7 +30,7 @@ public class ProductDAO extends DAO
 	{
 		Dao<ProductModel, Long> dao = getDao();
 		List<ProductModel> list;
-		if(skip==-1l && take==-1l)
+		if(skip==-1L && take==-1L)
 		{
 			list = dao.queryForAll();
 		}

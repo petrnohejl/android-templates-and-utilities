@@ -14,7 +14,7 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 {
 	private static final String ARGUMENT_TIME = "time";
 	
-	private long mTime = -1l;
+	private long mTime = -1L;
 	private TimePickerDialogListener mListener;
 	
 	
@@ -76,7 +76,7 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
 		Calendar calendar = Calendar.getInstance();
-		if(mTime!=-1l)
+		if(mTime!=-1L)
 		{
 			calendar.setTimeInMillis(mTime);
 		}

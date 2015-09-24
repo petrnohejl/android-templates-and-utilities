@@ -43,7 +43,7 @@ public class ExampleIntentService extends IntentService
 		
 		Logcat.d("%d", intent.getIntExtra("arg", -1));
 		
-		long endTime = System.currentTimeMillis() + 5l * 1000l;
+		long endTime = System.currentTimeMillis() + 5L * 1000L;
 		while(System.currentTimeMillis() < endTime)
 		{
 			synchronized(this)

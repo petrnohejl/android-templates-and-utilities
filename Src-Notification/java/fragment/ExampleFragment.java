@@ -33,7 +33,7 @@ public class ExampleFragment extends Fragment
 		builder.setText("ticker", "title", "text");
 		builder.setExtraText("subText", "contentInfo");
 		builder.setNumber(24);
-		builder.setTime(1356350400000l);
+		builder.setTime(1356350400000L);
 		builder.setIcon(R.drawable.ic_stat_notify, R.mipmap.ic_launcher);
 		builder.setProgress(100, 75, false);
 		builder.setUsesChronometer(false);

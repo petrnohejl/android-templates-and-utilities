@@ -243,7 +243,7 @@ public class NotificationMessage
 			if(mSubText!=null) builder.setSubText(mSubText);
 			if(mContentInfo!=null) builder.setContentInfo(mContentInfo);
 			if(mNumber>0) builder.setNumber(mNumber);
-			if(mWhen>0l) builder.setWhen(mWhen);
+			if(mWhen>0L) builder.setWhen(mWhen);
 			if(mSmallIcon>0) builder.setSmallIcon(mSmallIcon);
 			if(mLargeIcon!=null) builder.setLargeIcon(mLargeIcon);
 			if(mProgressMax>=0 && mProgress>=0) builder.setProgress(mProgressMax, mProgress, mProgressIndeterminate);

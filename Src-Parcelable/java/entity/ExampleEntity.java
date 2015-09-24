@@ -63,8 +63,8 @@ public class ExampleEntity implements Parcelable
 		parcel.writeInt(intVar);
 		parcel.writeLong(longVar);
 		parcel.writeString(stringVar);
-		parcel.writeLong(dateVar!=null ? dateVar.getTime() : -1l);
-		parcel.writeLong(calendarVar!=null ? calendarVar.getTimeInMillis() : -1l);
+		parcel.writeLong(dateVar!=null ? dateVar.getTime() : -1L);
+		parcel.writeLong(calendarVar!=null ? calendarVar.getTimeInMillis() : -1L);
 		parcel.writeParcelable(myModel, flags);
 		parcel.writeStringList(stringList);
 	}
@@ -79,11 +79,11 @@ public class ExampleEntity implements Parcelable
 		stringVar = parcel.readString();
 		
 		long dateVarLong = parcel.readLong();
-		if(dateVarLong!=-1l) dateVar = new Date(dateVarLong);
+		if(dateVarLong!=-1L) dateVar = new Date(dateVarLong);
 		else dateVar = null;
 		
 		long calendarVarLong = parcel.readLong();
-		if(calendarVarLong!=-1l)
+		if(calendarVarLong!=-1L)
 		{
 			calendarVar = Calendar.getInstance();
 			calendarVar.setTimeInMillis(calendarVarLong);

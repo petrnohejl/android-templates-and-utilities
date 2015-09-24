@@ -10,8 +10,8 @@ import java.util.List;
 
 public class ProductReadAllQuery extends Query
 {
-	private long mSkip = -1l;
-	private long mTake = -1l;
+	private long mSkip = -1L;
+	private long mTake = -1L;
 
 
 	public ProductReadAllQuery()
