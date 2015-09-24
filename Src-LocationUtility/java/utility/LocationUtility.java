@@ -33,11 +33,11 @@ public class LocationUtility
 
 		if(useMetricSystem)
 		{
-			if(distance<1000.0d)
+			if(distance<1000.0)
 			{
 				result = String.format(Locale.US, "%d " + ExampleApplication.getContext().getString(R.string.unit_meter), (int) distance);
 			}
-			else if(distance<5000.0d)
+			else if(distance<5000.0)
 			{
 				result = String.format(Locale.US, "%.1f " + ExampleApplication.getContext().getString(R.string.unit_kilometer), distance/1000);
 			}
@@ -50,11 +50,11 @@ public class LocationUtility
 		{
 			double distanceMiles = distance * 0.000621371192; // distance in miles
 
-			if(distanceMiles<0.1d)
+			if(distanceMiles<0.1)
 			{
 				result = String.format(Locale.US, "%.2f " + ExampleApplication.getContext().getString(R.string.unit_mile), distanceMiles);
 			}
-			else if(distanceMiles<10.0d)
+			else if(distanceMiles<10.0)
 			{
 				result = String.format(Locale.US, "%.1f " + ExampleApplication.getContext().getString(R.string.unit_mile), distanceMiles);
 			}
