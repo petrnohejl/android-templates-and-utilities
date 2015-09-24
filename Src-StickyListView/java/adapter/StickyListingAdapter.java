@@ -32,16 +32,15 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		// inflate view
-		View view = convertView;
-		if(view == null) 
+		if(convertView == null)
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.fragment_sticky_listing_item, parent, false);
+			convertView = inflater.inflate(R.layout.fragment_sticky_listing_item, parent, false);
 			
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.nameTextView = (TextView) view.findViewById(R.id.fragment_sticky_listing_item_name);
-			view.setTag(holder);
+			holder.nameTextView = (TextView) convertView.findViewById(R.id.fragment_sticky_listing_item_name);
+			convertView.setTag(holder);
 		}
 		
 		// entity
@@ -49,13 +48,13 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 		if(product != null)
 		{
 			// view holder
-			ViewHolder holder = (ViewHolder) view.getTag();
+			ViewHolder holder = (ViewHolder) convertView.getTag();
 			
 			// content
 			holder.nameTextView.setText(product.getName());
 		}
 		
-		return view;
+		return convertView;
 	}
 
 
@@ -86,16 +85,15 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 	public View getHeaderView(int position, View convertView, ViewGroup parent)
 	{
 		// inflate view
-		View view = convertView;
-		if(view == null) 
+		if(convertView == null)
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.fragment_sticky_listing_group, parent, false);
+			convertView = inflater.inflate(R.layout.fragment_sticky_listing_group, parent, false);
 			
 			// view holder
 			ViewHolderGroup holder = new ViewHolderGroup();
-			holder.nameTextView = (TextView) view.findViewById(R.id.fragment_sticky_listing_group_name);
-			view.setTag(holder);
+			holder.nameTextView = (TextView) convertView.findViewById(R.id.fragment_sticky_listing_group_name);
+			convertView.setTag(holder);
 		}
 		
 		// entity
@@ -103,13 +101,13 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 		if(group != null)
 		{
 			// view holder
-			ViewHolderGroup holder = (ViewHolderGroup) view.getTag();
+			ViewHolderGroup holder = (ViewHolderGroup) convertView.getTag();
 			
 			// content
 			holder.nameTextView.setText(group.getName());
 		}
 		
-		return view;
+		return convertView;
 	}
 
 

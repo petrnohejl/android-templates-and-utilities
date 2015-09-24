@@ -28,17 +28,16 @@ public class ActionBarListNavigationAdapter<T> extends ArrayAdapter<T>
 	public View getView(final int position, View convertView, ViewGroup parent)
 	{
 		// inflate view
-		View view = convertView;
-		if(view == null) 
+		if(convertView == null)
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.ab_list_navigation, parent, false);
+			convertView = inflater.inflate(R.layout.ab_list_navigation, parent, false);
 			
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.titleTextView = (TextView) view.findViewById(R.id.ab_list_navigation_title);
-			holder.subtitleTextView = (TextView) view.findViewById(R.id.ab_list_navigation_subtitle);
-			view.setTag(holder);
+			holder.titleTextView = (TextView) convertView.findViewById(R.id.ab_list_navigation_title);
+			holder.subtitleTextView = (TextView) convertView.findViewById(R.id.ab_list_navigation_subtitle);
+			convertView.setTag(holder);
 		}
 		
 		// entity
@@ -46,14 +45,14 @@ public class ActionBarListNavigationAdapter<T> extends ArrayAdapter<T>
 		if(item != null)
 		{
 			// view holder
-			ViewHolder holder = (ViewHolder) view.getTag();
+			ViewHolder holder = (ViewHolder) convertView.getTag();
 			
 			// content
-			holder.titleTextView.setText("Item " + ((String) item));
+			holder.titleTextView.setText("Item " + item);
 			holder.subtitleTextView.setText(mSubtitle);
 		}
 		
-		return view;
+		return convertView;
 	}
 
 

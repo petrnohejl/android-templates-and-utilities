@@ -34,16 +34,15 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
 	{
 		// inflate view
-		View view = convertView;
-		if(view == null) 
+		if(convertView == null)
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.fragment_expandable_listing_item, parent, false);
+			convertView = inflater.inflate(R.layout.fragment_expandable_listing_item, parent, false);
 			
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.nameTextView = (TextView) view.findViewById(R.id.fragment_expandable_listing_item_name);
-			view.setTag(holder);
+			holder.nameTextView = (TextView) convertView.findViewById(R.id.fragment_expandable_listing_item_name);
+			convertView.setTag(holder);
 		}
 		
 		// entity
@@ -51,7 +50,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		if(product != null)
 		{
 			// view holder
-			ViewHolder holder = (ViewHolder) view.getTag();
+			ViewHolder holder = (ViewHolder) convertView.getTag();
 			
 			// content
 			holder.nameTextView.setText(product.getName());
@@ -59,15 +58,15 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 			// selected item
 			if(mSelectedGroupPosition == groupPosition && mSelectedChildPosition == childPosition)
 			{
-				view.setBackgroundResource(R.color.global_color_control_activated);
+				convertView.setBackgroundResource(R.color.global_color_control_activated);
 			}
 			else
 			{
-				view.setBackgroundResource(R.drawable.selector_selectable_item_bg);
+				convertView.setBackgroundResource(R.drawable.selector_selectable_item_bg);
 			}
 		}
 		
-		return view;
+		return convertView;
 	}
 
 
@@ -98,16 +97,15 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent)
 	{
 		// inflate view
-		View view = convertView;
-		if(view == null) 
+		if(convertView == null)
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.fragment_expandable_listing_group, parent, false);
+			convertView = inflater.inflate(R.layout.fragment_expandable_listing_group, parent, false);
 
 			// view holder
 			ViewHolderGroup holder = new ViewHolderGroup();
-			holder.nameTextView = (TextView) view.findViewById(R.id.fragment_expandable_listing_group_name);
-			view.setTag(holder);
+			holder.nameTextView = (TextView) convertView.findViewById(R.id.fragment_expandable_listing_group_name);
+			convertView.setTag(holder);
 		}
 
 		// entity
@@ -115,13 +113,13 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		if(group != null)
 		{
 			// view holder
-			ViewHolderGroup holder = (ViewHolderGroup) view.getTag();
+			ViewHolderGroup holder = (ViewHolderGroup) convertView.getTag();
 
 			// content
 			holder.nameTextView.setText(group);
 		}
 
-		return view;
+		return convertView;
 	}
 	
 	

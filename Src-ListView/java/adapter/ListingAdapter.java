@@ -30,16 +30,15 @@ public class ListingAdapter extends BaseAdapter
 	public View getView(final int position, View convertView, ViewGroup parent)
 	{
 		// inflate view
-		View view = convertView;
-		if(view == null) 
+		if(convertView == null)
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.fragment_listing_item, parent, false);
+			convertView = inflater.inflate(R.layout.fragment_listing_item, parent, false);
 			
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.nameTextView = (TextView) view.findViewById(R.id.fragment_listing_item_name);
-			view.setTag(holder);
+			holder.nameTextView = (TextView) convertView.findViewById(R.id.fragment_listing_item_name);
+			convertView.setTag(holder);
 		}
 		
 		// entity
@@ -47,13 +46,13 @@ public class ListingAdapter extends BaseAdapter
 		if(product != null)
 		{
 			// view holder
-			ViewHolder holder = (ViewHolder) view.getTag();
+			ViewHolder holder = (ViewHolder) convertView.getTag();
 			
 			// content
 			holder.nameTextView.setText(product.getName());
 		}
 		
-		return view;
+		return convertView;
 	}
 	
 	
