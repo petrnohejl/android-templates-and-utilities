@@ -26,13 +26,13 @@ public class CircularDrawable extends Drawable
 
 	public CircularDrawable(Bitmap bitmap)
 	{
-		this(bitmap, bitmap.getWidth()<bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight(), 0f, 0f, 0);
+		this(bitmap, bitmap.getWidth()<bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight(), 0F, 0F, 0);
 	}
 
 
 	public CircularDrawable(Bitmap bitmap, float diameter)
 	{
-		this(bitmap, diameter, 0f, 0f, 0);
+		this(bitmap, diameter, 0F, 0F, 0);
 	}
 
 
@@ -57,7 +57,7 @@ public class CircularDrawable extends Drawable
 		mBitmapPaint.setDither(true);
 		mBitmapPaint.setShader(mBitmapShader);
 
-		if(mBorderWidth>0f)
+		if(mBorderWidth>0F)
 		{
 			mBorderPaint = new Paint();
 			mBorderPaint.setStyle(Paint.Style.STROKE);
@@ -73,8 +73,8 @@ public class CircularDrawable extends Drawable
 	{
 		super.onBoundsChange(bounds);
 
-		float centerX = mBitmap.getWidth()/2f;
-		float centerY = mBitmap.getHeight()/2f;
+		float centerX = mBitmap.getWidth()/2F;
+		float centerY = mBitmap.getHeight()/2F;
 		float diameterMinX = Math.min(mDiameter, mBitmap.getWidth());
 		float diameterMinY = Math.min(mDiameter, mBitmap.getHeight());
 

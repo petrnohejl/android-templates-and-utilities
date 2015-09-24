@@ -44,8 +44,8 @@ public class EllipsizingTextView extends TextView
 	private boolean programmaticChange;
 	private String fullText;
 	private int maxLines;
-	private float lineSpacingMultiplier = 1.0f;
-	private float lineAdditionalVerticalPadding = 0.0f;
+	private float lineSpacingMultiplier = 1.0F;
+	private float lineAdditionalVerticalPadding = 0.0F;
 	
 	/**
 	 * The end punctuation which will be removed when appending #ELLIPSIS.

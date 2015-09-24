@@ -6,8 +6,8 @@ import android.view.View;
 
 public class ScaleRotationPageTransformer implements ViewPager.PageTransformer
 {
-	private static final float MIN_SCALE = 0.75f;
-	private static final float ANGLE = 20f;
+	private static final float MIN_SCALE = 0.75F;
+	private static final float ANGLE = 20F;
 
 
 	@Override

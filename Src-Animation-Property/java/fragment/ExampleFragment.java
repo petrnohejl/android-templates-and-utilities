@@ -38,12 +38,12 @@ public class ExampleFragment extends Fragment
 	{
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 		{
-			PropertyValuesHolder holderX = PropertyValuesHolder.ofFloat(View.TRANSLATION_X, 0f, 400f);
-			PropertyValuesHolder holderY = PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, 0f, 200f);
-			PropertyValuesHolder holderSX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 2f);
-			PropertyValuesHolder holderSY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 2f);
-			PropertyValuesHolder holderR = PropertyValuesHolder.ofFloat(View.ROTATION, 0f, 360f);
-			PropertyValuesHolder holderA = PropertyValuesHolder.ofFloat(View.ALPHA, 0.5f, 1f);
+			PropertyValuesHolder holderX = PropertyValuesHolder.ofFloat(View.TRANSLATION_X, 0F, 400F);
+			PropertyValuesHolder holderY = PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, 0F, 200F);
+			PropertyValuesHolder holderSX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1F, 2F);
+			PropertyValuesHolder holderSY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1F, 2F);
+			PropertyValuesHolder holderR = PropertyValuesHolder.ofFloat(View.ROTATION, 0F, 360F);
+			PropertyValuesHolder holderA = PropertyValuesHolder.ofFloat(View.ALPHA, 0.5F, 1F);
 			ObjectAnimator animator1 = ObjectAnimator.ofPropertyValuesHolder(view, holderX, holderY, holderSX, holderSY, holderR, holderA);
 			animator1.setDuration(2000);
 			animator1.setRepeatCount(ObjectAnimator.INFINITE);
