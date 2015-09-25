@@ -57,7 +57,7 @@ public class StatefulLayout extends FrameLayout
 
 	public interface OnStateChangeListener
 	{
-		public void onStateChange(View v, State state);
+		void onStateChange(View v, State state);
 	}
 
 

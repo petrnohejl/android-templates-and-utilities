@@ -28,8 +28,8 @@ public class ViewDialogFragment extends DialogFragment
 	
 	public interface ViewDialogListener
 	{
-		public void onViewDialogPositiveClick(DialogFragment dialog, String username, String password);
-		public void onViewDialogNegativeClick(DialogFragment dialog);
+		void onViewDialogPositiveClick(DialogFragment dialog, String username, String password);
+		void onViewDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	

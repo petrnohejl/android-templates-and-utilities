@@ -20,7 +20,7 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 	
 	public interface TimePickerDialogListener
 	{
-		public void onTimePickerDialogPositiveClick(DialogFragment dialog, int hour, int minute);
+		void onTimePickerDialogPositiveClick(DialogFragment dialog, int hour, int minute);
 	}
 	
 	

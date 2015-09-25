@@ -19,9 +19,9 @@ public class ItemsDialogFragment extends DialogFragment
 	
 	public interface ItemsDialogListener
 	{
-		public void onItemsDialogItemClick(DialogFragment dialog, int which);
-		public void onItemsDialogPositiveClick(DialogFragment dialog);
-		public void onItemsDialogNegativeClick(DialogFragment dialog);
+		void onItemsDialogItemClick(DialogFragment dialog, int which);
+		void onItemsDialogPositiveClick(DialogFragment dialog);
+		void onItemsDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	

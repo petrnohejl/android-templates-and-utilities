@@ -227,8 +227,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 		public interface OnItemClickListener
 		{
-			public void onItemClick(View view, int position, long id, int viewType);
-			public void onItemLongClick(View view, int position, long id, int viewType);
+			void onItemClick(View view, int position, long id, int viewType);
+			void onItemLongClick(View view, int position, long id, int viewType);
 		}
 
 

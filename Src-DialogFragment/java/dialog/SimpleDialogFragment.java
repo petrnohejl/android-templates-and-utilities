@@ -19,8 +19,8 @@ public class SimpleDialogFragment extends DialogFragment
 	
 	public interface SimpleDialogListener
 	{
-		public void onSimpleDialogPositiveClick(DialogFragment dialog);
-		public void onSimpleDialogNegativeClick(DialogFragment dialog);
+		void onSimpleDialogPositiveClick(DialogFragment dialog);
+		void onSimpleDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	

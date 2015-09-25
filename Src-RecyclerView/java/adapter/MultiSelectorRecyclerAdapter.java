@@ -26,8 +26,8 @@ public class MultiSelectorRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
 		public interface OnItemClickListener
 		{
-			public void onItemClick(View view, int position, long id, int viewType);
-			public void onItemLongClick(View view, int position, long id, int viewType);
+			void onItemClick(View view, int position, long id, int viewType);
+			void onItemLongClick(View view, int position, long id, int viewType);
 		}
 
 

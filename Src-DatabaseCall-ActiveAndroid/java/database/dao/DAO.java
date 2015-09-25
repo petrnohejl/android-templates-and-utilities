@@ -5,12 +5,12 @@ import java.util.List;
 
 public interface DAO<T>
 {
-	public long create(T t);
-	public T read(long id);
-	public T readFirst();
-	public List<T> readAll();
-	public List<T> readAll(int limit, int offset);
-	public long update(T t);
-	public void delete(long id);
-	public void deleteAll();
+	long create(T t);
+	T read(long id);
+	T readFirst();
+	List<T> readAll();
+	List<T> readAll(int limit, int offset);
+	long update(T t);
+	void delete(long id);
+	void deleteAll();
 }

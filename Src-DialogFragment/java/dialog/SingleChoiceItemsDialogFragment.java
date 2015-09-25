@@ -19,8 +19,8 @@ public class SingleChoiceItemsDialogFragment extends DialogFragment
 	
 	public interface SingleChoiceItemsDialogListener
 	{
-		public void onSingleChoiceItemsDialogPositiveClick(DialogFragment dialog, int checkedItem);
-		public void onSingleChoiceItemsDialogNegativeClick(DialogFragment dialog);
+		void onSingleChoiceItemsDialogPositiveClick(DialogFragment dialog, int checkedItem);
+		void onSingleChoiceItemsDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	

@@ -20,8 +20,8 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 	
 	public interface MultiChoiceItemsDialogListener
 	{
-		public void onMultiChoiceItemsDialogPositiveClick(DialogFragment dialog, boolean checkedItems[]);
-		public void onMultiChoiceItemsDialogNegativeClick(DialogFragment dialog);
+		void onMultiChoiceItemsDialogPositiveClick(DialogFragment dialog, boolean checkedItems[]);
+		void onMultiChoiceItemsDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	
