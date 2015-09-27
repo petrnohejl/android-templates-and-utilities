@@ -19,8 +19,11 @@ import com.example.ExampleConfig;
 import com.example.R;
 
 
-public class SelfSignedSSLUtility
+public final class SelfSignedSSLUtility
 {
+	private SelfSignedSSLUtility() {}
+
+
 	public static void setupSSLConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
 	{
 		SSLContext sslContext = createSSLContext();

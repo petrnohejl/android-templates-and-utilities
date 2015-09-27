@@ -11,8 +11,11 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class LocationUtility
+public final class LocationUtility
 {
+	private LocationUtility() {}
+
+
 	public static int getDistance(LatLng l1, LatLng l2)
 	{
 		Location location1 = new Location(LocationManager.PASSIVE_PROVIDER);

@@ -1,8 +1,11 @@
 package com.example.utility;
 
 
-public class StringConvertor
+public final class StringConvertor
 {
+	private StringConvertor() {}
+
+
 	public static String capitalize(String str)
 	{
 		char[] chars = str.toLowerCase().toCharArray();

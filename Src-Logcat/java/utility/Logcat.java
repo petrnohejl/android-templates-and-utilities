@@ -5,15 +5,18 @@ import android.util.Log;
 import com.example.ExampleConfig;
 
 
-public class Logcat
+public final class Logcat
 {
 	public static final String TAG = "EXAMPLE";
 
 	private static final boolean SHOW_CODE_LOCATION = true;
 	private static final boolean SHOW_CODE_LOCATION_THREAD = false;
 	private static final boolean SHOW_CODE_LOCATION_LINE = false;
-	
-	
+
+
+	private Logcat() {}
+
+
 	public static void d(String msg, Object... args)
 	{
 		if(ExampleConfig.LOGS) Log.d(TAG, getCodeLocation().toString() + formatMessage(msg, args));

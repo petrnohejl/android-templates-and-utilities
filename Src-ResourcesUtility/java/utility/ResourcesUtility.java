@@ -5,8 +5,11 @@ import android.content.res.Resources;
 import android.util.TypedValue;
 
 
-public class ResourcesUtility
+public final class ResourcesUtility
 {
+	private ResourcesUtility() {}
+
+
 	public static int getValueOfAttribute(Context context, int attr)
 	{
 		TypedValue typedValue = new TypedValue();

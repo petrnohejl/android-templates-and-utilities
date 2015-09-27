@@ -1,5 +1,8 @@
 package com.example.utility;
 
+import android.content.Context;
+import android.os.Environment;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,13 +15,13 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import android.content.Context;
-import android.os.Environment;
-
 
 // requires android.permission.READ_EXTERNAL_STORAGE or android.permission.WRITE_EXTERNAL_STORAGE
-public class StorageUtility
+public final class StorageUtility
 {
+	private StorageUtility() {}
+
+
 	public static boolean isAvailable()
 	{
 		String state = Environment.getExternalStorageState();

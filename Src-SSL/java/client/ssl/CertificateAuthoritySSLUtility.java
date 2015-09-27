@@ -11,8 +11,11 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
 
-public class CertificateAuthoritySSLUtility
+public final class CertificateAuthoritySSLUtility
 {
+	private CertificateAuthoritySSLUtility() {}
+
+
 	public static void setupSSLConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
 	{
 		SSLContext sslContext = createSSLContext();

@@ -19,12 +19,15 @@ import java.net.URL;
 import java.util.Random;
 
 
-public class GcmUtility
+public final class GcmUtility
 {
 	private static final int MAX_ATTEMPTS = 5;
 	private static final int BACKOFF_MILLI_SECONDS = 2000;
 	private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	private static final Random sRandom = new Random();
+
+
+	private GcmUtility() {}
 
 
 	public static boolean checkPlayServices(Activity activity)

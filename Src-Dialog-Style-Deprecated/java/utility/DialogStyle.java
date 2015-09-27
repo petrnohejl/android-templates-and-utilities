@@ -24,8 +24,11 @@ import com.example.R;
 // https://github.com/android/platform_frameworks_base/blob/master/core/java/com/android/internal/app/AlertController.java
 // https://github.com/android/platform_frameworks_base/blob/master/core/res/res/layout/alert_dialog_holo.xml
 // https://github.com/android/platform_frameworks_base/blob/master/core/res/res/values/themes.xml
-public class DialogStyle
+public final class DialogStyle
 {
+	private DialogStyle() {}
+
+
 	public static void overrideStyle(Context context, AlertDialog dialog, boolean light)
 	{
 		// resources

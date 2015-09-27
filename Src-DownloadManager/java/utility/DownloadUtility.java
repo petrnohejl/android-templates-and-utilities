@@ -8,8 +8,11 @@ import android.os.Environment;
 
 
 // requires android.permission.WRITE_EXTERNAL_STORAGE
-public class DownloadUtility
+public final class DownloadUtility
 {
+	private DownloadUtility() {}
+
+
 	public static void downloadFile(Context context, String url, String fileName)
 	{
 		if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB_MR2)

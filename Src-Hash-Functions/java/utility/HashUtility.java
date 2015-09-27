@@ -6,8 +6,11 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
 
 
-public class HashUtility
+public final class HashUtility
 {
+	private HashUtility() {}
+
+
 	public static String getMd5(byte[] data)
 	{
 		try

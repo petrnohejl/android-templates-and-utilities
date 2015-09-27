@@ -7,8 +7,11 @@ import android.widget.EditText;
 import com.example.ExampleApplication;
 
 
-public class KeyboardUtility
+public final class KeyboardUtility
 {
+	private KeyboardUtility() {}
+
+
 	public static void showKeyboard(EditText editText)
 	{
 		if(editText != null)

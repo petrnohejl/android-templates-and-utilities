@@ -11,8 +11,11 @@ import java.util.zip.ZipInputStream;
 
 
 // requires android.permission.WRITE_EXTERNAL_STORAGE
-public class ZipUtility
+public final class ZipUtility
 {
+	private ZipUtility() {}
+
+
 	public static boolean unpackZip(String path, String zipname)
 	{
 		InputStream inputStream;

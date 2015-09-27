@@ -7,8 +7,11 @@ import java.util.Date;
 
 
 // date format: http://docs.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
-public class DateConvertor
+public final class DateConvertor
 {
+	private DateConvertor() {}
+
+
 	public static String dateToString(Date date, String format)
 	{
 		String str = null;

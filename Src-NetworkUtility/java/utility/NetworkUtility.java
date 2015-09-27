@@ -6,8 +6,11 @@ import android.net.NetworkInfo;
 
 
 // requires android.permission.ACCESS_NETWORK_STATE
-public class NetworkUtility
+public final class NetworkUtility
 {
+	private NetworkUtility() {}
+
+
 	public static boolean isOnline(Context context)
 	{
 		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
