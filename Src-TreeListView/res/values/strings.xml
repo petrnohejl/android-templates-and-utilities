@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="view_treeview_expand">Expand</string>
-	<string name="view_treeview_delete">Delete</string>
-	<string name="view_treeview_expand_all">Expand all</string>
-	<string name="view_treeview_collapse_all">Collapse all</string>
+	<string name="treeview_expand">Expand</string>
+	<string name="treeview_delete">Delete</string>
+	<string name="treeview_expand_all">Expand all</string>
+	<string name="treeview_collapse_all">Collapse all</string>
 </resources>

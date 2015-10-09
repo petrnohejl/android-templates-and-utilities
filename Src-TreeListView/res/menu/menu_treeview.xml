@@ -4,22 +4,22 @@
 
 	<item
 		android:id="@+id/context_menu_expand_all"
-		android:title="@string/view_treeview_expand_all"
+		android:title="@string/treeview_expand_all"
 		android:orderInCategory="1" />
 
 	<item
 		android:id="@+id/context_menu_expand_item"
-		android:title="@string/view_treeview_expand"
+		android:title="@string/treeview_expand"
 		android:orderInCategory="2" />
 
 	<item
 		android:id="@+id/context_menu_collapse"
-		android:title="@string/view_treeview_collapse_all"
+		android:title="@string/treeview_collapse_all"
 		android:orderInCategory="3" />
 
 	<item
 		android:id="@+id/context_menu_delete"
-		android:title="@string/view_treeview_delete"
+		android:title="@string/treeview_delete"
 		android:orderInCategory="4" />
 
 </menu>
