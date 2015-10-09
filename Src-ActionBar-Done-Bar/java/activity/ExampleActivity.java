@@ -32,8 +32,8 @@ public class ExampleActivity extends AppCompatActivity
 		
 		// custom view
 		LayoutInflater inflater = (LayoutInflater) bar.getThemedContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-		View customView = inflater.inflate(R.layout.ab_custom_donebar, null);
-		customView.findViewById(R.id.ab_custom_donebar_done).setOnClickListener(new View.OnClickListener()
+		View customView = inflater.inflate(R.layout.ab_donebar, null);
+		customView.findViewById(R.id.ab_donebar_done).setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -41,7 +41,7 @@ public class ExampleActivity extends AppCompatActivity
 				// TODO
 			}
 		});
-		customView.findViewById(R.id.ab_custom_donebar_cancel).setOnClickListener(new View.OnClickListener()
+		customView.findViewById(R.id.ab_donebar_cancel).setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
