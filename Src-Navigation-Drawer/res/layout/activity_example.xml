@@ -8,17 +8,17 @@
 	<include layout="@layout/toolbar" />
 
 	<android.support.v4.widget.DrawerLayout
-		android:id="@+id/activity_example_layout"
+		android:id="@+id/activity_example_drawer_layout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
 		<FrameLayout
-			android:id="@+id/activity_example_container"
+			android:id="@+id/container_drawer_content"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent" />
 
 		<ListView
-			android:id="@+id/activity_example_drawer"
+			android:id="@+id/activity_example_drawer_list"
 			android:layout_width="@dimen/drawer_width"
 			android:layout_height="match_parent"
 			android:layout_gravity="start"

@@ -105,7 +105,7 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 	private void showActionBarProgress(boolean visible)
 	{
 		// show pull to refresh progress bar
-		SwipeRefreshLayout listSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_swipe_refresh_list);
+		SwipeRefreshLayout listSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.fragment_listing_swipe_refresh_layout);
 		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(android.R.id.empty);
 
 		listSwipeRefreshLayout.setRefreshing(visible);
@@ -120,7 +120,7 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 
 	private void setupSwipeRefreshLayout()
 	{
-		SwipeRefreshLayout listSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_swipe_refresh_list);
+		SwipeRefreshLayout listSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.fragment_listing_swipe_refresh_layout);
 		SwipeRefreshLayout emptySwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(android.R.id.empty);
 
 		listSwipeRefreshLayout.setColorSchemeResources(R.color.global_color_primary, R.color.global_color_accent);

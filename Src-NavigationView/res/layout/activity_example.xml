@@ -2,7 +2,7 @@
 <android.support.v4.widget.DrawerLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/activity_example_layout"
+	android:id="@+id/activity_example_drawer_layout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:fitsSystemWindows="true">
@@ -15,7 +15,7 @@
 		<include layout="@layout/toolbar" />
 
 		<FrameLayout
-			android:id="@+id/activity_example_container"
+			android:id="@+id/container_drawer_content"
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
 			android:layout_weight="1" />
@@ -23,7 +23,7 @@
 	</LinearLayout>
 
 	<android.support.design.widget.NavigationView
-		android:id="@+id/activity_example_navigation"
+		android:id="@+id/activity_example_drawer_navigation"
 		android:layout_width="wrap_content"
 		android:layout_height="match_parent"
 		android:layout_gravity="start"

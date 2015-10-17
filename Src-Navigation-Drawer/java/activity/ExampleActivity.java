@@ -153,8 +153,8 @@ public class ExampleActivity extends AppCompatActivity
 		icons[3] = R.drawable.ic_drawer_example;
 		
 		// reference
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_example_layout);
-		mDrawerListView = (ListView) findViewById(R.id.activity_example_drawer);
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_example_drawer_layout);
+		mDrawerListView = (ListView) findViewById(R.id.activity_example_drawer_list);
 		
 		// set drawer
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -203,7 +203,7 @@ public class ExampleActivity extends AppCompatActivity
 		else fragment = ExampleFragment.newInstance();
 		
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.activity_example_container, fragment).commitAllowingStateLoss();
+		fragmentManager.beginTransaction().replace(R.id.container_drawer_content, fragment).commitAllowingStateLoss();
 		
 		mDrawerListView.setItemChecked(position, true);
 		setTitle(mTitles[position]);

@@ -107,8 +107,8 @@ public class ExampleActivity extends AppCompatActivity
 	private void setupDrawer(Bundle savedInstanceState)
 	{
 		// reference
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_example_layout);
-		mNavigationView = (NavigationView) findViewById(R.id.activity_example_navigation);
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_example_drawer_layout);
+		mNavigationView = (NavigationView) findViewById(R.id.activity_example_drawer_navigation);
 
 		// navigation
 		mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
@@ -171,7 +171,7 @@ public class ExampleActivity extends AppCompatActivity
 		if(fragment!=null)
 		{
 			FragmentManager fragmentManager = getSupportFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.activity_example_container, fragment).commitAllowingStateLoss();
+			fragmentManager.beginTransaction().replace(R.id.container_drawer_content, fragment).commitAllowingStateLoss();
 
 			item.setChecked(true);
 			getSupportActionBar().setTitle(item.getTitle());
