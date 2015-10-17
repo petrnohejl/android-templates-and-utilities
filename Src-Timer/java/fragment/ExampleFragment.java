@@ -24,19 +24,7 @@ public class ExampleFragment extends Fragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-		// init timer task
-		mTimerHandler = new Handler();
-		mTimerRunnable = new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("timer");
-				
-				mTimerHandler.postDelayed(this, TIMER_DELAY);
-			}
-		};
+		setupTimer();
 	}
 	
 	
@@ -65,6 +53,22 @@ public class ExampleFragment extends Fragment
 		
 		// timer
 		stopTimer();
+	}
+
+
+	private void setupTimer()
+	{
+		mTimerHandler = new Handler();
+		mTimerRunnable = new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("timer");
+
+				mTimerHandler.postDelayed(this, TIMER_DELAY);
+			}
+		};
 	}
 	
 	

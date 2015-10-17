@@ -27,17 +27,7 @@ public class ExampleFragment extends Fragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-		// image caching options
-		mDisplayImageOptions = new DisplayImageOptions.Builder()
-			.showImageOnLoading(android.R.color.transparent)
-			.showImageForEmptyUri(R.drawable.placeholder_photo)
-			.showImageOnFail(R.drawable.placeholder_photo)
-			.cacheInMemory(true)
-			.cacheOnDisk(true)
-			.displayer(new SimpleBitmapDisplayer())
-			.build();
-		mImageLoadingListener = new AnimateImageLoadingListener();
+		setupImageLoader();
 	}
 
 	
@@ -56,5 +46,19 @@ public class ExampleFragment extends Fragment
 
 		// image caching
 		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", photoImageView, mDisplayImageOptions, mImageLoadingListener);
+	}
+
+
+	private void setupImageLoader()
+	{
+		mDisplayImageOptions = new DisplayImageOptions.Builder()
+				.showImageOnLoading(android.R.color.transparent)
+				.showImageForEmptyUri(R.drawable.placeholder_photo)
+				.showImageOnFail(R.drawable.placeholder_photo)
+				.cacheInMemory(true)
+				.cacheOnDisk(true)
+				.displayer(new SimpleBitmapDisplayer())
+				.build();
+		mImageLoadingListener = new AnimateImageLoadingListener();
 	}
 }
