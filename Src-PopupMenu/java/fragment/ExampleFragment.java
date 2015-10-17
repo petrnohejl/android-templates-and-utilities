@@ -38,7 +38,7 @@ public class ExampleFragment extends Fragment
 			public void onClick(View view)
 			{
 				PopupMenu popup = new PopupMenu(getActivity(), view);
-				popup.getMenuInflater().inflate(R.menu.menu_example, popup.getMenu());
+				popup.getMenuInflater().inflate(R.menu.fragment_example, popup.getMenu());
 				popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
 				{
 					public boolean onMenuItemClick(MenuItem item)

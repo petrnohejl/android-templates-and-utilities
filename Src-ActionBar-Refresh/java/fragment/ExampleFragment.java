@@ -38,7 +38,7 @@ public class ExampleFragment extends Fragment
 		// TODO
 
 		// reference to refresh menu item
-		mRefreshMenuItem = menu.findItem(R.id.menu_refresh);
+		mRefreshMenuItem = menu.findItem(R.id.menu_fragment_example_refresh);
 		
 		// progress in action bar
 		showActionBarProgress(mActionBarProgress);
@@ -53,7 +53,7 @@ public class ExampleFragment extends Fragment
 		{
 			// TODO
 
-			case R.id.menu_refresh:
+			case R.id.menu_fragment_example_refresh:
 				refreshData();
 				return true;
 			

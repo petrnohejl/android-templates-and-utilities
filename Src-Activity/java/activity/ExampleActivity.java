@@ -72,7 +72,7 @@ public class ExampleActivity extends AppCompatActivity
 	{
 		// action bar menu
 		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.menu_example, menu);
+		menuInflater.inflate(R.menu.activity_example, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -89,7 +89,7 @@ public class ExampleActivity extends AppCompatActivity
 				startActivity(intent);
 				return true;
 				
-			case R.id.menu_refresh:
+			case R.id.menu_activity_example_refresh:
 				// TODO
 				return true;
 				

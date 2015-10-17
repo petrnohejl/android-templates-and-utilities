@@ -141,7 +141,7 @@ public class ExampleActivity extends AppCompatActivity
 		// show initial fragment
 		if(savedInstanceState == null)
 		{
-			MenuItem item = mNavigationView.getMenu().findItem(R.id.menu_example1);
+			MenuItem item = mNavigationView.getMenu().findItem(R.id.menu_navigation_example1);
 			selectDrawerItem(item);
 		}
 	}
@@ -154,16 +154,16 @@ public class ExampleActivity extends AppCompatActivity
 
 		switch(item.getItemId())
 		{
-			case R.id.menu_example1:
-			case R.id.menu_example2:
-			case R.id.menu_example3:
+			case R.id.menu_navigation_example1:
+			case R.id.menu_navigation_example2:
+			case R.id.menu_navigation_example3:
 				fragment = ExampleFragment.newInstance();
 				break;
 
-			case R.id.menu_example4:
-			case R.id.menu_example5:
-			case R.id.menu_example6:
-			case R.id.menu_example7:
+			case R.id.menu_navigation_example4:
+			case R.id.menu_navigation_example5:
+			case R.id.menu_navigation_example6:
+			case R.id.menu_navigation_example7:
 				intent = ExampleActivity.newIntent(this);
 				break;
 		}

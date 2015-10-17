@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<group
+		android:id="@+id/menu_navigation_group1"
+		android:checkableBehavior="single">
+		<item
+			android:id="@+id/menu_navigation_example1"
+			android:title="@string/menu_navigation_example1"
+			android:icon="@drawable/ic_menu_example1" />
+		<item
+			android:id="@+id/menu_navigation_example2"
+			android:title="@string/menu_navigation_example2"
+			android:icon="@drawable/ic_menu_example2" />
+		<item
+			android:id="@+id/menu_navigation_example3"
+			android:title="@string/menu_navigation_example3"
+			android:icon="@drawable/ic_menu_example3" />
+	</group>
+
+	<group
+		android:id="@+id/menu_navigation_group2"
+		android:checkableBehavior="none">
+		<item
+			android:id="@+id/menu_navigation_example4"
+			android:title="@string/menu_navigation_example4"
+			android:icon="@drawable/ic_menu_example4" />
+		<item
+			android:id="@+id/menu_navigation_example5"
+			android:title="@string/menu_navigation_example5"
+			android:icon="@drawable/ic_menu_example5" />
+	</group>
+
+	<item android:title="Sub items">
+		<menu>
+			<item
+				android:id="@+id/menu_navigation_example6"
+				android:title="@string/menu_navigation_example6"
+				android:icon="@drawable/ic_menu_example6" />
+			<item
+				android:id="@+id/menu_navigation_example7"
+				android:title="@string/menu_navigation_example7"
+				android:icon="@drawable/ic_menu_example7" />
+		</menu>
+	</item>
+
+</menu>

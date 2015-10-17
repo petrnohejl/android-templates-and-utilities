@@ -175,7 +175,7 @@ public class TreeListingFragment extends TaskFragment implements
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
 	{
-		getActivity().getMenuInflater().inflate(R.menu.menu_treeview, menu);
+		getActivity().getMenuInflater().inflate(R.menu.treeview, menu);
 
 		AdapterView.AdapterContextMenuInfo adapterInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
 		long id = adapterInfo.id;
@@ -185,23 +185,23 @@ public class TreeListingFragment extends TaskFragment implements
 		{
 			if(nodeInfo.isExpanded())
 			{
-				menu.findItem(R.id.context_menu_expand_item).setVisible(false);
-				menu.findItem(R.id.context_menu_expand_all).setVisible(false);
+				menu.findItem(R.id.menu_treeview_expand).setVisible(false);
+				menu.findItem(R.id.menu_treeview_expand_all).setVisible(false);
 			}
 			else
 			{
-				menu.findItem(R.id.context_menu_collapse).setVisible(false);
+				menu.findItem(R.id.menu_treeview_collapse_all).setVisible(false);
 			}
 		}
 		else
 		{
-			menu.findItem(R.id.context_menu_expand_item).setVisible(false);
-			menu.findItem(R.id.context_menu_expand_all).setVisible(false);
-			menu.findItem(R.id.context_menu_collapse).setVisible(false);
+			menu.findItem(R.id.menu_treeview_expand).setVisible(false);
+			menu.findItem(R.id.menu_treeview_expand_all).setVisible(false);
+			menu.findItem(R.id.menu_treeview_collapse_all).setVisible(false);
 		}
 
 		// hide delete because deleting is dangerous
-		menu.findItem(R.id.context_menu_delete).setVisible(false);
+		menu.findItem(R.id.menu_treeview_delete).setVisible(false);
 
 		super.onCreateContextMenu(menu, v, menuInfo);
 	}
@@ -212,22 +212,22 @@ public class TreeListingFragment extends TaskFragment implements
 	{
 		AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 		long id = menuInfo.id;
-		if(item.getItemId()==R.id.context_menu_collapse)
+		if(item.getItemId()==R.id.menu_treeview_collapse_all)
 		{
 			mTreeStateManager.collapseChildren(id);
 			return true;
 		}
-		else if(item.getItemId()==R.id.context_menu_expand_all)
+		else if(item.getItemId()==R.id.menu_treeview_expand_all)
 		{
 			mTreeStateManager.expandEverythingBelow(id);
 			return true;
 		}
-		else if(item.getItemId()==R.id.context_menu_expand_item)
+		else if(item.getItemId()==R.id.menu_treeview_expand)
 		{
 			mTreeStateManager.expandDirectChildren(id);
 			return true;
 		}
-		else if(item.getItemId()==R.id.context_menu_delete)
+		else if(item.getItemId()==R.id.menu_treeview_delete)
 		{
 			mTreeStateManager.removeNodeRecursively(id);
 			return true;

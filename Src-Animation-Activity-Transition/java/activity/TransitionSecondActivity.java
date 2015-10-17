@@ -33,7 +33,7 @@ public class TransitionSecondActivity extends AppCompatActivity
 	{
 		// action bar menu
 		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.menu_transition_second, menu);
+		menuInflater.inflate(R.menu.activity_transition_second, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -44,7 +44,7 @@ public class TransitionSecondActivity extends AppCompatActivity
 		// action bar menu behavior
 		switch(item.getItemId())
 		{
-			case R.id.menu_transition_first:
+			case R.id.menu_activity_transition_second_first:
 				Intent intent = TransitionFirstActivity.newIntent(this);
 				startActivity(intent);
 				overridePendingTransition(R.anim.push_right_enter, R.anim.push_right_exit);

@@ -50,7 +50,7 @@ public class ExampleActivity extends AppCompatActivity
 		if(menu!=null)
 		{
 			boolean drawerOpened = mDrawerLayout.isDrawerOpen(mDrawerListView);
-			MenuItem refresh = menu.findItem(R.id.menu_refresh);
+			MenuItem refresh = menu.findItem(R.id.menu_activity_example_refresh);
 			if(refresh!=null) refresh.setVisible(!drawerOpened);
 		}
 		return super.onPrepareOptionsMenu(menu);
@@ -73,7 +73,7 @@ public class ExampleActivity extends AppCompatActivity
 				// TODO
 				return true;
 				
-			case R.id.menu_refresh:
+			case R.id.menu_activity_example_refresh:
 				// TODO
 				return true;
 			

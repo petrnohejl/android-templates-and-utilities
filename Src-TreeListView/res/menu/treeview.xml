@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item
+		android:id="@+id/menu_treeview_expand_all"
+		android:title="@string/menu_treeview_expand_all"
+		android:orderInCategory="1" />
+
+	<item
+		android:id="@+id/menu_treeview_expand"
+		android:title="@string/menu_treeview_expand"
+		android:orderInCategory="2" />
+
+	<item
+		android:id="@+id/menu_treeview_collapse_all"
+		android:title="@string/menu_treeview_collapse_all"
+		android:orderInCategory="3" />
+
+	<item
+		android:id="@+id/menu_treeview_delete"
+		android:title="@string/menu_treeview_delete"
+		android:orderInCategory="4" />
+
+</menu>
