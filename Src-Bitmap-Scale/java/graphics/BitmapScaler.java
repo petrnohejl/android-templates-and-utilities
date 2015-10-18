@@ -3,8 +3,11 @@ package com.example.graphics;
 import android.graphics.Bitmap;
 
 
-public class BitmapScaler
+public final class BitmapScaler
 {
+	private BitmapScaler() {}
+
+
 	// scale and keep aspect ratio
 	public static Bitmap scaleToFitWidth(Bitmap b, int width)
 	{

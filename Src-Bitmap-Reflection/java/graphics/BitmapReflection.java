@@ -10,8 +10,11 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader;
 
 
-public class BitmapReflection
+public final class BitmapReflection
 {
+	private BitmapReflection() {}
+
+
 	public static Bitmap getReflectedBitmap(Bitmap bitmap, int gap)
 	{
 		int width = bitmap.getWidth();
