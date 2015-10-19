@@ -31,24 +31,9 @@ public class ExampleFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
-		
-		// initialize map
-		if(!Version.isSupportedOpenGlEs2(getActivity()))
-		{
-			Toast.makeText(getActivity(), R.string.global_map_fail_toast, Toast.LENGTH_LONG).show();
-		}
-		try
-		{
-			MapsInitializer.initialize(getActivity());
-		}
-		catch(Exception e)
-		{
-		
-		}
+		initMap();
 		mMapView = (MapView) mRootView.findViewById(R.id.fragment_example_map);
 		mMapView.onCreate(savedInstanceState);
-		setupMap();
-		
 		return mRootView;
 	}
 	
@@ -57,8 +42,7 @@ public class ExampleFragment extends Fragment
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
-		// bind data
+		setupMap();
 		bindData();
 	}
 	
@@ -128,15 +112,33 @@ public class ExampleFragment extends Fragment
 			BitmapDescriptor marker3 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
 			BitmapDescriptor marker4 = BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher);
 			BitmapDescriptor[] markers = { marker1, marker2, marker3, marker4 };
-			
+
 			for(int i=0; i<16; i++)
 			{
 				map.addMarker(new MarkerOptions()
 					.position(new LatLng( 49.194696+0.1*Math.sin(i*Math.PI/8), 16.608595+0.1*Math.cos(i*Math.PI/8) ))
 					.title("Example " + i)
 					.icon(markers[i%4])
-					);
+				);
 			}
+		}
+	}
+
+
+	private void initMap()
+	{
+		if(!Version.isSupportedOpenGlEs2(getActivity()))
+		{
+			Toast.makeText(getActivity(), R.string.global_map_fail_toast, Toast.LENGTH_LONG).show();
+		}
+
+		try
+		{
+			MapsInitializer.initialize(getActivity());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 	}
 	
