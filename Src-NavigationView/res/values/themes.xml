@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
 
 	<style name="Theme.Example.TransparentStatusBar" parent="@style/Theme.Example.Light">
-		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
-		<item name="android:statusBarColor">@android:color/transparent</item>
+		<item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="21">true</item>
+		<item name="android:statusBarColor" tools:targetApi="21">@android:color/transparent</item>
 	</style>
 
 </resources>
