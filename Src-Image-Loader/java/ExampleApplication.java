@@ -3,7 +3,7 @@ package com.example;
 import android.app.Application;
 import android.content.Context;
 
-import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiscCache;
+import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -47,7 +47,7 @@ public class ExampleApplication extends Application
 					.threadPoolSize(3)
 					.threadPriority(Thread.NORM_PRIORITY - 2)
 					.memoryCache(new UsingFreqLimitedMemoryCache(2 * 1024 * 1024))
-					.diskCache(new LruDiscCache(cacheDir, new HashCodeFileNameGenerator(), 32 * 1024 * 1024))
+					.diskCache(new LruDiskCache(cacheDir, new HashCodeFileNameGenerator(), 32 * 1024 * 1024))
 					.defaultDisplayImageOptions(DisplayImageOptions.createSimple())
 					.build();
 
