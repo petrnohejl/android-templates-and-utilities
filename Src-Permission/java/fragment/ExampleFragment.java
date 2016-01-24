@@ -2,20 +2,15 @@ package com.example.fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.R;
+import com.example.utility.PermissionUtility;
 
 
 public class ExampleFragment extends Fragment
 {
-	private static final int REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 1;
-
-
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
@@ -23,7 +18,11 @@ public class ExampleFragment extends Fragment
 		switch(item.getItemId())
 		{
 			case R.id.menu_fragment_example_storage:
-				if(checkPermissionStorage()) showStorage();
+				if(PermissionUtility.checkPermissionWriteExternalStorage(this)) storage();
+				return true;
+
+			case R.id.menu_fragment_example_location:
+				if(PermissionUtility.checkPermissionAccessLocation(this)) location();
 				return true;
 
 			default:
@@ -37,17 +36,38 @@ public class ExampleFragment extends Fragment
 	{
 		switch(requestCode)
 		{
-			case REQUEST_PERMISSION_READ_EXTERNAL_STORAGE:
+			case PermissionUtility.REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE:
+			case PermissionUtility.REQUEST_PERMISSION_ACCESS_LOCATION:
+			case PermissionUtility.REQUEST_PERMISSION_ALL:
 			{
 				// if request is cancelled, the result arrays are empty
-				if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+				if(grantResults.length > 0)
 				{
-					// permission granted
-					showStorage(); // TODO
+					for(int i=0; i<grantResults.length; i++)
+					{
+						if(grantResults[i] == PackageManager.PERMISSION_GRANTED)
+						{
+							// permission granted
+							String permission = permissions[i];
+							if(permission.equals(Manifest.permission.WRITE_EXTERNAL_STORAGE))
+							{
+								storage(); // TODO
+							}
+							else if(permission.equals(Manifest.permission.ACCESS_COARSE_LOCATION) || permission.equals(Manifest.permission.ACCESS_FINE_LOCATION))
+							{
+								location(); // TODO
+							}
+						}
+						else
+						{
+							// permission denied
+							// TODO
+						}
+					}
 				}
 				else
 				{
-					// permission denied
+					// all permissions denied
 					// TODO
 				}
 				break;
@@ -56,43 +76,13 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	private boolean checkPermissionStorage()
+	private void storage()
 	{
-		int permissionReadExternalStorage = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE);
-
-		if(permissionReadExternalStorage != PackageManager.PERMISSION_GRANTED)
-		{
-			if(shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE))
-			{
-				// show explanation
-				Snackbar
-						.make(mRootView, R.string.fragment_example_permission_storage, Snackbar.LENGTH_INDEFINITE)
-						.setAction(android.R.string.ok, new View.OnClickListener()
-						{
-							@Override
-							public void onClick(View v)
-							{
-								// try again
-								requestPermissions(
-										new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-										REQUEST_PERMISSION_READ_EXTERNAL_STORAGE);
-							}
-						}).show();
-			}
-			else
-			{
-				// no explanation needed
-				requestPermissions(
-						new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-						REQUEST_PERMISSION_READ_EXTERNAL_STORAGE);
-			}
-		}
-
-		return permissionReadExternalStorage == PackageManager.PERMISSION_GRANTED;
+		// TODO
 	}
 
 
-	private void showStorage()
+	private void location()
 	{
 		// TODO
 	}

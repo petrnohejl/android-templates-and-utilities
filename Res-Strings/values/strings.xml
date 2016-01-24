@@ -19,6 +19,8 @@
 	<string name="placeholder_empty">No data</string>
 	<string name="placeholder_offline">No network</string>
 
+	<string name="permission_example">Permission to example is required</string>
+
 	<string name="fragment_example_title">Example fragment title</string>
 
 	<string name="dialog_example_title">Example dialog title</string>
