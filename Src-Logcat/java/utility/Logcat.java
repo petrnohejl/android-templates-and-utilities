@@ -83,6 +83,7 @@ public final class Logcat
 	private static class CodeLocation
 	{
 		public final String mThread;
+		public final String mFileName;
 		public final String mClassName;
 		public final String mMethod;
 		public final int mLineNumber;
@@ -94,6 +95,7 @@ public final class Logcat
 			mStackTrace = stackTrace;
 			StackTraceElement root = stackTrace[0];
 			mThread = Thread.currentThread().getName();
+			mFileName = root.getFileName();
 			String className = root.getClassName();
 			mClassName = className.substring(className.lastIndexOf('.') + 1);
 			mMethod = root.getMethodName();
@@ -118,8 +120,11 @@ public final class Logcat
 				builder.append(mMethod);
 				if(SHOW_CODE_LOCATION_LINE)
 				{
+					builder.append('(');
+					builder.append(mFileName);
 					builder.append(':');
 					builder.append(mLineNumber);
+					builder.append(')');
 				}
 				builder.append("] ");
 			}
