@@ -1,12 +1,12 @@
 package com.example.view;
 
-import java.lang.reflect.Field;
-
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
+
+import java.lang.reflect.Field;
 
 
 // source: http://stackoverflow.com/questions/8155257/slowing-speed-of-viewpager-controller-in-android/
@@ -81,6 +81,6 @@ public class FixedScroller extends Scroller
 
 	public void setFixedDuration(int duration)
 	{
-		this.mFixedDuration = duration;
+		mFixedDuration = duration;
 	}
 }

@@ -8,10 +8,10 @@ import android.widget.ScrollView;
 // source: http://stackoverflow.com/questions/3948934/synchronise-scrollview-scroll-positions-android
 public class ObservableScrollView extends ScrollView
 {
-	private ScrollViewListener scrollViewListener = null;
+	private OnScrollViewListener mOnScrollViewListener = null;
 
 
-	public interface ScrollViewListener
+	public interface OnScrollViewListener
 	{
 		void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy);
 	}
@@ -35,9 +35,9 @@ public class ObservableScrollView extends ScrollView
 	}
 
 
-	public void setOnScrollViewListener(ScrollViewListener scrollViewListener)
+	public void setOnScrollViewListener(OnScrollViewListener onScrollViewListener)
 	{
-		this.scrollViewListener = scrollViewListener;
+		mOnScrollViewListener = onScrollViewListener;
 	}
 
 
@@ -45,9 +45,9 @@ public class ObservableScrollView extends ScrollView
 	protected void onScrollChanged(int x, int y, int oldx, int oldy)
 	{
 		super.onScrollChanged(x, y, oldx, oldy);
-		if(scrollViewListener != null)
+		if(mOnScrollViewListener != null)
 		{
-			scrollViewListener.onScrollChanged(this, x, y, oldx, oldy);
+			mOnScrollViewListener.onScrollChanged(this, x, y, oldx, oldy);
 		}
 	}
 }
