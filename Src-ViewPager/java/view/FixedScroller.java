@@ -9,7 +9,7 @@ import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 
-// code taken from: http://stackoverflow.com/questions/8155257/slowing-speed-of-viewpager-controller-in-android/
+// source: http://stackoverflow.com/questions/8155257/slowing-speed-of-viewpager-controller-in-android/
 public class FixedScroller extends Scroller
 {
 	private int mFixedDuration = 100;

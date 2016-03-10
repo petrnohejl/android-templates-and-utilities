@@ -32,7 +32,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 
-// code taken from: http://stackoverflow.com/questions/2160619/android-ellipsize-multiline-textview
+// source: http://stackoverflow.com/questions/2160619/android-ellipsize-multiline-textview
 public class EllipsizingTextView extends TextView
 {
 	private static final String ELLIPSIS = "…";

@@ -9,7 +9,7 @@ import android.text.format.DateFormat;
 import android.widget.TimePicker;
 
 
-// http://stackoverflow.com/questions/11444238/jelly-bean-datepickerdialog-is-there-a-way-to-cancel
+// source: http://stackoverflow.com/questions/11444238/jelly-bean-datepickerdialog-is-there-a-way-to-cancel
 public class FixedTimePickerDialog extends TimePickerDialog
 {
 	public FixedTimePickerDialog(Calendar timeToShow, Context context, OnTimeSetListener callBack)

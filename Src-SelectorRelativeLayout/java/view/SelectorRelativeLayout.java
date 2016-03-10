@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 
-// code taken from: http://stackoverflow.com/questions/26693675/recyclerview-how-to-simulate-listviews-draw-selector-on-top
+// source: http://stackoverflow.com/questions/26693675/recyclerview-how-to-simulate-listviews-draw-selector-on-top
 public class SelectorRelativeLayout extends RelativeLayout
 {
 	private static final int[] ATTR_LIST_SELECTOR = {android.R.attr.listSelector};

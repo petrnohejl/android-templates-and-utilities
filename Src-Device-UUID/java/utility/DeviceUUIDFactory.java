@@ -9,7 +9,7 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 
 
-// code taken from: http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id
+// source: http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id
 public class DeviceUUIDFactory
 {
 	protected static final String PREFS_FILE = "device_id.xml";

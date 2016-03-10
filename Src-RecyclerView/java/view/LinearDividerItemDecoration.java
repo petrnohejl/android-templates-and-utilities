@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
-// code taken from: https://gist.github.com/lapastillaroja/858caf1a82791b6c1a36
+// source: https://gist.github.com/lapastillaroja/858caf1a82791b6c1a36
 public class LinearDividerItemDecoration extends RecyclerView.ItemDecoration
 {
 	private Drawable mDivider;

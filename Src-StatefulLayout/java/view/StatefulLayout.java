@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 import com.example.R;
 
 
-// code inspired by: https://github.com/jakubkinst/Android-StatefulView
+// inspired by: https://github.com/jakubkinst/Android-StatefulView
 public class StatefulLayout extends FrameLayout
 {
 	private static final String SAVED_STATE = "stateful_layout_state";

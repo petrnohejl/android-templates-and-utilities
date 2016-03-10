@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.ScrollView;
 
 
-// code taken from: http://stackoverflow.com/questions/3948934/synchronise-scrollview-scroll-positions-android
+// source: http://stackoverflow.com/questions/3948934/synchronise-scrollview-scroll-positions-android
 public class ObservableScrollView extends ScrollView
 {
 	private ScrollViewListener scrollViewListener = null;

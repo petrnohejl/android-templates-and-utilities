@@ -137,7 +137,7 @@ public final class StorageUtility
 	}
 
 
-	// code taken from: http://stackoverflow.com/questions/11281010/how-can-i-get-external-sd-card-path-for-android-4-0
+	// source: http://stackoverflow.com/questions/11281010/how-can-i-get-external-sd-card-path-for-android-4-0
 	public static Set<String> getExternalMounts()
 	{
 		final Set<String> externalMounts = new HashSet<>();
