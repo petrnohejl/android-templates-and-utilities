@@ -1,7 +1,7 @@
-Android Templates And Utilities
+Android Templates and Utilities
 ===============================
 
-Android Templates And Utilities is a collection of source codes, utilities, 
+Android Templates and Utilities is a collection of source codes, utilities, 
 templates and snippets for Android development. It helps to build new apps and 
 shows the best way how to implement certain problems on Android platform.
 
@@ -18,7 +18,7 @@ preferences, running service, setting SSL connection, working with view pager,
 webview and much more. All templates were tested and should be compatible
 with Android 4+.
 
-Android Templates And Utilities are organized into 3 groups:
+Android Templates and Utilities are organized into 3 groups:
 
 * Base - basic skelet of the Android project
 * Res - resource code including xml files, images
@@ -59,8 +59,6 @@ Developed by
 ============
 
 [Petr Nohejl](http://petrnohejl.cz)
-
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B3JBY3NU6L2XY)
 
 
 License
