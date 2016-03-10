@@ -20,7 +20,8 @@
 		android:label="@string/app_name"
 		android:theme="@style/Theme.Example.Light"
 		android:hardwareAccelerated="true"
-		android:allowBackup="true">
+		android:allowBackup="true"
+		android:supportsRtl="true">
 		
 		<activity
 			android:name=".activity.ExampleActivity"
