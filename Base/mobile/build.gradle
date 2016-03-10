@@ -1,9 +1,9 @@
 // Main build script for Example
 // 
 // Usage: gradlew assembleDebug           Build debug APK
-//        gradlew assembleRelease         Build production APK
-//        gradlew connectedAndroidTest    Unit testing
-//        gradle wrapper                  Create Gradle Wrapper
+//        gradlew assembleRelease         Build release APK
+//        gradlew test                    Run unit test
+//        gradlew connectedAndroidTest    Run android test
 
 
 final VERSION_MAJOR = 1 // max two digits
@@ -20,7 +20,7 @@ dependencies
 	compile 'com.android.support:support-v4:23.2.0'
 	compile 'com.android.support:appcompat-v7:23.2.0'
 	compile 'com.android.support:design:23.2.0'
-	compile 'com.google.android.gms:play-services:8.4.0'
+	compile 'com.google.android.gms:play-services-base:8.4.0'
 	//compile 'com.google.android.gms:play-services-wearable:8.4.0'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 	compile project(':base')

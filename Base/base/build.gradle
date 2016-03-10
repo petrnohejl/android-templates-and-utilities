@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 
 dependencies
 {
-	compile 'com.google.android.gms:play-services:8.4.0'
+	compile 'com.google.android.gms:play-services-base:8.4.0'
 	//compile 'com.google.android.gms:play-services-wearable:8.4.0'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 }
