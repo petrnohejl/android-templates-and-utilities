@@ -3,8 +3,8 @@ apply plugin: 'com.android.library'
 
 dependencies
 {
-	compile 'com.google.android.gms:play-services:7.8.0'
-	//compile 'com.google.android.gms:play-services-wearable:7.8.0'
+	compile 'com.google.android.gms:play-services:8.4.0'
+	//compile 'com.google.android.gms:play-services-wearable:8.4.0'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
@@ -12,7 +12,7 @@ dependencies
 android
 {
 	compileSdkVersion 23
-	buildToolsVersion "23.0.0"
+	buildToolsVersion "23.0.2"
 
 	defaultConfig
 	{
