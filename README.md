@@ -1,7 +1,7 @@
 Android Templates and Utilities
 ===============================
 
-Android Templates and Utilities is a collection of source codes, utilities, 
+**Android Templates and Utilities** is a collection of source codes, utilities, 
 templates and snippets for Android development. It helps to build new apps and 
 shows the best way how to implement certain problems on Android platform.
 
@@ -20,7 +20,7 @@ with Android 4+.
 
 Android Templates and Utilities are organized into 3 groups:
 
-* Base - basic skelet of the Android project
+* Base - basic skeleton of the Android project
 * Res - resource code including xml files, images
 * Src - source code including classes, resources
 
@@ -38,7 +38,7 @@ the template in a Fragment.
 Example
 =======
 
-Example of creating a basic app skelet with 1 Activity and 1 Fragment via Android Studio:
+Example of creating a basic app skeleton with 1 Activity and 1 Fragment via Android Studio:
 
 * Create a new Android project with package name "com.example"
 * Copy & paste Base
