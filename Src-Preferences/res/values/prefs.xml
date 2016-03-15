@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<!-- LANGUAGE INDEPENDENT -->
-	<string name="prefs_key_user_id">user_id</string>
-	<string name="prefs_key_password">password</string>
-	<string name="prefs_key_version">version</string>
-	<string name="prefs_key_launch">launch</string>
-	<string name="prefs_key_rated">rated</string>
-	<string name="prefs_key_fb_access_token">fb_access_token</string>
-	<string name="prefs_key_fb_expiration">fb_expiration</string>
+	<string name="prefs_key_user_id" translatable="false">user_id</string>
+	<string name="prefs_key_password" translatable="false">password</string>
+	<string name="prefs_key_version" translatable="false">version</string>
+	<string name="prefs_key_launch" translatable="false">launch</string>
+	<string name="prefs_key_rated" translatable="false">rated</string>
+	<string name="prefs_key_fb_access_token" translatable="false">fb_access_token</string>
+	<string name="prefs_key_fb_expiration" translatable="false">fb_expiration</string>
 </resources>

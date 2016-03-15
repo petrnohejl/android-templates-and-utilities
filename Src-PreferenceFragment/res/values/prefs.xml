@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<!-- LANGUAGE INDEPENDENT -->
-	<string name="prefs_key_social_recommendations">social_recommendations</string>
-	<string name="prefs_key_display_name">display_name</string>
-	<string name="prefs_key_add_friends_to_messages">add_friends_to_messages</string>
-	<string name="prefs_key_new_message_notifications">new_message_notifications</string>
-	<string name="prefs_key_ringtone">ringtone</string>
-	<string name="prefs_key_vibrate">vibrate</string>
-	<string name="prefs_key_sync_frequency">sync_frequency</string>
+	<string name="prefs_key_social_recommendations" translatable="false">social_recommendations</string>
+	<string name="prefs_key_display_name" translatable="false">display_name</string>
+	<string name="prefs_key_add_friends_to_messages" translatable="false">add_friends_to_messages</string>
+	<string name="prefs_key_new_message_notifications" translatable="false">new_message_notifications</string>
+	<string name="prefs_key_ringtone" translatable="false">ringtone</string>
+	<string name="prefs_key_vibrate" translatable="false">vibrate</string>
+	<string name="prefs_key_sync_frequency" translatable="false">sync_frequency</string>
 
-	<!-- LANGUAGE DEPENDENT -->
 	<string name="prefs_header_general">General</string>
 	<string name="prefs_header_notifications">Notifications</string>
 	<string name="prefs_header_data_sync">Data &amp; sync</string>
