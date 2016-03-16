@@ -97,7 +97,7 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 		else
 		{
 			showProgress(false);
-			Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
+			Toast.makeText(getActivity(), R.string.global_network_offline, Toast.LENGTH_LONG).show();
 		}
 	}
 

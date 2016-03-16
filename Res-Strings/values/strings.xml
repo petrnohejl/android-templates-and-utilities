@@ -3,12 +3,12 @@
 	<string name="app_name" translatable="false">Example</string>
 	<string name="app_store_uri" translatable="false">https://play.google.com/store/apps/details?id=%1$s</string>
 
-	<string name="global_offline_toast">No Internet connection available</string>
-	<string name="global_apicall_fail_toast">Wooops! Communication with server failed</string>
-	<string name="global_apicall_unknown_host_toast">Wooops! Cannot establish a connection to the server</string>
-	<string name="global_apicall_not_found_toast">Wooops! Resource not found</string>
-	<string name="global_apicall_timeout_toast">Wooops! Connection timed out</string>
-	<string name="global_apicall_parse_fail_toast">Wooops! Unable to process response from server</string>
+	<string name="global_network_offline">No Internet connection available</string>
+	<string name="global_network_fail">Communication with server failed</string>
+	<string name="global_network_unknown_host">Cannot establish a connection to the server</string>
+	<string name="global_network_not_found">Resource not found</string>
+	<string name="global_network_timeout">Connection timed out</string>
+	<string name="global_network_parse_fail">Unable to process response from server</string>
 
 	<string name="title_example">Example title</string>
 

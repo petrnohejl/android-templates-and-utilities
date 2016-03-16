@@ -205,14 +205,14 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	private void handleFail(Exception exception)
 	{
 		int messageId;
-		if(exception!=null && exception.getClass().equals(UnknownHostException.class)) messageId = R.string.global_apicall_unknown_host_toast;
-		else if(exception!=null && exception.getClass().equals(FileNotFoundException.class)) messageId = R.string.global_apicall_not_found_toast;
-		else if(exception!=null && exception.getClass().equals(SocketTimeoutException.class)) messageId = R.string.global_apicall_timeout_toast;
-		else if(exception!=null && exception.getClass().equals(JsonParseException.class)) messageId = R.string.global_apicall_parse_fail_toast;
-		else if(exception!=null && exception.getClass().equals(ParseException.class)) messageId = R.string.global_apicall_parse_fail_toast;
-		else if(exception!=null && exception.getClass().equals(NumberFormatException.class)) messageId = R.string.global_apicall_parse_fail_toast;
-		else if(exception!=null && exception.getClass().equals(ClassCastException.class)) messageId = R.string.global_apicall_parse_fail_toast;
-		else messageId = R.string.global_apicall_fail_toast;
+		if(exception!=null && exception.getClass().equals(UnknownHostException.class)) messageId = R.string.global_network_unknown_host;
+		else if(exception!=null && exception.getClass().equals(FileNotFoundException.class)) messageId = R.string.global_network_not_found;
+		else if(exception!=null && exception.getClass().equals(SocketTimeoutException.class)) messageId = R.string.global_network_timeout;
+		else if(exception!=null && exception.getClass().equals(JsonParseException.class)) messageId = R.string.global_network_parse_fail;
+		else if(exception!=null && exception.getClass().equals(ParseException.class)) messageId = R.string.global_network_parse_fail;
+		else if(exception!=null && exception.getClass().equals(NumberFormatException.class)) messageId = R.string.global_network_parse_fail;
+		else if(exception!=null && exception.getClass().equals(ClassCastException.class)) messageId = R.string.global_network_parse_fail;
+		else messageId = R.string.global_network_fail;
 		Toast.makeText(getActivity(), messageId, Toast.LENGTH_LONG).show();
 	}
 	
@@ -263,7 +263,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 		}
 		else
 		{
-			Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
+			Toast.makeText(getActivity(), R.string.global_network_offline, Toast.LENGTH_LONG).show();
 		}
 	}
 	
