@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:minHeight="@dimen/global_spacing_l"
+	android:minHeight="@dimen/global_spacing_48"
 	android:gravity="center_vertical"
 	android:orientation="horizontal"
 	android:focusable="false"
@@ -14,8 +14,8 @@
 		android:id="@+id/fragment_expandable_listing_group_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginLeft="@dimen/global_keyline_m"
-		android:layout_marginRight="@dimen/global_keyline_s"
+		android:layout_marginLeft="@dimen/global_keyline_32"
+		android:layout_marginRight="@dimen/global_keyline_16"
 		android:textAppearance="@style/TextAppearance.Example.Body1" />
 	
 </LinearLayout>

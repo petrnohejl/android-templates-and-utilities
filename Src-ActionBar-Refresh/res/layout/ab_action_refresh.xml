@@ -3,11 +3,11 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:minWidth="@dimen/global_spacing_l">
+	android:minWidth="@dimen/global_spacing_48">
 
 	<ProgressBar
-		android:layout_width="@dimen/global_spacing_m"
-		android:layout_height="@dimen/global_spacing_m"
+		android:layout_width="@dimen/global_spacing_32"
+		android:layout_height="@dimen/global_spacing_32"
 		android:layout_gravity="center" />
 
 </FrameLayout>

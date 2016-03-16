@@ -5,7 +5,7 @@
 	android:layout_height="wrap_content"
 	android:layout_gravity="center_vertical"
 	android:orientation="vertical"
-	android:paddingRight="@dimen/global_spacing_xxs">
+	android:paddingRight="@dimen/global_spacing_8">
 
 	<TextView
 		android:id="@+id/ab_list_navigation_title"

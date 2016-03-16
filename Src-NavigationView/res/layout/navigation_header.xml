@@ -6,7 +6,7 @@
 	android:background="?attr/colorAccent"
 	android:gravity="bottom"
 	android:orientation="vertical"
-	android:padding="@dimen/global_keyline_s">
+	android:padding="@dimen/global_keyline_16">
 
 	<TextView
 		android:id="@+id/navigation_header_title"

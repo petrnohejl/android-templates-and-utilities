@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<dimen name="global_keyline_s">16dp</dimen>
-	<dimen name="global_keyline_m">32dp</dimen>
-	<dimen name="global_keyline_l">72dp</dimen>
+	<dimen name="global_keyline_16">16dp</dimen>
+	<dimen name="global_keyline_32">32dp</dimen>
+	<dimen name="global_keyline_72">72dp</dimen>
 
-	<dimen name="global_spacing_xxs">8dp</dimen>
-	<dimen name="global_spacing_xs">16dp</dimen>
-	<dimen name="global_spacing_s">24dp</dimen>
-	<dimen name="global_spacing_m">32dp</dimen>
-	<dimen name="global_spacing_l">48dp</dimen>
-	<dimen name="global_spacing_xl">56dp</dimen>
-	<dimen name="global_spacing_xxl">72dp</dimen>
+	<dimen name="global_spacing_8">8dp</dimen>
+	<dimen name="global_spacing_16">16dp</dimen>
+	<dimen name="global_spacing_24">24dp</dimen>
+	<dimen name="global_spacing_32">32dp</dimen>
+	<dimen name="global_spacing_48">48dp</dimen>
+	<dimen name="global_spacing_56">56dp</dimen>
+	<dimen name="global_spacing_72">72dp</dimen>
 
-	<dimen name="global_elevation_xxs">2dp</dimen>
-	<dimen name="global_elevation_xs">4dp</dimen>
-	<dimen name="global_elevation_s">6dp</dimen>
-	<dimen name="global_elevation_m">8dp</dimen>
-	<dimen name="global_elevation_l">12dp</dimen>
-	<dimen name="global_elevation_xl">16dp</dimen>
-	<dimen name="global_elevation_xxl">24dp</dimen>
+	<dimen name="global_elevation_2">2dp</dimen>
+	<dimen name="global_elevation_4">4dp</dimen>
+	<dimen name="global_elevation_6">6dp</dimen>
+	<dimen name="global_elevation_8">8dp</dimen>
+	<dimen name="global_elevation_12">12dp</dimen>
+	<dimen name="global_elevation_16">16dp</dimen>
+	<dimen name="global_elevation_24">24dp</dimen>
 
 	<dimen name="global_text_size_display_4">112sp</dimen>
 	<dimen name="global_text_size_display_3">56sp</dimen>

@@ -4,7 +4,7 @@
 	android:id="@+id/fragment_tree_listing_item"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:minHeight="@dimen/global_spacing_l"
+	android:minHeight="@dimen/global_spacing_48"
 	android:gravity="center_vertical"
 	android:orientation="horizontal">
 

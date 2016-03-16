@@ -14,7 +14,7 @@
 		android:gravity="center_vertical"
 		android:paddingRight="20dp"
 		android:drawableLeft="@drawable/ab_ic_done"
-		android:drawablePadding="@dimen/global_spacing_xxs"
+		android:drawablePadding="@dimen/global_spacing_8"
 		android:textAppearance="@style/TextAppearance.Example.Button"
 		android:text="@string/global_button_done" />
 

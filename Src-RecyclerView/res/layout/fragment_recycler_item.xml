@@ -4,7 +4,7 @@
 	android:id="@+id/fragment_recycler_item"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:minHeight="@dimen/global_spacing_l"
+	android:minHeight="@dimen/global_spacing_48"
 	android:gravity="center_vertical"
 	android:orientation="horizontal"
 	android:background="@drawable/selector_clickable_item_bg">
@@ -13,8 +13,8 @@
 		android:id="@+id/fragment_recycler_item_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginLeft="@dimen/global_keyline_s"
-		android:layout_marginRight="@dimen/global_keyline_s"
+		android:layout_marginLeft="@dimen/global_keyline_16"
+		android:layout_marginRight="@dimen/global_keyline_16"
 		android:textAppearance="@style/TextAppearance.Example.Body1" />
 	
 </LinearLayout>

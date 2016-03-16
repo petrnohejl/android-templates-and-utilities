@@ -3,15 +3,15 @@
 
 	<!-- tab page indicator -->
 	<style name="Example.TabPageIndicator" parent="@style/Widget.TabPageIndicator">
-		<item name="android:height">@dimen/global_spacing_l</item>
+		<item name="android:height">@dimen/global_spacing_48</item>
 		<item name="android:background">@drawable/selector_tab_bg</item>
 		<item name="android:textAppearance">@style/TextAppearance.Example.Tab</item>
 		<item name="android:fadingEdge">horizontal</item>
-		<item name="android:fadingEdgeLength">@dimen/global_spacing_xs</item>
-		<item name="android:paddingLeft">@dimen/global_spacing_xs</item>
-		<item name="android:paddingRight">@dimen/global_spacing_xs</item>
+		<item name="android:fadingEdgeLength">@dimen/global_spacing_16</item>
+		<item name="android:paddingLeft">@dimen/global_spacing_16</item>
+		<item name="android:paddingRight">@dimen/global_spacing_16</item>
 		<item name="android:divider">@null</item>
-		<item name="android:dividerPadding">@dimen/global_spacing_xs</item>
+		<item name="android:dividerPadding">@dimen/global_spacing_16</item>
 		<item name="android:showDividers">middle</item>
 	</style>
 

@@ -22,7 +22,7 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:padding="@dimen/global_keyline_s"
+			android:padding="@dimen/global_keyline_16"
 			android:orientation="vertical">
 
 			<TextView
