@@ -157,8 +157,8 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				// finish request
 				mAPICallManager.finishTask(task);
 
-				// hide progress in action bar
-				if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
+				// hide progress popup
+				if(mAPICallManager.getTasksCount()==0) showProgress(false);
 			}
 		});
 	}
@@ -189,8 +189,8 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				// finish request
 				mAPICallManager.finishTask(task);
 
-				// hide progress in action bar
-				if(mAPICallManager.getTasksCount()==0) showActionBarProgress(false);
+				// hide progress popup
+				if(mAPICallManager.getTasksCount()==0) showProgress(false);
 			}
 		});
 	}
@@ -226,8 +226,8 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				// show progress
 				mStatefulLayout.showProgress();
 
-				// show progress in action bar
-				showActionBarProgress(true);
+				// show progress popup
+				showProgress(true);
 				
 				// execute request
 				Request request = new ExampleRequest(0, LAZY_LOADING_TAKE);
@@ -247,8 +247,8 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 		{
 			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
 			{
-				// show progress in action bar
-				showActionBarProgress(true);
+				// show progress popup
+				showProgress(true);
 				
 				// meta data
 				Bundle bundle = new Bundle();

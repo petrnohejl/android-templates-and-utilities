@@ -15,7 +15,7 @@ import com.example.utility.NetworkUtility;
 
 public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout.OnRefreshListener
 {
-	private boolean mActionBarProgress = false;
+	private boolean mProgress = false;
 	private View mRootView;
 	private APICallManager mAPICallManager = new APICallManager();
 
@@ -36,8 +36,8 @@ public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout
 		// pull to refresh
 		setupSwipeRefreshLayout();
 
-		// progress in action bar
-		showActionBarProgress(mActionBarProgress);
+		// progress popup
+		showProgress(mProgress);
 	}
 
 
@@ -54,7 +54,7 @@ public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout
 		});
 
 //		// testing task
-//		showActionBarProgress(true);
+//		showProgress(true);
 //		new AsyncTask<Void, Void, Void>()
 //		{
 //			@Override
@@ -76,7 +76,7 @@ public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout
 //			protected void onPostExecute(Void result)
 //			{
 //				super.onPostExecute(result);
-//				showActionBarProgress(false);
+//				showProgress(false);
 //			}
 //		}.execute();
 	}
@@ -88,21 +88,21 @@ public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout
 		{
 			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
 			{
-				// show progress in action bar
-				showActionBarProgress(true);
+				// show progress popup
+				showProgress(true);
 
 				// TODO
 			}
 		}
 		else
 		{
-			showActionBarProgress(false);
+			showProgress(false);
 			Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
 		}
 	}
 
 
-	private void showActionBarProgress(boolean visible)
+	private void showProgress(boolean visible)
 	{
 		// show pull to refresh progress bar
 		SwipeRefreshLayout contentSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_content_swipeable);
@@ -118,7 +118,7 @@ public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout
 		emptySwipeRefreshLayout.setRefreshing(visible);
 		emptySwipeRefreshLayout.setEnabled(!visible);
 
-		mActionBarProgress = visible;
+		mProgress = visible;
 	}
 
 

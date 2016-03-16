@@ -120,8 +120,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				// finish query
 				mDatabaseCallManager.finishTask(task);
 				
-				// hide progress in action bar
-				if(mDatabaseCallManager.getTasksCount()==0) showActionBarProgress(false);
+				// hide progress popup
+				if(mDatabaseCallManager.getTasksCount()==0) showProgress(false);
 			}
 		});
 	}
@@ -164,8 +164,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				// finish query
 				mDatabaseCallManager.finishTask(task);
 				
-				// hide progress in action bar
-				if(mDatabaseCallManager.getTasksCount()==0) showActionBarProgress(false);
+				// hide progress popup
+				if(mDatabaseCallManager.getTasksCount()==0) showProgress(false);
 			}
 		});
 	}
@@ -173,8 +173,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 	
 	private void createProduct(ProductModel product)
 	{
-		// show progress in action bar
-		showActionBarProgress(true);
+		// show progress popup
+		showProgress(true);
 		
 		// run async task
 		Query query = new ProductCreateQuery(product);
@@ -184,8 +184,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 
 	private void readProduct(long id)
 	{
-		// show progress in action bar
-		showActionBarProgress(true);
+		// show progress popup
+		showProgress(true);
 
 		// run async task
 		Query query = new ProductReadQuery(id);
@@ -195,8 +195,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 	
 	private void readAllProducts()
 	{
-		// show progress in action bar
-		showActionBarProgress(true);
+		// show progress popup
+		showProgress(true);
 		
 		// run async task
 		Query query = new ProductReadAllQuery();
@@ -206,8 +206,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 	
 	private void updateProduct(ProductModel product)
 	{
-		// show progress in action bar
-		showActionBarProgress(true);
+		// show progress popup
+		showProgress(true);
 		
 		// run async task
 		Query query = new ProductUpdateQuery(product);
@@ -217,8 +217,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 
 	private void deleteProduct(long id)
 	{
-		// show progress in action bar
-		showActionBarProgress(true);
+		// show progress popup
+		showProgress(true);
 
 		// run async task
 		Query query = new ProductDeleteQuery(id);
@@ -228,8 +228,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 	
 	private void deleteAllProducts()
 	{
-		// show progress in action bar
-		showActionBarProgress(true);
+		// show progress popup
+		showProgress(true);
 		
 		// run async task
 		Query query = new ProductDeleteAllQuery();
