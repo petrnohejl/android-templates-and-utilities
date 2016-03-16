@@ -67,7 +67,10 @@ public class ExpandableListingFragment extends TaskFragment implements OnLoadDat
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mStatefulLayout.getState()==null) loadData();
+		if(mGroupList==null || mGroupList.isEmpty() || mProductList==null || mProductList.isEmpty())
+		{
+			loadData();
+		}
 	}
 	
 	

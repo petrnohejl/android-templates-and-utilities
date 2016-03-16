@@ -80,7 +80,10 @@ public class TreeListingFragment extends TaskFragment implements
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mStatefulLayout.getState()==null) loadData();
+		if(mProductList==null || mProductList.isEmpty() || mTreeStateManager==null)
+		{
+			loadData();
+		}
 	}
 
 

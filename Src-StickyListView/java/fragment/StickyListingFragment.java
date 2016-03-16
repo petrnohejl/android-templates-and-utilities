@@ -73,7 +73,7 @@ public class StickyListingFragment extends TaskFragment implements
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mStatefulLayout.getState()==null) loadData();
+		if(mProductList==null || mProductList.isEmpty()) loadData();
 	}
 	
 	

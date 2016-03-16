@@ -75,7 +75,7 @@ public class ListingFragment extends TaskFragment implements OnLoadDataListener
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mStatefulLayout.getState()==null) loadData();
+		if(mProductList==null || mProductList.isEmpty()) loadData();
 		
 		// lazy loading progress
 		if(mLazyLoading) showLazyLoadingProgress(true);

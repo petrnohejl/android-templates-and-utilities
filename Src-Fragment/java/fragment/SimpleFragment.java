@@ -60,7 +60,7 @@ public class SimpleFragment extends TaskFragment implements OnLoadDataListener
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mStatefulLayout.getState()==null) loadData();
+		if(mProduct==null) loadData();
 	}
 	
 	
