@@ -144,7 +144,8 @@ Testing
 
 * Test app on different Android versions (handset, tablet)
 * Test overdraws
-* Test offline/empty/progress states
+* Test saving instance state (low memory)
+* Test progress/offline/empty states
 * Test migration from old version to the new one
 * Test slow internet connection
 * Test reboot (boot receivers, alarms, services)

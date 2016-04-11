@@ -2,8 +2,8 @@
 // 
 // Usage: gradlew assembleDebug           Build debug APK
 //        gradlew assembleRelease         Build release APK
-//        gradlew test                    Run unit test
-//        gradlew connectedAndroidTest    Run android test
+//        gradlew test                    Run local unit test
+//        gradlew connectedAndroidTest    Run instrumented unit test
 
 
 final VERSION_MAJOR = 1 // max two digits
@@ -27,7 +27,7 @@ dependencies
 android
 {
 	compileSdkVersion 23
-	buildToolsVersion "23.0.2"
+	buildToolsVersion "23.0.3"
 
 	defaultConfig
 	{
@@ -72,25 +72,26 @@ android
 		}
 	}
 
-	applicationVariants.all
+	compileOptions
 	{
-		variant ->
-			if(variant.buildType.name.equals("release"))
-			{
-				variant.outputs.each
-				{
-					output ->
-						def outputFile = output.outputFile
-						def date = new Date()
-						if(outputFile!=null && outputFile.name.endsWith('.apk'))
-						{
-							def fileName = outputFile.name.replace(
-									"wear",
-									"example-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date.format('yyyyMMdd'))
-							output.outputFile = new File((String) outputFile.parent, (String) fileName)
-						}
-				}
-			}
+		sourceCompatibility JavaVersion.VERSION_1_7
+		targetCompatibility JavaVersion.VERSION_1_7
+	}
+
+	dataBinding { enabled = true }
+
+	applicationVariants.all { variant -> renameArtifact(variant) }
+}
+
+
+def renameArtifact(variant)
+{
+	variant.outputs.each
+	{
+		output ->
+			def date = new Date().format('yyyyMMdd')
+			def fileName = "example-${project.name}-${variant.versionName}-${variant.versionCode}-${date}-${variant.name}.apk"
+			output.outputFile = new File((String) output.outputFile.parent, fileName)
 	}
 }
 
