@@ -31,6 +31,7 @@ android
 
 	defaultConfig
 	{
+		applicationId "com.example"
 		minSdkVersion 20
 		targetSdkVersion 23
 		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
