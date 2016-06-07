@@ -1,4 +1,4 @@
-package com.example.view;
+package com.example.widget;
 
 import android.graphics.Rect;
 import android.support.v7.widget.GridLayoutManager;

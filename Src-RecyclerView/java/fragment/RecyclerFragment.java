@@ -18,7 +18,7 @@ import com.example.entity.ProductEntity;
 import com.example.task.LoadDataTask;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
-import com.example.view.LinearDividerItemDecoration;
+import com.example.widget.LinearDividerItemDecoration;
 import com.example.view.StatefulLayout;
 
 import java.util.ArrayList;
