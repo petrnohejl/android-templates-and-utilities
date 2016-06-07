@@ -14,7 +14,6 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import com.example.R;
 import com.example.adapter.ExpandableListingAdapter;
 import com.example.entity.ProductEntity;
-import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ExpandableListingFragment extends TaskFragment implements OnLoadDataListener
+public class ExpandableListingFragment extends TaskFragment implements LoadDataTask.OnLoadDataListener
 {
 	private View mRootView;
 	private StatefulLayout mStatefulLayout;

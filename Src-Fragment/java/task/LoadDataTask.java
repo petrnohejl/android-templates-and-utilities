@@ -2,16 +2,20 @@ package com.example.task;
 
 import android.os.AsyncTask;
 
-import com.example.listener.OnLoadDataListener;
-
 import java.lang.ref.WeakReference;
 
 
 public class LoadDataTask extends AsyncTask<Void, Void, String>
 {
 	private WeakReference<OnLoadDataListener> mOnLoadDataListener;
-	
-	
+
+
+	public interface OnLoadDataListener
+	{
+		void onLoadData();
+	}
+
+
 	public LoadDataTask(OnLoadDataListener onLoadDataListener)
 	{
 		setListener(onLoadDataListener);

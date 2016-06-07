@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import com.example.R;
 import com.example.adapter.TreeListingAdapter;
 import com.example.entity.ProductEntity;
-import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
@@ -33,7 +32,7 @@ import pl.polidea.treeview.TreeViewList;
 
 
 public class TreeListingFragment extends TaskFragment implements
-		OnLoadDataListener,
+		LoadDataTask.OnLoadDataListener,
 		AdapterView.OnItemClickListener
 {
 	private static final int TREEVIEW_DEPTH = 4;

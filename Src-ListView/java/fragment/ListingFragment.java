@@ -18,7 +18,6 @@ import android.widget.ListView;
 import com.example.R;
 import com.example.adapter.ListingAdapter;
 import com.example.entity.ProductEntity;
-import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
@@ -28,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListingFragment extends TaskFragment implements OnLoadDataListener
+public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoadDataListener
 {
 	private static final int LAZY_LOADING_TAKE = 16;
 	private static final int LAZY_LOADING_OFFSET = 4;

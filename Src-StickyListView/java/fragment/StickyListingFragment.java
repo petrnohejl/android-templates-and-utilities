@@ -14,7 +14,6 @@ import com.example.R;
 import com.example.adapter.StickyListingAdapter;
 import com.example.entity.GroupEntity;
 import com.example.entity.ProductEntity;
-import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
@@ -27,7 +26,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 
 public class StickyListingFragment extends TaskFragment implements
-		OnLoadDataListener,
+		LoadDataTask.OnLoadDataListener,
 		AdapterView.OnItemClickListener,
 		AdapterView.OnItemLongClickListener,
 		StickyListHeadersListView.OnHeaderClickListener
