@@ -85,9 +85,19 @@ android
 		targetCompatibility JavaVersion.VERSION_1_7
 	}
 
-	dataBinding { enabled = true }
+	dataBinding
+	{
+		enabled = true
+	}
 
-	applicationVariants.all { variant -> renameArtifact(variant) }
+	applicationVariants.all
+	{
+		variant ->
+			if(variant.buildType.name.equals("release"))
+			{
+				renameArtifact(variant)
+			}
+	}
 }
 
 
