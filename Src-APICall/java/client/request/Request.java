@@ -13,7 +13,7 @@ import java.io.InputStream;
 
 public abstract class Request
 {
-	public static final String API_ENDPOINT = ExampleConfig.DEV_API ? ExampleConfig.API_ENDPOINT_DEVELOPMENT : ExampleConfig.API_ENDPOINT_PRODUCTION;
+	public static final String REST_BASE_URL = ExampleConfig.REST_BASE_URL;
 	public static final String CHARSET = "UTF-8";
 	public static final String BOUNDARY = "0xKhTmLbOuNdArY";
 

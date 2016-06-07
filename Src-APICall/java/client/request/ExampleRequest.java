@@ -41,7 +41,7 @@ public class ExampleRequest extends Request
 	public String getAddress()
 	{
 		Uri.Builder builder = new Uri.Builder();
-		builder.encodedPath(API_ENDPOINT);
+		builder.encodedPath(REST_BASE_URL);
 		builder.appendEncodedPath(REQUEST_PATH);
 		builder.appendQueryParameter("skip", Integer.toString(mSkip));
 		builder.appendQueryParameter("take", Integer.toString(mTake));

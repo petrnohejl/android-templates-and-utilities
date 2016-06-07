@@ -45,7 +45,7 @@ public class MultipartRequest extends Request
 		StringBuilder builder = new StringBuilder();
 
 		// url
-		builder.append(API_ENDPOINT);
+		builder.append(REST_BASE_URL);
 		builder.append(REQUEST_PATH);
 
 		return builder.toString();
