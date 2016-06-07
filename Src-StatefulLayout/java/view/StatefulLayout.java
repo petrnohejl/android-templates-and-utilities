@@ -178,7 +178,7 @@ public class StatefulLayout extends FrameLayout
 
 	private void setupView()
 	{
-		if(mContentLayout==null)
+		if(mContentLayout==null && !isInEditMode())
 		{
 			mContentLayout = getChildAt(0);
 			mProgressLayout = LayoutInflater.from(getContext()).inflate(mProgressLayoutId, this, false);
