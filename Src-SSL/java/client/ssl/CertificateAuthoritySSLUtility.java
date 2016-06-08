@@ -20,21 +20,21 @@ public final class CertificateAuthoritySSLUtility
 	{
 		SSLContext sslContext = createSSLContext();
 		HostnameVerifier sslHostnameVerifier = createSSLHostnameVerifier(requestUrl.getHost());
-		
+
 		connection.setSSLSocketFactory(sslContext.getSocketFactory());
 		connection.setHostnameVerifier(sslHostnameVerifier);
 		//HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
 	}
-	
-	
+
+
 	public static SSLContext createSSLContext() throws GeneralSecurityException
 	{
 		SSLContext context = SSLContext.getInstance("TLS");
-		context.init(null, new X509TrustManager[] { new CertificateAuthorityTrustManager() }, new SecureRandom());
+		context.init(null, new X509TrustManager[]{new CertificateAuthorityTrustManager()}, new SecureRandom());
 		return context;
 	}
-	
-	
+
+
 	public static HostnameVerifier createSSLHostnameVerifier(final String apiHostname)
 	{
 		HostnameVerifier hostnameVerifier = new HostnameVerifier()

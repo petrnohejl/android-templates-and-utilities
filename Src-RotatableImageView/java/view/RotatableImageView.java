@@ -12,8 +12,8 @@ import com.example.R;
 public class RotatableImageView extends ImageView
 {
 	private int mAngle;
-	
-	
+
+
 	public RotatableImageView(Context context)
 	{
 		super(context);
@@ -32,16 +32,16 @@ public class RotatableImageView extends ImageView
 		super(context, attrs, defStyle);
 		loadAttributes(context, attrs);
 	}
-	
-	
+
+
 	@Override
 	protected void onDraw(Canvas canvas) // if you want to rotate the entire view (along with its background), you should oveerride draw() instead of onDraw()
 	{
 		canvas.save();
-		canvas.rotate(mAngle%360, canvas.getWidth()/2, canvas.getHeight()/2);	
+		canvas.rotate(mAngle % 360, canvas.getWidth() / 2, canvas.getHeight() / 2);
 		super.onDraw(canvas);
 		canvas.restore();
-		
+
 //		Drawable drawable = getDrawable();
 //		Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
 //		
@@ -52,8 +52,8 @@ public class RotatableImageView extends ImageView
 //		canvas.drawBitmap(bitmap, transform, null);
 //		canvas.restore();
 	}
-	
-	
+
+
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
 	{
@@ -78,8 +78,8 @@ public class RotatableImageView extends ImageView
 	{
 		mAngle = angle;
 	}
-	
-	
+
+
 	private void loadAttributes(Context context, AttributeSet attrs)
 	{
 		TypedArray arr = context.obtainStyledAttributes(attrs, R.styleable.RotatableImageView);

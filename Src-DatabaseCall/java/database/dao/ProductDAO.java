@@ -17,20 +17,20 @@ public class ProductDAO extends DAO
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.create(product);
 	}
-	
-	
+
+
 	public static ProductModel read(long id) throws SQLException
 	{
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.queryForId(id);
 	}
-	
-	
+
+
 	public static List<ProductModel> readAll(long skip, long take) throws SQLException
 	{
 		Dao<ProductModel, Long> dao = getDao();
 		List<ProductModel> list;
-		if(skip==-1L && take==-1L)
+		if(skip == -1L && take == -1L)
 		{
 			list = dao.queryForAll();
 		}
@@ -42,37 +42,37 @@ public class ProductDAO extends DAO
 		}
 		return list;
 	}
-	
-	
+
+
 	public static int update(ProductModel product) throws SQLException
 	{
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.update(product);
 	}
-	
-	
+
+
 	public static int delete(long id) throws SQLException
 	{
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.deleteById(id);
 	}
-	
-	
+
+
 	public static int deleteAll() throws SQLException
 	{
 		Dao<ProductModel, Long> dao = getDao();
 		DeleteBuilder<ProductModel, Long> deleteBuilder = dao.deleteBuilder();
 		return dao.delete(deleteBuilder.prepare());
 	}
-	
-	
+
+
 	public static int refresh(ProductModel product) throws SQLException
 	{
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.refresh(product);
 	}
-	
-	
+
+
 	private static Dao<ProductModel, Long> getDao() throws SQLException
 	{
 		DatabaseHelper databaseHelper = DatabaseHelper.getInstance();

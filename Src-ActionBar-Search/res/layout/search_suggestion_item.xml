@@ -5,7 +5,7 @@
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
 	android:padding="@dimen/global_spacing_8">
-	
+
 	<TextView
 		android:id="@+id/search_suggestion_item_title"
 		android:layout_width="match_parent"
@@ -13,7 +13,7 @@
 		android:maxLines="1"
 		android:textAppearance="@style/TextAppearance.Example.Body1"
 		android:textColor="?android:attr/textColorPrimaryInverse" />
-	
+
 	<TextView
 		android:id="@+id/search_suggestion_item_subtitle"
 		android:layout_width="match_parent"
@@ -21,5 +21,5 @@
 		android:maxLines="1"
 		android:textAppearance="@style/TextAppearance.Example.Caption"
 		android:textColor="?android:attr/textColorSecondaryInverse" />
-	
+
 </LinearLayout>

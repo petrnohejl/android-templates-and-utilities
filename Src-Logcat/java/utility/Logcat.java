@@ -21,32 +21,32 @@ public final class Logcat
 	{
 		if(ExampleConfig.LOGS) Log.d(TAG, getCodeLocation().toString() + formatMessage(msg, args));
 	}
-	
-	
+
+
 	public static void e(String msg, Object... args)
 	{
 		if(ExampleConfig.LOGS) Log.e(TAG, getCodeLocation().toString() + formatMessage(msg, args));
 	}
 
-	
+
 	public static void e(Throwable tr, String msg, Object... args)
 	{
 		if(ExampleConfig.LOGS) Log.e(TAG, getCodeLocation().toString() + formatMessage(msg, args), tr);
 	}
-	
-	
+
+
 	public static void i(String msg, Object... args)
 	{
 		if(ExampleConfig.LOGS) Log.i(TAG, getCodeLocation().toString() + formatMessage(msg, args));
 	}
-	
-	
+
+
 	public static void v(String msg, Object... args)
 	{
 		if(ExampleConfig.LOGS) Log.v(TAG, getCodeLocation().toString() + formatMessage(msg, args));
 	}
-	
-	
+
+
 	public static void w(String msg, Object... args)
 	{
 		if(ExampleConfig.LOGS) Log.w(TAG, getCodeLocation().toString() + formatMessage(msg, args));

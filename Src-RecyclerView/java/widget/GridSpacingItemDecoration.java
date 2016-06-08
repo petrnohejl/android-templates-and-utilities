@@ -21,7 +21,7 @@ public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration
 	public void getItemOffsets(Rect outRect, View view, RecyclerView recyclerView, RecyclerView.State state)
 	{
 		super.getItemOffsets(outRect, view, recyclerView, state);
-		
+
 		int position = recyclerView.getChildLayoutPosition(view);
 		int spanCount = getSpanCount(recyclerView);
 		int itemCount = recyclerView.getAdapter().getItemCount();
@@ -33,41 +33,41 @@ public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration
 		}
 		else
 		{
-			outRect.top = mSpacing/2;
+			outRect.top = mSpacing / 2;
 		}
 
 		// bottom offset
-		if(itemCount%spanCount == 0 && position >= itemCount - spanCount)
+		if(itemCount % spanCount == 0 && position >= itemCount - spanCount)
 		{
 			outRect.bottom = mSpacing;
 		}
-		else if(itemCount%spanCount != 0 && position >= itemCount - itemCount%spanCount)
+		else if(itemCount % spanCount != 0 && position >= itemCount - itemCount % spanCount)
 		{
 			outRect.bottom = mSpacing;
 		}
 		else
 		{
-			outRect.bottom = mSpacing/2;
+			outRect.bottom = mSpacing / 2;
 		}
 
 		// left offset
-		if(position%spanCount == 0)
+		if(position % spanCount == 0)
 		{
 			outRect.left = mSpacing;
 		}
 		else
 		{
-			outRect.left = mSpacing/2;
+			outRect.left = mSpacing / 2;
 		}
 
 		// right offset
-		if(position%spanCount == spanCount-1)
+		if(position % spanCount == spanCount - 1)
 		{
 			outRect.right = mSpacing;
 		}
 		else
 		{
-			outRect.right = mSpacing/2;
+			outRect.right = mSpacing / 2;
 		}
 	}
 

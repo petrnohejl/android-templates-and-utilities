@@ -1,12 +1,12 @@
 package com.example.fragment;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class TaskFragment extends Fragment

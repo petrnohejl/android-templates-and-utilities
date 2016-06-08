@@ -43,7 +43,7 @@ public class ExampleFragment extends Fragment
 				// if request is cancelled, the result arrays are empty
 				if(grantResults.length > 0)
 				{
-					for(int i=0; i<grantResults.length; i++)
+					for(int i = 0; i < grantResults.length; i++)
 					{
 						if(grantResults[i] == PackageManager.PERMISSION_GRANTED)
 						{

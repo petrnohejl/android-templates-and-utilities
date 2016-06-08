@@ -33,7 +33,7 @@ public final class GcmUtility
 	public static boolean checkPlayServices(Activity activity)
 	{
 		int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
-		if(resultCode!=ConnectionResult.SUCCESS)
+		if(resultCode != ConnectionResult.SUCCESS)
 		{
 			if(GooglePlayServicesUtil.isUserRecoverableError(resultCode))
 			{
@@ -65,7 +65,7 @@ public final class GcmUtility
 		// check if app was updated
 		int registeredVersion = preferences.getGcmVersionCode();
 		int currentVersion = Version.getVersionCode(context);
-		if(registeredVersion!=currentVersion)
+		if(registeredVersion != currentVersion)
 		{
 			Logcat.d("app version has changed");
 			return "";
@@ -93,7 +93,7 @@ public final class GcmUtility
 
 		// Once GCM returns a registration id, we need to register it on the server.
 		// As the server might be down, we will retry it a couple times.
-		for(int i=1; i<=MAX_ATTEMPTS; i++)
+		for(int i = 1; i <= MAX_ATTEMPTS; i++)
 		{
 			Logcat.d("attempt #%d to register", i);
 
@@ -227,7 +227,7 @@ public final class GcmUtility
 		// request URL
 		StringBuilder builder = new StringBuilder();
 		builder.append(baseUrl);
-		if(params!=null && !params.equals(""))
+		if(params != null && !params.equals(""))
 		{
 			builder.append("?");
 			builder.append(params);

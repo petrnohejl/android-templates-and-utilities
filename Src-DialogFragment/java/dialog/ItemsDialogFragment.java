@@ -12,46 +12,46 @@ import com.example.R;
 public class ItemsDialogFragment extends DialogFragment
 {
 	private static final String ARGUMENT_EXAMPLE = "example";
-	
+
 	private String mExample;
 	private ItemsDialogListener mListener;
-	
-	
+
+
 	public interface ItemsDialogListener
 	{
 		void onItemsDialogItemClick(DialogFragment dialog, int which);
 		void onItemsDialogPositiveClick(DialogFragment dialog);
 		void onItemsDialogNegativeClick(DialogFragment dialog);
 	}
-	
-	
+
+
 	public static ItemsDialogFragment newInstance(String example)
 	{
 		ItemsDialogFragment fragment = new ItemsDialogFragment();
-		
+
 		// arguments
 		Bundle arguments = new Bundle();
 		arguments.putString(ARGUMENT_EXAMPLE, example);
 		fragment.setArguments(arguments);
-		
+
 		return fragment;
 	}
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setCancelable(true);
 		setRetainInstance(true);
-		
+
 		// handle fragment arguments
 		Bundle arguments = getArguments();
 		if(arguments != null)
 		{
 			handleArguments(arguments);
 		}
-		
+
 		// set callback listener
 		try
 		{
@@ -62,18 +62,18 @@ public class ItemsDialogFragment extends DialogFragment
 			throw new ClassCastException(getTargetFragment().toString() + " must implement " + ItemsDialogListener.class.getName());
 		}
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
+
 		// cancelable on touch outside
-		if(getDialog()!=null) getDialog().setCanceledOnTouchOutside(true);
+		if(getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
 	}
-	
-	
+
+
 	@Override
 	public void onDestroyView()
 	{
@@ -81,8 +81,8 @@ public class ItemsDialogFragment extends DialogFragment
 		if(getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
 		super.onDestroyView();
 	}
-	
-	
+
+
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
@@ -90,40 +90,40 @@ public class ItemsDialogFragment extends DialogFragment
 				"item1",
 				"item2",
 				"item3",
-				"item4" };
+				"item4"};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		
+
 		builder
-		.setTitle(mExample)
-		.setIcon(R.mipmap.ic_launcher)
-		.setItems(items, new DialogInterface.OnClickListener()
-		{
-			@Override
-			public void onClick(DialogInterface dialog, int which)
-			{
-				mListener.onItemsDialogItemClick(ItemsDialogFragment.this, which);
-			}
-		})
-		.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
-		{
-			public void onClick(DialogInterface dialog, int id)
-			{
-				mListener.onItemsDialogPositiveClick(ItemsDialogFragment.this);
-			}
-		})
-		.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
-		{
-			public void onClick(DialogInterface dialog, int id)
-			{
-				mListener.onItemsDialogNegativeClick(ItemsDialogFragment.this);
-			}
-		});
-		
+				.setTitle(mExample)
+				.setIcon(R.mipmap.ic_launcher)
+				.setItems(items, new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						mListener.onItemsDialogItemClick(ItemsDialogFragment.this, which);
+					}
+				})
+				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+				{
+					public void onClick(DialogInterface dialog, int id)
+					{
+						mListener.onItemsDialogPositiveClick(ItemsDialogFragment.this);
+					}
+				})
+				.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
+				{
+					public void onClick(DialogInterface dialog, int id)
+					{
+						mListener.onItemsDialogNegativeClick(ItemsDialogFragment.this);
+					}
+				});
+
 		return builder.create();
 	}
-	
-	
+
+
 	private void handleArguments(Bundle arguments)
 	{
 		if(arguments.containsKey(ARGUMENT_EXAMPLE))

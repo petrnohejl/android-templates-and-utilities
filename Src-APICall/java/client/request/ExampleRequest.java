@@ -18,10 +18,10 @@ public class ExampleRequest extends Request
 {
 	private static final String REQUEST_METHOD = "POST";
 	private static final String REQUEST_PATH = "example";
-	
+
 	private int mSkip;
 	private int mTake;
-	
+
 
 	public ExampleRequest(int skip, int take)
 	{
@@ -29,7 +29,7 @@ public class ExampleRequest extends Request
 		mTake = take;
 	}
 
-	
+
 	@Override
 	public String getRequestMethod()
 	{
@@ -61,7 +61,7 @@ public class ExampleRequest extends Request
 	{
 		StringBuilder builder = new StringBuilder();
 		builder.append("content");
-		
+
 		try
 		{
 			return builder.toString().getBytes(CHARSET);

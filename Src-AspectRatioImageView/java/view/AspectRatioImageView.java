@@ -30,19 +30,19 @@ public class AspectRatioImageView extends ImageView
 	{
 		int width = MeasureSpec.getSize(widthMeasureSpec);
 		int height = 0;
-		
+
 		try
 		{
-			if(getDrawable()!=null)
+			if(getDrawable() != null)
 			{
 				height = width * getDrawable().getIntrinsicHeight() / getDrawable().getIntrinsicWidth();
 			}
 		}
 		catch(ArithmeticException e)
 		{
-		
+
 		}
-		
+
 		setMeasuredDimension(width, height);
 	}
 }

@@ -37,15 +37,15 @@ public class SearchSuggestionAdapter extends CursorAdapter
 		LinearLayout root = (LinearLayout) view;
 		TextView titleTextView = (TextView) root.findViewById(R.id.search_suggestion_item_title);
 		TextView subtitleTextView = (TextView) root.findViewById(R.id.search_suggestion_item_subtitle);
-		
+
 		// content
 		final int index1 = cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1);
 		final int index2 = cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_2);
 		titleTextView.setText(cursor.getString(index1));
 		subtitleTextView.setText(cursor.getString(index2));
 	}
-	
-	
+
+
 	public void refill(Context context, Cursor cursor)
 	{
 		changeCursor(cursor);

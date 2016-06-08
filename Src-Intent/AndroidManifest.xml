@@ -3,49 +3,89 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.example">
 
-	<application 
+	<application
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name">
-		
+
 		<activity
 			android:name=".activity.ExampleActivity"
 			android:label="@string/app_name">
 			<intent-filter android:label="Example label">
 				<action android:name="android.intent.action.VIEW" />
+
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
+
 				<data android:scheme="http" />
 				<data android:scheme="https" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
+
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="market" android:host="search" android:path="" />
-				<data android:scheme="http" android:host="play.google.com" android:pathPattern="/store/search?q=.*" />
-				<data android:scheme="https" android:host="play.google.com" android:pathPattern="/store/search?q=.*" />
+
+				<data
+					android:scheme="market"
+					android:host="search"
+					android:path="" />
+				<data
+					android:scheme="http"
+					android:host="play.google.com"
+					android:pathPattern="/store/search?q=.*" />
+				<data
+					android:scheme="https"
+					android:host="play.google.com"
+					android:pathPattern="/store/search?q=.*" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
+
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="market" android:host="details" android:path="" />
-				<data android:scheme="http" android:host="play.google.com" android:pathPattern="/store/apps/details?id=.*" />
-				<data android:scheme="https" android:host="play.google.com" android:pathPattern="/store/apps/details?id=.*" />
+
+				<data
+					android:scheme="market"
+					android:host="details"
+					android:path="" />
+				<data
+					android:scheme="http"
+					android:host="play.google.com"
+					android:pathPattern="/store/apps/details?id=.*" />
+				<data
+					android:scheme="https"
+					android:host="play.google.com"
+					android:pathPattern="/store/apps/details?id=.*" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<action android:name="android.intent.action.EDIT" />
 				<action android:name="android.intent.action.PICK" />
+
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:scheme="example" android:host="datastore" android:port="8000" android:path="/videos" /> <!-- example://datastore:8000/videos -->
-				<data android:scheme="example" android:host="datastore" android:port="8000" android:pathPrefix="/videos/" /> <!-- example://datastore:8000/videos/80 -->
-				<data android:scheme="example" android:host="datastore" android:port="8000" android:pathPattern="/video/.*/detail" /> <!-- example://datastore:8000/video/80/detail -->
+
+				<data
+					android:scheme="example"
+					android:host="datastore"
+					android:port="8000"
+					android:path="/videos" /> <!-- example://datastore:8000/videos -->
+				<data
+					android:scheme="example"
+					android:host="datastore"
+					android:port="8000"
+					android:pathPrefix="/videos/" /> <!-- example://datastore:8000/videos/80 -->
+				<data
+					android:scheme="example"
+					android:host="datastore"
+					android:port="8000"
+					android:pathPattern="/video/.*/detail" /> <!-- example://datastore:8000/video/80/detail -->
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.SENDTO" />
+
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
+
 				<data android:scheme="mailto" />
 			</intent-filter>
 			<intent-filter>
@@ -84,6 +124,6 @@
 				<data android:mimeType="vnd.android.cursor.item/event" />
 			</intent-filter>
 		</activity>
-		
+
 	</application>
 </manifest>

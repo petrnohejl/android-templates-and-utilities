@@ -8,14 +8,14 @@ import com.example.entity.ProductEntity;
 public class ProductCreateQuery extends Query
 {
 	private ProductEntity mProduct;
-	
-	
+
+
 	public ProductCreateQuery(ProductEntity product)
 	{
 		mProduct = product;
 	}
-	
-	
+
+
 	@Override
 	public Data<Long> processData()
 	{

@@ -15,8 +15,8 @@ public class ProgressDialogFragment extends DialogFragment
 		ProgressDialogFragment fragment = new ProgressDialogFragment();
 		return fragment;
 	}
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -24,8 +24,8 @@ public class ProgressDialogFragment extends DialogFragment
 		setCancelable(false);
 		setRetainInstance(true);
 	}
-	
-	
+
+
 	@Override
 	public void onDestroyView()
 	{
@@ -33,8 +33,8 @@ public class ProgressDialogFragment extends DialogFragment
 		if(getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
 		super.onDestroyView();
 	}
-	
-	
+
+
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
@@ -45,14 +45,14 @@ public class ProgressDialogFragment extends DialogFragment
 		dialog.setCancelable(false);
 		return dialog;
 	}
-	
-	
+
+
 	public void dismiss()
 	{
 		getDialog().dismiss();
 	}
-	
-	
+
+
 	private int getTheme(boolean light)
 	{
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)

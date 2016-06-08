@@ -16,16 +16,16 @@ public class DrawerAdapter extends BaseAdapter
 	private Context mContext;
 	private String[] mTitleList;
 	private Integer[] mIconList;
-	
-	
+
+
 	public DrawerAdapter(Context context, String[] titleList, Integer[] iconList)
 	{
 		mContext = context;
 		mTitleList = titleList;
 		mIconList = iconList;
 	}
-	
-	
+
+
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent)
 	{
@@ -34,54 +34,54 @@ public class DrawerAdapter extends BaseAdapter
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.drawer_item, parent, false);
-			
+
 			// view holder
 			ViewHolder holder = new ViewHolder();
 			holder.titleTextView = (TextView) convertView.findViewById(R.id.drawer_item_title);
 			holder.iconImageView = (ImageView) convertView.findViewById(R.id.drawer_item_icon);
 			convertView.setTag(holder);
 		}
-		
+
 		// entity
 		String title = mTitleList[position];
 		Integer icon = mIconList[position];
-		if(title!=null && icon!=null)
+		if(title != null && icon != null)
 		{
 			// view holder
 			ViewHolder holder = (ViewHolder) convertView.getTag();
-			
+
 			// content
 			holder.titleTextView.setText(title);
 			holder.iconImageView.setImageResource(icon);
 		}
-		
+
 		return convertView;
 	}
-	
-	
+
+
 	@Override
 	public int getCount()
 	{
-		if(mTitleList!=null) return mTitleList.length;
+		if(mTitleList != null) return mTitleList.length;
 		else return 0;
 	}
-	
-	
+
+
 	@Override
 	public Object getItem(int position)
 	{
-		if(mTitleList!=null) return mTitleList[position];
+		if(mTitleList != null) return mTitleList[position];
 		else return null;
 	}
-	
-	
+
+
 	@Override
 	public long getItemId(int position)
 	{
 		return position;
 	}
-	
-	
+
+
 	public void refill(Context context, String[] titleList, Integer[] iconList)
 	{
 		mContext = context;
@@ -89,8 +89,8 @@ public class DrawerAdapter extends BaseAdapter
 		mIconList = iconList;
 		notifyDataSetChanged();
 	}
-	
-	
+
+
 	static class ViewHolder
 	{
 		TextView titleTextView;

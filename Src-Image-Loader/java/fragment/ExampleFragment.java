@@ -22,7 +22,7 @@ public class ExampleFragment extends Fragment
 	private DisplayImageOptions mDisplayImageOptions;
 	private ImageLoadingListener mImageLoadingListener;
 
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -30,15 +30,15 @@ public class ExampleFragment extends Fragment
 		setupImageLoader();
 	}
 
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{	
+	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference

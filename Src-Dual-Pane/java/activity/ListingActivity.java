@@ -16,50 +16,50 @@ public class ListingActivity extends AppCompatActivity implements OnDualPaneShow
 {
 	private static final String SAVED_DUAL_PANE_FRAGMENT = "dual_pane_fragment";
 	private static final String SAVED_DUAL_PANE_INDEX = "dual_pane_index";
-	
+
 	private boolean mDualPane;
 	private Class<?> mDualPaneFragment = null;
 	private int mDualPaneIndex = -1;
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listing);
-		
+
 		// restore saved state
 		if(savedInstanceState != null)
 		{
 			handleSavedInstanceState(savedInstanceState);
 		}
-		
+
 		// handle dual pane layout
 		handleDualPane();
 	}
-	
-	
+
+
 	@Override
-	public void onSaveInstanceState(Bundle outState) 
+	public void onSaveInstanceState(Bundle outState)
 	{
 		// save current instance state
 		super.onSaveInstanceState(outState);
-		if(mDualPaneFragment!=null) outState.putString(SAVED_DUAL_PANE_FRAGMENT, mDualPaneFragment.getName());
-		if(mDualPaneIndex!=-1) outState.putInt(SAVED_DUAL_PANE_INDEX, mDualPaneIndex);
+		if(mDualPaneFragment != null) outState.putString(SAVED_DUAL_PANE_FRAGMENT, mDualPaneFragment.getName());
+		if(mDualPaneIndex != -1) outState.putInt(SAVED_DUAL_PANE_INDEX, mDualPaneIndex);
 	}
-	
-	
+
+
 	@Override
 	public void onDualPaneShow(Class<?> targetFragment, int index)
 	{
 		mDualPaneFragment = targetFragment;
 		mDualPaneIndex = index;
-		
+
 		if(mDualPane)
 		{
 			Fragment fragment = null;
 			String tag = null;
-			
+
 			// type of fragment to be replaced
 			if(targetFragment.equals(SimpleFragment.class))
 			{
@@ -68,7 +68,7 @@ public class ListingActivity extends AppCompatActivity implements OnDualPaneShow
 			}
 
 			// replace fragment
-			if(fragment!=null)
+			if(fragment != null)
 			{
 				FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 				transaction.replace(R.id.container_dual_pane, fragment, tag);
@@ -87,20 +87,20 @@ public class ListingActivity extends AppCompatActivity implements OnDualPaneShow
 			}
 
 			// start activity
-			if(intent!=null)
+			if(intent != null)
 			{
 				startActivity(intent);
 			}
 		}
 	}
-	
-	
+
+
 	private void handleSavedInstanceState(Bundle savedInstanceState)
 	{
 		String dualPaneFragmentString = savedInstanceState.getString(SAVED_DUAL_PANE_FRAGMENT);
 		try
 		{
-			if(dualPaneFragmentString!=null) mDualPaneFragment = Class.forName(dualPaneFragmentString);
+			if(dualPaneFragmentString != null) mDualPaneFragment = Class.forName(dualPaneFragmentString);
 		}
 		catch(ClassNotFoundException e)
 		{
@@ -109,14 +109,14 @@ public class ListingActivity extends AppCompatActivity implements OnDualPaneShow
 		mDualPaneIndex = savedInstanceState.getInt(SAVED_DUAL_PANE_INDEX, -1);
 	}
 
-	
+
 	private void handleDualPane()
 	{
 		// activity has dual pane layout
 		View dualPaneContainer = findViewById(R.id.container_dual_pane);
 		mDualPane = dualPaneContainer != null && dualPaneContainer.getVisibility() == View.VISIBLE;
 
-		if(mDualPane && mDualPaneFragment!=null && mDualPaneIndex!=-1)
+		if(mDualPane && mDualPaneFragment != null && mDualPaneIndex != -1)
 		{
 			onDualPaneShow(mDualPaneFragment, mDualPaneIndex);
 		}

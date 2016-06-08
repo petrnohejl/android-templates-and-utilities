@@ -13,8 +13,8 @@ import com.example.fragment.ExampleFragment;
 public class TabsActivity extends AppCompatActivity
 {
 	private TabsFragmentPagerAdapter mAdapter;
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -22,19 +22,19 @@ public class TabsActivity extends AppCompatActivity
 		setContentView(R.layout.activity_tabs);
 		bindData();
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_tabs_pager);
-		
+
 		// navigation mode
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
+
 		// pager content
-		if(mAdapter==null)
+		if(mAdapter == null)
 		{
 			// create adapter
 			mAdapter = new TabsFragmentPagerAdapter(this, actionBar, viewPager);

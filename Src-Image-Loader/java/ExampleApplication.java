@@ -20,15 +20,15 @@ public class ExampleApplication extends Application
 	private static ExampleApplication sInstance;
 
 
-	public static Context getContext()
-	{
-		return sInstance;
-	}
-
-
 	public ExampleApplication()
 	{
 		sInstance = this;
+	}
+
+
+	public static Context getContext()
+	{
+		return sInstance;
 	}
 
 
@@ -36,7 +36,7 @@ public class ExampleApplication extends Application
 	public void onCreate()
 	{
 		super.onCreate();
-		
+
 		// init image caching
 		File cacheDir = StorageUtils.getCacheDirectory(getApplicationContext());
 		cacheDir.mkdirs(); // requires android.permission.WRITE_EXTERNAL_STORAGE

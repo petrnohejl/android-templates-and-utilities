@@ -34,7 +34,7 @@ public class ExampleFragment extends Fragment
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		
+
 		// init receiver
 		initReceiver();
 	}
@@ -44,7 +44,7 @@ public class ExampleFragment extends Fragment
 	public void onResume()
 	{
 		super.onResume();
-		
+
 		// register receiver
 		getActivity().registerReceiver(mExampleBroadcastReceiver, mExampleIntentFilter);
 	}
@@ -54,7 +54,7 @@ public class ExampleFragment extends Fragment
 	public void onPause()
 	{
 		super.onPause();
-		
+
 		// unregister receiver
 		getActivity().unregisterReceiver(mExampleBroadcastReceiver);
 	}
@@ -65,7 +65,7 @@ public class ExampleFragment extends Fragment
 		// create intent filter
 		mExampleIntentFilter = new IntentFilter();
 		mExampleIntentFilter.addAction(ExampleBroadcast.ACTION_EXAMPLE);
-		
+
 		// create broadcast receiver
 		mExampleBroadcastReceiver = new BroadcastReceiver()
 		{
@@ -75,7 +75,7 @@ public class ExampleFragment extends Fragment
 				if(intent.getAction().equals(ExampleBroadcast.ACTION_EXAMPLE))
 				{
 					String arg = intent.getExtras().getString(ExampleBroadcast.EXTRA_ARG);
-					
+
 					Logcat.d(arg);
 				}
 			}

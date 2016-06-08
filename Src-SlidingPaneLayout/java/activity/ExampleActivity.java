@@ -49,8 +49,8 @@ public class ExampleActivity extends AppCompatActivity
 				return super.onOptionsItemSelected(item);
 		}
 	}
-	
-	
+
+
 	private void setupActionBar()
 	{
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -78,11 +78,13 @@ public class ExampleActivity extends AppCompatActivity
 			{
 			}
 
+
 			@Override
 			public void onPanelOpened(View view)
 			{
 				onSlidingPaneOpened();
 			}
+
 
 			@Override
 			public void onPanelClosed(View view)
@@ -135,13 +137,13 @@ public class ExampleActivity extends AppCompatActivity
 
 		if(mSlidingPaneLayout.isSlideable())
 		{
-			if(fragmentLeft!=null) fragmentLeft.setHasOptionsMenu(true);
-			if(fragmentRight!=null) fragmentRight.setHasOptionsMenu(false);
+			if(fragmentLeft != null) fragmentLeft.setHasOptionsMenu(true);
+			if(fragmentRight != null) fragmentRight.setHasOptionsMenu(false);
 		}
 		else
 		{
-			if(fragmentLeft!=null) fragmentLeft.setHasOptionsMenu(false);
-			if(fragmentRight!=null) fragmentRight.setHasOptionsMenu(true);
+			if(fragmentLeft != null) fragmentLeft.setHasOptionsMenu(false);
+			if(fragmentRight != null) fragmentRight.setHasOptionsMenu(true);
 		}
 
 		ActionBar bar = getSupportActionBar();
@@ -155,8 +157,8 @@ public class ExampleActivity extends AppCompatActivity
 		Fragment fragmentLeft = getSupportFragmentManager().findFragmentById(R.id.activity_example_sliding_pane_left);
 		Fragment fragmentRight = getSupportFragmentManager().findFragmentById(R.id.activity_example_sliding_pane_right);
 
-		if(fragmentLeft!=null) fragmentLeft.setHasOptionsMenu(false);
-		if(fragmentRight!=null) fragmentRight.setHasOptionsMenu(true);
+		if(fragmentLeft != null) fragmentLeft.setHasOptionsMenu(false);
+		if(fragmentRight != null) fragmentRight.setHasOptionsMenu(true);
 
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayHomeAsUpEnabled(true);

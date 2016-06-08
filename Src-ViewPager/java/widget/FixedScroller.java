@@ -15,30 +15,6 @@ public class FixedScroller extends Scroller
 	private int mFixedDuration = 100;
 
 
-	public static void setViewPagerDuration(ViewPager viewPager, int duration)
-	{
-		try
-		{
-			Field field = ViewPager.class.getDeclaredField("mScroller");
-			field.setAccessible(true);
-			
-			FixedScroller fixedScroller = new FixedScroller(viewPager.getContext(), new DecelerateInterpolator());
-			fixedScroller.setFixedDuration(duration);
-			
-			field.set(viewPager, fixedScroller);
-		}
-		catch(NoSuchFieldException e)
-		{
-		}
-		catch(IllegalArgumentException e)
-		{
-		}
-		catch(IllegalAccessException e)
-		{
-		}
-	}
-
-
 	public FixedScroller(Context context)
 	{
 		super(context);
@@ -54,6 +30,30 @@ public class FixedScroller extends Scroller
 	public FixedScroller(Context context, Interpolator interpolator, boolean flywheel)
 	{
 		super(context, interpolator, flywheel);
+	}
+
+
+	public static void setViewPagerDuration(ViewPager viewPager, int duration)
+	{
+		try
+		{
+			Field field = ViewPager.class.getDeclaredField("mScroller");
+			field.setAccessible(true);
+
+			FixedScroller fixedScroller = new FixedScroller(viewPager.getContext(), new DecelerateInterpolator());
+			fixedScroller.setFixedDuration(duration);
+
+			field.set(viewPager, fixedScroller);
+		}
+		catch(NoSuchFieldException e)
+		{
+		}
+		catch(IllegalArgumentException e)
+		{
+		}
+		catch(IllegalAccessException e)
+		{
+		}
 	}
 
 

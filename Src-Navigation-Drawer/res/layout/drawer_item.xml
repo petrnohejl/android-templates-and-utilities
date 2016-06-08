@@ -7,7 +7,7 @@
 	android:gravity="center_vertical"
 	android:orientation="horizontal"
 	android:background="@drawable/selector_selectable_item_bg">
-	
+
 	<ImageView
 		android:id="@+id/drawer_item_icon"
 		android:layout_width="@dimen/global_spacing_32"
@@ -16,12 +16,12 @@
 		android:layout_marginRight="@dimen/global_spacing_16"
 		android:adjustViewBounds="true"
 		android:scaleType="fitCenter" />
-	
+
 	<TextView
 		android:id="@+id/drawer_item_title"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginRight="@dimen/global_keyline_16"
 		android:textAppearance="@style/TextAppearance.Example.Body1" />
-	
+
 </LinearLayout>

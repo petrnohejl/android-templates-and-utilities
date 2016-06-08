@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.example"
-	android:installLocation="auto">
+	android:installLocation="auto"
+	package="com.example">
 
 	<!-- versionCode, versionName, minSdkVersion, targetSdkVersion properties are set via Gradle script -->
 

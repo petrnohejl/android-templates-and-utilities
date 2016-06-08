@@ -54,17 +54,17 @@ public class LinearDividerItemDecoration extends RecyclerView.ItemDecoration
 	{
 		super.getItemOffsets(outRect, view, recyclerView, state);
 
-		if(mDivider==null)
+		if(mDivider == null)
 		{
 			return;
 		}
 
-		if(recyclerView.getChildLayoutPosition(view)<1)
+		if(recyclerView.getChildLayoutPosition(view) < 1)
 		{
 			return;
 		}
 
-		if(getOrientation(recyclerView)==LinearLayoutManager.VERTICAL)
+		if(getOrientation(recyclerView) == LinearLayoutManager.VERTICAL)
 		{
 			outRect.top = mDivider.getIntrinsicHeight();
 		}
@@ -78,7 +78,7 @@ public class LinearDividerItemDecoration extends RecyclerView.ItemDecoration
 	@Override
 	public void onDrawOver(Canvas canvas, RecyclerView recyclerView, RecyclerView.State state)
 	{
-		if(mDivider==null)
+		if(mDivider == null)
 		{
 			super.onDrawOver(canvas, recyclerView, state);
 			return;
@@ -89,7 +89,7 @@ public class LinearDividerItemDecoration extends RecyclerView.ItemDecoration
 		int orientation = getOrientation(recyclerView);
 		int childCount = recyclerView.getChildCount();
 
-		if(orientation==LinearLayoutManager.VERTICAL)
+		if(orientation == LinearLayoutManager.VERTICAL)
 		{
 			size = mDivider.getIntrinsicHeight();
 			left = recyclerView.getPaddingLeft();
@@ -102,12 +102,12 @@ public class LinearDividerItemDecoration extends RecyclerView.ItemDecoration
 			bottom = recyclerView.getHeight() - recyclerView.getPaddingBottom();
 		}
 
-		for(int i = mShowFirstDivider ? 0 : 1; i<childCount; i++)
+		for(int i = mShowFirstDivider ? 0 : 1; i < childCount; i++)
 		{
 			View child = recyclerView.getChildAt(i);
 			RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
 
-			if(orientation==LinearLayoutManager.VERTICAL)
+			if(orientation == LinearLayoutManager.VERTICAL)
 			{
 				top = child.getTop() - params.topMargin - size;
 				bottom = top + size;
@@ -123,12 +123,12 @@ public class LinearDividerItemDecoration extends RecyclerView.ItemDecoration
 		}
 
 		// show last divider
-		if(mShowLastDivider && childCount>0)
+		if(mShowLastDivider && childCount > 0)
 		{
 			View child = recyclerView.getChildAt(childCount - 1);
 			RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
 
-			if(orientation==LinearLayoutManager.VERTICAL)
+			if(orientation == LinearLayoutManager.VERTICAL)
 			{
 				top = child.getBottom() + params.bottomMargin;
 				bottom = top + size;

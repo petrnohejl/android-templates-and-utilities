@@ -35,16 +35,16 @@ public class StatefulLayout extends FrameLayout
 		private final int mValue;
 
 
+		private State(int value)
+		{
+			mValue = value;
+		}
+
+
 		public static State valueToState(int value)
 		{
 			State[] values = State.values();
 			return values[value];
-		}
-
-
-		private State(int value)
-		{
-			mValue = value;
 		}
 
 
@@ -144,7 +144,7 @@ public class StatefulLayout extends FrameLayout
 		mProgressLayout.setVisibility(state == State.PROGRESS ? View.VISIBLE : View.GONE);
 		mOfflineLayout.setVisibility(state == State.OFFLINE ? View.VISIBLE : View.GONE);
 		mEmptyLayout.setVisibility(state == State.EMPTY ? View.VISIBLE : View.GONE);
-		if(mOnStateChangeListener!=null) mOnStateChangeListener.onStateChange(this, state);
+		if(mOnStateChangeListener != null) mOnStateChangeListener.onStateChange(this, state);
 	}
 
 
@@ -156,7 +156,7 @@ public class StatefulLayout extends FrameLayout
 
 	public void saveInstanceState(Bundle outState)
 	{
-		if(mState!=null)
+		if(mState != null)
 		{
 			outState.putInt(SAVED_STATE, mState.getValue());
 		}
@@ -166,7 +166,7 @@ public class StatefulLayout extends FrameLayout
 	public State restoreInstanceState(Bundle savedInstanceState)
 	{
 		State state = null;
-		if(savedInstanceState!=null && savedInstanceState.containsKey(SAVED_STATE))
+		if(savedInstanceState != null && savedInstanceState.containsKey(SAVED_STATE))
 		{
 			int value = savedInstanceState.getInt(SAVED_STATE);
 			state = StatefulLayout.State.valueToState(value);
@@ -178,7 +178,7 @@ public class StatefulLayout extends FrameLayout
 
 	private void setupView()
 	{
-		if(mContentLayout==null && !isInEditMode())
+		if(mContentLayout == null && !isInEditMode())
 		{
 			mContentLayout = getChildAt(0);
 			mProgressLayout = LayoutInflater.from(getContext()).inflate(mProgressLayoutId, this, false);

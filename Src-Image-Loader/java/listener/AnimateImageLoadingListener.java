@@ -20,7 +20,7 @@ public class AnimateImageLoadingListener extends SimpleImageLoadingListener
 	@Override
 	public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage)
 	{
-		if(loadedImage!=null)
+		if(loadedImage != null)
 		{
 			ImageView imageView = (ImageView) view;
 			boolean firstDisplay = !mDisplayedImageList.contains(imageUri);

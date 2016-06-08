@@ -25,8 +25,8 @@ public class ExampleFragment extends Fragment
 {
 	private View mRootView;
 	private MapView mMapView;
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
@@ -36,8 +36,8 @@ public class ExampleFragment extends Fragment
 		mMapView.onCreate(savedInstanceState);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
@@ -45,57 +45,57 @@ public class ExampleFragment extends Fragment
 		setupMap();
 		bindData();
 	}
-	
-	
+
+
 	@Override
 	public void onResume()
 	{
 		super.onResume();
-		
+
 		// map
-		if(mMapView!=null) mMapView.onResume();
+		if(mMapView != null) mMapView.onResume();
 	}
-	
-	
+
+
 	@Override
 	public void onPause()
 	{
 		super.onPause();
-		
+
 		// map
-		if(mMapView!=null) mMapView.onPause();
+		if(mMapView != null) mMapView.onPause();
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
-		
+
 		// map
-		if(mMapView!=null) mMapView.onDestroy();
+		if(mMapView != null) mMapView.onDestroy();
 	}
-	
-	
+
+
 	@Override
 	public void onLowMemory()
 	{
 		super.onLowMemory();
-		
+
 		// map
-		if(mMapView!=null) mMapView.onLowMemory();
+		if(mMapView != null) mMapView.onLowMemory();
 	}
-	
-	
+
+
 	@Override
 	public void onSaveInstanceState(Bundle outState)
 	{
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
-		
+
 		// map
-		if(mMapView!=null) mMapView.onSaveInstanceState(outState);
+		if(mMapView != null) mMapView.onSaveInstanceState(outState);
 	}
 
 
@@ -105,20 +105,20 @@ public class ExampleFragment extends Fragment
 		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMap();
 
 		// content
-		if(map!=null)
+		if(map != null)
 		{
 			BitmapDescriptor marker1 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
 			BitmapDescriptor marker2 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
 			BitmapDescriptor marker3 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
 			BitmapDescriptor marker4 = BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher);
-			BitmapDescriptor[] markers = { marker1, marker2, marker3, marker4 };
+			BitmapDescriptor[] markers = {marker1, marker2, marker3, marker4};
 
-			for(int i=0; i<16; i++)
+			for(int i = 0; i < 16; i++)
 			{
 				map.addMarker(new MarkerOptions()
-					.position(new LatLng( 49.194696+0.1*Math.sin(i*Math.PI/8), 16.608595+0.1*Math.cos(i*Math.PI/8) ))
-					.title("Example " + i)
-					.icon(markers[i%4])
+						.position(new LatLng(49.194696 + 0.1 * Math.sin(i * Math.PI / 8), 16.608595 + 0.1 * Math.cos(i * Math.PI / 8)))
+						.title("Example " + i)
+						.icon(markers[i % 4])
 				);
 			}
 		}
@@ -141,30 +141,30 @@ public class ExampleFragment extends Fragment
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	private void setupMap()
 	{
 		// reference
 		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMap();
-		
+
 		// settings
-		if(map!=null)
+		if(map != null)
 		{
 			map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 			map.setMyLocationEnabled(true);
-			
+
 			UiSettings settings = map.getUiSettings();
 			settings.setAllGesturesEnabled(true);
 			settings.setMyLocationButtonEnabled(true);
 			settings.setZoomControlsEnabled(true);
-			
+
 			CameraPosition cameraPosition = new CameraPosition.Builder()
-				.target(new LatLng(49.194696, 16.608595))
-				.zoom(11)
-				.bearing(0)
-				.tilt(30)
-				.build();
+					.target(new LatLng(49.194696, 16.608595))
+					.zoom(11)
+					.bearing(0)
+					.tilt(30)
+					.build();
 			map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 		}
 	}

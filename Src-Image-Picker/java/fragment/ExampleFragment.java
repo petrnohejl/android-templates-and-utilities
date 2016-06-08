@@ -20,24 +20,24 @@ public class ExampleFragment extends TaskFragment
 	private View mRootView;
 	private Bitmap mBitmap;
 	private ImagePicker mImagePicker;
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		mImagePicker = new ImagePicker(getActivity());
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityResult(final int requestCode, final int resultCode, final Intent data)
 	{
@@ -45,8 +45,8 @@ public class ExampleFragment extends TaskFragment
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
-				
+				if(mRootView == null) return; // view was destroyed
+
 				switch(requestCode)
 				{
 					case ImagePicker.ACTION_PICK_IMAGE_FROM_CAMERA:
@@ -54,7 +54,7 @@ public class ExampleFragment extends TaskFragment
 						if(resultCode == Activity.RESULT_OK)
 						{
 							Bitmap bitmap = mImagePicker.handleImageFromCamera();
-							if(bitmap!=null)
+							if(bitmap != null)
 							{
 								mBitmap = bitmap;
 								bindData();
@@ -70,13 +70,13 @@ public class ExampleFragment extends TaskFragment
 						}
 						break;
 					}
-					
+
 					case ImagePicker.ACTION_PICK_IMAGE_FROM_GALLERY:
 					{
 						if(resultCode == Activity.RESULT_OK)
 						{
 							Bitmap bitmap = mImagePicker.handleImageFromGallery(data);
-							if(bitmap!=null)
+							if(bitmap != null)
 							{
 								mBitmap = bitmap;
 								bindData();
@@ -104,9 +104,9 @@ public class ExampleFragment extends TaskFragment
 		ImageView previewImageView = (ImageView) mRootView.findViewById(R.id.fragment_example_preview);
 		Button cameraButton = (Button) mRootView.findViewById(R.id.fragment_example_camera);
 		Button galleryButton = (Button) mRootView.findViewById(R.id.fragment_example_gallery);
-		
+
 		// content
-		if(mBitmap!=null) previewImageView.setImageBitmap(mBitmap);
+		if(mBitmap != null) previewImageView.setImageBitmap(mBitmap);
 		cameraButton.setOnClickListener(new OnClickListener()
 		{
 			@Override

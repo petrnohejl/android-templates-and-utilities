@@ -31,7 +31,7 @@ public class ProductReadAllQuery extends Query
 		ProductDAO dao = new ProductDAO();
 		List<ProductEntity> list;
 
-		if(mLimit==-1 && mOffset==-1)
+		if(mLimit == -1 && mOffset == -1)
 		{
 			list = dao.readAll();
 		}

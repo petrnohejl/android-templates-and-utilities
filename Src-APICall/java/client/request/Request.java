@@ -19,6 +19,7 @@ public abstract class Request
 
 	private Bundle mMetaData = null;
 
+
 	public abstract String getRequestMethod();
 	public abstract String getAddress();
 	public abstract Response<?> parseResponse(InputStream stream) throws IOException, JsonParseException;

@@ -6,8 +6,8 @@
 	android:layout_height="match_parent">
 
 	<include
-		layout="@layout/placeholder_empty"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent" />
+		android:layout_height="match_parent"
+		layout="@layout/placeholder_empty" />
 
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -13,29 +13,29 @@ import com.example.R;
 public class ExampleFragment extends Fragment
 {
 	private static final String ARGUMENT_EXAMPLE = "example";
-	
+
 	private String mExample;
 	private View mRootView;
-	
-	
+
+
 	public static ExampleFragment newInstance(String example)
 	{
 		ExampleFragment fragment = new ExampleFragment();
-		
+
 		// arguments
 		Bundle arguments = new Bundle();
 		arguments.putString(ARGUMENT_EXAMPLE, example);
 		fragment.setArguments(arguments);
-		
+
 		return fragment;
 	}
-	
-	
+
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
+
 		// handle fragment arguments
 		Bundle arguments = getArguments();
 		if(arguments != null)
@@ -43,24 +43,24 @@ public class ExampleFragment extends Fragment
 			handleArguments(arguments);
 		}
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
 		bindData();
 	}
-	
-	
+
+
 	private void handleArguments(Bundle arguments)
 	{
 		if(arguments.containsKey(ARGUMENT_EXAMPLE))
@@ -68,13 +68,13 @@ public class ExampleFragment extends Fragment
 			mExample = (String) arguments.get(ARGUMENT_EXAMPLE);
 		}
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_example_name);
-		
+
 		// content
 		nameTextView.setText("Fragment " + mExample);
 	}

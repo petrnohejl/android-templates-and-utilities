@@ -22,12 +22,12 @@ public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{	
+	{
 		mRootView = inflater.inflate(R.layout.fragment_recycler, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{

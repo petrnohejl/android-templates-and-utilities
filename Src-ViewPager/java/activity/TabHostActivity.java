@@ -13,8 +13,8 @@ import com.example.fragment.ExampleFragment;
 public class TabHostActivity extends AppCompatActivity
 {
 	private TabHostFragmentPagerAdapter mAdapter;
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -22,19 +22,19 @@ public class TabHostActivity extends AppCompatActivity
 		setContentView(R.layout.activity_tabhost);
 		bindData();
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_tabhost_pager);
 		TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
-		
+
 		// tab host
 		tabHost.setup();
-		
+
 		// pager content
-		if(mAdapter==null)
+		if(mAdapter == null)
 		{
 			// create adapter
 			mAdapter = new TabHostFragmentPagerAdapter(this, tabHost, viewPager);

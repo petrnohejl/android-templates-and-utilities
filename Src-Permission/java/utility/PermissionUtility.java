@@ -35,8 +35,8 @@ public final class PermissionUtility
 	public static boolean checkPermissionAccessLocation(final Fragment fragment)
 	{
 		return check(fragment,
-				new String[] { Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION },
-				new int[] { R.string.permission_access_location, R.string.permission_access_location },
+				new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
+				new int[]{R.string.permission_access_location, R.string.permission_access_location},
 				REQUEST_PERMISSION_ACCESS_LOCATION);
 	}
 
@@ -44,8 +44,8 @@ public final class PermissionUtility
 	public static boolean checkPermissionAll(final Fragment fragment)
 	{
 		return check(fragment,
-				new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION },
-				new int[] { R.string.permission_write_external_storage, R.string.permission_access_location, R.string.permission_access_location },
+				new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
+				new int[]{R.string.permission_write_external_storage, R.string.permission_access_location, R.string.permission_access_location},
 				REQUEST_PERMISSION_ALL);
 	}
 
@@ -70,14 +70,14 @@ public final class PermissionUtility
 							public void onClick(View v)
 							{
 								// try again
-								fragment.requestPermissions(new String[]{ permission }, requestCode);
+								fragment.requestPermissions(new String[]{permission}, requestCode);
 							}
 						}).show();
 			}
 			else
 			{
 				// no explanation needed
-				fragment.requestPermissions(new String[]{ permission }, requestCode);
+				fragment.requestPermissions(new String[]{permission}, requestCode);
 			}
 		}
 

@@ -11,8 +11,8 @@ public class ExampleContentObserver extends ContentObserver
 	{
 		super(handler);
 	}
-	
-	
+
+
 	@Override
 	public void onChange(boolean selfChange)
 	{

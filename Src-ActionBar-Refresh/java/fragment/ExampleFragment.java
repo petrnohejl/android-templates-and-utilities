@@ -19,44 +19,44 @@ public class ExampleFragment extends Fragment
 	private boolean mProgress = false;
 	private View mRootView;
 	private MenuItem mRefreshMenuItem;
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
-	
+
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
 	{
 		// action bar menu
 		super.onCreateOptionsMenu(menu, inflater);
-		
+
 		// TODO
 
 		// reference to refresh menu item
 		mRefreshMenuItem = menu.findItem(R.id.menu_fragment_example_refresh);
-		
+
 		// progress in action bar
 		showProgress(mProgress);
 	}
-	
-	
+
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) 
+	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// action bar menu behavior
-		switch(item.getItemId()) 
+		switch(item.getItemId())
 		{
 			// TODO
 
 			case R.id.menu_fragment_example_refresh:
 				refreshData();
 				return true;
-			
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}
@@ -72,7 +72,7 @@ public class ExampleFragment extends Fragment
 	private void showProgress(boolean visible)
 	{
 		// show action view progress
-		if(mRefreshMenuItem!=null)
+		if(mRefreshMenuItem != null)
 		{
 			if(visible)
 			{

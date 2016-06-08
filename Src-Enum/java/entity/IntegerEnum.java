@@ -8,16 +8,16 @@ public enum IntegerEnum
 	private final int mValue;
 
 
+	private IntegerEnum(int value)
+	{
+		mValue = value;
+	}
+
+
 	public static IntegerEnum valueToIntegerEnum(int value)
 	{
 		IntegerEnum[] values = IntegerEnum.values();
 		return values[value];
-	}
-
-
-	private IntegerEnum(int value)
-	{
-		mValue = value;
 	}
 
 

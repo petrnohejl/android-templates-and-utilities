@@ -31,8 +31,8 @@ public class ExampleActivity extends AppCompatActivity
 	private CharSequence mTitle;
 	private CharSequence mDrawerTitle;
 	private String[] mTitles;
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -41,22 +41,22 @@ public class ExampleActivity extends AppCompatActivity
 		setupActionBar();
 		setupDrawer(savedInstanceState);
 	}
-	
-	
+
+
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu)
 	{
 		// action bar menu visibility
-		if(menu!=null)
+		if(menu != null)
 		{
 			boolean drawerOpened = mDrawerLayout.isDrawerOpen(mDrawerListView);
 			MenuItem refresh = menu.findItem(R.id.menu_activity_example_refresh);
-			if(refresh!=null) refresh.setVisible(!drawerOpened);
+			if(refresh != null) refresh.setVisible(!drawerOpened);
 		}
 		return super.onPrepareOptionsMenu(menu);
 	}
-	
-	
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
@@ -65,24 +65,24 @@ public class ExampleActivity extends AppCompatActivity
 		{
 			return true;
 		}
-		
+
 		// action bar menu behavior
 		switch(item.getItemId())
 		{
 			case android.R.id.home:
 				// TODO
 				return true;
-				
+
 			case R.id.menu_activity_example_refresh:
 				// TODO
 				return true;
-			
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}
 	}
-	
-	
+
+
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState)
 	{
@@ -119,8 +119,8 @@ public class ExampleActivity extends AppCompatActivity
 		mTitle = title;
 		getSupportActionBar().setTitle(mTitle);
 	}
-	
-	
+
+
 	private void setupActionBar()
 	{
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -133,29 +133,29 @@ public class ExampleActivity extends AppCompatActivity
 		bar.setDisplayHomeAsUpEnabled(true);
 		bar.setHomeButtonEnabled(true);
 	}
-	
-	
+
+
 	private void setupDrawer(Bundle savedInstanceState)
 	{
 		mTitle = getTitle();
 		mDrawerTitle = getTitle();
-		
+
 		mTitles = new String[4];
 		mTitles[0] = getString(R.string.title_example);
 		mTitles[1] = getString(R.string.title_example);
 		mTitles[2] = getString(R.string.title_example);
 		mTitles[3] = getString(R.string.title_example);
-		
+
 		Integer[] icons = new Integer[4];
 		icons[0] = R.drawable.ic_drawer_example;
 		icons[1] = R.drawable.ic_drawer_example;
 		icons[2] = R.drawable.ic_drawer_example;
 		icons[3] = R.drawable.ic_drawer_example;
-		
+
 		// reference
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_example_drawer_layout);
 		mDrawerListView = (ListView) findViewById(R.id.activity_example_drawer_list);
-		
+
 		// set drawer
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 		mDrawerListView.setAdapter(new DrawerAdapter(this, mTitles, icons));
@@ -175,7 +175,8 @@ public class ExampleActivity extends AppCompatActivity
 				getSupportActionBar().setTitle(mTitle);
 				supportInvalidateOptionsMenu();
 			}
-			
+
+
 			@Override
 			public void onDrawerOpened(View drawerView)
 			{
@@ -184,27 +185,27 @@ public class ExampleActivity extends AppCompatActivity
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
-		
+
 		// show initial fragment
 		if(savedInstanceState == null)
 		{
 			selectDrawerItem(0);
 		}
 	}
-	
-	
+
+
 	private void selectDrawerItem(int position)
 	{
 		Fragment fragment;
-		if(position==0) fragment = ExampleFragment.newInstance();
-		else if(position==1) fragment = ExampleFragment.newInstance();
-		else if(position==2) fragment = ExampleFragment.newInstance();
-		else if(position==3) fragment = ExampleFragment.newInstance();
+		if(position == 0) fragment = ExampleFragment.newInstance();
+		else if(position == 1) fragment = ExampleFragment.newInstance();
+		else if(position == 2) fragment = ExampleFragment.newInstance();
+		else if(position == 3) fragment = ExampleFragment.newInstance();
 		else fragment = ExampleFragment.newInstance();
-		
+
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction().replace(R.id.container_drawer_content, fragment).commitAllowingStateLoss();
-		
+
 		mDrawerListView.setItemChecked(position, true);
 		setTitle(mTitles[position]);
 		mDrawerLayout.closeDrawer(mDrawerListView);

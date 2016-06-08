@@ -1,10 +1,5 @@
 package com.example.utility;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,35 +15,40 @@ import android.support.v4.app.Fragment;
 import com.example.R;
 import com.example.graphics.BitmapScaler;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class ImagePicker
 {
 	public static final int ACTION_PICK_IMAGE_FROM_CAMERA = 0;
 	public static final int ACTION_PICK_IMAGE_FROM_GALLERY = 1;
-	
+
 	private Context mContext;
 	private int mImageSize = 640;
 	private String mImageFromCameraPath = null;
-	
-	
+
+
 	public ImagePicker(Context context)
 	{
 		mContext = context;
 	}
-	
-	
+
+
 	public ImagePicker(Context context, int imageSize)
 	{
 		mContext = context;
 		mImageSize = imageSize;
 	}
-	
-	
+
+
 	public void pickImageFromCamera(Fragment fragment)
 	{
 		File file;
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		
+
 		try
 		{
 			file = createImageFile(fragment.getString(R.string.app_name));
@@ -60,50 +60,50 @@ public class ImagePicker
 			e.printStackTrace();
 			mImageFromCameraPath = null;
 		}
-		
+
 		fragment.startActivityForResult(intent, ACTION_PICK_IMAGE_FROM_CAMERA);
 	}
-	
-	
+
+
 	public void pickImageFromGallery(Fragment fragment)
 	{
 		Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 		intent.setType("image/jpeg");
 		fragment.startActivityForResult(intent, ACTION_PICK_IMAGE_FROM_GALLERY);
 	}
-	
-	
+
+
 	public Bitmap handleImageFromCamera()
 	{
 		Bitmap bitmap = null;
-		
-		if(mImageFromCameraPath!=null)
+
+		if(mImageFromCameraPath != null)
 		{
 			addImageToGallery(mImageFromCameraPath);
 			bitmap = handleImage(mImageFromCameraPath);
 			mImageFromCameraPath = null;
 		}
-		
+
 		return bitmap;
 	}
-	
-	
+
+
 	public Bitmap handleImageFromGallery(Intent data)
 	{
 		Bitmap bitmap = null;
-		
+
 		Uri imageFromGalleryUri = data.getData();
 		String imageFromGalleryPath = getPathFromUri(imageFromGalleryUri);
-		
-		if(imageFromGalleryPath!=null)
+
+		if(imageFromGalleryPath != null)
 		{
 			bitmap = handleImage(imageFromGalleryPath);
 		}
-		
+
 		return bitmap;
 	}
-	
-	
+
+
 	private File createImageFile(String albumDirectoryName) throws IOException
 	{
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -112,8 +112,8 @@ public class ImagePicker
 		File imageFile = File.createTempFile(imageFileName, ".jpg", albumFile);
 		return imageFile;
 	}
-	
-	
+
+
 	private File getAlbumDirectory(String albumDirectoryName)
 	{
 		File storageDirectory = null;
@@ -138,14 +138,14 @@ public class ImagePicker
 		}
 		return storageDirectory;
 	}
-	
-	
+
+
 	private String getPathFromUri(Uri uri)
 	{
 		String path = null;
-		if(mContext!=null)
+		if(mContext != null)
 		{
-			String[] projection = { MediaStore.Images.Media.DATA };
+			String[] projection = {MediaStore.Images.Media.DATA};
 			Cursor cursor = mContext.getContentResolver().query(uri, projection, null, null, null);
 			if(cursor.moveToFirst())
 			{
@@ -156,29 +156,29 @@ public class ImagePicker
 		}
 		return path;
 	}
-	
-	
+
+
 	private void addImageToGallery(String imageFromCameraPath)
 	{
 		Intent intent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
 		File file = new File(imageFromCameraPath);
 		Uri uri = Uri.fromFile(file);
 		intent.setData(uri);
-		if(mContext!=null) mContext.sendBroadcast(intent);
+		if(mContext != null) mContext.sendBroadcast(intent);
 	}
-	
-	
+
+
 	private Bitmap handleImage(String imagePath)
 	{
 		BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
 		bitmapOptions.inJustDecodeBounds = true;
 		BitmapFactory.decodeFile(imagePath, bitmapOptions);
-		
+
 		// set bitmap options to scale the image decode target
 		bitmapOptions.inJustDecodeBounds = false;
 		bitmapOptions.inSampleSize = 4;
 		bitmapOptions.inPurgeable = true;
-		
+
 		// decode the JPEG file into a bitmap
 		Bitmap originalBitmap = null;
 		Bitmap bitmap = null;
@@ -194,22 +194,22 @@ public class ImagePicker
 		}
 		finally
 		{
-			if(originalBitmap!=null) originalBitmap.recycle();
+			if(originalBitmap != null) originalBitmap.recycle();
 		}
-		
+
 		// handle bitmap rotation
 		int rotation = getBitmapRotation(imagePath);
-		if(rotation>0)
+		if(rotation > 0)
 		{
 			Matrix matrix = new Matrix();
 			matrix.setRotate(rotation, (float) bitmap.getWidth() / 2, (float) bitmap.getHeight() / 2);
 			bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 		}
-		
+
 		return bitmap;
 	}
-	
-	
+
+
 	private int getBitmapRotation(String imagePath)
 	{
 		int rotation = 0;
@@ -218,23 +218,23 @@ public class ImagePicker
 			case ExifInterface.ORIENTATION_ROTATE_90:
 				rotation = 90;
 				break;
-				
+
 			case ExifInterface.ORIENTATION_ROTATE_180:
 				rotation = 180;
 				break;
-				
+
 			case ExifInterface.ORIENTATION_ROTATE_270:
 				rotation = 270;
 				break;
-				
+
 			default:
 				rotation = 0;
 				break;
 		}
 		return rotation;
 	}
-	
-	
+
+
 	private int getExifOrientation(String imagePath)
 	{
 		int orientation = 0;

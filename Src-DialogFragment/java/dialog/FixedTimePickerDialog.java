@@ -1,12 +1,12 @@
 package com.example.dialog;
 
-import java.util.Calendar;
-
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 
 // source: http://stackoverflow.com/questions/11444238/jelly-bean-datepickerdialog-is-there-a-way-to-cancel

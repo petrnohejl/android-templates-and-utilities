@@ -15,19 +15,19 @@ public final class DateConvertor
 	public static String dateToString(Date date, String format)
 	{
 		String str = null;
-		if(date!=null)
+		if(date != null)
 		{
 			SimpleDateFormat dateFormat = new SimpleDateFormat(format);
 			str = dateFormat.format(date);
 		}
 		return str;
 	}
-	
-	
+
+
 	public static Date stringToDate(String str, String format)
 	{
 		Date date = null;
-		if(str!=null)
+		if(str != null)
 		{
 			SimpleDateFormat dateFormat = new SimpleDateFormat(format);
 			try { date = dateFormat.parse(str); }

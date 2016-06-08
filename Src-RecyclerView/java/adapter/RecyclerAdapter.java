@@ -39,17 +39,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 		LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
 		// inflate view and create view holder
-		if(viewType==VIEW_TYPE_HEADER)
+		if(viewType == VIEW_TYPE_HEADER)
 		{
 			View view = inflater.inflate(R.layout.fragment_recycler_header, parent, false);
 			return new HeaderViewHolder(view);
 		}
-		else if(viewType==VIEW_TYPE_PRODUCT)
+		else if(viewType == VIEW_TYPE_PRODUCT)
 		{
 			View view = inflater.inflate(R.layout.fragment_recycler_item, parent, false);
 			return new ProductViewHolder(view, mListener);
 		}
-		else if(viewType==VIEW_TYPE_FOOTER)
+		else if(viewType == VIEW_TYPE_FOOTER)
 		{
 			View view = inflater.inflate(R.layout.fragment_recycler_footer, parent, false);
 			return new FooterViewHolder(view);
@@ -104,9 +104,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 	public int getItemCount()
 	{
 		int size = 0;
-		if(mHeaderList!=null) size += mHeaderList.size();
-		if(mProductList!=null) size += mProductList.size();
-		if(mFooterList!=null) size += mFooterList.size();
+		if(mHeaderList != null) size += mHeaderList.size();
+		if(mProductList != null) size += mProductList.size();
+		if(mFooterList != null) size += mFooterList.size();
 		return size;
 	}
 
@@ -119,29 +119,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 		int footers = mFooterList.size();
 
 		if(position < headers) return VIEW_TYPE_HEADER;
-		else if(position < headers+products) return VIEW_TYPE_PRODUCT;
-		else if(position < headers+products+footers) return VIEW_TYPE_FOOTER;
+		else if(position < headers + products) return VIEW_TYPE_PRODUCT;
+		else if(position < headers + products + footers) return VIEW_TYPE_FOOTER;
 		else return -1;
 	}
 
 
 	public int getHeaderCount()
 	{
-		if(mHeaderList!=null) return mHeaderList.size();
+		if(mHeaderList != null) return mHeaderList.size();
 		return 0;
 	}
 
 
 	public int getProductCount()
 	{
-		if(mProductList!=null) return mProductList.size();
+		if(mProductList != null) return mProductList.size();
 		return 0;
 	}
 
 
 	public int getFooterCount()
 	{
-		if(mFooterList!=null) return mFooterList.size();
+		if(mFooterList != null) return mFooterList.size();
 		return 0;
 	}
 

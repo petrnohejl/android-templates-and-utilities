@@ -38,7 +38,7 @@ public class SelectorRelativeLayout extends RelativeLayout
 		mSelector = typedArray.getDrawable(0);
 		typedArray.recycle();
 
-		if(mSelector!=null)
+		if(mSelector != null)
 		{
 			setWillNotDraw(false);
 			mSelector.setCallback(this);
@@ -52,7 +52,7 @@ public class SelectorRelativeLayout extends RelativeLayout
 		super.drawableStateChanged();
 
 		final Drawable d = mSelector;
-		if(d!=null && d.isStateful())
+		if(d != null && d.isStateful())
 		{
 			d.setState(getDrawableState());
 		}
@@ -65,7 +65,7 @@ public class SelectorRelativeLayout extends RelativeLayout
 		super.jumpDrawablesToCurrentState();
 
 		final Drawable d = mSelector;
-		if(d!=null)
+		if(d != null)
 		{
 			d.jumpToCurrentState();
 		}
@@ -76,7 +76,7 @@ public class SelectorRelativeLayout extends RelativeLayout
 	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 	public void drawableHotspotChanged(float x, float y)
 	{
-		if(Build.VERSION.SDK_INT<Build.VERSION_CODES.LOLLIPOP)
+		if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
 		{
 			return;
 		}
@@ -84,7 +84,7 @@ public class SelectorRelativeLayout extends RelativeLayout
 		super.drawableHotspotChanged(x, y);
 
 		final Drawable d = mSelector;
-		if(d!=null)
+		if(d != null)
 		{
 			d.setHotspot(x, y);
 		}
@@ -97,7 +97,7 @@ public class SelectorRelativeLayout extends RelativeLayout
 		super.draw(canvas);
 
 		final Drawable d = mSelector;
-		if(d!=null)
+		if(d != null)
 		{
 			d.setBounds(0, 0, getWidth(), getHeight());
 			d.draw(canvas);
@@ -108,6 +108,6 @@ public class SelectorRelativeLayout extends RelativeLayout
 	@Override
 	protected boolean verifyDrawable(Drawable who)
 	{
-		return who==mSelector || super.verifyDrawable(who);
+		return who == mSelector || super.verifyDrawable(who);
 	}
 }

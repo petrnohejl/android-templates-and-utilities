@@ -63,33 +63,33 @@ public class MultipartRequest extends Request
 	public byte[] getContent()
 	{
 		StringBuilder plainBuilder = new StringBuilder();
-		
+
 		plainBuilder.append("--" + BOUNDARY + "\r\n");
 		plainBuilder.append("Content-Disposition: form-data; name=\"text1\"\r\n");
 		plainBuilder.append("Content-Type: text/plain; charset=utf-8\r\n");
 		plainBuilder.append("\r\n");
 		plainBuilder.append(mTextData1);
 		plainBuilder.append("\r\n");
-		
+
 		plainBuilder.append("--" + BOUNDARY + "\r\n");
 		plainBuilder.append("Content-Disposition: form-data; name=\"text2\"\r\n");
 		plainBuilder.append("Content-Type: text/plain; charset=utf-8\r\n");
 		plainBuilder.append("\r\n");
 		plainBuilder.append(mTextData2);
 		plainBuilder.append("\r\n");
-		
+
 		StringBuilder binary1Builder = new StringBuilder();
 		binary1Builder.append("--" + BOUNDARY + "\r\n");
 		binary1Builder.append("Content-Disposition: form-data; name=\"binary1\"; filename=\"file.data\"\r\n");
 		binary1Builder.append("Content-Type: application/octet-stream\r\n");
 		binary1Builder.append("\r\n");
-		
+
 		StringBuilder binary2Builder = new StringBuilder();
 		binary2Builder.append("--" + BOUNDARY + "\r\n");
 		binary2Builder.append("Content-Disposition: form-data; name=\"binary2\"; filename=\"file.data\"\r\n");
 		binary2Builder.append("Content-Type: application/octet-stream\r\n");
 		binary2Builder.append("\r\n");
-		
+
 		try
 		{
 			byte[] plainBytes = plainBuilder.toString().getBytes("UTF-8");
@@ -97,7 +97,7 @@ public class MultipartRequest extends Request
 			byte[] binary2Bytes = binary2Builder.toString().getBytes("UTF-8");
 			byte[] breakBytes = "\r\n".getBytes("UTF-8");
 			byte[] endBytes = ("--" + BOUNDARY + "--\r\n").getBytes("UTF-8");
-			
+
 			// byte stream
 			ByteArrayOutputStream stream = new ByteArrayOutputStream();
 			stream.write(plainBytes);
@@ -114,7 +114,7 @@ public class MultipartRequest extends Request
 				stream.write(breakBytes);
 			}
 			stream.write(endBytes);
-			
+
 			return stream.toByteArray();
 		}
 		catch(UnsupportedEncodingException e)

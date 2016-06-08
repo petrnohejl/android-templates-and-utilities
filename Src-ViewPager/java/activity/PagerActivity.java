@@ -11,8 +11,8 @@ import com.example.adapter.PagerFragmentPagerAdapter;
 public class PagerActivity extends AppCompatActivity
 {
 	private PagerFragmentPagerAdapter mAdapter;
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -20,15 +20,15 @@ public class PagerActivity extends AppCompatActivity
 		setContentView(R.layout.activity_pager);
 		bindData();
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_pager_pager);
-		
+
 		// pager content
-		if(mAdapter==null)
+		if(mAdapter == null)
 		{
 			// create adapter
 			mAdapter = new PagerFragmentPagerAdapter(getSupportFragmentManager());
@@ -38,7 +38,7 @@ public class PagerActivity extends AppCompatActivity
 			// refill adapter
 			mAdapter.refill();
 		}
-		
+
 		// set adapter
 		viewPager.setAdapter(mAdapter);
 	}

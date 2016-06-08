@@ -10,7 +10,7 @@
 	<color name="dialog_button_bg_pressed_light">#9933b5e5</color> <!-- 60% opacity -->
 	<color name="dialog_button_bg_focused_light">#4c33b5e5</color> <!-- 30% opacity -->
 	<color name="dialog_divider_light">#25000000</color>
-	
+
 	<color name="dialog_title_text_dark">#0099cc</color>
 	<color name="dialog_title_divider_dark">#0099cc</color>
 	<color name="dialog_message_text_dark">#ffffff</color>

@@ -35,12 +35,6 @@ public class ObservableScrollView extends ScrollView
 	}
 
 
-	public void setOnScrollViewListener(OnScrollViewListener onScrollViewListener)
-	{
-		mOnScrollViewListener = onScrollViewListener;
-	}
-
-
 	@Override
 	protected void onScrollChanged(int x, int y, int oldx, int oldy)
 	{
@@ -49,5 +43,11 @@ public class ObservableScrollView extends ScrollView
 		{
 			mOnScrollViewListener.onScrollChanged(this, x, y, oldx, oldy);
 		}
+	}
+
+
+	public void setOnScrollViewListener(OnScrollViewListener onScrollViewListener)
+	{
+		mOnScrollViewListener = onScrollViewListener;
 	}
 }

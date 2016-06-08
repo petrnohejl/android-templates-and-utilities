@@ -20,8 +20,8 @@ public class ExampleFragment extends Fragment
 {
 	private View mRootView;
 	private ClusterManager<ProductEntity> mClusterManager;
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
@@ -37,13 +37,13 @@ public class ExampleFragment extends Fragment
 		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMap();
 
 		// content
-		if(map!=null)
+		if(map != null)
 		{
-			for(int i=0; i<16; i++)
+			for(int i = 0; i < 16; i++)
 			{
 				ProductEntity product = new ProductEntity();
 				product.setName("Example " + i);
-				product.setPosition(new LatLng( 49.194696+0.1*Math.sin(i*Math.PI/8), 16.608595+0.1*Math.cos(i*Math.PI/8) ));
+				product.setPosition(new LatLng(49.194696 + 0.1 * Math.sin(i * Math.PI / 8), 16.608595 + 0.1 * Math.cos(i * Math.PI / 8)));
 				mClusterManager.addItem(product);
 			}
 		}
@@ -56,7 +56,7 @@ public class ExampleFragment extends Fragment
 		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMap();
 
 		// clustering
-		if(map!=null)
+		if(map != null)
 		{
 			mClusterManager = new ClusterManager<>(getActivity(), map);
 			mClusterManager.setRenderer(new DefaultClusterRenderer<ProductEntity>(getActivity(), map, mClusterManager)

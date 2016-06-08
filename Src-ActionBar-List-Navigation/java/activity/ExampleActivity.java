@@ -18,14 +18,14 @@ public class ExampleActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
-		
+
 		// action bar navigation
-		CharSequence[] items = { "One", "Two", "Three" };
+		CharSequence[] items = {"One", "Two", "Three"};
 		String subtitle = "Subtitle";
 		setupActionBarNavigation(items, subtitle, 0);
 	}
-	
-	
+
+
 	private void setupActionBarNavigation(CharSequence[] items, String subtitle, int selectedItem)
 	{
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -33,11 +33,11 @@ public class ExampleActivity extends AppCompatActivity
 
 		ActionBar bar = getSupportActionBar();
 		Context context = bar.getThemedContext();
-		
+
 		// adapter
 		ActionBarListNavigationAdapter<CharSequence> adapter = new ActionBarListNavigationAdapter<>(context, android.R.layout.simple_spinner_item, items, subtitle);
 		adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-		
+
 		// action bar navigation
 		bar.setDisplayShowTitleEnabled(false);
 		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);

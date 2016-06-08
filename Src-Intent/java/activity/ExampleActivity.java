@@ -16,16 +16,16 @@ public class ExampleActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
-		
+
 		Logcat.d("getIntent().getAction() = " + getIntent().getAction());
-		Logcat.d("getIntent().getCategories() = " + (getIntent().getCategories()!=null ? getIntent().getCategories() : "null"));
+		Logcat.d("getIntent().getCategories() = " + (getIntent().getCategories() != null ? getIntent().getCategories() : "null"));
 		Logcat.d("getIntent().getDataString() = " + getIntent().getDataString());
 		Logcat.d("getIntent().getScheme() = " + getIntent().getScheme());
 		Logcat.d("getIntent().getType() = " + getIntent().getType());
-		Logcat.d("getIntent().getExtras() = " + (getIntent().getExtras()!=null ? getIntent().getExtras().keySet() : "null"));
+		Logcat.d("getIntent().getExtras() = " + (getIntent().getExtras() != null ? getIntent().getExtras().keySet() : "null"));
 	}
-	
-	
+
+
 	private void startWebActivity(String url)
 	{
 		try
@@ -38,8 +38,8 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
-	
-	
+
+
 	private void startStoreActivity()
 	{
 		try
@@ -53,8 +53,8 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
-	
-	
+
+
 	private void startMapCoordinatesActivity(double lat, double lon, String label)
 	{
 		try
@@ -67,7 +67,7 @@ public class ExampleActivity extends AppCompatActivity
 			builder.append("?z=16"); // zoom value: 2..23
 			builder.append("&q="); // query allows to show pin
 			builder.append(Uri.encode(lat + "," + lon + "(" + label + ")"));
-			
+
 			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(builder.toString()));
 			startActivity(intent);
 		}
@@ -76,8 +76,8 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
-	
-	
+
+
 	private void startMapSearchActivity(String query)
 	{
 		try
@@ -85,7 +85,7 @@ public class ExampleActivity extends AppCompatActivity
 			StringBuilder builder = new StringBuilder();
 			builder.append("geo:0,0?q=");
 			builder.append(Uri.encode(query));
-			
+
 			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(builder.toString()));
 			startActivity(intent);
 		}
@@ -109,8 +109,8 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
-	
-	
+
+
 	private void startSmsActivity(String phoneNumber, String text)
 	{
 		try
@@ -126,8 +126,8 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
-	
-	
+
+
 	private void startShareActivity(String chooserTitle, String subject, String text)
 	{
 		try
@@ -143,8 +143,8 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
-	
-	
+
+
 	private void startEmailActivity(String email, String subject, String text)
 	{
 		try
@@ -152,7 +152,7 @@ public class ExampleActivity extends AppCompatActivity
 			StringBuilder builder = new StringBuilder();
 			builder.append("mailto:");
 			builder.append(email);
-			
+
 			Intent intent = new Intent(android.content.Intent.ACTION_SENDTO, Uri.parse(builder.toString()));
 			intent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
 			intent.putExtra(android.content.Intent.EXTRA_TEXT, text);
@@ -163,8 +163,8 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
-	
-	
+
+
 	private void startCalendarActivity(String title, String description, long beginTime, long endTime)
 	{
 		try
@@ -182,8 +182,8 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
-	
-	
+
+
 	private void startCallActivity(String phoneNumber)
 	{
 		try
@@ -191,7 +191,7 @@ public class ExampleActivity extends AppCompatActivity
 			StringBuilder builder = new StringBuilder();
 			builder.append("tel:");
 			builder.append(phoneNumber);
-			
+
 			Intent intent = new Intent(android.content.Intent.ACTION_DIAL, Uri.parse(builder.toString()));
 			startActivity(intent);
 		}
@@ -200,8 +200,8 @@ public class ExampleActivity extends AppCompatActivity
 			// can't start activity
 		}
 	}
-	
-	
+
+
 	private void startSettingsActivity()
 	{
 		try

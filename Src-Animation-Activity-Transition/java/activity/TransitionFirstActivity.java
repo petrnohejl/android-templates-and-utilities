@@ -50,7 +50,7 @@ public class TransitionFirstActivity extends AppCompatActivity
 				startActivity(intent);
 				overridePendingTransition(R.anim.push_left_enter, R.anim.push_left_exit);
 				return true;
-				
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}

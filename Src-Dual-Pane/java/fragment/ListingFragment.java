@@ -25,13 +25,13 @@ public class ListingFragment extends Fragment
 	private ListingAdapter mAdapter;
 	private OnDualPaneShowListener mDualPaneShowListener;
 	private List<ProductEntity> mProductList = new ArrayList<>();
-	
-	
+
+
 	@Override
 	public void onAttach(Context context)
 	{
 		super.onAttach(context);
-		
+
 		// set dual pane listener
 		try
 		{
@@ -42,32 +42,32 @@ public class ListingFragment extends Fragment
 			throw new ClassCastException(getActivity().getClass().getName() + " must implement " + OnDualPaneShowListener.class.getName());
 		}
 	}
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setRetainInstance(true);
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{	
+	{
 		mRootView = inflater.inflate(R.layout.fragment_listing, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
 		bindData();
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		boolean init = false;
@@ -77,7 +77,7 @@ public class ListingFragment extends Fragment
 		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
 
 		// testing data
-		for(int i=0; i<32; i++)
+		for(int i = 0; i < 32; i++)
 		{
 			ProductEntity p = new ProductEntity();
 			p.setName("Product " + (i));
@@ -87,15 +87,15 @@ public class ListingFragment extends Fragment
 		// activity has dual pane layout
 		View dualPaneContainer = getActivity().findViewById(R.id.container_dual_pane);
 		boolean dualPane = dualPaneContainer != null && dualPaneContainer.getVisibility() == View.VISIBLE;
-		
+
 		// listview content
-		if(mAdapter==null)
+		if(mAdapter == null)
 		{
 			// create adapter
 			mAdapter = new ListingAdapter(getActivity(), mProductList, dualPane);
-			
+
 			// initial fragment in second pane
-			if(dualPane && mProductList!=null && mProductList.size()>0)
+			if(dualPane && mProductList != null && mProductList.size() > 0)
 			{
 				mDualPaneShowListener.onDualPaneShow(SimpleFragment.class, 0);
 				init = true;

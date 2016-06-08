@@ -10,14 +10,14 @@ import java.sql.SQLException;
 public class ProductCreateQuery extends Query
 {
 	private ProductModel mProduct;
-	
-	
+
+
 	public ProductCreateQuery(ProductModel product)
 	{
 		mProduct = product;
 	}
-	
-	
+
+
 	@Override
 	public Data<Integer> processData() throws SQLException
 	{

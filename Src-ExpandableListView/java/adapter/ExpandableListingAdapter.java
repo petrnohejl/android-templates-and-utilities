@@ -20,16 +20,16 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	private List<List<ProductEntity>> mProductList;
 	private int mSelectedGroupPosition = -1;
 	private int mSelectedChildPosition = -1;
-	
-	
+
+
 	public ExpandableListingAdapter(Context context, List<String> groupList, List<List<ProductEntity>> productList)
 	{
 		mContext = context;
 		mGroupList = groupList;
 		mProductList = productList;
 	}
-	
-	
+
+
 	@Override
 	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
 	{
@@ -38,23 +38,23 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		{
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.fragment_expandable_listing_item, parent, false);
-			
+
 			// view holder
 			ViewHolder holder = new ViewHolder();
 			holder.nameTextView = (TextView) convertView.findViewById(R.id.fragment_expandable_listing_item_name);
 			convertView.setTag(holder);
 		}
-		
+
 		// entity
 		ProductEntity product = (ProductEntity) getChild(groupPosition, childPosition);
 		if(product != null)
 		{
 			// view holder
 			ViewHolder holder = (ViewHolder) convertView.getTag();
-			
+
 			// content
 			holder.nameTextView.setText(product.getName());
-			
+
 			// selected item
 			if(mSelectedGroupPosition == groupPosition && mSelectedChildPosition == childPosition)
 			{
@@ -65,23 +65,23 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 				convertView.setBackgroundResource(R.drawable.selector_selectable_item_bg);
 			}
 		}
-		
+
 		return convertView;
 	}
 
 
 	@Override
-	public int getChildrenCount(int groupPosition) 
+	public int getChildrenCount(int groupPosition)
 	{
-		if(mProductList!=null) return mProductList.get(groupPosition).size();
+		if(mProductList != null) return mProductList.get(groupPosition).size();
 		else return 0;
 	}
-	
-	
+
+
 	@Override
 	public Object getChild(int groupPosition, int childPosition)
 	{
-		if(mProductList!=null) return mProductList.get(groupPosition).get(childPosition);
+		if(mProductList != null) return mProductList.get(groupPosition).get(childPosition);
 		else return null;
 	}
 
@@ -91,8 +91,8 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	{
 		return childPosition;
 	}
-	
-	
+
+
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent)
 	{
@@ -121,12 +121,12 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 
 		return convertView;
 	}
-	
-	
+
+
 	@Override
 	public int getGroupCount()
 	{
-		if(mGroupList!=null) return mGroupList.size();
+		if(mGroupList != null) return mGroupList.size();
 		else return 0;
 	}
 
@@ -134,7 +134,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	@Override
 	public Object getGroup(int groupPosition)
 	{
-		if(mGroupList!=null) return mGroupList.get(groupPosition);
+		if(mGroupList != null) return mGroupList.get(groupPosition);
 		else return null;
 	}
 
@@ -145,7 +145,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		return groupPosition;
 	}
 
-	
+
 	@Override
 	public boolean hasStableIds()
 	{
@@ -158,8 +158,8 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 	{
 		return true;
 	}
-	
-	
+
+
 	public void refill(Context context, List<String> groupList, List<List<ProductEntity>> productList)
 	{
 		mContext = context;
@@ -167,40 +167,40 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 		mProductList = productList;
 		notifyDataSetChanged();
 	}
-	
-	
+
+
 	public void stop()
 	{
 		// TODO: stop image loader
 	}
-	
-	
+
+
 	public void setSelectedPosition(int groupPosition, int childPosition)
 	{
 		mSelectedGroupPosition = groupPosition;
 		mSelectedChildPosition = childPosition;
 		notifyDataSetChanged();
 	}
-	
-	
+
+
 	public int getSelectedGroupPosition()
 	{
 		return mSelectedGroupPosition;
 	}
-	
-	
+
+
 	public int getSelectedChildPosition()
 	{
 		return mSelectedChildPosition;
 	}
-	
-	
+
+
 	static class ViewHolder
 	{
 		TextView nameTextView;
 	}
-	
-	
+
+
 	static class ViewHolderGroup
 	{
 		TextView nameTextView;

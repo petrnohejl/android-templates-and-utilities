@@ -24,7 +24,7 @@ public class ExampleFragment extends Fragment
 
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 
@@ -40,7 +40,7 @@ public class ExampleFragment extends Fragment
 		{
 			handleSavedInstanceState(savedInstanceState);
 		}
-		
+
 		// handle intent extras
 		Bundle extras = getActivity().getIntent().getExtras();
 		if(extras != null)
@@ -65,14 +65,14 @@ public class ExampleFragment extends Fragment
 	{
 		// TODO
 	}
-	
+
 
 	private void handleSavedInstanceState(Bundle savedInstanceState)
 	{
 		// TODO
 	}
-	
-	
+
+
 	private void handleExtras(Bundle extras)
 	{
 		// TODO

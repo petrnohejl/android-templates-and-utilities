@@ -12,15 +12,15 @@ public class TabLayoutFragmentPagerAdapter extends FragmentPagerAdapter // TODO:
 	private static final int FRAGMENT_COUNT = 8;
 
 
-	public static String getFragmentTag(int viewPagerId, int position)
-	{
-		return "android:switcher:" + viewPagerId + ":" + position;
-	}
-
-
 	public TabLayoutFragmentPagerAdapter(FragmentManager fragmentManager)
 	{
 		super(fragmentManager);
+	}
+
+
+	public static String getFragmentTag(int viewPagerId, int position)
+	{
+		return "android:switcher:" + viewPagerId + ":" + position;
 	}
 
 

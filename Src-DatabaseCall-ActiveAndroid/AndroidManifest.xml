@@ -7,9 +7,13 @@
 		android:name=".ExampleApplication"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name">
-		
-		<meta-data android:name="AA_DB_NAME" android:value="example.db" />
-		<meta-data android:name="AA_DB_VERSION" android:value="1" />
-		
+
+		<meta-data
+			android:name="AA_DB_NAME"
+			android:value="example.db" />
+		<meta-data
+			android:name="AA_DB_VERSION"
+			android:value="1" />
+
 	</application>
 </manifest>

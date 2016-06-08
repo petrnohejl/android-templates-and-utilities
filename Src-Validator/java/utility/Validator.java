@@ -13,7 +13,7 @@ public final class Validator
 
 	public static boolean isEmailValid(CharSequence email)
 	{
-		if(email==null)
+		if(email == null)
 		{
 			return false;
 		}
@@ -26,7 +26,7 @@ public final class Validator
 
 	public static boolean isDateValid(String date, String format)
 	{
-		if(date==null)
+		if(date == null)
 		{
 			return false;
 		}

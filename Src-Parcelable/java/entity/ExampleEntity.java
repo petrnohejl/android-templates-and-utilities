@@ -1,25 +1,15 @@
 package com.example.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 
 public class ExampleEntity implements Parcelable
 {
-	private boolean booleanVar;
-	private int intVar;
-	private long longVar;
-	private String stringVar;
-	private Date dateVar;
-	private Calendar calendarVar;
-	private MyModel myModel;
-	private List<String> stringList;
-
-
 	public static final Parcelable.Creator<ExampleEntity> CREATOR = new Parcelable.Creator<ExampleEntity>()
 	{
 		public ExampleEntity createFromParcel(Parcel parcel)
@@ -34,20 +24,29 @@ public class ExampleEntity implements Parcelable
 		}
 	};
 
+	private boolean booleanVar;
+	private int intVar;
+	private long longVar;
+	private String stringVar;
+	private Date dateVar;
+	private Calendar calendarVar;
+	private MyModel myModel;
+	private List<String> stringList;
+
 
 	// empty constructor
 	public ExampleEntity()
 	{
 	}
-	
-	
+
+
 	// parcel constructor
 	public ExampleEntity(Parcel parcel)
 	{
 		readFromParcel(parcel);
 	}
-	
-	
+
+
 	@Override
 	public int describeContents()
 	{
@@ -63,8 +62,8 @@ public class ExampleEntity implements Parcelable
 		parcel.writeInt(intVar);
 		parcel.writeLong(longVar);
 		parcel.writeString(stringVar);
-		parcel.writeLong(dateVar!=null ? dateVar.getTime() : -1L);
-		parcel.writeLong(calendarVar!=null ? calendarVar.getTimeInMillis() : -1L);
+		parcel.writeLong(dateVar != null ? dateVar.getTime() : -1L);
+		parcel.writeLong(calendarVar != null ? calendarVar.getTimeInMillis() : -1L);
 		parcel.writeParcelable(myModel, flags);
 		parcel.writeStringList(stringList);
 	}
@@ -77,13 +76,13 @@ public class ExampleEntity implements Parcelable
 		intVar = parcel.readInt();
 		longVar = parcel.readLong();
 		stringVar = parcel.readString();
-		
+
 		long dateVarLong = parcel.readLong();
-		if(dateVarLong!=-1L) dateVar = new Date(dateVarLong);
+		if(dateVarLong != -1L) dateVar = new Date(dateVarLong);
 		else dateVar = null;
-		
+
 		long calendarVarLong = parcel.readLong();
-		if(calendarVarLong!=-1L)
+		if(calendarVarLong != -1L)
 		{
 			calendarVar = Calendar.getInstance();
 			calendarVar.setTimeInMillis(calendarVarLong);
@@ -92,7 +91,7 @@ public class ExampleEntity implements Parcelable
 		{
 			calendarVar = null;
 		}
-		
+
 		myModel = parcel.readParcelable(MyModel.class.getClassLoader());
 		parcel.readStringList(stringList);
 	}

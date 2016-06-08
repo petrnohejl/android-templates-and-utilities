@@ -21,8 +21,8 @@ public final class KeyboardUtility
 			inputMethodManager.showSoftInput(editText, 0);
 		}
 	}
-	
-	
+
+
 	public static void hideKeyboard(EditText editText)
 	{
 		if(editText != null)

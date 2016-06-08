@@ -18,8 +18,8 @@ import com.example.entity.ProductEntity;
 import com.example.task.LoadDataTask;
 import com.example.utility.Logcat;
 import com.example.utility.NetworkUtility;
-import com.example.widget.LinearDividerItemDecoration;
 import com.example.view.StatefulLayout;
+import com.example.widget.LinearDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 {
 	private static final int LAZY_LOADING_TAKE = 16;
 	private static final int LAZY_LOADING_OFFSET = 4;
-	
+
 	private boolean mLazyLoading = false;
 	private View mRootView;
 	private StatefulLayout mStatefulLayout;
@@ -38,33 +38,33 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 	private List<String> mHeaderList = new ArrayList<>();
 	private List<ProductEntity> mProductList = new ArrayList<>();
 	private List<Object> mFooterList = new ArrayList<>();
-	
-	
+
+
 	@Override
 	public void onAttach(Context context)
 	{
 		super.onAttach(context);
 	}
-	
-	
+
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{	
+	{
 		mRootView = inflater.inflate(R.layout.fragment_recycler, container, false);
 		setupRecyclerView();
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
@@ -74,69 +74,69 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mProductList==null || mProductList.isEmpty()) loadData();
+		if(mProductList == null || mProductList.isEmpty()) loadData();
 
 		// lazy loading progress
 		if(mLazyLoading) showLazyLoadingProgress(true);
 	}
-	
-	
+
+
 	@Override
 	public void onStart()
 	{
 		super.onStart();
 	}
-	
-	
+
+
 	@Override
 	public void onResume()
 	{
 		super.onResume();
 	}
-	
-	
+
+
 	@Override
 	public void onPause()
 	{
 		super.onPause();
-		
+
 		// stop adapter
-		if(mAdapter!=null) mAdapter.stop();
+		if(mAdapter != null) mAdapter.stop();
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 	}
-	
-	
+
+
 	@Override
 	public void onDestroyView()
 	{
 		super.onDestroyView();
 		mRootView = null;
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
-		
+
 		// cancel async tasks
-		if(mLoadDataTask!=null) mLoadDataTask.cancel(true);
+		if(mLoadDataTask != null) mLoadDataTask.cancel(true);
 	}
-	
-	
+
+
 	@Override
 	public void onDetach()
 	{
 		super.onDetach();
 	}
-	
-	
+
+
 	@Override
 	public void onSaveInstanceState(Bundle outState)
 	{
@@ -145,26 +145,26 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 		setUserVisibleHint(true);
 
 		// stateful layout state
-		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
+		if(mStatefulLayout != null) mStatefulLayout.saveInstanceState(outState);
 	}
-	
-	
+
+
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
 	{
 		// action bar menu
 		super.onCreateOptionsMenu(menu, inflater);
-		
+
 		// TODO
 	}
-	
-	
+
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) 
+	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// action bar menu behavior
 		return super.onOptionsItemSelected(item);
-		
+
 		// TODO
 	}
 
@@ -187,8 +187,8 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 
 		// TODO
 	}
-	
-	
+
+
 	@Override
 	public void onLoadData()
 	{
@@ -196,17 +196,17 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
-				
+				if(mRootView == null) return; // view was destroyed
+
 				// get data
 				final int size = mProductList.size();
-				for(int i=0; i<LAZY_LOADING_TAKE; i++)
+				for(int i = 0; i < LAZY_LOADING_TAKE; i++)
 				{
 					ProductEntity p = new ProductEntity();
 					p.setName("Product " + (size + i));
 					mProductList.add(p);
 				}
-				if(mHeaderList.size()==0)
+				if(mHeaderList.size() == 0)
 				{
 					mHeaderList.add("One");
 					mHeaderList.add("Two");
@@ -214,21 +214,21 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 				}
 
 				// show content
-				if(mProductList!=null && mProductList.size()>0) mStatefulLayout.showContent();
+				if(mProductList != null && mProductList.size() > 0) mStatefulLayout.showContent();
 				else mStatefulLayout.showEmpty();
 				showLazyLoadingProgress(false);
 			}
 		});
 	}
-	
-	
+
+
 	private void loadData()
 	{
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
 			mStatefulLayout.showProgress();
-			
+
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
 			executeTask(mLoadDataTask);
@@ -238,22 +238,22 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 			mStatefulLayout.showOffline();
 		}
 	}
-	
-	
+
+
 	private void lazyLoadData()
 	{
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show lazy loading progress
 			showLazyLoadingProgress(true);
-			
+
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
 			executeTask(mLoadDataTask);
 		}
 	}
-	
-	
+
+
 	private void showLazyLoadingProgress(boolean visible)
 	{
 		if(visible)
@@ -261,7 +261,7 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 			mLazyLoading = true;
 
 			// show footer
-			if(mFooterList.size()<=0)
+			if(mFooterList.size() <= 0)
 			{
 				mFooterList.add(new Object());
 				mAdapter.notifyItemInserted(mAdapter.getRecyclerPositionByFooter(0));
@@ -270,7 +270,7 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 		else
 		{
 			// hide footer
-			if(mFooterList.size()>0)
+			if(mFooterList.size() > 0)
 			{
 				mFooterList.remove(0);
 				mAdapter.notifyItemRemoved(mAdapter.getRecyclerPositionByFooter(0));
@@ -279,15 +279,15 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 			mLazyLoading = false;
 		}
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		RecyclerView recyclerView = getRecyclerView();
 
 		// content
-		if(recyclerView.getAdapter()==null)
+		if(recyclerView.getAdapter() == null)
 		{
 			// create adapter
 			mAdapter = new RecyclerAdapter(mHeaderList, mProductList, mFooterList, this);
@@ -332,7 +332,7 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 				int totalItemCount = layoutManager.getItemCount();
 				int lastVisibleItem = firstVisibleItem + visibleItemCount;
 
-				if(totalItemCount-lastVisibleItem <= LAZY_LOADING_OFFSET && mProductList.size() % LAZY_LOADING_TAKE==0 && !mProductList.isEmpty())
+				if(totalItemCount - lastVisibleItem <= LAZY_LOADING_OFFSET && mProductList.size() % LAZY_LOADING_TAKE == 0 && !mProductList.isEmpty())
 				{
 					if(!mLazyLoading) lazyLoadData();
 				}
@@ -352,18 +352,18 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 			@Override
 			public void onStateChange(View v, StatefulLayout.State state)
 			{
-				Logcat.d("" + (state==null ? "null" : state.toString()));
+				Logcat.d("" + (state == null ? "null" : state.toString()));
 
-				if(state==StatefulLayout.State.CONTENT)
+				if(state == StatefulLayout.State.CONTENT)
 				{
 					RecyclerView recyclerView = getRecyclerView();
-					if(mLazyLoading && recyclerView.getAdapter()!=null)
+					if(mLazyLoading && recyclerView.getAdapter() != null)
 					{
 						mAdapter.notifyDataSetChanged();
 					}
 					else
 					{
-						if(mProductList!=null) bindData();
+						if(mProductList != null) bindData();
 					}
 				}
 			}
@@ -376,7 +376,7 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 
 	private RecyclerView getRecyclerView()
 	{
-		return mRootView!=null ? (RecyclerView) mRootView.findViewById(R.id.fragment_recycler_recycler) : null;
+		return mRootView != null ? (RecyclerView) mRootView.findViewById(R.id.fragment_recycler_recycler) : null;
 	}
 
 

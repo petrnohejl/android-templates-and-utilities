@@ -30,23 +30,23 @@ public class ExampleFragment extends Fragment
 	private View mRootView;
 	private StatefulLayout mStatefulLayout;
 	private String mUrl = "about:blank";
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{	
+	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
@@ -100,22 +100,22 @@ public class ExampleFragment extends Fragment
 		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
 		if(webView.canGoBack()) webView.goBack();
 	}
-	
-	
+
+
 	private void controlForward()
 	{
 		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
 		if(webView.canGoForward()) webView.goForward();
 	}
-	
-	
+
+
 	private void controlStop()
 	{
 		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
 		webView.stopLoading();
 	}
-	
-	
+
+
 	private void controlReload()
 	{
 		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
@@ -128,7 +128,7 @@ public class ExampleFragment extends Fragment
 		@Override
 		public void onPageFinished(WebView view, String url)
 		{
-			if(getActivity()!=null)
+			if(getActivity() != null)
 			{
 				Toast.makeText(getActivity(), mUrl, Toast.LENGTH_LONG).show();
 				mStatefulLayout.showContent();
@@ -140,7 +140,7 @@ public class ExampleFragment extends Fragment
 		@Override
 		public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
 		{
-			if(getActivity()!=null)
+			if(getActivity() != null)
 			{
 				final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
 				webView.loadUrl("about:blank");
@@ -162,7 +162,7 @@ public class ExampleFragment extends Fragment
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url)
 		{
-			if(url!=null && (url.startsWith("http://") || url.startsWith("https://")))
+			if(url != null && (url.startsWith("http://") || url.startsWith("https://")))
 			{
 				view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 				return true;

@@ -29,7 +29,7 @@ public class ExampleFragment extends Fragment
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
 		{
 			LayoutTransition transition = layout.getLayoutTransition();
-			if(transition==null)
+			if(transition == null)
 			{
 				transition = new LayoutTransition();
 				layout.setLayoutTransition(transition);

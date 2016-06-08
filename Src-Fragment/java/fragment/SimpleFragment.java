@@ -24,32 +24,32 @@ public class SimpleFragment extends TaskFragment implements LoadDataTask.OnLoadD
 	private StatefulLayout mStatefulLayout;
 	private LoadDataTask mLoadDataTask;
 	private ProductEntity mProduct;
-	
-	
+
+
 	@Override
 	public void onAttach(Context context)
 	{
 		super.onAttach(context);
 	}
-	
-	
+
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_simple, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
@@ -59,63 +59,63 @@ public class SimpleFragment extends TaskFragment implements LoadDataTask.OnLoadD
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mProduct==null) loadData();
+		if(mProduct == null) loadData();
 	}
-	
-	
+
+
 	@Override
 	public void onStart()
 	{
 		super.onStart();
 	}
-	
-	
+
+
 	@Override
 	public void onResume()
 	{
 		super.onResume();
 	}
-	
-	
+
+
 	@Override
 	public void onPause()
 	{
 		super.onPause();
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 	}
-	
-	
+
+
 	@Override
 	public void onDestroyView()
 	{
 		super.onDestroyView();
 		mRootView = null;
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
-		
+
 		// cancel async tasks
-		if(mLoadDataTask!=null) mLoadDataTask.cancel(true);
+		if(mLoadDataTask != null) mLoadDataTask.cancel(true);
 	}
-	
-	
+
+
 	@Override
 	public void onDetach()
 	{
 		super.onDetach();
 	}
-	
-	
+
+
 	@Override
 	public void onSaveInstanceState(Bundle outState)
 	{
@@ -124,30 +124,30 @@ public class SimpleFragment extends TaskFragment implements LoadDataTask.OnLoadD
 		setUserVisibleHint(true);
 
 		// stateful layout state
-		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
+		if(mStatefulLayout != null) mStatefulLayout.saveInstanceState(outState);
 	}
-	
-	
+
+
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
 	{
 		// action bar menu
 		super.onCreateOptionsMenu(menu, inflater);
-		
+
 		// TODO
 	}
-	
-	
+
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) 
+	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// action bar menu behavior
 		return super.onOptionsItemSelected(item);
-		
+
 		// TODO
 	}
-	
-	
+
+
 	@Override
 	public void onLoadData()
 	{
@@ -155,27 +155,27 @@ public class SimpleFragment extends TaskFragment implements LoadDataTask.OnLoadD
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
-				
+				if(mRootView == null) return; // view was destroyed
+
 				// get data
 				mProduct = new ProductEntity();
 				mProduct.setName("Test Product");
 
 				// show content
-				if(mProduct!=null) mStatefulLayout.showContent();
+				if(mProduct != null) mStatefulLayout.showContent();
 				else mStatefulLayout.showEmpty();
 			}
 		});
 	}
-	
-	
+
+
 	private void loadData()
 	{
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
 			mStatefulLayout.showProgress();
-			
+
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
 			executeTask(mLoadDataTask);
@@ -185,18 +185,18 @@ public class SimpleFragment extends TaskFragment implements LoadDataTask.OnLoadD
 			mStatefulLayout.showOffline();
 		}
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_simple_name);
-		
+
 		// content
 		nameTextView.setText(mProduct.getName());
 	}
-	
-	
+
+
 	private void setupStatefulLayout(Bundle savedInstanceState)
 	{
 		// reference
@@ -208,11 +208,11 @@ public class SimpleFragment extends TaskFragment implements LoadDataTask.OnLoadD
 			@Override
 			public void onStateChange(View v, StatefulLayout.State state)
 			{
-				Logcat.d("" + (state==null ? "null" : state.toString()));
+				Logcat.d("" + (state == null ? "null" : state.toString()));
 
-				if(state==StatefulLayout.State.CONTENT)
+				if(state == StatefulLayout.State.CONTENT)
 				{
-					if(mProduct!=null) bindData();
+					if(mProduct != null) bindData();
 				}
 			}
 		});

@@ -30,43 +30,43 @@ public class ExampleActivity extends AppCompatActivity
 		setContentView(R.layout.activity_example);
 		setupActionBar();
 	}
-	
-	
+
+
 	@Override
 	public void onStart()
 	{
 		super.onStart();
 	}
-	
-	
+
+
 	@Override
 	public void onResume()
 	{
 		super.onResume();
 	}
-	
-	
+
+
 	@Override
 	public void onPause()
 	{
 		super.onPause();
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
 	}
-	
-	
+
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
@@ -75,8 +75,8 @@ public class ExampleActivity extends AppCompatActivity
 		menuInflater.inflate(R.menu.activity_example, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
-	
-	
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
@@ -88,17 +88,17 @@ public class ExampleActivity extends AppCompatActivity
 				Intent intent = ExampleActivity.newIntent(this);
 				startActivity(intent);
 				return true;
-				
+
 			case R.id.menu_activity_example_refresh:
 				// TODO
 				return true;
-				
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}
 	}
-	
-	
+
+
 	private void setupActionBar()
 	{
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

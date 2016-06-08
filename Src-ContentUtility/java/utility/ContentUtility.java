@@ -29,7 +29,7 @@ public final class ContentUtility
 	@SuppressLint("NewApi")
 	public static String getPath(final Context context, final Uri uri)
 	{
-		final boolean isKitKat = Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT;
+		final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
 		// DocumentProvider
 		if(isKitKat && DocumentsContract.isDocumentUri(context, uri))
@@ -120,7 +120,7 @@ public final class ContentUtility
 		try
 		{
 			cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, null);
-			if(cursor!=null && cursor.moveToFirst())
+			if(cursor != null && cursor.moveToFirst())
 			{
 				final int column_index = cursor.getColumnIndexOrThrow(column);
 				return cursor.getString(column_index);
@@ -128,7 +128,7 @@ public final class ContentUtility
 		}
 		finally
 		{
-			if(cursor!=null) cursor.close();
+			if(cursor != null) cursor.close();
 		}
 
 		return null;

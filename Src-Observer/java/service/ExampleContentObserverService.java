@@ -18,10 +18,10 @@ public class ExampleContentObserverService extends Service
 	public int onStartCommand(Intent intent, int flags, int startId)
 	{
 		// start content observer
-		if(mExampleContentObserver==null)
+		if(mExampleContentObserver == null)
 		{
 			Logcat.d("start content observer");
-			
+
 			mExampleContentObserver = new ExampleContentObserver(new Handler());
 			getContentResolver().registerContentObserver(
 					android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -32,7 +32,7 @@ public class ExampleContentObserverService extends Service
 		{
 			Logcat.d("content observer already running");
 		}
-		
+
 		return START_STICKY;
 	}
 
@@ -48,7 +48,7 @@ public class ExampleContentObserverService extends Service
 	public void onDestroy()
 	{
 		// stop content observer
-		if(mExampleContentObserver!=null)
+		if(mExampleContentObserver != null)
 		{
 			getContentResolver().unregisterContentObserver(mExampleContentObserver);
 			mExampleContentObserver = null;

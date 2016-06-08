@@ -79,7 +79,7 @@ public class TreeListingFragment extends TaskFragment implements
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mProductList==null || mProductList.isEmpty() || mTreeStateManager==null)
+		if(mProductList == null || mProductList.isEmpty() || mTreeStateManager == null)
 		{
 			loadData();
 		}
@@ -106,7 +106,7 @@ public class TreeListingFragment extends TaskFragment implements
 		super.onPause();
 
 		// stop adapter
-		if(mAdapter!=null) mAdapter.stop();
+		if(mAdapter != null) mAdapter.stop();
 	}
 
 
@@ -131,7 +131,7 @@ public class TreeListingFragment extends TaskFragment implements
 		super.onDestroy();
 
 		// cancel async tasks
-		if(mLoadDataTask!=null) mLoadDataTask.cancel(true);
+		if(mLoadDataTask != null) mLoadDataTask.cancel(true);
 	}
 
 
@@ -150,7 +150,7 @@ public class TreeListingFragment extends TaskFragment implements
 		setUserVisibleHint(true);
 
 		// stateful layout state
-		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
+		if(mStatefulLayout != null) mStatefulLayout.saveInstanceState(outState);
 	}
 
 
@@ -214,22 +214,22 @@ public class TreeListingFragment extends TaskFragment implements
 	{
 		AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 		long id = menuInfo.id;
-		if(item.getItemId()==R.id.menu_treeview_collapse_all)
+		if(item.getItemId() == R.id.menu_treeview_collapse_all)
 		{
 			mTreeStateManager.collapseChildren(id);
 			return true;
 		}
-		else if(item.getItemId()==R.id.menu_treeview_expand_all)
+		else if(item.getItemId() == R.id.menu_treeview_expand_all)
 		{
 			mTreeStateManager.expandEverythingBelow(id);
 			return true;
 		}
-		else if(item.getItemId()==R.id.menu_treeview_expand)
+		else if(item.getItemId() == R.id.menu_treeview_expand)
 		{
 			mTreeStateManager.expandDirectChildren(id);
 			return true;
 		}
-		else if(item.getItemId()==R.id.menu_treeview_delete)
+		else if(item.getItemId() == R.id.menu_treeview_delete)
 		{
 			mTreeStateManager.removeNodeRecursively(id);
 			return true;
@@ -258,12 +258,12 @@ public class TreeListingFragment extends TaskFragment implements
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
+				if(mRootView == null) return; // view was destroyed
 
 				// get data
 				final int size = mProductList.size();
-				final int[] nodes = new int[]{ 0, 0, 1, 1, 1, 2, 2, 1, 1, 2, 1, 0, 0, 0, 1, 2, 3, 2, 0, 0, 1, 2, 0, 1, 2, 0, 1 };
-				for(int i=0; i<nodes.length; i++)
+				final int[] nodes = new int[]{0, 0, 1, 1, 1, 2, 2, 1, 1, 2, 1, 0, 0, 0, 1, 2, 3, 2, 0, 0, 1, 2, 0, 1, 2, 0, 1};
+				for(int i = 0; i < nodes.length; i++)
 				{
 					ProductEntity p = new ProductEntity();
 					p.setName("Product " + (size + i));
@@ -273,7 +273,7 @@ public class TreeListingFragment extends TaskFragment implements
 				// create tree manager
 				mTreeStateManager = new InMemoryTreeStateManager<>();
 				TreeBuilder<Long> treeBuilder = new TreeBuilder<>(mTreeStateManager);
-				for(int i=0; i<nodes.length; i++)
+				for(int i = 0; i < nodes.length; i++)
 				{
 					treeBuilder.sequentiallyAddNextNode((long) i, nodes[i]);
 				}
@@ -311,7 +311,7 @@ public class TreeListingFragment extends TaskFragment implements
 		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
 
 		// treeview content
-		if(mAdapter==null)
+		if(mAdapter == null)
 		{
 			// create adapter
 			mAdapter = new TreeListingAdapter(getActivity(), mProductList, mSelectedSet, mTreeStateManager, TREEVIEW_DEPTH);
@@ -347,19 +347,19 @@ public class TreeListingFragment extends TaskFragment implements
 			@Override
 			public void onStateChange(View v, StatefulLayout.State state)
 			{
-				Logcat.d("" + (state==null ? "null" : state.toString()));
+				Logcat.d("" + (state == null ? "null" : state.toString()));
 
-				if(state==StatefulLayout.State.CONTENT)
+				if(state == StatefulLayout.State.CONTENT)
 				{
 					TreeViewList treeView = (TreeViewList) mRootView.findViewById(android.R.id.list);
-					if(treeView.getAdapter()!=null)
+					if(treeView.getAdapter() != null)
 					{
 						mAdapter.refresh();
 						mAdapter.notifyDataSetChanged();
 					}
 					else
 					{
-						if(mProductList!=null && mTreeStateManager!=null) bindData();
+						if(mProductList != null && mTreeStateManager != null) bindData();
 					}
 				}
 			}
@@ -377,19 +377,19 @@ public class TreeListingFragment extends TaskFragment implements
 
 		// list position without headers, should be used for getting data entities from collections
 		int listPosition = globalPosition;
-		if(treeView!=null) listPosition = globalPosition - treeView.getHeaderViewsCount();
+		if(treeView != null) listPosition = globalPosition - treeView.getHeaderViewsCount();
 		return listPosition;
 	}
 
 
 	private void expandAll()
 	{
-		if(mTreeStateManager!=null) mTreeStateManager.expandEverythingBelow(null);
+		if(mTreeStateManager != null) mTreeStateManager.expandEverythingBelow(null);
 	}
 
 
 	private void collapseAll()
 	{
-		if(mTreeStateManager!=null) mTreeStateManager.collapseChildren(null);
+		if(mTreeStateManager != null) mTreeStateManager.collapseChildren(null);
 	}
 }

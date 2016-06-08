@@ -12,15 +12,15 @@ public class TabIndicatorFragmentPagerAdapter extends FragmentPagerAdapter // TO
 	private static final int FRAGMENT_COUNT = 8;
 
 
-	public static String getFragmentTag(int viewPagerId, int position)
-	{
-		return "android:switcher:" + viewPagerId + ":" + position;
-	}
-
-
 	public TabIndicatorFragmentPagerAdapter(FragmentManager fragmentManager)
 	{
 		super(fragmentManager);
+	}
+
+
+	public static String getFragmentTag(int viewPagerId, int position)
+	{
+		return "android:switcher:" + viewPagerId + ":" + position;
 	}
 
 
@@ -36,16 +36,16 @@ public class TabIndicatorFragmentPagerAdapter extends FragmentPagerAdapter // TO
 	{
 		return ExampleFragment.newInstance(Integer.toString(position));
 	}
-	
-	
+
+
 	@Override
 	public CharSequence getPageTitle(int position)
 	{
 		String title = "Fragment " + position;
 		return title;
 	}
-	
-	
+
+
 	public void refill()
 	{
 		notifyDataSetChanged();

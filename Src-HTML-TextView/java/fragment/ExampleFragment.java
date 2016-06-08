@@ -16,24 +16,24 @@ import com.example.R;
 public class ExampleFragment extends Fragment
 {
 	private View mRootView;
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		TextView descriptionTextView = (TextView) mRootView.findViewById(R.id.fragment_example_description);
-		
+
 		// color highlight
 		String colorHighlight = toHtmlColor(R.color.global_text_secondary);
-		
+
 		// remove html tags
 		String nameWithoutHtml = removeHtmlTags("<u>Petr</u>", true);
 
@@ -50,14 +50,14 @@ public class ExampleFragment extends Fragment
 		descriptionTextView.setText(Html.fromHtml(builder.toString()), TextView.BufferType.SPANNABLE);
 		descriptionTextView.setMovementMethod(LinkMovementMethod.getInstance());
 	}
-	
-	
+
+
 	private String toHtmlColor(int colorResource)
 	{
 		return "#" + Integer.toHexString(ContextCompat.getColor(getActivity(), colorResource)).substring(2);
 	}
-	
-	
+
+
 	private String removeHtmlTags(String htmlText, boolean removeBreak)
 	{
 		String text = Html.fromHtml(htmlText).toString();

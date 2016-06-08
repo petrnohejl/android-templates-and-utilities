@@ -26,7 +26,7 @@ public class CircularDrawable extends Drawable
 
 	public CircularDrawable(Bitmap bitmap)
 	{
-		this(bitmap, bitmap.getWidth()<bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight(), 0F, 0F, 0);
+		this(bitmap, bitmap.getWidth() < bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight(), 0F, 0F, 0);
 	}
 
 
@@ -38,7 +38,7 @@ public class CircularDrawable extends Drawable
 
 	public CircularDrawable(Bitmap bitmap, float borderWidth, float borderGap, int borderColor)
 	{
-		this(bitmap, bitmap.getWidth()<bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight(), borderWidth, borderGap, borderColor);
+		this(bitmap, bitmap.getWidth() < bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight(), borderWidth, borderGap, borderColor);
 	}
 
 
@@ -57,7 +57,7 @@ public class CircularDrawable extends Drawable
 		mBitmapPaint.setDither(true);
 		mBitmapPaint.setShader(mBitmapShader);
 
-		if(mBorderWidth>0F)
+		if(mBorderWidth > 0F)
 		{
 			mBorderPaint = new Paint();
 			mBorderPaint.setStyle(Paint.Style.STROKE);
@@ -73,8 +73,8 @@ public class CircularDrawable extends Drawable
 	{
 		super.onBoundsChange(bounds);
 
-		float centerX = mBitmap.getWidth()/2F;
-		float centerY = mBitmap.getHeight()/2F;
+		float centerX = mBitmap.getWidth() / 2F;
+		float centerY = mBitmap.getHeight() / 2F;
 		float diameterMinX = Math.min(mDiameter, mBitmap.getWidth());
 		float diameterMinY = Math.min(mDiameter, mBitmap.getHeight());
 
@@ -89,7 +89,7 @@ public class CircularDrawable extends Drawable
 	@Override
 	public void draw(Canvas canvas)
 	{
-		if(mBorderPaint!=null)
+		if(mBorderPaint != null)
 		{
 			canvas.drawCircle(getIntrinsicWidth() / 2, getIntrinsicHeight() / 2, (mDiameter / 2) - mBorderWidth - mBorderGap, mBitmapPaint);
 			canvas.drawCircle(getIntrinsicWidth() / 2, getIntrinsicHeight() / 2, (mDiameter / 2) - (mBorderWidth / 2), mBorderPaint);

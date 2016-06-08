@@ -34,7 +34,7 @@ public class MaxWidthLinearLayout extends LinearLayout
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
 	{
 		int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
-		if(mMaxWidth>0 && mMaxWidth<measuredWidth)
+		if(mMaxWidth > 0 && mMaxWidth < measuredWidth)
 		{
 			int measureMode = MeasureSpec.getMode(widthMeasureSpec);
 			widthMeasureSpec = MeasureSpec.makeMeasureSpec(mMaxWidth, measureMode);

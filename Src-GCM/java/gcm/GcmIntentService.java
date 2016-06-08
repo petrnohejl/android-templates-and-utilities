@@ -46,7 +46,7 @@ public class GcmIntentService extends IntentService
 
 				// get type
 				String type = intent.getStringExtra("type");
-				if(type!=null)
+				if(type != null)
 				{
 					if(type.equals("message"))
 					{
@@ -54,7 +54,7 @@ public class GcmIntentService extends IntentService
 						{
 							// decode
 							String text = intent.getStringExtra("text");
-							if(text!=null) text = URLDecoder.decode(text, "UTF-8");
+							if(text != null) text = URLDecoder.decode(text, "UTF-8");
 
 							// TODO
 						}

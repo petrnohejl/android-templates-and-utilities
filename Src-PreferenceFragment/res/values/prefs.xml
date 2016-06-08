@@ -21,7 +21,9 @@
 	<string name="prefs_title_sync_frequency">Sync frequency</string>
 	<string name="prefs_title_privacy_policy">Privacy policy</string>
 
-	<string name="prefs_summary_social_recommendations">Recommendations for people to contact based on your message history</string>
+	<string name="prefs_summary_social_recommendations">
+		Recommendations for people to contact based on your message history
+	</string>
 
 	<bool name="prefs_default_social_recommendations">true</bool>
 	<string name="prefs_default_display_name">John Smith</string>

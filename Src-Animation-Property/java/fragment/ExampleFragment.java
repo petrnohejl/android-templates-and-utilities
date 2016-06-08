@@ -24,8 +24,8 @@ import com.example.utility.Logcat;
 public class ExampleFragment extends Fragment
 {
 	private View mRootView;
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
@@ -58,17 +58,20 @@ public class ExampleFragment extends Fragment
 					Logcat.d("");
 				}
 
+
 				@Override
 				public void onAnimationRepeat(Animator animator)
 				{
 					Logcat.d("");
 				}
 
+
 				@Override
 				public void onAnimationCancel(Animator animator)
 				{
 					Logcat.d("");
 				}
+
 
 				@Override
 				public void onAnimationEnd(Animator animator)

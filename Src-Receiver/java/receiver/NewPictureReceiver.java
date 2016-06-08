@@ -13,7 +13,7 @@ public class NewPictureReceiver extends BroadcastReceiver
 	public void onReceive(Context context, Intent intent)
 	{
 		Logcat.d("");
-		
+
 		// TODO: do something
 	}
 }

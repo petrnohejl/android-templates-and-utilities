@@ -26,7 +26,7 @@ public class ExampleActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
-		
+
 		// handle GCM registration
 		handleGcmRegistration();
 	}
@@ -46,8 +46,8 @@ public class ExampleActivity extends AppCompatActivity
 	public void onDestroy()
 	{
 		// cancel async tasks
-		if(mGcmRegisterAsyncTask!=null) mGcmRegisterAsyncTask.cancel(true);
-		
+		if(mGcmRegisterAsyncTask != null) mGcmRegisterAsyncTask.cancel(true);
+
 		super.onDestroy();
 	}
 
@@ -74,7 +74,7 @@ public class ExampleActivity extends AppCompatActivity
 						try
 						{
 							// register on GCM server
-							if(mGcm==null) mGcm = GoogleCloudMessaging.getInstance(context);
+							if(mGcm == null) mGcm = GoogleCloudMessaging.getInstance(context);
 							mGcmRegistrationId = mGcm.register(ExampleConfig.GCM_SENDER_ID);
 
 							// GcmUtility.register() must be called after successfull GoogleCloudMessaging.register(),

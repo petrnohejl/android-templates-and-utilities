@@ -18,7 +18,7 @@ public final class HashUtility
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			byte[] bytes = md.digest(data);
 			StringBuffer stringBuffer = new StringBuffer();
-			for(int i=0; i<bytes.length; ++i)
+			for(int i = 0; i < bytes.length; ++i)
 			{
 				stringBuffer.append(Integer.toHexString((bytes[i] & 0xFF) | 0x100).substring(1, 3));
 			}

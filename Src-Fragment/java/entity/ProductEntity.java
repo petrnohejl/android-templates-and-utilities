@@ -17,7 +17,7 @@ public class ProductEntity
 	public ProductEntity(ProductEntity origin)
 	{
 		id = origin.id;
-		if(origin.name!=null) name = new String(origin.name);
+		if(origin.name != null) name = new String(origin.name);
 	}
 
 

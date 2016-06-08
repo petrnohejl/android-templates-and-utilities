@@ -25,8 +25,8 @@ public class ExampleActivity extends AppCompatActivity
 	private DrawerLayout mDrawerLayout;
 	private NavigationView mNavigationView;
 	private ActionBarDrawerToggle mDrawerToggle;
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -36,8 +36,8 @@ public class ExampleActivity extends AppCompatActivity
 		setupDrawer(savedInstanceState);
 		bindData();
 	}
-	
-	
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
@@ -46,20 +46,20 @@ public class ExampleActivity extends AppCompatActivity
 		{
 			return true;
 		}
-		
+
 		// action bar menu behavior
 		switch(item.getItemId())
 		{
 			case android.R.id.home:
 				// TODO
 				return true;
-			
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}
 	}
-	
-	
+
+
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState)
 	{
@@ -88,8 +88,8 @@ public class ExampleActivity extends AppCompatActivity
 			super.onBackPressed();
 		}
 	}
-	
-	
+
+
 	private void setupActionBar()
 	{
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -102,8 +102,8 @@ public class ExampleActivity extends AppCompatActivity
 		bar.setDisplayHomeAsUpEnabled(true);
 		bar.setHomeButtonEnabled(true);
 	}
-	
-	
+
+
 	private void setupDrawer(Bundle savedInstanceState)
 	{
 		// reference
@@ -129,6 +129,7 @@ public class ExampleActivity extends AppCompatActivity
 			{
 				supportInvalidateOptionsMenu();
 			}
+
 
 			@Override
 			public void onDrawerOpened(View drawerView)
@@ -168,7 +169,7 @@ public class ExampleActivity extends AppCompatActivity
 				break;
 		}
 
-		if(fragment!=null)
+		if(fragment != null)
 		{
 			FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.container_drawer_content, fragment).commitAllowingStateLoss();
@@ -177,7 +178,7 @@ public class ExampleActivity extends AppCompatActivity
 			getSupportActionBar().setTitle(item.getTitle());
 		}
 
-		if(intent!=null)
+		if(intent != null)
 		{
 			startActivity(intent);
 		}

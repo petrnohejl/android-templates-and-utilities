@@ -18,16 +18,16 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 	private boolean mProgress = false;
 	private View mRootView;
 	private APICallManager mAPICallManager = new APICallManager();
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_listing, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
@@ -39,8 +39,8 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 		// progress popup
 		showProgress(mProgress);
 	}
-	
-	
+
+
 	@Override
 	public void onRefresh()
 	{
@@ -80,8 +80,8 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 //			}
 //		}.execute();
 	}
-	
-	
+
+
 	public void refreshData()
 	{
 		if(NetworkUtility.isOnline(getActivity()))
@@ -90,7 +90,7 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 			{
 				// show progress popup
 				showProgress(true);
-				
+
 				// TODO
 			}
 		}

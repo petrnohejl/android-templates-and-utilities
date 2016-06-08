@@ -21,17 +21,17 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper
 	private Dao<ProductModel, Long> mProductDao = null;
 
 
-	// singleton
-	public static synchronized DatabaseHelper getInstance()
-	{
-		if(sInstance==null) sInstance = new DatabaseHelper();
-		return sInstance;
-	}
-
-
 	private DatabaseHelper()
 	{
 		super(ExampleApplication.getContext(), DATABASE_NAME, null, DATABASE_VERSION);
+	}
+
+
+	// singleton
+	public static synchronized DatabaseHelper getInstance()
+	{
+		if(sInstance == null) sInstance = new DatabaseHelper();
+		return sInstance;
 	}
 
 
@@ -104,7 +104,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper
 
 	public synchronized Dao<ProductModel, Long> getProductDao() throws java.sql.SQLException
 	{
-		if(mProductDao==null)
+		if(mProductDao == null)
 		{
 			mProductDao = getDao(ProductModel.class);
 		}

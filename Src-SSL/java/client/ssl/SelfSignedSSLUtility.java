@@ -1,5 +1,9 @@
 package com.example.client.ssl;
 
+import com.example.ExampleApplication;
+import com.example.ExampleConfig;
+import com.example.R;
+
 import java.io.InputStream;
 import java.net.URL;
 import java.security.GeneralSecurityException;
@@ -14,10 +18,6 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 
-import com.example.ExampleApplication;
-import com.example.ExampleConfig;
-import com.example.R;
-
 
 public final class SelfSignedSSLUtility
 {
@@ -28,30 +28,30 @@ public final class SelfSignedSSLUtility
 	{
 		SSLContext sslContext = createSSLContext();
 		HostnameVerifier sslHostnameVerifier = createSSLHostnameVerifier(requestUrl.getHost());
-		
+
 		connection.setSSLSocketFactory(sslContext.getSocketFactory());
 		connection.setHostnameVerifier(sslHostnameVerifier);
 	}
-	
-	
+
+
 	public static SSLContext createSSLContext() throws GeneralSecurityException
 	{
 		KeyStore keyStore = loadKeyStore();
-		
+
 		SelfSignedTrustManager selfSignedTrustManager = new SelfSignedTrustManager(keyStore);
-		TrustManager[] tms = new TrustManager[] { selfSignedTrustManager };
-		
+		TrustManager[] tms = new TrustManager[]{selfSignedTrustManager};
+
 		KeyManager[] kms = null;
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
 		kmf.init(keyStore, ExampleConfig.SSL_KEYSTORE_PASSWORD.toCharArray());
 		kms = kmf.getKeyManagers();
-		
+
 		SSLContext context = SSLContext.getInstance("TLS");
 		context.init(kms, tms, new SecureRandom());
 		return context;
 	}
-	
-	
+
+
 	public static HostnameVerifier createSSLHostnameVerifier(final String apiHostname)
 	{
 		HostnameVerifier hostnameVerifier = new HostnameVerifier()
@@ -65,8 +65,8 @@ public final class SelfSignedSSLUtility
 		};
 		return hostnameVerifier;
 	}
-	
-	
+
+
 	public static KeyStore loadKeyStore()
 	{
 		try

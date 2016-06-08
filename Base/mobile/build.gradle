@@ -40,7 +40,7 @@ android
 		applicationId "com.example"
 		minSdkVersion 16
 		targetSdkVersion 23
-		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
+		versionCode VERSION_MAJOR * 10000000 + VERSION_MINOR * 100000 + VERSION_PATCH * 1000 + VERSION_BUILD
 		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
 	}
 
@@ -147,8 +147,8 @@ task askForPasswords <<
 tasks.whenTaskAdded
 {
 	theTask ->
-	if(theTask.name.equals("packageRelease"))
-	{
-		theTask.dependsOn "askForPasswords"
-	}
+		if(theTask.name.equals("packageRelease"))
+		{
+			theTask.dependsOn "askForPasswords"
+		}
 }

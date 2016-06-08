@@ -31,7 +31,7 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 {
 	private static final int LAZY_LOADING_TAKE = 16;
 	private static final int LAZY_LOADING_OFFSET = 4;
-	
+
 	private boolean mLazyLoading = false;
 	private View mRootView;
 	private StatefulLayout mStatefulLayout;
@@ -39,32 +39,32 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 	private ListingAdapter mAdapter;
 	private LoadDataTask mLoadDataTask;
 	private List<ProductEntity> mProductList = new ArrayList<>();
-	
-	
+
+
 	@Override
 	public void onAttach(Context context)
 	{
 		super.onAttach(context);
 	}
-	
-	
+
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{	
+	{
 		mRootView = inflater.inflate(R.layout.fragment_listing, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
@@ -74,69 +74,69 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mProductList==null || mProductList.isEmpty()) loadData();
-		
+		if(mProductList == null || mProductList.isEmpty()) loadData();
+
 		// lazy loading progress
 		if(mLazyLoading) showLazyLoadingProgress(true);
 	}
-	
-	
+
+
 	@Override
 	public void onStart()
 	{
 		super.onStart();
 	}
-	
-	
+
+
 	@Override
 	public void onResume()
 	{
 		super.onResume();
 	}
-	
-	
+
+
 	@Override
 	public void onPause()
 	{
 		super.onPause();
-		
+
 		// stop adapter
-		if(mAdapter!=null) mAdapter.stop();
+		if(mAdapter != null) mAdapter.stop();
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 	}
-	
-	
+
+
 	@Override
 	public void onDestroyView()
 	{
 		super.onDestroyView();
 		mRootView = null;
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
-		
+
 		// cancel async tasks
-		if(mLoadDataTask!=null) mLoadDataTask.cancel(true);
+		if(mLoadDataTask != null) mLoadDataTask.cancel(true);
 	}
-	
-	
+
+
 	@Override
 	public void onDetach()
 	{
 		super.onDetach();
 	}
-	
-	
+
+
 	@Override
 	public void onSaveInstanceState(Bundle outState)
 	{
@@ -145,30 +145,30 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 		setUserVisibleHint(true);
 
 		// stateful layout state
-		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
+		if(mStatefulLayout != null) mStatefulLayout.saveInstanceState(outState);
 	}
-	
-	
+
+
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
 	{
 		// action bar menu
 		super.onCreateOptionsMenu(menu, inflater);
-		
+
 		// TODO
 	}
-	
-	
+
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) 
+	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// action bar menu behavior
 		return super.onOptionsItemSelected(item);
-		
+
 		// TODO
 	}
-	
-	
+
+
 	@Override
 	public void onLoadData()
 	{
@@ -176,11 +176,11 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
-				
+				if(mRootView == null) return; // view was destroyed
+
 				// get data
 				final int size = mProductList.size();
-				for(int i=0; i<LAZY_LOADING_TAKE; i++)
+				for(int i = 0; i < LAZY_LOADING_TAKE; i++)
 				{
 					ProductEntity p = new ProductEntity();
 					p.setName("Product " + (size + i));
@@ -193,15 +193,15 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 			}
 		});
 	}
-	
-	
+
+
 	private void loadData()
 	{
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
 			mStatefulLayout.showProgress();
-			
+
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
 			executeTask(mLoadDataTask);
@@ -211,28 +211,28 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 			mStatefulLayout.showOffline();
 		}
 	}
-	
-	
+
+
 	private void lazyLoadData()
 	{
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show lazy loading progress
 			showLazyLoadingProgress(true);
-			
+
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
 			executeTask(mLoadDataTask);
 		}
 	}
-	
-	
+
+
 	private void showLazyLoadingProgress(boolean visible)
 	{
 		if(visible)
 		{
 			mLazyLoading = true;
-		
+
 			// show footer
 			ListView listView = getListView();
 			listView.addFooterView(mFooterView);
@@ -242,20 +242,20 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 			// hide footer
 			ListView listView = getListView();
 			listView.removeFooterView(mFooterView);
-			
+
 			mLazyLoading = false;
 		}
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		ListView listView = getListView();
 		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
-		
+
 		// listview content
-		if(listView.getAdapter()==null)
+		if(listView.getAdapter() == null)
 		{
 			// create adapter
 			mAdapter = new ListingAdapter(getActivity(), mProductList);
@@ -273,14 +273,14 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 		//	mHeaderView = getActivity().getLayoutInflater().inflate(R.layout.fragment_listing_header, listView, false);
 		//	listView.addHeaderView(mHeaderView);
 		//}
-		
+
 		// init footer, because addFooterView() must be called at least once before setListAdapter()
 		mFooterView = getActivity().getLayoutInflater().inflate(R.layout.fragment_listing_footer, listView, false);
 		listView.addFooterView(mFooterView);
-		
+
 		// set adapter
 		listView.setAdapter(mAdapter);
-		
+
 		// hide footer
 		listView.removeFooterView(mFooterView);
 
@@ -294,11 +294,12 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 			public void onScrollStateChanged(AbsListView view, int scrollState)
 			{
 			}
-			
+
+
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
 			{
-				if(totalItemCount-(firstVisibleItem+visibleItemCount) <= LAZY_LOADING_OFFSET && mProductList.size() % LAZY_LOADING_TAKE==0 && !mProductList.isEmpty())
+				if(totalItemCount - (firstVisibleItem + visibleItemCount) <= LAZY_LOADING_OFFSET && mProductList.size() % LAZY_LOADING_TAKE == 0 && !mProductList.isEmpty())
 				{
 					if(!mLazyLoading) lazyLoadData();
 				}
@@ -346,18 +347,18 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 			@Override
 			public void onStateChange(View v, StatefulLayout.State state)
 			{
-				Logcat.d("" + (state==null ? "null" : state.toString()));
+				Logcat.d("" + (state == null ? "null" : state.toString()));
 
-				if(state==StatefulLayout.State.CONTENT)
+				if(state == StatefulLayout.State.CONTENT)
 				{
 					ListView listView = getListView();
-					if(mLazyLoading && listView.getAdapter()!=null)
+					if(mLazyLoading && listView.getAdapter() != null)
 					{
 						mAdapter.notifyDataSetChanged();
 					}
 					else
 					{
-						if(mProductList!=null) bindData();
+						if(mProductList != null) bindData();
 					}
 				}
 			}
@@ -370,7 +371,7 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 
 	private ListView getListView()
 	{
-		return mRootView!=null ? (ListView) mRootView.findViewById(android.R.id.list) : null;
+		return mRootView != null ? (ListView) mRootView.findViewById(android.R.id.list) : null;
 	}
 
 
@@ -378,7 +379,7 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 	{
 		// list position without headers, should be used for getting data entities from collections
 		int listPosition = globalPosition;
-		if(getListView()!=null) listPosition = globalPosition - getListView().getHeaderViewsCount();
+		if(getListView() != null) listPosition = globalPosition - getListView().getHeaderViewsCount();
 		return listPosition;
 	}
 }

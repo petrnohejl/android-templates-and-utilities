@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.example.R;
 import com.example.entity.ProductEntity;
 
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import pl.polidea.treeview.AbstractTreeViewAdapter;

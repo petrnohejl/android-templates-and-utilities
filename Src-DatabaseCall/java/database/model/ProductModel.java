@@ -14,11 +14,11 @@ public class ProductModel
 	public static final String COLUMN_TIMESTAMP = "timestamp";
 	public static final String COLUMN_PRICE = "price";
 
-	@DatabaseField(columnName=COLUMN_ID, generatedId=true) private long id;
-	@DatabaseField(columnName=COLUMN_NAME) private String name;
-	@DatabaseField(columnName=COLUMN_QUANTITY) private int quantity;
-	@DatabaseField(columnName=COLUMN_TIMESTAMP) private long timestamp;
-	@DatabaseField(columnName=COLUMN_PRICE) private double price;
+	@DatabaseField(columnName = COLUMN_ID, generatedId = true) private long id;
+	@DatabaseField(columnName = COLUMN_NAME) private String name;
+	@DatabaseField(columnName = COLUMN_QUANTITY) private int quantity;
+	@DatabaseField(columnName = COLUMN_TIMESTAMP) private long timestamp;
+	@DatabaseField(columnName = COLUMN_PRICE) private double price;
 
 
 	// empty constructor

@@ -24,8 +24,8 @@ public class Response<T>
 	{
 		mResponseObject = responseObject;
 	}
-	
-	
+
+
 	public boolean isError()
 	{
 		return mError;

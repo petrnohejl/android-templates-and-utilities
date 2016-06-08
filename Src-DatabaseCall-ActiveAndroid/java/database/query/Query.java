@@ -9,6 +9,7 @@ public abstract class Query
 {
 	private Bundle mMetaData = null;
 
+
 	public abstract Data<?> processData();
 
 

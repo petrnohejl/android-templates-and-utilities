@@ -1,7 +1,5 @@
 package com.example.fragment;
 
-import java.util.Date;
-
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
@@ -14,6 +12,8 @@ import com.example.R;
 import com.example.geolocation.Geolocation;
 import com.example.geolocation.GeolocationListener;
 import com.example.utility.Logcat;
+
+import java.util.Date;
 
 
 public class ExampleFragment extends TaskFragment implements GeolocationListener
@@ -37,7 +37,7 @@ public class ExampleFragment extends TaskFragment implements GeolocationListener
 		super.onActivityCreated(savedInstanceState);
 
 		// start geolocation
-		if(mLocation==null)
+		if(mLocation == null)
 		{
 			mGeolocation = null;
 			mGeolocation = new Geolocation((LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE), this);
@@ -51,7 +51,7 @@ public class ExampleFragment extends TaskFragment implements GeolocationListener
 		super.onPause();
 
 		// stop geolocation
-		if(mGeolocation!=null) mGeolocation.stop();
+		if(mGeolocation != null) mGeolocation.stop();
 	}
 
 
@@ -62,11 +62,11 @@ public class ExampleFragment extends TaskFragment implements GeolocationListener
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
-				
+				if(mRootView == null) return; // view was destroyed
+
 				Logcat.d("onGeolocationRespond() = " + location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
 				mLocation = new Location(location);
-				
+
 				// TODO
 			}
 		});
@@ -80,10 +80,10 @@ public class ExampleFragment extends TaskFragment implements GeolocationListener
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
-				
+				if(mRootView == null) return; // view was destroyed
+
 				Logcat.d("onGeolocationFail()");
-				
+
 				// TODO
 			}
 		});

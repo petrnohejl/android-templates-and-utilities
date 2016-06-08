@@ -39,26 +39,26 @@ public class ExampleFragment extends TaskFragment implements
 	private static final String DIALOG_TIME_PICKER = "time_picker";
 	private static final String DIALOG_DATE_PICKER = "date_picker";
 	private static final String DIALOG_PROGRESS = "progress";
-	
+
 	private View mRootView;
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
 		bindData();
 	}
-	
-	
+
+
 	@Override
 	public void onSimpleDialogPositiveClick(final DialogFragment dialog)
 	{
@@ -85,8 +85,8 @@ public class ExampleFragment extends TaskFragment implements
 			}
 		});
 	}
-	
-	
+
+
 	@Override
 	public void onItemsDialogItemClick(final DialogFragment dialog, final int which)
 	{
@@ -127,8 +127,8 @@ public class ExampleFragment extends TaskFragment implements
 			}
 		});
 	}
-	
-	
+
+
 	@Override
 	public void onSingleChoiceItemsDialogPositiveClick(final DialogFragment dialog, final int checkedItem)
 	{
@@ -155,8 +155,8 @@ public class ExampleFragment extends TaskFragment implements
 			}
 		});
 	}
-	
-	
+
+
 	@Override
 	public void onMultiChoiceItemsDialogPositiveClick(final DialogFragment dialog, final boolean[] checkedItems)
 	{
@@ -166,7 +166,7 @@ public class ExampleFragment extends TaskFragment implements
 			public void run()
 			{
 				StringBuilder builder = new StringBuilder();
-				for(int i=0; i<checkedItems.length; i++)
+				for(int i = 0; i < checkedItems.length; i++)
 				{
 					builder.append(checkedItems[i]);
 					builder.append(" ");
@@ -189,8 +189,8 @@ public class ExampleFragment extends TaskFragment implements
 			}
 		});
 	}
-	
-	
+
+
 	@Override
 	public void onViewDialogPositiveClick(final DialogFragment dialog, final String username, final String password)
 	{
@@ -231,8 +231,8 @@ public class ExampleFragment extends TaskFragment implements
 			}
 		});
 	}
-	
-	
+
+
 	@Override
 	public void onDatePickerDialogPositiveClick(final DialogFragment dialog, final int year, final int month, final int day)
 	{
@@ -241,12 +241,12 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void run()
 			{
-				Logcat.d("onDatePickerDialogPositiveClick() = " + day + "." + (month+1) + "." + year);
+				Logcat.d("onDatePickerDialogPositiveClick() = " + day + "." + (month + 1) + "." + year);
 			}
 		});
 	}
 
-	
+
 	private void bindData()
 	{
 		// reference
@@ -258,7 +258,7 @@ public class ExampleFragment extends TaskFragment implements
 		Button button6 = (Button) mRootView.findViewById(R.id.fragment_example_button6);
 		Button button7 = (Button) mRootView.findViewById(R.id.fragment_example_button7);
 		Button button8 = (Button) mRootView.findViewById(R.id.fragment_example_button8);
-		
+
 		// content
 		button1.setOnClickListener(new OnClickListener()
 		{
@@ -293,7 +293,7 @@ public class ExampleFragment extends TaskFragment implements
 						true,
 						false,
 						true,
-						false };
+						false};
 				showMultiChoiceItemsDialog(checkedItems);
 			}
 		});
@@ -330,8 +330,8 @@ public class ExampleFragment extends TaskFragment implements
 			}
 		});
 	}
-	
-	
+
+
 	private void showSimpleDialog(String arg)
 	{
 		// create and show the dialog
@@ -339,8 +339,8 @@ public class ExampleFragment extends TaskFragment implements
 		newFragment.setTargetFragment(this, 0);
 		newFragment.show(getFragmentManager(), DIALOG_SIMPLE);
 	}
-	
-	
+
+
 	private void showItemsDialog(String arg)
 	{
 		// create and show the dialog
@@ -348,8 +348,8 @@ public class ExampleFragment extends TaskFragment implements
 		newFragment.setTargetFragment(this, 0);
 		newFragment.show(getFragmentManager(), DIALOG_ITEMS);
 	}
-	
-	
+
+
 	private void showSingleChoiceItemsDialog(int checkedItem)
 	{
 		// create and show the dialog
@@ -357,8 +357,8 @@ public class ExampleFragment extends TaskFragment implements
 		newFragment.setTargetFragment(this, 0);
 		newFragment.show(getFragmentManager(), DIALOG_SINGLE_CHOICE_ITEMS);
 	}
-	
-	
+
+
 	private void showMultiChoiceItemsDialog(boolean checkedItems[])
 	{
 		// create and show the dialog
@@ -366,8 +366,8 @@ public class ExampleFragment extends TaskFragment implements
 		newFragment.setTargetFragment(this, 0);
 		newFragment.show(getFragmentManager(), DIALOG_MULTI_CHOICE_ITEMS);
 	}
-	
-	
+
+
 	private void showViewDialog(String arg)
 	{
 		// create and show the dialog
@@ -375,8 +375,8 @@ public class ExampleFragment extends TaskFragment implements
 		newFragment.setTargetFragment(this, 0);
 		newFragment.show(getFragmentManager(), DIALOG_VIEW);
 	}
-	
-	
+
+
 	private void showTimePickerDialog(Calendar time)
 	{
 		// create and show the dialog
@@ -384,8 +384,8 @@ public class ExampleFragment extends TaskFragment implements
 		newFragment.setTargetFragment(this, 0);
 		newFragment.show(getFragmentManager(), DIALOG_TIME_PICKER);
 	}
-	
-	
+
+
 	private void showDatePickerDialog(Calendar date)
 	{
 		// create and show the dialog
@@ -393,8 +393,8 @@ public class ExampleFragment extends TaskFragment implements
 		newFragment.setTargetFragment(this, 0);
 		newFragment.show(getFragmentManager(), DIALOG_DATE_PICKER);
 	}
-	
-	
+
+
 	private void showProgressDialog()
 	{
 		// create dialog
@@ -402,12 +402,12 @@ public class ExampleFragment extends TaskFragment implements
 		newFragment.setTargetFragment(this, 0);
 		newFragment.show(getFragmentManager(), DIALOG_PROGRESS);
 	}
-	
-	
+
+
 	private void hideProgressDialog()
 	{
 		getFragmentManager().executePendingTransactions();
-		DialogFragment dialogFragment = (DialogFragment) getFragmentManager().findFragmentByTag(DIALOG_PROGRESS); 
+		DialogFragment dialogFragment = (DialogFragment) getFragmentManager().findFragmentByTag(DIALOG_PROGRESS);
 		if(dialogFragment != null) dialogFragment.dismiss();
 	}
 }

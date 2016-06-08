@@ -4,147 +4,147 @@
 	<!-- Example theme -->
 	<!-- Android Asset Studio: http://android-ui-utils.googlecode.com/hg/asset-studio/dist/index.html -->
 	<!-- Original Android styles: https://github.com/android/platform_frameworks_base/blob/master/core/res/res/values/styles.xml -->
-	
+
 	<style name="Theme.Example" parent="@style/Theme.AppCompat.Light">
 		<!-- window background -->
 		<item name="android:windowBackground">@color/global_bg_back</item>
-		
+
 		<!-- action bar overlay -->
 		<item name="windowActionBarOverlay">false</item>
 		<item name="android:windowActionBarOverlay">false</item>
-		
+
 		<!-- action bar shadow overlay background -->
 		<!-- <item name="windowContentOverlay">@null</item> --><!-- for Theme.Sherlock -->
 		<item name="android:windowContentOverlay">@null</item>
-		
+
 		<!-- action bar icon -->
 		<item name="icon">@drawable/ic_launcher</item>
 		<item name="android:icon">@drawable/ic_launcher</item>
-		
+
 		<!-- action bar logo -->
 		<!--
 		<item name="logo">@drawable/ab_logo</item>
 		<item name="android:logo">@drawable/ab_logo</item>
 		-->
-		
+
 		<!-- action bar up caret icon -->
 		<item name="homeAsUpIndicator">@drawable/ab_ic_back</item>
 		<item name="android:homeAsUpIndicator">@drawable/ab_ic_back</item>
-		
+
 		<!-- action bar close icon -->
 		<item name="actionModeCloseDrawable">@drawable/ab_ic_close</item>
 		<item name="android:actionModeCloseDrawable">@drawable/ab_ic_close</item>
-		
+
 		<!-- action bar button divider -->
 		<item name="actionBarDivider">@drawable/ab_divider</item>
 		<item name="android:actionBarDivider">@drawable/ab_divider</item>
-		
+
 		<!-- action bar button text -->
 		<item name="actionMenuTextColor">@color/ab_button_text</item>
 		<item name="android:actionMenuTextColor">@color/ab_button_text</item>
-		
+
 		<!-- action bar item background -->
 		<item name="actionBarItemBackground">@drawable/selector_ab_item_bg</item>
 		<item name="android:actionBarItemBackground">@drawable/selector_ab_item_bg</item>
-		
+
 		<!-- action bar popup menu item background -->
 		<!-- <item name="itemBackground">@drawable/selector_ab_item_bg</item> --><!-- for Theme.Sherlock -->
 		<item name="android:itemBackground">@drawable/selector_ab_item_bg</item>
-		
+
 		<!-- action bar action mode background -->
 		<item name="actionModeBackground">@drawable/ab_bg_mode_top</item>
 		<item name="android:actionModeBackground">@drawable/ab_bg_mode_top</item>
-		
+
 		<!-- action bar action mode split background -->
 		<item name="actionModeSplitBackground">@drawable/ab_bg_mode_bottom</item>
 		<item name="android:actionModeSplitBackground">@drawable/ab_bg_mode_bottom</item>
-		
+
 		<!-- action bar menu hardkey panel background -->
 		<item name="android:panelBackground">@drawable/ab_popup_bottom_bg</item>
-		
+
 		<!-- action bar list choice checkbox and radio -->
 		<!--
 		<item name="android:listChoiceIndicatorMultiple">@drawable/selector_ab_checkbox_bg</item>
 		<item name="android:listChoiceIndicatorSingle">@drawable/selector_ab_radio_bg</item>
 		-->
-		
+
 		<!-- action bar style -->
 		<item name="actionBarStyle">@style/Example.ActionBar</item>
 		<item name="android:actionBarStyle">@style/Example.ActionBar</item>
-		
+
 		<!-- action bar split style -->
 		<!--
 		<item name="actionBarSplitStyle">@style/Example.ActionBar</item>
 		<item name="android:actionBarSplitStyle">@style/Example.ActionBar</item>
 		-->
-		
+
 		<!-- action bar mode style -->
 		<item name="actionModeStyle">@style/Example.ActionBar.ActionMode</item>
 		<item name="android:actionModeStyle">@style/Example.ActionBar.ActionMode</item>
-		
+
 		<!-- action bar button style -->
 		<item name="actionButtonStyle">@style/Example.ActionBar.ActionButton</item>
 		<item name="android:actionButtonStyle">@style/Example.ActionBar.ActionButton</item>
-		
+
 		<!-- action bar button text style -->
 		<item name="actionMenuTextAppearance">@style/Example.ActionBar.ActionMenuTextAppearance</item>
 		<item name="android:actionMenuTextAppearance">@style/Example.ActionBar.ActionMenuTextAppearance</item>
-		
+
 		<!-- action bar button overflow style -->
 		<item name="actionOverflowButtonStyle">@style/Example.ActionBar.ActionOverflowButton</item>
 		<item name="android:actionOverflowButtonStyle">@style/Example.ActionBar.ActionOverflowButton</item>
-		
+
 		<!-- action bar popup menu style -->
 		<item name="popupMenuStyle">@style/Example.ActionBar.PopupMenu</item>
 		<item name="android:popupMenuStyle">@style/Example.ActionBar.PopupMenu</item>
-		
+
 		<!-- action bar popup menu item style -->
 		<item name="dropDownListViewStyle">@style/Example.ActionBar.DropDownListView</item>
 		<item name="android:dropDownListViewStyle">@style/Example.ActionBar.DropDownListView</item>
-		
+
 		<!-- action bar popup menu text style -->
 		<item name="textAppearanceLargePopupMenu">@style/Example.ActionBar.TextAppearanceLargePopupMenu</item>
 		<item name="android:textAppearanceLargePopupMenu">@style/Example.ActionBar.TextAppearanceLargePopupMenu</item>
-		
+
 		<!-- action bar popup menu text style -->
 		<item name="android:itemTextAppearance">@style/Example.ActionBar.TextAppearanceLargePopupMenu</item>
-		
+
 		<!-- action bar navigation dropdown style -->
 		<item name="actionDropDownStyle">@style/Example.ActionBar.ActionDropDown</item>
 		<item name="android:actionDropDownStyle">@style/Example.ActionBar.ActionDropDown</item>
-		
+
 		<!-- action bar navigation dropdown text style -->
 		<item name="spinnerDropDownItemStyle">@style/Example.ActionBar.SpinnerDropDownItem</item>
 		<item name="android:spinnerDropDownItemStyle">@style/Example.ActionBar.SpinnerDropDownItem</item>
-		
+
 		<!-- action bar navigation dropdown selected text style -->
 		<!-- <item name="spinnerItemStyle">@style/Example.ActionBar.SpinnerItem</item> --><!-- for Theme.Sherlock -->
-		<item name="android:spinnerItemStyle">@style/Example.ActionBar.SpinnerItem</item>	
-		
+		<item name="android:spinnerItemStyle">@style/Example.ActionBar.SpinnerItem</item>
+
 		<!-- action bar tab bar style -->
 		<item name="actionBarTabBarStyle">@style/Example.ActionBar.TabBar</item>
 		<item name="android:actionBarTabBarStyle">@style/Example.ActionBar.TabBar</item>
-		
+
 		<!-- action bar tab item style -->
 		<item name="actionBarTabStyle">@style/Example.ActionBar.Tab</item>
 		<item name="android:actionBarTabStyle">@style/Example.ActionBar.Tab</item>
-		
+
 		<!-- action bar tab text style -->
 		<item name="actionBarTabTextStyle">@style/Example.ActionBar.TabText</item>
 		<item name="android:actionBarTabTextStyle">@style/Example.ActionBar.TabText</item>
-		
+
 		<!-- action bar action mode button close style -->
 		<item name="actionModeCloseButtonStyle">@style/Example.ActionBar.ActionModeCloseButton</item>
 		<item name="android:actionModeCloseButtonStyle">@style/Example.ActionBar.ActionModeCloseButton</item>
-		
+
 		<!-- view styles -->
 		<item name="android:textViewStyle">@style/Example.TextView.Light</item>
 		<item name="android:buttonStyle">@style/Example.Button.Light</item>
 		<item name="android:editTextStyle">@style/Example.EditText.Light</item>
 		<item name="android:checkboxStyle">@style/Example.CheckBox.Light</item>
 	</style>
-	
-	
+
+
 	<!-- transparent window -->
 	<style name="Theme.Example.Transparent" parent="@style/Theme.Example">
 		<item name="android:windowBackground">@android:color/transparent</item>
@@ -154,44 +154,44 @@
 		<item name="android:windowIsTranslucent">true</item>
 		<item name="android:backgroundDimEnabled">false</item>
 	</style>
-	
-	
+
+
 	<!-- action bar style -->
 	<style name="Example.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
 		<!-- action bar background -->
 		<item name="background">@drawable/ab_bg_normal</item>
 		<item name="android:background">@drawable/ab_bg_normal</item>
-		
+
 		<!-- action bar stacked background -->
 		<item name="backgroundStacked">@drawable/ab_bg_stacked</item>
 		<item name="android:backgroundStacked">@drawable/ab_bg_stacked</item>
-		
+
 		<!-- action bar split background -->
 		<item name="backgroundSplit">@drawable/ab_bg_split</item>
 		<item name="android:backgroundSplit">@drawable/ab_bg_split</item>
-		
+
 		<!-- action bar title style -->
 		<item name="titleTextStyle">@style/Example.ActionBar.TitleText</item>
 		<item name="android:titleTextStyle">@style/Example.ActionBar.TitleText</item>
-		
+
 		<!-- action bar subtitle style -->
 		<item name="subtitleTextStyle">@style/Example.ActionBar.SubtitleText</item>
 		<item name="android:subtitleTextStyle">@style/Example.ActionBar.SubtitleText</item>
-		
+
 		<!-- action bar progress bar style -->
 		<item name="progressBarStyle">@style/Example.ActionBar.ProgressBar</item>
 		<item name="android:progressBarStyle">@style/Example.ActionBar.ProgressBar</item>
-		
+
 		<!-- action bar indeterminate progress bar style -->
 		<item name="indeterminateProgressStyle">@style/Example.ActionBar.IndeterminateProgress</item>
 		<item name="android:indeterminateProgressStyle">@style/Example.ActionBar.IndeterminateProgress</item>
-		
+
 		<!-- action bar custom navigation -->
 		<!--
 		<item name="customNavigationLayout">@layout/ab_navigation</item>
 		<item name="android:customNavigationLayout">@layout/ab_navigation</item>
 		-->
-		
+
 		<!-- action bar display options -->
 		<!-- options affecting how the action bar is displayed: http://developer.android.com/reference/android/R.styleable.html#ActionBar_displayOptions -->
 		<!--
@@ -199,28 +199,28 @@
 		<item name="android:displayOptions">showHome|useLogo</item>
 		-->
 	</style>
-	
-	
+
+
 	<!-- action bar mode style -->
 	<style name="Example.ActionBar.ActionMode" parent="@style/Widget.AppCompat.ActionMode">
 		<!-- action bar mode background -->
 		<item name="background">@drawable/ab_bg_mode_top</item>
 		<item name="android:background">@drawable/ab_bg_mode_top</item>
-		
+
 		<!-- action bar mode split background -->
 		<item name="backgroundSplit">@drawable/ab_bg_mode_bottom</item>
 		<item name="android:backgroundSplit">@drawable/ab_bg_mode_bottom</item>
-		
+
 		<!-- action bar mode title style -->
 		<item name="titleTextStyle">@style/Example.ActionBar.TitleText</item>
 		<item name="android:titleTextStyle">@style/Example.ActionBar.TitleText</item>
-		
+
 		<!-- action bar mode subtitle style -->
 		<item name="subtitleTextStyle">@style/Example.ActionBar.SubtitleText</item>
 		<item name="android:subtitleTextStyle">@style/Example.ActionBar.SubtitleText</item>
 	</style>
-	
-	
+
+
 	<!-- action bar title style -->
 	<style name="Example.ActionBar.TitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
 		<item name="android:textSize">@dimen/ab_title_text</item>
@@ -228,8 +228,8 @@
 		<item name="android:textStyle">normal</item>
 		<item name="android:textAllCaps">false</item>
 	</style>
-	
-	
+
+
 	<!-- action bar subtitle style -->
 	<style name="Example.ActionBar.SubtitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
 		<item name="android:textSize">@dimen/ab_subtitle_text</item>
@@ -237,14 +237,14 @@
 		<item name="android:textStyle">normal</item>
 		<item name="android:textAllCaps">false</item>
 	</style>
-	
-	
+
+
 	<!-- action bar progress bar style -->
 	<style name="Example.ActionBar.ProgressBar" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
 		<item name="android:progressDrawable">@drawable/layer_list_ab_progress_bar_horizontal</item>
 	</style>
-	
-	
+
+
 	<!-- action bar indeterminate progress bar style -->
 	<style name="Example.ActionBar.IndeterminateProgress" parent="@style/Widget.AppCompat.ProgressBar">
 		<item name="android:indeterminateDrawable">@drawable/layer_list_ab_indeterminate_progress_bar</item>
@@ -253,61 +253,65 @@
 		<item name="android:minHeight">@dimen/ab_indeterminate_progress_bar_size</item>
 		<item name="android:maxHeight">@dimen/ab_indeterminate_progress_bar_size</item>
 	</style>
-	
-	
+
+
 	<!-- action bar button style -->
 	<style name="Example.ActionBar.ActionButton" parent="@style/Widget.AppCompat.Light.ActionButton">
 		<item name="android:background">@drawable/selector_ab_item_bg</item>
 	</style>
-	
-	
+
+
 	<!-- action bar button text style -->
-	<style name="Example.ActionBar.ActionMenuTextAppearance" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
+	<style
+		name="Example.ActionBar.ActionMenuTextAppearance"
+		parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
 		<item name="android:textSize">@dimen/ab_button_text</item>
 		<item name="android:textColor">@color/ab_button_text</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:textAllCaps">true</item>
 	</style>
-	
-	
+
+
 	<!-- action bar button overflow style -->
 	<style name="Example.ActionBar.ActionOverflowButton" parent="@style/Widget.AppCompat.Light.ActionButton.Overflow">
 		<item name="android:src">@drawable/ab_ic_moreoverflow</item>
 		<item name="android:background">@drawable/selector_ab_item_bg</item>
 	</style>
-	
-	
+
+
 	<!-- action bar popup menu style -->
 	<style name="Example.ActionBar.PopupMenu" parent="@style/Widget.AppCompat.Light.PopupMenu">
 		<item name="android:popupBackground">@drawable/ab_popup_bg</item>
 	</style>
-	
-	
+
+
 	<!-- action bar popup menu item style -->
 	<style name="Example.ActionBar.DropDownListView" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
 		<item name="android:listSelector">@drawable/selector_ab_item_bg</item>
 		<item name="android:divider">@color/ab_popup_divider</item>
 		<item name="android:dividerHeight">@dimen/ab_popup_divider</item>
 	</style>
-	
-	
+
+
 	<!-- action bar popup menu text style -->
-	<style name="Example.ActionBar.TextAppearanceLargePopupMenu" parent="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large">
+	<style
+		name="Example.ActionBar.TextAppearanceLargePopupMenu"
+		parent="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large">
 		<item name="android:textSize">@dimen/ab_popup_text</item>
 		<item name="android:textColor">@color/ab_popup_text</item>
 		<item name="android:textStyle">normal</item>
 		<item name="android:textAllCaps">false</item>
 	</style>
-	
-	
+
+
 	<!-- action bar navigation dropdown style -->
 	<style name="Example.ActionBar.ActionDropDown" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
 		<item name="android:background">@drawable/selector_ab_dropdown_bg</item>
 		<item name="android:popupBackground">@drawable/ab_popup_bg</item>
 		<item name="android:dropDownSelector">@drawable/selector_ab_item_bg</item>
 	</style>
-	
-	
+
+
 	<!-- action bar navigation dropdown text style -->
 	<style name="Example.ActionBar.SpinnerDropDownItem" parent="@style/Widget.AppCompat.Light.DropDownItem.Spinner">
 		<item name="android:textSize">@dimen/ab_dropdown_text</item>
@@ -315,25 +319,27 @@
 		<item name="android:textStyle">normal</item>
 		<item name="android:textAllCaps">false</item>
 	</style>
-	
-	
+
+
 	<!-- action bar navigation dropdown selected text style -->
-	<style name="Example.ActionBar.SpinnerItem" parent="@style/Widget.AppCompat.Light.DropDownItem.Spinner"><!-- @style/Widget.Sherlock.TextView.SpinnerItem for Theme.Sherlock -->
+	<style
+		name="Example.ActionBar.SpinnerItem"
+		parent="@style/Widget.AppCompat.Light.DropDownItem.Spinner"><!-- @style/Widget.Sherlock.TextView.SpinnerItem for Theme.Sherlock -->
 		<item name="android:textSize">@dimen/ab_dropdown_selected_text</item>
 		<item name="android:textColor">@color/ab_dropdown_selected_text</item>
 		<item name="android:textStyle">normal</item>
 		<item name="android:textAllCaps">false</item>
 	</style>
-	
-	
+
+
 	<!-- action bar tab bar style -->
 	<style name="Example.ActionBar.TabBar" parent="@style/Widget.AppCompat.Light.ActionBar.TabBar">
 		<item name="android:divider">@drawable/ab_divider</item>
 		<item name="android:dividerPadding">@dimen/ab_tab_divider_padding</item>
 		<item name="android:showDividers">middle</item>
 	</style>
-	
-	
+
+
 	<!-- action bar tab item style -->
 	<style name="Example.ActionBar.Tab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
 		<item name="android:background">@drawable/selector_ab_tab_bg</item>
@@ -341,8 +347,8 @@
 		<item name="android:paddingRight">@dimen/ab_tab_padding</item>
 		<item name="android:gravity">center_horizontal</item>
 	</style>
-	
-	
+
+
 	<!-- action bar tab text style -->
 	<!-- this style is used also in dropdown navigation, if tabs are replaced by dropdown navigation -->
 	<style name="Example.ActionBar.TabText" parent="@style/Widget.AppCompat.Light.ActionBar.TabText">
@@ -351,14 +357,14 @@
 		<item name="android:textStyle">bold</item>
 		<item name="android:textAllCaps">true</item>
 	</style>
-	
-	
+
+
 	<!-- action bar action mode button close style -->
 	<style name="Example.ActionBar.ActionModeCloseButton" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
 		<item name="android:background">@drawable/selector_ab_mode_close_bg</item>
 	</style>
-	
-	
+
+
 	<!-- view textview -->
 	<style name="Example.TextView" parent="@android:style/Widget.TextView">
 		<item name="android:textColor">@color/global_text_primary_inverse</item>
@@ -366,8 +372,8 @@
 	<style name="Example.TextView.Light" parent="@android:style/Widget.TextView">
 		<item name="android:textColor">@color/global_text_primary</item>
 	</style>
-	
-	
+
+
 	<!-- view button -->
 	<style name="Example.Button" parent="@android:style/Widget.Button">
 		<item name="android:textColor">@color/global_text_primary</item>
@@ -375,8 +381,8 @@
 	<style name="Example.Button.Light" parent="@android:style/Widget.Button">
 		<item name="android:textColor">@color/global_text_primary</item>
 	</style>
-	
-	
+
+
 	<!-- view edittext -->
 	<style name="Example.EditText" parent="@android:style/Widget.EditText">
 		<item name="android:textColor">@color/global_text_primary</item>
@@ -386,8 +392,8 @@
 		<item name="android:textColor">@color/global_text_primary</item>
 		<item name="android:textColorHint">@color/global_text_secondary</item>
 	</style>
-	
-	
+
+
 	<!-- view checkbox -->
 	<style name="Example.CheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
 		<item name="android:textColor">@color/global_text_primary_inverse</item>

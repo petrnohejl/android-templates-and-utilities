@@ -17,10 +17,6 @@
 
 package com.example.view;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -31,12 +27,16 @@ import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 
 // source: http://stackoverflow.com/questions/2160619/android-ellipsize-multiline-textview
 public class EllipsizingTextView extends TextView
 {
-	private static final String ELLIPSIS = "…";
-	private static final Pattern DEFAULT_END_PUNCTUATION = Pattern.compile("[\\.,…;\\:\\s]*$", Pattern.DOTALL);
+	private static final String ELLIPSIS = "â€¦";
+	private static final Pattern DEFAULT_END_PUNCTUATION = Pattern.compile("[\\.,â€¦;\\:\\s]*$", Pattern.DOTALL);
 
 	private final List<EllipsizeListener> ellipsizeListeners = new ArrayList<EllipsizeListener>();
 	private boolean isEllipsized;
@@ -46,7 +46,7 @@ public class EllipsizingTextView extends TextView
 	private int maxLines;
 	private float lineSpacingMultiplier = 1.0F;
 	private float lineAdditionalVerticalPadding = 0.0F;
-	
+
 	/**
 	 * The end punctuation which will be removed when appending #ELLIPSIS.
 	 */
@@ -75,46 +75,9 @@ public class EllipsizingTextView extends TextView
 	{
 		super(context, attrs, defStyle);
 		super.setEllipsize(null);
-		TypedArray a = context.obtainStyledAttributes(attrs, new int[] { android.R.attr.maxLines });
+		TypedArray a = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.maxLines});
 		setMaxLines(a.getInt(0, Integer.MAX_VALUE));
 		setEndPunctuationPattern(DEFAULT_END_PUNCTUATION);
-	}
-
-
-	public void setEndPunctuationPattern(Pattern pattern)
-	{
-		this.endPunctuationPattern = pattern;
-	}
-
-
-	public void addEllipsizeListener(EllipsizeListener listener)
-	{
-		if(listener == null)
-		{
-			throw new NullPointerException();
-		}
-		ellipsizeListeners.add(listener);
-	}
-
-
-	public void removeEllipsizeListener(EllipsizeListener listener)
-	{
-		ellipsizeListeners.remove(listener);
-	}
-
-
-	public boolean isEllipsized()
-	{
-		return isEllipsized;
-	}
-
-
-	@Override
-	public void setMaxLines(int maxLines)
-	{
-		super.setMaxLines(maxLines);
-		this.maxLines = maxLines;
-		isStale = true;
 	}
 
 
@@ -124,9 +87,12 @@ public class EllipsizingTextView extends TextView
 	}
 
 
-	public boolean ellipsizingLastFullyVisibleLine()
+	@Override
+	public void setMaxLines(int maxLines)
 	{
-		return maxLines == Integer.MAX_VALUE;
+		super.setMaxLines(maxLines);
+		this.maxLines = maxLines;
+		isStale = true;
 	}
 
 
@@ -190,6 +156,40 @@ public class EllipsizingTextView extends TextView
 	}
 
 
+	public void setEndPunctuationPattern(Pattern pattern)
+	{
+		this.endPunctuationPattern = pattern;
+	}
+
+
+	public void addEllipsizeListener(EllipsizeListener listener)
+	{
+		if(listener == null)
+		{
+			throw new NullPointerException();
+		}
+		ellipsizeListeners.add(listener);
+	}
+
+
+	public void removeEllipsizeListener(EllipsizeListener listener)
+	{
+		ellipsizeListeners.remove(listener);
+	}
+
+
+	public boolean isEllipsized()
+	{
+		return isEllipsized;
+	}
+
+
+	public boolean ellipsizingLastFullyVisibleLine()
+	{
+		return maxLines == Integer.MAX_VALUE;
+	}
+
+
 	private void resetText()
 	{
 		String workingText = fullText;
@@ -230,7 +230,7 @@ public class EllipsizingTextView extends TextView
 		if(ellipsized != isEllipsized)
 		{
 			isEllipsized = ellipsized;
-			for(EllipsizeListener listener:ellipsizeListeners)
+			for(EllipsizeListener listener : ellipsizeListeners)
 			{
 				listener.ellipsizeStateChanged(ellipsized);
 			}

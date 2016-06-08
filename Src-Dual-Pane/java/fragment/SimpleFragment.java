@@ -17,23 +17,23 @@ public class SimpleFragment extends Fragment
 
 	private View mRootView;
 	private int mId = -1;
-	
-	
+
+
 	public static SimpleFragment newInstance(int productId)
 	{
 		SimpleFragment fragment = new SimpleFragment();
-		
+
 		// arguments
 		Bundle arguments = new Bundle();
 		arguments.putInt(ARGUMENT_PRODUCT_ID, productId);
 		fragment.setArguments(arguments);
-		
+
 		return fragment;
 	}
-	
-	
+
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setRetainInstance(false); // fragment in second pane shouldn't be retained
@@ -52,16 +52,16 @@ public class SimpleFragment extends Fragment
 			handleExtras(extras);
 		}
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_simple, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
@@ -78,7 +78,7 @@ public class SimpleFragment extends Fragment
 		}
 	}
 
-	
+
 	private void handleExtras(Bundle extras)
 	{
 		if(extras.containsKey(SimpleActivity.EXTRA_PRODUCT_ID))
@@ -86,13 +86,13 @@ public class SimpleFragment extends Fragment
 			mId = extras.getInt(SimpleActivity.EXTRA_PRODUCT_ID);
 		}
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_simple_name);
-		
+
 		// content
 		nameTextView.setText(Integer.toString(mId));
 	}

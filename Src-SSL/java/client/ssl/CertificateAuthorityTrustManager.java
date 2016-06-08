@@ -1,5 +1,9 @@
 package com.example.client.ssl;
 
+import android.util.Base64;
+
+import com.example.ExampleConfig;
+
 import java.io.UnsupportedEncodingException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -11,10 +15,6 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
-
-import android.util.Base64;
-
-import com.example.ExampleConfig;
 
 
 // useful articles about trusting SSL certificates:
@@ -29,12 +29,12 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 	public CertificateAuthorityTrustManager() throws NoSuchAlgorithmException, KeyStoreException
 	{
 		super();
-		
+
 		// init factory
 		TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		KeyStore keyStore = null;
 		trustManagerFactory.init(keyStore);
-		
+
 		// create default trust manager checking certificates signed with certificate authority
 		TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
 		if(trustManagers.length == 0)
@@ -43,8 +43,8 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 		}
 		mDefaultTrustManager = (X509TrustManager) trustManagers[0];
 	}
-	
-	
+
+
 	@Override
 	public void checkClientTrusted(X509Certificate[] certificates, String authType) throws CertificateException
 	{
@@ -52,15 +52,15 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 		//Logcat.d("");
 		mDefaultTrustManager.checkClientTrusted(certificates, authType);
 	}
-	
-	
+
+
 	@Override
 	public void checkServerTrusted(X509Certificate[] certificates, String authType) throws CertificateException
 	{
 		boolean expectedCertificateFound = false;
-		
+
 		// manually verify certificate comparing encoded representation of the certificate
-		for(X509Certificate certificate:certificates)
+		for(X509Certificate certificate : certificates)
 		{
 			try
 			{
@@ -80,26 +80,26 @@ public class CertificateAuthorityTrustManager implements X509TrustManager
 				throw new CertificateException("Failed to compare hashes of certificates.");
 			}
 		}
-		
+
 		if(!expectedCertificateFound)
 		{
 			// if manual verification failed, throw exception
 			throw new CertificateException("Expected certificate not found.");
 		}
-		
+
 		// if manual verification successfull, check server certificate
 		//Logcat.d("");
 		mDefaultTrustManager.checkServerTrusted(certificates, authType);
 	}
-	
-	
+
+
 	@Override
 	public X509Certificate[] getAcceptedIssuers()
 	{
 		return mDefaultTrustManager.getAcceptedIssuers();
 	}
-	
-	
+
+
 	private String SHA1Base64Encoded(byte[] data) throws NoSuchAlgorithmException, UnsupportedEncodingException
 	{
 		MessageDigest md = MessageDigest.getInstance("SHA-1");

@@ -20,8 +20,8 @@ public class ExampleActivity extends AppCompatActivity
 		setContentView(R.layout.activity_example);
 		setupActionBar();
 	}
-	
-	
+
+
 	private void setupActionBar()
 	{
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -29,7 +29,7 @@ public class ExampleActivity extends AppCompatActivity
 		setSupportActionBar(toolbar);
 
 		ActionBar bar = getSupportActionBar();
-		
+
 		// custom view
 		LayoutInflater inflater = (LayoutInflater) bar.getThemedContext().getSystemService(LAYOUT_INFLATER_SERVICE);
 		View customView = inflater.inflate(R.layout.ab_donebar, null);
@@ -49,7 +49,7 @@ public class ExampleActivity extends AppCompatActivity
 				// TODO
 			}
 		});
-		
+
 		// setup action bar
 		bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM, ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
 		bar.setCustomView(customView, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));

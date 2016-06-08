@@ -31,15 +31,15 @@ public class ExampleEntity
 		booleanVar = origin.booleanVar;
 		intVar = origin.intVar;
 		longVar = origin.longVar;
-		if(origin.stringVar!=null) stringVar = new String(origin.stringVar);
-		if(origin.dateVar!=null) dateVar = new Date(origin.dateVar.getTime());
-		if(origin.calendarVar!=null)
+		if(origin.stringVar != null) stringVar = new String(origin.stringVar);
+		if(origin.dateVar != null) dateVar = new Date(origin.dateVar.getTime());
+		if(origin.calendarVar != null)
 		{
 			calendarVar = Calendar.getInstance();
 			calendarVar.setTime(origin.calendarVar.getTime());
 		}
-		if(origin.myModel!=null) myModel = new MyModel(origin.myModel);
-		if(origin.stringList!=null)
+		if(origin.myModel != null) myModel = new MyModel(origin.myModel);
+		if(origin.stringList != null)
 		{
 			stringList = new ArrayList<>();
 			Iterator<String> iterator = origin.stringList.iterator();

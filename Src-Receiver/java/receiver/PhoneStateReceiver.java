@@ -18,13 +18,13 @@ public class PhoneStateReceiver extends BroadcastReceiver
 
 		String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
 		String msg = "Phone state changed to " + state;
-		
+
 		if(TelephonyManager.EXTRA_STATE_RINGING.equals(state))
 		{
 			String incomingNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
 			msg += ". Incoming number is " + incomingNumber;
 		}
-		
+
 		Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
 
 		// TODO: do something

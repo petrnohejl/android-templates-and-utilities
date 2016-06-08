@@ -15,16 +15,16 @@ public final class NetworkUtility
 	{
 		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-		return (networkInfo!=null && networkInfo.isAvailable() && networkInfo.isConnected());
+		return (networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected());
 	}
-	
-	
+
+
 	public static int getType(Context context)
 	{
 		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-		
-		if(networkInfo!=null)
+
+		if(networkInfo != null)
 		{
 			// returns ConnectivityManager.TYPE_WIFI, ConnectivityManager.TYPE_MOBILE etc.
 			return networkInfo.getType();
@@ -34,14 +34,14 @@ public final class NetworkUtility
 			return -1;
 		}
 	}
-	
-	
+
+
 	public static String getTypeName(Context context)
 	{
 		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-		
-		if(networkInfo!=null)
+
+		if(networkInfo != null)
 		{
 			return networkInfo.getTypeName();
 		}

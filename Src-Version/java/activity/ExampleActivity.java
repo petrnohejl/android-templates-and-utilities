@@ -25,12 +25,12 @@ public class ExampleActivity extends AppCompatActivity
 		Preferences preferences = new Preferences(this);
 		String currentVersion = Version.getVersionName(this);
 		String lastVersion = preferences.getVersion();
-		
+
 		// new version is available
 		if(!currentVersion.equals(lastVersion))
 		{
 			// TODO: do something
-			
+
 			// set new version in preferences
 			preferences.setVersion(currentVersion);
 		}
@@ -47,8 +47,8 @@ public class ExampleActivity extends AppCompatActivity
 		boolean showDialog = false;
 		if(!preferences.isRated())
 		{
-			if(launch==3) showDialog = true;
-			else if(launch>=10 && launch%10==0) showDialog = true;
+			if(launch == 3) showDialog = true;
+			else if(launch >= 10 && launch % 10 == 0) showDialog = true;
 		}
 
 		// show rating dialog

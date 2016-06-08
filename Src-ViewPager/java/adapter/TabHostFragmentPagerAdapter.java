@@ -1,8 +1,5 @@
 package com.example.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +13,9 @@ import android.widget.TabWidget;
 
 import com.example.fragment.ExampleFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener // TODO: use FragmentPagerAdapter or FragmentStatePagerAdapter
 {
@@ -23,12 +23,6 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	private final TabHost mTabHost;
 	private final ViewPager mViewPager;
 	private final List<TabInfo> mTabList = new ArrayList<>();
-
-
-	public static String getFragmentTag(int viewPagerId, int position)
-	{
-		return "android:switcher:" + viewPagerId + ":" + position;
-	}
 
 
 	public TabHostFragmentPagerAdapter(FragmentActivity activity, TabHost tabHost, ViewPager viewPager)
@@ -40,6 +34,12 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		mTabHost.setOnTabChangedListener(this);
 		mViewPager.setAdapter(this);
 		mViewPager.setOnPageChangeListener(this);
+	}
+
+
+	public static String getFragmentTag(int viewPagerId, int position)
+	{
+		return "android:switcher:" + viewPagerId + ":" + position;
 	}
 
 
@@ -57,8 +57,8 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		//return Fragment.instantiate(mContext, info.clss.getName(), info.args);
 		return ExampleFragment.newInstance(Integer.toString(position)); // TODO
 	}
-	
-	
+
+
 	@Override
 	public CharSequence getPageTitle(int position)
 	{
@@ -66,7 +66,7 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		return title;
 	}
 
-	
+
 	@Override
 	public void onTabChanged(String tabId)
 	{
@@ -86,7 +86,7 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		widget.setDescendantFocusability(oldFocusability);
 	}
 
-	
+
 	@Override
 	public void onPageScrollStateChanged(int state)
 	{
@@ -97,8 +97,8 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
 	{
 	}
-	
-	
+
+
 	public void addTab(TabHost.TabSpec tabSpec, Class<?> clss, Bundle args)
 	{
 		tabSpec.setContent(new DummyTabFactory(mContext));
@@ -108,21 +108,21 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		mTabHost.addTab(tabSpec);
 		notifyDataSetChanged();
 	}
-	
-	
+
+
 	public void refill()
 	{
 		notifyDataSetChanged();
 	}
-	
-	
+
+
 	public static final class TabInfo
 	{
 		private final String mTag;
 		private final Class<?> mClss;
 		private final Bundle mArgs;
-		
-		
+
+
 		TabInfo(String tag, Class<?> clss, Bundle args)
 		{
 			mTag = tag;
@@ -130,8 +130,8 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 			mArgs = args;
 		}
 	}
-	
-	
+
+
 	public static class DummyTabFactory implements TabHost.TabContentFactory
 	{
 		private final Context mContext;

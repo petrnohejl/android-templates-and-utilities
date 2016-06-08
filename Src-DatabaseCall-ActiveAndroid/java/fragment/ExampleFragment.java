@@ -28,26 +28,26 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 {
 	private View mRootView;
 	private DatabaseCallManager mDatabaseCallManager = new DatabaseCallManager();
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
-		
+
 		// cancel async tasks
 		mDatabaseCallManager.cancelAllTasks();
 	}
-	
-	
+
+
 	@Override
 	public void onDatabaseCallRespond(final DatabaseCallTask task, final Data<?> data)
 	{
@@ -143,8 +143,8 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
-				
+				if(mRootView == null) return; // view was destroyed
+
 				if(task.getQuery().getClass().equals(ProductCreateQuery.class))
 				{
 					Logcat.d("ProductCreateQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
@@ -173,22 +173,22 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				{
 					Logcat.d("ProductDeleteAllQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
-				
+
 				// finish query
 				mDatabaseCallManager.finishTask(task);
-				
+
 				// hide progress popup
-				if(mDatabaseCallManager.getTasksCount()==0) showProgress(false);
+				if(mDatabaseCallManager.getTasksCount() == 0) showProgress(false);
 			}
 		});
 	}
-	
-	
+
+
 	private void createProduct(ProductEntity product)
 	{
 		// show progress popup
 		showProgress(true);
-		
+
 		// run async task
 		Query query = new ProductCreateQuery(product);
 		mDatabaseCallManager.executeTask(query, this);
@@ -215,24 +215,24 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		Query query = new ProductReadFirstQuery();
 		mDatabaseCallManager.executeTask(query, this);
 	}
-	
-	
+
+
 	private void readAllProducts()
 	{
 		// show progress popup
 		showProgress(true);
-		
+
 		// run async task
 		Query query = new ProductReadAllQuery();
 		mDatabaseCallManager.executeTask(query, this);
 	}
-	
-	
+
+
 	private void updateProduct(ProductEntity product)
 	{
 		// show progress popup
 		showProgress(true);
-		
+
 		// run async task
 		Query query = new ProductUpdateQuery(product);
 		mDatabaseCallManager.executeTask(query, this);
@@ -248,13 +248,13 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		Query query = new ProductDeleteQuery(id);
 		mDatabaseCallManager.executeTask(query, this);
 	}
-	
-	
+
+
 	private void deleteAllProducts()
 	{
 		// show progress popup
 		showProgress(true);
-		
+
 		// run async task
 		Query query = new ProductDeleteAllQuery();
 		mDatabaseCallManager.executeTask(query, this);

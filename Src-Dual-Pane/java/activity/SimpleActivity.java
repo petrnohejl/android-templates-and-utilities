@@ -22,20 +22,20 @@ public class SimpleActivity extends AppCompatActivity
 
 		return intent;
 	}
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
+
 		// if activity has dual pane layout, we don't need this activity
 		if(getResources().getBoolean(R.bool.dual_pane))
 		{
 			finish();
 			return;
 		}
-		
+
 		setContentView(R.layout.activity_simple);
 	}
 }

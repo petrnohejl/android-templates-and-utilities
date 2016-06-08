@@ -12,8 +12,8 @@ import com.example.adapter.TabLayoutFragmentPagerAdapter;
 public class TabLayoutActivity extends AppCompatActivity
 {
 	private TabLayoutFragmentPagerAdapter mAdapter;
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -21,16 +21,16 @@ public class TabLayoutActivity extends AppCompatActivity
 		setContentView(R.layout.activity_tablayout);
 		bindData();
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_tablayout_pager);
 		TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_tablayout_tabs);
-		
+
 		// pager content
-		if(mAdapter==null)
+		if(mAdapter == null)
 		{
 			// create adapter
 			mAdapter = new TabLayoutFragmentPagerAdapter(getSupportFragmentManager());

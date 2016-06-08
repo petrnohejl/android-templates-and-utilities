@@ -12,8 +12,8 @@ import com.viewpagerindicator.TabPageIndicator;
 public class TabIndicatorActivity extends AppCompatActivity
 {
 	private TabIndicatorFragmentPagerAdapter mAdapter;
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -21,16 +21,16 @@ public class TabIndicatorActivity extends AppCompatActivity
 		setContentView(R.layout.activity_tabindicator);
 		bindData();
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_tabindicator_pager);
 		TabPageIndicator tabPageIndicator = (TabPageIndicator) findViewById(R.id.activity_tabindicator_indicator);
-		
+
 		// pager content
-		if(mAdapter==null)
+		if(mAdapter == null)
 		{
 			// create adapter
 			mAdapter = new TabIndicatorFragmentPagerAdapter(getSupportFragmentManager());
@@ -40,10 +40,10 @@ public class TabIndicatorActivity extends AppCompatActivity
 			// refill adapter
 			mAdapter.refill();
 		}
-		
+
 		// set adapter
 		viewPager.setAdapter(mAdapter);
-		
+
 		// set indicator
 		tabPageIndicator.setViewPager(viewPager);
 	}

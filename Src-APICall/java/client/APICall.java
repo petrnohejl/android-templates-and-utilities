@@ -32,87 +32,87 @@ public class APICall
 	//private HttpsURLConnection mConnection = null; // for SSL
 	private OutputStream mRequestStream = null;
 	private InputStream mResponseStream = null;
-	
-	
+
+
 	public APICall(Request request)
 	{
 		mRequest = request;
 	}
-	
-	
+
+
 	public APICall(Request request, APICallTask task)
 	{
 		mRequest = request;
 		mAPICallTask = task;
 	}
 
-	
+
 	public Request getRequest()
 	{
 		return mRequest;
 	}
-	
-	
+
+
 	public Exception getException()
 	{
 		return mException;
 	}
-	
-	
+
+
 	public ResponseStatus getResponseStatus()
 	{
 		return mResponseStatus;
 	}
-	
-	
+
+
 	public void kill()
 	{
 		disconnect();
 	}
-	
-	
+
+
 	public Response<?> execute()
 	{
 		try
 		{
 			// disables Keep-Alive for all connections
-			if(mAPICallTask!=null && mAPICallTask.isCancelled()) return null;
+			if(mAPICallTask != null && mAPICallTask.isCancelled()) return null;
 			System.setProperty("http.keepAlive", "false");
-			
+
 			// new connection
 			byte[] requestData = mRequest.getContent();
-			URL url = new URL(mRequest.getAddress());	
+			URL url = new URL(mRequest.getAddress());
 			mConnection = (HttpURLConnection) url.openConnection();
 			//mConnection = (HttpsURLConnection) url.openConnection(); // for SSL
-			
+
 			// ssl connection properties
 			//SelfSignedSSLUtility.setupSSLConnection(mConnection, url); // for SSL using self signed certificate
 			//CertificateAuthoritySSLUtility.setupSSLConnection(mConnection, url); // for SSL using certificate authority
-			
+
 			// connect
 			setupConnection(requestData);
 			mConnection.connect();
 
 			// send request
-			if(mAPICallTask!=null && mAPICallTask.isCancelled()) return null;
+			if(mAPICallTask != null && mAPICallTask.isCancelled()) return null;
 			sendRequest(requestData);
-			
+
 			// receive response
-			if(mAPICallTask!=null && mAPICallTask.isCancelled()) return null;
+			if(mAPICallTask != null && mAPICallTask.isCancelled()) return null;
 			mResponseStream = receiveResponse();
-			
+
 			// response info
 			//Logcat.d("connection.getURL() = " + mConnection.getURL());
 			//Logcat.d("connection.getContentType() = " + mConnection.getContentType());
 			//Logcat.d("connection.getContentEncoding() = " + mConnection.getContentEncoding());
 			//Logcat.d("connection.getResponseCode() = " + mConnection.getResponseCode());
 			//Logcat.d("connection.getResponseMessage() = " + mConnection.getResponseMessage());
-			
+
 			// parse response
-			if(mAPICallTask!=null && mAPICallTask.isCancelled()) return null;
+			if(mAPICallTask != null && mAPICallTask.isCancelled()) return null;
 			Response<?> response = parseResponse();
 
-			if(mAPICallTask!=null && mAPICallTask.isCancelled()) return null;
+			if(mAPICallTask != null && mAPICallTask.isCancelled()) return null;
 			return response;
 		}
 		catch(UnknownHostException e)
@@ -162,26 +162,26 @@ public class APICall
 			disconnect();
 		}
 	}
-	
-	
+
+
 	private void disconnect()
 	{
 		try
 		{
-			if(mRequestStream!=null) mRequestStream.close();
+			if(mRequestStream != null) mRequestStream.close();
 		}
 		catch(IOException e) {}
 
 		try
 		{
-			if(mResponseStream!=null) mResponseStream.close();
+			if(mResponseStream != null) mResponseStream.close();
 		}
 		catch(IOException e) {}
 
 		try
 		{
 			// set status
-			if(mConnection!=null)
+			if(mConnection != null)
 			{
 				mResponseStatus.setStatusCode(mConnection.getResponseCode());
 				mResponseStatus.setStatusMessage(mConnection.getResponseMessage());
@@ -198,11 +198,11 @@ public class APICall
 
 	private void setupConnection(byte[] requestData) throws ProtocolException
 	{
-		if(mRequest.getRequestMethod()!=null)
+		if(mRequest.getRequestMethod() != null)
 		{
 			mConnection.setRequestMethod(mRequest.getRequestMethod()); // GET, POST, OPTIONS, HEAD, PUT, DELETE, TRACE
 		}
-		if(mRequest.getBasicAuthUsername()!=null && mRequest.getBasicAuthPassword()!=null)
+		if(mRequest.getBasicAuthUsername() != null && mRequest.getBasicAuthPassword() != null)
 		{
 			mConnection.setRequestProperty("Authorization", getBasicAuthToken(mRequest.getBasicAuthUsername(), mRequest.getBasicAuthPassword()));
 		}
@@ -213,10 +213,10 @@ public class APICall
 		mConnection.setRequestProperty("Accept-Charset", "UTF-8");
 		//mConnection.setRequestProperty("Content-Length", requestData == null ? "0" : String.valueOf(requestData.length));
 		//if(requestData!=null) mConnection.setChunkedStreamingMode(0);
-		if(requestData!=null) mConnection.setFixedLengthStreamingMode(requestData.length);
+		if(requestData != null) mConnection.setFixedLengthStreamingMode(requestData.length);
 		mConnection.setConnectTimeout(30000);
 		mConnection.setReadTimeout(30000);
-		if(requestData!=null)
+		if(requestData != null)
 		{
 			// this call automatically sets request method to POST on Android 4
 			// if you don't want your app to POST, you must not call setDoOutput
@@ -230,7 +230,7 @@ public class APICall
 
 	private void sendRequest(byte[] requestData) throws IOException
 	{
-		if(requestData!=null)
+		if(requestData != null)
 		{
 			mRequestStream = new BufferedOutputStream(mConnection.getOutputStream());
 			mRequestStream.write(requestData);
@@ -243,7 +243,7 @@ public class APICall
 	{
 		InputStream responseStream;
 		String encoding = mConnection.getHeaderField("Content-Encoding");
-		boolean gzipped = encoding!=null && encoding.toLowerCase().contains("gzip");
+		boolean gzipped = encoding != null && encoding.toLowerCase().contains("gzip");
 		try
 		{
 			InputStream inputStream = mConnection.getInputStream();
@@ -264,7 +264,7 @@ public class APICall
 	private Response<?> parseResponse() throws IOException
 	{
 		Response<?> response = mRequest.parseResponse(mResponseStream);
-		if(response==null) throw new RuntimeException("Parser returned null response");
+		if(response == null) throw new RuntimeException("Parser returned null response");
 		return response;
 	}
 

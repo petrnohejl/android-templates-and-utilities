@@ -20,39 +20,39 @@ public final class ZipUtility
 	{
 		InputStream inputStream;
 		ZipInputStream zipInputStream;
-		
+
 		try
 		{
 			int count;
 			String filename;
 			ZipEntry zipEntry;
 			byte[] buffer = new byte[1024];
-			
+
 			inputStream = new FileInputStream(path + zipname);
 			zipInputStream = new ZipInputStream(new BufferedInputStream(inputStream));
-			
+
 			while((zipEntry = zipInputStream.getNextEntry()) != null)
 			{
 				filename = zipEntry.getName();
-				
+
 				if(zipEntry.isDirectory())
 				{
 					File f = new File(path + filename);
 					f.mkdirs();
 					continue;
 				}
-				
+
 				FileOutputStream fileOutputStream = new FileOutputStream(path + filename);
-				
+
 				while((count = zipInputStream.read(buffer)) != -1)
 				{
 					fileOutputStream.write(buffer, 0, count);
 				}
-				
+
 				fileOutputStream.close();
 				zipInputStream.closeEntry();
 			}
-			
+
 			zipInputStream.close();
 		}
 		catch(IOException e)
@@ -60,7 +60,7 @@ public final class ZipUtility
 			e.printStackTrace();
 			return false;
 		}
-		
+
 		return true;
 	}
 }

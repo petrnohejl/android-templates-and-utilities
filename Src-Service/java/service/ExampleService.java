@@ -21,7 +21,7 @@ public class ExampleService extends Service
 	public void onCreate()
 	{
 		Logcat.d("");
-		
+
 		HandlerThread thread = new HandlerThread("ServiceStartArguments", Thread.NORM_PRIORITY);
 		thread.start();
 
@@ -36,14 +36,14 @@ public class ExampleService extends Service
 		Logcat.d("");
 
 		// intent may be null if the service is being restarted
-		if(intent!=null)
+		if(intent != null)
 		{
 			Message msg = mServiceHandler.obtainMessage();
 			msg.arg1 = startId;
 			msg.arg2 = intent.getIntExtra("arg", -1);
 			mServiceHandler.sendMessage(msg);
 		}
-		
+
 		return START_STICKY; // TODO: START_STICKY, START_NOT_STICKY, START_REDELIVER_INTENT
 	}
 
@@ -74,9 +74,9 @@ public class ExampleService extends Service
 		public void handleMessage(Message msg)
 		{
 			Logcat.d("%d", msg.arg2);
-			
+
 			long endTime = System.currentTimeMillis() + 5L * 1000L;
-			
+
 			while(System.currentTimeMillis() < endTime)
 			{
 				synchronized(this)

@@ -13,51 +13,51 @@ public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 {
 	private static final int RETRY_MAX_ATTEMPTS = 1; // default value for max number of retries
 	private static final long RETRY_INIT_BACKOFF = 500L; // initial sleep time before retry
-	
+
 	private APICall mAPICall;
 	private WeakReference<APICallListener> mListener;
 	private int mMaxAttempts = RETRY_MAX_ATTEMPTS;
-	
-	
+
+
 	public APICallTask(Request request, APICallListener listener)
 	{
 		mAPICall = new APICall(request, this);
 		setListener(listener);
 	}
-	
-	
+
+
 	public APICallTask(Request request, APICallListener listener, int maxAttempts)
 	{
 		this(request, listener);
 		setMaxAttempts(maxAttempts);
 	}
-	
-	
+
+
 	@Override
 	protected Response<?> doInBackground(Void... params)
 	{
 		// response
 		Response<?> response = null;
-		
+
 		// sleep time before retry
 		long backoff = RETRY_INIT_BACKOFF;
-		
-		for(int i=0; i<mMaxAttempts; i++)
+
+		for(int i = 0; i < mMaxAttempts; i++)
 		{
 			// execute API call
 			response = mAPICall.execute();
-			
+
 			// success
-			if(response!=null)
+			if(response != null)
 			{
 				break;
 			}
-			
+
 			// fail
 			else
 			{
-				if(i==mMaxAttempts) break;
-				
+				if(i == mMaxAttempts) break;
+
 				try
 				{
 					Logcat.d("sleeping for %d ms before retry", backoff);
@@ -70,25 +70,25 @@ public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 					Thread.currentThread().interrupt();
 					break;
 				}
-				
+
 				// increase backoff exponentially
 				backoff *= 2;
 			}
 		}
-		
+
 		return response;
 	}
-	
-	
+
+
 	@Override
 	protected void onPostExecute(Response<?> response)
 	{
 		if(isCancelled()) return;
-		
+
 		APICallListener listener = mListener.get();
-		if(listener!=null)
+		if(listener != null)
 		{
-			if(response!=null)
+			if(response != null)
 			{
 				listener.onAPICallRespond(this, mAPICall.getResponseStatus(), response);
 			}
@@ -98,33 +98,33 @@ public class APICallTask extends AsyncTask<Void, Void, Response<?>>
 			}
 		}
 	}
-	
-	
+
+
 	@Override
 	protected void onCancelled()
 	{
 		Logcat.d("");
 	}
-	
-	
+
+
 	public Request getRequest()
 	{
 		return mAPICall.getRequest();
 	}
-	
-	
+
+
 	public void setListener(APICallListener listener)
 	{
 		mListener = new WeakReference<>(listener);
 	}
-	
-	
+
+
 	public void setMaxAttempts(int maxAttempts)
 	{
 		mMaxAttempts = maxAttempts;
 	}
-	
-	
+
+
 	public void kill()
 	{
 		mAPICall.kill();

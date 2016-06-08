@@ -14,7 +14,7 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 	public void onReceive(Context context, Intent intent)
 	{
 		Logcat.d(NetworkUtility.getTypeName(context));
-		
+
 		// TODO: do something
 	}
 }

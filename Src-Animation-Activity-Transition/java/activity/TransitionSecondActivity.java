@@ -49,7 +49,7 @@ public class TransitionSecondActivity extends AppCompatActivity
 				startActivity(intent);
 				overridePendingTransition(R.anim.push_right_enter, R.anim.push_right_exit);
 				return true;
-				
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}

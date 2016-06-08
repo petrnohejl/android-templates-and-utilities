@@ -31,32 +31,32 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 	private LoadDataTask mLoadDataTask;
 	private List<String> mGroupList = new ArrayList<>();
 	private List<List<ProductEntity>> mProductList = new ArrayList<>();
-	
-	
+
+
 	@Override
 	public void onAttach(Context context)
 	{
 		super.onAttach(context);
 	}
-	
-	
+
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		mRootView = inflater.inflate(R.layout.fragment_expandable_listing, container, false);
 		return mRootView;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
@@ -66,69 +66,69 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mGroupList==null || mGroupList.isEmpty() || mProductList==null || mProductList.isEmpty())
+		if(mGroupList == null || mGroupList.isEmpty() || mProductList == null || mProductList.isEmpty())
 		{
 			loadData();
 		}
 	}
-	
-	
+
+
 	@Override
 	public void onStart()
 	{
 		super.onStart();
 	}
-	
-	
+
+
 	@Override
 	public void onResume()
 	{
 		super.onResume();
 	}
-	
-	
+
+
 	@Override
 	public void onPause()
 	{
 		super.onPause();
-		
+
 		// stop adapter
-		if(mAdapter!=null) mAdapter.stop();
+		if(mAdapter != null) mAdapter.stop();
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 	}
-	
-	
+
+
 	@Override
 	public void onDestroyView()
 	{
 		super.onDestroyView();
 		mRootView = null;
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
-		
+
 		// cancel async tasks
-		if(mLoadDataTask!=null) mLoadDataTask.cancel(true);
+		if(mLoadDataTask != null) mLoadDataTask.cancel(true);
 	}
-	
-	
+
+
 	@Override
 	public void onDetach()
 	{
 		super.onDetach();
 	}
-	
-	
+
+
 	@Override
 	public void onSaveInstanceState(Bundle outState)
 	{
@@ -137,30 +137,30 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 		setUserVisibleHint(true);
 
 		// stateful layout state
-		if(mStatefulLayout!=null) mStatefulLayout.saveInstanceState(outState);
+		if(mStatefulLayout != null) mStatefulLayout.saveInstanceState(outState);
 	}
-	
-	
+
+
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
 	{
 		// action bar menu
 		super.onCreateOptionsMenu(menu, inflater);
-		
+
 		// TODO
 	}
-	
-	
+
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) 
+	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// action bar menu behavior
 		return super.onOptionsItemSelected(item);
-		
+
 		// TODO
 	}
-	
-	
+
+
 	@Override
 	public void onLoadData()
 	{
@@ -168,13 +168,13 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 		{
 			public void run()
 			{
-				if(mRootView==null) return; // view was destroyed
-				
+				if(mRootView == null) return; // view was destroyed
+
 				// get data
-				for(int i=0; i<10; i++)
+				for(int i = 0; i < 10; i++)
 				{
 					List<ProductEntity> group = new ArrayList<>();
-					for(int j=0; j<10; j++)
+					for(int j = 0; j < 10; j++)
 					{
 						ProductEntity p = new ProductEntity();
 						p.setName("Product " + i + "/" + j);
@@ -189,15 +189,15 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 			}
 		});
 	}
-	
-	
+
+
 	private void loadData()
 	{
 		if(NetworkUtility.isOnline(getActivity()))
 		{
 			// show progress
 			mStatefulLayout.showProgress();
-			
+
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
 			executeTask(mLoadDataTask);
@@ -207,23 +207,23 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 			mStatefulLayout.showOffline();
 		}
 	}
-	
-	
+
+
 	private void bindData()
 	{
 		// reference
 		ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
 		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
-		
+
 		// listview content
-		if(mAdapter==null)
+		if(mAdapter == null)
 		{
 			// adapter
 			mAdapter = new ExpandableListingAdapter(getActivity(), mGroupList, mProductList);
-			
+
 			// set adapter
 			listView.setAdapter(mAdapter);
-			
+
 			// expand first group
 			listView.expandGroup(0);
 		}
@@ -231,11 +231,11 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 		{
 			// refill adapter
 			mAdapter.refill(getActivity(), mGroupList, mProductList);
-			
+
 			// set adapter
 			listView.setAdapter(mAdapter);
 		}
-		
+
 		// listview item onclick
 		listView.setOnChildClickListener(new OnChildClickListener()
 		{
@@ -243,14 +243,14 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 			public boolean onChildClick(ExpandableListView parent, View view, int groupPosition, int childPosition, long id)
 			{
 				// listview item onclick
-				if(mAdapter!=null) mAdapter.setSelectedPosition(groupPosition, childPosition);
-				
+				if(mAdapter != null) mAdapter.setSelectedPosition(groupPosition, childPosition);
+
 				// TODO
-				
+
 				return true;
 			}
 		});
-		
+
 		// listview empty view
 		listView.setEmptyView(emptyView);
 	}
@@ -267,18 +267,18 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 			@Override
 			public void onStateChange(View v, StatefulLayout.State state)
 			{
-				Logcat.d("" + (state==null ? "null" : state.toString()));
+				Logcat.d("" + (state == null ? "null" : state.toString()));
 
-				if(state==StatefulLayout.State.CONTENT)
+				if(state == StatefulLayout.State.CONTENT)
 				{
 					ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
-					if(listView.getAdapter()!=null)
+					if(listView.getAdapter() != null)
 					{
 						mAdapter.notifyDataSetChanged();
 					}
 					else
 					{
-						if(mGroupList!=null && mProductList!=null) bindData();
+						if(mGroupList != null && mProductList != null) bindData();
 					}
 				}
 			}
@@ -287,27 +287,27 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 		// restore state
 		mStatefulLayout.restoreInstanceState(savedInstanceState);
 	}
-	
-	
+
+
 	private void expand()
 	{
-		if(mAdapter!=null && mRootView!=null)
+		if(mAdapter != null && mRootView != null)
 		{
 			ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
-			int count =  mAdapter.getGroupCount();
-			for(int i = 0; i <count ; i++) listView.expandGroup(i);
+			int count = mAdapter.getGroupCount();
+			for(int i = 0; i < count; i++) listView.expandGroup(i);
 			mRootView.invalidate();
 		}
 	}
-	
-	
+
+
 	private void collapse()
 	{
-		if(mAdapter!=null && mRootView!=null)
+		if(mAdapter != null && mRootView != null)
 		{
 			ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
-			int count =  mAdapter.getGroupCount();
-			for(int i = 0; i <count ; i++) listView.collapseGroup(i);
+			int count = mAdapter.getGroupCount();
+			for(int i = 0; i < count; i++) listView.collapseGroup(i);
 			mRootView.invalidate();
 		}
 	}

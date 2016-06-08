@@ -18,14 +18,14 @@ public class ExampleDialogFragment extends DialogFragment
 	{
 		ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), getTheme(true));
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		
+
 		builder
-		.setTitle("title")
-		.setMessage("message");
-		
+				.setTitle("title")
+				.setMessage("message");
+
 		// create dialog from builder
 		final Dialog dialog = builder.create();
-		
+
 		// override style
 		dialog.setOnShowListener(new DialogInterface.OnShowListener()
 		{
@@ -45,11 +45,11 @@ public class ExampleDialogFragment extends DialogFragment
 				}
 			}
 		});
-		
+
 		return dialog;
 	}
-	
-	
+
+
 	private int getTheme(boolean light)
 	{
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
