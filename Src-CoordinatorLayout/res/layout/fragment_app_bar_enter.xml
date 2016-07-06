@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<android.support.design.widget.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+		app:expanded="false">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/global_spacing_48"
+			android:background="@android:color/holo_blue_light"
+			app:layout_scrollFlags="scroll|snap" />
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/global_spacing_72"
+			android:minHeight="@dimen/global_spacing_48"
+			android:background="@android:color/holo_green_light"
+			app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/global_spacing_48"
+			android:background="@android:color/holo_orange_light"
+			app:layout_scrollFlags="scroll|enterAlways" />
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/global_spacing_48"
+			android:background="@android:color/holo_red_light" />
+
+	</android.support.design.widget.AppBarLayout>
+
+	<android.support.v4.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/fragment_app_bar_enter_text" />
+
+	</android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

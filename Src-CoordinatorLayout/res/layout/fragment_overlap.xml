@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<android.support.design.widget.AppBarLayout
+		android:id="@+id/appbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+		app:elevation="@dimen/global_elevation_2">
+
+		<android.support.design.widget.CollapsingToolbarLayout
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/fragment_overlap_appbar_height"
+			app:layout_scrollFlags="scroll|exitUntilCollapsed"
+			app:expandedTitleMarginBottom="@dimen/global_spacing_72"
+			app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Display1"
+			app:contentScrim="?colorPrimary"
+			app:title="@string/title_example">
+
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:scaleType="centerCrop"
+				android:tint="@color/fragment_overlap_appbar_image_tint"
+				android:src="@drawable/photo" />
+
+			<android.support.v7.widget.Toolbar
+				android:id="@+id/toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="?attr/actionBarSize"
+				app:layout_collapseMode="pin" />
+
+		</android.support.design.widget.CollapsingToolbarLayout>
+	</android.support.design.widget.AppBarLayout>
+
+	<android.support.v4.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		app:behavior_overlapTop="@dimen/global_spacing_56">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<android.support.v7.widget.CardView
+				android:id="@+id/fragment_overlap_cardview"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/global_spacing_8"
+				app:contentPadding="@dimen/global_spacing_16"
+				app:cardCornerRadius="@dimen/card_corner_radius"
+				app:cardElevation="@dimen/global_elevation_4"
+				app:cardBackgroundColor="@color/global_bg_front">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/fragment_overlap_text" />
+
+			</android.support.v7.widget.CardView>
+		</LinearLayout>
+	</android.support.v4.widget.NestedScrollView>
+
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/fab"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="@dimen/global_keyline_32"
+		android:elevation="@dimen/global_elevation_8"
+		android:src="@drawable/ic_fab_search"
+		app:layout_anchor="@id/fragment_overlap_cardview"
+		app:layout_anchorGravity="top|right|end" />
+
+</android.support.design.widget.CoordinatorLayout>
