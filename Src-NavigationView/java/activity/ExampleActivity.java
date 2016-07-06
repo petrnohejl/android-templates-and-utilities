@@ -190,7 +190,7 @@ public class ExampleActivity extends AppCompatActivity
 	private void bindData()
 	{
 		// reference
-		TextView titleTextView = (TextView) findViewById(R.id.navigation_header_title);
+		TextView titleTextView = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.navigation_header_title);
 
 		// title
 		titleTextView.setText("Hello world");

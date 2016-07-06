@@ -42,6 +42,11 @@
 				android:id="@+id/menu_navigation_example7"
 				android:title="@string/menu_navigation_example7"
 				android:icon="@drawable/ic_menu_example7" />
+			<item
+				android:id="@+id/menu_navigation_example8"
+				android:title="@string/menu_navigation_example8"
+				app:actionLayout="@layout/navigation_item_switch"
+				app:showAsAction="always" />
 		</menu>
 	</item>
 
