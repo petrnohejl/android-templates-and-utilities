@@ -30,7 +30,7 @@ public class ExampleActivity extends AppCompatActivity
 	{
 		try
 		{
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -45,7 +45,7 @@ public class ExampleActivity extends AppCompatActivity
 		try
 		{
 			String uri = getString(R.string.app_store_uri, getApplicationContext().getPackageName());
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -68,7 +68,7 @@ public class ExampleActivity extends AppCompatActivity
 			builder.append("&q="); // query allows to show pin
 			builder.append(Uri.encode(lat + "," + lon + "(" + label + ")"));
 
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(builder.toString()));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(builder.toString()));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -86,7 +86,7 @@ public class ExampleActivity extends AppCompatActivity
 			builder.append("geo:0,0?q=");
 			builder.append(Uri.encode(query));
 
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(builder.toString()));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(builder.toString()));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -101,7 +101,7 @@ public class ExampleActivity extends AppCompatActivity
 		try
 		{
 			String uri = String.format("http://maps.google.com/maps?daddr=%s,%s", Double.toString(lat), Double.toString(lon));
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -115,7 +115,7 @@ public class ExampleActivity extends AppCompatActivity
 	{
 		try
 		{
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+			Intent intent = new Intent(Intent.ACTION_VIEW);
 			intent.setType("vnd.android-dir/mms-sms");
 			intent.putExtra("address", phoneNumber);
 			intent.putExtra("sms_body", text);
@@ -132,10 +132,10 @@ public class ExampleActivity extends AppCompatActivity
 	{
 		try
 		{
-			Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+			Intent intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("text/plain");
-			intent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
-			intent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+			intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+			intent.putExtra(Intent.EXTRA_TEXT, text);
 			startActivity(Intent.createChooser(intent, chooserTitle));
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -153,9 +153,9 @@ public class ExampleActivity extends AppCompatActivity
 			builder.append("mailto:");
 			builder.append(email);
 
-			Intent intent = new Intent(android.content.Intent.ACTION_SENDTO, Uri.parse(builder.toString()));
-			intent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
-			intent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+			Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(builder.toString()));
+			intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+			intent.putExtra(Intent.EXTRA_TEXT, text);
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -169,7 +169,7 @@ public class ExampleActivity extends AppCompatActivity
 	{
 		try
 		{
-			Intent intent = new Intent(android.content.Intent.ACTION_EDIT);
+			Intent intent = new Intent(Intent.ACTION_EDIT);
 			intent.setType("vnd.android.cursor.item/event");
 			intent.putExtra("title", title);
 			intent.putExtra("description", description);
@@ -192,7 +192,7 @@ public class ExampleActivity extends AppCompatActivity
 			builder.append("tel:");
 			builder.append(phoneNumber);
 
-			Intent intent = new Intent(android.content.Intent.ACTION_DIAL, Uri.parse(builder.toString()));
+			Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(builder.toString()));
 			startActivity(intent);
 		}
 		catch(android.content.ActivityNotFoundException e)
@@ -212,5 +212,15 @@ public class ExampleActivity extends AppCompatActivity
 		{
 			// can't start activity
 		}
+	}
+
+
+	private void startNewTask()
+	{
+		Intent intent = new Intent(this, ExampleActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		startActivity(intent);
 	}
 }
