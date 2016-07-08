@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical">
@@ -24,6 +25,11 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Hello CheckBox" />
+
+	<CheckedTextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello CheckedTextView" />
 
 	<Switch
 		android:layout_width="wrap_content"
@@ -78,10 +84,45 @@
 		android:inputType="text"
 		android:text="Hello EditText" />
 
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:inputType="textPassword"
+		android:text="Hello EditText" />
+
+	<AutoCompleteTextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Hello AutoCompleteTextView" />
+
 	<SearchView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:queryHint="Hello SearchView" />
+
+	<android.support.design.widget.TextInputLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:counterEnabled="true"
+		app:counterMaxLength="32">
+
+		<android.support.design.widget.TextInputEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Hello TextInputEditText" />
+
+	</android.support.design.widget.TextInputLayout>
+
+	<ViewStub
+		android:id="@+id/stub_toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:inflatedId="@+id/toolbar"
+		android:layout="@layout/toolbar" />
+
+	<Space
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/global_spacing_56" />
 
 	<LinearLayout
 		android:layout_width="match_parent"
