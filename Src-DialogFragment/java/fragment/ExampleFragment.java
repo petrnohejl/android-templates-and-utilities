@@ -13,6 +13,7 @@ import com.example.dialog.DatePickerDialogFragment;
 import com.example.dialog.ItemsDialogFragment;
 import com.example.dialog.MultiChoiceItemsDialogFragment;
 import com.example.dialog.ProgressDialogFragment;
+import com.example.dialog.SheetDialogFragment;
 import com.example.dialog.SimpleDialogFragment;
 import com.example.dialog.SingleChoiceItemsDialogFragment;
 import com.example.dialog.TimePickerDialogFragment;
@@ -29,7 +30,8 @@ public class ExampleFragment extends TaskFragment implements
 		MultiChoiceItemsDialogFragment.MultiChoiceItemsDialogListener,
 		ViewDialogFragment.ViewDialogListener,
 		TimePickerDialogFragment.TimePickerDialogListener,
-		DatePickerDialogFragment.DatePickerDialogListener
+		DatePickerDialogFragment.DatePickerDialogListener,
+		SheetDialogFragment.SheetDialogListener
 {
 	private static final String DIALOG_SIMPLE = "simple";
 	private static final String DIALOG_ITEMS = "items";
@@ -39,6 +41,7 @@ public class ExampleFragment extends TaskFragment implements
 	private static final String DIALOG_TIME_PICKER = "time_picker";
 	private static final String DIALOG_DATE_PICKER = "date_picker";
 	private static final String DIALOG_PROGRESS = "progress";
+	private static final String DIALOG_SHEET = "sheet";
 
 	private View mRootView;
 
@@ -247,6 +250,34 @@ public class ExampleFragment extends TaskFragment implements
 	}
 
 
+	@Override
+	public void onSheetDialogStateChanged(final DialogFragment dialog, final int newState, final String username, final String password)
+	{
+		runTaskCallback(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("onSheetDialogStateChanged() = " + newState + " / " + username + " / " + password);
+			}
+		});
+	}
+
+
+	@Override
+	public void onSheetDialogDismiss(final DialogFragment dialog, final String username, final String password)
+	{
+		runTaskCallback(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				Logcat.d("onSheetDialogDismiss() = " + username + " / " + password);
+			}
+		});
+	}
+
+
 	private void bindData()
 	{
 		// reference
@@ -258,6 +289,7 @@ public class ExampleFragment extends TaskFragment implements
 		Button button6 = (Button) mRootView.findViewById(R.id.fragment_example_button6);
 		Button button7 = (Button) mRootView.findViewById(R.id.fragment_example_button7);
 		Button button8 = (Button) mRootView.findViewById(R.id.fragment_example_button8);
+		Button button9 = (Button) mRootView.findViewById(R.id.fragment_example_button9);
 
 		// content
 		button1.setOnClickListener(new OnClickListener()
@@ -327,6 +359,14 @@ public class ExampleFragment extends TaskFragment implements
 			public void onClick(View v)
 			{
 				showProgressDialog();
+			}
+		});
+		button9.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				showSheetDialog("hello");
 			}
 		});
 	}
@@ -409,5 +449,14 @@ public class ExampleFragment extends TaskFragment implements
 		getFragmentManager().executePendingTransactions();
 		DialogFragment dialogFragment = (DialogFragment) getFragmentManager().findFragmentByTag(DIALOG_PROGRESS);
 		if(dialogFragment != null) dialogFragment.dismiss();
+	}
+
+
+	private void showSheetDialog(String arg)
+	{
+		// create and show the dialog
+		DialogFragment newFragment = SheetDialogFragment.newInstance(arg);
+		newFragment.setTargetFragment(this, 0);
+		newFragment.show(getFragmentManager(), DIALOG_SHEET);
 	}
 }
