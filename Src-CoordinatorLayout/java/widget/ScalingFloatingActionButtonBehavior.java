@@ -7,12 +7,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.example.utility.ResourcesUtility;
+
 
 public class ScalingFloatingActionButtonBehavior extends FloatingActionButton.Behavior
 {
+	private int mActionBarSize;
+
+
 	public ScalingFloatingActionButtonBehavior(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
+		mActionBarSize = ResourcesUtility.getDimensionPixelSizeValueOfAttribute(context, android.R.attr.actionBarSize);
 	}
 
 
@@ -42,7 +48,7 @@ public class ScalingFloatingActionButtonBehavior extends FloatingActionButton.Be
 		float toolbarPosition = dependency.getY();
 
 		// toolbar is gone
-		if(toolbarPosition + dependency.getHeight() == 0)
+		if(toolbarPosition + mActionBarSize == 0)
 		{
 			child.hide();
 		}

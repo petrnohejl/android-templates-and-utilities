@@ -9,15 +9,19 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.example.utility.ResourcesUtility;
+
 
 public class SlidingFloatingActionButtonBehavior extends FloatingActionButton.Behavior
 {
+	private int mActionBarSize;
 	private float mSnackbarTranslation = 0;
 
 
 	public SlidingFloatingActionButtonBehavior(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
+		mActionBarSize = ResourcesUtility.getDimensionPixelSizeValueOfAttribute(context, android.R.attr.actionBarSize);
 	}
 
 
@@ -75,7 +79,7 @@ public class SlidingFloatingActionButtonBehavior extends FloatingActionButton.Be
 		else
 		{
 			// toolbar is gone
-			if(toolbarPosition + dependency.getHeight() == 0)
+			if(toolbarPosition + mActionBarSize == 0)
 			{
 				child.setVisibility(View.GONE);
 			}
