@@ -78,34 +78,18 @@ public class Preferences
 	}
 
 
-	public int getLaunch()
+	public int getRateCounter()
 	{
-		String key = mContext.getString(R.string.prefs_key_launch);
+		String key = mContext.getString(R.string.prefs_key_rate_counter);
 		return mSharedPreferences.getInt(key, 0);
 	}
 
 
-	public void setLaunch(int launch)
+	public void setRateCounter(int rateCounter)
 	{
-		String key = mContext.getString(R.string.prefs_key_launch);
+		String key = mContext.getString(R.string.prefs_key_rate_counter);
 		SharedPreferences.Editor editor = mSharedPreferences.edit();
-		editor.putInt(key, launch);
-		editor.commit();
-	}
-
-
-	public boolean isRated()
-	{
-		String key = mContext.getString(R.string.prefs_key_rated);
-		return mSharedPreferences.getBoolean(key, false);
-	}
-
-
-	public void setRated(boolean rated)
-	{
-		String key = mContext.getString(R.string.prefs_key_rated);
-		SharedPreferences.Editor editor = mSharedPreferences.edit();
-		editor.putBoolean(key, rated);
+		editor.putInt(key, rateCounter);
 		editor.commit();
 	}
 }

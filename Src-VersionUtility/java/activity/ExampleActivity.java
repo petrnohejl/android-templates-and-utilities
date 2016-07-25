@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.R;
+import com.example.utility.Logcat;
 import com.example.utility.Preferences;
 import com.example.utility.VersionUtility;
 
@@ -16,7 +17,7 @@ public class ExampleActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 		checkNewVersion();
-		checkLaunch();
+		checkRateCounter();
 	}
 
 
@@ -37,27 +38,32 @@ public class ExampleActivity extends AppCompatActivity
 	}
 
 
-	private void checkLaunch()
+	private void checkRateCounter()
 	{
-		// get current launch
+		// get current rate counter
 		Preferences preferences = new Preferences();
-		final int launch = preferences.getLaunch();
+		final int rateCounter = preferences.getRateCounter();
+		Logcat.d("" + rateCounter);
 
-		// check launch number
-		boolean showDialog = false;
-		if(!preferences.isRated())
+		// check rate counter
+		boolean showMessage = false;
+		if(rateCounter != -1)
 		{
-			if(launch == 3) showDialog = true;
-			else if(launch >= 10 && launch % 10 == 0) showDialog = true;
+			if(rateCounter >= 10 && rateCounter % 10 == 0) showMessage = true;
+		}
+		else
+		{
+			return;
 		}
 
-		// show rating dialog
-		if(showDialog)
+		// show rate message
+		if(showMessage)
 		{
-			// TODO: show rating dialog
+			// TODO: show message
+			// TODO: set rate counter to -1
 		}
 
-		// increment launch
-		preferences.setLaunch(launch + 1);
+		// increment rate counter
+		preferences.setRateCounter(rateCounter + 1);
 	}
 }
