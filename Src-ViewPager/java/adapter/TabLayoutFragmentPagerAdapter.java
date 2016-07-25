@@ -41,8 +41,7 @@ public class TabLayoutFragmentPagerAdapter extends FragmentPagerAdapter // TODO:
 	@Override
 	public CharSequence getPageTitle(int position)
 	{
-		String title = "Fragment " + position;
-		return title;
+		return "Fragment " + position;
 	}
 
 

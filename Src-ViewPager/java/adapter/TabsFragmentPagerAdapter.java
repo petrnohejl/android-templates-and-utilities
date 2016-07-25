@@ -60,8 +60,7 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter implements Ac
 	@Override
 	public CharSequence getPageTitle(int position)
 	{
-		String title = "Fragment " + position;
-		return title;
+		return "Fragment " + position;
 	}
 
 

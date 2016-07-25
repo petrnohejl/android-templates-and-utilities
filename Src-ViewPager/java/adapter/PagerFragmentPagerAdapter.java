@@ -41,8 +41,7 @@ public class PagerFragmentPagerAdapter extends FragmentPagerAdapter // TODO: use
 	@Override
 	public CharSequence getPageTitle(int position)
 	{
-		String title = "Fragment " + position;
-		return title;
+		return "Fragment " + position;
 	}
 
 

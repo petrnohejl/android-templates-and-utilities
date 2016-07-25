@@ -62,8 +62,7 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	@Override
 	public CharSequence getPageTitle(int position)
 	{
-		String title = "Fragment " + position;
-		return title;
+		return "Fragment " + position;
 	}
 
 
