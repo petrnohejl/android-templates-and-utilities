@@ -11,20 +11,14 @@ import com.example.R;
 
 public class Preferences
 {
-	public static final int NULL_INT = -1;
-	public static final long NULL_LONG = -1L;
-	public static final double NULL_DOUBLE = -1.0;
-	public static final String NULL_STRING = null;
-
-	private SharedPreferences mSharedPreferences;
 	private Context mContext;
+	private SharedPreferences mSharedPreferences;
 
 
-	public Preferences(Context context)
+	public Preferences()
 	{
-		if(context == null) context = ExampleApplication.getContext();
-		mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-		mContext = context;
+		mContext = ExampleApplication.getContext();
+		mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
 	}
 
 
@@ -39,7 +33,7 @@ public class Preferences
 	public long getUserId()
 	{
 		String key = mContext.getString(R.string.prefs_key_user_id);
-		return mSharedPreferences.getLong(key, NULL_LONG);
+		return mSharedPreferences.getLong(key, -1L);
 	}
 
 
@@ -55,7 +49,7 @@ public class Preferences
 	public String getPassword()
 	{
 		String key = mContext.getString(R.string.prefs_key_password);
-		return mSharedPreferences.getString(key, NULL_STRING);
+		return mSharedPreferences.getString(key, null);
 	}
 
 
@@ -71,7 +65,7 @@ public class Preferences
 	public String getVersion()
 	{
 		String key = mContext.getString(R.string.prefs_key_version);
-		return mSharedPreferences.getString(key, NULL_STRING);
+		return mSharedPreferences.getString(key, null);
 	}
 
 
@@ -112,38 +106,6 @@ public class Preferences
 		String key = mContext.getString(R.string.prefs_key_rated);
 		SharedPreferences.Editor editor = mSharedPreferences.edit();
 		editor.putBoolean(key, rated);
-		editor.commit();
-	}
-
-
-	public String getFacebookAccessToken()
-	{
-		String key = mContext.getString(R.string.prefs_key_fb_access_token);
-		return mSharedPreferences.getString(key, NULL_STRING);
-	}
-
-
-	public void setFacebookAccessToken(String facebookAccessToken)
-	{
-		String key = mContext.getString(R.string.prefs_key_fb_access_token);
-		SharedPreferences.Editor editor = mSharedPreferences.edit();
-		editor.putString(key, facebookAccessToken);
-		editor.commit();
-	}
-
-
-	public long getFacebookAccessExpiration()
-	{
-		String key = mContext.getString(R.string.prefs_key_fb_expiration);
-		return mSharedPreferences.getLong(key, NULL_LONG);
-	}
-
-
-	public void setFacebookAccessExpiration(long expiration)
-	{
-		String key = mContext.getString(R.string.prefs_key_fb_expiration);
-		SharedPreferences.Editor editor = mSharedPreferences.edit();
-		editor.putLong(key, expiration);
 		editor.commit();
 	}
 }

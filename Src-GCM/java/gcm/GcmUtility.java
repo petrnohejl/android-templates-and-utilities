@@ -52,7 +52,7 @@ public final class GcmUtility
 
 	public static String getRegistrationId(Context context)
 	{
-		Preferences preferences = new Preferences(context);
+		Preferences preferences = new Preferences();
 
 		// get saved registration id
 		String registrationId = preferences.getGcmRegistrationId();
@@ -101,7 +101,7 @@ public final class GcmUtility
 			{
 				post(requestUrl, params); // TODO: use post or get
 
-				Preferences preferences = new Preferences(context);
+				Preferences preferences = new Preferences();
 				preferences.setGcmRegistrationId(registrationId);
 				preferences.setGcmVersionCode(Version.getVersionCode(context));
 
@@ -155,7 +155,7 @@ public final class GcmUtility
 		{
 			post(requestUrl, params); // TODO: use post or get
 
-			Preferences preferences = new Preferences(context);
+			Preferences preferences = new Preferences();
 			preferences.setGcmRegistrationId("");
 			preferences.setGcmVersionCode(-1);
 

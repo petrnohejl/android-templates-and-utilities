@@ -5,6 +5,4 @@
 	<string name="prefs_key_version" translatable="false">version</string>
 	<string name="prefs_key_launch" translatable="false">launch</string>
 	<string name="prefs_key_rated" translatable="false">rated</string>
-	<string name="prefs_key_fb_access_token" translatable="false">fb_access_token</string>
-	<string name="prefs_key_fb_expiration" translatable="false">fb_expiration</string>
 </resources>

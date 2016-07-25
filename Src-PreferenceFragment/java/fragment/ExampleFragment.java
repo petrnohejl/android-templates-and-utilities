@@ -138,7 +138,7 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 		EditTextPreference displayNameEditTextPreference = (EditTextPreference) findPreference(getString(R.string.prefs_key_display_name));
 
 		// preferences
-		Preferences preferences = new Preferences(getActivity());
+		Preferences preferences = new Preferences();
 
 		// summary
 		displayNameEditTextPreference.setSummary(preferences.getDisplayName());

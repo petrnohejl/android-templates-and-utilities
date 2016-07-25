@@ -22,7 +22,7 @@ public class ExampleActivity extends AppCompatActivity
 
 	private void checkNewVersion()
 	{
-		Preferences preferences = new Preferences(this);
+		Preferences preferences = new Preferences();
 		String currentVersion = Version.getVersionName(this);
 		String lastVersion = preferences.getVersion();
 
@@ -40,7 +40,7 @@ public class ExampleActivity extends AppCompatActivity
 	private void checkLaunch()
 	{
 		// get current launch
-		Preferences preferences = new Preferences(this);
+		Preferences preferences = new Preferences();
 		final int launch = preferences.getLaunch();
 
 		// check launch number
