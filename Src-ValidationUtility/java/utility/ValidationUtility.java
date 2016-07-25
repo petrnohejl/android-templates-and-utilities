@@ -6,9 +6,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 
-public final class Validator
+public final class ValidationUtility
 {
-	private Validator() {}
+	private ValidationUtility() {}
 
 
 	public static boolean isEmailValid(CharSequence email)
