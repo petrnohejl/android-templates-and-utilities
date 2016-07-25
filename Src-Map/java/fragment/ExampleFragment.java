@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.R;
-import com.example.utility.Version;
+import com.example.utility.VersionUtility;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -127,7 +127,7 @@ public class ExampleFragment extends Fragment
 
 	private void initMap()
 	{
-		if(!Version.isSupportedOpenGlEs2(getActivity()))
+		if(!VersionUtility.isSupportedOpenGlEs2(getActivity()))
 		{
 			Toast.makeText(getActivity(), R.string.global_map_fail_toast, Toast.LENGTH_LONG).show();
 		}

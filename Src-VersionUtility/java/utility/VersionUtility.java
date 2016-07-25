@@ -7,9 +7,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 
 
-public final class Version
+public final class VersionUtility
 {
-	private Version() {}
+	private VersionUtility() {}
 
 
 	public static String getVersionName(Context context)

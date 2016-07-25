@@ -7,7 +7,7 @@ import android.net.Uri;
 import com.example.ExampleConfig;
 import com.example.utility.Logcat;
 import com.example.utility.Preferences;
-import com.example.utility.Version;
+import com.example.utility.VersionUtility;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
@@ -64,7 +64,7 @@ public final class GcmUtility
 
 		// check if app was updated
 		int registeredVersion = preferences.getGcmVersionCode();
-		int currentVersion = Version.getVersionCode(context);
+		int currentVersion = VersionUtility.getVersionCode(context);
 		if(registeredVersion != currentVersion)
 		{
 			Logcat.d("app version has changed");
@@ -103,7 +103,7 @@ public final class GcmUtility
 
 				Preferences preferences = new Preferences();
 				preferences.setGcmRegistrationId(registrationId);
-				preferences.setGcmVersionCode(Version.getVersionCode(context));
+				preferences.setGcmVersionCode(VersionUtility.getVersionCode(context));
 
 				Logcat.d("server successfully registered device");
 				return;
