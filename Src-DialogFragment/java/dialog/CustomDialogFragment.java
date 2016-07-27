@@ -15,7 +15,7 @@ import android.widget.EditText;
 import com.example.R;
 
 
-public class ViewDialogFragment extends DialogFragment
+public class CustomDialogFragment extends DialogFragment
 {
 	private static final String ARGUMENT_EXAMPLE = "example";
 
@@ -23,19 +23,19 @@ public class ViewDialogFragment extends DialogFragment
 	private View mRootView;
 	private String mUsername = "";
 	private String mPassword = "";
-	private ViewDialogListener mListener;
+	private CustomDialogListener mListener;
 
 
-	public interface ViewDialogListener
+	public interface CustomDialogListener
 	{
-		void onViewDialogPositiveClick(DialogFragment dialog, String username, String password);
-		void onViewDialogNegativeClick(DialogFragment dialog);
+		void onCustomDialogPositiveClick(DialogFragment dialog, String username, String password);
+		void onCustomDialogNegativeClick(DialogFragment dialog);
 	}
 
 
-	public static ViewDialogFragment newInstance(String example)
+	public static CustomDialogFragment newInstance(String example)
 	{
-		ViewDialogFragment fragment = new ViewDialogFragment();
+		CustomDialogFragment fragment = new CustomDialogFragment();
 
 		// arguments
 		Bundle arguments = new Bundle();
@@ -63,11 +63,11 @@ public class ViewDialogFragment extends DialogFragment
 		// set callback listener
 		try
 		{
-			mListener = (ViewDialogListener) getTargetFragment();
+			mListener = (CustomDialogListener) getTargetFragment();
 		}
 		catch(ClassCastException e)
 		{
-			throw new ClassCastException(getTargetFragment().toString() + " must implement " + ViewDialogListener.class.getName());
+			throw new ClassCastException(getTargetFragment().toString() + " must implement " + CustomDialogListener.class.getName());
 		}
 	}
 
@@ -100,8 +100,8 @@ public class ViewDialogFragment extends DialogFragment
 		// save current instance state
 		super.onSaveInstanceState(outState);
 
-		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_view_username);
-		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_view_password);
+		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_username);
+		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_password);
 
 		mUsername = usernameEditText.getText().toString();
 		mPassword = passwordEditText.getText().toString();
@@ -113,7 +113,7 @@ public class ViewDialogFragment extends DialogFragment
 	{
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		LayoutInflater inflater = getActivity().getLayoutInflater();
-		mRootView = inflater.inflate(R.layout.dialog_view, null);
+		mRootView = inflater.inflate(R.layout.dialog_custom, null);
 
 		builder
 				.setTitle(mExample)
@@ -130,7 +130,7 @@ public class ViewDialogFragment extends DialogFragment
 				{
 					public void onClick(DialogInterface dialog, int id)
 					{
-						mListener.onViewDialogNegativeClick(ViewDialogFragment.this);
+						mListener.onCustomDialogNegativeClick(CustomDialogFragment.this);
 					}
 				});
 
@@ -150,15 +150,15 @@ public class ViewDialogFragment extends DialogFragment
 					@Override
 					public void onClick(View v)
 					{
-						EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_view_username);
-						EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_view_password);
+						EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_username);
+						EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_password);
 
 						String username = usernameEditText.getText().toString();
 						String password = passwordEditText.getText().toString();
 
 						// TODO: data validation
 
-						mListener.onViewDialogPositiveClick(ViewDialogFragment.this, username, password);
+						mListener.onCustomDialogPositiveClick(CustomDialogFragment.this, username, password);
 						dialog.dismiss();
 					}
 				});
@@ -180,8 +180,8 @@ public class ViewDialogFragment extends DialogFragment
 
 	private void handleSavedInstanceState()
 	{
-		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_view_username);
-		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_view_password);
+		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_username);
+		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_password);
 
 		usernameEditText.setText(mUsername);
 		passwordEditText.setText(mPassword);

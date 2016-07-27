@@ -11,7 +11,7 @@
 		android:orientation="vertical">
 
 		<EditText
-			android:id="@+id/dialog_view_username"
+			android:id="@+id/dialog_custom_username"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/global_spacing_16"
@@ -22,7 +22,7 @@
 			android:hint="username" />
 
 		<EditText
-			android:id="@+id/dialog_view_password"
+			android:id="@+id/dialog_custom_password"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/global_spacing_8"

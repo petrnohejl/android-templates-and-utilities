@@ -17,7 +17,7 @@ import com.example.dialog.SheetDialogFragment;
 import com.example.dialog.SimpleDialogFragment;
 import com.example.dialog.SingleChoiceItemsDialogFragment;
 import com.example.dialog.TimePickerDialogFragment;
-import com.example.dialog.ViewDialogFragment;
+import com.example.dialog.CustomDialogFragment;
 import com.example.utility.Logcat;
 
 import java.util.Calendar;
@@ -28,7 +28,7 @@ public class ExampleFragment extends TaskFragment implements
 		ItemsDialogFragment.ItemsDialogListener,
 		SingleChoiceItemsDialogFragment.SingleChoiceItemsDialogListener,
 		MultiChoiceItemsDialogFragment.MultiChoiceItemsDialogListener,
-		ViewDialogFragment.ViewDialogListener,
+		CustomDialogFragment.CustomDialogListener,
 		TimePickerDialogFragment.TimePickerDialogListener,
 		DatePickerDialogFragment.DatePickerDialogListener,
 		SheetDialogFragment.SheetDialogListener
@@ -37,7 +37,7 @@ public class ExampleFragment extends TaskFragment implements
 	private static final String DIALOG_ITEMS = "items";
 	private static final String DIALOG_SINGLE_CHOICE_ITEMS = "single_choice_items";
 	private static final String DIALOG_MULTI_CHOICE_ITEMS = "multi_choice_items";
-	private static final String DIALOG_VIEW = "view";
+	private static final String DIALOG_CUSTOM = "custom";
 	private static final String DIALOG_TIME_PICKER = "time_picker";
 	private static final String DIALOG_DATE_PICKER = "date_picker";
 	private static final String DIALOG_PROGRESS = "progress";
@@ -195,28 +195,28 @@ public class ExampleFragment extends TaskFragment implements
 
 
 	@Override
-	public void onViewDialogPositiveClick(final DialogFragment dialog, final String username, final String password)
+	public void onCustomDialogPositiveClick(final DialogFragment dialog, final String username, final String password)
 	{
 		runTaskCallback(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				Logcat.d("onViewDialogPositiveClick() = " + username + " / " + password);
+				Logcat.d("onCustomDialogPositiveClick() = " + username + " / " + password);
 			}
 		});
 	}
 
 
 	@Override
-	public void onViewDialogNegativeClick(final DialogFragment dialog)
+	public void onCustomDialogNegativeClick(final DialogFragment dialog)
 	{
 		runTaskCallback(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				Logcat.d("onViewDialogNegativeClick()");
+				Logcat.d("onCustomDialogNegativeClick()");
 			}
 		});
 	}
@@ -334,7 +334,7 @@ public class ExampleFragment extends TaskFragment implements
 			@Override
 			public void onClick(View v)
 			{
-				showViewDialog("hello");
+				showCustomDialog("hello");
 			}
 		});
 		button6.setOnClickListener(new OnClickListener()
@@ -374,89 +374,80 @@ public class ExampleFragment extends TaskFragment implements
 
 	private void showSimpleDialog(String arg)
 	{
-		// create and show the dialog
-		DialogFragment newFragment = SimpleDialogFragment.newInstance(arg);
-		newFragment.setTargetFragment(this, 0);
-		newFragment.show(getFragmentManager(), DIALOG_SIMPLE);
+		DialogFragment fragment = SimpleDialogFragment.newInstance(arg);
+		fragment.setTargetFragment(this, 0);
+		fragment.show(getFragmentManager(), DIALOG_SIMPLE);
 	}
 
 
 	private void showItemsDialog(String arg)
 	{
-		// create and show the dialog
-		DialogFragment newFragment = ItemsDialogFragment.newInstance(arg);
-		newFragment.setTargetFragment(this, 0);
-		newFragment.show(getFragmentManager(), DIALOG_ITEMS);
+		DialogFragment fragment = ItemsDialogFragment.newInstance(arg);
+		fragment.setTargetFragment(this, 0);
+		fragment.show(getFragmentManager(), DIALOG_ITEMS);
 	}
 
 
 	private void showSingleChoiceItemsDialog(int checkedItem)
 	{
-		// create and show the dialog
-		DialogFragment newFragment = SingleChoiceItemsDialogFragment.newInstance(checkedItem);
-		newFragment.setTargetFragment(this, 0);
-		newFragment.show(getFragmentManager(), DIALOG_SINGLE_CHOICE_ITEMS);
+		DialogFragment fragment = SingleChoiceItemsDialogFragment.newInstance(checkedItem);
+		fragment.setTargetFragment(this, 0);
+		fragment.show(getFragmentManager(), DIALOG_SINGLE_CHOICE_ITEMS);
 	}
 
 
 	private void showMultiChoiceItemsDialog(boolean checkedItems[])
 	{
-		// create and show the dialog
-		DialogFragment newFragment = MultiChoiceItemsDialogFragment.newInstance(checkedItems);
-		newFragment.setTargetFragment(this, 0);
-		newFragment.show(getFragmentManager(), DIALOG_MULTI_CHOICE_ITEMS);
+		DialogFragment fragment = MultiChoiceItemsDialogFragment.newInstance(checkedItems);
+		fragment.setTargetFragment(this, 0);
+		fragment.show(getFragmentManager(), DIALOG_MULTI_CHOICE_ITEMS);
 	}
 
 
-	private void showViewDialog(String arg)
+	private void showCustomDialog(String arg)
 	{
-		// create and show the dialog
-		DialogFragment newFragment = ViewDialogFragment.newInstance(arg);
-		newFragment.setTargetFragment(this, 0);
-		newFragment.show(getFragmentManager(), DIALOG_VIEW);
+		DialogFragment fragment = CustomDialogFragment.newInstance(arg);
+		fragment.setTargetFragment(this, 0);
+		fragment.show(getFragmentManager(), DIALOG_CUSTOM);
 	}
 
 
 	private void showTimePickerDialog(Calendar time)
 	{
-		// create and show the dialog
-		DialogFragment newFragment = TimePickerDialogFragment.newInstance(time);
-		newFragment.setTargetFragment(this, 0);
-		newFragment.show(getFragmentManager(), DIALOG_TIME_PICKER);
+		DialogFragment fragment = TimePickerDialogFragment.newInstance(time);
+		fragment.setTargetFragment(this, 0);
+		fragment.show(getFragmentManager(), DIALOG_TIME_PICKER);
 	}
 
 
 	private void showDatePickerDialog(Calendar date)
 	{
-		// create and show the dialog
-		DialogFragment newFragment = DatePickerDialogFragment.newInstance(date);
-		newFragment.setTargetFragment(this, 0);
-		newFragment.show(getFragmentManager(), DIALOG_DATE_PICKER);
+		DialogFragment fragment = DatePickerDialogFragment.newInstance(date);
+		fragment.setTargetFragment(this, 0);
+		fragment.show(getFragmentManager(), DIALOG_DATE_PICKER);
 	}
 
 
 	private void showProgressDialog()
 	{
-		// create dialog
-		DialogFragment newFragment = ProgressDialogFragment.newInstance();
-		newFragment.setTargetFragment(this, 0);
-		newFragment.show(getFragmentManager(), DIALOG_PROGRESS);
+		DialogFragment fragment = ProgressDialogFragment.newInstance();
+		fragment.setTargetFragment(this, 0);
+		fragment.show(getFragmentManager(), DIALOG_PROGRESS);
 	}
 
 
 	private void hideProgressDialog()
 	{
 		getFragmentManager().executePendingTransactions();
-		DialogFragment dialogFragment = (DialogFragment) getFragmentManager().findFragmentByTag(DIALOG_PROGRESS);
-		if(dialogFragment != null) dialogFragment.dismiss();
+		DialogFragment fragment = (DialogFragment) getFragmentManager().findFragmentByTag(DIALOG_PROGRESS);
+		if(fragment != null) fragment.dismiss();
 	}
 
 
 	private void showSheetDialog(String arg)
 	{
-		// create and show the dialog
-		DialogFragment newFragment = SheetDialogFragment.newInstance(arg);
-		newFragment.setTargetFragment(this, 0);
-		newFragment.show(getFragmentManager(), DIALOG_SHEET);
+		DialogFragment fragment = SheetDialogFragment.newInstance(arg);
+		fragment.setTargetFragment(this, 0);
+		fragment.show(getFragmentManager(), DIALOG_SHEET);
 	}
 }
