@@ -82,17 +82,15 @@ public final class Logcat
 
 	private static class CodeLocation
 	{
-		public final String mThread;
-		public final String mFileName;
-		public final String mClassName;
-		public final String mMethod;
-		public final int mLineNumber;
-		public StackTraceElement[] mStackTrace;
+		private final String mThread;
+		private final String mFileName;
+		private final String mClassName;
+		private final String mMethod;
+		private final int mLineNumber;
 
 
 		CodeLocation(StackTraceElement[] stackTrace)
 		{
-			mStackTrace = stackTrace;
 			StackTraceElement root = stackTrace[0];
 			mThread = Thread.currentThread().getName();
 			mFileName = root.getFileName();
