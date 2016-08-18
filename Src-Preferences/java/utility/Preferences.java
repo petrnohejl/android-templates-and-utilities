@@ -2,7 +2,6 @@ package com.example.utility;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 
 import com.example.ExampleApplication;
@@ -24,9 +23,7 @@ public class Preferences
 
 	public void clearPreferences()
 	{
-		Editor editor = mSharedPreferences.edit();
-		editor.clear();
-		editor.commit();
+		mSharedPreferences.edit().clear().apply();
 	}
 
 
@@ -40,9 +37,7 @@ public class Preferences
 	public void setUserId(long userId)
 	{
 		String key = mContext.getString(R.string.prefs_key_user_id);
-		SharedPreferences.Editor editor = mSharedPreferences.edit();
-		editor.putLong(key, userId);
-		editor.commit();
+		mSharedPreferences.edit().putLong(key, userId).apply();
 	}
 
 
@@ -56,9 +51,7 @@ public class Preferences
 	public void setPassword(String password)
 	{
 		String key = mContext.getString(R.string.prefs_key_password);
-		SharedPreferences.Editor editor = mSharedPreferences.edit();
-		editor.putString(key, password);
-		editor.commit();
+		mSharedPreferences.edit().putString(key, password).apply();
 	}
 
 
@@ -72,9 +65,7 @@ public class Preferences
 	public void setVersion(String version)
 	{
 		String key = mContext.getString(R.string.prefs_key_version);
-		SharedPreferences.Editor editor = mSharedPreferences.edit();
-		editor.putString(key, version);
-		editor.commit();
+		mSharedPreferences.edit().putString(key, version).apply();
 	}
 
 
@@ -88,8 +79,6 @@ public class Preferences
 	public void setRateCounter(int rateCounter)
 	{
 		String key = mContext.getString(R.string.prefs_key_rate_counter);
-		SharedPreferences.Editor editor = mSharedPreferences.edit();
-		editor.putInt(key, rateCounter);
-		editor.commit();
+		mSharedPreferences.edit().putInt(key, rateCounter).apply();
 	}
 }
