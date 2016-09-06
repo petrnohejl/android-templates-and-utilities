@@ -29,9 +29,9 @@ public final class Logcat
 	}
 
 
-	public static void e(Throwable tr, String msg, Object... args)
+	public static void e(Throwable throwable, String msg, Object... args)
 	{
-		if(ExampleConfig.LOGS) Log.e(TAG, getCodeLocation().toString() + formatMessage(msg, args), tr);
+		if(ExampleConfig.LOGS) Log.e(TAG, getCodeLocation().toString() + formatMessage(msg, args), throwable);
 	}
 
 
@@ -56,6 +56,12 @@ public final class Logcat
 	public static void wtf(String msg, Object... args)
 	{
 		if(ExampleConfig.LOGS) Log.wtf(TAG, getCodeLocation().toString() + formatMessage(msg, args));
+	}
+
+
+	public static void printStackTrace(Throwable throwable)
+	{
+		e(throwable, "");
 	}
 
 
