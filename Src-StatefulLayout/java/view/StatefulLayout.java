@@ -10,6 +10,9 @@ import android.widget.FrameLayout;
 
 import com.example.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 // inspired by: https://github.com/jakubkinst/Android-StatefulView
 public class StatefulLayout extends FrameLayout
@@ -20,7 +23,7 @@ public class StatefulLayout extends FrameLayout
 	private int mProgressLayoutId;
 	private int mOfflineLayoutId;
 	private int mEmptyLayoutId;
-	private View mContentLayout;
+	private List<View> mContentLayoutList;
 	private View mProgressLayout;
 	private View mOfflineLayout;
 	private View mEmptyLayout;
@@ -140,10 +143,16 @@ public class StatefulLayout extends FrameLayout
 	public void setState(State state)
 	{
 		mState = state;
-		mContentLayout.setVisibility(state == State.CONTENT ? View.VISIBLE : View.GONE);
+
+		for(int i = 0; i < mContentLayoutList.size(); i++)
+		{
+			mContentLayoutList.get(i).setVisibility(state == State.CONTENT ? View.VISIBLE : View.GONE);
+		}
+
 		mProgressLayout.setVisibility(state == State.PROGRESS ? View.VISIBLE : View.GONE);
 		mOfflineLayout.setVisibility(state == State.OFFLINE ? View.VISIBLE : View.GONE);
 		mEmptyLayout.setVisibility(state == State.EMPTY ? View.VISIBLE : View.GONE);
+
 		if(mOnStateChangeListener != null) mOnStateChangeListener.onStateChange(this, state);
 	}
 
@@ -178,9 +187,14 @@ public class StatefulLayout extends FrameLayout
 
 	private void setupView()
 	{
-		if(mContentLayout == null && !isInEditMode())
+		if(mContentLayoutList == null && !isInEditMode())
 		{
-			mContentLayout = getChildAt(0);
+			mContentLayoutList = new ArrayList<>();
+			for(int i = 0; i < getChildCount(); i++)
+			{
+				mContentLayoutList.add(getChildAt(i));
+			}
+
 			mProgressLayout = LayoutInflater.from(getContext()).inflate(mProgressLayoutId, this, false);
 			mOfflineLayout = LayoutInflater.from(getContext()).inflate(mOfflineLayoutId, this, false);
 			mEmptyLayout = LayoutInflater.from(getContext()).inflate(mEmptyLayoutId, this, false);
