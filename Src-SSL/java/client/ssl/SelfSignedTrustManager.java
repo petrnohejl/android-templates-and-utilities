@@ -66,20 +66,6 @@ public class SelfSignedTrustManager implements X509TrustManager
 	}
 
 
-	static X509TrustManager findX509TrustManager(TrustManagerFactory tmf)
-	{
-		TrustManager tms[] = tmf.getTrustManagers();
-		for(int i = 0; i < tms.length; i++)
-		{
-			if(tms[i] instanceof X509TrustManager)
-			{
-				return (X509TrustManager) tms[i];
-			}
-		}
-		return null;
-	}
-
-
 	@Override
 	public void checkClientTrusted(X509Certificate[] certificates, String authType) throws CertificateException
 	{
@@ -161,7 +147,7 @@ public class SelfSignedTrustManager implements X509TrustManager
 	}
 
 
-	static class LocalStoreX509TrustManager implements X509TrustManager
+	private static class LocalStoreX509TrustManager implements X509TrustManager
 	{
 		private X509TrustManager mTrustManager;
 
@@ -203,6 +189,20 @@ public class SelfSignedTrustManager implements X509TrustManager
 		public X509Certificate[] getAcceptedIssuers()
 		{
 			return mTrustManager.getAcceptedIssuers();
+		}
+
+
+		private X509TrustManager findX509TrustManager(TrustManagerFactory tmf)
+		{
+			TrustManager tms[] = tmf.getTrustManagers();
+			for(int i = 0; i < tms.length; i++)
+			{
+				if(tms[i] instanceof X509TrustManager)
+				{
+					return (X509TrustManager) tms[i];
+				}
+			}
+			return null;
 		}
 	}
 }
