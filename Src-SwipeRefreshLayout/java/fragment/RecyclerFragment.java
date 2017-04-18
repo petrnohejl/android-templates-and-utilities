@@ -10,7 +10,8 @@ import android.widget.Toast;
 import com.example.R;
 import com.example.client.APICallManager;
 import com.example.client.request.ExampleRequest;
-import com.example.utility.NetworkUtility;
+
+import org.alfonz.utility.NetworkUtility;
 
 
 public class RecyclerFragment extends TaskFragment implements SwipeRefreshLayout.OnRefreshListener

@@ -1,7 +1,8 @@
 package com.example.database.dao;
 
 import com.example.database.DatabaseHelper;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 import java.sql.SQLException;
 

@@ -22,7 +22,8 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.example.R;
-import com.example.view.StatefulLayout;
+
+import org.alfonz.view.StatefulLayout;
 
 
 public class ExampleFragment extends Fragment

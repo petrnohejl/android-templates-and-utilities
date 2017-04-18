@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 
 import com.example.R;
 import com.example.broadcast.ExampleBroadcast;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 
 public class ExampleFragment extends Fragment

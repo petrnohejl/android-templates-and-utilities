@@ -18,7 +18,8 @@ import com.example.database.query.ProductReadAllQuery;
 import com.example.database.query.ProductReadQuery;
 import com.example.database.query.ProductUpdateQuery;
 import com.example.database.query.Query;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 import java.util.List;
 

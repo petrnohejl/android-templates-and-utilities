@@ -8,7 +8,7 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 
-import com.example.utility.Logcat;
+import org.alfonz.utility.Logcat;
 
 
 public class ExampleService extends Service

@@ -17,10 +17,10 @@ import com.example.client.request.ExampleRequest;
 import com.example.client.request.Request;
 import com.example.client.response.Response;
 import com.example.entity.ProductEntity;
-import com.example.utility.Logcat;
-import com.example.utility.NetworkUtility;
-import com.example.view.StatefulLayout;
 
+import org.alfonz.utility.Logcat;
+import org.alfonz.utility.NetworkUtility;
+import org.alfonz.view.StatefulLayout;
 import org.codehaus.jackson.JsonParseException;
 
 import java.io.FileNotFoundException;

@@ -3,7 +3,7 @@ package com.example.service;
 import android.app.IntentService;
 import android.content.Intent;
 
-import com.example.utility.Logcat;
+import org.alfonz.utility.Logcat;
 
 
 public class ExampleIntentService extends IntentService

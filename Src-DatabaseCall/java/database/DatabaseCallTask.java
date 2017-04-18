@@ -4,7 +4,8 @@ import android.os.AsyncTask;
 
 import com.example.database.data.Data;
 import com.example.database.query.Query;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 import java.lang.ref.WeakReference;
 

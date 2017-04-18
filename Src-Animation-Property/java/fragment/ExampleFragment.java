@@ -18,7 +18,8 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.example.R;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 
 public class ExampleFragment extends Fragment

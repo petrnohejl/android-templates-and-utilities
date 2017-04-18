@@ -4,7 +4,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 
 import com.example.client.request.Request;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 import java.util.LinkedList;
 import java.util.List;

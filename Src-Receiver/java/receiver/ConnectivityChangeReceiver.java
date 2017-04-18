@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.utility.Logcat;
-import com.example.utility.NetworkUtility;
+import org.alfonz.utility.Logcat;
+import org.alfonz.utility.NetworkUtility;
 
 
 public class ConnectivityChangeReceiver extends BroadcastReceiver

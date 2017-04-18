@@ -15,9 +15,10 @@ import com.example.R;
 import com.example.adapter.ExpandableListingAdapter;
 import com.example.entity.ProductEntity;
 import com.example.task.LoadDataTask;
-import com.example.utility.Logcat;
-import com.example.utility.NetworkUtility;
-import com.example.view.StatefulLayout;
+
+import org.alfonz.utility.Logcat;
+import org.alfonz.utility.NetworkUtility;
+import org.alfonz.view.StatefulLayout;
 
 import java.util.ArrayList;
 import java.util.List;

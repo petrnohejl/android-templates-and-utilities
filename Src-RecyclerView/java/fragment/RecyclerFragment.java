@@ -16,10 +16,11 @@ import com.example.R;
 import com.example.adapter.RecyclerAdapter;
 import com.example.entity.ProductEntity;
 import com.example.task.LoadDataTask;
-import com.example.utility.Logcat;
-import com.example.utility.NetworkUtility;
-import com.example.view.StatefulLayout;
 import com.example.widget.LinearDividerItemDecoration;
+
+import org.alfonz.utility.Logcat;
+import org.alfonz.utility.NetworkUtility;
+import org.alfonz.view.StatefulLayout;
 
 import java.util.ArrayList;
 import java.util.List;

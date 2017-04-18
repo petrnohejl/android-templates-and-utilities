@@ -4,7 +4,8 @@ import android.os.AsyncTask;
 
 import com.example.client.request.Request;
 import com.example.client.response.Response;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 import java.lang.ref.WeakReference;
 

@@ -4,11 +4,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.ExampleApplication;
 import com.example.database.model.ProductModel;
-import com.example.utility.Logcat;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+
+import org.alfonz.utility.Logcat;
 
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper

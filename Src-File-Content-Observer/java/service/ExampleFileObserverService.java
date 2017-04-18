@@ -5,8 +5,9 @@ import android.content.Intent;
 import android.os.IBinder;
 
 import com.example.utility.ExampleFileObserver;
-import com.example.utility.ExternalStorageUtility;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
+import org.alfonz.utility.StorageUtility;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class ExampleFileObserverService extends Service
 
 	private void startFileObservers()
 	{
-		if(ExternalStorageUtility.isAvailable())
+		if(StorageUtility.isAvailable())
 		{
 			// create list
 			mExampleFileObserverList = new ArrayList<>();

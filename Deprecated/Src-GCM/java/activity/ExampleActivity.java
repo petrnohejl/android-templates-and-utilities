@@ -8,8 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.ExampleConfig;
 import com.example.R;
 import com.example.gcm.GcmUtility;
-import com.example.utility.Logcat;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+import org.alfonz.utility.Logcat;
 
 import java.io.IOException;
 

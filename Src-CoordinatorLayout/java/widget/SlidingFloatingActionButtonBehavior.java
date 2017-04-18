@@ -9,7 +9,7 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.example.utility.ResourcesUtility;
+import org.alfonz.utility.ResourcesUtility;
 
 
 public class SlidingFloatingActionButtonBehavior extends FloatingActionButton.Behavior

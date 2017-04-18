@@ -6,7 +6,8 @@ import android.os.Handler;
 import android.os.IBinder;
 
 import com.example.utility.ExampleContentObserver;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 
 public class ExampleContentObserverService extends Service

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.R;
+import com.example.dialog.CustomDialogFragment;
 import com.example.dialog.DatePickerDialogFragment;
 import com.example.dialog.ItemsDialogFragment;
 import com.example.dialog.MultiChoiceItemsDialogFragment;
@@ -17,8 +18,8 @@ import com.example.dialog.SheetDialogFragment;
 import com.example.dialog.SimpleDialogFragment;
 import com.example.dialog.SingleChoiceItemsDialogFragment;
 import com.example.dialog.TimePickerDialogFragment;
-import com.example.dialog.CustomDialogFragment;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 import java.util.Calendar;
 

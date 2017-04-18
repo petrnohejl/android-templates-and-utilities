@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
-import com.example.utility.Logcat;
+import org.alfonz.utility.Logcat;
 
 
 public class PhoneStateReceiver extends BroadcastReceiver

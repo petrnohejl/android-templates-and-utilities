@@ -7,7 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.example.utility.ResourcesUtility;
+import org.alfonz.utility.ResourcesUtility;
 
 
 public class ScalingFloatingActionButtonBehavior extends FloatingActionButton.Behavior

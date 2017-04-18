@@ -6,7 +6,7 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
 
-import com.example.utility.Logcat;
+import org.alfonz.utility.Logcat;
 
 import java.lang.ref.WeakReference;
 import java.util.Date;

@@ -4,8 +4,9 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.utility.Logcat;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+import org.alfonz.utility.Logcat;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

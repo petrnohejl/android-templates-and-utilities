@@ -5,11 +5,12 @@ import android.content.Context;
 import android.net.Uri;
 
 import com.example.ExampleConfig;
-import com.example.utility.Logcat;
 import com.example.utility.Preferences;
-import com.example.utility.VersionUtility;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+
+import org.alfonz.utility.Logcat;
+import org.alfonz.utility.VersionUtility;
 
 import java.io.IOException;
 import java.io.OutputStream;
