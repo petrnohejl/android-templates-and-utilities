@@ -30,7 +30,7 @@ public class NotificationMessage
 
 	private NotificationMessage(Context context, Type type, Notification notification)
 	{
-		mContext = context; // should be an application context
+		mContext = context.getApplicationContext();
 		mType = type;
 		mNotification = notification;
 	}
@@ -96,7 +96,7 @@ public class NotificationMessage
 
 		public Builder(Context context, Type type)
 		{
-			mContext = context; // should be an application context
+			mContext = context.getApplicationContext();
 			mType = type;
 		}
 
