@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SlidingPaneLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/activity_example_sliding_pane_layout"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:orientation="vertical">
 
-	<FrameLayout
-		android:id="@+id/activity_example_sliding_pane_left"
-		android:layout_width="@dimen/activity_example_sliding_pane_left_width"
-		android:layout_height="match_parent" />
+	<include layout="@layout/toolbar" />
 
-	<FrameLayout
-		android:id="@+id/activity_example_sliding_pane_right"
-		android:layout_width="@dimen/activity_example_sliding_pane_right_width"
-		android:layout_height="match_parent"
-		android:layout_weight="1" />
+	<android.support.v4.widget.SlidingPaneLayout
+		android:id="@+id/activity_example_sliding_pane_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
 
-</android.support.v4.widget.SlidingPaneLayout>
+		<FrameLayout
+			android:id="@+id/activity_example_sliding_pane_left"
+			android:layout_width="@dimen/activity_example_sliding_pane_left_width"
+			android:layout_height="match_parent" />
+
+		<FrameLayout
+			android:id="@+id/activity_example_sliding_pane_right"
+			android:layout_width="@dimen/activity_example_sliding_pane_right_width"
+			android:layout_height="match_parent"
+			android:layout_weight="1" />
+
+	</android.support.v4.widget.SlidingPaneLayout>
+</LinearLayout>
