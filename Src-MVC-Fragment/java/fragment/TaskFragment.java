@@ -1,7 +1,6 @@
 package com.example.fragment;
 
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -60,21 +59,13 @@ public class TaskFragment extends Fragment
 
 	protected void executeTask(AsyncTask<Void, ?, ?> task)
 	{
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-		{
-			// use AsyncTask.THREAD_POOL_EXECUTOR or AsyncTask.SERIAL_EXECUTOR
-			task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-		}
-		else
-		{
-			task.execute();
-		}
+		// use AsyncTask.THREAD_POOL_EXECUTOR or AsyncTask.SERIAL_EXECUTOR
+		task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 	}
 
 
 	private void runNow(Runnable runnable)
 	{
-		//Logcat.d("" + runnable.getClass().getEnclosingMethod());
 		getActivity().runOnUiThread(runnable);
 	}
 
@@ -83,7 +74,6 @@ public class TaskFragment extends Fragment
 	{
 		synchronized(mLock)
 		{
-			//Logcat.d("" + runnable.getClass().getEnclosingMethod());
 			mPendingCallbacks.add(runnable);
 		}
 	}

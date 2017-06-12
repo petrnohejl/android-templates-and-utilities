@@ -1,7 +1,6 @@
 package com.example.dialog;
 
 import android.app.Dialog;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.ContextThemeWrapper;
@@ -82,8 +81,7 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 		}
 
 		ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), getTheme(true));
-		FixedTimePickerDialog dialog = new FixedTimePickerDialog(calendar, context, this);
-		return dialog;
+		return new FixedTimePickerDialog(calendar, context, this);
 	}
 
 
@@ -96,18 +94,7 @@ public class TimePickerDialogFragment extends DialogFragment implements FixedTim
 
 	private int getTheme(boolean light)
 	{
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-		{
-			return light ? android.R.style.Theme_DeviceDefault_Light_Dialog : android.R.style.Theme_DeviceDefault_Dialog;
-		}
-		else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-		{
-			return light ? android.R.style.Theme_Holo_Light_Dialog : android.R.style.Theme_Holo_Dialog;
-		}
-		else
-		{
-			return android.R.style.Theme_Dialog;
-		}
+		return light ? android.R.style.Theme_DeviceDefault_Light_Dialog : android.R.style.Theme_DeviceDefault_Dialog;
 	}
 
 

@@ -72,7 +72,7 @@ public class ExampleFragment extends Fragment
 		{
 			webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 		}
-		else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+		else
 		{
 			webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		}

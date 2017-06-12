@@ -2,10 +2,8 @@ package com.example.fragment;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,29 +28,15 @@ public class ExampleFragment extends Fragment
 	private void startExampleActivity()
 	{
 		Intent intent = ExampleActivity.newIntent(getActivity());
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-		{
-			ActivityOptions options = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.push_right_enter, R.anim.push_right_exit);
-			((AppCompatActivity) getActivity()).startActivity(intent, options.toBundle());
-		}
-		else
-		{
-			startActivity(intent);
-		}
+		ActivityOptions options = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.push_right_enter, R.anim.push_right_exit);
+		getActivity().startActivity(intent, options.toBundle());
 	}
 
 
 	private void startExampleActivity(View view)
 	{
 		Intent intent = ExampleActivity.newIntent(getActivity());
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-		{
-			ActivityOptions options = ActivityOptions.makeScaleUpAnimation(view, 0, 0, view.getWidth(), view.getHeight());
-			((AppCompatActivity) getActivity()).startActivity(intent, options.toBundle());
-		}
-		else
-		{
-			startActivity(intent);
-		}
+		ActivityOptions options = ActivityOptions.makeScaleUpAnimation(view, 0, 0, view.getWidth(), view.getHeight());
+		getActivity().startActivity(intent, options.toBundle());
 	}
 }

@@ -1,7 +1,6 @@
 package com.example.fragment;
 
 import android.animation.LayoutTransition;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,15 +25,12 @@ public class ExampleFragment extends Fragment
 
 	private void setupLayoutTransition(ViewGroup layout)
 	{
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+		LayoutTransition transition = layout.getLayoutTransition();
+		if(transition == null)
 		{
-			LayoutTransition transition = layout.getLayoutTransition();
-			if(transition == null)
-			{
-				transition = new LayoutTransition();
-				layout.setLayoutTransition(transition);
-			}
-			transition.enableTransitionType(LayoutTransition.CHANGING);
+			transition = new LayoutTransition();
+			layout.setLayoutTransition(transition);
 		}
+		transition.enableTransitionType(LayoutTransition.CHANGING);
 	}
 }

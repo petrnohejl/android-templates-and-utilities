@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
@@ -13,12 +12,9 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import com.example.R;
 import com.example.utility.Preferences;
@@ -83,36 +79,9 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 	private void setupActionBar(PreferenceScreen preferenceScreen)
 	{
 		final Dialog dialog = preferenceScreen.getDialog();
-		Toolbar toolbar;
-
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-		{
-			LinearLayout root = (LinearLayout) dialog.findViewById(android.R.id.list).getParent();
-			toolbar = (Toolbar) LayoutInflater.from(getActivity()).inflate(R.layout.toolbar, root, false);
-			root.addView(toolbar, 0);
-		}
-		else
-		{
-			ViewGroup root = (ViewGroup) dialog.findViewById(android.R.id.content);
-			ListView content = (ListView) root.getChildAt(0);
-			root.removeAllViews();
-			toolbar = (Toolbar) LayoutInflater.from(getActivity()).inflate(R.layout.toolbar, root, false);
-
-			int height;
-			TypedValue typedValue = new TypedValue();
-			if(getActivity().getTheme().resolveAttribute(R.attr.actionBarSize, typedValue, true))
-			{
-				height = TypedValue.complexToDimensionPixelSize(typedValue.data, getResources().getDisplayMetrics());
-			}
-			else
-			{
-				height = toolbar.getHeight();
-			}
-
-			content.setPadding(0, height, 0, 0);
-			root.addView(content);
-			root.addView(toolbar);
-		}
+		LinearLayout root = (LinearLayout) dialog.findViewById(android.R.id.list).getParent();
+		Toolbar toolbar = (Toolbar) LayoutInflater.from(getActivity()).inflate(R.layout.toolbar, root, false);
+		root.addView(toolbar, 0);
 
 		TypedArray typedArray = getActivity().getTheme().obtainStyledAttributes(R.style.Theme_Example_Light, new int[]{R.attr.homeAsUpIndicator});
 		int attributeResourceId = typedArray.getResourceId(0, 0);

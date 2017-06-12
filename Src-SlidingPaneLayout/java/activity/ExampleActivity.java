@@ -1,6 +1,5 @@
 package com.example.activity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -109,14 +108,7 @@ public class ExampleActivity extends AppCompatActivity
 					onSlidingPaneOpened();
 				}
 
-				if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-				{
-					mSlidingPaneLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-				}
-				else
-				{
-					mSlidingPaneLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-				}
+				mSlidingPaneLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 			}
 		});
 
