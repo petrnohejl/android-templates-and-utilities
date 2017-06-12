@@ -3,7 +3,6 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.example">
 
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
@@ -14,21 +13,6 @@
 		<receiver android:name=".receiver.BootCompletedReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
-			</intent-filter>
-		</receiver>
-
-		<receiver android:name=".receiver.ConnectivityChangeReceiver">
-			<intent-filter>
-				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-			</intent-filter>
-		</receiver>
-
-		<receiver android:name=".receiver.NewPictureReceiver">
-			<intent-filter>
-				<action android:name="com.android.camera.NEW_PICTURE" />
-				<action android:name="android.hardware.action.NEW_PICTURE" />
-
-				<data android:mimeType="image/*" />
 			</intent-filter>
 		</receiver>
 
