@@ -1,4 +1,4 @@
-package com.example.client.ssl;
+package com.example.rest.ssl;
 
 import java.net.URL;
 import java.security.GeneralSecurityException;
@@ -11,15 +11,15 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
 
-public final class CertificateAuthoritySSLUtility
+public final class CertificateAuthoritySslUtility
 {
-	private CertificateAuthoritySSLUtility() {}
+	private CertificateAuthoritySslUtility() {}
 
 
-	public static void setupSSLConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
+	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
 	{
-		SSLContext sslContext = createSSLContext();
-		HostnameVerifier sslHostnameVerifier = createSSLHostnameVerifier(requestUrl.getHost());
+		SSLContext sslContext = createSslContext();
+		HostnameVerifier sslHostnameVerifier = createSslHostnameVerifier(requestUrl.getHost());
 
 		connection.setSSLSocketFactory(sslContext.getSocketFactory());
 		connection.setHostnameVerifier(sslHostnameVerifier);
@@ -27,7 +27,7 @@ public final class CertificateAuthoritySSLUtility
 	}
 
 
-	public static SSLContext createSSLContext() throws GeneralSecurityException
+	public static SSLContext createSslContext() throws GeneralSecurityException
 	{
 		SSLContext context = SSLContext.getInstance("TLS");
 		context.init(null, new X509TrustManager[]{new CertificateAuthorityTrustManager()}, new SecureRandom());
@@ -35,7 +35,7 @@ public final class CertificateAuthoritySSLUtility
 	}
 
 
-	public static HostnameVerifier createSSLHostnameVerifier(final String apiHostname)
+	public static HostnameVerifier createSslHostnameVerifier(final String apiHostname)
 	{
 		HostnameVerifier hostnameVerifier = new HostnameVerifier()
 		{

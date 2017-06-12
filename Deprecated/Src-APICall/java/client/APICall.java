@@ -86,8 +86,8 @@ public class APICall
 			//mConnection = (HttpsURLConnection) url.openConnection(); // for SSL
 
 			// ssl connection properties
-			//SelfSignedSSLUtility.setupSSLConnection(mConnection, url); // for SSL using self signed certificate
-			//CertificateAuthoritySSLUtility.setupSSLConnection(mConnection, url); // for SSL using certificate authority
+			//SelfSignedSslUtility.setupSslConnection(mConnection, url); // for SSL using self signed certificate
+			//CertificateAuthoritySslUtility.setupSslConnection(mConnection, url); // for SSL using certificate authority
 
 			// connect
 			setupConnection(requestData);

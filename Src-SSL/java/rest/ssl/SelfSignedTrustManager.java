@@ -1,4 +1,4 @@
-package com.example.client.ssl;
+package com.example.rest.ssl;
 
 import android.util.Base64;
 

@@ -1,4 +1,4 @@
-package com.example.client.ssl;
+package com.example.rest.ssl;
 
 import com.example.ExampleApplication;
 import com.example.ExampleConfig;
@@ -19,22 +19,22 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 
 
-public final class SelfSignedSSLUtility
+public final class SelfSignedSslUtility
 {
-	private SelfSignedSSLUtility() {}
+	private SelfSignedSslUtility() {}
 
 
-	public static void setupSSLConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
+	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
 	{
-		SSLContext sslContext = createSSLContext();
-		HostnameVerifier sslHostnameVerifier = createSSLHostnameVerifier(requestUrl.getHost());
+		SSLContext sslContext = createSslContext();
+		HostnameVerifier sslHostnameVerifier = createSslHostnameVerifier(requestUrl.getHost());
 
 		connection.setSSLSocketFactory(sslContext.getSocketFactory());
 		connection.setHostnameVerifier(sslHostnameVerifier);
 	}
 
 
-	public static SSLContext createSSLContext() throws GeneralSecurityException
+	public static SSLContext createSslContext() throws GeneralSecurityException
 	{
 		KeyStore keyStore = loadKeyStore();
 
@@ -52,7 +52,7 @@ public final class SelfSignedSSLUtility
 	}
 
 
-	public static HostnameVerifier createSSLHostnameVerifier(final String apiHostname)
+	public static HostnameVerifier createSslHostnameVerifier(final String apiHostname)
 	{
 		HostnameVerifier hostnameVerifier = new HostnameVerifier()
 		{
