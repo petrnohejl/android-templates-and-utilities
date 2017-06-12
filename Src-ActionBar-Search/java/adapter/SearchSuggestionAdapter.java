@@ -25,8 +25,7 @@ public class SearchSuggestionAdapter extends CursorAdapter
 	public View newView(Context context, Cursor cursor, ViewGroup parent)
 	{
 		LayoutInflater inflater = LayoutInflater.from(context);
-		View view = inflater.inflate(R.layout.search_suggestion_item, parent, false);
-		return view;
+		return inflater.inflate(R.layout.search_suggestion_item, parent, false);
 	}
 
 

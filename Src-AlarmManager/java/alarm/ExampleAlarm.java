@@ -56,7 +56,6 @@ public class ExampleAlarm
 	private PendingIntent getPendingIntent()
 	{
 		Intent alarmIntent = new Intent(mContext, ExampleAlarmReceiver.class);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext, ALARM_ID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-		return pendingIntent;
+		return PendingIntent.getBroadcast(mContext, ALARM_ID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 	}
 }
