@@ -18,6 +18,8 @@ import com.example.R;
 public class SheetDialogFragment extends BottomSheetDialogFragment
 {
 	private static final String ARGUMENT_EXAMPLE = "example";
+	private static final String SAVED_USERNAME = "username";
+	private static final String SAVED_PASSWORD = "password";
 
 	private String mExample;
 	private View mRootView;
@@ -52,7 +54,6 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 	{
 		super.onCreate(savedInstanceState);
 		setCancelable(true);
-		setRetainInstance(true);
 
 		// handle fragment arguments
 		Bundle arguments = getArguments();
@@ -82,7 +83,10 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 		if(getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
 
 		// restore saved state
-		handleSavedInstanceState();
+		if(savedInstanceState != null)
+		{
+			handleSavedInstanceState(savedInstanceState);
+		}
 	}
 
 
@@ -92,20 +96,6 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 		// http://code.google.com/p/android/issues/detail?id=17423
 		if(getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
 		super.onDestroyView();
-	}
-
-
-	@Override
-	public void onSaveInstanceState(Bundle outState)
-	{
-		// save current instance state
-		super.onSaveInstanceState(outState);
-
-		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_username);
-		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_password);
-
-		mUsername = usernameEditText.getText().toString();
-		mPassword = passwordEditText.getText().toString();
 	}
 
 
@@ -176,6 +166,20 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 	}
 
 
+	@Override
+	public void onSaveInstanceState(Bundle outState)
+	{
+		// save current instance state
+		super.onSaveInstanceState(outState);
+
+		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_username);
+		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_password);
+
+		outState.putString(SAVED_USERNAME, usernameEditText.getText().toString());
+		outState.putString(SAVED_PASSWORD, passwordEditText.getText().toString());
+	}
+
+
 	private void handleArguments(Bundle arguments)
 	{
 		if(arguments.containsKey(ARGUMENT_EXAMPLE))
@@ -185,12 +189,19 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 	}
 
 
-	private void handleSavedInstanceState()
+	private void handleSavedInstanceState(Bundle savedInstanceState)
 	{
 		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_username);
 		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_password);
 
-		usernameEditText.setText(mUsername);
-		passwordEditText.setText(mPassword);
+		if(savedInstanceState.containsKey(SAVED_USERNAME))
+		{
+			usernameEditText.setText((String) savedInstanceState.get(SAVED_USERNAME));
+		}
+
+		if(savedInstanceState.containsKey(SAVED_PASSWORD))
+		{
+			passwordEditText.setText((String) savedInstanceState.get(SAVED_PASSWORD));
+		}
 	}
 }

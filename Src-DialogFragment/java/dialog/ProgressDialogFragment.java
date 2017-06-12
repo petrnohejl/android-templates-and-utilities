@@ -21,7 +21,6 @@ public class ProgressDialogFragment extends DialogFragment
 	{
 		super.onCreate(savedInstanceState);
 		setCancelable(false);
-		setRetainInstance(true);
 	}
 
 

@@ -12,6 +12,7 @@ import com.example.R;
 public class SingleChoiceItemsDialogFragment extends DialogFragment
 {
 	private static final String ARGUMENT_CHECKED_ITEM = "checked_item";
+	private static final String SAVED_CHECKED_ITEM = "checked_item";
 
 	private int mCheckedItem = -1;
 	private SingleChoiceItemsDialogListener mListener;
@@ -42,13 +43,18 @@ public class SingleChoiceItemsDialogFragment extends DialogFragment
 	{
 		super.onCreate(savedInstanceState);
 		setCancelable(true);
-		setRetainInstance(true);
 
 		// handle fragment arguments
 		Bundle arguments = getArguments();
 		if(arguments != null)
 		{
 			handleArguments(arguments);
+		}
+
+		// restore saved state
+		if(savedInstanceState != null)
+		{
+			handleSavedInstanceState(savedInstanceState);
 		}
 
 		// set callback listener
@@ -123,11 +129,28 @@ public class SingleChoiceItemsDialogFragment extends DialogFragment
 	}
 
 
+	@Override
+	public void onSaveInstanceState(Bundle outState)
+	{
+		super.onSaveInstanceState(outState);
+		outState.putInt(ARGUMENT_CHECKED_ITEM, mCheckedItem);
+	}
+
+
 	private void handleArguments(Bundle arguments)
 	{
 		if(arguments.containsKey(ARGUMENT_CHECKED_ITEM))
 		{
 			mCheckedItem = (Integer) arguments.get(ARGUMENT_CHECKED_ITEM);
+		}
+	}
+
+
+	private void handleSavedInstanceState(Bundle savedInstanceState)
+	{
+		if(savedInstanceState.containsKey(SAVED_CHECKED_ITEM))
+		{
+			mCheckedItem = (Integer) savedInstanceState.get(SAVED_CHECKED_ITEM);
 		}
 	}
 }

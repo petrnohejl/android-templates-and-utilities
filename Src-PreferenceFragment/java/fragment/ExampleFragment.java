@@ -26,7 +26,6 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setRetainInstance(true);
 		addPreferencesFromResource(R.xml.prefs);
 	}
 

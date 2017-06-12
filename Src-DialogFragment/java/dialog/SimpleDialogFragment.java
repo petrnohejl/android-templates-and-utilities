@@ -42,7 +42,6 @@ public class SimpleDialogFragment extends DialogFragment
 	{
 		super.onCreate(savedInstanceState);
 		setCancelable(true);
-		setRetainInstance(true);
 
 		// handle fragment arguments
 		Bundle arguments = getArguments();

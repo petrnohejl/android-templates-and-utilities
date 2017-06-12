@@ -13,6 +13,7 @@ import com.example.R;
 public class MultiChoiceItemsDialogFragment extends DialogFragment
 {
 	private static final String ARGUMENT_CHECKED_ITEMS = "checked_items";
+	private static final String SAVED_CHECKED_ITEMS = "checked_items";
 
 	private boolean mCheckedItems[] = null;
 	private MultiChoiceItemsDialogListener mListener;
@@ -43,13 +44,18 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 	{
 		super.onCreate(savedInstanceState);
 		setCancelable(true);
-		setRetainInstance(true);
 
 		// handle fragment arguments
 		Bundle arguments = getArguments();
 		if(arguments != null)
 		{
 			handleArguments(arguments);
+		}
+
+		// restore saved state
+		if(savedInstanceState != null)
+		{
+			handleSavedInstanceState(savedInstanceState);
 		}
 
 		// set callback listener
@@ -124,11 +130,28 @@ public class MultiChoiceItemsDialogFragment extends DialogFragment
 	}
 
 
+	@Override
+	public void onSaveInstanceState(Bundle outState)
+	{
+		super.onSaveInstanceState(outState);
+		outState.putBooleanArray(SAVED_CHECKED_ITEMS, mCheckedItems);
+	}
+
+
 	private void handleArguments(Bundle arguments)
 	{
 		if(arguments.containsKey(ARGUMENT_CHECKED_ITEMS))
 		{
 			mCheckedItems = (boolean[]) arguments.get(ARGUMENT_CHECKED_ITEMS);
+		}
+	}
+
+
+	private void handleSavedInstanceState(Bundle savedInstanceState)
+	{
+		if(savedInstanceState.containsKey(SAVED_CHECKED_ITEMS))
+		{
+			mCheckedItems = (boolean[]) savedInstanceState.get(SAVED_CHECKED_ITEMS);
 		}
 	}
 }
