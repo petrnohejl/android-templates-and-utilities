@@ -12,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -102,27 +103,27 @@ public class ExampleFragment extends Fragment
 
 	private void bindData()
 	{
-		// reference
-		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMap();
-
-		// content
-		if(map != null)
+		((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMapAsync(new OnMapReadyCallback()
 		{
-			BitmapDescriptor marker1 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
-			BitmapDescriptor marker2 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
-			BitmapDescriptor marker3 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
-			BitmapDescriptor marker4 = BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher);
-			BitmapDescriptor[] markers = {marker1, marker2, marker3, marker4};
-
-			for(int i = 0; i < 16; i++)
+			@Override
+			public void onMapReady(GoogleMap googleMap)
 			{
-				map.addMarker(new MarkerOptions()
-						.position(new LatLng(49.194696 + 0.1 * Math.sin(i * Math.PI / 8), 16.608595 + 0.1 * Math.cos(i * Math.PI / 8)))
-						.title("Example " + i)
-						.icon(markers[i % 4])
-				);
+				BitmapDescriptor marker1 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+				BitmapDescriptor marker2 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
+				BitmapDescriptor marker3 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+				BitmapDescriptor marker4 = BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher);
+				BitmapDescriptor[] markers = {marker1, marker2, marker3, marker4};
+
+				for(int i = 0; i < 16; i++)
+				{
+					googleMap.addMarker(new MarkerOptions()
+							.position(new LatLng(49.194696 + 0.1 * Math.sin(i * Math.PI / 8), 16.608595 + 0.1 * Math.cos(i * Math.PI / 8)))
+							.title("Example " + i)
+							.icon(markers[i % 4])
+					);
+				}
 			}
-		}
+		});
 	}
 
 
@@ -146,27 +147,27 @@ public class ExampleFragment extends Fragment
 
 	private void setupMap()
 	{
-		// reference
-		GoogleMap map = ((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMap();
-
-		// settings
-		if(map != null)
+		((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMapAsync(new OnMapReadyCallback()
 		{
-			map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-			map.setMyLocationEnabled(true);
+			@Override
+			public void onMapReady(GoogleMap googleMap)
+			{
+				googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+				googleMap.setMyLocationEnabled(true);
 
-			UiSettings settings = map.getUiSettings();
-			settings.setAllGesturesEnabled(true);
-			settings.setMyLocationButtonEnabled(true);
-			settings.setZoomControlsEnabled(true);
+				UiSettings settings = googleMap.getUiSettings();
+				settings.setAllGesturesEnabled(true);
+				settings.setMyLocationButtonEnabled(true);
+				settings.setZoomControlsEnabled(true);
 
-			CameraPosition cameraPosition = new CameraPosition.Builder()
-					.target(new LatLng(49.194696, 16.608595))
-					.zoom(11)
-					.bearing(0)
-					.tilt(30)
-					.build();
-			map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-		}
+				CameraPosition cameraPosition = new CameraPosition.Builder()
+						.target(new LatLng(49.194696, 16.608595))
+						.zoom(11)
+						.bearing(0)
+						.tilt(30)
+						.build();
+				googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+			}
+		});
 	}
 }
