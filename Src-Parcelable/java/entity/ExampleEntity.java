@@ -30,7 +30,7 @@ public class ExampleEntity implements Parcelable
 	private String stringVar;
 	private Date dateVar;
 	private Calendar calendarVar;
-	private MyModel myModel;
+	private MyEntity myEntity;
 	private List<String> stringList;
 
 
@@ -64,7 +64,7 @@ public class ExampleEntity implements Parcelable
 		parcel.writeString(stringVar);
 		parcel.writeLong(dateVar != null ? dateVar.getTime() : -1L);
 		parcel.writeLong(calendarVar != null ? calendarVar.getTimeInMillis() : -1L);
-		parcel.writeParcelable(myModel, flags);
+		parcel.writeParcelable(myEntity, flags);
 		parcel.writeStringList(stringList);
 	}
 
@@ -92,7 +92,7 @@ public class ExampleEntity implements Parcelable
 			calendarVar = null;
 		}
 
-		myModel = parcel.readParcelable(MyModel.class.getClassLoader());
+		myEntity = parcel.readParcelable(MyEntity.class.getClassLoader());
 		parcel.readStringList(stringList);
 	}
 }

@@ -15,7 +15,7 @@ public class ExampleEntity
 	private String stringVar;
 	private Date dateVar;
 	private Calendar calendarVar;
-	private MyModel myModel;
+	private MyEntity myEntity;
 	private List<String> stringList;
 
 
@@ -38,7 +38,7 @@ public class ExampleEntity
 			calendarVar = Calendar.getInstance();
 			calendarVar.setTime(origin.calendarVar.getTime());
 		}
-		if(origin.myModel != null) myModel = new MyModel(origin.myModel);
+		if(origin.myEntity != null) myEntity = new MyEntity(origin.myEntity);
 		if(origin.stringList != null)
 		{
 			stringList = new ArrayList<>();
@@ -124,15 +124,15 @@ public class ExampleEntity
 	}
 
 
-	public MyModel getMyModel()
+	public MyEntity getMyEntity()
 	{
-		return myModel;
+		return myEntity;
 	}
 
 
-	public void setMyModel(MyModel myModel)
+	public void setMyEntity(MyEntity myEntity)
 	{
-		this.myModel = myModel;
+		this.myEntity = myEntity;
 	}
 
 
