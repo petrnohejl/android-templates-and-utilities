@@ -8,17 +8,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.R;
-import com.example.client.APICallManager;
-import com.example.client.request.ExampleRequest;
 
 import org.alfonz.utility.NetworkUtility;
 
 
 public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.OnRefreshListener
 {
-	private boolean mProgress = false;
 	private View mRootView;
-	private APICallManager mAPICallManager = new APICallManager();
 
 
 	@Override
@@ -38,7 +34,7 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 		setupSwipeRefreshLayout();
 
 		// progress popup
-		showProgress(mProgress);
+		showProgress(isProgress());
 	}
 
 
@@ -87,13 +83,10 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 	{
 		if(NetworkUtility.isOnline(getActivity()))
 		{
-			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
-			{
-				// show progress popup
-				showProgress(true);
+			// show progress popup
+			showProgress(true);
 
-				// TODO
-			}
+			// TODO
 		}
 		else
 		{
@@ -115,7 +108,7 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 		emptySwipeRefreshLayout.setRefreshing(visible);
 		emptySwipeRefreshLayout.setEnabled(!visible);
 
-		mProgress = visible;
+		setProgress(visible);
 	}
 
 
@@ -129,5 +122,18 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 
 		emptySwipeRefreshLayout.setColorSchemeResources(R.color.global_color_primary, R.color.global_color_accent);
 		emptySwipeRefreshLayout.setOnRefreshListener(this);
+	}
+
+
+	private boolean isProgress()
+	{
+		// TODO
+		return false;
+	}
+
+
+	private void setProgress(boolean progress)
+	{
+		// TODO
 	}
 }

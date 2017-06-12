@@ -16,7 +16,6 @@ import com.example.R;
 
 public class ExampleFragment extends Fragment
 {
-	private boolean mProgress = false;
 	private View mRootView;
 	private MenuItem mRefreshMenuItem;
 
@@ -41,7 +40,7 @@ public class ExampleFragment extends Fragment
 		mRefreshMenuItem = menu.findItem(R.id.menu_fragment_example_refresh);
 
 		// progress in action bar
-		showProgress(mProgress);
+		showProgress(isProgress());
 	}
 
 
@@ -63,12 +62,6 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	public void refreshData()
-	{
-		// TODO
-	}
-
-
 	private void showProgress(boolean visible)
 	{
 		// show action view progress
@@ -86,6 +79,25 @@ public class ExampleFragment extends Fragment
 			}
 		}
 
-		mProgress = visible;
+		setProgress(visible);
+	}
+
+
+	private void refreshData()
+	{
+		// TODO
+	}
+
+
+	private boolean isProgress()
+	{
+		// TODO
+		return false;
+	}
+
+
+	private void setProgress(boolean progress)
+	{
+		// TODO
 	}
 }
