@@ -137,7 +137,7 @@ public class ExampleActivity extends AppCompatActivity
 				supportInvalidateOptionsMenu();
 			}
 		};
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		mDrawerLayout.addDrawerListener(mDrawerToggle);
 
 		// show initial fragment
 		if(savedInstanceState == null)

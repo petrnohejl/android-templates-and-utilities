@@ -33,7 +33,7 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		mViewPager = viewPager;
 		mTabHost.setOnTabChangedListener(this);
 		mViewPager.setAdapter(this);
-		mViewPager.setOnPageChangeListener(this);
+		mViewPager.addOnPageChangeListener(this);
 	}
 
 
