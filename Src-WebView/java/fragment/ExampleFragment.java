@@ -48,7 +48,7 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);

@@ -249,7 +249,7 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		ListView listView = getListView();
@@ -359,7 +359,7 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 					}
 					else
 					{
-						if(mProductList != null) bindData();
+						if(mProductList != null) setupView();
 					}
 				}
 			}

@@ -311,7 +311,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// TODO
 	}

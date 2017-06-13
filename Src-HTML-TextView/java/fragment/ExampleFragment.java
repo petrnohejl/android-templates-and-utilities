@@ -26,7 +26,7 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		TextView descriptionTextView = (TextView) mRootView.findViewById(R.id.fragment_example_description);

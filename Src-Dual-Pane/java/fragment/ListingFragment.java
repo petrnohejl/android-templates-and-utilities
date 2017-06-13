@@ -56,11 +56,11 @@ public class ListingFragment extends Fragment
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		bindData();
+		setupView();
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		boolean init = false;
 

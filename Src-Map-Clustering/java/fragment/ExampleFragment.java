@@ -32,25 +32,6 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	private void bindData()
-	{
-		((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMapAsync(new OnMapReadyCallback()
-		{
-			@Override
-			public void onMapReady(GoogleMap googleMap)
-			{
-				for(int i = 0; i < 16; i++)
-				{
-					ProductEntity product = new ProductEntity();
-					product.setName("Example " + i);
-					product.setPosition(new LatLng(49.194696 + 0.1 * Math.sin(i * Math.PI / 8), 16.608595 + 0.1 * Math.cos(i * Math.PI / 8)));
-					mClusterManager.addItem(product);
-				}
-			}
-		});
-	}
-
-
 	private void setupClusterManager()
 	{
 		((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMapAsync(new OnMapReadyCallback()
@@ -71,6 +52,25 @@ public class ExampleFragment extends Fragment
 					}
 				});
 				googleMap.setOnCameraIdleListener(mClusterManager);
+			}
+		});
+	}
+
+
+	private void bindData()
+	{
+		((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMapAsync(new OnMapReadyCallback()
+		{
+			@Override
+			public void onMapReady(GoogleMap googleMap)
+			{
+				for(int i = 0; i < 16; i++)
+				{
+					ProductEntity product = new ProductEntity();
+					product.setName("Example " + i);
+					product.setPosition(new LatLng(49.194696 + 0.1 * Math.sin(i * Math.PI / 8), 16.608595 + 0.1 * Math.cos(i * Math.PI / 8)));
+					mClusterManager.addItem(product);
+				}
 			}
 		});
 	}

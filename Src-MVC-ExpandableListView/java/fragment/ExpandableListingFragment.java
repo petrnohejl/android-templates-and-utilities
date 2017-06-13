@@ -210,7 +210,7 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
@@ -279,7 +279,7 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 					}
 					else
 					{
-						if(mGroupList != null && mProductList != null) bindData();
+						if(mGroupList != null && mProductList != null) setupView();
 					}
 				}
 			}

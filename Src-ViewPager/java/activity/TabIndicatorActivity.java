@@ -19,11 +19,11 @@ public class TabIndicatorActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabindicator);
-		bindData();
+		setupView();
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_tabindicator_pager);

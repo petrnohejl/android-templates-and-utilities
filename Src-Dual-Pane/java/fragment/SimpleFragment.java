@@ -65,7 +65,7 @@ public class SimpleFragment extends Fragment
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		bindData();
+		setupView();
 	}
 
 
@@ -87,7 +87,7 @@ public class SimpleFragment extends Fragment
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_simple_name);

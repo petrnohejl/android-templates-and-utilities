@@ -38,8 +38,8 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 		// register listener
 		PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(this);
 
-		// bind data
-		bindData();
+		// setup view
+		setupView();
 	}
 
 
@@ -56,7 +56,7 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
 	{
-		bindData();
+		setupView();
 	}
 
 
@@ -99,7 +99,7 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// references
 		PreferenceScreen rootPreferenceScreen = getPreferenceScreen();

@@ -188,7 +188,7 @@ public class SimpleFragment extends TaskFragment implements LoadDataTask.OnLoadD
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		TextView nameTextView = (TextView) mRootView.findViewById(R.id.fragment_simple_name);
@@ -213,7 +213,7 @@ public class SimpleFragment extends TaskFragment implements LoadDataTask.OnLoadD
 
 				if(state == StatefulLayout.State.CONTENT)
 				{
-					if(mProduct != null) bindData();
+					if(mProduct != null) setupView();
 				}
 			}
 		});

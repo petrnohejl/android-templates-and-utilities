@@ -101,32 +101,6 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	private void bindData()
-	{
-		((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMapAsync(new OnMapReadyCallback()
-		{
-			@Override
-			public void onMapReady(GoogleMap googleMap)
-			{
-				BitmapDescriptor marker1 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
-				BitmapDescriptor marker2 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
-				BitmapDescriptor marker3 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
-				BitmapDescriptor marker4 = BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher);
-				BitmapDescriptor[] markers = {marker1, marker2, marker3, marker4};
-
-				for(int i = 0; i < 16; i++)
-				{
-					googleMap.addMarker(new MarkerOptions()
-							.position(new LatLng(49.194696 + 0.1 * Math.sin(i * Math.PI / 8), 16.608595 + 0.1 * Math.cos(i * Math.PI / 8)))
-							.title("Example " + i)
-							.icon(markers[i % 4])
-					);
-				}
-			}
-		});
-	}
-
-
 	private void initMap()
 	{
 		if(!VersionUtility.isSupportedOpenGlEs2(getActivity()))
@@ -167,6 +141,32 @@ public class ExampleFragment extends Fragment
 						.tilt(30)
 						.build();
 				googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+			}
+		});
+	}
+
+
+	private void bindData()
+	{
+		((MapView) mRootView.findViewById(R.id.fragment_example_map)).getMapAsync(new OnMapReadyCallback()
+		{
+			@Override
+			public void onMapReady(GoogleMap googleMap)
+			{
+				BitmapDescriptor marker1 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+				BitmapDescriptor marker2 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
+				BitmapDescriptor marker3 = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+				BitmapDescriptor marker4 = BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher);
+				BitmapDescriptor[] markers = {marker1, marker2, marker3, marker4};
+
+				for(int i = 0; i < 16; i++)
+				{
+					googleMap.addMarker(new MarkerOptions()
+							.position(new LatLng(49.194696 + 0.1 * Math.sin(i * Math.PI / 8), 16.608595 + 0.1 * Math.cos(i * Math.PI / 8)))
+							.title("Example " + i)
+							.icon(markers[i % 4])
+					);
+				}
 			}
 		});
 	}

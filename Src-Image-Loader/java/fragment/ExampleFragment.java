@@ -39,16 +39,6 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	private void bindData()
-	{
-		// reference
-		ImageView photoImageView = (ImageView) mRootView.findViewById(R.id.fragment_example_photo);
-
-		// image caching
-		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", photoImageView, mDisplayImageOptions, mImageLoadingListener);
-	}
-
-
 	private void setupImageLoader()
 	{
 		mDisplayImageOptions = new DisplayImageOptions.Builder()
@@ -60,5 +50,15 @@ public class ExampleFragment extends Fragment
 				.displayer(new SimpleBitmapDisplayer())
 				.build();
 		mImageLoadingListener = new AnimateImageLoadingListener();
+	}
+
+
+	private void setupView()
+	{
+		// reference
+		ImageView photoImageView = (ImageView) mRootView.findViewById(R.id.fragment_example_photo);
+
+		// image caching
+		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", photoImageView, mDisplayImageOptions, mImageLoadingListener);
 	}
 }

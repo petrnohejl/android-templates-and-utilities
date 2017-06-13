@@ -26,7 +26,7 @@ public class ExampleFragment extends Fragment
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		ListView listView = getListView();

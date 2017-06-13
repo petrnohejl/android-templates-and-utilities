@@ -18,11 +18,11 @@ public class PagerActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pager);
-		bindData();
+		setupView();
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_pager_pager);

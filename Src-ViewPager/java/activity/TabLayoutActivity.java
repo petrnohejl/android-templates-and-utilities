@@ -19,11 +19,11 @@ public class TabLayoutActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tablayout);
-		bindData();
+		setupView();
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_tablayout_pager);

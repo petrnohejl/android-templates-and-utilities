@@ -34,7 +34,7 @@ public class ExampleActivity extends AppCompatActivity
 		setContentView(R.layout.activity_example);
 		setupActionBar();
 		setupDrawer(savedInstanceState);
-		bindData();
+		setupHeader();
 	}
 
 
@@ -148,6 +148,16 @@ public class ExampleActivity extends AppCompatActivity
 	}
 
 
+	private void setupHeader()
+	{
+		// reference
+		TextView titleTextView = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.navigation_header_title);
+
+		// title
+		titleTextView.setText("Hello world");
+	}
+
+
 	private void selectDrawerItem(MenuItem item)
 	{
 		Fragment fragment = null;
@@ -184,15 +194,5 @@ public class ExampleActivity extends AppCompatActivity
 		}
 
 		mDrawerLayout.closeDrawers();
-	}
-
-
-	private void bindData()
-	{
-		// reference
-		TextView titleTextView = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.navigation_header_title);
-
-		// title
-		titleTextView.setText("Hello world");
 	}
 }

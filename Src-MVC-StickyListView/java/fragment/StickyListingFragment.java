@@ -247,7 +247,7 @@ public class StickyListingFragment extends TaskFragment implements
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		StickyListHeadersListView stickyListView = (StickyListHeadersListView) mRootView.findViewById(android.R.id.list);
@@ -303,7 +303,7 @@ public class StickyListingFragment extends TaskFragment implements
 					}
 					else
 					{
-						if(mProductList != null) bindData();
+						if(mProductList != null) setupView();
 					}
 				}
 			}

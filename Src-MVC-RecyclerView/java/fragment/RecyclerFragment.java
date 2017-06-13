@@ -282,7 +282,7 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		RecyclerView recyclerView = getRecyclerView();
@@ -364,7 +364,7 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 					}
 					else
 					{
-						if(mProductList != null) bindData();
+						if(mProductList != null) setupView();
 					}
 				}
 			}

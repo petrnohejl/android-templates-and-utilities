@@ -305,7 +305,7 @@ public class TreeListingFragment extends TaskFragment implements
 	}
 
 
-	private void bindData()
+	private void setupView()
 	{
 		// reference
 		TreeViewList treeView = (TreeViewList) mRootView.findViewById(android.R.id.list);
@@ -360,7 +360,7 @@ public class TreeListingFragment extends TaskFragment implements
 					}
 					else
 					{
-						if(mProductList != null && mTreeStateManager != null) bindData();
+						if(mProductList != null && mTreeStateManager != null) setupView();
 					}
 				}
 			}
