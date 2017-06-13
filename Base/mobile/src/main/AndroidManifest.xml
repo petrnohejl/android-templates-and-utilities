@@ -4,8 +4,6 @@
 	android:installLocation="auto"
 	package="com.example">
 
-	<!-- versionCode, versionName, minSdkVersion, targetSdkVersion properties are set via Gradle script -->
-
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
