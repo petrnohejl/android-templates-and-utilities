@@ -2,6 +2,7 @@ package com.example.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,7 +25,7 @@ import org.alfonz.utility.Logcat;
 import java.util.Calendar;
 
 
-public class ExampleFragment extends TaskFragment implements
+public class ExampleFragment extends Fragment implements
 		SimpleDialogFragment.SimpleDialogListener,
 		ItemsDialogFragment.ItemsDialogListener,
 		SingleChoiceItemsDialogFragment.SingleChoiceItemsDialogListener,
@@ -66,216 +67,111 @@ public class ExampleFragment extends TaskFragment implements
 	@Override
 	public void onSimpleDialogPositiveClick(final DialogFragment dialog)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onSimpleDialogPositiveClick()");
-			}
-		});
+		Logcat.d("");
 	}
 
 
 	@Override
 	public void onSimpleDialogNegativeClick(final DialogFragment dialog)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onSimpleDialogNegativeClick()");
-			}
-		});
+		Logcat.d("");
 	}
 
 
 	@Override
 	public void onItemsDialogItemClick(final DialogFragment dialog, final int which)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onItemsDialogItemClick() = " + which);
-			}
-		});
+		Logcat.d(Integer.toString(which));
 	}
 
 
 	@Override
 	public void onItemsDialogPositiveClick(final DialogFragment dialog)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onItemsDialogPositiveClick()");
-			}
-		});
+		Logcat.d("");
 	}
 
 
 	@Override
 	public void onItemsDialogNegativeClick(final DialogFragment dialog)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onItemsDialogNegativeClick()");
-			}
-		});
+		Logcat.d("");
 	}
 
 
 	@Override
 	public void onSingleChoiceItemsDialogPositiveClick(final DialogFragment dialog, final int checkedItem)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onSingleChoiceItemsDialogPositiveClick() = " + checkedItem);
-			}
-		});
+		Logcat.d(Integer.toString(checkedItem));
 	}
 
 
 	@Override
 	public void onSingleChoiceItemsDialogNegativeClick(final DialogFragment dialog)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onSingleChoiceItemsDialogNegativeClick()");
-			}
-		});
+		Logcat.d("");
 	}
 
 
 	@Override
 	public void onMultiChoiceItemsDialogPositiveClick(final DialogFragment dialog, final boolean[] checkedItems)
 	{
-		runTaskCallback(new Runnable()
+		StringBuilder builder = new StringBuilder();
+		for(int i = 0; i < checkedItems.length; i++)
 		{
-			@Override
-			public void run()
-			{
-				StringBuilder builder = new StringBuilder();
-				for(int i = 0; i < checkedItems.length; i++)
-				{
-					builder.append(checkedItems[i]);
-					builder.append(" ");
-				}
-				Logcat.d("onMultiChoiceItemsDialogPositiveClick() = " + builder.toString());
-			}
-		});
+			builder.append(checkedItems[i]);
+			builder.append(" ");
+		}
+		Logcat.d(builder.toString());
 	}
 
 
 	@Override
 	public void onMultiChoiceItemsDialogNegativeClick(final DialogFragment dialog)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onMultiChoiceItemsDialogNegativeClick()");
-			}
-		});
+		Logcat.d("");
 	}
 
 
 	@Override
 	public void onCustomDialogPositiveClick(final DialogFragment dialog, final String username, final String password)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onCustomDialogPositiveClick() = " + username + " / " + password);
-			}
-		});
+		Logcat.d(username + " / " + password);
 	}
 
 
 	@Override
 	public void onCustomDialogNegativeClick(final DialogFragment dialog)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onCustomDialogNegativeClick()");
-			}
-		});
+		Logcat.d("");
 	}
 
 
 	@Override
 	public void onTimePickerDialogPositiveClick(final DialogFragment dialog, final int hour, final int minute)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onTimePickerDialogPositiveClick() = " + hour + ":" + minute);
-			}
-		});
+		Logcat.d(hour + ":" + minute);
 	}
 
 
 	@Override
 	public void onDatePickerDialogPositiveClick(final DialogFragment dialog, final int year, final int month, final int day)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onDatePickerDialogPositiveClick() = " + day + "." + (month + 1) + "." + year);
-			}
-		});
+		Logcat.d(day + "." + (month + 1) + "." + year);
 	}
 
 
 	@Override
 	public void onSheetDialogStateChanged(final DialogFragment dialog, final int newState, final String username, final String password)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onSheetDialogStateChanged() = " + newState + " / " + username + " / " + password);
-			}
-		});
+		Logcat.d(newState + " / " + username + " / " + password);
 	}
 
 
 	@Override
 	public void onSheetDialogDismiss(final DialogFragment dialog, final String username, final String password)
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Logcat.d("onSheetDialogDismiss() = " + username + " / " + password);
-			}
-		});
+		Logcat.d(username + " / " + password);
 	}
 
 

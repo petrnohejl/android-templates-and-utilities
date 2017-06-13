@@ -1,6 +1,7 @@
 package com.example.fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,7 @@ import com.example.R;
 import org.alfonz.utility.NetworkUtility;
 
 
-public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.OnRefreshListener
+public class ListingFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener
 {
 	private View mRootView;
 
@@ -41,14 +42,7 @@ public class ListingFragment extends TaskFragment implements SwipeRefreshLayout.
 	@Override
 	public void onRefresh()
 	{
-		runTaskCallback(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				refreshData();
-			}
-		});
+		refreshData();
 
 //		// testing task
 //		showProgress(true);
