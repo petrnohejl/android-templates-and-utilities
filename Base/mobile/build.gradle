@@ -17,14 +17,14 @@ apply plugin: "com.android.application"
 
 dependencies
 {
-	compile "com.android.support:support-compat:25.3.1"
-	compile "com.android.support:support-core-utils:25.3.1"
-	compile "com.android.support:support-core-ui:25.3.1"
-	compile "com.android.support:support-fragment:25.3.1"
-	compile "com.android.support:appcompat-v7:25.3.1"
-	compile "com.android.support:recyclerview-v7:25.3.1"
-	compile "com.android.support:support-annotations:25.3.1"
-	compile "com.android.support:design:25.3.1"
+	compile "com.android.support:support-compat:25.4.0"
+	compile "com.android.support:support-core-utils:25.4.0"
+	compile "com.android.support:support-core-ui:25.4.0"
+	compile "com.android.support:support-fragment:25.4.0"
+	compile "com.android.support:appcompat-v7:25.4.0"
+	compile "com.android.support:recyclerview-v7:25.4.0"
+	compile "com.android.support:support-annotations:25.4.0"
+	compile "com.android.support:design:25.4.0"
 	compile "com.google.android.gms:play-services-base:10.2.6"
 	compile fileTree(dir: "libs", include: ["*.jar"])
 	testCompile "junit:junit:4.12"
