@@ -1,0 +1,77 @@
+import groovy.swing.SwingBuilder
+
+
+ext.getVersionCode = {
+	majorVersion, minorVersion, patchVersion, buildVersion ->
+		return majorVersion * 10000000 + minorVersion * 100000 + patchVersion * 1000 + buildVersion
+}
+
+
+ext.getVersionName = {
+	majorVersion, minorVersion, patchVersion ->
+		return "${majorVersion}.${minorVersion}.${patchVersion}"
+}
+
+
+ext.renameArtifact = {
+	name, variant ->
+		variant.outputs.each {
+			output ->
+				def date = new Date().format("yyyyMMdd")
+				def fileName = "${name}-${project.name}-${variant.versionName}-${variant.versionCode}-${date}-${variant.name}.apk"
+				output.outputFile = new File((String) output.outputFile.parent, fileName)
+		}
+}
+
+
+task askForPasswords {
+	doLast {
+		def storePass
+		def keyAlias
+		def keyPass
+
+		def keystorePropertiesFile = new File((String) project.property("keystore.properties"))
+
+		if(project.hasProperty("keystore.properties") && keystorePropertiesFile.exists()) {
+			println "Loading keystore passwords from property file..."
+			Properties properties = new Properties()
+			properties.load(new FileInputStream(keystorePropertiesFile))
+			storePass = properties["keystore.store.password"]
+			keyAlias = properties["keystore.key.alias"]
+			keyPass = properties["keystore.key.password"]
+		} else {
+			println "Getting keystore passwords from user input..."
+			new SwingBuilder().edt {
+				dialog(modal: true, title: "Enter credentials", alwaysOnTop: true, resizable: true,
+						locationRelativeTo: null, pack: true, show: true) {
+					vbox {
+						label(text: "Store password:")
+						textField id: "storePassId", input = passwordField()
+						label(text: "Key alias:")
+						textField id: "keyAliasId", input = textField()
+						label(text: "Key password:")
+						textField id: "keyPassId", input = passwordField()
+						button(defaultButton: true, text: "OK", actionPerformed: {
+							storePass = storePassId.text;
+							keyAlias = keyAliasId.text;
+							keyPass = keyPassId.text;
+							dispose();
+						})
+					}
+				}
+			}
+		}
+
+		android.signingConfigs.release.storePassword = storePass
+		android.signingConfigs.release.keyAlias = keyAlias
+		android.signingConfigs.release.keyPassword = keyPass
+	}
+}
+
+
+tasks.whenTaskAdded {
+	task ->
+		if(task.name.equals("packageRelease")) {
+			task.dependsOn "askForPasswords"
+		}
+}

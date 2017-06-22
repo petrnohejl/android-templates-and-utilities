@@ -13,44 +13,24 @@ final VERSION_BUILD = 0 // max three digits
 
 
 apply plugin: "com.android.application"
+apply from: "../utils.gradle"
 
 
-dependencies
-{
-	compile "com.android.support:support-compat:25.4.0"
-	compile "com.android.support:support-core-utils:25.4.0"
-	compile "com.android.support:support-core-ui:25.4.0"
-	compile "com.android.support:support-fragment:25.4.0"
-	compile "com.android.support:appcompat-v7:25.4.0"
-	compile "com.android.support:recyclerview-v7:25.4.0"
-	compile "com.android.support:support-annotations:25.4.0"
-	compile "com.android.support:design:25.4.0"
-	compile "com.google.android.gms:play-services-base:10.2.6"
-	compile fileTree(dir: "libs", include: ["*.jar"])
-	testCompile "junit:junit:4.12"
-	testCompile "org.mockito:mockito-core:2.8.9"
-}
-
-
-android
-{
+android {
 	compileSdkVersion 25
 	buildToolsVersion "25.0.3"
 
-	defaultConfig
-	{
+	defaultConfig {
 		applicationId "com.example"
 		minSdkVersion 16
 		targetSdkVersion 25
-		versionCode VERSION_MAJOR * 10000000 + VERSION_MINOR * 100000 + VERSION_PATCH * 1000 + VERSION_BUILD
-		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
+		versionCode getVersionCode(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_BUILD)
+		versionName getVersionName(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH)
 		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 	}
 
-	signingConfigs
-	{
-		release
-		{
+	signingConfigs {
+		release {
 			// passwords and alias are obtained via askForPasswords task
 			storeFile file("../${project.property('keystore.file')}")
 			storePassword ""
@@ -59,18 +39,15 @@ android
 		}
 	}
 
-	buildTypes
-	{
-		debug
-		{
+	buildTypes {
+		debug {
 			buildConfigField "boolean", "LOGS", "true"
 			buildConfigField "boolean", "DEV_ENVIRONMENT", "true"
 
 			versionNameSuffix "-debug"
 		}
 
-		release
-		{
+		release {
 			buildConfigField "boolean", "LOGS", "false"
 			buildConfigField "boolean", "DEV_ENVIRONMENT", "false"
 
@@ -82,76 +59,35 @@ android
 		}
 	}
 
-	compileOptions
-	{
+	compileOptions {
 		sourceCompatibility JavaVersion.VERSION_1_7
 		targetCompatibility JavaVersion.VERSION_1_7
 	}
 
-	dataBinding
-	{
+	dataBinding {
 		enabled = true
 	}
 
-	applicationVariants.all
-	{
+	applicationVariants.all {
 		variant ->
-			if(variant.buildType.name.equals("release"))
-			{
-				renameArtifact(variant)
+			if(variant.buildType.name.equals("release")) {
+				renameArtifact("example", variant)
 			}
 	}
 }
 
 
-def renameArtifact(variant)
-{
-	variant.outputs.each
-	{
-		output ->
-			def date = new Date().format("yyyyMMdd")
-			def fileName = "example-${project.name}-${variant.versionName}-${variant.versionCode}-${date}-${variant.name}.apk"
-			output.outputFile = new File((String) output.outputFile.parent, fileName)
-	}
-}
-
-
-task askForPasswords <<
-{
-	def storePass
-	def keyAlias
-	def keyPass
-
-	def keystorePropertiesFile = new File((String) project.property("keystore.properties"))
-
-	if(project.hasProperty("keystore.properties") && keystorePropertiesFile.exists())
-	{
-		println "Loading keystore passwords from property file..."
-		Properties properties = new Properties()
-		properties.load(new FileInputStream(keystorePropertiesFile))
-		storePass = properties["keystore.store.password"]
-		keyAlias = properties["keystore.key.alias"]
-		keyPass = properties["keystore.key.password"]
-	}
-	else
-	{
-		println "Getting keystore passwords from user input..."
-		storePass = new String(System.console().readPassword("\nStore password: "))
-		keyAlias = new String(System.console().readLine("Key alias: "))
-		keyPass = new String(System.console().readPassword("Key password: "))
-	}
-
-	android.signingConfigs.release.storePassword = storePass
-	android.signingConfigs.release.keyAlias = keyAlias
-	android.signingConfigs.release.keyPassword = keyPass
-}
-
-
-tasks.whenTaskAdded
-{
-	theTask ->
-		if(theTask.name.equals("packageRelease"))
-		{
-			theTask.dependsOn "askForPasswords"
-		}
+dependencies {
+	compile fileTree(dir: "libs", include: ["*.jar"])
+	compile "com.android.support:support-compat:25.4.0"
+	compile "com.android.support:support-core-utils:25.4.0"
+	compile "com.android.support:support-core-ui:25.4.0"
+	compile "com.android.support:support-fragment:25.4.0"
+	compile "com.android.support:appcompat-v7:25.4.0"
+	compile "com.android.support:recyclerview-v7:25.4.0"
+	compile "com.android.support:support-annotations:25.4.0"
+	compile "com.android.support:design:25.4.0"
+	compile "com.google.android.gms:play-services-base:10.2.6"
+	testCompile "junit:junit:4.12"
+	testCompile "org.mockito:mockito-core:2.8.9"
 }
