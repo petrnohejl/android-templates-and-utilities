@@ -3,6 +3,7 @@ package com.example.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,7 +17,6 @@ import com.example.R;
 import com.example.adapter.RecyclerAdapter;
 import com.example.entity.ProductEntity;
 import com.example.task.LoadDataTask;
-import com.example.widget.LinearDividerItemDecoration;
 
 import org.alfonz.utility.Logcat;
 import org.alfonz.utility.NetworkUtility;
@@ -303,7 +303,7 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 		recyclerView.setHasFixedSize(true);
 
 		// add decoration
-		RecyclerView.ItemDecoration itemDecoration = new LinearDividerItemDecoration(getActivity(), null);
+		RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
 		recyclerView.addItemDecoration(itemDecoration);
 
 		// set animator
