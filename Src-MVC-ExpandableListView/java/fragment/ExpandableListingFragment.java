@@ -266,11 +266,11 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 		mStatefulLayout.setOnStateChangeListener(new StatefulLayout.OnStateChangeListener()
 		{
 			@Override
-			public void onStateChange(View v, StatefulLayout.State state)
+			public void onStateChange(View view, @StatefulLayout.State int state)
 			{
-				Logcat.d("" + (state == null ? "null" : state.toString()));
+				Logcat.d(String.valueOf(state));
 
-				if(state == StatefulLayout.State.CONTENT)
+				if(state == StatefulLayout.CONTENT)
 				{
 					ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
 					if(listView.getAdapter() != null)

@@ -351,11 +351,11 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 		mStatefulLayout.setOnStateChangeListener(new StatefulLayout.OnStateChangeListener()
 		{
 			@Override
-			public void onStateChange(View v, StatefulLayout.State state)
+			public void onStateChange(View view, @StatefulLayout.State int state)
 			{
-				Logcat.d("" + (state == null ? "null" : state.toString()));
+				Logcat.d(String.valueOf(state));
 
-				if(state == StatefulLayout.State.CONTENT)
+				if(state == StatefulLayout.CONTENT)
 				{
 					RecyclerView recyclerView = getRecyclerView();
 					if(mLazyLoading && recyclerView.getAdapter() != null)

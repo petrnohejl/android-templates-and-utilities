@@ -346,11 +346,11 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 		mStatefulLayout.setOnStateChangeListener(new StatefulLayout.OnStateChangeListener()
 		{
 			@Override
-			public void onStateChange(View v, StatefulLayout.State state)
+			public void onStateChange(View view, @StatefulLayout.State int state)
 			{
-				Logcat.d("" + (state == null ? "null" : state.toString()));
+				Logcat.d(String.valueOf(state));
 
-				if(state == StatefulLayout.State.CONTENT)
+				if(state == StatefulLayout.CONTENT)
 				{
 					ListView listView = getListView();
 					if(mLazyLoading && listView.getAdapter() != null)
