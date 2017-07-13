@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+		<variable
+			name="view" type="com.example.ui.ExampleView" />
+		<variable
+			name="data" type="com.example.viewmodel.ExampleViewModel" />
+	</data>
+
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:adjustViewBounds="true"
+		android:scaleType="fitCenter"
+		app:imageUrl="@{data.imageUrl}" />
+
+</layout>
