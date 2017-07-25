@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,9 @@ public class ExampleFragment extends Fragment
 
 		// register receiver
 		getActivity().registerReceiver(mExampleBroadcastReceiver, mExampleIntentFilter);
+
+		// register local receiver
+		LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mExampleBroadcastReceiver, mExampleIntentFilter);
 	}
 
 
@@ -58,6 +62,9 @@ public class ExampleFragment extends Fragment
 
 		// unregister receiver
 		getActivity().unregisterReceiver(mExampleBroadcastReceiver);
+
+		// unregister local receiver
+		LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mExampleBroadcastReceiver);
 	}
 
 
@@ -76,7 +83,6 @@ public class ExampleFragment extends Fragment
 				if(intent.getAction().equals(ExampleBroadcast.ACTION_EXAMPLE))
 				{
 					String arg = intent.getExtras().getString(ExampleBroadcast.EXTRA_ARG);
-
 					Logcat.d(arg);
 				}
 			}

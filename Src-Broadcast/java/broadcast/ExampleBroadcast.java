@@ -2,6 +2,7 @@ package com.example.broadcast;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 
 
 public class ExampleBroadcast
@@ -16,5 +17,14 @@ public class ExampleBroadcast
 		broadcastIntent.setAction(ACTION_EXAMPLE);
 		broadcastIntent.putExtra(EXTRA_ARG, arg);
 		context.sendBroadcast(broadcastIntent);
+	}
+
+
+	public static void sendLocalBroadcast(Context context, String arg)
+	{
+		Intent broadcastIntent = new Intent();
+		broadcastIntent.setAction(ACTION_EXAMPLE);
+		broadcastIntent.putExtra(EXTRA_ARG, arg);
+		LocalBroadcastManager.getInstance(context).sendBroadcast(broadcastIntent);
 	}
 }
