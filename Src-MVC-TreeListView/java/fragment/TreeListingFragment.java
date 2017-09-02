@@ -2,6 +2,7 @@ package com.example.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.util.ArraySet;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,7 +22,6 @@ import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -42,7 +42,7 @@ public class TreeListingFragment extends TaskFragment implements
 	private StatefulLayout mStatefulLayout;
 	private TreeListingAdapter mAdapter;
 	private TreeStateManager<Long> mTreeStateManager;
-	private Set<Long> mSelectedSet = new HashSet<>();
+	private Set<Long> mSelectedSet = new ArraySet<>();
 	private LoadDataTask mLoadDataTask;
 	private List<ProductEntity> mProductList = new ArrayList<>();
 
