@@ -35,8 +35,8 @@ public class ActionBarListNavigationAdapter<T> extends ArrayAdapter<T>
 
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.titleTextView = (TextView) convertView.findViewById(R.id.ab_list_navigation_title);
-			holder.subtitleTextView = (TextView) convertView.findViewById(R.id.ab_list_navigation_subtitle);
+			holder.titleTextView = convertView.findViewById(R.id.ab_list_navigation_title);
+			holder.subtitleTextView = convertView.findViewById(R.id.ab_list_navigation_subtitle);
 			convertView.setTag(holder);
 		}
 

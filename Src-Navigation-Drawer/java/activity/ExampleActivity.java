@@ -123,7 +123,7 @@ public class ExampleActivity extends AppCompatActivity
 
 	private void setupActionBar()
 	{
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		ActionBar bar = getSupportActionBar();
@@ -153,8 +153,8 @@ public class ExampleActivity extends AppCompatActivity
 		icons[3] = R.drawable.ic_drawer_example;
 
 		// reference
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_example_drawer_layout);
-		mDrawerListView = (ListView) findViewById(R.id.activity_example_drawer_list);
+		mDrawerLayout = findViewById(R.id.activity_example_drawer_layout);
+		mDrawerListView = findViewById(R.id.activity_example_drawer_list);
 
 		// set drawer
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);

@@ -208,7 +208,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 			super(itemView);
 
 			// find views
-			mNameTextView = (TextView) itemView.findViewById(R.id.fragment_recycler_header_name);
+			mNameTextView = itemView.findViewById(R.id.fragment_recycler_header_name);
 		}
 
 
@@ -242,7 +242,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 			itemView.setOnLongClickListener(this);
 
 			// find views
-			mNameTextView = (TextView) itemView.findViewById(R.id.fragment_recycler_item_name);
+			mNameTextView = itemView.findViewById(R.id.fragment_recycler_item_name);
 		}
 
 

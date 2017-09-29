@@ -26,8 +26,8 @@ public class IndicatorActivity extends AppCompatActivity
 	private void setupView()
 	{
 		// reference
-		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_indicator_pager);
-		CirclePageIndicator circlePageIndicator = (CirclePageIndicator) findViewById(R.id.activity_indicator_indicator);
+		ViewPager viewPager = findViewById(R.id.activity_indicator_pager);
+		CirclePageIndicator circlePageIndicator = findViewById(R.id.activity_indicator_indicator);
 
 		// pager content
 		if(mAdapter == null)

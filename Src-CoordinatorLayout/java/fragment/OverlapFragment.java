@@ -67,11 +67,11 @@ public class OverlapFragment extends Fragment implements AppBarLayout.OnOffsetCh
 	private void setupAppBar()
 	{
 		// appbar
-		AppBarLayout appBar = (AppBarLayout) mRootView.findViewById(R.id.appbar);
+		AppBarLayout appBar = mRootView.findViewById(R.id.appbar);
 		appBar.addOnOffsetChangedListener(this);
 
 		// toolbar
-		Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
+		Toolbar toolbar = mRootView.findViewById(R.id.toolbar);
 		toolbar.setNavigationOnClickListener(new View.OnClickListener()
 		{
 			@Override

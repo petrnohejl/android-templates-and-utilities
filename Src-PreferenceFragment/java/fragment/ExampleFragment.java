@@ -78,7 +78,7 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 	private void setupActionBar(PreferenceScreen preferenceScreen)
 	{
 		final Dialog dialog = preferenceScreen.getDialog();
-		LinearLayout root = (LinearLayout) dialog.findViewById(android.R.id.list).getParent();
+		LinearLayout root = dialog.findViewById(android.R.id.list).getParent();
 		Toolbar toolbar = (Toolbar) LayoutInflater.from(getActivity()).inflate(R.layout.toolbar, root, false);
 		root.addView(toolbar, 0);
 

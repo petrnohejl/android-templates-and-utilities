@@ -37,8 +37,8 @@ public class DrawerAdapter extends BaseAdapter
 
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.titleTextView = (TextView) convertView.findViewById(R.id.drawer_item_title);
-			holder.iconImageView = (ImageView) convertView.findViewById(R.id.drawer_item_icon);
+			holder.titleTextView = convertView.findViewById(R.id.drawer_item_title);
+			holder.iconImageView = convertView.findViewById(R.id.drawer_item_icon);
 			convertView.setTag(holder);
 		}
 

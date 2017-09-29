@@ -64,7 +64,7 @@ public class ExampleActivity extends AppCompatActivity
 		searchView.setQueryHint(getString(R.string.menu_activity_example_search_hint));
 
 		// text color
-		AutoCompleteTextView searchText = (AutoCompleteTextView) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+		AutoCompleteTextView searchText = searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
 		searchText.setTextColor(ContextCompat.getColor(this, R.color.global_text_primary_inverse));
 		searchText.setHintTextColor(ContextCompat.getColor(this, R.color.global_text_secondary_inverse));
 

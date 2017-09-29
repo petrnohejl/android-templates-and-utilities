@@ -27,8 +27,8 @@ public class TabHostActivity extends AppCompatActivity
 	private void setupView()
 	{
 		// reference
-		ViewPager viewPager = (ViewPager) findViewById(R.id.activity_tabhost_pager);
-		TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
+		ViewPager viewPager = findViewById(R.id.activity_tabhost_pager);
+		TabHost tabHost = findViewById(android.R.id.tabhost);
 
 		// tab host
 		tabHost.setup();

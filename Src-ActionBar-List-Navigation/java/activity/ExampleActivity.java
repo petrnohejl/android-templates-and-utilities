@@ -28,7 +28,7 @@ public class ExampleActivity extends AppCompatActivity
 
 	private void setupActionBarNavigation(CharSequence[] items, String subtitle, int selectedItem)
 	{
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		ActionBar bar = getSupportActionBar();

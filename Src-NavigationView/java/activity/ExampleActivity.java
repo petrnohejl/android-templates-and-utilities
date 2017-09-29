@@ -92,7 +92,7 @@ public class ExampleActivity extends AppCompatActivity
 
 	private void setupActionBar()
 	{
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		ActionBar bar = getSupportActionBar();
@@ -107,8 +107,8 @@ public class ExampleActivity extends AppCompatActivity
 	private void setupDrawer(Bundle savedInstanceState)
 	{
 		// reference
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_example_drawer_layout);
-		mNavigationView = (NavigationView) findViewById(R.id.activity_example_drawer_navigation);
+		mDrawerLayout = findViewById(R.id.activity_example_drawer_layout);
+		mNavigationView = findViewById(R.id.activity_example_drawer_navigation);
 
 		// navigation
 		mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
@@ -151,7 +151,7 @@ public class ExampleActivity extends AppCompatActivity
 	private void setupHeader()
 	{
 		// reference
-		TextView titleTextView = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.navigation_header_title);
+		TextView titleTextView = mNavigationView.getHeaderView(0).findViewById(R.id.navigation_header_title);
 
 		// title
 		titleTextView.setText("Hello world");

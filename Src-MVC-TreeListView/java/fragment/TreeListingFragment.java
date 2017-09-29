@@ -308,8 +308,8 @@ public class TreeListingFragment extends TaskFragment implements
 	private void setupView()
 	{
 		// reference
-		TreeViewList treeView = (TreeViewList) mRootView.findViewById(android.R.id.list);
-		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
+		TreeViewList treeView = mRootView.findViewById(android.R.id.list);
+		ViewGroup emptyView = mRootView.findViewById(android.R.id.empty);
 
 		// treeview content
 		if(mAdapter == null)
@@ -352,7 +352,7 @@ public class TreeListingFragment extends TaskFragment implements
 
 				if(state == StatefulLayout.CONTENT)
 				{
-					TreeViewList treeView = (TreeViewList) mRootView.findViewById(android.R.id.list);
+					TreeViewList treeView = mRootView.findViewById(android.R.id.list);
 					if(treeView.getAdapter() != null)
 					{
 						mAdapter.refresh();
@@ -374,7 +374,7 @@ public class TreeListingFragment extends TaskFragment implements
 	private int getListPosition(int globalPosition)
 	{
 		// reference
-		TreeViewList treeView = (TreeViewList) mRootView.findViewById(android.R.id.list);
+		TreeViewList treeView = mRootView.findViewById(android.R.id.list);
 
 		// list position without headers, should be used for getting data entities from collections
 		int listPosition = globalPosition;

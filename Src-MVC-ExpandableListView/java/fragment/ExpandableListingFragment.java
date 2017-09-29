@@ -213,8 +213,8 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 	private void setupView()
 	{
 		// reference
-		ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
-		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
+		ExpandableListView listView = mRootView.findViewById(android.R.id.list);
+		ViewGroup emptyView = mRootView.findViewById(android.R.id.empty);
 
 		// listview content
 		if(mAdapter == null)
@@ -272,7 +272,7 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 
 				if(state == StatefulLayout.CONTENT)
 				{
-					ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
+					ExpandableListView listView = mRootView.findViewById(android.R.id.list);
 					if(listView.getAdapter() != null)
 					{
 						mAdapter.notifyDataSetChanged();
@@ -294,7 +294,7 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 	{
 		if(mAdapter != null && mRootView != null)
 		{
-			ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
+			ExpandableListView listView = mRootView.findViewById(android.R.id.list);
 			int count = mAdapter.getGroupCount();
 			for(int i = 0; i < count; i++) listView.expandGroup(i);
 			mRootView.invalidate();
@@ -306,7 +306,7 @@ public class ExpandableListingFragment extends TaskFragment implements LoadDataT
 	{
 		if(mAdapter != null && mRootView != null)
 		{
-			ExpandableListView listView = (ExpandableListView) mRootView.findViewById(android.R.id.list);
+			ExpandableListView listView = mRootView.findViewById(android.R.id.list);
 			int count = mAdapter.getGroupCount();
 			for(int i = 0; i < count; i++) listView.collapseGroup(i);
 			mRootView.invalidate();

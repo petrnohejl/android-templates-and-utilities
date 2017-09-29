@@ -178,15 +178,15 @@ public class ExampleFragment extends Fragment implements
 	private void setupView()
 	{
 		// reference
-		Button button1 = (Button) mRootView.findViewById(R.id.fragment_example_button1);
-		Button button2 = (Button) mRootView.findViewById(R.id.fragment_example_button2);
-		Button button3 = (Button) mRootView.findViewById(R.id.fragment_example_button3);
-		Button button4 = (Button) mRootView.findViewById(R.id.fragment_example_button4);
-		Button button5 = (Button) mRootView.findViewById(R.id.fragment_example_button5);
-		Button button6 = (Button) mRootView.findViewById(R.id.fragment_example_button6);
-		Button button7 = (Button) mRootView.findViewById(R.id.fragment_example_button7);
-		Button button8 = (Button) mRootView.findViewById(R.id.fragment_example_button8);
-		Button button9 = (Button) mRootView.findViewById(R.id.fragment_example_button9);
+		Button button1 = mRootView.findViewById(R.id.fragment_example_button1);
+		Button button2 = mRootView.findViewById(R.id.fragment_example_button2);
+		Button button3 = mRootView.findViewById(R.id.fragment_example_button3);
+		Button button4 = mRootView.findViewById(R.id.fragment_example_button4);
+		Button button5 = mRootView.findViewById(R.id.fragment_example_button5);
+		Button button6 = mRootView.findViewById(R.id.fragment_example_button6);
+		Button button7 = mRootView.findViewById(R.id.fragment_example_button7);
+		Button button8 = mRootView.findViewById(R.id.fragment_example_button8);
+		Button button9 = mRootView.findViewById(R.id.fragment_example_button9);
 
 		// content
 		button1.setOnClickListener(new OnClickListener()

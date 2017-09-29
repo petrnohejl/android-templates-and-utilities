@@ -146,7 +146,7 @@ public class StickyListingFragment extends TaskFragment implements
 		// listview position
 		if(mRootView != null && mAdapter != null)
 		{
-			StickyListHeadersListView stickyListView = (StickyListHeadersListView) mRootView.findViewById(android.R.id.list);
+			StickyListHeadersListView stickyListView = mRootView.findViewById(android.R.id.list);
 			mListviewPosition = stickyListView.getFirstVisiblePosition();
 		}
 	}
@@ -250,8 +250,8 @@ public class StickyListingFragment extends TaskFragment implements
 	private void setupView()
 	{
 		// reference
-		StickyListHeadersListView stickyListView = (StickyListHeadersListView) mRootView.findViewById(android.R.id.list);
-		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
+		StickyListHeadersListView stickyListView = mRootView.findViewById(android.R.id.list);
+		ViewGroup emptyView = mRootView.findViewById(android.R.id.empty);
 
 		// listview content
 		if(mAdapter == null)
@@ -296,7 +296,7 @@ public class StickyListingFragment extends TaskFragment implements
 
 				if(state == StatefulLayout.CONTENT)
 				{
-					StickyListHeadersListView stickyListView = (StickyListHeadersListView) mRootView.findViewById(android.R.id.list);
+					StickyListHeadersListView stickyListView = mRootView.findViewById(android.R.id.list);
 					if(stickyListView.getAdapter() != null)
 					{
 						mAdapter.notifyDataSetChanged();

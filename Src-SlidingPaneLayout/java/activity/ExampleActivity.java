@@ -52,7 +52,7 @@ public class ExampleActivity extends AppCompatActivity
 
 	private void setupActionBar()
 	{
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		ActionBar bar = getSupportActionBar();
@@ -67,7 +67,7 @@ public class ExampleActivity extends AppCompatActivity
 	private void setupSlidingPane(Bundle savedInstanceState)
 	{
 		// reference
-		mSlidingPaneLayout = (SlidingPaneLayout) findViewById(R.id.activity_example_sliding_pane_layout);
+		mSlidingPaneLayout = findViewById(R.id.activity_example_sliding_pane_layout);
 
 		// set slide listener
 		mSlidingPaneLayout.setPanelSlideListener(new SlidingPaneLayout.PanelSlideListener()

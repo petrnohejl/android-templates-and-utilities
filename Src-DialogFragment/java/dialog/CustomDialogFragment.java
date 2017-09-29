@@ -140,8 +140,8 @@ public class CustomDialogFragment extends DialogFragment
 					@Override
 					public void onClick(View v)
 					{
-						EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_username);
-						EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_password);
+						EditText usernameEditText = mRootView.findViewById(R.id.dialog_custom_username);
+						EditText passwordEditText = mRootView.findViewById(R.id.dialog_custom_password);
 
 						String username = usernameEditText.getText().toString();
 						String password = passwordEditText.getText().toString();
@@ -165,8 +165,8 @@ public class CustomDialogFragment extends DialogFragment
 		// save current instance state
 		super.onSaveInstanceState(outState);
 
-		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_username);
-		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_password);
+		EditText usernameEditText = mRootView.findViewById(R.id.dialog_custom_username);
+		EditText passwordEditText = mRootView.findViewById(R.id.dialog_custom_password);
 
 		outState.putString(SAVED_USERNAME, usernameEditText.getText().toString());
 		outState.putString(SAVED_PASSWORD, passwordEditText.getText().toString());
@@ -184,8 +184,8 @@ public class CustomDialogFragment extends DialogFragment
 
 	private void handleSavedInstanceState(Bundle savedInstanceState)
 	{
-		EditText usernameEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_username);
-		EditText passwordEditText = (EditText) mRootView.findViewById(R.id.dialog_custom_password);
+		EditText usernameEditText = mRootView.findViewById(R.id.dialog_custom_username);
+		EditText passwordEditText = mRootView.findViewById(R.id.dialog_custom_password);
 
 		if(savedInstanceState.containsKey(SAVED_USERNAME))
 		{

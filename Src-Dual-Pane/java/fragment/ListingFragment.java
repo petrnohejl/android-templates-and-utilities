@@ -66,7 +66,7 @@ public class ListingFragment extends Fragment
 
 		// reference
 		ListView listView = getListView();
-		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
+		ViewGroup emptyView = mRootView.findViewById(android.R.id.empty);
 
 		// testing data
 		for(int i = 0; i < 32; i++)

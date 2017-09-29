@@ -253,7 +253,7 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 	{
 		// reference
 		ListView listView = getListView();
-		ViewGroup emptyView = (ViewGroup) mRootView.findViewById(android.R.id.empty);
+		ViewGroup emptyView = mRootView.findViewById(android.R.id.empty);
 
 		// listview content
 		if(listView.getAdapter() == null)
@@ -372,7 +372,7 @@ public class ListingFragment extends TaskFragment implements LoadDataTask.OnLoad
 
 	private ListView getListView()
 	{
-		return mRootView != null ? (ListView) mRootView.findViewById(android.R.id.list) : null;
+		return mRootView != null ? mRootView.findViewById(android.R.id.list) : null;
 	}
 
 

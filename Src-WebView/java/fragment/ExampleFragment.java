@@ -51,7 +51,7 @@ public class ExampleFragment extends Fragment
 	private void setupView()
 	{
 		// reference
-		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
+		final WebView webView = mRootView.findViewById(R.id.fragment_example_webview);
 
 		// webview settings
 		webView.getSettings().setJavaScriptEnabled(true);
@@ -98,28 +98,28 @@ public class ExampleFragment extends Fragment
 
 	private void controlBack()
 	{
-		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
+		final WebView webView = mRootView.findViewById(R.id.fragment_example_webview);
 		if(webView.canGoBack()) webView.goBack();
 	}
 
 
 	private void controlForward()
 	{
-		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
+		final WebView webView = mRootView.findViewById(R.id.fragment_example_webview);
 		if(webView.canGoForward()) webView.goForward();
 	}
 
 
 	private void controlStop()
 	{
-		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
+		final WebView webView = mRootView.findViewById(R.id.fragment_example_webview);
 		webView.stopLoading();
 	}
 
 
 	private void controlReload()
 	{
-		final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
+		final WebView webView = mRootView.findViewById(R.id.fragment_example_webview);
 		webView.reload();
 	}
 
@@ -143,7 +143,7 @@ public class ExampleFragment extends Fragment
 		{
 			if(getActivity() != null)
 			{
-				final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_example_webview);
+				final WebView webView = mRootView.findViewById(R.id.fragment_example_webview);
 				webView.loadUrl("about:blank");
 				Toast.makeText(getActivity(), errorCode + ": " + description, Toast.LENGTH_LONG).show();
 				mStatefulLayout.showEmpty();

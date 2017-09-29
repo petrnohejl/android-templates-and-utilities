@@ -56,20 +56,20 @@ public final class DialogStyle
 		final int button3 = context.getResources().getIdentifier("button3", "id", "android");
 
 		// references
-		//LinearLayout parentPanelView = (LinearLayout) dialog.findViewById(parentPanel);
-		LinearLayout topPanelView = (LinearLayout) dialog.findViewById(topPanel);
-		LinearLayout contentPanelView = (LinearLayout) dialog.findViewById(contentPanel);
-		FrameLayout customPanelView = (FrameLayout) dialog.findViewById(customPanel);
-		LinearLayout buttonPanelView = (LinearLayout) dialog.findViewById(buttonPanel);
-		LinearLayout buttonPanelChildView = (LinearLayout) buttonPanelView.getChildAt(0);
+		//LinearLayout parentPanelView = dialog.findViewById(parentPanel);
+		LinearLayout topPanelView = dialog.findViewById(topPanel);
+		LinearLayout contentPanelView = dialog.findViewById(contentPanel);
+		FrameLayout customPanelView = dialog.findViewById(customPanel);
+		LinearLayout buttonPanelView = dialog.findViewById(buttonPanel);
+		LinearLayout buttonPanelChildView = buttonPanelView.getChildAt(0);
 
-		TextView alertTitleView = (TextView) dialog.findViewById(alertTitle);
-		View titleDividerView = (View) dialog.findViewById(titleDivider);
-		TextView messageView = (TextView) dialog.findViewById(message);
-		ListView selectDialogListviewView = (ListView) dialog.findViewById(selectDialogListview);
-		Button button1View = (Button) dialog.findViewById(button1);
-		Button button2View = (Button) dialog.findViewById(button2);
-		Button button3View = (Button) dialog.findViewById(button3);
+		TextView alertTitleView = dialog.findViewById(alertTitle);
+		View titleDividerView = dialog.findViewById(titleDivider);
+		TextView messageView = dialog.findViewById(message);
+		ListView selectDialogListviewView = dialog.findViewById(selectDialogListview);
+		Button button1View = dialog.findViewById(button1);
+		Button button2View = dialog.findViewById(button2);
+		Button button3View = dialog.findViewById(button3);
 
 		// dialog background
 		if(topPanelView != null && contentPanelView != null && customPanelView != null && buttonPanelView != null)
