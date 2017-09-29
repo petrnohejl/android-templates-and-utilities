@@ -17,13 +17,13 @@ apply from: "../utils.gradle"
 
 
 android {
-	compileSdkVersion 25
-	buildToolsVersion "25.0.3"
+	compileSdkVersion 26
+	buildToolsVersion "26.0.2"
 
 	defaultConfig {
 		applicationId "com.example"
 		minSdkVersion 16
-		targetSdkVersion 25
+		targetSdkVersion 26
 		versionCode getVersionCode(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_BUILD)
 		versionName getVersionName(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH)
 		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -79,15 +79,15 @@ android {
 
 dependencies {
 	compile fileTree(dir: "libs", include: ["*.jar"])
-	compile "com.android.support:support-compat:25.4.0"
-	compile "com.android.support:support-core-utils:25.4.0"
-	compile "com.android.support:support-core-ui:25.4.0"
-	compile "com.android.support:support-fragment:25.4.0"
-	compile "com.android.support:appcompat-v7:25.4.0"
-	compile "com.android.support:recyclerview-v7:25.4.0"
-	compile "com.android.support:support-annotations:25.4.0"
-	compile "com.android.support:design:25.4.0"
-	compile "com.google.android.gms:play-services-base:10.2.6"
+	compile "com.android.support:support-compat:26.1.0"
+	compile "com.android.support:support-core-utils:26.1.0"
+	compile "com.android.support:support-core-ui:26.1.0"
+	compile "com.android.support:support-fragment:26.1.0"
+	compile "com.android.support:appcompat-v7:26.1.0"
+	compile "com.android.support:recyclerview-v7:26.1.0"
+	compile "com.android.support:support-annotations:26.1.0"
+	compile "com.android.support:design:26.1.0"
+	compile "com.google.android.gms:play-services-base:11.0.4"
 	testCompile "junit:junit:4.12"
-	testCompile "org.mockito:mockito-core:2.8.9"
+	testCompile "org.mockito:mockito-core:2.10.0"
 }
