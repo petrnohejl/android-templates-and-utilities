@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.request.target.Target;
@@ -67,9 +66,9 @@ public final class GlideUtility
 	}
 
 
-	private static RequestListener<String, GlideDrawable> createLogRequestListener()
+	private static RequestListener<String, Object> createLogRequestListener()
 	{
-		return new RequestListener<String, GlideDrawable>()
+		return new RequestListener<String, Object>()
 		{
 			@Override
 			public boolean onException(Exception exception, String model, Target target, boolean isFirstResource)
@@ -81,7 +80,7 @@ public final class GlideUtility
 
 
 			@Override
-			public boolean onResourceReady(GlideDrawable resource, String model, Target target, boolean isFromMemoryCache, boolean isFirstResource)
+			public boolean onResourceReady(Object resource, String model, Target target, boolean isFromMemoryCache, boolean isFirstResource)
 			{
 				Logcat.d("%s / isFromMemoryCache=%s / isFirstResource=%s", model, isFromMemoryCache, isFirstResource);
 				return false;
