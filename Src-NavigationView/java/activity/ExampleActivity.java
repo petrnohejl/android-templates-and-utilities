@@ -3,6 +3,7 @@ package com.example.activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -114,7 +115,7 @@ public class ExampleActivity extends AppCompatActivity
 		mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
 		{
 			@Override
-			public boolean onNavigationItemSelected(MenuItem item)
+			public boolean onNavigationItemSelected(@NonNull MenuItem item)
 			{
 				selectDrawerItem(item);
 				return true;

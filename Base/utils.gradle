@@ -15,11 +15,10 @@ ext.getVersionName = {
 
 ext.renameArtifact = {
 	name, variant ->
-		variant.outputs.each {
+		variant.outputs.all {
 			output ->
 				def date = new Date().format("yyyyMMdd")
-				def fileName = "${name}-${project.name}-${variant.versionName}-${variant.versionCode}-${date}-${variant.name}.apk"
-				output.outputFile = new File((String) output.outputFile.parent, fileName)
+				outputFileName = "${name}-${project.name}-${variant.versionName}-${variant.versionCode}-${date}-${variant.name}.apk"
 		}
 }
 
