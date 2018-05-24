@@ -3,7 +3,7 @@
 	<string name="app_name" translatable="false">Example</string>
 	<string name="app_store_uri" translatable="false">https://play.google.com/store/apps/details?id=%1$s</string>
 
-	<string name="global_network_offline">No Internet connection available</string>
+	<string name="global_network_offline">No internet connection available</string>
 	<string name="global_network_fail">Communication with server failed</string>
 	<string name="global_network_unknown_host">Cannot establish a connection to the server</string>
 	<string name="global_network_not_found">Resource not found</string>
