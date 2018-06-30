@@ -37,7 +37,7 @@ public class ListingAdapter extends BaseAdapter
 
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.nameTextView = convertView.findViewById(R.id.fragment_listing_item_name);
+			holder.nameTextView = convertView.findViewById(R.id.listing_item_name);
 			convertView.setTag(holder);
 		}
 

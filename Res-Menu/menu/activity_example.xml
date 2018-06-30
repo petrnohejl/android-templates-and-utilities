@@ -4,27 +4,27 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<item
-		android:id="@+id/menu_activity_example_refresh"
-		android:title="@string/menu_activity_example_refresh"
+		android:id="@+id/menu_example_refresh"
+		android:title="@string/menu_example_refresh"
 		android:icon="@drawable/ic_menu_refresh"
 		android:orderInCategory="1"
 		app:showAsAction="ifRoom" />
 
 	<item
-		android:id="@+id/menu_activity_example_list"
-		android:title="@string/menu_activity_example_list"
+		android:id="@+id/menu_example_list"
+		android:title="@string/menu_example_list"
 		android:icon="@drawable/ic_menu_list"
 		android:orderInCategory="2"
 		app:showAsAction="ifRoom">
 		<menu>
 			<item
-				android:id="@+id/menu_activity_example_list_expand"
-				android:title="@string/menu_activity_example_list_expand"
+				android:id="@+id/menu_example_list_expand"
+				android:title="@string/menu_example_list_expand"
 				android:icon="@null"
 				android:orderInCategory="1" />
 			<item
-				android:id="@+id/menu_activity_example_list_collapse"
-				android:title="@string/menu_activity_example_list_collapse"
+				android:id="@+id/menu_example_list_collapse"
+				android:title="@string/menu_example_list_collapse"
 				android:icon="@null"
 				android:orderInCategory="2" />
 		</menu>

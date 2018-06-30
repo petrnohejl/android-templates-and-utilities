@@ -67,7 +67,7 @@ public class ExampleActivity extends AppCompatActivity
 	private void setupSlidingPane(Bundle savedInstanceState)
 	{
 		// reference
-		mSlidingPaneLayout = findViewById(R.id.activity_example_sliding_pane_layout);
+		mSlidingPaneLayout = findViewById(R.id.example_sliding_pane_layout);
 
 		// set slide listener
 		mSlidingPaneLayout.setPanelSlideListener(new SlidingPaneLayout.PanelSlideListener()
@@ -116,16 +116,16 @@ public class ExampleActivity extends AppCompatActivity
 		if(savedInstanceState == null)
 		{
 			FragmentManager fragmentManager = getSupportFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.activity_example_sliding_pane_left, ListingFragment.newInstance()).commitAllowingStateLoss();
-			fragmentManager.beginTransaction().replace(R.id.activity_example_sliding_pane_right, DetailFragment.newInstance()).commitAllowingStateLoss();
+			fragmentManager.beginTransaction().replace(R.id.example_sliding_pane_left, ListingFragment.newInstance()).commitAllowingStateLoss();
+			fragmentManager.beginTransaction().replace(R.id.example_sliding_pane_right, DetailFragment.newInstance()).commitAllowingStateLoss();
 		}
 	}
 
 
 	private void onSlidingPaneOpened()
 	{
-		Fragment fragmentLeft = getSupportFragmentManager().findFragmentById(R.id.activity_example_sliding_pane_left);
-		Fragment fragmentRight = getSupportFragmentManager().findFragmentById(R.id.activity_example_sliding_pane_right);
+		Fragment fragmentLeft = getSupportFragmentManager().findFragmentById(R.id.example_sliding_pane_left);
+		Fragment fragmentRight = getSupportFragmentManager().findFragmentById(R.id.example_sliding_pane_right);
 
 		if(mSlidingPaneLayout.isSlideable())
 		{
@@ -146,8 +146,8 @@ public class ExampleActivity extends AppCompatActivity
 
 	private void onSlidingPaneClosed()
 	{
-		Fragment fragmentLeft = getSupportFragmentManager().findFragmentById(R.id.activity_example_sliding_pane_left);
-		Fragment fragmentRight = getSupportFragmentManager().findFragmentById(R.id.activity_example_sliding_pane_right);
+		Fragment fragmentLeft = getSupportFragmentManager().findFragmentById(R.id.example_sliding_pane_left);
+		Fragment fragmentRight = getSupportFragmentManager().findFragmentById(R.id.example_sliding_pane_right);
 
 		if(fragmentLeft != null) fragmentLeft.setHasOptionsMenu(false);
 		if(fragmentRight != null) fragmentRight.setHasOptionsMenu(true);

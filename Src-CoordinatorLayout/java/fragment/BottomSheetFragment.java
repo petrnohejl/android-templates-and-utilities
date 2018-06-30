@@ -36,7 +36,7 @@ public class BottomSheetFragment extends Fragment
 	{
 		// reference
 		final FloatingActionButton fab = mRootView.findViewById(R.id.fab);
-		final View bottomSheet = mRootView.findViewById(R.id.fragment_bottom_sheet);
+		final View bottomSheet = mRootView.findViewById(R.id.bottom_sheet);
 
 		// fab
 		fab.setOnClickListener(new View.OnClickListener()

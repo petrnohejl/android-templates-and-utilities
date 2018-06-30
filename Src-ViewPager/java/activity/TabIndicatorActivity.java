@@ -26,8 +26,8 @@ public class TabIndicatorActivity extends AppCompatActivity
 	private void setupView()
 	{
 		// reference
-		ViewPager viewPager = findViewById(R.id.activity_tabindicator_pager);
-		TabPageIndicator tabPageIndicator = findViewById(R.id.activity_tabindicator_indicator);
+		ViewPager viewPager = findViewById(R.id.tabindicator_pager);
+		TabPageIndicator tabPageIndicator = findViewById(R.id.tabindicator_indicator);
 
 		// pager content
 		if(mAdapter == null)

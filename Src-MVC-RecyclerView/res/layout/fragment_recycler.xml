@@ -2,7 +2,7 @@
 <org.alfonz.view.StatefulLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/fragment_recycler_stateful_layout"
+	android:id="@+id/recycler_stateful_layout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:animateLayoutChanges="true"
@@ -16,7 +16,7 @@
 		android:layout_height="match_parent">
 
 		<android.support.v7.widget.RecyclerView
-			android:id="@+id/fragment_recycler_recycler"
+			android:id="@+id/recycler_recycler"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:scrollbars="vertical"

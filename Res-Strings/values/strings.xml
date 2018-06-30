@@ -19,9 +19,9 @@
 	<string name="placeholder_empty">No data</string>
 	<string name="placeholder_offline">No network</string>
 
-	<string name="fragment_example_title">Example fragment title</string>
-
 	<string name="dialog_example_title">Example dialog title</string>
 
 	<string name="notification_example_title">Example notification title</string>
+
+	<string name="example_title">Example fragment title</string>
 </resources>

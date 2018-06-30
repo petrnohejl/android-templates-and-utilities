@@ -26,7 +26,7 @@
 		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/fragment_quick_return_toolbar_fab_text" />
+			android:text="@string/quick_return_toolbar_fab_text" />
 
 	</android.support.v4.widget.NestedScrollView>
 

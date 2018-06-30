@@ -25,7 +25,7 @@ public class PagerActivity extends AppCompatActivity
 	private void setupView()
 	{
 		// reference
-		ViewPager viewPager = findViewById(R.id.activity_pager_pager);
+		ViewPager viewPager = findViewById(R.id.pager_pager);
 
 		// pager content
 		if(mAdapter == null)

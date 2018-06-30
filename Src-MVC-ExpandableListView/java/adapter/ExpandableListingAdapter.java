@@ -41,7 +41,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.nameTextView = convertView.findViewById(R.id.fragment_expandable_listing_item_name);
+			holder.nameTextView = convertView.findViewById(R.id.expandable_listing_item_name);
 			convertView.setTag(holder);
 		}
 
@@ -104,7 +104,7 @@ public class ExpandableListingAdapter extends BaseExpandableListAdapter
 
 			// view holder
 			ViewHolderGroup holder = new ViewHolderGroup();
-			holder.nameTextView = convertView.findViewById(R.id.fragment_expandable_listing_group_name);
+			holder.nameTextView = convertView.findViewById(R.id.expandable_listing_group_name);
 			convertView.setTag(holder);
 		}
 

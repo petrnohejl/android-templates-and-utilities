@@ -108,8 +108,8 @@ public class ExampleActivity extends AppCompatActivity
 	private void setupDrawer(Bundle savedInstanceState)
 	{
 		// reference
-		mDrawerLayout = findViewById(R.id.activity_example_drawer_layout);
-		mNavigationView = findViewById(R.id.activity_example_drawer_navigation);
+		mDrawerLayout = findViewById(R.id.example_drawer_layout);
+		mNavigationView = findViewById(R.id.example_drawer_navigation);
 
 		// navigation
 		mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()

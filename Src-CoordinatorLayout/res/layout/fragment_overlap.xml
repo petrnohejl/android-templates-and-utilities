@@ -14,7 +14,7 @@
 
 		<android.support.design.widget.CollapsingToolbarLayout
 			android:layout_width="match_parent"
-			android:layout_height="@dimen/fragment_overlap_appbar_height"
+			android:layout_height="@dimen/overlap_appbar_height"
 			app:layout_scrollFlags="scroll|exitUntilCollapsed"
 			app:expandedTitleMarginBottom="@dimen/global_spacing_72"
 			app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -25,7 +25,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:scaleType="centerCrop"
-				android:tint="@color/fragment_overlap_appbar_image_tint"
+				android:tint="@color/overlap_appbar_image_tint"
 				android:src="@drawable/photo" />
 
 			<android.support.v7.widget.Toolbar
@@ -49,7 +49,7 @@
 			android:orientation="vertical">
 
 			<android.support.v7.widget.CardView
-				android:id="@+id/fragment_overlap_cardview"
+				android:id="@+id/overlap_cardview"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/global_spacing_8"
@@ -61,7 +61,7 @@
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:text="@string/fragment_overlap_text" />
+					android:text="@string/overlap_text" />
 
 			</android.support.v7.widget.CardView>
 		</LinearLayout>
@@ -74,7 +74,7 @@
 		android:layout_marginRight="@dimen/global_keyline_32"
 		android:elevation="@dimen/global_elevation_8"
 		android:src="@drawable/ic_fab_search"
-		app:layout_anchor="@id/fragment_overlap_cardview"
+		app:layout_anchor="@id/overlap_cardview"
 		app:layout_anchorGravity="top|right|end" />
 
 </android.support.design.widget.CoordinatorLayout>

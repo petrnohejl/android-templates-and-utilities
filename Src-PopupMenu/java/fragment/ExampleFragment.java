@@ -28,7 +28,7 @@ public class ExampleFragment extends Fragment
 	private void setupView()
 	{
 		// reference
-		Button exampleButton = mRootView.findViewById(R.id.fragment_example_button);
+		Button exampleButton = mRootView.findViewById(R.id.example_button);
 
 		// popup menu
 		exampleButton.setOnClickListener(new View.OnClickListener()

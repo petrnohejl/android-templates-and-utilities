@@ -56,7 +56,7 @@ public class ExampleFragment extends Fragment
 	private void setupView()
 	{
 		// reference
-		ImageView photoImageView = mRootView.findViewById(R.id.fragment_example_photo);
+		ImageView photoImageView = mRootView.findViewById(R.id.example_photo);
 
 		// image caching
 		mImageLoader.displayImage("http://placehold.it/200x200/ccc/4a4&text=hello", photoImageView, mDisplayImageOptions, mImageLoadingListener);

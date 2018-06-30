@@ -377,7 +377,7 @@ public class RecyclerFragment extends TaskFragment implements LoadDataTask.OnLoa
 
 	private RecyclerView getRecyclerView()
 	{
-		return mRootView != null ? mRootView.findViewById(R.id.fragment_recycler_recycler) : null;
+		return mRootView != null ? mRootView.findViewById(R.id.recycler_recycler) : null;
 	}
 
 

@@ -11,7 +11,7 @@
 	android:background="@color/global_bg_back">
 
 	<TextView
-		android:id="@+id/fragment_expandable_listing_group_name"
+		android:id="@+id/expandable_listing_group_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="@dimen/global_keyline_32"

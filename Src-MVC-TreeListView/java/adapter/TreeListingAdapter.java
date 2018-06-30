@@ -39,8 +39,8 @@ public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 	public LinearLayout updateView(View view, TreeNodeInfo<Long> treeNodeInfo)
 	{
 		// reference
-		TextView nameTextView = view.findViewById(R.id.fragment_tree_listing_item_name);
-		CheckBox checkBox = view.findViewById(R.id.fragment_tree_listing_item_checkbox);
+		TextView nameTextView = view.findViewById(R.id.tree_listing_item_name);
+		CheckBox checkBox = view.findViewById(R.id.tree_listing_item_checkbox);
 
 		// entity
 		ProductEntity product = mProductList.get(treeNodeInfo.getId().intValue());
@@ -102,7 +102,7 @@ public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 		}
 		else
 		{
-			CheckBox checkBox = view.findViewById(R.id.fragment_tree_listing_item_checkbox);
+			CheckBox checkBox = view.findViewById(R.id.tree_listing_item_checkbox);
 			checkBox.performClick();
 		}
 	}

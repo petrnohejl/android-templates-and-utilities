@@ -50,7 +50,7 @@ public class ExampleActivity extends AppCompatActivity
 		if(menu != null)
 		{
 			boolean drawerOpened = mDrawerLayout.isDrawerOpen(mDrawerListView);
-			MenuItem refresh = menu.findItem(R.id.menu_activity_example_refresh);
+			MenuItem refresh = menu.findItem(R.id.menu_example_refresh);
 			if(refresh != null) refresh.setVisible(!drawerOpened);
 		}
 		return super.onPrepareOptionsMenu(menu);
@@ -73,7 +73,7 @@ public class ExampleActivity extends AppCompatActivity
 				// TODO
 				return true;
 
-			case R.id.menu_activity_example_refresh:
+			case R.id.menu_example_refresh:
 				// TODO
 				return true;
 
@@ -153,8 +153,8 @@ public class ExampleActivity extends AppCompatActivity
 		icons[3] = R.drawable.ic_drawer_example;
 
 		// reference
-		mDrawerLayout = findViewById(R.id.activity_example_drawer_layout);
-		mDrawerListView = findViewById(R.id.activity_example_drawer_list);
+		mDrawerLayout = findViewById(R.id.example_drawer_layout);
+		mDrawerListView = findViewById(R.id.example_drawer_list);
 
 		// set drawer
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);

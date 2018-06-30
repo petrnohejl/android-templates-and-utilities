@@ -8,18 +8,18 @@
 	<include layout="@layout/toolbar" />
 
 	<android.support.v4.widget.SlidingPaneLayout
-		android:id="@+id/activity_example_sliding_pane_layout"
+		android:id="@+id/example_sliding_pane_layout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
 		<FrameLayout
-			android:id="@+id/activity_example_sliding_pane_left"
-			android:layout_width="@dimen/activity_example_sliding_pane_left_width"
+			android:id="@+id/example_sliding_pane_left"
+			android:layout_width="@dimen/example_sliding_pane_left_width"
 			android:layout_height="match_parent" />
 
 		<FrameLayout
-			android:id="@+id/activity_example_sliding_pane_right"
-			android:layout_width="@dimen/activity_example_sliding_pane_right_width"
+			android:id="@+id/example_sliding_pane_right"
+			android:layout_width="@dimen/example_sliding_pane_right_width"
 			android:layout_height="match_parent"
 			android:layout_weight="1" />
 

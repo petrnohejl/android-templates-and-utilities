@@ -89,7 +89,7 @@ public class ExampleActivity extends AppCompatActivity
 				startActivity(intent);
 				return true;
 
-			case R.id.menu_activity_example_refresh:
+			case R.id.menu_example_refresh:
 				// TODO
 				return true;
 

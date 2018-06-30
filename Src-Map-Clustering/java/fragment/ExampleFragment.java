@@ -34,7 +34,7 @@ public class ExampleFragment extends Fragment
 
 	private void setupClusterManager()
 	{
-		mRootView.findViewById(R.id.fragment_example_map).getMapAsync(new OnMapReadyCallback()
+		mRootView.findViewById(R.id.example_map).getMapAsync(new OnMapReadyCallback()
 		{
 			@Override
 			public void onMapReady(GoogleMap googleMap)
@@ -59,7 +59,7 @@ public class ExampleFragment extends Fragment
 
 	private void bindData()
 	{
-		mRootView.findViewById(R.id.fragment_example_map).getMapAsync(new OnMapReadyCallback()
+		mRootView.findViewById(R.id.example_map).getMapAsync(new OnMapReadyCallback()
 		{
 			@Override
 			public void onMapReady(GoogleMap googleMap)

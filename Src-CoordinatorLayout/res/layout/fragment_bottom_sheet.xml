@@ -13,12 +13,12 @@
 		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/fragment_bottom_sheet_text" />
+			android:text="@string/bottom_sheet_text" />
 
 	</android.support.v4.widget.NestedScrollView>
 
 	<FrameLayout
-		android:id="@+id/fragment_bottom_sheet"
+		android:id="@+id/bottom_sheet"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="@color/global_color_accent"
@@ -30,7 +30,7 @@
 		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/fragment_bottom_sheet_text" />
+			android:text="@string/bottom_sheet_text" />
 
 	</FrameLayout>
 
@@ -40,7 +40,7 @@
 		android:layout_height="wrap_content"
 		android:layout_margin="@dimen/global_keyline_16"
 		android:src="@drawable/ic_fab_search"
-		app:layout_anchor="@id/fragment_bottom_sheet"
+		app:layout_anchor="@id/bottom_sheet"
 		app:layout_anchorGravity="top|right|end" />
 
 </android.support.design.widget.CoordinatorLayout>

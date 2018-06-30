@@ -90,7 +90,7 @@ public class SimpleFragment extends Fragment
 	private void setupView()
 	{
 		// reference
-		TextView nameTextView = mRootView.findViewById(R.id.fragment_simple_name);
+		TextView nameTextView = mRootView.findViewById(R.id.simple_name);
 
 		// content
 		nameTextView.setText(Integer.toString(mId));

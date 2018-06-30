@@ -26,8 +26,8 @@ public class TabLayoutActivity extends AppCompatActivity
 	private void setupView()
 	{
 		// reference
-		ViewPager viewPager = findViewById(R.id.activity_tablayout_pager);
-		TabLayout tabLayout = findViewById(R.id.activity_tablayout_tabs);
+		ViewPager viewPager = findViewById(R.id.tablayout_pager);
+		TabLayout tabLayout = findViewById(R.id.tablayout_tabs);
 
 		// pager content
 		if(mAdapter == null)

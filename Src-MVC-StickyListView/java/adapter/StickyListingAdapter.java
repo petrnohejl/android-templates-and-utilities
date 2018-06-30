@@ -40,7 +40,7 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 
 			// view holder
 			ViewHolder holder = new ViewHolder();
-			holder.nameTextView = convertView.findViewById(R.id.fragment_sticky_listing_item_name);
+			holder.nameTextView = convertView.findViewById(R.id.sticky_listing_item_name);
 			convertView.setTag(holder);
 		}
 
@@ -93,7 +93,7 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 
 			// view holder
 			ViewHolderGroup holder = new ViewHolderGroup();
-			holder.nameTextView = convertView.findViewById(R.id.fragment_sticky_listing_group_name);
+			holder.nameTextView = convertView.findViewById(R.id.sticky_listing_group_name);
 			convertView.setTag(holder);
 		}
 

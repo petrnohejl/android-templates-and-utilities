@@ -45,7 +45,7 @@ public class TransitionFirstActivity extends AppCompatActivity
 		// action bar menu behavior
 		switch(item.getItemId())
 		{
-			case R.id.menu_activity_transition_first_second:
+			case R.id.menu_transition_first_second:
 				Intent intent = TransitionSecondActivity.newIntent(this);
 				startActivity(intent);
 				overridePendingTransition(R.anim.push_left_enter, R.anim.push_left_exit);

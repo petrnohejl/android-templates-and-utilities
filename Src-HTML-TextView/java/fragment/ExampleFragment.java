@@ -29,7 +29,7 @@ public class ExampleFragment extends Fragment
 	private void setupView()
 	{
 		// reference
-		TextView descriptionTextView = mRootView.findViewById(R.id.fragment_example_description);
+		TextView descriptionTextView = mRootView.findViewById(R.id.example_description);
 
 		// color highlight
 		String colorHighlight = toHtmlColor(R.color.global_text_secondary);

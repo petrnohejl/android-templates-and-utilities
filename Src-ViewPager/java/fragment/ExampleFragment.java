@@ -73,7 +73,7 @@ public class ExampleFragment extends Fragment
 	private void setupView()
 	{
 		// reference
-		TextView nameTextView = mRootView.findViewById(R.id.fragment_example_name);
+		TextView nameTextView = mRootView.findViewById(R.id.example_name);
 
 		// content
 		nameTextView.setText("Fragment " + mExample);

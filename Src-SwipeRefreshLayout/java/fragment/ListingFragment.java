@@ -93,7 +93,7 @@ public class ListingFragment extends Fragment implements SwipeRefreshLayout.OnRe
 	private void showProgress(boolean visible)
 	{
 		// show pull to refresh progress bar
-		SwipeRefreshLayout listSwipeRefreshLayout = mRootView.findViewById(R.id.fragment_listing_swipe_refresh_layout);
+		SwipeRefreshLayout listSwipeRefreshLayout = mRootView.findViewById(R.id.listing_swipe_refresh_layout);
 		SwipeRefreshLayout emptySwipeRefreshLayout = mRootView.findViewById(android.R.id.empty);
 
 		listSwipeRefreshLayout.setRefreshing(visible);
@@ -108,7 +108,7 @@ public class ListingFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
 	private void setupSwipeRefreshLayout()
 	{
-		SwipeRefreshLayout listSwipeRefreshLayout = mRootView.findViewById(R.id.fragment_listing_swipe_refresh_layout);
+		SwipeRefreshLayout listSwipeRefreshLayout = mRootView.findViewById(R.id.listing_swipe_refresh_layout);
 		SwipeRefreshLayout emptySwipeRefreshLayout = mRootView.findViewById(android.R.id.empty);
 
 		listSwipeRefreshLayout.setColorSchemeResources(R.color.global_color_primary, R.color.global_color_accent);

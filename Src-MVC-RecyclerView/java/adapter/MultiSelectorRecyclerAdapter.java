@@ -45,7 +45,7 @@ public class MultiSelectorRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 			itemView.setOnLongClickListener(this);
 
 			// find views
-			mNameTextView = itemView.findViewById(R.id.fragment_recycler_item_name);
+			mNameTextView = itemView.findViewById(R.id.recycler_item_name);
 		}
 
 

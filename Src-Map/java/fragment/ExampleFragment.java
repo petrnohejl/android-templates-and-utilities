@@ -34,7 +34,7 @@ public class ExampleFragment extends Fragment
 	{
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		initMap();
-		mMapView = mRootView.findViewById(R.id.fragment_example_map);
+		mMapView = mRootView.findViewById(R.id.example_map);
 		mMapView.onCreate(savedInstanceState);
 		return mRootView;
 	}
@@ -121,7 +121,7 @@ public class ExampleFragment extends Fragment
 
 	private void setupMap()
 	{
-		mRootView.findViewById(R.id.fragment_example_map).getMapAsync(new OnMapReadyCallback()
+		mRootView.findViewById(R.id.example_map).getMapAsync(new OnMapReadyCallback()
 		{
 			@Override
 			public void onMapReady(GoogleMap googleMap)
@@ -148,7 +148,7 @@ public class ExampleFragment extends Fragment
 
 	private void bindData()
 	{
-		mRootView.findViewById(R.id.fragment_example_map).getMapAsync(new OnMapReadyCallback()
+		mRootView.findViewById(R.id.example_map).getMapAsync(new OnMapReadyCallback()
 		{
 			@Override
 			public void onMapReady(GoogleMap googleMap)
