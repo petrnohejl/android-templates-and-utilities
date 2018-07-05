@@ -12,23 +12,17 @@ import com.example.R;
 
 import org.alfonz.utility.NetworkUtility;
 
-
-public class RecyclerFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener
-{
+public class RecyclerFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 	private View mRootView;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_recycler, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// pull to refresh
@@ -38,10 +32,8 @@ public class RecyclerFragment extends Fragment implements SwipeRefreshLayout.OnR
 		showProgress(isProgress());
 	}
 
-
 	@Override
-	public void onRefresh()
-	{
+	public void onRefresh() {
 		refreshData();
 
 //		// testing task
@@ -72,26 +64,19 @@ public class RecyclerFragment extends Fragment implements SwipeRefreshLayout.OnR
 //		}.execute();
 	}
 
-
-	public void refreshData()
-	{
-		if(NetworkUtility.isOnline(getActivity()))
-		{
+	public void refreshData() {
+		if (NetworkUtility.isOnline(getActivity())) {
 			// show progress popup
 			showProgress(true);
 
 			// TODO
-		}
-		else
-		{
+		} else {
 			showProgress(false);
 			Toast.makeText(getActivity(), R.string.global_network_offline, Toast.LENGTH_LONG).show();
 		}
 	}
 
-
-	private void showProgress(boolean visible)
-	{
+	private void showProgress(boolean visible) {
 		// show pull to refresh progress bar
 		SwipeRefreshLayout contentSwipeRefreshLayout = mRootView.findViewById(R.id.container_content_swipeable);
 		SwipeRefreshLayout offlineSwipeRefreshLayout = mRootView.findViewById(R.id.container_offline_swipeable);
@@ -109,9 +94,7 @@ public class RecyclerFragment extends Fragment implements SwipeRefreshLayout.OnR
 		setProgress(visible);
 	}
 
-
-	private void setupSwipeRefreshLayout()
-	{
+	private void setupSwipeRefreshLayout() {
 		SwipeRefreshLayout contentSwipeRefreshLayout = mRootView.findViewById(R.id.container_content_swipeable);
 		SwipeRefreshLayout offlineSwipeRefreshLayout = mRootView.findViewById(R.id.container_offline_swipeable);
 		SwipeRefreshLayout emptySwipeRefreshLayout = mRootView.findViewById(R.id.container_empty_swipeable);
@@ -126,16 +109,12 @@ public class RecyclerFragment extends Fragment implements SwipeRefreshLayout.OnR
 		emptySwipeRefreshLayout.setOnRefreshListener(this);
 	}
 
-
-	private boolean isProgress()
-	{
+	private boolean isProgress() {
 		// TODO
 		return false;
 	}
 
-
-	private void setProgress(boolean progress)
-	{
+	private void setProgress(boolean progress) {
 		// TODO
 	}
 }

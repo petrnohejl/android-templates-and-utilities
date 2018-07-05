@@ -11,60 +11,46 @@ import com.example.R;
 
 import org.alfonz.utility.Logcat;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private static final long TIMER_DELAY = 5000L; // in milliseconds
 
 	private View mRootView;
 	private Handler mTimerHandler;
 	private Runnable mTimerRunnable;
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setupTimer();
 	}
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onResume()
-	{
+	public void onResume() {
 		super.onResume();
 
 		// timer
 		startTimer();
 	}
 
-
 	@Override
-	public void onPause()
-	{
+	public void onPause() {
 		super.onPause();
 
 		// timer
 		stopTimer();
 	}
 
-
-	private void setupTimer()
-	{
+	private void setupTimer() {
 		mTimerHandler = new Handler();
-		mTimerRunnable = new Runnable()
-		{
+		mTimerRunnable = new Runnable() {
 			@Override
-			public void run()
-			{
+			public void run() {
 				Logcat.d("timer");
 
 				mTimerHandler.postDelayed(this, TIMER_DELAY);
@@ -72,15 +58,11 @@ public class ExampleFragment extends Fragment
 		};
 	}
 
-
-	private void startTimer()
-	{
+	private void startTimer() {
 		mTimerHandler.postDelayed(mTimerRunnable, 0);
 	}
 
-
-	private void stopTimer()
-	{
+	private void stopTimer() {
 		mTimerHandler.removeCallbacks(mTimerRunnable);
 	}
 }

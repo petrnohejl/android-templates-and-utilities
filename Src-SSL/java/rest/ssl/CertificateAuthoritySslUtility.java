@@ -10,14 +10,10 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
-
-public final class CertificateAuthoritySslUtility
-{
+public final class CertificateAuthoritySslUtility {
 	private CertificateAuthoritySslUtility() {}
 
-
-	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
-	{
+	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException {
 		SSLContext sslContext = createSslContext();
 		HostnameVerifier sslHostnameVerifier = createSslHostnameVerifier(requestUrl.getHost());
 
@@ -26,22 +22,16 @@ public final class CertificateAuthoritySslUtility
 		//HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
 	}
 
-
-	public static SSLContext createSslContext() throws GeneralSecurityException
-	{
+	public static SSLContext createSslContext() throws GeneralSecurityException {
 		SSLContext context = SSLContext.getInstance("TLS");
 		context.init(null, new X509TrustManager[]{new CertificateAuthorityTrustManager()}, new SecureRandom());
 		return context;
 	}
 
-
-	public static HostnameVerifier createSslHostnameVerifier(final String apiHostname)
-	{
-		HostnameVerifier hostnameVerifier = new HostnameVerifier()
-		{
+	public static HostnameVerifier createSslHostnameVerifier(final String apiHostname) {
+		HostnameVerifier hostnameVerifier = new HostnameVerifier() {
 			@Override
-			public boolean verify(String hostname, SSLSession session)
-			{
+			public boolean verify(String hostname, SSLSession session) {
 				//Logcat.d(hostname + " / " + apiHostname);
 				return hostname.equals(apiHostname);
 			}

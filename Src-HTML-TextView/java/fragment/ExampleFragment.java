@@ -12,22 +12,16 @@ import android.widget.TextView;
 
 import com.example.R;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// reference
 		TextView descriptionTextView = mRootView.findViewById(R.id.example_description);
 
@@ -51,17 +45,13 @@ public class ExampleFragment extends Fragment
 		descriptionTextView.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 
-
-	private String toHtmlColor(int colorResource)
-	{
+	private String toHtmlColor(int colorResource) {
 		return "#" + Integer.toHexString(ContextCompat.getColor(getActivity(), colorResource)).substring(2);
 	}
 
-
-	private String removeHtmlTags(String htmlText, boolean removeBreak)
-	{
+	private String removeHtmlTags(String htmlText, boolean removeBreak) {
 		String text = Html.fromHtml(htmlText).toString();
-		if(removeBreak) text = text.replace("\n", " ").replace("\r", "");
+		if (removeBreak) text = text.replace("\n", " ").replace("\r", "");
 		return text;
 	}
 }

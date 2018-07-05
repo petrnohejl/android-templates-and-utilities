@@ -6,36 +6,27 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.ContextThemeWrapper;
 
-
-public class ProgressDialogFragment extends DialogFragment
-{
-	public static ProgressDialogFragment newInstance()
-	{
+public class ProgressDialogFragment extends DialogFragment {
+	public static ProgressDialogFragment newInstance() {
 		ProgressDialogFragment fragment = new ProgressDialogFragment();
 		return fragment;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setCancelable(false);
 	}
 
-
 	@Override
-	public void onDestroyView()
-	{
+	public void onDestroyView() {
 		// http://code.google.com/p/android/issues/detail?id=17423
-		if(getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
+		if (getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
 		super.onDestroyView();
 	}
 
-
 	@Override
-	public Dialog onCreateDialog(Bundle savedInstanceState)
-	{
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), getTheme(true));
 		ProgressDialog dialog = new ProgressDialog(context);
 		dialog.setMessage("progress");
@@ -44,15 +35,11 @@ public class ProgressDialogFragment extends DialogFragment
 		return dialog;
 	}
 
-
-	public void dismiss()
-	{
+	public void dismiss() {
 		getDialog().dismiss();
 	}
 
-
-	private int getTheme(boolean light)
-	{
+	private int getTheme(boolean light) {
 		return light ? android.R.style.Theme_DeviceDefault_Light_Dialog : android.R.style.Theme_DeviceDefault_Dialog;
 	}
 }

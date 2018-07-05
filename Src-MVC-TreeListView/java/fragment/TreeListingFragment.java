@@ -31,11 +31,9 @@ import pl.polidea.treeview.TreeNodeInfo;
 import pl.polidea.treeview.TreeStateManager;
 import pl.polidea.treeview.TreeViewList;
 
-
 public class TreeListingFragment extends TaskFragment implements
 		LoadDataTask.OnLoadDataListener,
-		AdapterView.OnItemClickListener
-{
+		AdapterView.OnItemClickListener {
 	private static final int TREEVIEW_DEPTH = 4;
 
 	private View mRootView;
@@ -46,158 +44,121 @@ public class TreeListingFragment extends TaskFragment implements
 	private LoadDataTask mLoadDataTask;
 	private List<ProductEntity> mProductList = new ArrayList<>();
 
-
 	@Override
-	public void onAttach(Context context)
-	{
+	public void onAttach(Context context) {
 		super.onAttach(context);
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		setRetainInstance(true);
 	}
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_tree_listing, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// setup stateful layout
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mProductList == null || mProductList.isEmpty() || mTreeStateManager == null)
-		{
+		if (mProductList == null || mProductList.isEmpty() || mTreeStateManager == null) {
 			loadData();
 		}
 	}
 
-
 	@Override
-	public void onStart()
-	{
+	public void onStart() {
 		super.onStart();
 	}
 
-
 	@Override
-	public void onResume()
-	{
+	public void onResume() {
 		super.onResume();
 	}
 
-
 	@Override
-	public void onPause()
-	{
+	public void onPause() {
 		super.onPause();
 
 		// stop adapter
-		if(mAdapter != null) mAdapter.stop();
+		if (mAdapter != null) mAdapter.stop();
 	}
 
-
 	@Override
-	public void onStop()
-	{
+	public void onStop() {
 		super.onStop();
 	}
 
-
 	@Override
-	public void onDestroyView()
-	{
+	public void onDestroyView() {
 		super.onDestroyView();
 		mRootView = null;
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		super.onDestroy();
 
 		// cancel async tasks
-		if(mLoadDataTask != null) mLoadDataTask.cancel(true);
+		if (mLoadDataTask != null) mLoadDataTask.cancel(true);
 	}
 
-
 	@Override
-	public void onDetach()
-	{
+	public void onDetach() {
 		super.onDetach();
 	}
 
-
 	@Override
-	public void onSaveInstanceState(Bundle outState)
-	{
+	public void onSaveInstanceState(Bundle outState) {
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
 
 		// stateful layout state
-		if(mStatefulLayout != null) mStatefulLayout.saveInstanceState(outState);
+		if (mStatefulLayout != null) mStatefulLayout.saveInstanceState(outState);
 	}
 
-
 	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-	{
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		// action bar menu
 		super.onCreateOptionsMenu(menu, inflater);
 
 		// TODO
 	}
 
-
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// action bar menu behavior
 		return super.onOptionsItemSelected(item);
 
 		// TODO
 	}
 
-
 	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
-	{
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 		getActivity().getMenuInflater().inflate(R.menu.treeview, menu);
 
 		AdapterView.AdapterContextMenuInfo adapterInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
 		long id = adapterInfo.id;
 		TreeNodeInfo<Long> nodeInfo = mTreeStateManager.getNodeInfo(id);
 
-		if(nodeInfo.isWithChildren())
-		{
-			if(nodeInfo.isExpanded())
-			{
+		if (nodeInfo.isWithChildren()) {
+			if (nodeInfo.isExpanded()) {
 				menu.findItem(R.id.menu_treeview_expand).setVisible(false);
 				menu.findItem(R.id.menu_treeview_expand_all).setVisible(false);
-			}
-			else
-			{
+			} else {
 				menu.findItem(R.id.menu_treeview_collapse_all).setVisible(false);
 			}
-		}
-		else
-		{
+		} else {
 			menu.findItem(R.id.menu_treeview_expand).setVisible(false);
 			menu.findItem(R.id.menu_treeview_expand_all).setVisible(false);
 			menu.findItem(R.id.menu_treeview_collapse_all).setVisible(false);
@@ -209,63 +170,45 @@ public class TreeListingFragment extends TaskFragment implements
 		super.onCreateContextMenu(menu, v, menuInfo);
 	}
 
-
 	@Override
-	public boolean onContextItemSelected(MenuItem item)
-	{
+	public boolean onContextItemSelected(MenuItem item) {
 		AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 		long id = menuInfo.id;
-		if(item.getItemId() == R.id.menu_treeview_collapse_all)
-		{
+		if (item.getItemId() == R.id.menu_treeview_collapse_all) {
 			mTreeStateManager.collapseChildren(id);
 			return true;
-		}
-		else if(item.getItemId() == R.id.menu_treeview_expand_all)
-		{
+		} else if (item.getItemId() == R.id.menu_treeview_expand_all) {
 			mTreeStateManager.expandEverythingBelow(id);
 			return true;
-		}
-		else if(item.getItemId() == R.id.menu_treeview_expand)
-		{
+		} else if (item.getItemId() == R.id.menu_treeview_expand) {
 			mTreeStateManager.expandDirectChildren(id);
 			return true;
-		}
-		else if(item.getItemId() == R.id.menu_treeview_delete)
-		{
+		} else if (item.getItemId() == R.id.menu_treeview_delete) {
 			mTreeStateManager.removeNodeRecursively(id);
 			return true;
-		}
-		else
-		{
+		} else {
 			return super.onContextItemSelected(item);
 		}
 	}
 
-
 	@Override
-	public void onItemClick(AdapterView<?> parent, View clickedView, int position, long id)
-	{
+	public void onItemClick(AdapterView<?> parent, View clickedView, int position, long id) {
 		// list position
 		int listPosition = getListPosition((int) id);
 
 		// TODO
 	}
 
-
 	@Override
-	public void onLoadData()
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				if(mRootView == null) return; // view was destroyed
+	public void onLoadData() {
+		runTaskCallback(new Runnable() {
+			public void run() {
+				if (mRootView == null) return; // view was destroyed
 
 				// get data
 				final int size = mProductList.size();
 				final int[] nodes = new int[]{0, 0, 1, 1, 1, 2, 2, 1, 1, 2, 1, 0, 0, 0, 1, 2, 3, 2, 0, 0, 1, 2, 0, 1, 2, 0, 1};
-				for(int i = 0; i < nodes.length; i++)
-				{
+				for (int i = 0; i < nodes.length; i++) {
 					ProductEntity p = new ProductEntity();
 					p.setName("Product " + (size + i));
 					mProductList.add(p);
@@ -274,8 +217,7 @@ public class TreeListingFragment extends TaskFragment implements
 				// create tree manager
 				mTreeStateManager = new InMemoryTreeStateManager<>();
 				TreeBuilder<Long> treeBuilder = new TreeBuilder<>(mTreeStateManager);
-				for(int i = 0; i < nodes.length; i++)
-				{
+				for (int i = 0; i < nodes.length; i++) {
 					treeBuilder.sequentiallyAddNextNode((long) i, nodes[i]);
 				}
 				Logcat.d(mTreeStateManager.toString());
@@ -286,39 +228,29 @@ public class TreeListingFragment extends TaskFragment implements
 		});
 	}
 
-
-	private void loadData()
-	{
-		if(NetworkUtility.isOnline(getActivity()))
-		{
+	private void loadData() {
+		if (NetworkUtility.isOnline(getActivity())) {
 			// show progress
 			mStatefulLayout.showProgress();
 
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
 			executeTask(mLoadDataTask);
-		}
-		else
-		{
+		} else {
 			mStatefulLayout.showOffline();
 		}
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// reference
 		TreeViewList treeView = mRootView.findViewById(android.R.id.list);
 		ViewGroup emptyView = mRootView.findViewById(android.R.id.empty);
 
 		// treeview content
-		if(mAdapter == null)
-		{
+		if (mAdapter == null) {
 			// create adapter
 			mAdapter = new TreeListingAdapter(getActivity(), mProductList, mSelectedSet, mTreeStateManager, TREEVIEW_DEPTH);
-		}
-		else
-		{
+		} else {
 			// refresh adapter
 			mAdapter.refresh();
 			mAdapter.notifyDataSetChanged();
@@ -336,31 +268,23 @@ public class TreeListingFragment extends TaskFragment implements
 		registerForContextMenu(treeView);
 	}
 
-
-	private void setupStatefulLayout(Bundle savedInstanceState)
-	{
+	private void setupStatefulLayout(Bundle savedInstanceState) {
 		// reference
 		mStatefulLayout = (StatefulLayout) mRootView;
 
 		// state change listener
-		mStatefulLayout.setOnStateChangeListener(new StatefulLayout.OnStateChangeListener()
-		{
+		mStatefulLayout.setOnStateChangeListener(new StatefulLayout.OnStateChangeListener() {
 			@Override
-			public void onStateChange(View view, @StatefulLayout.State int state)
-			{
+			public void onStateChange(View view, @StatefulLayout.State int state) {
 				Logcat.d(String.valueOf(state));
 
-				if(state == StatefulLayout.CONTENT)
-				{
+				if (state == StatefulLayout.CONTENT) {
 					TreeViewList treeView = mRootView.findViewById(android.R.id.list);
-					if(treeView.getAdapter() != null)
-					{
+					if (treeView.getAdapter() != null) {
 						mAdapter.refresh();
 						mAdapter.notifyDataSetChanged();
-					}
-					else
-					{
-						if(mProductList != null && mTreeStateManager != null) setupView();
+					} else {
+						if (mProductList != null && mTreeStateManager != null) setupView();
 					}
 				}
 			}
@@ -370,27 +294,21 @@ public class TreeListingFragment extends TaskFragment implements
 		mStatefulLayout.restoreInstanceState(savedInstanceState);
 	}
 
-
-	private int getListPosition(int globalPosition)
-	{
+	private int getListPosition(int globalPosition) {
 		// reference
 		TreeViewList treeView = mRootView.findViewById(android.R.id.list);
 
 		// list position without headers, should be used for getting data entities from collections
 		int listPosition = globalPosition;
-		if(treeView != null) listPosition = globalPosition - treeView.getHeaderViewsCount();
+		if (treeView != null) listPosition = globalPosition - treeView.getHeaderViewsCount();
 		return listPosition;
 	}
 
-
-	private void expandAll()
-	{
-		if(mTreeStateManager != null) mTreeStateManager.expandEverythingBelow(null);
+	private void expandAll() {
+		if (mTreeStateManager != null) mTreeStateManager.expandEverythingBelow(null);
 	}
 
-
-	private void collapseAll()
-	{
-		if(mTreeStateManager != null) mTreeStateManager.collapseChildren(null);
+	private void collapseAll() {
+		if (mTreeStateManager != null) mTreeStateManager.collapseChildren(null);
 	}
 }

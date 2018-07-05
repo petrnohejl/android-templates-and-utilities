@@ -5,17 +5,12 @@ import com.example.database.data.Data;
 
 import java.sql.SQLException;
 
-
-public class ProductDeleteAllQuery extends Query
-{
-	public ProductDeleteAllQuery()
-	{
+public class ProductDeleteAllQuery extends Query {
+	public ProductDeleteAllQuery() {
 	}
 
-
 	@Override
-	public Data<Integer> processData() throws SQLException
-	{
+	public Data<Integer> processData() throws SQLException {
 		Data<Integer> data = new Data<>();
 		data.setDataObject(ProductDAO.deleteAll());
 		return data;

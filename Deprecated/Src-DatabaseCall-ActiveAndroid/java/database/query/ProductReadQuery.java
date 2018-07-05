@@ -4,21 +4,15 @@ import com.example.database.dao.ProductDAO;
 import com.example.database.data.Data;
 import com.example.entity.ProductEntity;
 
-
-public class ProductReadQuery extends Query
-{
+public class ProductReadQuery extends Query {
 	private long mId;
 
-
-	public ProductReadQuery(long id)
-	{
+	public ProductReadQuery(long id) {
 		mId = id;
 	}
 
-
 	@Override
-	public Data<ProductEntity> processData()
-	{
+	public Data<ProductEntity> processData() {
 		ProductDAO dao = new ProductDAO();
 		ProductEntity e = dao.read(mId);
 

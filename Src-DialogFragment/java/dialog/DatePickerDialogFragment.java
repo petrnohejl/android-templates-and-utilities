@@ -8,23 +8,17 @@ import android.widget.DatePicker;
 
 import java.util.Calendar;
 
-
-public class DatePickerDialogFragment extends DialogFragment implements FixedDatePickerDialog.OnDateSetListener
-{
+public class DatePickerDialogFragment extends DialogFragment implements FixedDatePickerDialog.OnDateSetListener {
 	private static final String ARGUMENT_DATE = "date";
 
 	private long mDate = -1L;
 	private DatePickerDialogListener mListener;
 
-
-	public interface DatePickerDialogListener
-	{
+	public interface DatePickerDialogListener {
 		void onDatePickerDialogPositiveClick(DialogFragment dialog, int year, int month, int day);
 	}
 
-
-	public static DatePickerDialogFragment newInstance(Calendar calendar)
-	{
+	public static DatePickerDialogFragment newInstance(Calendar calendar) {
 		DatePickerDialogFragment fragment = new DatePickerDialogFragment();
 
 		// arguments
@@ -35,48 +29,37 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 		return fragment;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setCancelable(true);
 
 		// handle fragment arguments
 		Bundle arguments = getArguments();
-		if(arguments != null)
-		{
+		if (arguments != null) {
 			handleArguments(arguments);
 		}
 
 		// set callback listener
-		try
-		{
+		try {
 			mListener = (DatePickerDialogListener) getTargetFragment();
-		}
-		catch(ClassCastException e)
-		{
+		} catch (ClassCastException e) {
 			throw new ClassCastException(getTargetFragment().toString() + " must implement " + DatePickerDialogListener.class.getName());
 		}
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// cancelable on touch outside
-		if(getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
+		if (getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
 	}
 
-
 	@Override
-	public Dialog onCreateDialog(Bundle savedInstanceState)
-	{
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		Calendar calendar = Calendar.getInstance();
-		if(mDate != -1L)
-		{
+		if (mDate != -1L) {
 			calendar.setTimeInMillis(mDate);
 		}
 
@@ -84,24 +67,17 @@ public class DatePickerDialogFragment extends DialogFragment implements FixedDat
 		return new FixedDatePickerDialog(calendar, context, this);
 	}
 
-
 	@Override
-	public void onDateSet(DatePicker view, int year, int month, int day)
-	{
+	public void onDateSet(DatePicker view, int year, int month, int day) {
 		mListener.onDatePickerDialogPositiveClick(DatePickerDialogFragment.this, year, month, day);
 	}
 
-
-	private int getTheme(boolean light)
-	{
+	private int getTheme(boolean light) {
 		return light ? android.R.style.Theme_DeviceDefault_Light_Dialog : android.R.style.Theme_DeviceDefault_Dialog;
 	}
 
-
-	private void handleArguments(Bundle arguments)
-	{
-		if(arguments.containsKey(ARGUMENT_DATE))
-		{
+	private void handleArguments(Bundle arguments) {
+		if (arguments.containsKey(ARGUMENT_DATE)) {
 			mDate = (Long) arguments.get(ARGUMENT_DATE);
 		}
 	}

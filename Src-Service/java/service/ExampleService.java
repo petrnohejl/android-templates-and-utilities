@@ -10,16 +10,12 @@ import android.os.Message;
 
 import org.alfonz.utility.Logcat;
 
-
-public class ExampleService extends Service
-{
+public class ExampleService extends Service {
 	private Looper mServiceLooper;
 	private ServiceHandler mServiceHandler;
 
-
 	@Override
-	public void onCreate()
-	{
+	public void onCreate() {
 		Logcat.d("");
 
 		HandlerThread thread = new HandlerThread("ServiceStartArguments", Thread.NORM_PRIORITY);
@@ -29,15 +25,12 @@ public class ExampleService extends Service
 		mServiceHandler = new ServiceHandler(mServiceLooper);
 	}
 
-
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId)
-	{
+	public int onStartCommand(Intent intent, int flags, int startId) {
 		Logcat.d("");
 
 		// intent may be null if the service is being restarted
-		if(intent != null)
-		{
+		if (intent != null) {
 			Message msg = mServiceHandler.obtainMessage();
 			msg.arg1 = startId;
 			msg.arg2 = intent.getIntExtra("arg", -1);
@@ -47,47 +40,33 @@ public class ExampleService extends Service
 		return START_STICKY; // TODO: START_STICKY, START_NOT_STICKY, START_REDELIVER_INTENT
 	}
 
-
 	@Override
-	public IBinder onBind(Intent intent)
-	{
+	public IBinder onBind(Intent intent) {
 		return null;
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		Logcat.d("");
 	}
 
-
-	private final class ServiceHandler extends Handler
-	{
-		public ServiceHandler(Looper looper)
-		{
+	private final class ServiceHandler extends Handler {
+		public ServiceHandler(Looper looper) {
 			super(looper);
 		}
 
-
 		@Override
-		public void handleMessage(Message msg)
-		{
+		public void handleMessage(Message msg) {
 			Logcat.d("%d", msg.arg2);
 
 			long endTime = System.currentTimeMillis() + 5L * 1000L;
 
-			while(System.currentTimeMillis() < endTime)
-			{
-				synchronized(this)
-				{
-					try
-					{
+			while (System.currentTimeMillis() < endTime) {
+				synchronized (this) {
+					try {
 						// TODO: do something
 						wait(endTime - System.currentTimeMillis());
-					}
-					catch(InterruptedException e)
-					{
+					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}

@@ -24,42 +24,31 @@ import org.alfonz.utility.Logcat;
 
 import java.util.List;
 
-
-public class ExampleFragment extends TaskFragment implements DatabaseCallListener
-{
+public class ExampleFragment extends TaskFragment implements DatabaseCallListener {
 	private View mRootView;
 	private DatabaseCallManager mDatabaseCallManager = new DatabaseCallManager();
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		super.onDestroy();
 
 		// cancel async tasks
 		mDatabaseCallManager.cancelAllTasks();
 	}
 
-
 	@Override
-	public void onDatabaseCallRespond(final DatabaseCallTask task, final Data<?> data)
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				if(mRootView == null) return; // view was destroyed
+	public void onDatabaseCallRespond(final DatabaseCallTask task, final Data<?> data) {
+		runTaskCallback(new Runnable() {
+			public void run() {
+				if (mRootView == null) return; // view was destroyed
 
-				if(task.getQuery().getClass().equals(ProductCreateQuery.class))
-				{
+				if (task.getQuery().getClass().equals(ProductCreateQuery.class)) {
 					Logcat.d("ProductCreateQuery");
 
 					// data
@@ -67,9 +56,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					long id = productCreateData.getDataObject();
 
 					// TODO
-				}
-				else if(task.getQuery().getClass().equals(ProductReadQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductReadQuery.class)) {
 					Logcat.d("ProductReadQuery");
 
 					// data
@@ -77,9 +64,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					ProductEntity product = productReadData.getDataObject();
 
 					// TODO
-				}
-				else if(task.getQuery().getClass().equals(ProductReadFirstQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductReadFirstQuery.class)) {
 					Logcat.d("ProductReadFirstQuery");
 
 					// data
@@ -87,9 +72,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					ProductEntity product = productReadFirstData.getDataObject();
 
 					// TODO
-				}
-				else if(task.getQuery().getClass().equals(ProductReadAllQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductReadAllQuery.class)) {
 					Logcat.d("ProductReadAllQuery");
 
 					// data
@@ -97,9 +80,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					List<ProductEntity> productList = productReadAllData.getDataObject();
 
 					// TODO
-				}
-				else if(task.getQuery().getClass().equals(ProductUpdateQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductUpdateQuery.class)) {
 					Logcat.d("ProductUpdateQuery");
 
 					// data
@@ -107,18 +88,14 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 					long id = productUpdateData.getDataObject();
 
 					// TODO
-				}
-				else if(task.getQuery().getClass().equals(ProductDeleteQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductDeleteQuery.class)) {
 					Logcat.d("ProductDeleteQuery");
 
 					// data
 					Data<Void> productDeleteData = (Data<Void>) data;
 
 					// TODO
-				}
-				else if(task.getQuery().getClass().equals(ProductDeleteAllQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductDeleteAllQuery.class)) {
 					Logcat.d("ProductDeleteAllQuery");
 
 					// data
@@ -131,47 +108,30 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				mDatabaseCallManager.finishTask(task);
 
 				// hide progress popup
-				if(mDatabaseCallManager.getTasksCount() == 0) showProgress(false);
+				if (mDatabaseCallManager.getTasksCount() == 0) showProgress(false);
 			}
 		});
 	}
 
-
 	@Override
-	public void onDatabaseCallFail(final DatabaseCallTask task, final Exception exception)
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				if(mRootView == null) return; // view was destroyed
+	public void onDatabaseCallFail(final DatabaseCallTask task, final Exception exception) {
+		runTaskCallback(new Runnable() {
+			public void run() {
+				if (mRootView == null) return; // view was destroyed
 
-				if(task.getQuery().getClass().equals(ProductCreateQuery.class))
-				{
+				if (task.getQuery().getClass().equals(ProductCreateQuery.class)) {
 					Logcat.d("ProductCreateQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
-				}
-				else if(task.getQuery().getClass().equals(ProductReadQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductReadQuery.class)) {
 					Logcat.d("ProductReadQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
-				}
-				else if(task.getQuery().getClass().equals(ProductReadFirstQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductReadFirstQuery.class)) {
 					Logcat.d("ProductReadFirstQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
-				}
-				else if(task.getQuery().getClass().equals(ProductReadAllQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductReadAllQuery.class)) {
 					Logcat.d("ProductReadAllQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
-				}
-				else if(task.getQuery().getClass().equals(ProductUpdateQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductUpdateQuery.class)) {
 					Logcat.d("ProductUpdateQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
-				}
-				else if(task.getQuery().getClass().equals(ProductDeleteQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductDeleteQuery.class)) {
 					Logcat.d("ProductDeleteQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
-				}
-				else if(task.getQuery().getClass().equals(ProductDeleteAllQuery.class))
-				{
+				} else if (task.getQuery().getClass().equals(ProductDeleteAllQuery.class)) {
 					Logcat.d("ProductDeleteAllQuery / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 				}
 
@@ -179,14 +139,12 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 				mDatabaseCallManager.finishTask(task);
 
 				// hide progress popup
-				if(mDatabaseCallManager.getTasksCount() == 0) showProgress(false);
+				if (mDatabaseCallManager.getTasksCount() == 0) showProgress(false);
 			}
 		});
 	}
 
-
-	private void createProduct(ProductEntity product)
-	{
+	private void createProduct(ProductEntity product) {
 		// show progress popup
 		showProgress(true);
 
@@ -195,9 +153,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
-
-	private void readProduct(long id)
-	{
+	private void readProduct(long id) {
 		// show progress popup
 		showProgress(true);
 
@@ -206,9 +162,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
-
-	private void readFirstProduct()
-	{
+	private void readFirstProduct() {
 		// show progress popup
 		showProgress(true);
 
@@ -217,9 +171,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
-
-	private void readAllProducts()
-	{
+	private void readAllProducts() {
 		// show progress popup
 		showProgress(true);
 
@@ -228,9 +180,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
-
-	private void updateProduct(ProductEntity product)
-	{
+	private void updateProduct(ProductEntity product) {
 		// show progress popup
 		showProgress(true);
 
@@ -239,9 +189,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
-
-	private void deleteProduct(long id)
-	{
+	private void deleteProduct(long id) {
 		// show progress popup
 		showProgress(true);
 
@@ -250,9 +198,7 @@ public class ExampleFragment extends TaskFragment implements DatabaseCallListene
 		mDatabaseCallManager.executeTask(query, this);
 	}
 
-
-	private void deleteAllProducts()
-	{
+	private void deleteAllProducts() {
 		// show progress popup
 		showProgress(true);
 

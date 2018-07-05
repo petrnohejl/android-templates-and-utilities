@@ -1,24 +1,16 @@
 package com.example.database.data;
 
-
-public class Data<T>
-{
+public class Data<T> {
 	private T mDataObject;
 
-
-	public Data()
-	{
+	public Data() {
 	}
 
-
-	public T getDataObject()
-	{
+	public T getDataObject() {
 		return mDataObject;
 	}
 
-
-	public void setDataObject(T dataObject)
-	{
+	public void setDataObject(T dataObject) {
 		mDataObject = dataObject;
 	}
 }

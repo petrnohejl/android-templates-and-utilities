@@ -7,14 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.R;
 
-
-public class SimpleActivity extends AppCompatActivity
-{
+public class SimpleActivity extends AppCompatActivity {
 	public static final String EXTRA_PRODUCT_ID = "product_id";
 
-
-	public static Intent newIntent(Context context, int productId)
-	{
+	public static Intent newIntent(Context context, int productId) {
 		Intent intent = new Intent(context, SimpleActivity.class);
 
 		// extras
@@ -23,15 +19,12 @@ public class SimpleActivity extends AppCompatActivity
 		return intent;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// if activity has dual pane layout, we don't need this activity
-		if(getResources().getBoolean(R.bool.dual_pane))
-		{
+		if (getResources().getBoolean(R.bool.dual_pane)) {
 			finish();
 			return;
 		}

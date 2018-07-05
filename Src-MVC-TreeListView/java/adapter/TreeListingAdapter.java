@@ -20,24 +20,18 @@ import pl.polidea.treeview.AbstractTreeViewAdapter;
 import pl.polidea.treeview.TreeNodeInfo;
 import pl.polidea.treeview.TreeStateManager;
 
-
-public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
-{
+public class TreeListingAdapter extends AbstractTreeViewAdapter<Long> {
 	private List<ProductEntity> mProductList;
 	private Set<Long> mSelectedSet;
 
-
-	public TreeListingAdapter(Activity activity, List<ProductEntity> productList, Set<Long> selectedSet, TreeStateManager<Long> treeStateManager, int treeviewDepth)
-	{
+	public TreeListingAdapter(Activity activity, List<ProductEntity> productList, Set<Long> selectedSet, TreeStateManager<Long> treeStateManager, int treeviewDepth) {
 		super(activity, treeStateManager, treeviewDepth);
 		mProductList = productList;
 		mSelectedSet = selectedSet;
 	}
 
-
 	@Override
-	public LinearLayout updateView(View view, TreeNodeInfo<Long> treeNodeInfo)
-	{
+	public LinearLayout updateView(View view, TreeNodeInfo<Long> treeNodeInfo) {
 		// reference
 		TextView nameTextView = view.findViewById(R.id.tree_listing_item_name);
 		CheckBox checkBox = view.findViewById(R.id.tree_listing_item_checkbox);
@@ -51,24 +45,19 @@ public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 
 		// checkbox listener
 		checkBox.setTag(treeNodeInfo.getId());
-		checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-		{
+		checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-			{
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				Long id = (Long) buttonView.getTag();
-				if(isChecked) mSelectedSet.add(id);
+				if (isChecked) mSelectedSet.add(id);
 				else mSelectedSet.remove(id);
 			}
 		});
 
 		// checkbox visibility
-		if(treeNodeInfo.isWithChildren())
-		{
+		if (treeNodeInfo.isWithChildren()) {
 			checkBox.setVisibility(View.GONE);
-		}
-		else
-		{
+		} else {
 			checkBox.setVisibility(View.VISIBLE);
 			checkBox.setChecked(mSelectedSet.contains(treeNodeInfo.getId()));
 		}
@@ -76,47 +65,34 @@ public class TreeListingAdapter extends AbstractTreeViewAdapter<Long>
 		return (LinearLayout) view;
 	}
 
-
 	@Override
-	public View getNewChildView(TreeNodeInfo<Long> treeNodeInfo)
-	{
+	public View getNewChildView(TreeNodeInfo<Long> treeNodeInfo) {
 		LinearLayout viewLayout = (LinearLayout) getActivity().getLayoutInflater().inflate(R.layout.fragment_tree_listing_item, null);
 		return updateView(viewLayout, treeNodeInfo);
 	}
 
-
 	@Override
-	public Drawable getBackgroundDrawable(TreeNodeInfo<Long> treeNodeInfo)
-	{
+	public Drawable getBackgroundDrawable(TreeNodeInfo<Long> treeNodeInfo) {
 		return ContextCompat.getDrawable(getActivity(), R.drawable.selector_selectable_item_bg);
 	}
 
-
 	@Override
-	public void handleItemClick(View view, Object id)
-	{
+	public void handleItemClick(View view, Object id) {
 		TreeNodeInfo<Long> treeNodeInfo = getManager().getNodeInfo((Long) id);
-		if(treeNodeInfo.isWithChildren())
-		{
+		if (treeNodeInfo.isWithChildren()) {
 			super.handleItemClick(view, id);
-		}
-		else
-		{
+		} else {
 			CheckBox checkBox = view.findViewById(R.id.tree_listing_item_checkbox);
 			checkBox.performClick();
 		}
 	}
 
-
 	@Override
-	public long getItemId(int position)
-	{
+	public long getItemId(int position) {
 		return getTreeId(position);
 	}
 
-
-	public void stop()
-	{
+	public void stop() {
 		// TODO: stop image loader
 	}
 }

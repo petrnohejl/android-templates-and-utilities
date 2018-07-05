@@ -12,38 +12,27 @@ import com.nostra13.universalimageloader.core.assist.LoadedFrom;
 import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 
-
-public class FadeInBitmapDisplayer implements BitmapDisplayer
-{
+public class FadeInBitmapDisplayer implements BitmapDisplayer {
 	private int mDurationMillis;
 
-
-	public FadeInBitmapDisplayer(int durationMillis)
-	{
+	public FadeInBitmapDisplayer(int durationMillis) {
 		mDurationMillis = durationMillis;
 	}
 
-
 	@Override
-	public void display(Bitmap bitmap, ImageAware imageAware, LoadedFrom loadedFrom)
-	{
+	public void display(Bitmap bitmap, ImageAware imageAware, LoadedFrom loadedFrom) {
 		setImageBitmapWithFade(bitmap, imageAware.getWrappedView());
 	}
 
-
-	private void setImageBitmapWithFade(final Bitmap bitmap, final View view)
-	{
+	private void setImageBitmapWithFade(final Bitmap bitmap, final View view) {
 		Resources resources = view.getResources();
 		BitmapDrawable bitmapDrawable = new BitmapDrawable(resources, bitmap);
 		setImageDrawableWithFade(bitmapDrawable, (ImageView) view);
 	}
 
-
-	private void setImageDrawableWithFade(final Drawable drawable, final ImageView imageView)
-	{
+	private void setImageDrawableWithFade(final Drawable drawable, final ImageView imageView) {
 		Drawable currentDrawable = imageView.getDrawable();
-		if(currentDrawable != null)
-		{
+		if (currentDrawable != null) {
 			Drawable[] drawableArray = new Drawable[2];
 			drawableArray[0] = currentDrawable;
 			drawableArray[1] = drawable;
@@ -51,9 +40,7 @@ public class FadeInBitmapDisplayer implements BitmapDisplayer
 			transitionDrawable.setCrossFadeEnabled(true);
 			imageView.setImageDrawable(transitionDrawable);
 			transitionDrawable.startTransition(mDurationMillis);
-		}
-		else
-		{
+		} else {
 			imageView.setImageDrawable(drawable);
 		}
 	}

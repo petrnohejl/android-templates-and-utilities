@@ -11,37 +11,27 @@ import android.widget.Button;
 
 import com.example.R;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// reference
 		Button exampleButton = mRootView.findViewById(R.id.example_button);
 
 		// popup menu
-		exampleButton.setOnClickListener(new View.OnClickListener()
-		{
+		exampleButton.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View view)
-			{
+			public void onClick(View view) {
 				PopupMenu popup = new PopupMenu(getActivity(), view);
 				popup.getMenuInflater().inflate(R.menu.fragment_example, popup.getMenu());
-				popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
-				{
-					public boolean onMenuItemClick(MenuItem item)
-					{
+				popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+					public boolean onMenuItemClick(MenuItem item) {
 						// TODO
 
 						return true;

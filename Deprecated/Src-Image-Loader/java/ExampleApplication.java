@@ -14,35 +14,26 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 import java.io.File;
 import java.io.IOException;
 
-
-public class ExampleApplication extends Application
-{
+public class ExampleApplication extends Application {
 	private static ExampleApplication sInstance;
 
-
-	public ExampleApplication()
-	{
+	public ExampleApplication() {
 		sInstance = this;
 	}
 
-
-	public static Context getContext()
-	{
+	public static Context getContext() {
 		return sInstance;
 	}
 
-
 	@Override
-	public void onCreate()
-	{
+	public void onCreate() {
 		super.onCreate();
 
 		// init image caching
 		File cacheDir = StorageUtils.getCacheDirectory(getApplicationContext());
 		cacheDir.mkdirs(); // requires android.permission.WRITE_EXTERNAL_STORAGE
 
-		try
-		{
+		try {
 			ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
 					.threadPoolSize(3)
 					.threadPriority(Thread.NORM_PRIORITY - 2)
@@ -52,9 +43,7 @@ public class ExampleApplication extends Application
 					.build();
 
 			ImageLoader.getInstance().init(config);
-		}
-		catch(IOException e)
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

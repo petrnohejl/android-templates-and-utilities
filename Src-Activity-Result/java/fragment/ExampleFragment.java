@@ -14,41 +14,29 @@ import com.example.activity.PickerActivity;
 
 import org.alfonz.utility.Logcat;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_simple, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if(requestCode == ExampleActivity.REQUEST_PICK_ITEM)
-		{
-			if(resultCode == Activity.RESULT_OK)
-			{
+		if (requestCode == ExampleActivity.REQUEST_PICK_ITEM) {
+			if (resultCode == Activity.RESULT_OK) {
 				Logcat.d("ok");
-			}
-			else if(resultCode == Activity.RESULT_CANCELED)
-			{
+			} else if (resultCode == Activity.RESULT_CANCELED) {
 				Logcat.d("canceled");
 			}
 		}
 	}
 
-
-	private void startPickerActivity()
-	{
+	private void startPickerActivity() {
 		Intent intent = PickerActivity.newIntent(getActivity());
 		startActivityForResult(intent, ExampleActivity.REQUEST_PICK_ITEM);
 	}

@@ -16,7 +16,6 @@ import com.example.fragment.ExampleFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener // TODO: use FragmentPagerAdapter or FragmentStatePagerAdapter
 {
 	private final Context mContext;
@@ -24,9 +23,7 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 	private final ViewPager mViewPager;
 	private final List<TabInfo> mTabList = new ArrayList<>();
 
-
-	public TabHostFragmentPagerAdapter(FragmentActivity activity, TabHost tabHost, ViewPager viewPager)
-	{
+	public TabHostFragmentPagerAdapter(FragmentActivity activity, TabHost tabHost, ViewPager viewPager) {
 		super(activity.getSupportFragmentManager());
 		mContext = activity;
 		mTabHost = tabHost;
@@ -36,47 +33,35 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		mViewPager.addOnPageChangeListener(this);
 	}
 
-
-	public static String getFragmentTag(int viewPagerId, int position)
-	{
+	public static String getFragmentTag(int viewPagerId, int position) {
 		return "android:switcher:" + viewPagerId + ":" + position;
 	}
 
-
 	@Override
-	public int getCount()
-	{
+	public int getCount() {
 		return mTabList.size();
 	}
 
-
 	@Override
-	public Fragment getItem(int position)
-	{
+	public Fragment getItem(int position) {
 		//TabInfo info = mTabList.get(position);
 		//return Fragment.instantiate(mContext, info.clss.getName(), info.args);
 		return ExampleFragment.newInstance(Integer.toString(position)); // TODO
 	}
 
-
 	@Override
-	public CharSequence getPageTitle(int position)
-	{
+	public CharSequence getPageTitle(int position) {
 		return "Fragment " + position;
 	}
 
-
 	@Override
-	public void onTabChanged(String tabId)
-	{
+	public void onTabChanged(String tabId) {
 		int position = mTabHost.getCurrentTab();
 		mViewPager.setCurrentItem(position);
 	}
 
-
 	@Override
-	public void onPageSelected(int position)
-	{
+	public void onPageSelected(int position) {
 		// this hack tries to prevent this from pulling focus out of our ViewPager
 		TabWidget widget = mTabHost.getTabWidget();
 		int oldFocusability = widget.getDescendantFocusability();
@@ -85,21 +70,15 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		widget.setDescendantFocusability(oldFocusability);
 	}
 
-
 	@Override
-	public void onPageScrollStateChanged(int state)
-	{
+	public void onPageScrollStateChanged(int state) {
 	}
 
-
 	@Override
-	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
-	{
+	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 	}
 
-
-	public void addTab(TabHost.TabSpec tabSpec, Class<?> clss, Bundle args)
-	{
+	public void addTab(TabHost.TabSpec tabSpec, Class<?> clss, Bundle args) {
 		tabSpec.setContent(new DummyTabFactory(mContext));
 		String tag = tabSpec.getTag();
 		TabInfo info = new TabInfo(tag, clss, args);
@@ -108,43 +87,31 @@ public class TabHostFragmentPagerAdapter extends FragmentPagerAdapter implements
 		notifyDataSetChanged();
 	}
 
-
-	public void refill()
-	{
+	public void refill() {
 		notifyDataSetChanged();
 	}
 
-
-	public static final class TabInfo
-	{
+	public static final class TabInfo {
 		private final String mTag;
 		private final Class<?> mClss;
 		private final Bundle mArgs;
 
-
-		TabInfo(String tag, Class<?> clss, Bundle args)
-		{
+		TabInfo(String tag, Class<?> clss, Bundle args) {
 			mTag = tag;
 			mClss = clss;
 			mArgs = args;
 		}
 	}
 
-
-	public static class DummyTabFactory implements TabHost.TabContentFactory
-	{
+	public static class DummyTabFactory implements TabHost.TabContentFactory {
 		private final Context mContext;
 
-
-		public DummyTabFactory(Context context)
-		{
+		public DummyTabFactory(Context context) {
 			mContext = context;
 		}
 
-
 		@Override
-		public View createTabContent(String tag)
-		{
+		public View createTabContent(String tag) {
 			View v = new View(mContext);
 			v.setMinimumWidth(0);
 			v.setMinimumHeight(0);

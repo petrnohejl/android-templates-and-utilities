@@ -5,25 +5,19 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.example.entity.ProductEntity;
 
-
 @Table(name = "Products")
-public class ProductModel extends Model
-{
+public class ProductModel extends Model {
 	@Column(name = "Name") public String name;
 	@Column(name = "Quantity") public int quantity;
 	@Column(name = "Timestamp") public long timestamp;
 	@Column(name = "Price") public double price;
 
-
 	// empty constructor
-	public ProductModel()
-	{
+	public ProductModel() {
 		super();
 	}
 
-
-	public ProductEntity toEntity()
-	{
+	public ProductEntity toEntity() {
 		ProductEntity e = new ProductEntity();
 		e.setId(getId());
 		e.setName(name);
@@ -33,9 +27,7 @@ public class ProductModel extends Model
 		return e;
 	}
 
-
-	public void set(ProductEntity e)
-	{
+	public void set(ProductEntity e) {
 		name = e.getName();
 		quantity = e.getQuantity();
 		timestamp = e.getTimestamp();

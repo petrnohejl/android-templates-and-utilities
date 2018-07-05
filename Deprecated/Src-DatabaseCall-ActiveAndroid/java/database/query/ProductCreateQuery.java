@@ -4,21 +4,15 @@ import com.example.database.dao.ProductDAO;
 import com.example.database.data.Data;
 import com.example.entity.ProductEntity;
 
-
-public class ProductCreateQuery extends Query
-{
+public class ProductCreateQuery extends Query {
 	private ProductEntity mProduct;
 
-
-	public ProductCreateQuery(ProductEntity product)
-	{
+	public ProductCreateQuery(ProductEntity product) {
 		mProduct = product;
 	}
 
-
 	@Override
-	public Data<Long> processData()
-	{
+	public Data<Long> processData() {
 		ProductDAO dao = new ProductDAO();
 		long id = dao.create(mProduct);
 

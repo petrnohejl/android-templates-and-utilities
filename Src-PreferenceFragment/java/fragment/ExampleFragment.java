@@ -19,20 +19,15 @@ import android.widget.LinearLayout;
 import com.example.R;
 import com.example.utility.Preferences;
 
-
-public class ExampleFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
-{
+public class ExampleFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.prefs);
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// register listener
@@ -42,41 +37,32 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 		setupView();
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		super.onDestroy();
 
 		// unregister listener
 		PreferenceManager.getDefaultSharedPreferences(getActivity()).unregisterOnSharedPreferenceChangeListener(this);
 	}
 
-
 	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
-	{
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		setupView();
 	}
 
-
 	@Override
-	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference)
-	{
+	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 		super.onPreferenceTreeClick(preferenceScreen, preference);
 
 		// if the user has clicked on a preference screen, setup the action bar
-		if(preference instanceof PreferenceScreen)
-		{
+		if (preference instanceof PreferenceScreen) {
 			setupActionBar((PreferenceScreen) preference);
 		}
 
 		return false;
 	}
 
-
-	private void setupActionBar(PreferenceScreen preferenceScreen)
-	{
+	private void setupActionBar(PreferenceScreen preferenceScreen) {
 		final Dialog dialog = preferenceScreen.getDialog();
 		LinearLayout root = dialog.findViewById(android.R.id.list).getParent();
 		Toolbar toolbar = (Toolbar) LayoutInflater.from(getActivity()).inflate(R.layout.toolbar, root, false);
@@ -88,19 +74,15 @@ public class ExampleFragment extends PreferenceFragment implements SharedPrefere
 
 		toolbar.setTitle(preferenceScreen.getTitle());
 		toolbar.setNavigationIcon(drawable);
-		toolbar.setNavigationOnClickListener(new View.OnClickListener()
-		{
+		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				dialog.dismiss();
 			}
 		});
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// references
 		PreferenceScreen rootPreferenceScreen = getPreferenceScreen();
 		EditTextPreference displayNameEditTextPreference = (EditTextPreference) findPreference(getString(R.string.prefs_key_display_name));

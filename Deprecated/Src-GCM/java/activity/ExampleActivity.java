@@ -14,17 +14,13 @@ import org.alfonz.utility.Logcat;
 
 import java.io.IOException;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
+public class ExampleActivity extends AppCompatActivity {
 	private GoogleCloudMessaging mGcm;
 	private String mGcmRegistrationId;
 	private AsyncTask<Void, Void, Void> mGcmRegisterAsyncTask;
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 
@@ -32,79 +28,60 @@ public class ExampleActivity extends AppCompatActivity
 		handleGcmRegistration();
 	}
 
-
 	@Override
-	public void onResume()
-	{
+	public void onResume() {
 		super.onResume();
 
 		// check Google Play Services
 		GcmUtility.checkPlayServices(this);
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		// cancel async tasks
-		if(mGcmRegisterAsyncTask != null) mGcmRegisterAsyncTask.cancel(true);
+		if (mGcmRegisterAsyncTask != null) mGcmRegisterAsyncTask.cancel(true);
 
 		super.onDestroy();
 	}
 
-
-	private void handleGcmRegistration()
-	{
+	private void handleGcmRegistration() {
 		final Context context = getApplicationContext();
 
 		// check device for Play Services APK
-		if(GcmUtility.checkPlayServices(this))
-		{
+		if (GcmUtility.checkPlayServices(this)) {
 			// registration id
 			mGcm = GoogleCloudMessaging.getInstance(this);
 			mGcmRegistrationId = GcmUtility.getRegistrationId(context);
 
 			// register device
-			if(mGcmRegistrationId.isEmpty())
-			{
-				mGcmRegisterAsyncTask = new AsyncTask<Void, Void, Void>()
-				{
+			if (mGcmRegistrationId.isEmpty()) {
+				mGcmRegisterAsyncTask = new AsyncTask<Void, Void, Void>() {
 					@Override
-					protected Void doInBackground(Void... params)
-					{
-						try
-						{
+					protected Void doInBackground(Void... params) {
+						try {
 							// register on GCM server
-							if(mGcm == null) mGcm = GoogleCloudMessaging.getInstance(context);
+							if (mGcm == null) mGcm = GoogleCloudMessaging.getInstance(context);
 							mGcmRegistrationId = mGcm.register(ExampleConfig.GCM_SENDER_ID);
 
 							// GcmUtility.register() must be called after successfull GoogleCloudMessaging.register(),
 							// because it sets registration id in shared preferences
 							GcmUtility.register(context, mGcmRegistrationId);
-						}
-						catch(IOException e)
-						{
+						} catch (IOException e) {
 							e.printStackTrace();
 						}
 						return null;
 					}
 
-
 					@Override
-					protected void onPostExecute(Void result)
-					{
+					protected void onPostExecute(Void result) {
 						mGcmRegisterAsyncTask = null;
 					}
 				};
 				mGcmRegisterAsyncTask.execute(null, null, null);
-			}
-			else
-			{
+			} else {
 				Logcat.d("device is already registered on server with id = %s", mGcmRegistrationId);
 			}
-		}
-		else
-		{
+		} else {
 			Logcat.d("no valid Google Play Services APK found");
 		}
 	}

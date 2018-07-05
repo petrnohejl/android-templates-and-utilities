@@ -13,24 +13,18 @@ import android.view.ViewGroup;
 
 import com.example.R;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 	private MenuItem mRefreshMenuItem;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-	{
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		// action bar menu
 		super.onCreateOptionsMenu(menu, inflater);
 
@@ -43,13 +37,10 @@ public class ExampleFragment extends Fragment
 		showProgress(isProgress());
 	}
 
-
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// action bar menu behavior
-		switch(item.getItemId())
-		{
+		switch (item.getItemId()) {
 			// TODO
 
 			case R.id.menu_example_refresh:
@@ -61,20 +52,14 @@ public class ExampleFragment extends Fragment
 		}
 	}
 
-
-	private void showProgress(boolean visible)
-	{
+	private void showProgress(boolean visible) {
 		// show action view progress
-		if(mRefreshMenuItem != null)
-		{
-			if(visible)
-			{
+		if (mRefreshMenuItem != null) {
+			if (visible) {
 				LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				View view = inflater.inflate(R.layout.ab_action_refresh, null);
 				MenuItemCompat.setActionView(mRefreshMenuItem, view);
-			}
-			else
-			{
+			} else {
 				MenuItemCompat.setActionView(mRefreshMenuItem, null);
 			}
 		}
@@ -82,22 +67,16 @@ public class ExampleFragment extends Fragment
 		setProgress(visible);
 	}
 
-
-	private void refreshData()
-	{
+	private void refreshData() {
 		// TODO
 	}
 
-
-	private boolean isProgress()
-	{
+	private boolean isProgress() {
 		// TODO
 		return false;
 	}
 
-
-	private void setProgress(boolean progress)
-	{
+	private void setProgress(boolean progress) {
 		// TODO
 	}
 }

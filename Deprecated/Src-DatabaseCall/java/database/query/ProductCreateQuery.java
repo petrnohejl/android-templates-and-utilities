@@ -6,21 +6,15 @@ import com.example.database.model.ProductModel;
 
 import java.sql.SQLException;
 
-
-public class ProductCreateQuery extends Query
-{
+public class ProductCreateQuery extends Query {
 	private ProductModel mProduct;
 
-
-	public ProductCreateQuery(ProductModel product)
-	{
+	public ProductCreateQuery(ProductModel product) {
 		mProduct = product;
 	}
 
-
 	@Override
-	public Data<Integer> processData() throws SQLException
-	{
+	public Data<Integer> processData() throws SQLException {
 		Data<Integer> data = new Data<>();
 		data.setDataObject(ProductDAO.create(mProduct));
 		return data;

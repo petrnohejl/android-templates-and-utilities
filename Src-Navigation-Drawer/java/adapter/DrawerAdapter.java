@@ -10,28 +10,21 @@ import android.widget.TextView;
 
 import com.example.R;
 
-
-public class DrawerAdapter extends BaseAdapter
-{
+public class DrawerAdapter extends BaseAdapter {
 	private Context mContext;
 	private String[] mTitleList;
 	private Integer[] mIconList;
 
-
-	public DrawerAdapter(Context context, String[] titleList, Integer[] iconList)
-	{
+	public DrawerAdapter(Context context, String[] titleList, Integer[] iconList) {
 		mContext = context;
 		mTitleList = titleList;
 		mIconList = iconList;
 	}
 
-
 	@Override
-	public View getView(final int position, View convertView, ViewGroup parent)
-	{
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		// inflate view
-		if(convertView == null)
-		{
+		if (convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.drawer_item, parent, false);
 
@@ -45,8 +38,7 @@ public class DrawerAdapter extends BaseAdapter
 		// entity
 		String title = mTitleList[position];
 		Integer icon = mIconList[position];
-		if(title != null && icon != null)
-		{
+		if (title != null && icon != null) {
 			// view holder
 			ViewHolder holder = (ViewHolder) convertView.getTag();
 
@@ -58,41 +50,31 @@ public class DrawerAdapter extends BaseAdapter
 		return convertView;
 	}
 
-
 	@Override
-	public int getCount()
-	{
-		if(mTitleList != null) return mTitleList.length;
+	public int getCount() {
+		if (mTitleList != null) return mTitleList.length;
 		else return 0;
 	}
 
-
 	@Override
-	public Object getItem(int position)
-	{
-		if(mTitleList != null) return mTitleList[position];
+	public Object getItem(int position) {
+		if (mTitleList != null) return mTitleList[position];
 		else return null;
 	}
 
-
 	@Override
-	public long getItemId(int position)
-	{
+	public long getItemId(int position) {
 		return position;
 	}
 
-
-	public void refill(Context context, String[] titleList, Integer[] iconList)
-	{
+	public void refill(Context context, String[] titleList, Integer[] iconList) {
 		mContext = context;
 		mTitleList = titleList;
 		mIconList = iconList;
 		notifyDataSetChanged();
 	}
 
-
-	static class ViewHolder
-	{
+	static class ViewHolder {
 		TextView titleTextView;
 		ImageView iconImageView;
 	}

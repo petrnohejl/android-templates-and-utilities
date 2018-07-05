@@ -20,26 +20,20 @@ import android.widget.Toast;
 import com.example.R;
 import com.example.adapter.SearchSuggestionAdapter;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
+public class ExampleActivity extends AppCompatActivity {
 	private final String[] SEARCH_SUGGESTION_CURSOR_COLUMNS = {BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1, SearchManager.SUGGEST_COLUMN_TEXT_2};
 
 	private SearchView mSearchView;
 	private SearchSuggestionAdapter mSearchSuggestionAdapter;
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 	}
 
-
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
+	public boolean onCreateOptionsMenu(Menu menu) {
 		// action bar menu
 		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.activity_example, menu);
@@ -57,9 +51,7 @@ public class ExampleActivity extends AppCompatActivity
 		return super.onCreateOptionsMenu(menu);
 	}
 
-
-	private void setupSearchView(SearchView searchView)
-	{
+	private void setupSearchView(SearchView searchView) {
 		// search hint
 		searchView.setQueryHint(getString(R.string.menu_example_search_hint));
 
@@ -69,40 +61,31 @@ public class ExampleActivity extends AppCompatActivity
 		searchText.setHintTextColor(ContextCompat.getColor(this, R.color.global_text_secondary_inverse));
 
 		// suggestion listeners
-		searchView.setOnQueryTextListener(new OnQueryTextListener()
-		{
+		searchView.setOnQueryTextListener(new OnQueryTextListener() {
 			@Override
-			public boolean onQueryTextSubmit(String query)
-			{
+			public boolean onQueryTextSubmit(String query) {
 				// TODO
 				Toast.makeText(ExampleActivity.this, "search: " + query, Toast.LENGTH_SHORT).show();
 
 				return true;
 			}
 
-
 			@Override
-			public boolean onQueryTextChange(String query)
-			{
-				if(query.length() > 2)
-				{
+			public boolean onQueryTextChange(String query) {
+				if (query.length() > 2) {
 					updateSearchSuggestion(query);
 				}
 				return true;
 			}
 		});
-		searchView.setOnSuggestionListener(new OnSuggestionListener()
-		{
+		searchView.setOnSuggestionListener(new OnSuggestionListener() {
 			@Override
-			public boolean onSuggestionSelect(int position)
-			{
+			public boolean onSuggestionSelect(int position) {
 				return false;
 			}
 
-
 			@Override
-			public boolean onSuggestionClick(int position)
-			{
+			public boolean onSuggestionClick(int position) {
 				Cursor cursor = (Cursor) mSearchSuggestionAdapter.getItem(position);
 				String title = cursor.getString(cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1));
 				String subtitle = cursor.getString(cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_2));
@@ -115,9 +98,7 @@ public class ExampleActivity extends AppCompatActivity
 		});
 	}
 
-
-	private void updateSearchSuggestion(String query)
-	{
+	private void updateSearchSuggestion(String query) {
 		// cursor
 		// TODO
 		MatrixCursor cursor = new MatrixCursor(SEARCH_SUGGESTION_CURSOR_COLUMNS);
@@ -126,16 +107,13 @@ public class ExampleActivity extends AppCompatActivity
 		cursor.addRow(new String[]{"3", query + "rap", "Dolor"});
 
 		// searchview content
-		if(mSearchSuggestionAdapter == null)
-		{
+		if (mSearchSuggestionAdapter == null) {
 			// create adapter
 			mSearchSuggestionAdapter = new SearchSuggestionAdapter(this, cursor);
 
 			// set adapter
 			mSearchView.setSuggestionsAdapter(mSearchSuggestionAdapter);
-		}
-		else
-		{
+		} else {
 			// refill adapter
 			mSearchSuggestionAdapter.refill(this, cursor);
 

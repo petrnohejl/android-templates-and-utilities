@@ -6,12 +6,9 @@ import android.content.Intent;
 
 import org.alfonz.utility.Logcat;
 
-
-public class BootCompletedReceiver extends BroadcastReceiver
-{
+public class BootCompletedReceiver extends BroadcastReceiver {
 	@Override
-	public void onReceive(Context context, Intent intent)
-	{
+	public void onReceive(Context context, Intent intent) {
 		Logcat.d("");
 
 		// TODO: do something

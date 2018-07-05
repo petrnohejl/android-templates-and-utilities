@@ -10,41 +10,31 @@ import android.view.MenuItem;
 
 import com.example.R;
 
-
-public class TransitionFirstActivity extends AppCompatActivity
-{
-	public static Intent newIntent(Context context)
-	{
+public class TransitionFirstActivity extends AppCompatActivity {
+	public static Intent newIntent(Context context) {
 		Intent intent = new Intent(context, TransitionFirstActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		return intent;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_transition_first);
 	}
 
-
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
+	public boolean onCreateOptionsMenu(Menu menu) {
 		// action bar menu
 		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.activity_transition_first, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
-
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// action bar menu behavior
-		switch(item.getItemId())
-		{
+		switch (item.getItemId()) {
 			case R.id.menu_transition_first_second:
 				Intent intent = TransitionSecondActivity.newIntent(this);
 				startActivity(intent);

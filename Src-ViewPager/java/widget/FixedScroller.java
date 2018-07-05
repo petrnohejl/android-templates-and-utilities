@@ -8,35 +8,24 @@ import android.widget.Scroller;
 
 import java.lang.reflect.Field;
 
-
 // source: http://stackoverflow.com/questions/8155257/slowing-speed-of-viewpager-controller-in-android/
-public class FixedScroller extends Scroller
-{
+public class FixedScroller extends Scroller {
 	private int mFixedDuration = 100;
 
-
-	public FixedScroller(Context context)
-	{
+	public FixedScroller(Context context) {
 		super(context);
 	}
 
-
-	public FixedScroller(Context context, Interpolator interpolator)
-	{
+	public FixedScroller(Context context, Interpolator interpolator) {
 		super(context, interpolator);
 	}
 
-
-	public FixedScroller(Context context, Interpolator interpolator, boolean flywheel)
-	{
+	public FixedScroller(Context context, Interpolator interpolator, boolean flywheel) {
 		super(context, interpolator, flywheel);
 	}
 
-
-	public static void setViewPagerDuration(ViewPager viewPager, int duration)
-	{
-		try
-		{
+	public static void setViewPagerDuration(ViewPager viewPager, int duration) {
+		try {
 			Field field = ViewPager.class.getDeclaredField("mScroller");
 			field.setAccessible(true);
 
@@ -44,43 +33,29 @@ public class FixedScroller extends Scroller
 			fixedScroller.setFixedDuration(duration);
 
 			field.set(viewPager, fixedScroller);
-		}
-		catch(NoSuchFieldException e)
-		{
-		}
-		catch(IllegalArgumentException e)
-		{
-		}
-		catch(IllegalAccessException e)
-		{
+		} catch (NoSuchFieldException e) {
+		} catch (IllegalArgumentException e) {
+		} catch (IllegalAccessException e) {
 		}
 	}
 
-
 	@Override
-	public void startScroll(int startX, int startY, int dx, int dy, int duration)
-	{
+	public void startScroll(int startX, int startY, int dx, int dy, int duration) {
 		// Ignore received duration, use fixed one instead
 		super.startScroll(startX, startY, dx, dy, mFixedDuration);
 	}
 
-
 	@Override
-	public void startScroll(int startX, int startY, int dx, int dy)
-	{
+	public void startScroll(int startX, int startY, int dx, int dy) {
 		// Ignore received duration, use fixed one instead
 		super.startScroll(startX, startY, dx, dy, mFixedDuration);
 	}
 
-
-	public int getFixedDuration()
-	{
+	public int getFixedDuration() {
 		return mFixedDuration;
 	}
 
-
-	public void setFixedDuration(int duration)
-	{
+	public void setFixedDuration(int duration) {
 		mFixedDuration = duration;
 	}
 }

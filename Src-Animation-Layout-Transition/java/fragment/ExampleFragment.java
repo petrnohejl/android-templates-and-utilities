@@ -9,25 +9,18 @@ import android.view.ViewGroup;
 
 import com.example.R;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
-	private void setupLayoutTransition(ViewGroup layout)
-	{
+	private void setupLayoutTransition(ViewGroup layout) {
 		LayoutTransition transition = layout.getLayoutTransition();
-		if(transition == null)
-		{
+		if (transition == null) {
 			transition = new LayoutTransition();
 			layout.setLayoutTransition(transition);
 		}

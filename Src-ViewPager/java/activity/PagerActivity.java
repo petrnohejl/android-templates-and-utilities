@@ -7,34 +7,25 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.R;
 import com.example.adapter.PagerFragmentPagerAdapter;
 
-
-public class PagerActivity extends AppCompatActivity
-{
+public class PagerActivity extends AppCompatActivity {
 	private PagerFragmentPagerAdapter mAdapter;
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pager);
 		setupView();
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// reference
 		ViewPager viewPager = findViewById(R.id.pager_pager);
 
 		// pager content
-		if(mAdapter == null)
-		{
+		if (mAdapter == null) {
 			// create adapter
 			mAdapter = new PagerFragmentPagerAdapter(getSupportFragmentManager());
-		}
-		else
-		{
+		} else {
 			// refill adapter
 			mAdapter.refill();
 		}

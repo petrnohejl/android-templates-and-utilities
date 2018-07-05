@@ -13,9 +13,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
-public class Geolocation implements LocationListener
-{
+public class Geolocation implements LocationListener {
 	private static final int LOCATION_AGE = 60000 * 30; // milliseconds
 	private static final int LOCATION_TIMEOUT = 30000; // milliseconds
 
@@ -24,25 +22,20 @@ public class Geolocation implements LocationListener
 	private Location mCurrentLocation;
 	private Timer mTimer;
 
-
-	public Geolocation(LocationManager locationManager, GeolocationListener listener)
-	{
+	public Geolocation(LocationManager locationManager, GeolocationListener listener) {
 		mLocationManager = locationManager; // (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE); 
 		mListener = new WeakReference<>(listener);
 		mTimer = new Timer();
 		init();
 	}
 
-
 	@Override
-	public void onLocationChanged(Location location)
-	{
+	public void onLocationChanged(Location location) {
 		Logcat.d(location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
 
 		// check location age
 		long timeDelta = System.currentTimeMillis() - location.getTime();
-		if(timeDelta > LOCATION_AGE)
-		{
+		if (timeDelta > LOCATION_AGE) {
 			Logcat.d("gotten location is too old");
 			// gotten location is too old
 			return;
@@ -52,30 +45,23 @@ public class Geolocation implements LocationListener
 		mCurrentLocation = new Location(location);
 		stop();
 		GeolocationListener listener = mListener.get();
-		if(listener != null && location != null) listener.onGeolocationRespond(Geolocation.this, mCurrentLocation);
+		if (listener != null && location != null) listener.onGeolocationRespond(Geolocation.this, mCurrentLocation);
 	}
 
-
 	@Override
-	public void onProviderDisabled(String provider)
-	{
+	public void onProviderDisabled(String provider) {
 		Logcat.d(provider);
 	}
 
-
 	@Override
-	public void onProviderEnabled(String provider)
-	{
+	public void onProviderEnabled(String provider) {
 		Logcat.d(provider);
 	}
 
-
 	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras)
-	{
+	public void onStatusChanged(String provider, int status, Bundle extras) {
 		Logcat.d(provider);
-		switch(status)
-		{
+		switch (status) {
 			case LocationProvider.OUT_OF_SERVICE:
 				Logcat.d("status OUT_OF_SERVICE");
 				break;
@@ -88,72 +74,54 @@ public class Geolocation implements LocationListener
 		}
 	}
 
-
-	public void stop()
-	{
+	public void stop() {
 		Logcat.d("");
-		if(mTimer != null) mTimer.cancel();
-		if(mLocationManager != null)
-		{
+		if (mTimer != null) mTimer.cancel();
+		if (mLocationManager != null) {
 			mLocationManager.removeUpdates(this);
 			mLocationManager = null;
 		}
 	}
 
-
-	private void init()
-	{
+	private void init() {
 		// get last known location
 		Location lastKnownLocation = getLastKnownLocation(mLocationManager);
 
 		// try to listen last known location
-		if(lastKnownLocation != null)
-		{
+		if (lastKnownLocation != null) {
 			onLocationChanged(lastKnownLocation);
 		}
 
-		if(mCurrentLocation == null)
-		{
+		if (mCurrentLocation == null) {
 			// start timer to check timeout
-			TimerTask task = new TimerTask()
-			{
-				public void run()
-				{
-					if(mCurrentLocation == null)
-					{
+			TimerTask task = new TimerTask() {
+				public void run() {
+					if (mCurrentLocation == null) {
 						Logcat.d("timeout");
 						stop();
 						GeolocationListener listener = mListener.get();
-						if(listener != null) listener.onGeolocationFail(Geolocation.this);
+						if (listener != null) listener.onGeolocationFail(Geolocation.this);
 					}
 				}
 			};
 			mTimer.schedule(task, LOCATION_TIMEOUT);
 
 			// register location updates
-			try
-			{
+			try {
 				mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0.0F, this);
-			}
-			catch(IllegalArgumentException e)
-			{
+			} catch (IllegalArgumentException e) {
 				e.printStackTrace();
 			}
-			try
-			{
+			try {
 				mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0.0F, this);
-			}
-			catch(IllegalArgumentException e)
-			{
+			} catch (IllegalArgumentException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-
 	// returns last known freshest location from network or GPS
-	private Location getLastKnownLocation(LocationManager locationManager)
-	{
+	private Location getLastKnownLocation(LocationManager locationManager) {
 		Logcat.d("");
 
 		Location locationNet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -162,17 +130,15 @@ public class Geolocation implements LocationListener
 		long timeNet = 0L;
 		long timeGps = 0L;
 
-		if(locationNet != null)
-		{
+		if (locationNet != null) {
 			timeNet = locationNet.getTime();
 		}
 
-		if(locationGps != null)
-		{
+		if (locationGps != null) {
 			timeGps = locationGps.getTime();
 		}
 
-		if(timeNet > timeGps) return locationNet;
+		if (timeNet > timeGps) return locationNet;
 		else return locationGps;
 	}
 }

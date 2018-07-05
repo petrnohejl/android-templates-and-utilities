@@ -15,26 +15,19 @@ import java.util.List;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
-
-public class StickyListingAdapter extends BaseAdapter implements StickyListHeadersAdapter
-{
+public class StickyListingAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 	private Context mContext;
 	private List<ProductEntity> mProductList;
 
-
-	public StickyListingAdapter(Context context, List<ProductEntity> productList)
-	{
+	public StickyListingAdapter(Context context, List<ProductEntity> productList) {
 		mContext = context;
 		mProductList = productList;
 	}
 
-
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent)
-	{
+	public View getView(int position, View convertView, ViewGroup parent) {
 		// inflate view
-		if(convertView == null)
-		{
+		if (convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.fragment_sticky_listing_item, parent, false);
 
@@ -46,8 +39,7 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 
 		// entity
 		ProductEntity product = mProductList.get(position);
-		if(product != null)
-		{
+		if (product != null) {
 			// view holder
 			ViewHolder holder = (ViewHolder) convertView.getTag();
 
@@ -58,36 +50,27 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 		return convertView;
 	}
 
-
 	@Override
-	public int getCount()
-	{
-		if(mProductList != null) return mProductList.size();
+	public int getCount() {
+		if (mProductList != null) return mProductList.size();
 		else return 0;
 	}
 
-
 	@Override
-	public Object getItem(int position)
-	{
-		if(mProductList != null) return mProductList.get(position);
+	public Object getItem(int position) {
+		if (mProductList != null) return mProductList.get(position);
 		else return null;
 	}
 
-
 	@Override
-	public long getItemId(int position)
-	{
+	public long getItemId(int position) {
 		return position;
 	}
 
-
 	@Override
-	public View getHeaderView(int position, View convertView, ViewGroup parent)
-	{
+	public View getHeaderView(int position, View convertView, ViewGroup parent) {
 		// inflate view
-		if(convertView == null)
-		{
+		if (convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.fragment_sticky_listing_group, parent, false);
 
@@ -99,8 +82,7 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 
 		// entity
 		GroupEntity group = mProductList.get(position).getGroup();
-		if(group != null)
-		{
+		if (group != null) {
 			// view holder
 			ViewHolderGroup holder = (ViewHolderGroup) convertView.getTag();
 
@@ -111,37 +93,27 @@ public class StickyListingAdapter extends BaseAdapter implements StickyListHeade
 		return convertView;
 	}
 
-
 	@Override
-	public long getHeaderId(int position)
-	{
+	public long getHeaderId(int position) {
 		GroupEntity group = mProductList.get(position).getGroup();
 		return group.getId().hashCode();
 	}
 
-
-	public void refill(Context context, List<ProductEntity> productList)
-	{
+	public void refill(Context context, List<ProductEntity> productList) {
 		mContext = context;
 		mProductList = productList;
 		notifyDataSetChanged();
 	}
 
-
-	public void stop()
-	{
+	public void stop() {
 		// TODO: stop image loader
 	}
 
-
-	static class ViewHolder
-	{
+	static class ViewHolder {
 		TextView nameTextView;
 	}
 
-
-	static class ViewHolderGroup
-	{
+	static class ViewHolderGroup {
 		TextView nameTextView;
 	}
 }

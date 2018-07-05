@@ -11,9 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
-
-public class MultipartRequest extends Request
-{
+public class MultipartRequest extends Request {
 	private static final String REQUEST_METHOD = "POST";
 	private static final String REQUEST_PATH = "multipart";
 
@@ -22,26 +20,20 @@ public class MultipartRequest extends Request
 	private byte[] mBinaryData1;
 	private byte[] mBinaryData2;
 
-
-	public MultipartRequest(String textData1, String textData2, byte[] binaryData1, byte[] binaryData2)
-	{
+	public MultipartRequest(String textData1, String textData2, byte[] binaryData1, byte[] binaryData2) {
 		mTextData1 = textData1;
 		mTextData2 = textData2;
 		mBinaryData1 = binaryData1;
 		mBinaryData2 = binaryData2;
 	}
 
-
 	@Override
-	public String getRequestMethod()
-	{
+	public String getRequestMethod() {
 		return REQUEST_METHOD;
 	}
 
-
 	@Override
-	public String getAddress()
-	{
+	public String getAddress() {
 		StringBuilder builder = new StringBuilder();
 
 		// url
@@ -51,17 +43,13 @@ public class MultipartRequest extends Request
 		return builder.toString();
 	}
 
-
 	@Override
-	public Response<MultipartEntity> parseResponse(InputStream stream) throws IOException, JsonParseException
-	{
+	public Response<MultipartEntity> parseResponse(InputStream stream) throws IOException, JsonParseException {
 		return MultipartParser.parse(stream);
 	}
 
-
 	@Override
-	public byte[] getContent()
-	{
+	public byte[] getContent() {
 		StringBuilder plainBuilder = new StringBuilder();
 
 		plainBuilder.append("--" + BOUNDARY + "\r\n");
@@ -90,8 +78,7 @@ public class MultipartRequest extends Request
 		binary2Builder.append("Content-Type: application/octet-stream\r\n");
 		binary2Builder.append("\r\n");
 
-		try
-		{
+		try {
 			byte[] plainBytes = plainBuilder.toString().getBytes("UTF-8");
 			byte[] binary1Bytes = binary1Builder.toString().getBytes("UTF-8");
 			byte[] binary2Bytes = binary2Builder.toString().getBytes("UTF-8");
@@ -101,14 +88,12 @@ public class MultipartRequest extends Request
 			// byte stream
 			ByteArrayOutputStream stream = new ByteArrayOutputStream();
 			stream.write(plainBytes);
-			if(mBinaryData1.length > 0)
-			{
+			if (mBinaryData1.length > 0) {
 				stream.write(binary1Bytes);
 				stream.write(mBinaryData1);
 				stream.write(breakBytes);
 			}
-			if(mBinaryData2.length > 0)
-			{
+			if (mBinaryData2.length > 0) {
 				stream.write(binary2Bytes);
 				stream.write(mBinaryData2);
 				stream.write(breakBytes);
@@ -116,24 +101,18 @@ public class MultipartRequest extends Request
 			stream.write(endBytes);
 
 			return stream.toByteArray();
-		}
-		catch(UnsupportedEncodingException e)
-		{
+		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return null;
-		}
-		catch(IOException e)
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-
 	// TODO: set proper content type in APICall
 	@Override
-	public boolean isMultipart()
-	{
+	public boolean isMultipart() {
 		return true;
 	}
 }

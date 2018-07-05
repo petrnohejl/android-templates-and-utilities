@@ -10,23 +10,17 @@ import com.example.R;
 import com.example.activity.ExampleActivity;
 import com.example.notification.NotificationMessage;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 	private NotificationMessage mNotificationMessage;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
-	private void showNotification()
-	{
+	private void showNotification() {
 		NotificationMessage.Builder builder = new NotificationMessage.Builder(getActivity().getApplicationContext(), NotificationMessage.Type.TYPE1);
 
 		builder.setIntent(ExampleActivity.newIntent(getActivity().getApplicationContext())); // TODO: it is recommended to set FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TASK flags
@@ -56,9 +50,7 @@ public class ExampleFragment extends Fragment
 		mNotificationMessage.show();
 	}
 
-
-	private void cancelNotification()
-	{
-		if(mNotificationMessage != null) mNotificationMessage.cancel();
+	private void cancelNotification() {
+		if (mNotificationMessage != null) mNotificationMessage.cancel();
 	}
 }

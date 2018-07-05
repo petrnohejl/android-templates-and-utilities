@@ -4,27 +4,19 @@ import android.content.Context;
 
 import com.activeandroid.ActiveAndroid;
 
-
-public class ExampleApplication extends com.activeandroid.app.Application
-{
+public class ExampleApplication extends com.activeandroid.app.Application {
 	private static ExampleApplication sInstance;
 
-
-	public ExampleApplication()
-	{
+	public ExampleApplication() {
 		sInstance = this;
 	}
 
-
-	public static Context getContext()
-	{
+	public static Context getContext() {
 		return sInstance;
 	}
 
-
 	@Override
-	public void onCreate()
-	{
+	public void onCreate() {
 		super.onCreate();
 
 		// logs in ActiveAndroid

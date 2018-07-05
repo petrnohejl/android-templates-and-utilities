@@ -9,17 +9,13 @@ import android.widget.TextView;
 
 import com.example.R;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private static final String ARGUMENT_EXAMPLE = "example";
 
 	private String mExample;
 	private View mRootView;
 
-
-	public static ExampleFragment newInstance(String example)
-	{
+	public static ExampleFragment newInstance(String example) {
 		ExampleFragment fragment = new ExampleFragment();
 
 		// arguments
@@ -30,48 +26,36 @@ public class ExampleFragment extends Fragment
 		return fragment;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// handle fragment arguments
 		Bundle arguments = getArguments();
-		if(arguments != null)
-		{
+		if (arguments != null) {
 			handleArguments(arguments);
 		}
 	}
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setupView();
 	}
 
-
-	private void handleArguments(Bundle arguments)
-	{
-		if(arguments.containsKey(ARGUMENT_EXAMPLE))
-		{
+	private void handleArguments(Bundle arguments) {
+		if (arguments.containsKey(ARGUMENT_EXAMPLE)) {
 			mExample = (String) arguments.get(ARGUMENT_EXAMPLE);
 		}
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// reference
 		TextView nameTextView = mRootView.findViewById(R.id.example_name);
 

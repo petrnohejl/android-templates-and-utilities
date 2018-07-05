@@ -8,25 +8,19 @@ import android.support.v7.app.AlertDialog;
 
 import com.example.R;
 
-
-public class ItemsDialogFragment extends DialogFragment
-{
+public class ItemsDialogFragment extends DialogFragment {
 	private static final String ARGUMENT_EXAMPLE = "example";
 
 	private String mExample;
 	private ItemsDialogListener mListener;
 
-
-	public interface ItemsDialogListener
-	{
+	public interface ItemsDialogListener {
 		void onItemsDialogItemClick(DialogFragment dialog, int which);
 		void onItemsDialogPositiveClick(DialogFragment dialog);
 		void onItemsDialogNegativeClick(DialogFragment dialog);
 	}
 
-
-	public static ItemsDialogFragment newInstance(String example)
-	{
+	public static ItemsDialogFragment newInstance(String example) {
 		ItemsDialogFragment fragment = new ItemsDialogFragment();
 
 		// arguments
@@ -37,54 +31,42 @@ public class ItemsDialogFragment extends DialogFragment
 		return fragment;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setCancelable(true);
 
 		// handle fragment arguments
 		Bundle arguments = getArguments();
-		if(arguments != null)
-		{
+		if (arguments != null) {
 			handleArguments(arguments);
 		}
 
 		// set callback listener
-		try
-		{
+		try {
 			mListener = (ItemsDialogListener) getTargetFragment();
-		}
-		catch(ClassCastException e)
-		{
+		} catch (ClassCastException e) {
 			throw new ClassCastException(getTargetFragment().toString() + " must implement " + ItemsDialogListener.class.getName());
 		}
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// cancelable on touch outside
-		if(getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
+		if (getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
 	}
 
-
 	@Override
-	public void onDestroyView()
-	{
+	public void onDestroyView() {
 		// http://code.google.com/p/android/issues/detail?id=17423
-		if(getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
+		if (getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
 		super.onDestroyView();
 	}
 
-
 	@Override
-	public Dialog onCreateDialog(Bundle savedInstanceState)
-	{
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		final CharSequence items[] = {
 				"item1",
 				"item2",
@@ -96,25 +78,19 @@ public class ItemsDialogFragment extends DialogFragment
 		builder
 				.setTitle(mExample)
 				.setIcon(R.mipmap.ic_launcher)
-				.setItems(items, new DialogInterface.OnClickListener()
-				{
+				.setItems(items, new DialogInterface.OnClickListener() {
 					@Override
-					public void onClick(DialogInterface dialog, int which)
-					{
+					public void onClick(DialogInterface dialog, int which) {
 						mListener.onItemsDialogItemClick(ItemsDialogFragment.this, which);
 					}
 				})
-				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
-				{
-					public void onClick(DialogInterface dialog, int id)
-					{
+				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
 						mListener.onItemsDialogPositiveClick(ItemsDialogFragment.this);
 					}
 				})
-				.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
-				{
-					public void onClick(DialogInterface dialog, int id)
-					{
+				.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
 						mListener.onItemsDialogNegativeClick(ItemsDialogFragment.this);
 					}
 				});
@@ -122,11 +98,8 @@ public class ItemsDialogFragment extends DialogFragment
 		return builder.create();
 	}
 
-
-	private void handleArguments(Bundle arguments)
-	{
-		if(arguments.containsKey(ARGUMENT_EXAMPLE))
-		{
+	private void handleArguments(Bundle arguments) {
+		if (arguments.containsKey(ARGUMENT_EXAMPLE)) {
 			mExample = (String) arguments.get(ARGUMENT_EXAMPLE);
 		}
 	}

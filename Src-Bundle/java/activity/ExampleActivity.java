@@ -7,17 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.R;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
+public class ExampleActivity extends AppCompatActivity {
 	public static final String EXTRA_PRODUCT_ID = "product_id";
 	public static final String EXTRA_PRODUCT_TITLE = "product_title";
 
 	private static final String SAVED_PAGER_POSITION = "pager_position";
 
-
-	public static Intent newIntent(Context context, String productId, String productTitle)
-	{
+	public static Intent newIntent(Context context, String productId, String productTitle) {
 		Intent intent = new Intent(context, ExampleActivity.class);
 
 		// extras
@@ -27,59 +23,46 @@ public class ExampleActivity extends AppCompatActivity
 		return intent;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 
 		// restore saved state
-		if(savedInstanceState != null)
-		{
+		if (savedInstanceState != null) {
 			handleSavedInstanceState(savedInstanceState);
 		}
 
 		// handle intent extras
 		Bundle extras = getIntent().getExtras();
-		if(extras != null)
-		{
+		if (extras != null) {
 			handleExtras(extras);
 		}
 	}
 
-
 	@Override
-	public void onSaveInstanceState(Bundle outState)
-	{
+	public void onSaveInstanceState(Bundle outState) {
 		// save current instance state
 		super.onSaveInstanceState(outState);
 
 		// TODO
 	}
 
-
 	@Override
-	public void onRestoreInstanceState(Bundle savedInstanceState)
-	{
+	public void onRestoreInstanceState(Bundle savedInstanceState) {
 		// restore saved state
 		super.onRestoreInstanceState(savedInstanceState);
 
-		if(savedInstanceState != null)
-		{
+		if (savedInstanceState != null) {
 			// TODO
 		}
 	}
 
-
-	private void handleSavedInstanceState(Bundle savedInstanceState)
-	{
+	private void handleSavedInstanceState(Bundle savedInstanceState) {
 		// TODO
 	}
 
-
-	private void handleExtras(Bundle extras)
-	{
+	private void handleExtras(Bundle extras) {
 		// TODO
 	}
 }

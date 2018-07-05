@@ -18,14 +18,10 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 
-
-public final class SelfSignedSslUtility
-{
+public final class SelfSignedSslUtility {
 	private SelfSignedSslUtility() {}
 
-
-	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException
-	{
+	public static void setupSslConnection(HttpsURLConnection connection, URL requestUrl) throws GeneralSecurityException {
 		SSLContext sslContext = createSslContext();
 		HostnameVerifier sslHostnameVerifier = createSslHostnameVerifier(requestUrl.getHost());
 
@@ -33,9 +29,7 @@ public final class SelfSignedSslUtility
 		connection.setHostnameVerifier(sslHostnameVerifier);
 	}
 
-
-	public static SSLContext createSslContext() throws GeneralSecurityException
-	{
+	public static SSLContext createSslContext() throws GeneralSecurityException {
 		KeyStore keyStore = loadKeyStore();
 
 		SelfSignedTrustManager selfSignedTrustManager = new SelfSignedTrustManager(keyStore);
@@ -51,14 +45,10 @@ public final class SelfSignedSslUtility
 		return context;
 	}
 
-
-	public static HostnameVerifier createSslHostnameVerifier(final String apiHostname)
-	{
-		HostnameVerifier hostnameVerifier = new HostnameVerifier()
-		{
+	public static HostnameVerifier createSslHostnameVerifier(final String apiHostname) {
+		HostnameVerifier hostnameVerifier = new HostnameVerifier() {
 			@Override
-			public boolean verify(String hostname, SSLSession session)
-			{
+			public boolean verify(String hostname, SSLSession session) {
 				//Logcat.d(hostname + " / " + apiHostname);
 				return hostname.equals(apiHostname);
 			}
@@ -66,25 +56,17 @@ public final class SelfSignedSslUtility
 		return hostnameVerifier;
 	}
 
-
-	public static KeyStore loadKeyStore()
-	{
-		try
-		{
+	public static KeyStore loadKeyStore() {
+		try {
 			KeyStore keyStore = KeyStore.getInstance("BKS");
 			InputStream in = ExampleApplication.getContext().getResources().openRawResource(R.raw.cert_keystore);
-			try
-			{
+			try {
 				keyStore.load(in, ExampleConfig.SSL_KEYSTORE_PASSWORD.toCharArray());
-			}
-			finally
-			{
+			} finally {
 				in.close();
 			}
 			return keyStore;
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}

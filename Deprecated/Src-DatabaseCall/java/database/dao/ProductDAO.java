@@ -9,33 +9,23 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import java.sql.SQLException;
 import java.util.List;
 
-
-public class ProductDAO extends DAO
-{
-	public static int create(ProductModel product) throws SQLException
-	{
+public class ProductDAO extends DAO {
+	public static int create(ProductModel product) throws SQLException {
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.create(product);
 	}
 
-
-	public static ProductModel read(long id) throws SQLException
-	{
+	public static ProductModel read(long id) throws SQLException {
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.queryForId(id);
 	}
 
-
-	public static List<ProductModel> readAll(long skip, long take) throws SQLException
-	{
+	public static List<ProductModel> readAll(long skip, long take) throws SQLException {
 		Dao<ProductModel, Long> dao = getDao();
 		List<ProductModel> list;
-		if(skip == -1L && take == -1L)
-		{
+		if (skip == -1L && take == -1L) {
 			list = dao.queryForAll();
-		}
-		else
-		{
+		} else {
 			QueryBuilder<ProductModel, Long> queryBuilder = dao.queryBuilder();
 			queryBuilder.offset(skip).limit(take);
 			list = dao.query(queryBuilder.prepare());
@@ -43,38 +33,28 @@ public class ProductDAO extends DAO
 		return list;
 	}
 
-
-	public static int update(ProductModel product) throws SQLException
-	{
+	public static int update(ProductModel product) throws SQLException {
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.update(product);
 	}
 
-
-	public static int delete(long id) throws SQLException
-	{
+	public static int delete(long id) throws SQLException {
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.deleteById(id);
 	}
 
-
-	public static int deleteAll() throws SQLException
-	{
+	public static int deleteAll() throws SQLException {
 		Dao<ProductModel, Long> dao = getDao();
 		DeleteBuilder<ProductModel, Long> deleteBuilder = dao.deleteBuilder();
 		return dao.delete(deleteBuilder.prepare());
 	}
 
-
-	public static int refresh(ProductModel product) throws SQLException
-	{
+	public static int refresh(ProductModel product) throws SQLException {
 		Dao<ProductModel, Long> dao = getDao();
 		return dao.refresh(product);
 	}
 
-
-	private static Dao<ProductModel, Long> getDao() throws SQLException
-	{
+	private static Dao<ProductModel, Long> getDao() throws SQLException {
 		DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
 		return databaseHelper.getProductDao();
 	}

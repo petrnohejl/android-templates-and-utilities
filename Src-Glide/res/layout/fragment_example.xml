@@ -5,9 +5,11 @@
 
 	<data>
 		<variable
-			name="view" type="com.example.ui.ExampleView" />
+			name="view"
+			type="com.example.ui.ExampleView" />
 		<variable
-			name="data" type="com.example.viewmodel.ExampleViewModel" />
+			name="data"
+			type="com.example.viewmodel.ExampleViewModel" />
 	</data>
 
 	<ImageView

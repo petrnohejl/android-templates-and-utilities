@@ -12,77 +12,57 @@ import android.view.MenuItem;
 
 import com.example.R;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
-	public static Intent newIntent(Context context)
-	{
+public class ExampleActivity extends AppCompatActivity {
+	public static Intent newIntent(Context context) {
 		Intent intent = new Intent(context, ExampleActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		return intent;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 		setupActionBar();
 	}
 
-
 	@Override
-	public void onStart()
-	{
+	public void onStart() {
 		super.onStart();
 	}
 
-
 	@Override
-	public void onResume()
-	{
+	public void onResume() {
 		super.onResume();
 	}
 
-
 	@Override
-	public void onPause()
-	{
+	public void onPause() {
 		super.onPause();
 	}
 
-
 	@Override
-	public void onStop()
-	{
+	public void onStop() {
 		super.onStop();
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		super.onDestroy();
 	}
 
-
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
+	public boolean onCreateOptionsMenu(Menu menu) {
 		// action bar menu
 		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.activity_example, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
-
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// action bar menu behavior
-		switch(item.getItemId())
-		{
+		switch (item.getItemId()) {
 			case android.R.id.home:
 				// TODO
 				Intent intent = ExampleActivity.newIntent(this);
@@ -98,9 +78,7 @@ public class ExampleActivity extends AppCompatActivity
 		}
 	}
 
-
-	private void setupActionBar()
-	{
+	private void setupActionBar() {
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 

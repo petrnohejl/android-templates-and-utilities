@@ -9,27 +9,20 @@ import android.widget.TextView;
 
 import com.example.R;
 
-
-public class ActionBarListNavigationAdapter<T> extends ArrayAdapter<T>
-{
+public class ActionBarListNavigationAdapter<T> extends ArrayAdapter<T> {
 	private Context mContext;
 	private String mSubtitle;
 
-
-	public ActionBarListNavigationAdapter(Context context, int resource, T[] objects, String subtitle)
-	{
+	public ActionBarListNavigationAdapter(Context context, int resource, T[] objects, String subtitle) {
 		super(context, resource, objects);
 		mContext = context;
 		mSubtitle = subtitle;
 	}
 
-
 	@Override
-	public View getView(final int position, View convertView, ViewGroup parent)
-	{
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		// inflate view
-		if(convertView == null)
-		{
+		if (convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.ab_list_navigation, parent, false);
 
@@ -42,8 +35,7 @@ public class ActionBarListNavigationAdapter<T> extends ArrayAdapter<T>
 
 		// entity
 		T item = getItem(position);
-		if(item != null)
-		{
+		if (item != null) {
 			// view holder
 			ViewHolder holder = (ViewHolder) convertView.getTag();
 
@@ -55,9 +47,7 @@ public class ActionBarListNavigationAdapter<T> extends ArrayAdapter<T>
 		return convertView;
 	}
 
-
-	static class ViewHolder
-	{
+	static class ViewHolder {
 		TextView titleTextView;
 		TextView subtitleTextView;
 	}

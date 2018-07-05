@@ -10,12 +10,9 @@ import android.support.v7.widget.Toolbar;
 import com.example.R;
 import com.example.adapter.ActionBarListNavigationAdapter;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
+public class ExampleActivity extends AppCompatActivity {
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 
@@ -25,9 +22,7 @@ public class ExampleActivity extends AppCompatActivity
 		setupActionBarNavigation(items, subtitle, 0);
 	}
 
-
-	private void setupActionBarNavigation(CharSequence[] items, String subtitle, int selectedItem)
-	{
+	private void setupActionBarNavigation(CharSequence[] items, String subtitle, int selectedItem) {
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
@@ -41,15 +36,13 @@ public class ExampleActivity extends AppCompatActivity
 		// action bar navigation
 		bar.setDisplayShowTitleEnabled(false);
 		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		bar.setListNavigationCallbacks(adapter, new OnNavigationListener()
-		{
+		bar.setListNavigationCallbacks(adapter, new OnNavigationListener() {
 			@Override
-			public boolean onNavigationItemSelected(int itemPosition, long itemId)
-			{
+			public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 				// TODO
 				return true;
 			}
 		});
-		if(selectedItem < items.length) bar.setSelectedNavigationItem(selectedItem);
+		if (selectedItem < items.length) bar.setSelectedNavigationItem(selectedItem);
 	}
 }

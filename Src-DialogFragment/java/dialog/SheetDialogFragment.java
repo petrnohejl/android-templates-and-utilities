@@ -14,9 +14,7 @@ import android.widget.EditText;
 
 import com.example.R;
 
-
-public class SheetDialogFragment extends BottomSheetDialogFragment
-{
+public class SheetDialogFragment extends BottomSheetDialogFragment {
 	private static final String ARGUMENT_EXAMPLE = "example";
 	private static final String SAVED_USERNAME = "username";
 	private static final String SAVED_PASSWORD = "password";
@@ -28,16 +26,12 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 	private String mPassword = "";
 	private SheetDialogListener mListener;
 
-
-	public interface SheetDialogListener
-	{
+	public interface SheetDialogListener {
 		void onSheetDialogStateChanged(DialogFragment dialog, int newState, String username, String password);
 		void onSheetDialogDismiss(DialogFragment dialog, String username, String password);
 	}
 
-
-	public static SheetDialogFragment newInstance(String example)
-	{
+	public static SheetDialogFragment newInstance(String example) {
 		SheetDialogFragment fragment = new SheetDialogFragment();
 
 		// arguments
@@ -48,60 +42,47 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 		return fragment;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setCancelable(true);
 
 		// handle fragment arguments
 		Bundle arguments = getArguments();
-		if(arguments != null)
-		{
+		if (arguments != null) {
 			handleArguments(arguments);
 		}
 
 		// set callback listener
-		try
-		{
+		try {
 			mListener = (SheetDialogListener) getTargetFragment();
-		}
-		catch(ClassCastException e)
-		{
+		} catch (ClassCastException e) {
 			throw new ClassCastException(getTargetFragment().toString() + " must implement " + SheetDialogListener.class.getName());
 		}
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// cancelable on touch outside
-		if(getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
+		if (getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
 
 		// restore saved state
-		if(savedInstanceState != null)
-		{
+		if (savedInstanceState != null) {
 			handleSavedInstanceState(savedInstanceState);
 		}
 	}
 
-
 	@Override
-	public void onDestroyView()
-	{
+	public void onDestroyView() {
 		// http://code.google.com/p/android/issues/detail?id=17423
-		if(getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
+		if (getDialog() != null && getRetainInstance()) getDialog().setDismissMessage(null);
 		super.onDestroyView();
 	}
 
-
 	@Override
-	public Dialog onCreateDialog(Bundle savedInstanceState)
-	{
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		// inflate layout
 		LayoutInflater inflater = getActivity().getLayoutInflater();
 		mRootView = inflater.inflate(R.layout.dialog_custom, null);
@@ -116,11 +97,9 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 
 		// setup behavior
 		mBehavior = BottomSheetBehavior.from((View) mRootView.getParent());
-		mBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
-		{
+		mBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
 			@Override
-			public void onStateChanged(@NonNull View bottomSheet, int newState)
-			{
+			public void onStateChanged(@NonNull View bottomSheet, int newState) {
 				EditText usernameEditText = mRootView.findViewById(R.id.dialog_custom_username);
 				EditText passwordEditText = mRootView.findViewById(R.id.dialog_custom_password);
 
@@ -130,13 +109,11 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 				// TODO: data validation
 
 				mListener.onSheetDialogStateChanged(SheetDialogFragment.this, newState, username, password);
-				if(newState == BottomSheetBehavior.STATE_HIDDEN) dialog.dismiss();
+				if (newState == BottomSheetBehavior.STATE_HIDDEN) dialog.dismiss();
 			}
 
-
 			@Override
-			public void onSlide(@NonNull View bottomSheet, float slideOffset)
-			{
+			public void onSlide(@NonNull View bottomSheet, float slideOffset) {
 				// do nothing
 			}
 		});
@@ -144,10 +121,8 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 		return dialog;
 	}
 
-
 	@Override
-	public void onDismiss(DialogInterface dialog)
-	{
+	public void onDismiss(DialogInterface dialog) {
 		EditText usernameEditText = mRootView.findViewById(R.id.dialog_custom_username);
 		EditText passwordEditText = mRootView.findViewById(R.id.dialog_custom_password);
 
@@ -159,16 +134,13 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 		mListener.onSheetDialogDismiss(SheetDialogFragment.this, username, password);
 
 		// destroy dialog fragment
-		if(getFragmentManager() != null)
-		{
+		if (getFragmentManager() != null) {
 			getFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
 		}
 	}
 
-
 	@Override
-	public void onSaveInstanceState(Bundle outState)
-	{
+	public void onSaveInstanceState(Bundle outState) {
 		// save current instance state
 		super.onSaveInstanceState(outState);
 
@@ -179,28 +151,21 @@ public class SheetDialogFragment extends BottomSheetDialogFragment
 		outState.putString(SAVED_PASSWORD, passwordEditText.getText().toString());
 	}
 
-
-	private void handleArguments(Bundle arguments)
-	{
-		if(arguments.containsKey(ARGUMENT_EXAMPLE))
-		{
+	private void handleArguments(Bundle arguments) {
+		if (arguments.containsKey(ARGUMENT_EXAMPLE)) {
 			mExample = (String) arguments.get(ARGUMENT_EXAMPLE);
 		}
 	}
 
-
-	private void handleSavedInstanceState(Bundle savedInstanceState)
-	{
+	private void handleSavedInstanceState(Bundle savedInstanceState) {
 		EditText usernameEditText = mRootView.findViewById(R.id.dialog_custom_username);
 		EditText passwordEditText = mRootView.findViewById(R.id.dialog_custom_password);
 
-		if(savedInstanceState.containsKey(SAVED_USERNAME))
-		{
+		if (savedInstanceState.containsKey(SAVED_USERNAME)) {
 			usernameEditText.setText((String) savedInstanceState.get(SAVED_USERNAME));
 		}
 
-		if(savedInstanceState.containsKey(SAVED_PASSWORD))
-		{
+		if (savedInstanceState.containsKey(SAVED_PASSWORD)) {
 			passwordEditText.setText((String) savedInstanceState.get(SAVED_PASSWORD));
 		}
 	}

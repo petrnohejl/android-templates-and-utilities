@@ -8,42 +8,32 @@ import com.example.entity.ProductEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ProductDAO implements DAO<ProductEntity>
-{
+public class ProductDAO implements DAO<ProductEntity> {
 	@Override
-	public long create(ProductEntity product)
-	{
+	public long create(ProductEntity product) {
 		ProductModel m = new ProductModel();
 		m.set(product);
 		return m.save();
 	}
 
-
 	@Override
-	public ProductEntity read(long id)
-	{
+	public ProductEntity read(long id) {
 		ProductModel m = new Select().from(ProductModel.class).where("Id=?", id).executeSingle();
 		return m.toEntity();
 	}
 
-
 	@Override
-	public ProductEntity readFirst()
-	{
+	public ProductEntity readFirst() {
 		ProductModel m = new Select().from(ProductModel.class).limit(1).executeSingle();
 		return m.toEntity();
 	}
 
-
 	@Override
-	public List<ProductEntity> readAll()
-	{
+	public List<ProductEntity> readAll() {
 		List<ProductModel> modelList = new Select().from(ProductModel.class).orderBy("Timestamp ASC").execute();
 		List<ProductEntity> entityList = new ArrayList<>();
 
-		for(ProductModel m : modelList)
-		{
+		for (ProductModel m : modelList) {
 			ProductEntity e = m.toEntity();
 			entityList.add(e);
 		}
@@ -51,15 +41,12 @@ public class ProductDAO implements DAO<ProductEntity>
 		return entityList;
 	}
 
-
 	@Override
-	public List<ProductEntity> readAll(int limit, int offset)
-	{
+	public List<ProductEntity> readAll(int limit, int offset) {
 		List<ProductModel> modelList = new Select().from(ProductModel.class).limit(limit).offset(offset).orderBy("Timestamp ASC").execute();
 		List<ProductEntity> entityList = new ArrayList<>();
 
-		for(ProductModel m : modelList)
-		{
+		for (ProductModel m : modelList) {
 			ProductEntity e = m.toEntity();
 			entityList.add(e);
 		}
@@ -67,26 +54,20 @@ public class ProductDAO implements DAO<ProductEntity>
 		return entityList;
 	}
 
-
 	@Override
-	public long update(ProductEntity product)
-	{
+	public long update(ProductEntity product) {
 		ProductModel m = new Select().from(ProductModel.class).where("Id=?", product.getId()).executeSingle();
 		m.set(product);
 		return m.save();
 	}
 
-
 	@Override
-	public void delete(long id)
-	{
+	public void delete(long id) {
 		new Delete().from(ProductModel.class).where("Id=?", id).execute();
 	}
 
-
 	@Override
-	public void deleteAll()
-	{
+	public void deleteAll() {
 		new Delete().from(ProductModel.class).execute();
 	}
 }

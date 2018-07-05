@@ -16,35 +16,27 @@ import com.example.broadcast.ExampleBroadcast;
 
 import org.alfonz.utility.Logcat;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 	private IntentFilter mExampleIntentFilter;
 	private BroadcastReceiver mExampleBroadcastReceiver;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// init receiver
 		initReceiver();
 	}
 
-
 	@Override
-	public void onResume()
-	{
+	public void onResume() {
 		super.onResume();
 
 		// register receiver
@@ -54,10 +46,8 @@ public class ExampleFragment extends Fragment
 		LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mExampleBroadcastReceiver, mExampleIntentFilter);
 	}
 
-
 	@Override
-	public void onPause()
-	{
+	public void onPause() {
 		super.onPause();
 
 		// unregister receiver
@@ -67,21 +57,16 @@ public class ExampleFragment extends Fragment
 		LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mExampleBroadcastReceiver);
 	}
 
-
-	private void initReceiver()
-	{
+	private void initReceiver() {
 		// create intent filter
 		mExampleIntentFilter = new IntentFilter();
 		mExampleIntentFilter.addAction(ExampleBroadcast.ACTION_EXAMPLE);
 
 		// create broadcast receiver
-		mExampleBroadcastReceiver = new BroadcastReceiver()
-		{
+		mExampleBroadcastReceiver = new BroadcastReceiver() {
 			@Override
-			public void onReceive(Context context, Intent intent)
-			{
-				if(intent.getAction().equals(ExampleBroadcast.ACTION_EXAMPLE))
-				{
+			public void onReceive(Context context, Intent intent) {
+				if (intent.getAction().equals(ExampleBroadcast.ACTION_EXAMPLE)) {
 					String arg = intent.getExtras().getString(ExampleBroadcast.EXTRA_ARG);
 					Logcat.d(arg);
 				}

@@ -15,31 +15,23 @@ import com.example.R;
 import com.example.fragment.DetailFragment;
 import com.example.fragment.ListingFragment;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
+public class ExampleActivity extends AppCompatActivity {
 	private SlidingPaneLayout mSlidingPaneLayout;
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 		setupActionBar();
 		setupSlidingPane(savedInstanceState);
 	}
 
-
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// action bar menu behavior
-		switch(item.getItemId())
-		{
+		switch (item.getItemId()) {
 			case android.R.id.home:
-				if(!mSlidingPaneLayout.isOpen())
-				{
+				if (!mSlidingPaneLayout.isOpen()) {
 					mSlidingPaneLayout.openPane();
 					return true;
 				}
@@ -49,9 +41,7 @@ public class ExampleActivity extends AppCompatActivity
 		}
 	}
 
-
-	private void setupActionBar()
-	{
+	private void setupActionBar() {
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
@@ -63,48 +53,35 @@ public class ExampleActivity extends AppCompatActivity
 		bar.setHomeButtonEnabled(false);
 	}
 
-
-	private void setupSlidingPane(Bundle savedInstanceState)
-	{
+	private void setupSlidingPane(Bundle savedInstanceState) {
 		// reference
 		mSlidingPaneLayout = findViewById(R.id.example_sliding_pane_layout);
 
 		// set slide listener
-		mSlidingPaneLayout.setPanelSlideListener(new SlidingPaneLayout.PanelSlideListener()
-		{
+		mSlidingPaneLayout.setPanelSlideListener(new SlidingPaneLayout.PanelSlideListener() {
 			@Override
-			public void onPanelSlide(View view, float v)
-			{
+			public void onPanelSlide(View view, float v) {
 			}
 
-
 			@Override
-			public void onPanelOpened(View view)
-			{
+			public void onPanelOpened(View view) {
 				onSlidingPaneOpened();
 			}
 
-
 			@Override
-			public void onPanelClosed(View view)
-			{
+			public void onPanelClosed(View view) {
 				onSlidingPaneClosed();
 			}
 		});
 		mSlidingPaneLayout.openPane();
 
 		// set global layout listener
-		mSlidingPaneLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-		{
+		mSlidingPaneLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 			@Override
-			public void onGlobalLayout()
-			{
-				if(mSlidingPaneLayout.isSlideable() && !mSlidingPaneLayout.isOpen())
-				{
+			public void onGlobalLayout() {
+				if (mSlidingPaneLayout.isSlideable() && !mSlidingPaneLayout.isOpen()) {
 					onSlidingPaneClosed();
-				}
-				else
-				{
+				} else {
 					onSlidingPaneOpened();
 				}
 
@@ -113,29 +90,23 @@ public class ExampleActivity extends AppCompatActivity
 		});
 
 		// add fragments
-		if(savedInstanceState == null)
-		{
+		if (savedInstanceState == null) {
 			FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.example_sliding_pane_left, ListingFragment.newInstance()).commitAllowingStateLoss();
 			fragmentManager.beginTransaction().replace(R.id.example_sliding_pane_right, DetailFragment.newInstance()).commitAllowingStateLoss();
 		}
 	}
 
-
-	private void onSlidingPaneOpened()
-	{
+	private void onSlidingPaneOpened() {
 		Fragment fragmentLeft = getSupportFragmentManager().findFragmentById(R.id.example_sliding_pane_left);
 		Fragment fragmentRight = getSupportFragmentManager().findFragmentById(R.id.example_sliding_pane_right);
 
-		if(mSlidingPaneLayout.isSlideable())
-		{
-			if(fragmentLeft != null) fragmentLeft.setHasOptionsMenu(true);
-			if(fragmentRight != null) fragmentRight.setHasOptionsMenu(false);
-		}
-		else
-		{
-			if(fragmentLeft != null) fragmentLeft.setHasOptionsMenu(false);
-			if(fragmentRight != null) fragmentRight.setHasOptionsMenu(true);
+		if (mSlidingPaneLayout.isSlideable()) {
+			if (fragmentLeft != null) fragmentLeft.setHasOptionsMenu(true);
+			if (fragmentRight != null) fragmentRight.setHasOptionsMenu(false);
+		} else {
+			if (fragmentLeft != null) fragmentLeft.setHasOptionsMenu(false);
+			if (fragmentRight != null) fragmentRight.setHasOptionsMenu(true);
 		}
 
 		ActionBar bar = getSupportActionBar();
@@ -143,14 +114,12 @@ public class ExampleActivity extends AppCompatActivity
 		bar.setHomeButtonEnabled(false);
 	}
 
-
-	private void onSlidingPaneClosed()
-	{
+	private void onSlidingPaneClosed() {
 		Fragment fragmentLeft = getSupportFragmentManager().findFragmentById(R.id.example_sliding_pane_left);
 		Fragment fragmentRight = getSupportFragmentManager().findFragmentById(R.id.example_sliding_pane_right);
 
-		if(fragmentLeft != null) fragmentLeft.setHasOptionsMenu(false);
-		if(fragmentRight != null) fragmentRight.setHasOptionsMenu(true);
+		if (fragmentLeft != null) fragmentLeft.setHasOptionsMenu(false);
+		if (fragmentRight != null) fragmentRight.setHasOptionsMenu(true);
 
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayHomeAsUpEnabled(true);

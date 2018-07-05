@@ -31,9 +31,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
-public class ExampleFragment extends TaskFragment implements APICallListener
-{
+public class ExampleFragment extends TaskFragment implements APICallListener {
 	private static final String META_REFRESH = "refresh";
 	private static final int LAZY_LOADING_TAKE = 16;
 	private static final int LAZY_LOADING_OFFSET = 4;
@@ -47,79 +45,63 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 	private APICallManager mAPICallManager = new APICallManager();
 	private List<ProductEntity> mProductList = new ArrayList<>();
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// setup stateful layout
 		setupStatefulLayout(savedInstanceState);
 
 		// load data
-		if(mProductList == null || mProductList.isEmpty()) loadData();
+		if (mProductList == null || mProductList.isEmpty()) loadData();
 
 		// lazy loading progress
-		if(mLazyLoading) showLazyLoadingProgress(true);
+		if (mLazyLoading) showLazyLoadingProgress(true);
 	}
 
-
 	@Override
-	public void onPause()
-	{
+	public void onPause() {
 		super.onPause();
 
 		// stop adapter
-		if(mAdapter != null) mAdapter.stop();
+		if (mAdapter != null) mAdapter.stop();
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		super.onDestroy();
 
 		// cancel async tasks
 		mAPICallManager.cancelAllTasks();
 	}
 
-
 	@Override
-	public void onSaveInstanceState(Bundle outState)
-	{
+	public void onSaveInstanceState(Bundle outState) {
 		// save current instance state
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
 
 		// stateful layout state
-		if(mStatefulLayout != null) mStatefulLayout.saveInstanceState(outState);
+		if (mStatefulLayout != null) mStatefulLayout.saveInstanceState(outState);
 	}
 
-
 	@Override
-	public void onAPICallRespond(final APICallTask task, final ResponseStatus status, final Response<?> response)
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				if(mRootView == null) return; // view was destroyed
+	public void onAPICallRespond(final APICallTask task, final ResponseStatus status, final Response<?> response) {
+		runTaskCallback(new Runnable() {
+			public void run() {
+				if (mRootView == null) return; // view was destroyed
 
-				if(task.getRequest().getClass().equals(ExampleRequest.class))
-				{
+				if (task.getRequest().getClass().equals(ExampleRequest.class)) {
 					Response<List<ProductEntity>> exampleResponse = (Response<List<ProductEntity>>) response;
 
 					// error
-					if(exampleResponse.isError())
-					{
+					if (exampleResponse.isError()) {
 						Logcat.d("ExampleRequest / " + status.getStatusCode() + " " + status.getStatusMessage() +
 								" / error " + exampleResponse.getErrorType() + " / " + exampleResponse.getErrorMessage());
 
@@ -128,13 +110,11 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 					}
 
 					// response
-					else
-					{
+					else {
 						Logcat.d("ExampleRequest / " + status.getStatusCode() + " " + status.getStatusMessage());
 
 						// check meta data
-						if(task.getRequest().getMetaData() != null && task.getRequest().getMetaData().getBoolean(META_REFRESH, false))
-						{
+						if (task.getRequest().getMetaData() != null && task.getRequest().getMetaData().getBoolean(META_REFRESH, false)) {
 							// refresh
 							mProductList.clear();
 						}
@@ -142,8 +122,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 						// get data
 						List<ProductEntity> productList = exampleResponse.getResponseObject();
 						Iterator<ProductEntity> iterator = productList.iterator();
-						while(iterator.hasNext())
-						{
+						while (iterator.hasNext()) {
 							ProductEntity product = iterator.next();
 							mProductList.add(product);
 						}
@@ -158,23 +137,18 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				mAPICallManager.finishTask(task);
 
 				// hide progress popup
-				if(mAPICallManager.getTasksCount() == 0) showProgress(false);
+				if (mAPICallManager.getTasksCount() == 0) showProgress(false);
 			}
 		});
 	}
 
-
 	@Override
-	public void onAPICallFail(final APICallTask task, final ResponseStatus status, final Exception exception)
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				if(mRootView == null) return; // view was destroyed
+	public void onAPICallFail(final APICallTask task, final ResponseStatus status, final Exception exception) {
+		runTaskCallback(new Runnable() {
+			public void run() {
+				if (mRootView == null) return; // view was destroyed
 
-				if(task.getRequest().getClass().equals(ExampleRequest.class))
-				{
+				if (task.getRequest().getClass().equals(ExampleRequest.class)) {
 					Logcat.d("ExampleRequest / " + status.getStatusCode() + " " + status.getStatusMessage() +
 							" / exception " + exception.getClass().getSimpleName() + " / " + exception.getMessage());
 
@@ -190,18 +164,14 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				mAPICallManager.finishTask(task);
 
 				// hide progress popup
-				if(mAPICallManager.getTasksCount() == 0) showProgress(false);
+				if (mAPICallManager.getTasksCount() == 0) showProgress(false);
 			}
 		});
 	}
 
-
-	public void refreshData()
-	{
-		if(NetworkUtility.isOnline(getActivity()))
-		{
-			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
-			{
+	public void refreshData() {
+		if (NetworkUtility.isOnline(getActivity())) {
+			if (!mAPICallManager.hasRunningTask(ExampleRequest.class)) {
 				// show progress popup
 				showProgress(true);
 
@@ -215,49 +185,39 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				request.setMetaData(bundle);
 				mAPICallManager.executeTask(request, this);
 			}
-		}
-		else
-		{
+		} else {
 			Toast.makeText(getActivity(), R.string.global_network_offline, Toast.LENGTH_LONG).show();
 		}
 	}
 
-
-	private void handleError(String errorType, String errorMessage)
-	{
+	private void handleError(String errorType, String errorMessage) {
 		// TODO: show dialog
 	}
 
-
-	private void handleFail(Exception exception)
-	{
+	private void handleFail(Exception exception) {
 		int messageId;
-		if(exception != null && exception.getClass().equals(UnknownHostException.class))
+		if (exception != null && exception.getClass().equals(UnknownHostException.class))
 			messageId = R.string.global_network_unknown_host;
-		else if(exception != null && exception.getClass().equals(FileNotFoundException.class))
+		else if (exception != null && exception.getClass().equals(FileNotFoundException.class))
 			messageId = R.string.global_network_not_found;
-		else if(exception != null && exception.getClass().equals(SocketTimeoutException.class))
+		else if (exception != null && exception.getClass().equals(SocketTimeoutException.class))
 			messageId = R.string.global_network_timeout;
-		else if(exception != null && exception.getClass().equals(JsonParseException.class))
+		else if (exception != null && exception.getClass().equals(JsonParseException.class))
 			messageId = R.string.global_network_parse_fail;
-		else if(exception != null && exception.getClass().equals(ParseException.class))
+		else if (exception != null && exception.getClass().equals(ParseException.class))
 			messageId = R.string.global_network_parse_fail;
-		else if(exception != null && exception.getClass().equals(NumberFormatException.class))
+		else if (exception != null && exception.getClass().equals(NumberFormatException.class))
 			messageId = R.string.global_network_parse_fail;
-		else if(exception != null && exception.getClass().equals(ClassCastException.class))
+		else if (exception != null && exception.getClass().equals(ClassCastException.class))
 			messageId = R.string.global_network_parse_fail;
 		else
 			messageId = R.string.global_network_fail;
 		Toast.makeText(getActivity(), messageId, Toast.LENGTH_LONG).show();
 	}
 
-
-	private void loadData()
-	{
-		if(NetworkUtility.isOnline(getActivity()))
-		{
-			if(!mAPICallManager.hasRunningTask(ExampleRequest.class))
-			{
+	private void loadData() {
+		if (NetworkUtility.isOnline(getActivity())) {
+			if (!mAPICallManager.hasRunningTask(ExampleRequest.class)) {
 				// show progress
 				mStatefulLayout.showProgress();
 
@@ -268,18 +228,13 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 				Request request = new ExampleRequest(0, LAZY_LOADING_TAKE);
 				mAPICallManager.executeTask(request, this);
 			}
-		}
-		else
-		{
+		} else {
 			mStatefulLayout.showOffline();
 		}
 	}
 
-
-	private void lazyLoadData()
-	{
-		if(NetworkUtility.isOnline(getActivity()))
-		{
+	private void lazyLoadData() {
+		if (NetworkUtility.isOnline(getActivity())) {
 			// show lazy loading progress
 			showLazyLoadingProgress(true);
 
@@ -289,19 +244,14 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 		}
 	}
 
-
-	private void showLazyLoadingProgress(boolean visible)
-	{
-		if(visible)
-		{
+	private void showLazyLoadingProgress(boolean visible) {
+		if (visible) {
 			mLazyLoading = true;
 
 			// show footer
 			ListView listView = getListView();
 			listView.addFooterView(mFooterView);
-		}
-		else
-		{
+		} else {
 			// hide footer
 			ListView listView = getListView();
 			listView.removeFooterView(mFooterView);
@@ -310,9 +260,7 @@ public class ExampleFragment extends TaskFragment implements APICallListener
 		}
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// TODO
 	}
 }

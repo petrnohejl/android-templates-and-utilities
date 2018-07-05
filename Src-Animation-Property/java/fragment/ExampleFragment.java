@@ -20,22 +20,16 @@ import com.example.R;
 
 import org.alfonz.utility.Logcat;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
-	private void animateView1(View view)
-	{
+	private void animateView1(View view) {
 		PropertyValuesHolder holderX = PropertyValuesHolder.ofFloat(View.TRANSLATION_X, 0F, 400F);
 		PropertyValuesHolder holderY = PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, 0F, 200F);
 		PropertyValuesHolder holderSX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1F, 2F);
@@ -48,32 +42,24 @@ public class ExampleFragment extends Fragment
 		animator1.setRepeatMode(ObjectAnimator.REVERSE);
 		animator1.setInterpolator(new AccelerateDecelerateInterpolator());
 		animator1.setEvaluator(new FloatEvaluator());
-		animator1.addListener(new AnimatorListenerAdapter()
-		{
+		animator1.addListener(new AnimatorListenerAdapter() {
 			@Override
-			public void onAnimationStart(Animator animator)
-			{
+			public void onAnimationStart(Animator animator) {
 				Logcat.d("");
 			}
 
-
 			@Override
-			public void onAnimationRepeat(Animator animator)
-			{
+			public void onAnimationRepeat(Animator animator) {
 				Logcat.d("");
 			}
 
-
 			@Override
-			public void onAnimationCancel(Animator animator)
-			{
+			public void onAnimationCancel(Animator animator) {
 				Logcat.d("");
 			}
 
-
 			@Override
-			public void onAnimationEnd(Animator animator)
-			{
+			public void onAnimationEnd(Animator animator) {
 				Logcat.d("");
 			}
 		});
@@ -90,9 +76,7 @@ public class ExampleFragment extends Fragment
 		animatorSet.start();
 	}
 
-
-	private void animateView2(final View view)
-	{
+	private void animateView2(final View view) {
 		Integer colorFrom = ContextCompat.getColor(getActivity(), android.R.color.holo_orange_light);
 		Integer colorTo = ContextCompat.getColor(getActivity(), android.R.color.holo_green_light);
 		ValueAnimator animator = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo, colorFrom);
@@ -100,11 +84,9 @@ public class ExampleFragment extends Fragment
 		animator.setRepeatCount(ValueAnimator.INFINITE);
 		animator.setRepeatMode(ValueAnimator.REVERSE);
 		animator.setInterpolator(new AccelerateDecelerateInterpolator());
-		animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-		{
+		animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 			@Override
-			public void onAnimationUpdate(ValueAnimator animator)
-			{
+			public void onAnimationUpdate(ValueAnimator animator) {
 				view.setBackgroundColor((Integer) animator.getAnimatedValue());
 			}
 		});

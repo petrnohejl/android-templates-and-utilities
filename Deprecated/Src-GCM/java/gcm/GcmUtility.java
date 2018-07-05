@@ -19,29 +19,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 
-
-public final class GcmUtility
-{
+public final class GcmUtility {
 	private static final int MAX_ATTEMPTS = 5;
 	private static final int BACKOFF_MILLI_SECONDS = 2000;
 	private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	private static final Random sRandom = new Random();
 
-
 	private GcmUtility() {}
 
-
-	public static boolean checkPlayServices(Activity activity)
-	{
+	public static boolean checkPlayServices(Activity activity) {
 		int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
-		if(resultCode != ConnectionResult.SUCCESS)
-		{
-			if(GooglePlayServicesUtil.isUserRecoverableError(resultCode))
-			{
+		if (resultCode != ConnectionResult.SUCCESS) {
+			if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
 				GooglePlayServicesUtil.getErrorDialog(resultCode, activity, PLAY_SERVICES_RESOLUTION_REQUEST).show();
-			}
-			else
-			{
+			} else {
 				Logcat.e("this device is not supported");
 				activity.finish();
 			}
@@ -50,15 +41,12 @@ public final class GcmUtility
 		return true;
 	}
 
-
-	public static String getRegistrationId(Context context)
-	{
+	public static String getRegistrationId(Context context) {
 		Preferences preferences = new Preferences();
 
 		// get saved registration id
 		String registrationId = preferences.getGcmRegistrationId();
-		if(registrationId.isEmpty())
-		{
+		if (registrationId.isEmpty()) {
 			Logcat.d("registration id not found");
 			return "";
 		}
@@ -66,8 +54,7 @@ public final class GcmUtility
 		// check if app was updated
 		int registeredVersion = preferences.getGcmVersionCode();
 		int currentVersion = VersionUtility.getVersionCode(context);
-		if(registeredVersion != currentVersion)
-		{
+		if (registeredVersion != currentVersion) {
 			Logcat.d("app version has changed");
 			return "";
 		}
@@ -75,10 +62,8 @@ public final class GcmUtility
 		return registrationId;
 	}
 
-
 	// register this account/device pair within the server
-	public static void register(final Context context, final String registrationId)
-	{
+	public static void register(final Context context, final String registrationId) {
 		Logcat.d("registering device with registration id = %s", registrationId);
 
 		// request url
@@ -94,12 +79,10 @@ public final class GcmUtility
 
 		// Once GCM returns a registration id, we need to register it on the server.
 		// As the server might be down, we will retry it a couple times.
-		for(int i = 1; i <= MAX_ATTEMPTS; i++)
-		{
+		for (int i = 1; i <= MAX_ATTEMPTS; i++) {
 			Logcat.d("attempt #%d to register", i);
 
-			try
-			{
+			try {
 				post(requestUrl, params); // TODO: use post or get
 
 				Preferences preferences = new Preferences();
@@ -108,22 +91,17 @@ public final class GcmUtility
 
 				Logcat.d("server successfully registered device");
 				return;
-			}
-			catch(IOException e)
-			{
+			} catch (IOException e) {
 				// Here we are simplifying and retrying on any error.
 				// In a real application, it should retry only on unrecoverable errors (like HTTP error code 503).
 				Logcat.e("server failed to register on attempt #%d / exception " + e.getMessage(), i);
 
-				if(i == MAX_ATTEMPTS) break;
+				if (i == MAX_ATTEMPTS) break;
 
-				try
-				{
+				try {
 					Logcat.d("sleeping for %d ms before retry", backoff);
 					Thread.sleep(backoff);
-				}
-				catch(InterruptedException interruptedException)
-				{
+				} catch (InterruptedException interruptedException) {
 					// activity finished before we complete
 					Logcat.d("thread interrupted so abort remaining retries");
 					Thread.currentThread().interrupt();
@@ -138,10 +116,8 @@ public final class GcmUtility
 		Logcat.d("could not register device on server after %d attempts", MAX_ATTEMPTS);
 	}
 
-
 	// unregister this account/device pair within the server
-	public static void unregister(final Context context, final String registrationId)
-	{
+	public static void unregister(final Context context, final String registrationId) {
 		Logcat.d("unregistering device with registration id = %s", registrationId);
 
 		// request url
@@ -152,8 +128,7 @@ public final class GcmUtility
 		builder.appendQueryParameter("regId", registrationId);
 		String params = builder.build().toString().substring(1);
 
-		try
-		{
+		try {
 			post(requestUrl, params); // TODO: use post or get
 
 			Preferences preferences = new Preferences();
@@ -161,9 +136,7 @@ public final class GcmUtility
 			preferences.setGcmVersionCode(-1);
 
 			Logcat.d("server successfully unregistered device");
-		}
-		catch(IOException e)
-		{
+		} catch (IOException e) {
 			// At this point the device is unregistered from GCM, but still registered on the server.
 			// We could try to unregister again, but it is not necessary: if the server tries to send a message to the device,
 			// it will get a "NotRegistered" error message and should unregister the device.
@@ -171,18 +144,13 @@ public final class GcmUtility
 		}
 	}
 
-
 	// send a POST request to the server
-	private static void post(String requestUrl, String params) throws IOException
-	{
+	private static void post(String requestUrl, String params) throws IOException {
 		// create new URL
 		URL url;
-		try
-		{
+		try {
 			url = new URL(requestUrl);
-		}
-		catch(MalformedURLException e)
-		{
+		} catch (MalformedURLException e) {
 			throw new IllegalArgumentException("Invalid url " + requestUrl);
 		}
 
@@ -193,8 +161,7 @@ public final class GcmUtility
 
 		// URL connection
 		HttpURLConnection connection = null;
-		try
-		{
+		try {
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
@@ -210,26 +177,20 @@ public final class GcmUtility
 
 			// handle the response
 			int status = connection.getResponseCode();
-			if(status != 200)
-			{
+			if (status != 200) {
 				throw new IOException("POST failed with error code " + status);
 			}
-		}
-		finally
-		{
-			if(connection != null) connection.disconnect();
+		} finally {
+			if (connection != null) connection.disconnect();
 		}
 	}
 
-
 	// send a GET request to the server
-	private static void get(String baseUrl, String params) throws IOException
-	{
+	private static void get(String baseUrl, String params) throws IOException {
 		// request URL
 		StringBuilder builder = new StringBuilder();
 		builder.append(baseUrl);
-		if(params != null && !params.equals(""))
-		{
+		if (params != null && !params.equals("")) {
 			builder.append("?");
 			builder.append(params);
 		}
@@ -237,12 +198,9 @@ public final class GcmUtility
 
 		// create new URL
 		URL url;
-		try
-		{
+		try {
 			url = new URL(requestUrl);
-		}
-		catch(MalformedURLException e)
-		{
+		} catch (MalformedURLException e) {
 			throw new IllegalArgumentException("Invalid url " + requestUrl);
 		}
 
@@ -250,8 +208,7 @@ public final class GcmUtility
 
 		// URL connection
 		HttpURLConnection connection = null;
-		try
-		{
+		try {
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
@@ -260,14 +217,11 @@ public final class GcmUtility
 
 			// handle the response
 			int status = connection.getResponseCode();
-			if(status != 200)
-			{
+			if (status != 200) {
 				throw new IOException("GET failed with error code " + status);
 			}
-		}
-		finally
-		{
-			if(connection != null) connection.disconnect();
+		} finally {
+			if (connection != null) connection.disconnect();
 		}
 	}
 }

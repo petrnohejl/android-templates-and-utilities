@@ -25,31 +25,23 @@ import com.example.R;
 
 import org.alfonz.view.StatefulLayout;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 	private StatefulLayout mStatefulLayout;
 	private String mUrl = "about:blank";
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// reference
 		final WebView webView = mRootView.findViewById(R.id.example_webview);
 
@@ -68,12 +60,9 @@ public class ExampleFragment extends Fragment
 		webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY); // fixes scrollbar on Froyo
 
 		// webview hardware acceleration
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-		{
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-		}
-		else
-		{
+		} else {
 			webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		}
 
@@ -95,54 +84,39 @@ public class ExampleFragment extends Fragment
 		webView.loadUrl(mUrl);
 	}
 
-
-	private void controlBack()
-	{
+	private void controlBack() {
 		final WebView webView = mRootView.findViewById(R.id.example_webview);
-		if(webView.canGoBack()) webView.goBack();
+		if (webView.canGoBack()) webView.goBack();
 	}
 
-
-	private void controlForward()
-	{
+	private void controlForward() {
 		final WebView webView = mRootView.findViewById(R.id.example_webview);
-		if(webView.canGoForward()) webView.goForward();
+		if (webView.canGoForward()) webView.goForward();
 	}
 
-
-	private void controlStop()
-	{
+	private void controlStop() {
 		final WebView webView = mRootView.findViewById(R.id.example_webview);
 		webView.stopLoading();
 	}
 
-
-	private void controlReload()
-	{
+	private void controlReload() {
 		final WebView webView = mRootView.findViewById(R.id.example_webview);
 		webView.reload();
 	}
 
-
-	private class MyWebViewClient extends WebViewClient
-	{
+	private class MyWebViewClient extends WebViewClient {
 		@Override
-		public void onPageFinished(WebView view, String url)
-		{
-			if(getActivity() != null)
-			{
+		public void onPageFinished(WebView view, String url) {
+			if (getActivity() != null) {
 				Toast.makeText(getActivity(), mUrl, Toast.LENGTH_LONG).show();
 				mStatefulLayout.showContent();
 			}
 		}
 
-
 		@SuppressWarnings("deprecation")
 		@Override
-		public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
-		{
-			if(getActivity() != null)
-			{
+		public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+			if (getActivity() != null) {
 				final WebView webView = mRootView.findViewById(R.id.example_webview);
 				webView.loadUrl("about:blank");
 				Toast.makeText(getActivity(), errorCode + ": " + description, Toast.LENGTH_LONG).show();
@@ -150,46 +124,33 @@ public class ExampleFragment extends Fragment
 			}
 		}
 
-
 		@TargetApi(Build.VERSION_CODES.M)
 		@Override
-		public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)
-		{
+		public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
 			// forward to deprecated method
 			onReceivedError(view, error.getErrorCode(), error.getDescription().toString(), request.getUrl().toString());
 		}
 
-
 		@Override
-		public boolean shouldOverrideUrlLoading(WebView view, String url)
-		{
-			if(url != null && (url.startsWith("http://") || url.startsWith("https://")))
-			{
+		public boolean shouldOverrideUrlLoading(WebView view, String url) {
+			if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
 				view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 				return true;
-			}
-			else
-			{
+			} else {
 				return false;
 			}
 		}
 	}
 
-
-	private class WebViewOnKeyListener implements OnKeyListener
-	{
+	private class WebViewOnKeyListener implements OnKeyListener {
 		@Override
-		public boolean onKey(View v, int keyCode, KeyEvent event)
-		{
-			if(event.getAction() == KeyEvent.ACTION_DOWN)
-			{
+		public boolean onKey(View v, int keyCode, KeyEvent event) {
+			if (event.getAction() == KeyEvent.ACTION_DOWN) {
 				WebView webView = (WebView) v;
 
-				switch(keyCode)
-				{
+				switch (keyCode) {
 					case KeyEvent.KEYCODE_BACK:
-						if(webView.canGoBack())
-						{
+						if (webView.canGoBack()) {
 							webView.goBack();
 							return true;
 						}
@@ -201,18 +162,13 @@ public class ExampleFragment extends Fragment
 		}
 	}
 
-
-	private class WebViewOnTouchListener implements OnTouchListener
-	{
+	private class WebViewOnTouchListener implements OnTouchListener {
 		@Override
-		public boolean onTouch(View v, MotionEvent event)
-		{
-			switch(event.getAction())
-			{
+		public boolean onTouch(View v, MotionEvent event) {
+			switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 				case MotionEvent.ACTION_UP:
-					if(!v.hasFocus())
-					{
+					if (!v.hasFocus()) {
 						v.requestFocus();
 					}
 					break;

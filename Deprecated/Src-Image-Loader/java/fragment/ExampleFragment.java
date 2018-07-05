@@ -14,33 +14,25 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
-
-public class ExampleFragment extends Fragment
-{
+public class ExampleFragment extends Fragment {
 	private View mRootView;
 	private ImageLoader mImageLoader = ImageLoader.getInstance();
 	private DisplayImageOptions mDisplayImageOptions;
 	private ImageLoadingListener mImageLoadingListener;
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setupImageLoader();
 	}
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
-	private void setupImageLoader()
-	{
+	private void setupImageLoader() {
 		mDisplayImageOptions = new DisplayImageOptions.Builder()
 				.showImageOnLoading(android.R.color.transparent)
 				.showImageForEmptyUri(R.drawable.placeholder_photo)
@@ -52,9 +44,7 @@ public class ExampleFragment extends Fragment
 		mImageLoadingListener = new AnimateImageLoadingListener();
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// reference
 		ImageView photoImageView = mRootView.findViewById(R.id.example_photo);
 

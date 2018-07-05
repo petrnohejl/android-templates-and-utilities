@@ -10,20 +10,15 @@ import android.view.ViewGroup;
 
 import com.example.R;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
+public class ExampleActivity extends AppCompatActivity {
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 		setupActionBar();
 	}
 
-
-	private void setupActionBar()
-	{
+	private void setupActionBar() {
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		toolbar.setContentInsetsRelative(0, 0);
 		setSupportActionBar(toolbar);
@@ -33,19 +28,15 @@ public class ExampleActivity extends AppCompatActivity
 		// custom view
 		LayoutInflater inflater = (LayoutInflater) bar.getThemedContext().getSystemService(LAYOUT_INFLATER_SERVICE);
 		View customView = inflater.inflate(R.layout.ab_donebar, null);
-		customView.findViewById(R.id.ab_donebar_done).setOnClickListener(new View.OnClickListener()
-		{
+		customView.findViewById(R.id.ab_donebar_done).setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				// TODO
 			}
 		});
-		customView.findViewById(R.id.ab_donebar_cancel).setOnClickListener(new View.OnClickListener()
-		{
+		customView.findViewById(R.id.ab_donebar_cancel).setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				// TODO
 			}
 		});

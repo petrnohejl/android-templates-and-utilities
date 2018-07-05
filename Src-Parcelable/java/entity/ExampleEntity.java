@@ -7,19 +7,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-
-public class ExampleEntity implements Parcelable
-{
-	public static final Parcelable.Creator<ExampleEntity> CREATOR = new Parcelable.Creator<ExampleEntity>()
-	{
-		public ExampleEntity createFromParcel(Parcel parcel)
-		{
+public class ExampleEntity implements Parcelable {
+	public static final Parcelable.Creator<ExampleEntity> CREATOR = new Parcelable.Creator<ExampleEntity>() {
+		public ExampleEntity createFromParcel(Parcel parcel) {
 			return new ExampleEntity(parcel);
 		}
 
-
-		public ExampleEntity[] newArray(int size)
-		{
+		public ExampleEntity[] newArray(int size) {
 			return new ExampleEntity[size];
 		}
 	};
@@ -33,30 +27,22 @@ public class ExampleEntity implements Parcelable
 	private MyEntity myEntity;
 	private List<String> stringList;
 
-
 	// empty constructor
-	public ExampleEntity()
-	{
+	public ExampleEntity() {
 	}
 
-
 	// parcel constructor
-	public ExampleEntity(Parcel parcel)
-	{
+	public ExampleEntity(Parcel parcel) {
 		readFromParcel(parcel);
 	}
 
-
 	@Override
-	public int describeContents()
-	{
+	public int describeContents() {
 		return 0;
 	}
 
-
 	@Override
-	public void writeToParcel(Parcel parcel, int flags)
-	{
+	public void writeToParcel(Parcel parcel, int flags) {
 		// order is important
 		parcel.writeByte((byte) (booleanVar ? 1 : 0));
 		parcel.writeInt(intVar);
@@ -68,9 +54,7 @@ public class ExampleEntity implements Parcelable
 		parcel.writeStringList(stringList);
 	}
 
-
-	private void readFromParcel(Parcel parcel)
-	{
+	private void readFromParcel(Parcel parcel) {
 		// order is important
 		booleanVar = parcel.readByte() == 1;
 		intVar = parcel.readInt();
@@ -78,17 +62,14 @@ public class ExampleEntity implements Parcelable
 		stringVar = parcel.readString();
 
 		long dateVarLong = parcel.readLong();
-		if(dateVarLong != -1L) dateVar = new Date(dateVarLong);
+		if (dateVarLong != -1L) dateVar = new Date(dateVarLong);
 		else dateVar = null;
 
 		long calendarVarLong = parcel.readLong();
-		if(calendarVarLong != -1L)
-		{
+		if (calendarVarLong != -1L) {
 			calendarVar = Calendar.getInstance();
 			calendarVar.setTimeInMillis(calendarVarLong);
-		}
-		else
-		{
+		} else {
 			calendarVar = null;
 		}
 

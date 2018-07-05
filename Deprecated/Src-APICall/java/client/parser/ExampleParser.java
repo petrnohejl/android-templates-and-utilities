@@ -13,11 +13,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ExampleParser extends Parser
-{
-	public static Response<List<ProductEntity>> parse(InputStream stream) throws IOException, JsonParseException
-	{
+public class ExampleParser extends Parser {
+	public static Response<List<ProductEntity>> parse(InputStream stream) throws IOException, JsonParseException {
 		Response<List<ProductEntity>> response = null;
 
 		// init parser
@@ -26,25 +23,19 @@ public class ExampleParser extends Parser
 		parser = factory.createJsonParser(stream);
 
 		// parse JSON
-		if(parser.nextToken() == JsonToken.START_OBJECT)
-			while(parser.nextToken() != JsonToken.END_OBJECT)
-			{
+		if (parser.nextToken() == JsonToken.START_OBJECT)
+			while (parser.nextToken() != JsonToken.END_OBJECT) {
 				// error
-				if(parser.getCurrentName().equals("error"))
-				{
+				if (parser.getCurrentName().equals("error")) {
 					String type = null;
 					String message = null;
 
-					if(parser.nextToken() == JsonToken.START_OBJECT)
-						while(parser.nextToken() != JsonToken.END_OBJECT)
-						{
-							if(parser.getCurrentName().equals("type"))
-							{
-								if(parser.getCurrentToken() == JsonToken.VALUE_STRING) type = parser.getText();
-							}
-							else if(parser.getCurrentName().equals("message"))
-							{
-								if(parser.getCurrentToken() == JsonToken.VALUE_STRING) message = parser.getText();
+					if (parser.nextToken() == JsonToken.START_OBJECT)
+						while (parser.nextToken() != JsonToken.END_OBJECT) {
+							if (parser.getCurrentName().equals("type")) {
+								if (parser.getCurrentToken() == JsonToken.VALUE_STRING) type = parser.getText();
+							} else if (parser.getCurrentName().equals("message")) {
+								if (parser.getCurrentToken() == JsonToken.VALUE_STRING) message = parser.getText();
 							}
 						}
 
@@ -55,24 +46,17 @@ public class ExampleParser extends Parser
 				}
 
 				// response
-				else if(parser.getCurrentName().equals("product"))
-				{
+				else if (parser.getCurrentName().equals("product")) {
 					long id = -1L;
 					String name = null;
 
-					if(parser.nextToken() == JsonToken.START_OBJECT)
-						while(parser.nextToken() != JsonToken.END_OBJECT)
-						{
-							if(parser.getCurrentName().equals("id"))
-							{
-								if(parser.getCurrentToken() == JsonToken.VALUE_NUMBER_INT) id = parser.getLongValue();
-							}
-							else if(parser.getCurrentName().equals("name"))
-							{
-								if(parser.getCurrentToken() == JsonToken.VALUE_STRING) name = parser.getText();
-							}
-							else
-							{
+					if (parser.nextToken() == JsonToken.START_OBJECT)
+						while (parser.nextToken() != JsonToken.END_OBJECT) {
+							if (parser.getCurrentName().equals("id")) {
+								if (parser.getCurrentToken() == JsonToken.VALUE_NUMBER_INT) id = parser.getLongValue();
+							} else if (parser.getCurrentName().equals("name")) {
+								if (parser.getCurrentToken() == JsonToken.VALUE_STRING) name = parser.getText();
+							} else {
 								// unknown parameter
 								handleUnknownParameter(parser);
 							}
@@ -91,7 +75,7 @@ public class ExampleParser extends Parser
 			}
 
 		// close parser
-		if(parser != null) parser.close();
+		if (parser != null) parser.close();
 		return response;
 	}
 }

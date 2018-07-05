@@ -4,10 +4,8 @@ import com.example.entity.ProductEntity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-
 @DatabaseTable
-public class ProductModel
-{
+public class ProductModel {
 	public static final String COLUMN_ID = "id";
 	public static final String COLUMN_NAME = "name";
 	public static final String COLUMN_QUANTITY = "quantity";
@@ -20,15 +18,11 @@ public class ProductModel
 	@DatabaseField(columnName = COLUMN_TIMESTAMP) private long timestamp;
 	@DatabaseField(columnName = COLUMN_PRICE) private double price;
 
-
 	// empty constructor
-	public ProductModel()
-	{
+	public ProductModel() {
 	}
 
-
-	public ProductEntity toEntity()
-	{
+	public ProductEntity toEntity() {
 		ProductEntity e = new ProductEntity();
 		e.setId(id);
 		e.setName(name);
@@ -38,72 +32,50 @@ public class ProductModel
 		return e;
 	}
 
-
-	public void set(ProductEntity e)
-	{
+	public void set(ProductEntity e) {
 		name = e.getName();
 		quantity = e.getQuantity();
 		timestamp = e.getTimestamp();
 		price = e.getPrice();
 	}
 
-
-	public long getId()
-	{
+	public long getId() {
 		return id;
 	}
 
-
-	public void setId(long id)
-	{
+	public void setId(long id) {
 		this.id = id;
 	}
 
-
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-
-	public int getQuantity()
-	{
+	public int getQuantity() {
 		return quantity;
 	}
 
-
-	public void setQuantity(int quantity)
-	{
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-
-	public long getTimestamp()
-	{
+	public long getTimestamp() {
 		return timestamp;
 	}
 
-
-	public void setTimestamp(long timestamp)
-	{
+	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
 
-
-	public double getPrice()
-	{
+	public double getPrice() {
 		return price;
 	}
 
-
-	public void setPrice(double price)
-	{
+	public void setPrice(double price) {
 		this.price = price;
 	}
 }

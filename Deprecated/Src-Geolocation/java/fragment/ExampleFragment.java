@@ -16,54 +16,41 @@ import org.alfonz.utility.Logcat;
 
 import java.util.Date;
 
-
-public class ExampleFragment extends TaskFragment implements GeolocationListener
-{
+public class ExampleFragment extends TaskFragment implements GeolocationListener {
 	private View mRootView;
 	private Geolocation mGeolocation = null;
 	private Location mLocation = null;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// start geolocation
-		if(mLocation == null)
-		{
+		if (mLocation == null) {
 			mGeolocation = null;
 			mGeolocation = new Geolocation((LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE), this);
 		}
 	}
 
-
 	@Override
-	public void onPause()
-	{
+	public void onPause() {
 		super.onPause();
 
 		// stop geolocation
-		if(mGeolocation != null) mGeolocation.stop();
+		if (mGeolocation != null) mGeolocation.stop();
 	}
 
-
 	@Override
-	public void onGeolocationRespond(Geolocation geolocation, final Location location)
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				if(mRootView == null) return; // view was destroyed
+	public void onGeolocationRespond(Geolocation geolocation, final Location location) {
+		runTaskCallback(new Runnable() {
+			public void run() {
+				if (mRootView == null) return; // view was destroyed
 
 				Logcat.d("onGeolocationRespond() = " + location.getProvider() + " / " + location.getLatitude() + " / " + location.getLongitude() + " / " + new Date(location.getTime()).toString());
 				mLocation = new Location(location);
@@ -73,15 +60,11 @@ public class ExampleFragment extends TaskFragment implements GeolocationListener
 		});
 	}
 
-
 	@Override
-	public void onGeolocationFail(Geolocation geolocation)
-	{
-		runTaskCallback(new Runnable()
-		{
-			public void run()
-			{
-				if(mRootView == null) return; // view was destroyed
+	public void onGeolocationFail(Geolocation geolocation) {
+		runTaskCallback(new Runnable() {
+			public void run() {
+				if (mRootView == null) return; // view was destroyed
 
 				Logcat.d("onGeolocationFail()");
 

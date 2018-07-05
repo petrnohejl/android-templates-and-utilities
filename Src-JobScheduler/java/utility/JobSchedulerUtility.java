@@ -9,18 +9,13 @@ import android.support.annotation.RequiresApi;
 
 import com.example.service.ExampleService;
 
-
-public final class JobSchedulerUtility
-{
+public final class JobSchedulerUtility {
 	public static final int EXAMPLE_JOB = 0;
-
 
 	private JobSchedulerUtility() {}
 
-
 	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-	public static void scheduleExampleJob(Context context)
-	{
+	public static void scheduleExampleJob(Context context) {
 		ComponentName componentName = new ComponentName(context, ExampleService.class);
 
 		JobInfo.Builder builder = new JobInfo.Builder(EXAMPLE_JOB, componentName);

@@ -11,15 +11,11 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.R;
 
-
-public final class BindingUtility
-{
+public final class BindingUtility {
 	private BindingUtility() {}
 
-
 	@BindingAdapter({"imageUrl"})
-	public static void setImageUrl(ImageView imageView, String url)
-	{
+	public static void setImageUrl(ImageView imageView, String url) {
 		Glide
 				.with(imageView.getContext())
 				.load(url)
@@ -29,19 +25,14 @@ public final class BindingUtility
 				.into(imageView);
 	}
 
-
 	@BindingAdapter(value = {"imageUrl", "imageCircular", "imagePlaceholder", "imageError"}, requireAll = false)
-	public static void setImageUrl(ImageView imageView, String url, boolean circular, Drawable placeholder, Drawable error)
-	{
+	public static void setImageUrl(ImageView imageView, String url, boolean circular, Drawable placeholder, Drawable error) {
 		RequestManager requestManager = Glide.with(imageView.getContext());
-		if(!circular)
-		{
+		if (!circular) {
 			DrawableTypeRequest builder = requestManager.load(url);
 			GlideUtility.setupRequestBuilder(builder, placeholder, error);
 			builder.into(imageView);
-		}
-		else
-		{
+		} else {
 			BitmapTypeRequest builder = requestManager.load(url).asBitmap();
 			GlideUtility.setupRequestBuilder(builder, placeholder, error);
 			builder.into(GlideUtility.createCircularTarget(imageView));

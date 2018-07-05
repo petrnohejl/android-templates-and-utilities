@@ -8,12 +8,9 @@ import com.example.R;
 
 import org.alfonz.utility.Logcat;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
+public class ExampleActivity extends AppCompatActivity {
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 
@@ -25,9 +22,7 @@ public class ExampleActivity extends AppCompatActivity
 		Logcat.d("getIntent().getExtras() = " + (getIntent().getExtras() != null ? getIntent().getExtras().keySet() : "null"));
 	}
 
-
-	private void startNewTask()
-	{
+	private void startNewTask() {
 		Intent intent = new Intent(this, ExampleActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -18,50 +18,37 @@ import com.example.listener.OnDualPaneShowListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ListingFragment extends Fragment
-{
+public class ListingFragment extends Fragment {
 	private View mRootView;
 	private ListingAdapter mAdapter;
 	private OnDualPaneShowListener mDualPaneShowListener;
 	private List<ProductEntity> mProductList = new ArrayList<>();
 
-
 	@Override
-	public void onAttach(Context context)
-	{
+	public void onAttach(Context context) {
 		super.onAttach(context);
 
 		// set dual pane listener
-		try
-		{
+		try {
 			mDualPaneShowListener = (OnDualPaneShowListener) getActivity();
-		}
-		catch(ClassCastException e)
-		{
+		} catch (ClassCastException e) {
 			throw new ClassCastException(getActivity().getClass().getName() + " must implement " + OnDualPaneShowListener.class.getName());
 		}
 	}
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_listing, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setupView();
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		boolean init = false;
 
 		// reference
@@ -69,8 +56,7 @@ public class ListingFragment extends Fragment
 		ViewGroup emptyView = mRootView.findViewById(android.R.id.empty);
 
 		// testing data
-		for(int i = 0; i < 32; i++)
-		{
+		for (int i = 0; i < 32; i++) {
 			ProductEntity p = new ProductEntity();
 			p.setName("Product " + (i));
 			mProductList.add(p);
@@ -81,20 +67,16 @@ public class ListingFragment extends Fragment
 		boolean dualPane = dualPaneContainer != null && dualPaneContainer.getVisibility() == View.VISIBLE;
 
 		// listview content
-		if(mAdapter == null)
-		{
+		if (mAdapter == null) {
 			// create adapter
 			mAdapter = new ListingAdapter(getActivity(), mProductList, dualPane);
 
 			// initial fragment in second pane
-			if(dualPane && mProductList != null && mProductList.size() > 0)
-			{
+			if (dualPane && mProductList != null && mProductList.size() > 0) {
 				mDualPaneShowListener.onDualPaneShow(SimpleFragment.class, 0);
 				init = true;
 			}
-		}
-		else
-		{
+		} else {
 			// refill adapter
 			mAdapter.refill(getActivity(), mProductList, dualPane);
 		}
@@ -106,14 +88,12 @@ public class ListingFragment extends Fragment
 		listView.setEmptyView(emptyView);
 
 		// set first item checked
-		if(init) listView.setItemChecked(0, true);
+		if (init) listView.setItemChecked(0, true);
 
 		// listview item onclick
-		listView.setOnItemClickListener(new OnItemClickListener()
-		{
+		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-			{
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// list position
 				int listPosition = getListPosition(position);
 

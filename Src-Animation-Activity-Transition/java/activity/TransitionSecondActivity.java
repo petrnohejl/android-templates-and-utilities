@@ -10,40 +10,30 @@ import android.view.MenuItem;
 
 import com.example.R;
 
-
-public class TransitionSecondActivity extends AppCompatActivity
-{
-	public static Intent newIntent(Context context)
-	{
+public class TransitionSecondActivity extends AppCompatActivity {
+	public static Intent newIntent(Context context) {
 		Intent intent = new Intent(context, TransitionSecondActivity.class);
 		return intent;
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_transition_second);
 	}
 
-
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
+	public boolean onCreateOptionsMenu(Menu menu) {
 		// action bar menu
 		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.activity_transition_second, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
-
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// action bar menu behavior
-		switch(item.getItemId())
-		{
+		switch (item.getItemId()) {
 			case R.id.menu_transition_second_first:
 				Intent intent = TransitionFirstActivity.newIntent(this);
 				startActivity(intent);
@@ -55,10 +45,8 @@ public class TransitionSecondActivity extends AppCompatActivity
 		}
 	}
 
-
 	@Override
-	public void onBackPressed()
-	{
+	public void onBackPressed() {
 		// back button
 		super.onBackPressed();
 		setResult(RESULT_CANCELED);

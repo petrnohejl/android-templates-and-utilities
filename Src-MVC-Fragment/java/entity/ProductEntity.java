@@ -1,46 +1,32 @@
 package com.example.entity;
 
-
-public class ProductEntity
-{
+public class ProductEntity {
 	private long id;
 	private String name;
 
-
 	// empty constructor
-	public ProductEntity()
-	{
+	public ProductEntity() {
 	}
-
 
 	// copy constructor
-	public ProductEntity(ProductEntity origin)
-	{
+	public ProductEntity(ProductEntity origin) {
 		id = origin.id;
-		if(origin.name != null) name = new String(origin.name);
+		if (origin.name != null) name = new String(origin.name);
 	}
 
-
-	public long getId()
-	{
+	public long getId() {
 		return id;
 	}
 
-
-	public void setId(long id)
-	{
+	public void setId(long id) {
 		this.id = id;
 	}
 
-
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 }

@@ -1,38 +1,26 @@
 package com.example.client;
 
-
-public class ResponseStatus
-{
+public class ResponseStatus {
 	// HTTP status codes are defined in HttpURLConnection
 	private int mStatusCode = -1;
 	private String mStatusMessage = "Unknown";
 
-
-	public ResponseStatus()
-	{
+	public ResponseStatus() {
 	}
 
-
-	public int getStatusCode()
-	{
+	public int getStatusCode() {
 		return mStatusCode;
 	}
 
-
-	public void setStatusCode(int statusCode)
-	{
+	public void setStatusCode(int statusCode) {
 		mStatusCode = statusCode;
 	}
 
-
-	public String getStatusMessage()
-	{
+	public String getStatusMessage() {
 		return mStatusMessage;
 	}
 
-
-	public void setStatusMessage(String statusMessage)
-	{
+	public void setStatusMessage(String statusMessage) {
 		mStatusMessage = statusMessage;
 	}
 }

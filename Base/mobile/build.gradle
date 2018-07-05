@@ -5,16 +5,13 @@
 //        gradlew test                    Run local unit test
 //        gradlew connectedAndroidTest    Run instrumented unit test
 
-
 final VERSION_MAJOR = 1 // max two digits
 final VERSION_MINOR = 0 // max two digits
 final VERSION_PATCH = 0 // max two digits
 final VERSION_BUILD = 0 // max three digits
 
-
 apply plugin: "com.android.application"
 apply from: "../utils.gradle"
-
 
 android {
 	compileSdkVersion 27
@@ -70,12 +67,11 @@ android {
 
 	applicationVariants.all {
 		variant ->
-			if(variant.buildType.name.equals("release")) {
+			if (variant.buildType.name.equals("release")) {
 				renameArtifact("example", variant)
 			}
 	}
 }
-
 
 dependencies {
 	implementation fileTree(dir: "libs", include: ["*.jar"])

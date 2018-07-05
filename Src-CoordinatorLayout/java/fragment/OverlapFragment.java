@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.R;
 
-
-public class OverlapFragment extends Fragment implements AppBarLayout.OnOffsetChangedListener
-{
+public class OverlapFragment extends Fragment implements AppBarLayout.OnOffsetChangedListener {
 	private static final int PERCENTAGE_TO_SHOW_IMAGE = 20;
 
 	private View mRootView;
@@ -21,62 +19,48 @@ public class OverlapFragment extends Fragment implements AppBarLayout.OnOffsetCh
 	private int mMaxScrollSize;
 	private boolean mIsImageHidden;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_overlap, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setupAppBar();
 	}
 
-
 	@Override
-	public void onOffsetChanged(AppBarLayout appBarLayout, int i)
-	{
-		if(mMaxScrollSize == 0) mMaxScrollSize = appBarLayout.getTotalScrollRange();
+	public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+		if (mMaxScrollSize == 0) mMaxScrollSize = appBarLayout.getTotalScrollRange();
 		int currentScrollPercentage = (Math.abs(i)) * 100 / mMaxScrollSize;
 
-		if(currentScrollPercentage >= PERCENTAGE_TO_SHOW_IMAGE)
-		{
-			if(!mIsImageHidden)
-			{
+		if (currentScrollPercentage >= PERCENTAGE_TO_SHOW_IMAGE) {
+			if (!mIsImageHidden) {
 				mIsImageHidden = true;
 				ViewCompat.animate(mFab).scaleY(0).scaleX(0).start();
 			}
 		}
 
-		if(currentScrollPercentage < PERCENTAGE_TO_SHOW_IMAGE)
-		{
-			if(mIsImageHidden)
-			{
+		if (currentScrollPercentage < PERCENTAGE_TO_SHOW_IMAGE) {
+			if (mIsImageHidden) {
 				mIsImageHidden = false;
 				ViewCompat.animate(mFab).scaleY(1).scaleX(1).start();
 			}
 		}
 	}
 
-
-	private void setupAppBar()
-	{
+	private void setupAppBar() {
 		// appbar
 		AppBarLayout appBar = mRootView.findViewById(R.id.appbar);
 		appBar.addOnOffsetChangedListener(this);
 
 		// toolbar
 		Toolbar toolbar = mRootView.findViewById(R.id.toolbar);
-		toolbar.setNavigationOnClickListener(new View.OnClickListener()
-		{
+		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				// TODO
 			}
 		});

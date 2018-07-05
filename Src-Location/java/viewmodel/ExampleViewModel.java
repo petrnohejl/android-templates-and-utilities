@@ -25,9 +25,7 @@ import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 
-
-public class ExampleViewModel extends BaseViewModel<ExampleView>
-{
+public class ExampleViewModel extends BaseViewModel<ExampleView> {
 	private static final String LOCATION_SETTINGS_CALL_TYPE = "location_settings";
 	private static final String LAST_LOCATION_CALL_TYPE = "last_location";
 	private static final String SINGLE_LOCATION_CALL_TYPE = "single_location";
@@ -40,88 +38,66 @@ public class ExampleViewModel extends BaseViewModel<ExampleView>
 	private Disposable mSingleLocationDisposable;
 	private Disposable mSingleAddressDisposable;
 
-
 	@Override
-	public void onCreate(@Nullable Bundle arguments, @Nullable Bundle savedInstanceState)
-	{
+	public void onCreate(@Nullable Bundle arguments, @Nullable Bundle savedInstanceState) {
 		super.onCreate(arguments, savedInstanceState);
 		mRxLocation.setDefaultTimeout(30, TimeUnit.SECONDS);
 	}
 
-
 	@Override
-	public void onStart()
-	{
+	public void onStart() {
 		super.onStart();
 		runContinuousLocationCall();
 	}
 
-
 	@Override
-	public void onStop()
-	{
+	public void onStop() {
 		super.onStop();
 		mRxManager.disposeAll();
 	}
 
-
-	private LocationRequest createSingleLocationRequest()
-	{
+	private LocationRequest createSingleLocationRequest() {
 		return LocationRequest.create()
 				.setNumUpdates(1)
 				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 	}
 
-
-	private LocationRequest createContinuousLocationRequest()
-	{
+	private LocationRequest createContinuousLocationRequest() {
 		return LocationRequest.create()
 				.setInterval(10000)
 				.setFastestInterval(5000)
 				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 	}
 
-
-	private void runLocationSettingsCall()
-	{
-		if(!mRxManager.isRunning(LOCATION_SETTINGS_CALL_TYPE))
-		{
+	private void runLocationSettingsCall() {
+		if (!mRxManager.isRunning(LOCATION_SETTINGS_CALL_TYPE)) {
 			Single<Boolean> rawSingle = mRxLocation.settings().checkAndHandleResolution(createSingleLocationRequest());
 			Single<Boolean> single = mRxManager.setupSingleWithSchedulers(rawSingle, LOCATION_SETTINGS_CALL_TYPE);
 			single.subscribeWith(createLocationSettingsSingleObserver());
 		}
 	}
 
-
 	@SuppressWarnings("MissingPermission")
-	private void runLastLocationCall()
-	{
-		if(!mRxManager.isRunning(LAST_LOCATION_CALL_TYPE))
-		{
+	private void runLastLocationCall() {
+		if (!mRxManager.isRunning(LAST_LOCATION_CALL_TYPE)) {
 			Maybe<Location> rawMaybe = mRxLocation.location().lastLocation();
 			Maybe<Location> maybe = mRxManager.setupMaybeWithSchedulers(rawMaybe, LAST_LOCATION_CALL_TYPE);
 			maybe.subscribeWith(createLastLocationMaybeObserver());
 		}
 	}
 
-
 	@SuppressWarnings("MissingPermission")
-	private void runSingleLocationCall()
-	{
-		if(!mRxManager.isRunning(SINGLE_LOCATION_CALL_TYPE))
-		{
+	private void runSingleLocationCall() {
+		if (!mRxManager.isRunning(SINGLE_LOCATION_CALL_TYPE)) {
 			Observable<Location> rawObservable = mRxLocation.location().updates(createSingleLocationRequest());
 			Observable<Location> observable = mRxManager.setupObservableWithSchedulers(rawObservable, SINGLE_LOCATION_CALL_TYPE);
 			mSingleLocationDisposable = observable.subscribeWith(createSingleLocationObserver());
 		}
 	}
 
-
 	@SuppressWarnings("MissingPermission")
-	private void runSingleAddressCall()
-	{
-		if(!mRxManager.isRunning(SINGLE_ADDRESS_CALL_TYPE))
-		{
+	private void runSingleAddressCall() {
+		if (!mRxManager.isRunning(SINGLE_ADDRESS_CALL_TYPE)) {
 			Observable<Address> rawObservable = mRxLocation.location()
 					.updates(createSingleLocationRequest())
 					.flatMap(location -> mRxLocation.geocoding().fromLocation(location).toObservable());
@@ -130,24 +106,18 @@ public class ExampleViewModel extends BaseViewModel<ExampleView>
 		}
 	}
 
-
 	@SuppressWarnings("MissingPermission")
-	private void runContinuousLocationCall()
-	{
-		if(!mRxManager.isRunning(CONTINUOUS_LOCATION_CALL_TYPE))
-		{
+	private void runContinuousLocationCall() {
+		if (!mRxManager.isRunning(CONTINUOUS_LOCATION_CALL_TYPE)) {
 			Observable<Location> rawObservable = mRxLocation.location().updates(createContinuousLocationRequest());
 			Observable<Location> observable = mRxManager.setupObservableWithSchedulers(rawObservable, CONTINUOUS_LOCATION_CALL_TYPE);
 			observable.subscribeWith(createContinuousLocationObserver());
 		}
 	}
 
-
 	@SuppressWarnings("MissingPermission")
-	private void runContinuousAddressCall()
-	{
-		if(!mRxManager.isRunning(CONTINUOUS_ADDRESS_CALL_TYPE))
-		{
+	private void runContinuousAddressCall() {
+		if (!mRxManager.isRunning(CONTINUOUS_ADDRESS_CALL_TYPE)) {
 			Observable<Address> rawObservable = mRxLocation.location()
 					.updates(createContinuousLocationRequest())
 					.flatMap(location -> mRxLocation.geocoding().fromLocation(location).toObservable());
@@ -156,9 +126,7 @@ public class ExampleViewModel extends BaseViewModel<ExampleView>
 		}
 	}
 
-
-	private DisposableSingleObserver<Boolean> createLocationSettingsSingleObserver()
-	{
+	private DisposableSingleObserver<Boolean> createLocationSettingsSingleObserver() {
 		return AlfonzDisposableSingleObserver.newInstance(
 				data ->
 				{
@@ -171,9 +139,7 @@ public class ExampleViewModel extends BaseViewModel<ExampleView>
 		);
 	}
 
-
-	private DisposableMaybeObserver<Location> createLastLocationMaybeObserver()
-	{
+	private DisposableMaybeObserver<Location> createLastLocationMaybeObserver() {
 		return AlfonzDisposableMaybeObserver.newInstance(
 				data ->
 				{
@@ -190,9 +156,7 @@ public class ExampleViewModel extends BaseViewModel<ExampleView>
 		);
 	}
 
-
-	private DisposableObserver<Location> createSingleLocationObserver()
-	{
+	private DisposableObserver<Location> createSingleLocationObserver() {
 		return AlfonzDisposableObserver.newInstance(
 				data ->
 				{
@@ -210,9 +174,7 @@ public class ExampleViewModel extends BaseViewModel<ExampleView>
 		);
 	}
 
-
-	private DisposableObserver<Address> createSingleAddressObserver()
-	{
+	private DisposableObserver<Address> createSingleAddressObserver() {
 		return AlfonzDisposableObserver.newInstance(
 				data ->
 				{
@@ -230,9 +192,7 @@ public class ExampleViewModel extends BaseViewModel<ExampleView>
 		);
 	}
 
-
-	private DisposableObserver<Location> createContinuousLocationObserver()
-	{
+	private DisposableObserver<Location> createContinuousLocationObserver() {
 		return AlfonzDisposableObserver.newInstance(
 				data ->
 				{
@@ -249,9 +209,7 @@ public class ExampleViewModel extends BaseViewModel<ExampleView>
 		);
 	}
 
-
-	private DisposableObserver<Address> createContinuousAddressObserver()
-	{
+	private DisposableObserver<Address> createContinuousAddressObserver() {
 		return AlfonzDisposableObserver.newInstance(
 				data ->
 				{

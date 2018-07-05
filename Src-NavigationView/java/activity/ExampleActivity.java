@@ -20,17 +20,13 @@ import android.widget.TextView;
 import com.example.R;
 import com.example.fragment.ExampleFragment;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
+public class ExampleActivity extends AppCompatActivity {
 	private DrawerLayout mDrawerLayout;
 	private NavigationView mNavigationView;
 	private ActionBarDrawerToggle mDrawerToggle;
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 		setupActionBar();
@@ -38,19 +34,15 @@ public class ExampleActivity extends AppCompatActivity
 		setupHeader();
 	}
 
-
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// open or close the drawer if home button is pressed
-		if(mDrawerToggle.onOptionsItemSelected(item))
-		{
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
 
 		// action bar menu behavior
-		switch(item.getItemId())
-		{
+		switch (item.getItemId()) {
 			case android.R.id.home:
 				// TODO
 				return true;
@@ -60,39 +52,28 @@ public class ExampleActivity extends AppCompatActivity
 		}
 	}
 
-
 	@Override
-	protected void onPostCreate(Bundle savedInstanceState)
-	{
+	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		mDrawerToggle.syncState();
 	}
 
-
 	@Override
-	public void onConfigurationChanged(Configuration newConfiguration)
-	{
+	public void onConfigurationChanged(Configuration newConfiguration) {
 		super.onConfigurationChanged(newConfiguration);
 		mDrawerToggle.onConfigurationChanged(newConfiguration);
 	}
 
-
 	@Override
-	public void onBackPressed()
-	{
-		if(mDrawerLayout.isDrawerOpen(Gravity.LEFT))
-		{
+	public void onBackPressed() {
+		if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
 			mDrawerLayout.closeDrawer(Gravity.LEFT);
-		}
-		else
-		{
+		} else {
 			super.onBackPressed();
 		}
 	}
 
-
-	private void setupActionBar()
-	{
+	private void setupActionBar() {
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
@@ -104,53 +85,42 @@ public class ExampleActivity extends AppCompatActivity
 		bar.setHomeButtonEnabled(true);
 	}
 
-
-	private void setupDrawer(Bundle savedInstanceState)
-	{
+	private void setupDrawer(Bundle savedInstanceState) {
 		// reference
 		mDrawerLayout = findViewById(R.id.example_drawer_layout);
 		mNavigationView = findViewById(R.id.example_drawer_navigation);
 
 		// navigation
-		mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
-		{
+		mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 			@Override
-			public boolean onNavigationItemSelected(@NonNull MenuItem item)
-			{
+			public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 				selectDrawerItem(item);
 				return true;
 			}
 		});
 
 		// toggle
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close)
-		{
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
 			@Override
-			public void onDrawerClosed(View view)
-			{
+			public void onDrawerClosed(View view) {
 				supportInvalidateOptionsMenu();
 			}
 
-
 			@Override
-			public void onDrawerOpened(View drawerView)
-			{
+			public void onDrawerOpened(View drawerView) {
 				supportInvalidateOptionsMenu();
 			}
 		};
 		mDrawerLayout.addDrawerListener(mDrawerToggle);
 
 		// show initial fragment
-		if(savedInstanceState == null)
-		{
+		if (savedInstanceState == null) {
 			MenuItem item = mNavigationView.getMenu().findItem(R.id.menu_navigation_example1);
 			selectDrawerItem(item);
 		}
 	}
 
-
-	private void setupHeader()
-	{
+	private void setupHeader() {
 		// reference
 		TextView titleTextView = mNavigationView.getHeaderView(0).findViewById(R.id.navigation_header_title);
 
@@ -158,14 +128,11 @@ public class ExampleActivity extends AppCompatActivity
 		titleTextView.setText("Hello world");
 	}
 
-
-	private void selectDrawerItem(MenuItem item)
-	{
+	private void selectDrawerItem(MenuItem item) {
 		Fragment fragment = null;
 		Intent intent = null;
 
-		switch(item.getItemId())
-		{
+		switch (item.getItemId()) {
 			case R.id.menu_navigation_example1:
 			case R.id.menu_navigation_example2:
 			case R.id.menu_navigation_example3:
@@ -180,8 +147,7 @@ public class ExampleActivity extends AppCompatActivity
 				break;
 		}
 
-		if(fragment != null)
-		{
+		if (fragment != null) {
 			FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.container_drawer_content, fragment).commitAllowingStateLoss();
 
@@ -189,8 +155,7 @@ public class ExampleActivity extends AppCompatActivity
 			getSupportActionBar().setTitle(item.getTitle());
 		}
 
-		if(intent != null)
-		{
+		if (intent != null) {
 			startActivity(intent);
 		}
 

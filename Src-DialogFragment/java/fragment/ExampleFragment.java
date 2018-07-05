@@ -24,7 +24,6 @@ import org.alfonz.utility.Logcat;
 
 import java.util.Calendar;
 
-
 public class ExampleFragment extends Fragment implements
 		SimpleDialogFragment.SimpleDialogListener,
 		ItemsDialogFragment.ItemsDialogListener,
@@ -33,8 +32,7 @@ public class ExampleFragment extends Fragment implements
 		CustomDialogFragment.CustomDialogListener,
 		TimePickerDialogFragment.TimePickerDialogListener,
 		DatePickerDialogFragment.DatePickerDialogListener,
-		SheetDialogFragment.SheetDialogListener
-{
+		SheetDialogFragment.SheetDialogListener {
 	private static final String DIALOG_SIMPLE = "simple";
 	private static final String DIALOG_ITEMS = "items";
 	private static final String DIALOG_SINGLE_CHOICE_ITEMS = "single_choice_items";
@@ -47,136 +45,99 @@ public class ExampleFragment extends Fragment implements
 
 	private View mRootView;
 
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_example, container, false);
 		return mRootView;
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setupView();
 	}
 
-
 	@Override
-	public void onSimpleDialogPositiveClick(final DialogFragment dialog)
-	{
+	public void onSimpleDialogPositiveClick(final DialogFragment dialog) {
 		Logcat.d("");
 	}
 
-
 	@Override
-	public void onSimpleDialogNegativeClick(final DialogFragment dialog)
-	{
+	public void onSimpleDialogNegativeClick(final DialogFragment dialog) {
 		Logcat.d("");
 	}
 
-
 	@Override
-	public void onItemsDialogItemClick(final DialogFragment dialog, final int which)
-	{
+	public void onItemsDialogItemClick(final DialogFragment dialog, final int which) {
 		Logcat.d(Integer.toString(which));
 	}
 
-
 	@Override
-	public void onItemsDialogPositiveClick(final DialogFragment dialog)
-	{
+	public void onItemsDialogPositiveClick(final DialogFragment dialog) {
 		Logcat.d("");
 	}
 
-
 	@Override
-	public void onItemsDialogNegativeClick(final DialogFragment dialog)
-	{
+	public void onItemsDialogNegativeClick(final DialogFragment dialog) {
 		Logcat.d("");
 	}
 
-
 	@Override
-	public void onSingleChoiceItemsDialogPositiveClick(final DialogFragment dialog, final int checkedItem)
-	{
+	public void onSingleChoiceItemsDialogPositiveClick(final DialogFragment dialog, final int checkedItem) {
 		Logcat.d(Integer.toString(checkedItem));
 	}
 
-
 	@Override
-	public void onSingleChoiceItemsDialogNegativeClick(final DialogFragment dialog)
-	{
+	public void onSingleChoiceItemsDialogNegativeClick(final DialogFragment dialog) {
 		Logcat.d("");
 	}
 
-
 	@Override
-	public void onMultiChoiceItemsDialogPositiveClick(final DialogFragment dialog, final boolean[] checkedItems)
-	{
+	public void onMultiChoiceItemsDialogPositiveClick(final DialogFragment dialog, final boolean[] checkedItems) {
 		StringBuilder builder = new StringBuilder();
-		for(int i = 0; i < checkedItems.length; i++)
-		{
+		for (int i = 0; i < checkedItems.length; i++) {
 			builder.append(checkedItems[i]);
 			builder.append(" ");
 		}
 		Logcat.d(builder.toString());
 	}
 
-
 	@Override
-	public void onMultiChoiceItemsDialogNegativeClick(final DialogFragment dialog)
-	{
+	public void onMultiChoiceItemsDialogNegativeClick(final DialogFragment dialog) {
 		Logcat.d("");
 	}
 
-
 	@Override
-	public void onCustomDialogPositiveClick(final DialogFragment dialog, final String username, final String password)
-	{
+	public void onCustomDialogPositiveClick(final DialogFragment dialog, final String username, final String password) {
 		Logcat.d(username + " / " + password);
 	}
 
-
 	@Override
-	public void onCustomDialogNegativeClick(final DialogFragment dialog)
-	{
+	public void onCustomDialogNegativeClick(final DialogFragment dialog) {
 		Logcat.d("");
 	}
 
-
 	@Override
-	public void onTimePickerDialogPositiveClick(final DialogFragment dialog, final int hour, final int minute)
-	{
+	public void onTimePickerDialogPositiveClick(final DialogFragment dialog, final int hour, final int minute) {
 		Logcat.d(hour + ":" + minute);
 	}
 
-
 	@Override
-	public void onDatePickerDialogPositiveClick(final DialogFragment dialog, final int year, final int month, final int day)
-	{
+	public void onDatePickerDialogPositiveClick(final DialogFragment dialog, final int year, final int month, final int day) {
 		Logcat.d(day + "." + (month + 1) + "." + year);
 	}
 
-
 	@Override
-	public void onSheetDialogStateChanged(final DialogFragment dialog, final int newState, final String username, final String password)
-	{
+	public void onSheetDialogStateChanged(final DialogFragment dialog, final int newState, final String username, final String password) {
 		Logcat.d(newState + " / " + username + " / " + password);
 	}
 
-
 	@Override
-	public void onSheetDialogDismiss(final DialogFragment dialog, final String username, final String password)
-	{
+	public void onSheetDialogDismiss(final DialogFragment dialog, final String username, final String password) {
 		Logcat.d(username + " / " + password);
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// reference
 		Button button1 = mRootView.findViewById(R.id.example_button1);
 		Button button2 = mRootView.findViewById(R.id.example_button2);
@@ -189,35 +150,27 @@ public class ExampleFragment extends Fragment implements
 		Button button9 = mRootView.findViewById(R.id.example_button9);
 
 		// content
-		button1.setOnClickListener(new OnClickListener()
-		{
+		button1.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				showSimpleDialog("hello");
 			}
 		});
-		button2.setOnClickListener(new OnClickListener()
-		{
+		button2.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				showItemsDialog("hello");
 			}
 		});
-		button3.setOnClickListener(new OnClickListener()
-		{
+		button3.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				showSingleChoiceItemsDialog(-1);
 			}
 		});
-		button4.setOnClickListener(new OnClickListener()
-		{
+		button4.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				final boolean[] checkedItems = {
 						true,
 						false,
@@ -226,123 +179,93 @@ public class ExampleFragment extends Fragment implements
 				showMultiChoiceItemsDialog(checkedItems);
 			}
 		});
-		button5.setOnClickListener(new OnClickListener()
-		{
+		button5.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				showCustomDialog("hello");
 			}
 		});
-		button6.setOnClickListener(new OnClickListener()
-		{
+		button6.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				showTimePickerDialog(Calendar.getInstance());
 			}
 		});
-		button7.setOnClickListener(new OnClickListener()
-		{
+		button7.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				showDatePickerDialog(Calendar.getInstance());
 			}
 		});
-		button8.setOnClickListener(new OnClickListener()
-		{
+		button8.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				showProgressDialog();
 			}
 		});
-		button9.setOnClickListener(new OnClickListener()
-		{
+		button9.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				showSheetDialog("hello");
 			}
 		});
 	}
 
-
-	private void showSimpleDialog(String arg)
-	{
+	private void showSimpleDialog(String arg) {
 		DialogFragment fragment = SimpleDialogFragment.newInstance(arg);
 		fragment.setTargetFragment(this, 0);
 		fragment.show(getFragmentManager(), DIALOG_SIMPLE);
 	}
 
-
-	private void showItemsDialog(String arg)
-	{
+	private void showItemsDialog(String arg) {
 		DialogFragment fragment = ItemsDialogFragment.newInstance(arg);
 		fragment.setTargetFragment(this, 0);
 		fragment.show(getFragmentManager(), DIALOG_ITEMS);
 	}
 
-
-	private void showSingleChoiceItemsDialog(int checkedItem)
-	{
+	private void showSingleChoiceItemsDialog(int checkedItem) {
 		DialogFragment fragment = SingleChoiceItemsDialogFragment.newInstance(checkedItem);
 		fragment.setTargetFragment(this, 0);
 		fragment.show(getFragmentManager(), DIALOG_SINGLE_CHOICE_ITEMS);
 	}
 
-
-	private void showMultiChoiceItemsDialog(boolean checkedItems[])
-	{
+	private void showMultiChoiceItemsDialog(boolean checkedItems[]) {
 		DialogFragment fragment = MultiChoiceItemsDialogFragment.newInstance(checkedItems);
 		fragment.setTargetFragment(this, 0);
 		fragment.show(getFragmentManager(), DIALOG_MULTI_CHOICE_ITEMS);
 	}
 
-
-	private void showCustomDialog(String arg)
-	{
+	private void showCustomDialog(String arg) {
 		DialogFragment fragment = CustomDialogFragment.newInstance(arg);
 		fragment.setTargetFragment(this, 0);
 		fragment.show(getFragmentManager(), DIALOG_CUSTOM);
 	}
 
-
-	private void showTimePickerDialog(Calendar time)
-	{
+	private void showTimePickerDialog(Calendar time) {
 		DialogFragment fragment = TimePickerDialogFragment.newInstance(time);
 		fragment.setTargetFragment(this, 0);
 		fragment.show(getFragmentManager(), DIALOG_TIME_PICKER);
 	}
 
-
-	private void showDatePickerDialog(Calendar date)
-	{
+	private void showDatePickerDialog(Calendar date) {
 		DialogFragment fragment = DatePickerDialogFragment.newInstance(date);
 		fragment.setTargetFragment(this, 0);
 		fragment.show(getFragmentManager(), DIALOG_DATE_PICKER);
 	}
 
-
-	private void showProgressDialog()
-	{
+	private void showProgressDialog() {
 		DialogFragment fragment = ProgressDialogFragment.newInstance();
 		fragment.setTargetFragment(this, 0);
 		fragment.show(getFragmentManager(), DIALOG_PROGRESS);
 	}
 
-
-	private void hideProgressDialog()
-	{
+	private void hideProgressDialog() {
 		getFragmentManager().executePendingTransactions();
 		DialogFragment fragment = (DialogFragment) getFragmentManager().findFragmentByTag(DIALOG_PROGRESS);
-		if(fragment != null) fragment.dismiss();
+		if (fragment != null) fragment.dismiss();
 	}
 
-
-	private void showSheetDialog(String arg)
-	{
+	private void showSheetDialog(String arg) {
 		DialogFragment fragment = SheetDialogFragment.newInstance(arg);
 		fragment.setTargetFragment(this, 0);
 		fragment.show(getFragmentManager(), DIALOG_SHEET);

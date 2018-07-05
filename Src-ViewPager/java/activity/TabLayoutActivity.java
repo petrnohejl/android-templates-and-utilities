@@ -8,35 +8,26 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.R;
 import com.example.adapter.TabLayoutFragmentPagerAdapter;
 
-
-public class TabLayoutActivity extends AppCompatActivity
-{
+public class TabLayoutActivity extends AppCompatActivity {
 	private TabLayoutFragmentPagerAdapter mAdapter;
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tablayout);
 		setupView();
 	}
 
-
-	private void setupView()
-	{
+	private void setupView() {
 		// reference
 		ViewPager viewPager = findViewById(R.id.tablayout_pager);
 		TabLayout tabLayout = findViewById(R.id.tablayout_tabs);
 
 		// pager content
-		if(mAdapter == null)
-		{
+		if (mAdapter == null) {
 			// create adapter
 			mAdapter = new TabLayoutFragmentPagerAdapter(getSupportFragmentManager());
-		}
-		else
-		{
+		} else {
 			// refill adapter
 			mAdapter.refill();
 		}

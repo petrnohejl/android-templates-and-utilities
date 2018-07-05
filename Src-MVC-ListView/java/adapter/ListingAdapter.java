@@ -12,26 +12,19 @@ import com.example.entity.ProductEntity;
 
 import java.util.List;
 
-
-public class ListingAdapter extends BaseAdapter
-{
+public class ListingAdapter extends BaseAdapter {
 	private Context mContext;
 	private List<ProductEntity> mProductList;
 
-
-	public ListingAdapter(Context context, List<ProductEntity> productList)
-	{
+	public ListingAdapter(Context context, List<ProductEntity> productList) {
 		mContext = context;
 		mProductList = productList;
 	}
 
-
 	@Override
-	public View getView(final int position, View convertView, ViewGroup parent)
-	{
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		// inflate view
-		if(convertView == null)
-		{
+		if (convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.fragment_listing_item, parent, false);
 
@@ -43,8 +36,7 @@ public class ListingAdapter extends BaseAdapter
 
 		// entity
 		ProductEntity product = mProductList.get(position);
-		if(product != null)
-		{
+		if (product != null) {
 			// view holder
 			ViewHolder holder = (ViewHolder) convertView.getTag();
 
@@ -55,46 +47,34 @@ public class ListingAdapter extends BaseAdapter
 		return convertView;
 	}
 
-
 	@Override
-	public int getCount()
-	{
-		if(mProductList != null) return mProductList.size();
+	public int getCount() {
+		if (mProductList != null) return mProductList.size();
 		else return 0;
 	}
 
-
 	@Override
-	public Object getItem(int position)
-	{
-		if(mProductList != null) return mProductList.get(position);
+	public Object getItem(int position) {
+		if (mProductList != null) return mProductList.get(position);
 		else return null;
 	}
 
-
 	@Override
-	public long getItemId(int position)
-	{
+	public long getItemId(int position) {
 		return position;
 	}
 
-
-	public void refill(Context context, List<ProductEntity> productList)
-	{
+	public void refill(Context context, List<ProductEntity> productList) {
 		mContext = context;
 		mProductList = productList;
 		notifyDataSetChanged();
 	}
 
-
-	public void stop()
-	{
+	public void stop() {
 		// TODO: stop image loader
 	}
 
-
-	static class ViewHolder
-	{
+	static class ViewHolder {
 		TextView nameTextView;
 	}
 }

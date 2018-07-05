@@ -12,26 +12,19 @@ import android.widget.TextView;
 
 import com.example.R;
 
-
-public class SearchSuggestionAdapter extends CursorAdapter
-{
-	public SearchSuggestionAdapter(Context context, Cursor cursor)
-	{
+public class SearchSuggestionAdapter extends CursorAdapter {
+	public SearchSuggestionAdapter(Context context, Cursor cursor) {
 		super(context, cursor, 0);
 	}
 
-
 	@Override
-	public View newView(Context context, Cursor cursor, ViewGroup parent)
-	{
+	public View newView(Context context, Cursor cursor, ViewGroup parent) {
 		LayoutInflater inflater = LayoutInflater.from(context);
 		return inflater.inflate(R.layout.search_suggestion_item, parent, false);
 	}
 
-
 	@Override
-	public void bindView(View view, Context context, Cursor cursor)
-	{
+	public void bindView(View view, Context context, Cursor cursor) {
 		// reference
 		LinearLayout root = (LinearLayout) view;
 		TextView titleTextView = root.findViewById(R.id.search_suggestion_item_title);
@@ -44,9 +37,7 @@ public class SearchSuggestionAdapter extends CursorAdapter
 		subtitleTextView.setText(cursor.getString(index2));
 	}
 
-
-	public void refill(Context context, Cursor cursor)
-	{
+	public void refill(Context context, Cursor cursor) {
 		changeCursor(cursor);
 	}
 }

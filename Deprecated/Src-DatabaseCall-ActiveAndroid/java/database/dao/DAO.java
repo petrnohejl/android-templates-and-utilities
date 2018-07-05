@@ -2,9 +2,7 @@ package com.example.database.dao;
 
 import java.util.List;
 
-
-public interface DAO<T>
-{
+public interface DAO<T> {
 	long create(T t);
 	T read(long id);
 	T readFirst();

@@ -13,60 +13,44 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ExampleFileObserverService extends Service
-{
+public class ExampleFileObserverService extends Service {
 	private List<ExampleFileObserver> mExampleFileObserverList;
 
-
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId)
-	{
+	public int onStartCommand(Intent intent, int flags, int startId) {
 		// start file observers
-		if(mExampleFileObserverList == null)
-		{
+		if (mExampleFileObserverList == null) {
 			Logcat.d("start file observers");
 			startFileObservers();
-		}
-		else
-		{
+		} else {
 			Logcat.d("file observers already running");
 		}
 
 		return START_STICKY;
 	}
 
-
 	@Override
-	public IBinder onBind(Intent intent)
-	{
+	public IBinder onBind(Intent intent) {
 		return null;
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		// stop file observers
-		if(mExampleFileObserverList != null) stopFileObservers();
+		if (mExampleFileObserverList != null) stopFileObservers();
 	}
 
-
-	private void startFileObservers()
-	{
-		if(StorageUtility.isAvailable())
-		{
+	private void startFileObservers() {
+		if (StorageUtility.isAvailable()) {
 			// create list
 			mExampleFileObserverList = new ArrayList<>();
 
 			// watch directories
 			List<File> directoryList = getObservedDirectories();
-			for(int i = 0; i < directoryList.size(); i++)
-			{
+			for (int i = 0; i < directoryList.size(); i++) {
 				File directory = directoryList.get(i);
 
-				if(directory.exists() && directory.isDirectory())
-				{
+				if (directory.exists() && directory.isDirectory()) {
 					ExampleFileObserver observer = new ExampleFileObserver(directory.getAbsolutePath());
 					observer.startWatching();
 					mExampleFileObserverList.add(observer);
@@ -75,14 +59,10 @@ public class ExampleFileObserverService extends Service
 		}
 	}
 
-
-	private void stopFileObservers()
-	{
-		for(int i = 0; i < mExampleFileObserverList.size(); i++)
-		{
+	private void stopFileObservers() {
+		for (int i = 0; i < mExampleFileObserverList.size(); i++) {
 			ExampleFileObserver observer = mExampleFileObserverList.get(i);
-			if(observer != null)
-			{
+			if (observer != null) {
 				observer.stopWatching();
 				observer = null;
 			}

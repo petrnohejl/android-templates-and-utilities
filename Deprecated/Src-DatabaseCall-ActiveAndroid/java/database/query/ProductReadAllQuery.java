@@ -6,37 +6,26 @@ import com.example.entity.ProductEntity;
 
 import java.util.List;
 
-
-public class ProductReadAllQuery extends Query
-{
+public class ProductReadAllQuery extends Query {
 	private int mLimit = -1;
 	private int mOffset = -1;
 
-
-	public ProductReadAllQuery()
-	{
+	public ProductReadAllQuery() {
 	}
 
-
-	public ProductReadAllQuery(int limit, int offset)
-	{
+	public ProductReadAllQuery(int limit, int offset) {
 		mLimit = limit;
 		mOffset = offset;
 	}
 
-
 	@Override
-	public Data<List<ProductEntity>> processData()
-	{
+	public Data<List<ProductEntity>> processData() {
 		ProductDAO dao = new ProductDAO();
 		List<ProductEntity> list;
 
-		if(mLimit == -1 && mOffset == -1)
-		{
+		if (mLimit == -1 && mOffset == -1) {
 			list = dao.readAll();
-		}
-		else
-		{
+		} else {
 			list = dao.readAll(mLimit, mOffset);
 		}
 

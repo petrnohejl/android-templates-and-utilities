@@ -18,19 +18,15 @@ import com.example.R;
 import java.util.ArrayList;
 import java.util.List;
 
-
 // original AlertDialog implementation, layout and style:
 // https://github.com/android/platform_frameworks_base/blob/master/core/java/android/app/AlertDialog.java
 // https://github.com/android/platform_frameworks_base/blob/master/core/java/com/android/internal/app/AlertController.java
 // https://github.com/android/platform_frameworks_base/blob/master/core/res/res/layout/alert_dialog_holo.xml
 // https://github.com/android/platform_frameworks_base/blob/master/core/res/res/values/themes.xml
-public final class DialogStyle
-{
+public final class DialogStyle {
 	private DialogStyle() {}
 
-
-	public static void overrideStyle(Context context, AlertDialog dialog, boolean light)
-	{
+	public static void overrideStyle(Context context, AlertDialog dialog, boolean light) {
 		// resources
 		int resourceDialogTitleText = light ? R.color.dialog_title_text_light : R.color.dialog_title_text_dark;
 		int resourceDialogTitleDivider = light ? R.color.dialog_title_divider_light : R.color.dialog_title_divider_dark;
@@ -72,28 +68,24 @@ public final class DialogStyle
 		Button button3View = dialog.findViewById(button3);
 
 		// dialog background
-		if(topPanelView != null && contentPanelView != null && customPanelView != null && buttonPanelView != null)
-		{
+		if (topPanelView != null && contentPanelView != null && customPanelView != null && buttonPanelView != null) {
 			setBackground(topPanelView, contentPanelView, customPanelView, buttonPanelView, light);
 		}
 
 		// dialog style
-		if(alertTitleView != null)
+		if (alertTitleView != null)
 			alertTitleView.setTextColor(context.getResources().getColor(resourceDialogTitleText));
-		if(titleDividerView != null)
-		{
+		if (titleDividerView != null) {
 			titleDividerView.setBackgroundColor(context.getResources().getColor(resourceDialogTitleDivider));
 			ViewGroup.LayoutParams params = titleDividerView.getLayoutParams();
 			params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, context.getResources().getDisplayMetrics());
 		}
-		if(messageView != null) messageView.setTextColor(context.getResources().getColor(resourceDialogMessageText));
-		if(selectDialogListviewView != null)
-		{
+		if (messageView != null) messageView.setTextColor(context.getResources().getColor(resourceDialogMessageText));
+		if (selectDialogListviewView != null) {
 			selectDialogListviewView.setSelector(resourceSelectorDialogButtonBg);
 			selectDialogListviewView.setDivider(context.getResources().getDrawable(resourceShapeDialogDividerHorizontal));
 		}
-		if(button1View != null)
-		{
+		if (button1View != null) {
 			button1View.setTextColor(context.getResources().getColor(resourceDialogButtonText));
 			button1View.setBackgroundResource(resourceSelectorDialogButtonBg);
 			button1View.setTypeface(Typeface.DEFAULT);
@@ -102,8 +94,7 @@ public final class DialogStyle
 			params.setMargins(0, 0, 0, 0);
 			button1View.setLayoutParams(params);
 		}
-		if(button2View != null)
-		{
+		if (button2View != null) {
 			button2View.setTextColor(context.getResources().getColor(resourceDialogButtonText));
 			button2View.setBackgroundResource(resourceSelectorDialogButtonBg);
 			button2View.setTypeface(Typeface.DEFAULT);
@@ -112,8 +103,7 @@ public final class DialogStyle
 			params.setMargins(0, 0, 0, 0);
 			button2View.setLayoutParams(params);
 		}
-		if(button3View != null)
-		{
+		if (button3View != null) {
 			button3View.setTextColor(context.getResources().getColor(resourceDialogButtonText));
 			button3View.setBackgroundResource(resourceSelectorDialogButtonBg);
 			button3View.setTypeface(Typeface.DEFAULT);
@@ -122,28 +112,22 @@ public final class DialogStyle
 			params.setMargins(0, 0, 0, 0);
 			button3View.setLayoutParams(params);
 		}
-		if(buttonPanelView != null)
-		{
-			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-			{
+		if (buttonPanelView != null) {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 				buttonPanelView.setShowDividers(LinearLayout.SHOW_DIVIDER_BEGINNING);
 				buttonPanelView.setDividerDrawable(context.getResources().getDrawable(resourceShapeDialogDividerHorizontal));
 			}
 		}
-		if(buttonPanelChildView != null)
-		{
+		if (buttonPanelChildView != null) {
 			buttonPanelChildView.setPadding(0, 0, 0, 0);
-			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-			{
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 				buttonPanelChildView.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
 				buttonPanelChildView.setDividerDrawable(context.getResources().getDrawable(resourceShapeDialogDividerVertical));
 			}
 		}
 	}
 
-
-	private static void setBackground(LinearLayout topPanelView, LinearLayout contentPanelView, FrameLayout customPanelView, LinearLayout buttonPanelView, boolean light)
-	{
+	private static void setBackground(LinearLayout topPanelView, LinearLayout contentPanelView, FrameLayout customPanelView, LinearLayout buttonPanelView, boolean light) {
 		int resourceDialogFullHolo = light ? R.drawable.dialog_full_holo_light : R.drawable.dialog_full_holo_dark;
 		int resourceDialogTopHolo = light ? R.drawable.dialog_top_holo_light : R.drawable.dialog_top_holo_dark;
 		int resourceDialogMiddleHolo = light ? R.drawable.dialog_middle_holo_light : R.drawable.dialog_middle_holo_dark;
@@ -155,27 +139,23 @@ public final class DialogStyle
 		boolean buttonPanelVisible = buttonPanelView.getVisibility() == View.VISIBLE;
 
 		List<View> views = new ArrayList<>();
-		if(topPanelVisible) views.add(topPanelView);
-		if(contentPanelVisible) views.add(contentPanelView);
-		if(customPanelVisible) views.add(customPanelView);
-		if(buttonPanelVisible) views.add(buttonPanelView);
+		if (topPanelVisible) views.add(topPanelView);
+		if (contentPanelVisible) views.add(contentPanelView);
+		if (customPanelVisible) views.add(customPanelView);
+		if (buttonPanelVisible) views.add(buttonPanelView);
 
-		if(views.size() == 1)
-		{
+		if (views.size() == 1) {
 			View v = views.get(0);
 			v.setBackgroundResource(resourceDialogFullHolo);
-		}
-		else
-		{
-			for(int i = 0; i < views.size(); i++)
-			{
+		} else {
+			for (int i = 0; i < views.size(); i++) {
 				View v = views.get(i);
 
 				// top
-				if(i == 0) v.setBackgroundResource(resourceDialogTopHolo);
+				if (i == 0) v.setBackgroundResource(resourceDialogTopHolo);
 
 					// bottom
-				else if(i == views.size() - 1) v.setBackgroundResource(resourceDialogBottomHolo);
+				else if (i == views.size() - 1) v.setBackgroundResource(resourceDialogBottomHolo);
 
 					// middle
 				else v.setBackgroundResource(resourceDialogMiddleHolo);

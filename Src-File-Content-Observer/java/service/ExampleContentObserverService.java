@@ -9,18 +9,13 @@ import com.example.utility.ExampleContentObserver;
 
 import org.alfonz.utility.Logcat;
 
-
-public class ExampleContentObserverService extends Service
-{
+public class ExampleContentObserverService extends Service {
 	private ExampleContentObserver mExampleContentObserver;
 
-
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId)
-	{
+	public int onStartCommand(Intent intent, int flags, int startId) {
 		// start content observer
-		if(mExampleContentObserver == null)
-		{
+		if (mExampleContentObserver == null) {
 			Logcat.d("start content observer");
 
 			mExampleContentObserver = new ExampleContentObserver(new Handler());
@@ -28,29 +23,22 @@ public class ExampleContentObserverService extends Service
 					android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
 					true,
 					mExampleContentObserver);
-		}
-		else
-		{
+		} else {
 			Logcat.d("content observer already running");
 		}
 
 		return START_STICKY;
 	}
 
-
 	@Override
-	public IBinder onBind(Intent intent)
-	{
+	public IBinder onBind(Intent intent) {
 		return null;
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		// stop content observer
-		if(mExampleContentObserver != null)
-		{
+		if (mExampleContentObserver != null) {
 			getContentResolver().unregisterContentObserver(mExampleContentObserver);
 			mExampleContentObserver = null;
 		}

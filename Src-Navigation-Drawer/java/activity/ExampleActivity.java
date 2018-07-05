@@ -22,9 +22,7 @@ import com.example.R;
 import com.example.adapter.DrawerAdapter;
 import com.example.fragment.ExampleFragment;
 
-
-public class ExampleActivity extends AppCompatActivity
-{
+public class ExampleActivity extends AppCompatActivity {
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private ListView mDrawerListView;
@@ -32,43 +30,34 @@ public class ExampleActivity extends AppCompatActivity
 	private CharSequence mDrawerTitle;
 	private String[] mTitles;
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_example);
 		setupActionBar();
 		setupDrawer(savedInstanceState);
 	}
 
-
 	@Override
-	public boolean onPrepareOptionsMenu(Menu menu)
-	{
+	public boolean onPrepareOptionsMenu(Menu menu) {
 		// action bar menu visibility
-		if(menu != null)
-		{
+		if (menu != null) {
 			boolean drawerOpened = mDrawerLayout.isDrawerOpen(mDrawerListView);
 			MenuItem refresh = menu.findItem(R.id.menu_example_refresh);
-			if(refresh != null) refresh.setVisible(!drawerOpened);
+			if (refresh != null) refresh.setVisible(!drawerOpened);
 		}
 		return super.onPrepareOptionsMenu(menu);
 	}
 
-
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// open or close the drawer if home button is pressed
-		if(mDrawerToggle.onOptionsItemSelected(item))
-		{
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
 
 		// action bar menu behavior
-		switch(item.getItemId())
-		{
+		switch (item.getItemId()) {
 			case android.R.id.home:
 				// TODO
 				return true;
@@ -82,47 +71,34 @@ public class ExampleActivity extends AppCompatActivity
 		}
 	}
 
-
 	@Override
-	protected void onPostCreate(Bundle savedInstanceState)
-	{
+	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		mDrawerToggle.syncState();
 	}
 
-
 	@Override
-	public void onConfigurationChanged(Configuration newConfiguration)
-	{
+	public void onConfigurationChanged(Configuration newConfiguration) {
 		super.onConfigurationChanged(newConfiguration);
 		mDrawerToggle.onConfigurationChanged(newConfiguration);
 	}
 
-
 	@Override
-	public void onBackPressed()
-	{
-		if(mDrawerLayout.isDrawerOpen(Gravity.LEFT))
-		{
+	public void onBackPressed() {
+		if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
 			mDrawerLayout.closeDrawer(Gravity.LEFT);
-		}
-		else
-		{
+		} else {
 			super.onBackPressed();
 		}
 	}
 
-
 	@Override
-	public void setTitle(CharSequence title)
-	{
+	public void setTitle(CharSequence title) {
 		mTitle = title;
 		getSupportActionBar().setTitle(mTitle);
 	}
 
-
-	private void setupActionBar()
-	{
+	private void setupActionBar() {
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
@@ -134,9 +110,7 @@ public class ExampleActivity extends AppCompatActivity
 		bar.setHomeButtonEnabled(true);
 	}
 
-
-	private void setupDrawer(Bundle savedInstanceState)
-	{
+	private void setupDrawer(Bundle savedInstanceState) {
 		mTitle = getTitle();
 		mDrawerTitle = getTitle();
 
@@ -159,27 +133,21 @@ public class ExampleActivity extends AppCompatActivity
 		// set drawer
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 		mDrawerListView.setAdapter(new DrawerAdapter(this, mTitles, icons));
-		mDrawerListView.setOnItemClickListener(new OnItemClickListener()
-		{
+		mDrawerListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> adapterView, View clickedView, int position, long id)
-			{
+			public void onItemClick(AdapterView<?> adapterView, View clickedView, int position, long id) {
 				selectDrawerItem(position);
 			}
 		});
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close)
-		{
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
 			@Override
-			public void onDrawerClosed(View view)
-			{
+			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(mTitle);
 				supportInvalidateOptionsMenu();
 			}
 
-
 			@Override
-			public void onDrawerOpened(View drawerView)
-			{
+			public void onDrawerOpened(View drawerView) {
 				getSupportActionBar().setTitle(mDrawerTitle);
 				supportInvalidateOptionsMenu();
 			}
@@ -187,20 +155,17 @@ public class ExampleActivity extends AppCompatActivity
 		mDrawerLayout.addDrawerListener(mDrawerToggle);
 
 		// show initial fragment
-		if(savedInstanceState == null)
-		{
+		if (savedInstanceState == null) {
 			selectDrawerItem(0);
 		}
 	}
 
-
-	private void selectDrawerItem(int position)
-	{
+	private void selectDrawerItem(int position) {
 		Fragment fragment;
-		if(position == 0) fragment = ExampleFragment.newInstance();
-		else if(position == 1) fragment = ExampleFragment.newInstance();
-		else if(position == 2) fragment = ExampleFragment.newInstance();
-		else if(position == 3) fragment = ExampleFragment.newInstance();
+		if (position == 0) fragment = ExampleFragment.newInstance();
+		else if (position == 1) fragment = ExampleFragment.newInstance();
+		else if (position == 2) fragment = ExampleFragment.newInstance();
+		else if (position == 3) fragment = ExampleFragment.newInstance();
 		else fragment = ExampleFragment.newInstance();
 
 		FragmentManager fragmentManager = getSupportFragmentManager();
