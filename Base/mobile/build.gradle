@@ -15,7 +15,7 @@ apply from: "../utils.gradle"
 
 android {
 	compileSdkVersion 27
-	buildToolsVersion "27.0.2"
+	buildToolsVersion "27.0.3"
 
 	defaultConfig {
 		applicationId "com.example"
@@ -75,15 +75,15 @@ android {
 
 dependencies {
 	implementation fileTree(dir: "libs", include: ["*.jar"])
-	implementation "com.android.support:support-compat:27.0.2"
-	implementation "com.android.support:support-core-utils:27.0.2"
-	implementation "com.android.support:support-core-ui:27.0.2"
-	implementation "com.android.support:support-fragment:27.0.2"
-	implementation "com.android.support:appcompat-v7:27.0.2"
-	implementation "com.android.support:recyclerview-v7:27.0.2"
-	implementation "com.android.support:support-annotations:27.0.2"
-	implementation "com.android.support:design:27.0.2"
-	implementation "com.google.android.gms:play-services-base:11.6.2"
+	implementation "com.android.support:support-compat:27.1.1"
+	implementation "com.android.support:support-core-utils:27.1.1"
+	implementation "com.android.support:support-core-ui:27.1.1"
+	implementation "com.android.support:support-fragment:27.1.1"
+	implementation "com.android.support:appcompat-v7:27.1.1"
+	implementation "com.android.support:recyclerview-v7:27.1.1"
+	implementation "com.android.support:support-annotations:27.1.1"
+	implementation "com.android.support:design:27.1.1"
+	implementation "com.google.android.gms:play-services-base:15.0.1"
 	testImplementation "junit:junit:4.12"
-	testImplementation "org.mockito:mockito-core:2.10.0"
+	testImplementation "org.mockito:mockito-core:2.19.0"
 }
