@@ -1,5 +1,7 @@
-Android Templates and Utilities
-===============================
+Android Templates and Utilities [DEPRECATED]
+============================================
+
+*Android Templates and Utilities are deprecated. I started with this project in 2012. Android ecosystem has changed a lot since then. There is a new programming language Kotlin, Android Jetpack components, RxJava and other technologies. These templates are written in Java and are not up to date.*
 
 Android Templates and Utilities is a collection of source codes, utilities, templates and snippets for Android development. It helps to build new apps and shows the best way how to implement certain things on Android platform.
 
